@@ -45,31 +45,79 @@ write-up, etc.) — not just linked to one:
 
   ````
   ```pf2e-stats
-  # Creature Name
+  # Meret Duskveil
   ## Creature 8
-  ==Medium== ==Human== ==Humanoid==
+
+  ---
+
+  ==Unique== ==Medium== ==Human== ==Humanoid==
 
   **Perception** +16
-  ...
+
+  **Skills** Acrobatics +17, Stealth +19, Thievery +15
+
   ---
-  **AC** 26  **Fort** +12  **Ref** +19  **Will** +14  **HP** 130
-  ...
+
+  **AC** 26; **Fort** +12, **Ref** +19, **Will** +14
+
+  **HP** 130
+
+  **Nimble Dodge** `[reaction]` **Trigger** Meret is targeted with an attack
+  by a creature they can see; **Effect** +2 circumstance bonus to AC.
+
+  ---
+
+  **Speed** 25 feet
+
+  **Melee** `[one-action]` rapier +20 (deadly d8, finesse, magical),
+  **Damage** 1d6+9 piercing
+
+  **Warp Path** `[one-action]` ([[Traits/Teleportation]]) **Requirements**
+  Veiled; **Effect** Teleports up to 30 feet, then Strikes.
   ```
   ````
 
   Name is an H1 (`#`), the level/type line is an H2 (`##`), traits are
-  wrapped in `==double equals==` on their own line right after. A `---` draws
-  the divider before defenses/offense. Double line breaks reset indentation;
-  use tab-indentation to nest content under a header.
+  wrapped in `==double equals==`. `---` breaks the block into its
+  conventional sections. Two consecutive line breaks reset indentation; tab
+  indentation nests content under the line above.
 
 - **[Pathfinder 2E Action Icons](https://github.com/thiagocoutinhor/pf2-action-icons)**
-  — inline action costs anywhere in a note (ability names, prose, tactics
-  write-ups) using backtick codeblocks:
-  `` `pf2:1` `` (single action), `` `pf2:2` `` (two actions),
-  `` `pf2:3` `` (three actions), `` `pf2:0` `` (free action), `` `pf2:r` ``
-  (reaction). Use these instead of writing "two actions" or drawing the
-  action glyphs as text.
+  — inline action costs in ordinary note prose (tactics write-ups, session
+  notes, a location's description of a trap), as inline code:
+  `` `pf2:1` `` (action), `` `pf2:2` `` (two actions), `` `pf2:3` ``
+  (three actions), `` `pf2:0` `` (free action), `` `pf2:r` `` (reaction).
 
-Statblocks in `vault/` already use both conventions — match that formatting
-rather than plain markdown headers/bold text when writing a creature into
-`campaign/`.
+### Which action syntax where
+
+The two plugins use **different, non-interchangeable codes**. Each README
+documents its own:
+
+| Context | Syntax |
+| --- | --- |
+| Inside a `pf2e-stats` codeblock | `` `[one-action]` ``, `` `[two-actions]` ``, `` `[three-actions]` ``, `` `[free-action]` ``, `` `[reaction]` `` |
+| Ordinary note prose, outside a statblock | `` `pf2:1` ``, `` `pf2:2` ``, `` `pf2:3` ``, `` `pf2:0` ``, `` `pf2:r` `` |
+
+Both require the backticks — bare `[one-action]` renders as literal text.
+
+### Pulling creatures out of `vault/`
+
+`vault/` is a raw Archives of Nethys scrape and uses **neither** plugin's
+syntax: it writes action costs as prose ("two actions", "single action") and
+emits bare, un-backticked `[one-action]` in Strike lines. The `pf2e-gm` skill
+scripts echo that same raw formatting. So a creature copied out of `vault/`
+or off a `brief`/`show`/`npc.py` call is *not* already formatted — converting
+it is the job:
+
+- Wrap the block in `pf2e-stats`, name to H1, `## Creature 8` to H2.
+- Convert the trait list to `==Medium== ==Human== ==Humanoid==`.
+- Replace every prose action cost and bare `[one-action]` with the
+  backticked `` `[one-action]` `` form.
+- Tab-indent degrees of success (`**Critical Success**`, `**Success**`, …)
+  beneath their ability.
+- Keep the AON `[[Wikilinks]]` on traits, spells and abilities — they
+  survive inside the codeblock and are the point of the vault.
+
+Use `sf2e-stats` instead of `pf2e-stats` only for Starfinder 2e content. For
+abbreviated blocks (a one-line NPC blurb) the plugin wants traits as an H3
+(`###`) line rather than `==wrapped==`.
