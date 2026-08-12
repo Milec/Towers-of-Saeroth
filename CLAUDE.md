@@ -5,6 +5,24 @@ Private PF2e worldbuilding vault. `campaign/` is the user's own notes;
 [Milec/AON-Scrap](https://github.com/Milec/AON-Scrap); `.claude/skills/pf2e-gm/`
 queries that reference for encounters, rules, treasure, shops, and NPCs.
 
+## Pull request workflow
+
+Claude pushes changes on a feature branch and opens a PR rather than
+committing straight to `main` — but the user shouldn't have to ask for a
+merge every time. So: **immediately after opening a PR here, enable GitHub
+auto-merge (squash) on it.** The repo has no CI, so with no checks to wait
+on this merges within seconds of pushing — a single addition should feel
+like it just landed, not like it's waiting on a review step.
+
+This applies to every PR going forward, not just ones for worldbuilding
+notes — there's no need to ask the user to confirm each merge first.
+
+If `enable_pr_auto_merge` fails, the repo's "Allow auto-merge" setting
+(Settings → General → Pull Requests) is probably off. That's a repo
+setting only the user can flip — say so rather than trying to work around
+it (e.g. by merging manually every time, which is the friction this exists
+to remove).
+
 ## Writing worldbuilding notes
 
 Whenever you create or edit a note under `campaign/`, write it as
