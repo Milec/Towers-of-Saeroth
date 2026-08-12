@@ -33,3 +33,43 @@ The aim is a note that's actually usable at the table and that Obsidian's
 graph view renders as a real web of connections — not a document dump.
 
 See `campaign/README.md` for the suggested folder layout.
+
+## Formatting statblocks
+
+Two community plugins are installed and should be used whenever a note
+contains a creature/NPC statblock (a built NPC, a reskinned monster, a boss
+write-up, etc.) — not just linked to one:
+
+- **[PF2e Statblocks](https://github.com/pixley/pf2e-statblock-for-obsidian)**
+  — wrap the whole statblock in a `pf2e-stats` codeblock:
+
+  ````
+  ```pf2e-stats
+  # Creature Name
+  ## Creature 8
+  ==Medium== ==Human== ==Humanoid==
+
+  **Perception** +16
+  ...
+  ---
+  **AC** 26  **Fort** +12  **Ref** +19  **Will** +14  **HP** 130
+  ...
+  ```
+  ````
+
+  Name is an H1 (`#`), the level/type line is an H2 (`##`), traits are
+  wrapped in `==double equals==` on their own line right after. A `---` draws
+  the divider before defenses/offense. Double line breaks reset indentation;
+  use tab-indentation to nest content under a header.
+
+- **[Pathfinder 2E Action Icons](https://github.com/thiagocoutinhor/pf2-action-icons)**
+  — inline action costs anywhere in a note (ability names, prose, tactics
+  write-ups) using backtick codeblocks:
+  `` `pf2:1` `` (single action), `` `pf2:2` `` (two actions),
+  `` `pf2:3` `` (three actions), `` `pf2:0` `` (free action), `` `pf2:r` ``
+  (reaction). Use these instead of writing "two actions" or drawing the
+  action glyphs as text.
+
+Statblocks in `vault/` already use both conventions — match that formatting
+rather than plain markdown headers/bold text when writing a creature into
+`campaign/`.
