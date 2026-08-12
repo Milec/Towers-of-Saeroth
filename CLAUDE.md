@@ -121,3 +121,24 @@ it is the job:
 Use `sf2e-stats` instead of `pf2e-stats` only for Starfinder 2e content. For
 abbreviated blocks (a one-line NPC blurb) the plugin wants traits as an H3
 (`###`) line rather than `==wrapped==`.
+
+### Known mobile viewing quirks
+
+Both plugins are written and tested against desktop; editing happens there
+(see below). Viewing on iOS Obsidian, as confirmed against
+`campaign/npcs/Garrick Thorne.md`:
+
+- **Action Icons** `` `pf2:N` `` codes render only in **Reading view** — they
+  render as nothing (not even the raw code) in Live Preview/editing view on
+  mobile. Switch views before assuming a note's icons are broken.
+- **PF2e Statblocks** `` `[one-action]` ``-style icons inside a `pf2e-stats`
+  codeblock render but visually overlap the text right after them on
+  mobile (icon glyph runs into the next word, sometimes eating its first
+  letter), even in Reading view. This looks like a font-width/kerning bug
+  in the plugin's embedded icon font on iOS, not a syntax mistake — the
+  markup matches the plugin's own README example. No upstream issue is
+  filed for it and no workaround is confirmed; it's a desktop-view plugin
+  used here on a best-effort basis on mobile.
+
+Don't try to "fix" this by changing the authoring syntax — write the
+documented forms above regardless of how they render on any given device.
