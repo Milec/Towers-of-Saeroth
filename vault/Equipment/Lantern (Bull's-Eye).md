@@ -1,0 +1,66 @@
+---
+title: "Lantern (Bull's-Eye)"
+type: "equipment"
+aon_id: "equipment-2730-2491"
+aon_url: "https://2e.aonprd.com/Equipment.aspx?ID=2730"
+tags:
+  - pf2e/equipment
+  - rarity/common
+bulk: 1
+hands: "1"
+is_standard_ancestry_feat: false
+item_category: "Adventuring Gear"
+legacy_name:
+  - "Lantern"
+level: 0
+pfs: "Standard"
+price: 100
+primary_source: "Player Core"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2023-11-15"
+source:
+  - "Player Core"
+source_category:
+  - "Rulebooks"
+---
+
+# Lantern  *Item 0+*
+
+**Source** [[Sources/Player Core]] pg. 288
+
+---
+
+A lantern sheds [[Rules/Bright Light|bright light]] and requires 1 pint of oil to function for 6 hours.
+
+## Lantern (Bull's-Eye)  *Item 0*
+
+**Source** [[Sources/Player Core]] pg. 288, [[Sources/Core Rulebook]] pg. 290
+
+**Price** 1 gp
+
+**Hands** 1
+
+**Bulk** 1
+
+---
+
+A bull's-eye lantern emits its light in a 60-foot cone (and [[Rules/Dim Light|dim light]] in the next 60 feet).
+
+## Lantern (Hooded)  *Item 0*
+
+**Source** [[Sources/Player Core]] pg. 288, [[Sources/Core Rulebook]] pg. 290
+
+**Price** 7 sp
+
+**Hands** 1
+
+**Bulk** L
+
+---
+
+A hooded lantern sheds light in a 30-foot radius (and dim light in the next 30 feet) and is equipped with shutters, which you can close to block the light. Closing or opening the shutters takes an Interact action.
+
+---
+
+Source on Archives of Nethys: [Lantern (Bull's-Eye)](https://2e.aonprd.com/Equipment.aspx?ID=2730)

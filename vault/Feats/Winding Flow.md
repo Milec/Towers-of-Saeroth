@@ -1,0 +1,48 @@
+---
+title: "Winding Flow"
+type: "feat"
+aon_id: "feat-467"
+aon_url: "https://2e.aonprd.com/Feats.aspx?ID=467"
+tags:
+  - pf2e/feat
+  - rarity/common
+  - trait/monk
+actions: "Single Action"
+actions_number: 2
+feat:
+  - "Winding Flow"
+frequency: "once per round"
+is_standard_ancestry_feat: false
+level: 10
+pfs: "Standard"
+primary_source: "Core Rulebook"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2019-08-01"
+source:
+  - "Core Rulebook"
+source_category:
+  - "Rulebooks"
+trait:
+  - "Monk"
+trait_group:
+  - "Class"
+  - "Weapon"
+---
+
+# Winding Flow single action  *Feat 10*
+
+**Traits** [[Traits/Monk]]
+
+**Source** [[Sources/Core Rulebook]] pg. 163
+
+**Frequency**
+once per round
+
+---
+
+Any journey consists of more than simply reaching your destination. You use two of the following actions in any order: Stand, Step, and Stride. You can’t use the same action twice.
+
+---
+
+Source on Archives of Nethys: [Winding Flow](https://2e.aonprd.com/Feats.aspx?ID=467)

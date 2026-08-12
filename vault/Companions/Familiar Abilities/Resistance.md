@@ -1,0 +1,32 @@
+---
+title: "Resistance"
+type: "familiar-ability"
+aon_id: "familiar-ability-32"
+aon_url: "https://2e.aonprd.com/Familiars.aspx?ID=32"
+tags:
+  - pf2e/familiar-ability
+  - rarity/common
+ability_type: "Familiar"
+is_standard_ancestry_feat: false
+pfs: "Standard"
+primary_source: "Advanced Player's Guide"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2020-07-30"
+source:
+  - "Advanced Player's Guide"
+source_category:
+  - "Rulebooks"
+---
+
+# Resistance  *Familiar Ability*
+
+**Source** [[Sources/Advanced Player's Guide]] pg. 146
+
+**Ability Type** Familiar
+
+Choose two of the following: acid, cold, electricity, fire, poison, or sonic. Your familiar gains resistance equal to half your level against the chosen damage types.
+
+---
+
+Source on Archives of Nethys: [Resistance](https://2e.aonprd.com/Familiars.aspx?ID=32)

@@ -1,0 +1,172 @@
+---
+title: "Ostovite"
+type: "creature"
+aon_id: "creature-4502"
+aon_url: "https://2e.aonprd.com/Monsters.aspx?ID=4502"
+tags:
+  - pf2e/creature
+  - rarity/common
+  - trait/fiend
+  - trait/unholy
+  - trait/small
+ac: 15
+attack_bonus:
+  - 9
+  - 9
+charisma: 0
+constitution: 3
+creature_ability:
+  - "Bone Chariot"
+  - "Scuttle Away"
+dexterity: 4
+fortitude_save: 6
+hp: 30
+immunity:
+  - "bleed"
+  - "death effects"
+  - "disease"
+  - "doomed"
+  - "drained"
+  - "fatigued"
+  - "healing"
+  - "mental"
+  - "n onlethal attacks"
+  - "paralyzed"
+  - "poisoned"
+  - "sickened"
+  - "unconscious"
+intelligence: -4
+is_standard_ancestry_feat: false
+language:
+  - "Chthonian"
+level: 1
+npc: false
+perception: 4
+pfs: "Standard"
+primary_source: "Monster Core 2"
+primary_source_category: "Rulebooks"
+rarity: "common"
+reflex_save: 9
+release_date: "2025-11-05"
+sense: "darkvision"
+size:
+  - "Small"
+skill:
+  - "Crafting"
+  - "Stealth"
+skill_mod:
+  - "crafting 4"
+  - "stealth 7"
+source:
+  - "Monster Core 2"
+source_category:
+  - "Rulebooks"
+speed:
+  - "land 25"
+strength: 0
+strike_damage_average:
+  - 5
+  - 9
+strongest_save:
+  - "ref"
+  - "reflex"
+trait:
+  - "Fiend"
+  - "Unholy"
+  - "Small"
+trait_group:
+  - "Creature Type"
+  - "Mechanics"
+vision: "Darkvision"
+weakest_save:
+  - "will"
+will_save: 4
+wisdom: 1
+---
+
+# Ostovite
+
+Skittering scavenger vermin common throughout the [[Setting/Planes/Outer Rifts]], ostovites roam battlefields to harvest flesh and bones. After the ostovites dissolve and slurp up the flesh for sustenance, they craft the bones into elaborate shells they refer to as “bone chariots.”
+
+These bone chariots move under the ostovites' command and serve as an important marker of rank in ostovite nests. To tiny ostovites, bigger is better, and building large skeletal conveyances is the only way for them to increase their standing. Although they feel deeply inferior to creatures larger than themselves, this fear can be overwhelmed by the ostovites' visceral desire to harvest those creatures' bones to increase their own status. When confronted with a particularly massive skeleton, ostovites generally fight among themselves and end up splitting the haul. However, there are rare instances of the selfish creatures working together to puppeteer a much larger bone chariot.
+
+Ostovites' faint understanding of anatomy results in bone chariots that look more like nightmarish attempts at art than functioning creatures. Various powerful [[Traits/Fiend (Player Core)|fiends]] collect this strange art by bribing ostovites with new skeletons or finding ways to kill them without disrupting their chariots.
+
+Despite ostovites' origins in the Outer Rifts, they're neither [[Bestiary/Families/Demon (Monster Core)|demons]] nor [[Bestiary/Families/Qlippoth (Monster Core)|qlippoth]]. Without the protection of the major fiends, they find their homes in the nooks and crannies of their home plane. Though they have no innate ability to cross the planar boundaries, flaws in the Outer Rifts' fabric often lead them to other worlds. Ostovites who have managed such a migration are often much happier. Away from demonic abuse, they usually can be found near mortal crypts and battlefields. In the Universe, they rarely have to face any threats other than the [[Traits/Undead (Player Core)|undead]], clerics of [[Setting/Deities/Pharasma (Divine Mysteries)|Pharasma]], and families of the deceased.
+
+**[[Rules/Recall Knowledge|Recall Knowledge - Fiend]]**
+([[Rules/Skills/Religion (Player Core)|Religion]]): DC 15
+
+**[[Rules/Recall Knowledge|Unspecific Lore]]**: DC 13
+
+**[[Rules/Recall Knowledge|Specific Lore]]**: DC 10
+
+## Ostovite  *Creature 1*
+
+**Traits** Small, [[Traits/Fiend (Player Core)|Fiend]], [[Traits/Unholy]]
+
+**Source** [[Sources/Monster Core 2]] pg. 245
+
+**Perception** +4; [[Bestiary/Abilities/Darkvision (Monster Core)|darkvision]]
+
+**Languages**
+[[Setting/Languages/Chthonian]]
+
+**Skills**
+[[Rules/Skills/Crafting (Player Core)|Crafting]] +4, [[Rules/Sidebars/Being Stealthy (Player Core)|Stealth]] +7
+
+**Str** +0
+
+**Dex** +4
+
+**Con** +3
+
+**Int** -4
+
+**Wis** +1
+
+**Cha** +0
+
+---
+
+**AC** 15
+
+**Fort** +6
+
+**Ref** +9
+
+**Will** +4
+
+**HP** 30
+
+**Immunities**
+[[Rules/Sidebars/Persistent Damage Rules (Player Core)|bleed]], [[Rules/Death Effects|death effects]], [[Traits/Disease (Player Core)|disease]], [[Rules/Conditions/Doomed (Player Core)|doomed]], [[Rules/Conditions/Drained (Player Core)|drained]], [[Rules/Conditions/Fatigued (Player Core)|fatigued]], [[Traits/Healing (Player Core)|healing]], [[Traits/Mental (Player Core)|mental]], n[[Rules/Nonlethal Attacks (Player Core)|onlethal attacks]], [[Rules/Conditions/Paralyzed (Player Core)|paralyzed]], [[Traits/Poison (Player Core)|poisoned]], [[Rules/Conditions/Sickened (Player Core)|sickened]], [[Rules/Conditions/Unconscious (Player Core)|unconscious]]
+
+**Bone Chariot** Ostovites build and inhabit moving shells of bone. The ostovite's base statistics, particularly its immunities, assume the ostovite is safely inside its bone chariot. The bone chariot is destroyed when the ostovite is reduced to less than half its Hit Points or immediately after it takes damage from a critical hit. Damage that can specifically affect the ostovite controlling the chariot even while it's inside doesn't destroy the bone chariot, and it bypasses the ostovite's immunities.  
+Without the bone chariot, the ostovite loses its immunities and bone spike Strike, and it's reduced to Tiny size. It also gains [[Rules/Weakness|weakness]] 5 to [[Traits/Mental (Player Core)|mental]] and physical damage. Building a new bone chariot requires the skeleton of a Small or larger creature and 10 minutes. An ostovite in a bone chariot is normally Small, though larger bone chariots are possible, especially when ostovites work together.  
+**Scuttle Away** ⤾ **Trigger** The ostovite's bone chariot is [[Rules/Conditions/Destroyed|destroyed]]; **Effect** The ostovite within [[Actions/Step (Player Core)|Steps]] or [[Actions/Stride (Player Core)|Strides]].
+
+---
+
+**Speed** 25 feet
+
+**Melee**
+single action
+mandibles +9 ([[Traits/Finesse (Player Core)|Finesse]]),
+**Damage** 1d4 piercing plus 1d4 acid
+
+**Melee**
+single action
+bone spike +9 ([[Traits/Finesse (Player Core)|Finesse]]),
+**Damage** 1d12 piercing plus 1d4 [[Rules/Sidebars/Persistent Damage Rules (Player Core)|persistent bleed]]
+
+> [!info] Sidebar
+> ## Ostovite Lairs
+>
+>
+>
+> Ostovites are most often found on battlefields, scavenging for food and bones, regardless of the plane. If one of the vermin finds a suitable location and can bring others along with it, a colony might form.
+
+---
+
+Source on Archives of Nethys: [Ostovite](https://2e.aonprd.com/Monsters.aspx?ID=4502)

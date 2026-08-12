@@ -1,0 +1,53 @@
+---
+title: "Bubonic Plague"
+type: "disease"
+aon_id: "disease-6"
+aon_url: "https://2e.aonprd.com/Diseases.aspx?ID=6"
+tags:
+  - pf2e/disease
+  - rarity/common
+  - trait/disease
+is_standard_ancestry_feat: false
+level: 3
+onset: 86400
+primary_source: "Gamemastery Guide"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2020-02-26"
+saving_throw: "DC 17 Fortitude"
+source:
+  - "Gamemastery Guide"
+source_category:
+  - "Rulebooks"
+stage:
+  - "fatigued (1 day)"
+  - "enfeebled 2 and fatigued (1 day)"
+  - "enfeebled 3, fatigued, and take 1d6 persistent bleed damage every 1d20 minutes (1 day)"
+trait:
+  - "Disease"
+trait_group:
+  - "Affliction"
+---
+
+# Bubonic Plague  *Disease 3*
+
+**Traits** [[Traits/Disease]]
+
+**Source** [[Sources/Gamemastery Guide]] pg. 118
+
+This widespread illness can sweep through entire communities, leaving few unaffected. The first indication of the disease is a telltale swelling of glands. In some cases, the disease can move into your lungs (pneumonic plague) or blood (septicemic plague), which is even more fatal. If you have bubonic plague, you can’t remove the [[Rules/Conditions/Fatigued|fatigued]] condition while affected.
+
+**Saving Throw** DC 17 Fortitude
+
+**Onset**
+1 day
+
+**Stage 1** fatigued (1 day)
+
+**Stage 2** [[Rules/Conditions/Enfeebled|enfeebled 2]] and fatigued (1 day)
+
+**Stage 3** enfeebled 3, fatigued, and take 1d6 [[Rules/Sidebars/Persistent Damage Rules|persistent bleed damage]] every 1d20 minutes (1 day)
+
+---
+
+Source on Archives of Nethys: [Bubonic Plague](https://2e.aonprd.com/Diseases.aspx?ID=6)

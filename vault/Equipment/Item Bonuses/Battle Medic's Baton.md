@@ -1,0 +1,60 @@
+---
+title: "Battle Medic's Baton"
+type: "item-bonus"
+aon_id: "equipment-4721-bonus-1533"
+aon_url: "https://2e.aonprd.com/Equipment.aspx?ID=4721"
+tags:
+  - pf2e/item-bonus
+  - rarity/common
+  - trait/magical
+  - trait/necromancy
+bulk: 0.1
+is_standard_ancestry_feat: false
+item_bonus_consumable: false
+item_bonus_note: "Item bonus to Medicine checks while being held"
+item_bonus_value: 1
+item_category: "Held Items"
+level: 3
+pfs: "Standard"
+price: 6000
+primary_source: "Treasure Vault"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2023-02-22"
+school: "necromancy"
+skill:
+  - "Medicine"
+source:
+  - "Treasure Vault"
+source_category:
+  - "Rulebooks"
+trait:
+  - "Magical"
+  - "Necromancy"
+trait_group:
+  - "Mechanics"
+  - "School"
+usage: "held in 1 hand"
+---
+
+# Battle Medic's Baton  *Item 3*
+
+**Traits** [[Traits/Magical]], [[Traits/Necromancy]]
+
+**Source** [[Sources/Treasure Vault]] pg. 114
+
+**Price** 60 gp
+
+**Usage** held in 1 hand
+
+**Bulk** L
+
+---
+
+This short bronze rod has the form of a serpent coiled around it. While you hold it, you gain a +1 item bonus to [[Rules/Skills/Medicine (Player Core)|Medicine]] checks.
+
+**Activate** two actions command, Interact;  **Frequency** once per hour;  **Requirements** You have the [[Feats/Battle Medicine (Player Core)|Battle Medicine]] action; **Effect** You use Battle Medicine. The target is temporarily immune to your Battle Medicine for 1 hour instead of 1 day.
+
+---
+
+Source on Archives of Nethys: [Battle Medic's Baton](https://2e.aonprd.com/Equipment.aspx?ID=4721)

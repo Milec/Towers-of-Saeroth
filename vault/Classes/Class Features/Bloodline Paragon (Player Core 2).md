@@ -1,0 +1,34 @@
+---
+title: "Bloodline Paragon"
+type: "class-feature"
+aon_id: "class-feature-1000"
+aon_url: "https://2e.aonprd.com/Classes.aspx?ID=62"
+tags:
+  - pf2e/class-feature
+  - rarity/common
+class: "Sorcerer"
+is_standard_ancestry_feat: false
+level: 19
+primary_source: "Player Core 2"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2024-08-01"
+source:
+  - "Player Core 2"
+source_category:
+  - "Rulebooks"
+---
+
+# Bloodline Paragon  *Class Feature 19*
+
+**Source** [[Sources/Player Core 2]] pg. 144
+
+**Class** Sorcerer
+
+---
+
+You have perfected the magic in your bloodline. Add two common 10th-rank spells of your tradition to your repertoire. You gain a single 10th-rank spell slot you can use to cast these spells, using sorcerer spellcasting. Unlike other spell slots, you don’t gain more 10th-rank spells as you level up, and they can’t be used for abilities that let you cast spells without expending spell slots or abilities that give you more spell slots. You can take the Bloodline Perfection sorcerer feat to gain a second slot.
+
+---
+
+Source on Archives of Nethys: [Bloodline Paragon](https://2e.aonprd.com/Classes.aspx?ID=62)

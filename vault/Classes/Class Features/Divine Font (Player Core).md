@@ -1,0 +1,38 @@
+---
+title: "Divine Font"
+type: "class-feature"
+aon_id: "class-feature-651"
+aon_url: "https://2e.aonprd.com/Classes.aspx?ID=33"
+tags:
+  - pf2e/class-feature
+  - rarity/common
+class: "Cleric"
+is_standard_ancestry_feat: false
+level: 1
+primary_source: "Player Core"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2023-11-15"
+source:
+  - "Player Core"
+source_category:
+  - "Rulebooks"
+---
+
+# Divine Font  *Class Feature 1*
+
+**Source** [[Sources/Player Core]] pg. 108
+
+**Class** Cleric
+
+---
+
+Through your deity's blessing, you gain additional spells that channel either the life force called vitality or its counterforce, the void. When you prepare your spells each day, you can prepare additional [[Spells/Heal|_heal_]] or [[Spells/Harm|_harm_]] spells, depending on your deity. The divine font spell your deity provides is listed in the Divine Font entry for your [deity](Deities.aspx); if both are listed, you can choose between heal or harm. Once you choose, you can't change your choice short of divine intervention.
+
+ **Healing Font**: You gain 4 additional spell slots each day at your highest rank of cleric spell slots. You can prepare only [[Spells/Heal (Player Core)|_heal_]] spells in these slots. At 5th level, the number of additional slots increases to 5, and at 15th level, the total number of additional slots increases to 6.
+
+ **Harmful Font**: You gain 4 additional spell slots each day at your highest rank of cleric spell slots. You can prepare only [[Spells/Harm (Player Core)|_harm_]] spells in these slots. At 5th level, the number of additional slots increases to 5, and at 15th level, the total number of additional slots increases to 6.
+
+---
+
+Source on Archives of Nethys: [Divine Font](https://2e.aonprd.com/Classes.aspx?ID=33)

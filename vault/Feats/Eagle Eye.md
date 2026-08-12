@@ -1,0 +1,49 @@
+---
+title: "Eagle Eye"
+type: "feat"
+aon_id: "feat-8725"
+aon_url: "https://2e.aonprd.com/Feats.aspx?ID=8725"
+tags:
+  - pf2e/feat
+  - rarity/common
+  - trait/archetype
+archetype:
+  - "Gunslinger"
+feat:
+  - "Eagle Eye"
+is_standard_ancestry_feat: false
+level: 12
+pfs: "Standard"
+prerequisite: "Gunslinger Dedication; expert in Perception"
+primary_source: "Guns & Gears"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2021-10-13"
+source:
+  - "Guns & Gears"
+source_category:
+  - "Rulebooks"
+trait:
+  - "Archetype"
+trait_group:
+  - "Feat"
+---
+
+# Eagle Eye  *Feat 12*
+
+**Traits** [[Traits/Archetype]]
+
+**Source** [[Sources/Guns & Gears]] pg. 127
+
+**Archetype** [[Rules/Sidebars/Leading With a Cannon|Gunslinger]]
+
+**Prerequisites**
+[[Feats/Gunslinger Dedication]]; expert in Perception
+
+---
+
+Your practice with crossbows and firearms has sharpened your attention to detail. You become a master in Perception.
+
+---
+
+Source on Archives of Nethys: [Eagle Eye](https://2e.aonprd.com/Feats.aspx?ID=8725)

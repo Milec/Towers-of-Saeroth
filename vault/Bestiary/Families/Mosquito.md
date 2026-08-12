@@ -1,0 +1,40 @@
+---
+title: "Mosquito"
+type: "creature-family"
+aon_id: "creature-family-142"
+aon_url: "https://2e.aonprd.com/MonsterFamilies.aspx?ID=142"
+tags:
+  - pf2e/creature-family
+  - rarity/common
+creature_family: "Mosquito"
+is_standard_ancestry_feat: false
+primary_source: "Bestiary 2"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2020-05-27"
+source:
+  - "Bestiary 2"
+source_category:
+  - "Rulebooks"
+---
+
+# Mosquito  *Creature Family*
+
+**Source** [[Sources/Bestiary 2]] pg. 175
+
+While the common mosquito is a pest capable of spreading deadly diseases, their giant kin and the ravenous clouds of mosquito swarms are even more dangerous.
+
+## Members
+
+[[Bestiary/Fen Mosquito Swarm]] (Creature 3), [[Bestiary/Giant Mosquito]] (Creature 6)
+
+> [!info] Sidebar
+> ## Malaria Strains
+>
+>
+>
+> This pernicious disease is often associated with mosquitoes. The most common version of [[Rules/Diseases/Malaria|malaria]] is presented in the _Pathfinder Gamemastery Guide_, and while the variants inflicted by mosquito swarms and giant mosquitoes are deadlier, they don't have the chance to recur after 1d4 months. Pyrexic malaria also causes weakness and fevers, while septic malaria causes painful and infected lesions to form on the body. Regardless of the strain you contract, you can't reduce your sickened condition while you are affected with malaria.
+
+---
+
+Source on Archives of Nethys: [Mosquito](https://2e.aonprd.com/MonsterFamilies.aspx?ID=142)

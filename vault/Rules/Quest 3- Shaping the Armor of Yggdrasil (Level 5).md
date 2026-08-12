@@ -1,0 +1,51 @@
+---
+title: "Quest 3: Shaping the Armor of Yggdrasil (Level 5)"
+type: "rules"
+aon_id: "rules-3643"
+aon_url: "https://2e.aonprd.com/Rules.aspx?ID=3643"
+tags:
+  - pf2e/rules
+  - rarity/common
+breadcrumbs:
+  - "Momentary Magic"
+  - "Spellguns"
+  - "Story-Based Crafting"
+  - "Example Quests"
+is_standard_ancestry_feat: false
+next_link:
+  - "label Trappings of Power"
+  - "url /Rules.aspx?ID=3597"
+previous_link:
+  - "label Quest 2: Weaving the Wizard’s Robes (Level 7)"
+  - "url /Rules.aspx?ID=3642"
+primary_source: "Treasure Vault"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2023-02-22"
+source:
+  - "Treasure Vault"
+source_category:
+  - "Rulebooks"
+---
+
+# Quest 3: Shaping the Armor of Yggdrasil (Level 5)  *Rules*
+
+**Source** [[Sources/Treasure Vault]] pg. 175
+
+Ianara's character is a [[Ancestries/Human|druid]] seeking to craft a _+1 [[Equipment/Armor/Wooden Breastplate (Treasure Vault (Remastered))|wooden breastplate]]_ for herself. Having just reached 5th level, Ianara's druid will soon be leaving the relative safety of her grove and the surrounding woodlands to venture out into the wider world as a champion of nature, an endeavor which will call for greater protection than she has had need of so far. Her GM, James, has decided that for Ianara's druid to create this armor, she'll need to gather four essential materials from the woodlands around her grove: fur collected from [[Bestiary/Grizzly Bear|grizzly bears]] to line the armor, [[Equipment/Duskwood|duskwood]] bark collected from trees protected by [[Bestiary/Arboreal Warden|arboreal warden]], a section of wood freely gifted by an [[Bestiary/Awakened Tree|awakened tree]] for the main plate, and sticky sap from a grove guarded by a [[Bestiary/Dryad|dryad]] and her pet [[Bestiary/Basilisk|basilisk]] to bind it all together. James has decided that this crafting quest will require Ianara's druid to complete four Low difficulty encounters, so he has reduced the 160 gp cost of the _+1 wooden breastplate_ by 40% for a final crafting cost of 96 gp, with each component having a value of 24 gp each. He deducts the 24 gp from the 100 gp value of each of the encounters and assigns the remaining 76 gp from each encounter to consumables and crafting quest components for the other characters.
+
+ James plans the following four encounters out for Ianara.
+
+ **Shaving the Grizzly**: Ianara's first task is to collect the grizzly bear fur, and fortunately, three large grizzlies with fur to spare can be found fishing salmon from a nearby stream. While the bears do constitute a potentially engaging, or even deadly, combat encounter, Ianara's character is a druid and unwilling to harm the creatures just to line her armor. By leveraging a combination of primal magic and [[Rules/Sidebars/Commanded Animals|Nature]]-oriented skill feats, she's able to calm the bears and convince them to donate some of their fur to her.
+
+ **Working Around the Wardens**: Next, Ianara's druid must convince a pair of arboreal wardens to allow her to collect fallen scraps of duskwood bark from the grove of duskwood trees they're dedicated to protecting. Whether through combat, stealth, bargaining, or fleetness of foot, the druid manages to retrieve the necessary bark and completes the encounter before seeking out the next component for her armor.
+
+ **You're Not Using That, Are You?**: Next, Ianara's druid needs to convince a mighty awakened tree to gift her a section of its living body to form the main plate of her _+1 wooden breastplate_. Combat isn't an option here; not only would attacking an otherwise-peaceful awakened tree potentially be anathema for the druid, but the wood has to be freely gifted or the armor will be ruined. Guile, diplomacy, and magic are Ianara's only options, but fortunately, if anyone can convince a tree to give up a part of itself, it's probably a druid.
+
+ **Sticky Situation**: Having collected most of the components to create her armor, the druid just needs the sticky sap to bind everything together. The dryad and basilisk protecting the sap are cantankerous, cruel, and unwilling to share, and their grove is littered with evidence that the basilisk isn't too picky about who or what it petrifies and eats, either. While the party has thus far attempted nonviolent solutions wherever possible, the clearly evil nature of the dryad and basilisk likely mean that Ianara's party might just choose to fight this one out for the good of the forest, though it's also possible that they will choose to try and redeem the dryad and her pet. Regardless of the resolution they choose, once the dryad and basilisk are dealt with, Ianara's druid has all the crafting quest components she needs to [[Actions/Craft]] her armor, and she can begin the process of assembling them.
+
+ Since the encounters were all contained within the same woodland, James requires Ianara's druid to attempt a [[Rules/Sidebars/Crafting Example|Crafting]] check inside the druid grove to complete the armor. Ianara's druid successfully completes a DC 20 Crafting check (the standard DC for a 5th-level item) and can now don her _+1 wooden breastplate_.
+
+---
+
+Source on Archives of Nethys: [Quest 3: Shaping the Armor of Yggdrasil (Level 5)](https://2e.aonprd.com/Rules.aspx?ID=3643)

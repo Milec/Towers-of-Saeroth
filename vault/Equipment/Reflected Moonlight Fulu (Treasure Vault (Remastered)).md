@@ -1,0 +1,68 @@
+---
+title: "Reflected Moonlight Fulu"
+type: "equipment"
+aon_id: "equipment-2041"
+aon_url: "https://2e.aonprd.com/Equipment.aspx?ID=2041"
+tags:
+  - pf2e/equipment
+  - rarity/common
+  - trait/consumable
+  - trait/fortune
+  - trait/fulu
+  - trait/magical
+  - trait/talisman
+actions: "Reaction"
+actions_number: 1
+bulk: 0
+is_standard_ancestry_feat: false
+item_category: "Consumables"
+item_subcategory: "Fulu"
+level: 14
+pfs: "Standard"
+price: 75000
+primary_source: "Treasure Vault (Remastered)"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2025-06-04"
+source:
+  - "Treasure Vault (Remastered)"
+source_category:
+  - "Rulebooks"
+trait:
+  - "Consumable"
+  - "Fortune"
+  - "Fulu"
+  - "Magical"
+  - "Talisman"
+trait_group:
+  - "Equipment"
+  - "Mechanics"
+trigger: "You fail to save against a death or void effect."
+usage: "affixed to armor"
+---
+
+# Reflected Moonlight Fulu  *Item 14*
+
+**Traits** [[Traits/Consumable]], [[Traits/Fortune]], [[Traits/Fulu]], [[Traits/Magical]], [[Traits/Talisman]]
+
+**Source** [[Sources/Treasure Vault (Remastered)]] pg. 78
+
+**Price** 750 gp
+
+**Usage** affixed to armor
+
+**Activate**
+
+⤾
+
+([[Traits/Concentrate (Player Core)|concentrate]])
+
+**Trigger** You fail to save against a [[Traits/Death (Player Core)|death]] or [[Traits/Void|void]] effect.
+
+---
+
+An acolyte accidentally left fulu paper outdoors overnight during a divine ceremony to [[Setting/Deities/Tsukiyo]] conducted only during a supermoon, creating the first _reflected moonlight fulu_. When you Activate this fulu, you reroll your saving throw against the triggering effect and take the better result. If this new roll is a critical success, the effect is reflected on its creator, who's treated as the effect's target, with any void damage converted to vitality damage. A reflected effect or spell affects only the original creator, even if it was an area spell or one that affects more than one creature.
+
+---
+
+Source on Archives of Nethys: [Reflected Moonlight Fulu](https://2e.aonprd.com/Equipment.aspx?ID=2041)

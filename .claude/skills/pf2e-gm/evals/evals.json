@@ -1,0 +1,86 @@
+{
+  "skill_name": "pf2e-gm",
+  "evals": [
+    {
+      "id": 0,
+      "name": "encounter-severe-undead",
+      "prompt": "my party just hit level 6, there's 4 of them, and next session they're opening up a sealed crypt under the old chapel. i want the fight inside to actually scare them - like they might lose someone. undead obviously. what should i throw at them?",
+      "expected_output": "A severe-threat encounter for 4 level-6 PCs (120 XP budget) using real PF2e undead creatures at correct XP costs, ideally offering more than one shape and some tactical/terrain advice.",
+      "files": [],
+      "assertions": [
+        "States the severe-threat XP budget for a 4-character level-6 party is 120 XP",
+        "Names at least two specific PF2e undead creatures (not generic descriptions)",
+        "All proposed creature levels fall within party level +/-4 (levels 2-10)",
+        "The stated XP costs of the proposed creatures sum to the stated budget",
+        "Offers more than one encounter shape, or gives terrain/tactical advice beyond the creature list"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "rules-grapple-flanking",
+      "prompt": "quick rules question that came up last night and i fudged it. one of my players (a monk) wanted to Grapple an ogre, so two sizes bigger than him. is that even allowed? and then the rogue asked if she counts as flanking with him while the ogre is grabbed. i said yes to both but i'm not sure. what's actually correct?",
+      "expected_output": "Correct adjudication grounded in actual PF2e rules text: size does not restrict Grapple (reach/adjacency does), and the grabbed condition does not itself create flanking - flanking requires two allies on opposite sides. Should cite the relevant rules entries.",
+      "files": [],
+      "assertions": [
+        "Correctly states that Grapple requires the target be no more than one size larger than the grappler",
+        "Identifies that an ogre is Large, so a Medium monk CAN legally Grapple it (correcting the GM's 'two sizes' premise)",
+        "Correctly states that the grabbed condition does not by itself create flanking",
+        "Notes the rogue still gets her benefit because grabbed makes the target off-guard/flat-footed independently of flanking",
+        "Cites specific rules or condition entries by name rather than answering purely from assertion"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "worldbuilding-frontier-town",
+      "prompt": "i need a small frontier town for my level 3 party to use as a home base for the next chunk of the campaign. somewhere on the edge of the Mwangi Expanse. give me a reason the place exists, a few NPCs worth caring about, and a couple of hooks i can pull on. don't give me a wall of text, i need to actually use this at the table thursday",
+      "expected_output": "A usable settlement: reason for existence, a central tension, ~3 locations, 2-3 named NPCs with wants, and 2+ hooks of differing shapes. Grounded in real Golarion material (Mwangi Expanse) where it exists. Concise, table-ready.",
+      "files": [],
+      "assertions": [
+        "Gives an explicit reason the settlement exists (trade route, resource, shrine, border, etc.)",
+        "Names at least two NPCs, each with a stated want or motivation",
+        "Provides at least two distinct plot hooks",
+        "References real Golarion / Mwangi Expanse material rather than being setting-agnostic",
+        "Respects the brevity request (under roughly 900 words)"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "treasure-hoard",
+      "prompt": "my level 7 party just cleared out a bandit fortress and they're about to crack the strongroom. what should actually be in there? they've had a stingy level so far so i want to make up for it a bit",
+      "assertions": [
+        "States the level-7 party treasure allowance as 2,900 gp total (per the vault's Treasure by Level table)",
+        "Names real PF2e items with prices rather than generic 'a magic sword'",
+        "Item levels follow the table's shape for level 7 (permanents at 7-8, consumables at 6-8)",
+        "Distinguishes a single hoard from a whole level's budget rather than dumping the full 2,900 gp as one find",
+        "Includes a currency component alongside the items"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "npc-corrupt-harbormaster",
+      "prompt": "i need a corrupt harbormaster for my level 5 party. they'll probably try to bribe him but it could go violent. who is he and what do i run him with if it comes to a fight?",
+      "assertions": [
+        "Provides a concrete stat block reference with real defensive numbers (AC, HP, saves)",
+        "The stat block is level-appropriate for a level-5 party (roughly level 3-7)",
+        "Gives the NPC an identity: a name, and something he wants",
+        "Addresses the social/bribery angle, not only the combat statistics",
+        "Is honest about reskinning \u2014 does not present an invented stat block as a published one"
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "shop-alchemist",
+      "prompt": "party of four just rolled into a decent sized town at level 4 and they all want to go shopping. what does the town alchemist actually have on the shelf, and what's it cost?",
+      "assertions": [
+        "Lists real PF2e alchemical items by name",
+        "Gives a price for each item in gp/sp/cp",
+        "Stock is level-appropriate \u2014 items at or below roughly level 4, not high-level goods",
+        "Presents it as a usable shelf list rather than a rules explanation of crafting",
+        "Notes availability limits or special order for anything above the town's level"
+      ],
+      "files": []
+    }
+  ]
+}

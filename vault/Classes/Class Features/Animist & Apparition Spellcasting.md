@@ -1,0 +1,68 @@
+---
+title: "Animist & Apparition Spellcasting"
+type: "class-feature"
+aon_id: "class-feature-1038"
+aon_url: "https://2e.aonprd.com/Classes.aspx?ID=64"
+tags:
+  - pf2e/class-feature
+  - rarity/common
+class: "Animist"
+is_standard_ancestry_feat: false
+level: 1
+primary_source: "War of Immortals"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2024-10-30"
+source:
+  - "War of Immortals"
+source_category:
+  - "Rulebooks"
+---
+
+# Animist & Apparition Spellcasting  *Class Feature 1*
+
+**Source** [[Sources/War of Immortals]] pg. 10
+
+**Class** Animist
+
+---
+
+Your role as a spiritual medium connecting the mortal Universe to the realms beyond lets you cast your magic in two distinct ways: you both learn and prepare spells from the divine tradition yourself, and you also channel the knowledge and power of your attuned apparitions, gaining spell slots and a repertoire of spells from them that you can cast spontaneously.
+
+ Regardless of which source you're drawing on, you are a spellcaster and can cast spells of the divine tradition using the Cast a Spell activity. As an animist, your incantations might take the form of reciting relevant snippets of legends—stories passed down orally—or they might see you calling nearby spirits to honor ancient vows. Your gestures could be elegant dances or full-body convulsions as generations of memories and otherworldly energies inherited from your spiritual allies surge through you.
+
+ Some of your spells require you to attempt a spell attack to see how effective they are, or have your enemies roll against your spell DC (typically by attempting a saving throw). Since your key attribute is Wisdom, your spell attack modifiers and spell DC use your Wisdom modifier.
+
+ The clearly delineated partnership between an animist and their apparitions means you can't cast your animist spells using your apparition spell slots or vice versa— your magics remain complementary and harmonious, yet as distinct as the two worlds from which they come.
+
+## Animist Spellcasting
+
+ As a keeper of knowledge, you are constantly learning new techniques and spells. Each day, you can prepare one 1st-rank spell and 2 cantrips from among the common spells on the divine spell list or from other divine spells you've gained access to and learned via Learn a Spell. Prepared spells remain available to you until you cast them or until you prepare your spells again. The number of spells you can prepare is called your spell slots.
+
+ As you increase in level as an animist, the number of spells you can prepare each day increases, as does the highest rank of spell you can cast, as shown in Animist Spells per Day.
+
+ You are a prepared spellcaster for the purposes of determining how you interact with staves and other items or effects that differentiate between prepared and spontaneous spellcasters.
+
+## Apparition Spellcasting
+
+ You can draw upon your attuned apparitions as a second source of magical knowledge and power. You gain additional spontaneous spell slots and a spell repertoire from your attuned apparitions. At first level, you can cast two apparition cantrips and one 1st-rank apparition spell per day. You must have the spell in your apparition spell repertoire to cast it; this is a collection of spells granted to you by all your attuned apparitions. You can cast any spell in your apparition spell repertoire by using an apparition spell slot of an appropriate spell rank. Any of these spells that aren't normally on the divine list are still divine spells if you cast them this way. As you increase in level, you gain further apparition spell slots, and your apparitions grant you higher-rank apparition spells, as detailed in each apparition entry.
+
+## Heightening Spells
+
+ When you gain spell slots of 2nd rank and higher, you can fill those slots with stronger versions of lower-rank spells. This increases the spell's rank, heightening it to match the spell slot. Many spells have specific improvements when they are heightened to certain ranks. All your apparition spells are signature spells. That means that you can heighten any apparition spell freely by casting it from a higher-rank apparition spell slot, up to the maximum rank of apparition spell you can cast.
+
+## Cantrips
+
+ Some of your spells are cantrips. A cantrip is a special type of spell that doesn't use spell slots. You can cast a cantrip at will any number of times per day. A cantrip is automatically heightened to half your level rounded up—this is usually equal to the highest rank of animist spell slot you have. For example, as a 1st-level animist, your cantrips are 1st-rank spells, and as a 5th-level animist, your cantrips are 3rd-rank spells.
+
+## Vessel Spells
+
+ Your primary attuned apparition can use your body as a conduit, allowing you to cast a unique vessel spell. Vessel spells are a type of focus spell. Because vessel spells are a manifestation of a specific apparition, an animist can't cast or Sustain a specific vessel spell in the same round they have already cast or Sustained it (for example, an animist who has cast earth's bile during their turn can't then cast or Sustain another instance of earth's bile during that same turn).
+
+ It costs 1 Focus Point to cast a focus spell, and you start with a focus pool of 1 Focus Point. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the Refocus activity to treat with nearby spirits, meditate on resolving an issue pertaining to the balance of spirits and mortals, or tell a story.
+
+ Focus spells are automatically heightened to half your level rounded up, much like cantrips. Focus spells don't require spell slots, and you can't cast them using spell slots. The maximum Focus Points your focus pool can hold is equal to the number of focus spells you have, though certain feats or abilities adjust this number, but it can never be more than 3 points.
+
+---
+
+Source on Archives of Nethys: [Animist & Apparition Spellcasting](https://2e.aonprd.com/Classes.aspx?ID=64)

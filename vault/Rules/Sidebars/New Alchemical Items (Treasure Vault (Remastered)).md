@@ -1,0 +1,30 @@
+---
+title: "New Alchemical Items"
+type: "sidebar"
+aon_id: "sidebar-1981"
+aon_url: "https://2e.aonprd.com/Rules.aspx?ID=1905"
+tags:
+  - pf2e/sidebar
+is_standard_ancestry_feat: false
+primary_source: "Treasure Vault (Remastered)"
+primary_source_category: "Rulebooks"
+release_date: "2025-06-04"
+source:
+  - "Treasure Vault (Remastered)"
+source_category:
+  - "Rulebooks"
+---
+
+# New Alchemical Items  *Sidebar*
+
+**Source** [[Sources/Treasure Vault (Remastered)]] pg. 46
+
+**Parent page** [[Rules/Alchemical Foods (Treasure Vault (Remastered))|Alchemical Foods]]
+
+---
+
+The new alchemical options appearing in this chapter represent some notable expansions of the abilities available to anyone who uses alchemy, but the [[Classes/Class Features/Ancestry and Background|alchemist]] class in particular. It’s important to consider the impact these options can have on the play experience, not from a balance perspective, but from a story perspective. Characters specializing in [[Rules/Category Pages/Adventuring Gear|alchemical foods]] will want an adventure that gives them time to prepare alchemical foods with the [[Traits/Processed (Treasure Vault (Remastered))|processed]] trait, like the new [[Equipment/Cooperative Waffles (Treasure Vault (Remastered))|cooperative waffles]]. Be sure that your players choosing these options have the opportunity to take full advantage of them, or warn them if that option won’t be available.
+
+---
+
+Source on Archives of Nethys: [New Alchemical Items](https://2e.aonprd.com/Rules.aspx?ID=1905)

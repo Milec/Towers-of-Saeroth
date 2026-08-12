@@ -1,0 +1,101 @@
+---
+title: "Door to Beyond"
+type: "spell"
+aon_id: "spell-627"
+aon_url: "https://2e.aonprd.com/Spells.aspx?ID=627"
+tags:
+  - pf2e/spell
+  - rarity/common
+  - trait/conjuration
+  - trait/focus
+actions: "Two Actions"
+actions_number: 4
+area:
+  - 20
+area_type:
+  - "emanation"
+component:
+  - "somatic"
+  - "verbal"
+domain:
+  - "Void"
+duration: 60
+heighten:
+  - "+1"
+heighten_group:
+  - "4th rank"
+  - "Heightened 5th rank"
+  - "Heightened 6th rank"
+  - "Heightened 7th rank"
+  - "Heightened 8th rank"
+  - "Heightened 9th rank"
+  - "Heightened 10th rank"
+heighten_level:
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+is_standard_ancestry_feat: false
+level: 4
+pfs: "Standard"
+primary_source: "Gods & Magic"
+primary_source_category: "Lost Omens"
+range: 5
+rarity: "common"
+release_date: "2020-01-29"
+saving_throw: "Fortitude"
+school: "conjuration"
+source:
+  - "Gods & Magic"
+source_category:
+  - "Lost Omens"
+spell_type: "Focus"
+trait:
+  - "Conjuration"
+  - "Focus"
+trait_group:
+  - "School"
+  - "Mechanics"
+---
+
+# Door to Beyond two actions  *Focus 4*
+
+**Traits** [[Traits/Conjuration]], [[Traits/Focus]]
+
+**Source** [[Sources/Gods & Magic]] pg. 119
+
+**Domain**
+[[Magic/Domains/Void]]
+
+**Cast** [[Rules/Somatic|somatic]], [[Rules/Verbal|verbal]]
+
+**Range** 5 feet
+
+**Area** 20-foot emanation
+
+**Saving Throw**
+Fortitude
+
+**Duration** 1 minute
+
+---
+
+Striking at thin air, you create hairline cracks in an unoccupied adjacent space that lead somewhere outside reality. Air rushes through the cracks, drawing Large or smaller creatures and objects of light Bulk or less toward the center. Large or smaller creatures in the area must attempt a Fortitude save at the start of their turn; creatures that move into the area must attempt the save on entering.  
+
+**Success** The creature is unaffected.  
+
+**Failure** The creature is pulled 10 feet toward the door.  
+
+**Critical Failure** The creature is pulled 20 feet toward the door.
+
+The cracks of the door to beyond are too thin for anything to fully slip through, but decompressive effects deal 4d6 slashing damage to any creature or object that ends its turn in the door’s space. You are unaffected by your own _door to beyond_. You can Dismiss the spell.
+
+---
+**Heightened (+1)** The damage increases by 1d6.
+
+---
+
+Source on Archives of Nethys: [Door to Beyond](https://2e.aonprd.com/Spells.aspx?ID=627)

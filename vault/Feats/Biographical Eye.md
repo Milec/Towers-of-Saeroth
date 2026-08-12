@@ -1,0 +1,63 @@
+---
+title: "Biographical Eye"
+type: "feat"
+aon_id: "feat-2113"
+aon_url: "https://2e.aonprd.com/Feats.aspx?ID=2113"
+tags:
+  - pf2e/feat
+  - rarity/common
+  - trait/general
+  - trait/secret
+  - trait/skill
+feat:
+  - "Biographical Eye"
+is_standard_ancestry_feat: false
+level: 7
+pfs: "Limited"
+prerequisite: "Master in Society"
+primary_source: "Advanced Player's Guide"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2020-07-30"
+skill:
+  - "Society"
+  - "Society"
+source:
+  - "Advanced Player's Guide"
+source_category:
+  - "Rulebooks"
+trait:
+  - "General"
+  - "Secret"
+  - "Skill"
+trait_group:
+  - "Feat"
+  - "Mechanics"
+---
+
+# Biographical Eye  *Feat 7*
+
+**Traits** [[Traits/General]], [[Traits/Secret]], [[Traits/Skill]]
+
+**Source** [[Sources/Advanced Player's Guide]] pg. 203
+
+**Prerequisites**
+Master in [[Rules/Sidebars/Examining Forgeries|Society]]
+
+---
+
+In even a brief conversation or social interaction, you pick up on subtle social and visual cues to learn a great deal about a person's origin and history. You might notice bits of green under the person's fingernails and determine they're an herbalist, a pin indicating their membership in a secret society, or something similar. You pick up on only details that have to do with their societal role, so you might learn the city district where a [[Bestiary/Families/Vampire|vampire]] lives, but wouldn't learn any of their weaknesses, nor necessarily even that they are a vampire.
+
+Spend 1 minute in the presence of someone you haven't met before, or haven't met since you first gained Biographical Eye, then attempt a DC 30 [[Rules/Sidebars/Examining Forgeries|Society]] check. You gain a +1 circumstance bonus to the check if you engaged the person in conversation during this time. If the person is deliberately trying to conceal their nature or present a false identity, you learn about their false biography rather than their true one unless the result of your Society check exceeds their Will DC.
+
+**Critical Success** You learn the creature's profession, their specialty within that profession, and a major accomplishment or controversy from their career. You also learn the nation and settlement where they live, as well as the district in a city large enough to have districts. In addition, you learn the nation or settlement where they spent their formative years.  
+
+**Success** You learn the creature's profession and specialty within that profession. You learn the nation or settlement where they normally live.  
+
+**Failure** You learn the creature's profession and the region of the world they hail from, but no more.  
+
+**Critical Failure** You learn a piece of erroneous information about the creature.
+
+---
+
+Source on Archives of Nethys: [Biographical Eye](https://2e.aonprd.com/Feats.aspx?ID=2113)

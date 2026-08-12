@@ -1,0 +1,75 @@
+---
+title: "Clairvoyance"
+type: "spell"
+aon_id: "spell-1466"
+aon_url: "https://2e.aonprd.com/Spells.aspx?ID=1466"
+tags:
+  - pf2e/spell
+  - rarity/common
+  - trait/concentrate
+  - trait/manipulate
+  - trait/scrying
+actions: "1 minute"
+actions_number: 60
+component:
+  - "1 minute"
+deity:
+  - "Barbatos"
+  - "Followers of Fate"
+  - "Kaldemash"
+  - "Ravithra"
+  - "Shadow Cabinet"
+duration: 600
+heighten_group:
+  - "4th rank"
+heighten_level:
+  - 4
+is_standard_ancestry_feat: false
+level: 4
+pfs: "Standard"
+primary_source: "Player Core"
+primary_source_category: "Rulebooks"
+range: 500
+rarity: "common"
+release_date: "2023-11-15"
+source:
+  - "Player Core"
+source_category:
+  - "Rulebooks"
+spell_type: "Spell"
+tradition:
+  - "Arcane"
+  - "Occult"
+trait:
+  - "Concentrate"
+  - "Manipulate"
+  - "Scrying"
+trait_group:
+  - "Mechanics"
+---
+
+# Clairvoyance  *Spell 4*
+
+**Traits** [[Traits/Concentrate]], [[Traits/Manipulate]], [[Traits/Scrying]]
+
+**Source** [[Sources/Player Core]] pg. 320
+
+**Traditions**
+[[Magic/Traditions/Arcane]], [[Magic/Traditions/Arcane|Occult]]
+
+**Deities**
+[[Setting/Deities/Barbatos (Divine Mysteries)|Barbatos]], [[Setting/Deities/Followers of Fate (Divine Mysteries Web Supplement)|Followers of Fate]], [[Setting/Deities/Kaldemash]], [[Setting/Deities/Ravithra (Divine Mysteries)|Ravithra]], [[Setting/Deities/Shadow Cabinet]]
+
+**Cast** 1 minute
+
+**Range** 500 feet
+
+**Duration** 10 minutes
+
+---
+
+You create an [[Rules/Conditions/Invisible|invisible]] floating eye at a location within range (even if it's outside your line of sight or line of effect). The eye can't move, but you can see in all directions from that point as if using your normal visual senses.
+
+---
+
+Source on Archives of Nethys: [Clairvoyance](https://2e.aonprd.com/Spells.aspx?ID=1466)

@@ -1,0 +1,59 @@
+---
+title: "Broom of Flying"
+type: "equipment"
+aon_id: "equipment-251"
+aon_url: "https://2e.aonprd.com/Equipment.aspx?ID=251"
+tags:
+  - pf2e/equipment
+  - rarity/common
+  - trait/magical
+  - trait/transmutation
+bulk: 1
+is_standard_ancestry_feat: false
+item_category: "Held Items"
+level: 12
+pfs: "Standard"
+price: 190000
+primary_source: "Core Rulebook"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2019-08-01"
+remaster_name:
+  - "Flying Broomstick"
+school: "transmutation"
+source:
+  - "Core Rulebook"
+source_category:
+  - "Rulebooks"
+trait:
+  - "Magical"
+  - "Transmutation"
+trait_group:
+  - "Mechanics"
+  - "School"
+usage: "held in 1 hand"
+---
+
+# Broom of Flying  *Item 12*
+
+**Traits** [[Traits/Magical]], [[Traits/Transmutation]]
+
+**Source** [[Sources/Core Rulebook]] pg. 572
+
+**Price** 1,900 gp
+
+**Usage** held in 1 hand
+
+**Bulk** 1
+
+---
+
+This broom has a tenuous connection to gravity, and it tends to drift even while stowed. You can ride on the broom using one hand to guide it, and the broom can carry up to one passenger in addition to you. The broom moves at a fly Speed of 20 feet. The broom can carry only so much, taking a –10-foot penalty to its Speed if laden with more than 20 Bulk, and crashing to the ground if it carries more than 30 Bulk.
+
+**Activate** two actions command, Interact;     **Effect** You name a destination on the same plane, and the broom speeds toward it at a fly Speed of 40 feet. You must either clutch the broom with two hands in order to ride it, or you need to release the broom to send it off with no rider. If you don’t have a good idea of the location, layout, and general direction of the destination, or if your named destination is on another plane, the broom wanders aimlessly, circling back to its starting location after 30 minutes.
+
+If the broom carries a rider, this activation lasts until 4 hours pass (typically 16 miles of travel), the broom reaches its destination, or you Dismiss the activation. If the broom doesn’t have a rider, the activation lasts until the broom reaches its destination. When the activation ends, the broom floats to the ground and can’t be activated again for 1 hour.
+
+---
+
+Source on Archives of Nethys: [Broom of Flying](https://2e.aonprd.com/Equipment.aspx?ID=251)

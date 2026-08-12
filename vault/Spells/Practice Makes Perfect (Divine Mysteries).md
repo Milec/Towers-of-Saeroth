@@ -1,0 +1,72 @@
+---
+title: "Practice Makes Perfect"
+type: "spell"
+aon_id: "spell-2417"
+aon_url: "https://2e.aonprd.com/Spells.aspx?ID=2417"
+tags:
+  - pf2e/spell
+  - rarity/uncommon
+  - trait/cleric
+  - trait/focus
+  - trait/manipulate
+  - trait/uncommon
+actions: "Reaction"
+actions_number: 1
+domain:
+  - "Toil"
+heighten_group:
+  - "1st rank"
+heighten_level:
+  - 1
+is_standard_ancestry_feat: false
+level: 1
+pfs: "Standard"
+primary_source: "Divine Mysteries"
+primary_source_category: "Lost Omens"
+range: 30
+rarity: "uncommon"
+release_date: "2025-01-30"
+source:
+  - "Divine Mysteries"
+  - "Pathfinder #148: Fires of the Haunted City"
+source_category:
+  - "Lost Omens"
+  - "Adventure Paths"
+source_group:
+  - "Age of Ashes"
+spell_type: "Focus"
+target: "the triggering creature"
+trait:
+  - "Cleric"
+  - "Focus"
+  - "Manipulate"
+  - "Uncommon"
+trait_group:
+  - "Class"
+  - "Mechanics"
+  - "Rarity"
+trigger: "You or an ally within range fails a skill check for a skill in which you or they are trained."
+---
+
+# Practice Makes Perfect ⤾  *Focus 1*
+
+**Traits** [[Traits/Uncommon]], [[Traits/Cleric]], [[Traits/Focus]], [[Traits/Manipulate]]
+
+**Source** [[Sources/Divine Mysteries]] pg. 271, [[Sources/Pathfinder -148- Fires of the Haunted City|Pathfinder #148: Fires of the Haunted City]] pg. 65
+
+**Domain**
+[[Magic/Domains/Toil (Divine Mysteries)|Toil]]
+
+**Trigger** You or an ally within range fails a skill check for a skill in which you or they are trained.
+
+**Range** 30 feet
+
+**Target** the triggering creature
+
+---
+
+The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target’s skill check.
+
+---
+
+Source on Archives of Nethys: [Practice Makes Perfect](https://2e.aonprd.com/Spells.aspx?ID=2417)

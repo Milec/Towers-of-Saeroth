@@ -1,0 +1,42 @@
+---
+title: "Refocus"
+type: "action"
+aon_id: "action-2621"
+aon_url: "https://2e.aonprd.com/Actions.aspx?ID=2621"
+tags:
+  - pf2e/action
+  - rarity/common
+  - trait/concentrate
+  - trait/exploration
+is_standard_ancestry_feat: false
+primary_source: "Player Core"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2023-11-15"
+requirement: "You have a focus pool"
+source:
+  - "Player Core"
+source_category:
+  - "Rulebooks"
+trait:
+  - "Concentrate"
+  - "Exploration"
+trait_group:
+  - "Mechanics"
+---
+
+# Refocus  *Action*
+
+**Traits** [[Traits/Concentrate (Player Core)|Concentrate]], [[Traits/Exploration (Player Core)|Exploration]]
+
+**Source** [[Sources/Player Core]] pg. 298
+
+**Requirements** You have a focus pool
+
+---
+
+You spend 10 minutes performing deeds to restore your magical connection. This restores 1 Focus Point to your focus pool. The deeds you need to perform are specified in the class or ability that gives you your focus spells. These deeds can usually overlap with other tasks that relate to the source of your focus spells. For instance, a cleric with focus spells from a holy deity can usually Refocus while tending the wounds of their allies.
+
+---
+
+Source on Archives of Nethys: [Refocus](https://2e.aonprd.com/Actions.aspx?ID=2621)

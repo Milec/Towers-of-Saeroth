@@ -1,0 +1,147 @@
+---
+title: "Creation"
+type: "domain"
+aon_id: "domain-68"
+aon_url: "https://2e.aonprd.com/Domains.aspx?ID=68"
+tags:
+  - pf2e/domain
+  - rarity/common
+advanced_domain_spell: "Artistic Flourish"
+deity:
+  - "Aakriti"
+  - "Aakriti"
+  - "Abadar"
+  - "Aerekostes"
+  - "Aesocar"
+  - "Alglenweis"
+  - "Alglenweis"
+  - "Amaznen"
+  - "Apsu"
+  - "Apsu"
+  - "Ardad Lili"
+  - "Ardad Lili"
+  - "Aroden"
+  - "Bharnarol"
+  - "Blooms of the Spreading Weald"
+  - "Brigh"
+  - "Brigh"
+  - "Casandalee"
+  - "Casandalee"
+  - "Cormigus"
+  - "Daikitsu"
+  - "Daikitsu"
+  - "Demon Bringers"
+  - "Doloras"
+  - "Doloras"
+  - "Dwarven Pantheon"
+  - "Elion"
+  - "Elven Pantheon"
+  - "Essence Dancers"
+  - "Falayna"
+  - "Falayna"
+  - "Findeladlara"
+  - "Findeladlara"
+  - "Gaasham"
+  - "Grandmother Spider"
+  - "Grandmother Spider"
+  - "Haagenti"
+  - "Hathor"
+  - "Il’Surrish"
+  - "Immonhiel"
+  - "Immonhiel"
+  - "Inna"
+  - "Khepri"
+  - "Lady Jingxi"
+  - "Lady Jingxi"
+  - "Laudinmio"
+  - "Laudinmio"
+  - "Liisglan"
+  - "Likha"
+  - "Likha"
+  - "Magrim"
+  - "Malthus"
+  - "Mammon"
+  - "Mammon"
+  - "Minderhal"
+  - "Monad"
+  - "Monad"
+  - "Mrtyu"
+  - "Nameless"
+  - "Neith"
+  - "Nocticula"
+  - "Nocticula"
+  - "Nocticula"
+  - "Otolmens"
+  - "Phlegyas"
+  - "Pillars of Knowledge"
+  - "Ptah"
+  - "Ra"
+  - "Radiant Prism"
+  - "Sairazul"
+  - "Sairazul"
+  - "Sarshallatu"
+  - "Seramaydiel"
+  - "Shelyn"
+  - "Shumunue"
+  - "Shumunue"
+  - "Soralyon"
+  - "Soralyon"
+  - "Sovyrian Conclave"
+  - "Stone's Blood"
+  - "The Enlightened Scholar's Path"
+  - "The Perplexing Jest"
+  - "The Prismatic Ray"
+  - "The Resplendent Court"
+  - "Thremyr"
+  - "Tlehar"
+  - "Tlehar"
+  - "Tolte Coatl"
+  - "Torag"
+  - "Uvuko"
+  - "Uvuko"
+  - "Varg"
+  - "Verilorn"
+  - "Verilorn"
+  - "Wheels of Innovation"
+  - "Wulgren"
+  - "Yelayne"
+  - "Yelayne"
+  - "Yuelral"
+  - "Yuelral"
+  - "Zjar-Tovan"
+  - "Zogmugot"
+  - "Zyphus"
+domain:
+  - "Creation"
+domain_spell: "Creative Splash"
+is_standard_ancestry_feat: false
+pfs: "Standard"
+primary_source: "Player Core"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2023-11-15"
+source:
+  - "Player Core"
+source_category:
+  - "Rulebooks"
+spell:
+  - "Artistic Flourish"
+  - "Creative Splash"
+---
+
+# Creation  *Domain*
+
+**Source** [[Sources/Player Core]] pg. 39
+
+**Deities**
+[[Setting/Deities/Aakriti]], [[Setting/Deities/Aakriti (Divine Mysteries Web Supplement)|Aakriti]], [[Setting/Deities/Abadar (Divine Mysteries)|Abadar]], [[Setting/Deities/Aerekostes]], [[Setting/Deities/Aesocar]], [[Setting/Deities/Alglenweis]], [[Setting/Deities/Alglenweis (Divine Mysteries)|Alglenweis]], [[Setting/Deities/Amaznen]], [[Setting/Deities/Apsu]], [[Setting/Deities/Apsu (Draconic Codex)|Apsu]], [[Setting/Deities/Ardad Lili]], [[Setting/Deities/Ardad Lili (Divine Mysteries)|Ardad Lili]], [[Setting/Deities/Aroden]], [[Setting/Deities/Bharnarol]], [[Setting/Deities/Blooms of the Spreading Weald]], [[Setting/Deities/Brigh]], [[Setting/Deities/Brigh (Divine Mysteries)|Brigh]], [[Setting/Deities/Casandalee]], [[Setting/Deities/Casandalee (Divine Mysteries)|Casandalee]], [[Setting/Deities/Cormigus]], [[Setting/Deities/Daikitsu]], [[Setting/Deities/Daikitsu (Divine Mysteries Web Supplement)|Daikitsu]], [[Setting/Deities/Demon Bringers]], [[Setting/Deities/Doloras]], [[Setting/Deities/Doloras (Divine Mysteries)|Doloras]], [[Setting/Deities/Dwarven Pantheon]], [[Setting/Deities/Elion]], [[Setting/Deities/Elven Pantheon]], [[Setting/Deities/Essence Dancers]], [[Setting/Deities/Falayna]], [[Setting/Deities/Falayna (Pathfinder -218- Titanbane)|Falayna]], [[Setting/Deities/Findeladlara]], [[Setting/Deities/Findeladlara (Divine Mysteries)|Findeladlara]], [[Setting/Deities/Gaasham]], [[Setting/Deities/Grandmother Spider]], [[Setting/Deities/Grandmother Spider (Divine Mysteries)|Grandmother Spider]], [[Setting/Deities/Haagenti (Divine Mysteries)|Haagenti]], [[Setting/Deities/Hathor (Divine Mysteries Web Supplement)|Hathor]], [[Setting/Deities/Il’Surrish]], [[Setting/Deities/Immonhiel]], [[Setting/Deities/Immonhiel (Divine Mysteries Web Supplement)|Immonhiel]], [[Setting/Deities/Inna]], [[Setting/Deities/Khepri]], [[Setting/Deities/Lady Jingxi]], [[Setting/Deities/Lady Jingxi (Divine Mysteries Web Supplement)|Lady Jingxi]], [[Setting/Deities/Laudinmio]], [[Setting/Deities/Laudinmio (Divine Mysteries)|Laudinmio]], [[Setting/Deities/Liisglan]], [[Setting/Deities/Likha]], [[Setting/Deities/Likha (Divine Mysteries)|Likha]], [[Setting/Deities/Magrim (Divine Mysteries)|Magrim]], [[Setting/Deities/Malthus]], [[Setting/Deities/Mammon]], [[Setting/Deities/Mammon (Divine Mysteries)|Mammon]], [[Setting/Deities/Minderhal]], [[Setting/Deities/Monad]], [[Setting/Deities/Monad (Divine Mysteries)|Monad]], [[Setting/Deities/Mrtyu]], [[Setting/Deities/Nameless]], [[Setting/Deities/Neith]], [[Setting/Deities/Nocticula]], [[Setting/Deities/Nocticula (Divine Mysteries)|Nocticula]], [[Setting/Deities/Nocticula (Pathfinder -219- Lord of the Trinity Star)|Nocticula]], [[Setting/Deities/Otolmens]], [[Setting/Deities/Phlegyas]], [[Setting/Deities/Pillars of Knowledge]], [[Setting/Deities/Ptah]], [[Setting/Deities/Ra (Divine Mysteries)|Ra]], [[Setting/Deities/Radiant Prism]], [[Setting/Deities/Sairazul]], [[Setting/Deities/Sairazul (Divine Mysteries)|Sairazul]], [[Setting/Deities/Sarshallatu]], [[Setting/Deities/Seramaydiel]], [[Setting/Deities/Shelyn (Divine Mysteries)|Shelyn]], [[Setting/Deities/Shumunue]], [[Setting/Deities/Shumunue (Divine Mysteries)|Shumunue]], [[Setting/Deities/Soralyon]], [[Setting/Deities/Soralyon (Divine Mysteries)|Soralyon]], [[Setting/Deities/Sovyrian Conclave]], [[Setting/Deities/Stone's Blood]], [[Setting/Deities/The Enlightened Scholar's Path]], [[Setting/Deities/The Perplexing Jest]], [[Setting/Deities/The Prismatic Ray]], [[Setting/Deities/The Resplendent Court]], [[Setting/Deities/Thremyr]], [[Setting/Deities/Tlehar]], [[Setting/Deities/Tlehar (Divine Mysteries Web Supplement)|Tlehar]], [[Setting/Deities/Tolte Coatl]], [[Setting/Deities/Torag (Divine Mysteries)|Torag]], [[Setting/Deities/Uvuko]], [[Setting/Deities/Uvuko (Divine Mysteries Web Supplement)|Uvuko]], [[Setting/Deities/Varg]], [[Setting/Deities/Verilorn]], [[Setting/Deities/Verilorn (Divine Mysteries)|Verilorn]], [[Setting/Deities/Wheels of Innovation]], [[Setting/Deities/Wulgren]], [[Setting/Deities/Yelayne]], [[Setting/Deities/Yelayne (Divine Mysteries Web Supplement)|Yelayne]], [[Setting/Deities/Yuelral]], [[Setting/Deities/Yuelral (Divine Mysteries)|Yuelral]], [[Setting/Deities/Zjar-Tovan]], [[Setting/Deities/Zogmugot]], [[Setting/Deities/Zyphus (Divine Mysteries)|Zyphus]]
+
+**Domain Spell** [[Spells/Creative Splash]]
+
+**Advanced Domain Spell** [[Spells/Artistic Flourish (Player Core)|Artistic Flourish]]
+
+You have divine abilities related to crafting and art.
+
+---
+
+Source on Archives of Nethys: [Creation](https://2e.aonprd.com/Domains.aspx?ID=68)

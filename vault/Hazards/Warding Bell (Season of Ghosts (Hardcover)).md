@@ -1,0 +1,90 @@
+---
+title: "Warding Bell"
+type: "hazard"
+aon_id: "hazard-661"
+aon_url: "https://2e.aonprd.com/Hazards.aspx?ID=661"
+tags:
+  - pf2e/hazard
+  - rarity/common
+  - trait/complex
+  - trait/magical
+ac: 31
+complexity: "Complex"
+disable: "Ringing the bell as an Interact action eight times in succession with the ceremonial ringer (carried by Mago Kai) over the course of three consecutive rounds automatically deactivates the hazard, DC 36 Religion to appeal to Pharasma to extinguish the flame, DC 36 Thievery to extinguish the flame within the bell, or dispel magic (6th rank; counteract DC 29) or a shimmerthief’s Drain Light ability to disable the wards"
+fortitude_save: 24
+hardness: 20
+hp: 80
+immunity:
+  - "critical hits"
+  - "object immunities"
+  - "precision damage"
+is_standard_ancestry_feat: false
+level: 11
+primary_source: "Season of Ghosts (Hardcover)"
+primary_source_category: "Adventure Paths"
+primary_source_group: "Season of Ghosts"
+rarity: "common"
+reflex_save: 18
+release_date: "2026-02-04"
+reset: "Reactivating the warding bell requires a complicated rite taking several days."
+source:
+  - "Season of Ghosts (Hardcover)"
+source_category:
+  - "Adventure Paths"
+source_group:
+  - "Season of Ghosts"
+stealth: "+0"
+trait:
+  - "Complex"
+  - "Magical"
+trait_group:
+  - "Hazard"
+  - "Mechanics"
+---
+
+# Warding Bell  *Hazard 11*
+
+**Traits** [[Traits/Complex]], [[Traits/Magical (Player Core)|Magical]]
+
+**Source** [[Sources/Season of Ghosts (Hardcover)]] pg. 203
+
+**Complexity** Complex
+
+At the heart of the shrine hangs a massive bronze temple bell.
+
+---
+
+**Stealth**
++0
+
+**Disable**
+Ringing the bell as an Interact action eight times in succession with the ceremonial ringer (carried by Mago Kai) over the course of three consecutive rounds automatically deactivates the hazard, DC 36 [[Rules/Skills/Religion (Player Core)|Religion]] to appeal to [[Setting/Deities/Pharasma (Divine Mysteries)|Pharasma]] to extinguish the flame, DC 36 [[Rules/Skills/Thievery (Player Core)|Thievery]] to extinguish the flame within the bell, or [[Spells/Dispel Magic (Player Core)|_dispel magic_]] (6th rank; [[Rules/Counteracting (Player Core)|counteract]] DC 29) or a shimmerthief’s Drain Light ability to disable the wards
+
+**AC** 31, **Fort** +24, **Ref** +18
+
+**Hardness**
+20
+
+**HP**
+80 (BT 40)
+
+**Immunities**
+[[Rules/Immunity to Critical Hits|critical hits]], [[Rules/Object Immunities (Player Core)|object immunities]], precision damage
+
+**Flare Up** ⤾ The warding bell’s light increases from a faint flickering to luminous enough that the whole room is [[Rules/Bright Light (Player Core)|brightly lit.]] The hazard then rolls initiative.
+
+---
+**Routine**
+(1 action; [[Traits/Divine (Player Core)|divine]], [[Traits/Emotion (Player Core)|emotion]], [[Traits/Fear (Player Core)|fear]], [[Traits/Mental (Player Core)|mental]]) The warding bell emits a harrowing ring that can be heard only by undead or transmigrated PCs in area C11; affected characters must attempt a DC 30 Will save.  
+**Critical Success** The creature is unaffected and is temporarily immune to the warding bell's routine for 24 hours.  
+**Success** The creature is unaffected.  
+**Failure** The creature becomes [[Rules/Conditions/Frightened (Player Core)|frightened]] 1 and takes 6d6 mental damage.  
+**Critical Failure** The creature becomes frightened 2, takes 12d6 mental damage, and is [[Rules/Conditions/Fleeing (Player Core)|fleeing]] as long as it remains frightened.
+
+---
+**Reset**
+Reactivating the warding bell requires a complicated rite taking several days.
+
+---
+
+Source on Archives of Nethys: [Warding Bell](https://2e.aonprd.com/Hazards.aspx?ID=661)

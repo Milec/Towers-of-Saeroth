@@ -1,0 +1,230 @@
+---
+title: "Adult White Dragon"
+type: "creature"
+aon_id: "creature-140"
+aon_url: "https://2e.aonprd.com/Monsters.aspx?ID=140"
+tags:
+  - pf2e/creature
+  - rarity/common
+  - trait/cold
+  - trait/dragon
+  - trait/ce
+  - trait/large
+ac: 29
+alignment: "CE"
+attack_bonus:
+  - 22
+  - 23
+  - 23
+charisma: 1
+constitution: 5
+creature_ability:
+  - "Snow Vision"
+  - "Dragon Chill"
+  - "Frightful Presence"
+  - "Freezing Blood"
+  - "Breath Weapon"
+  - "Draconic Frenzy"
+  - "Draconic Momentum"
+  - "Ground Slam"
+  - "Ice Climb"
+  - "Shape Ice"
+creature_family: "Dragon, White"
+dexterity: 2
+fortitude_save: 22
+hp: 215
+immunity:
+  - "cold"
+  - "paralyzed"
+  - "sleep"
+intelligence: 1
+is_standard_ancestry_feat: false
+language:
+  - "Common"
+  - "Draconic"
+level: 10
+npc: false
+perception: 20
+pfs: "Standard"
+primary_source: "Bestiary"
+primary_source_category: "Rulebooks"
+rarity: "common"
+reflex_save: 19
+release_date: "2019-08-01"
+remaster_name:
+  - "Adult Rime Dragon"
+sense: "darkvision, scent (imprecise) 60 feet, snow vision"
+size:
+  - "Large"
+skill:
+  - "Acrobatics"
+  - "Arcana"
+  - "Athletics"
+  - "Intimidation"
+  - "Stealth"
+skill_mod:
+  - "acrobatics 16"
+  - "arcana 15"
+  - "athletics 23"
+  - "intimidation 19"
+  - "stealth 18"
+source:
+  - "Bestiary"
+source_category:
+  - "Rulebooks"
+speed:
+  - "climb 30"
+  - "fly 120"
+  - "land 30"
+spell:
+  - "Obscuring Mist"
+  - "Gust of Wind"
+spell_dc:
+  - 27
+stealth: "18"
+strength: 7
+strike_damage_average:
+  - 18
+  - 22
+  - 31
+strongest_save:
+  - "fort"
+  - "fortitude"
+tradition:
+  - "Arcane"
+trait:
+  - "Cold"
+  - "Dragon"
+  - "CE"
+  - "Large"
+trait_group:
+  - "Energy"
+  - "Monster"
+  - "Creature Type"
+vision: "Darkvision"
+weakest_save:
+  - "will"
+weakness:
+  - "fire 10"
+will_save: 17
+wisdom: 2
+---
+
+# Adult White Dragon
+
+The most feral and least intelligent of all the chromatic dragons, white dragons are brutish, predatory, and chiefly motivated by self-preservation. Nearly all other dragons look down on white dragons as hopelessly hotheaded and dull, though this does not make them any less dangerous—in fact, it may mean the opposite. It’s nearly impossible to treat with white dragons, not because they lack the capacity to do so, but because they just don’t care to. They are as difficult to deal with as they are quick to anger, and they become incensed at almost anything. When a white dragon does speak, it spews threats, inane jokes, and incoherent babbling as a prelude to attacking—and when the attack comes, it’s bloody and relentless.
+
+ Thankfully, white dragons prefer very cold, remote locations that are far from people. Dwelling on glacial mountaintops or in ice caverns beneath forbidding tundra, they treat the lands around them as their own personal hunting grounds. They fly out to feed or terrorize other creatures, especially those who trespass near the dragon’s territory, then bring any treasure back to be displayed in icy niches in their lairs. They collect all kinds of valuables, with a slight preference for items with high utility—such as tools, trade goods, and fine food—over coins or jewels. The ability to shape ice lets white dragons rearrange their lairs exactly to their specifications, and they take great pride in how they’ve decorated their homes over the years.
+
+**[[Rules/Recall Knowledge|Recall Knowledge - Dragon]]**
+([[Rules/Skills/Arcana]]): DC 27
+
+**[[Rules/Recall Knowledge|Unspecific Lore]]**: DC 25
+
+**[[Rules/Recall Knowledge|Specific Lore]]**: DC 22
+
+## Adult White Dragon  *Creature 10*
+
+**Traits** [[Rules/Alignment (Core Rulebook)|CE]], Large, [[Traits/Cold]], [[Traits/Dragon]]
+
+**Source** [[Sources/Bestiary]] pg. 114
+
+**Perception** +20; darkvision, scent (imprecise) 60 feet, snow vision
+
+**Languages**
+[[Setting/Languages/Common]], [[Setting/Languages/Draconic]]
+
+**Skills**
+[[Rules/Skills/Acrobatics]] +16, [[Rules/Skills/Arcana]] +15, [[Rules/Sidebars/Falling|Athletics]] +23, [[Rules/Skills/Intimidation]] +19, [[Rules/Sidebars/Being Stealthy|Stealth]] +18
+
+**Str** +7
+
+**Dex** +2
+
+**Con** +5
+
+**Int** +1
+
+**Wis** +2
+
+**Cha** +1
+
+**Snow Vision** Snow doesn’t impair a white dragon’s vision; it ignores concealment from snowfall.
+
+---
+
+**AC** 29
+
+**Fort** +22
+
+**Ref** +19
+
+**Will** +17
+
++1 status to all saves vs. magic
+
+**HP** 215
+
+**Immunities**
+cold, paralyzed, sleep
+
+**Weaknesses**
+fire 10
+
+**Dragon Chill** ([[Traits/Arcane|arcane]], [[Traits/Aura|aura]], [[Traits/Cold|cold]], [[Traits/Evocation|evocation]]); 5 feet, 2d6 cold damage (DC 27 basic Reflex)  
+ **Frightful Presence** ([[Traits/Aura|aura]], [[Traits/Emotion|emotion]], [[Traits/Fear|fear]], [[Traits/Mental|mental]]) 90 feet, DC 27  
+ **Freezing Blood** ⤾ ([[Traits/Arcane|arcane]], [[Traits/Cold|cold]]); **Trigger** An adjacent creature deals piercing or slashing damage to the dragon. **Effect** The dragon’s blood sprays on the creature, dealing 2d6 cold damage. A creature that takes cold damage in this way is slowed 1 for 1 round.
+
+---
+
+**Speed** 30 feet, fly 120 feet; ice climb 30 feet
+
+**Melee**
+single action
+jaws +23 ([[Traits/Cold]], [[Traits/Magical]], [[Traits/Reach|reach 10 feet]]),
+**Damage** 2d10+13 piercing plus 2d6 cold
+
+**Melee**
+single action
+claw +23 ([[Traits/Agile]], [[Traits/Magical]]),
+**Damage** 2d8+13 slashing
+
+**Melee**
+single action
+tail +22 ([[Traits/Magical]], [[Traits/Reach|reach 15 feet]]),
+**Damage** 2d6+11 bludgeoning
+
+**Arcane Innate Spells** DC 27
+- **1st**
+[[Spells/Gust of Wind]] (at will)
+- **2nd**
+[[Spells/Obscuring Mist]] (at will)
+
+**Breath Weapon ** two actions ([[Traits/Arcane]], [[Traits/Cold]], [[Traits/Evocation]]) The dragon breathes a cloud of frost that deals 11d6 cold damage in a 40-foot cone (DC 29 basic Reflex save). It can't use Breath Weapon again for 1d4 rounds.
+
+**Draconic Frenzy** two actions  The dragon makes two claw Strikes and one tail Strike in any order
+
+**Draconic Momentum**   When the dragon scores a critical hit with a Strike, it recharges its Breath Weapon.
+
+**Ground Slam** single action  The dragon slams into the ground. It can do this if it's on the ground or Flying within 10 feet of the ground. Each creature on the ground within 10 feet must succeed at a DC 29 Reflex save or fall prone and take 3d6 bludgeoning damage. The dragon can then Step.
+
+**Ice Climb**   A white dragon can climb on ice as though it had the listed climb Speed. It ignores difficult terrain and greater difficult terrain from ice and snow and doesn't risk falling when crossing ice.
+
+**Shape Ice** two actions ([[Traits/Arcane]], [[Traits/Transmutation]], [[Traits/Water]]) The dragon reshapes a cube of ice or snow it touches, up to 10 feet across. Any creature standing atop the ice must succeed at a DC 15 Reflex save or Acrobatic check. On a failure, the creature falls prone atop the ice; on a critical failure, it falls off the ice entirely and is also prone.
+
+> [!info] Sidebar
+> ## White Dragon Spellcasters
+>
+>
+>
+> White dragon spellcasters tend to cast the following spells.
+>
+> **Young White Dragon**  
+> **Arcane Prepared Spells** DC 24, attack +16; **2nd** [[Spells/Dispel Magic|_dispel magic_]], [[Spells/Invisibility|_invisibility_]], [[Spells/Resist Energy|_resist energy_]]; **1st** [[Spells/Ray of Enfeeblement|_ray of enfeeblement_]], [[Spells/True Strike|_true strike_ (×2)]]; **Cantrips (2nd)** [[Spells/Detect Magic|_detect magic_]], [[Spells/Ghost Sound|_ghost sound_]], [[Spells/Mage Hand|_mage hand_]], [[Spells/Ray of Frost|_ray of frost_]], [[Spells/Read Aura|_read aura_]]
+>
+> **Adult White Dragon**  
+> **Arcane Prepared Spells** DC 29, attack +21; As young white dragon, plus **4th** [[Spells/Charm|_charm_]], [[Spells/Dimension Door|_dimension door_]], [[Spells/Freedom of Movement|_freedom of movement_]]; **3rd** [[Spells/Earthbind|_earthbind_]], [[Spells/Haste|_haste_]], [[Spells/Vampiric Touch|_vampiric touch_]]; **Cantrips (4th)** [[Spells/Detect Magic|_detect magic_]], [[Spells/Ghost Sound|_ghost sound_]], [[Spells/Mage Hand|_mage hand_]], [[Spells/Ray of Frost|_ray of frost_]], [[Spells/Read Aura|_read aura_]]
+
+---
+
+Source on Archives of Nethys: [Adult White Dragon](https://2e.aonprd.com/Monsters.aspx?ID=140)

@@ -1,0 +1,80 @@
+---
+title: "Revealing Mist (Greater)"
+type: "equipment"
+aon_id: "equipment-1943-1715"
+aon_url: "https://2e.aonprd.com/Equipment.aspx?ID=1943"
+tags:
+  - pf2e/equipment
+  - rarity/common
+  - trait/alchemical
+  - trait/consumable
+actions: "Single Action"
+actions_number: 2
+bulk: 0.1
+is_standard_ancestry_feat: false
+item_category: "Alchemical Items"
+item_subcategory: "Alchemical Tools"
+level: 7
+pfs: "Standard"
+price: 6000
+primary_source: "Treasure Vault (Remastered)"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2025-06-04"
+source:
+  - "Treasure Vault (Remastered)"
+source_category:
+  - "Rulebooks"
+trait:
+  - "Alchemical"
+  - "Consumable"
+trait_group:
+  - "Monster"
+  - "Equipment"
+  - "Weapon"
+usage: "held in 1 hand"
+---
+
+# Revealing Mist  *Item 3+*
+
+**Traits** [[Traits/Alchemical]], [[Traits/Consumable]]
+
+**Source** [[Sources/Treasure Vault (Remastered)]] pg. 54
+
+**Usage** held in 1 hand
+
+**Bulk** L
+
+**Activate**
+
+single action
+
+([[Traits/Manipulate|manipulate]])
+
+---
+
+Kept in an airtight spray bottle, revealing mist is an alchemical concoction that creates a sticky and clinging mist of chemicals in a 15-foot cone when sprayed. It doesn't affect visibility but causes [[Rules/Conditions/Invisible|invisible]] creatures in the area to be [[Rules/Conditions/Concealed|concealed]] rather than [[Rules/Conditions/Undetected|undetected]]. Revealing mist is ineffective in water or in areas with other factors affecting the spread of the mist, as determined by the GM. It remains in the area for 1 minute or until any significant wind disperses it, whichever comes first.
+
+## Revealing Mist (Lesser)  *Item 3*
+
+**Source** [[Sources/Treasure Vault (Remastered)]] pg. 54
+
+**Price** 9 gp
+
+**Bulk** L
+
+## Revealing Mist (Greater)  *Item 7*
+
+**Source** [[Sources/Treasure Vault (Remastered)]] pg. 54
+
+**Price** 60 gp
+
+**Bulk** L
+
+---
+
+The mist spreads in a 30-foot cone instead of a 15-foot cone.
+
+---
+
+Source on Archives of Nethys: [Revealing Mist (Greater)](https://2e.aonprd.com/Equipment.aspx?ID=1943)

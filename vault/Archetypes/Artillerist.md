@@ -1,0 +1,53 @@
+---
+title: "Artillerist"
+type: "archetype"
+aon_id: "archetype-115"
+aon_url: "https://2e.aonprd.com/Archetypes.aspx?ID=115"
+tags:
+  - pf2e/archetype
+  - rarity/common
+archetype:
+  - "Artillerist"
+archetype_category:
+  - "Profession"
+  - "Core"
+is_standard_ancestry_feat: false
+legacy_name:
+  - "Artillerst"
+level: 2
+pfs: "Limited"
+prerequisite: "trained in martial weapons"
+primary_source: "Guns & Gears (Remastered)"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2025-02-05"
+source:
+  - "Guns & Gears (Remastered)"
+source_category:
+  - "Rulebooks"
+---
+
+# Artillerist  *Archetype 2*
+
+**Source** [[Sources/Guns & Gears (Remastered)]] pg. 128
+
+The artillerist's maxim holds that while fights might be won with swords, battles are won with cannons. Or in a pinch, with trebuchets, siege towers, catapults, hwachas, and all other lethal miscellanea of a combat engineers' corp. As a true artillerist, you leave the penny-ante pistols and knives to those who only need to operate on a small scale. You're a consummate professional in the art of big guns, a maestro at merging mathematics and manpower to transform whatever castle wall, infantry battalion, or rampaging dragon offends you into a smoking crater in the ground.
+
+ You're not just some daredevil demolitionist, though. You're part of a team, accustomed to coordinating with your unit to maximize your time and effectiveness. Whether jumping in to help your crew load the next round, quickly calculating the trajectory of the engine's next shot, or taking the shot yourself, your presence on the team ensures their chances of success are maximized, creating a whole that is greater than the sum of its parts.
+
+> [!info] Sidebar
+> ## Leading with a Cannon
+>
+>
+>
+> A proper artillerist is more than an engineer, though their skills in that field certainly shouldn't be underestimated. When a war becomes unavoidable, the presence of knights and pikemen might decide a skirmish or battle, but a well-trained artillerist with a reliable squad and a few good siege weapons can make the difference between prolonged months of battle with countless lives lost and a shorter, less bloody affair with fewer deaths and a more lasting victory.
+>
+>  Castles and fortifications are critical tools for holding land in a world full of empires, kingdoms, and duchies all vying for power. Many wars are won or lost not based on the military might of either side, but on a castle's ability to withstand an extended siege. Without a team of engineers capable of penetrating a castle or keep's defenses, the occupants can wait out an invading force for as long as they have enough food and water to keep their citizens and defenders healthy and fed. Many wars have been “won” when the besieged force manages to last through a single winter. Besieging armies whose supply lines break down due to snow-clogged passes or insufficient cold weather gear are forced to retreat due to losses from poor hygiene or hypothermia long before attrition has had an opportunity to impact their opponents.
+>
+>  An artillerist changes this dynamic, completely rewriting the rules of war. Rather than time being on the side of the besieged, it becomes the tool of the besieger. Each day that passes while a skilled artillerist hammers the castle walls with cannon fire and catapult stones brings the fortifications ever closer to crumbling down. Some wise nobles and warlords who realize their opponents have brought siege weapons, especially powerful black powder siege weapons like cannons, will choose to negotiate surrender before battle is even started, recognizing an inevitable defeat that can be staved off temporarily by sacrificing many soldiers but not thwarted without outside intervention.
+>
+>  Ruthless or evil artillerists, or the warlords they follow, might take things a step further, specifically targeting granaries to starve enemies out or launching rotting food, corpses, or diseased livestock into parts of the town near water sources. As food and water supplies dwindle, so too does the morale of the castle's inhabitants and defenders. Even a stubborn noble or warlord will find it hard to continue resisting a siege when their own troops mutiny and their citizens begin seeking a way out.
+
+---
+
+Source on Archives of Nethys: [Artillerist](https://2e.aonprd.com/Archetypes.aspx?ID=115)

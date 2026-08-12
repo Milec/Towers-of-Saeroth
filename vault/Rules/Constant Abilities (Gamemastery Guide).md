@@ -1,0 +1,39 @@
+---
+title: "Constant Abilities"
+type: "rules"
+aon_id: "rules-1059"
+aon_url: "https://2e.aonprd.com/Rules.aspx?ID=1059"
+tags:
+  - pf2e/rules
+  - rarity/common
+breadcrumbs:
+  - "Chapter 2: Tools"
+  - "Building Items"
+  - "Item Effects"
+  - "Special Abilities"
+is_standard_ancestry_feat: false
+next_link:
+  - "label Activation Abilities"
+  - "url /Rules.aspx?ID=1060"
+previous_link:
+  - "label Concept and Role"
+  - "url /Rules.aspx?ID=1054"
+primary_source: "Gamemastery Guide"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2020-02-26"
+source:
+  - "Gamemastery Guide"
+source_category:
+  - "Rulebooks"
+---
+
+# Constant Abilities  *Rules*
+
+**Source** [[Sources/Gamemastery Guide]] pg. 82
+
+If you want an effect to be constant, set the level and Price accordingly. For instance, let’s say your group is 16th level and you want to give them an item themed around flying. A 7th-level [[Spells/Fly|_fly_]] spell lasts an hour already, so one casting covers a significant portion of the adventuring day. To keep it simpler, you decide to create a 16th-level cloak that lets the wearer constantly fly. Remember, some effects were never meant to be constant and could warp your game.
+
+---
+
+Source on Archives of Nethys: [Constant Abilities](https://2e.aonprd.com/Rules.aspx?ID=1059)

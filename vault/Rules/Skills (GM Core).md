@@ -1,0 +1,70 @@
+---
+title: "Skills"
+type: "rules"
+aon_id: "rules-2885"
+aon_url: "https://2e.aonprd.com/Rules.aspx?ID=2885"
+tags:
+  - pf2e/rules
+  - rarity/common
+breadcrumbs:
+  - "Chapter 2: Building Games"
+  - "Building Creatures"
+is_standard_ancestry_feat: false
+next_link:
+  - "label Items"
+  - "url /Rules.aspx?ID=2887"
+previous_link:
+  - "label Languages"
+  - "url /Rules.aspx?ID=2884"
+primary_source: "GM Core"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2023-11-15"
+source:
+  - "GM Core"
+source_category:
+  - "Rulebooks"
+---
+
+# Skills  *Rules*
+
+**Source** [[Sources/GM Core]] pg. 116
+
+You have lots of flexibility in setting your creature's skills. Pick some skills you think are appropriate, and consider how good the creature is at them. High skills are roughly on par with a specialized PC of the creature's level, though they could be a little lower or higher. Most creatures have at least one high skill, but no more than three. The best skills should go with the best attribute modifiers, and you might even want to estimate the creature's proficiency rank for these skills. Some skills can get a high bonus for free to fit the creature's theme, particularly [[Rules/Sidebars/Common Lore Subcategories (Player Core)|Lore]] skills.
+
+Most creatures don't have an extreme skill unless they are world-class for their level, like a [[Bestiary/Succubus|succubus]]'s [[Rules/Skills/Diplomacy (Player Core)|Diplomacy]]. Having an extreme skill is less impactful than having an extreme AC or attack bonus, but it still might warrant a sacrifice elsewhere, especially if the creature also has more high skills than usual. There's no need for terrible skill modifiers, since an untrained skill usually represents that.
+
+## Table 2–3: Skills
+
+| **Level** | **Extreme** | **High** | **Moderate** | **Low** |
+| --- | --- | --- | --- | --- |
+| –1 | +8 | +5 | +4 | +2 to +1 |
+| 0 | +9 | +6 | +5 | +3 to +2 |
+| 1 | +10 | +7 | +6 | +4 to +3 |
+| 2 | +11 | +8 | +7 | +5 to +4 |
+| 3 | +13 | +10 | +9 | +7 to +5 |
+| 4 | +15 | +12 | +10 | +8 to +7 |
+| 5 | +16 | +13 | +12 | +10 to +8 |
+| 6 | +18 | +15 | +13 | +11 to +9 |
+| 7 | +20 | +17 | +15 | +13 to +11 |
+| 8 | +21 | +18 | +16 | +14 to +12 |
+| 9 | +23 | +20 | +18 | +16 to +13 |
+| 10 | +25 | +22 | +19 | +17 to +15 |
+| 11 | +26 | +23 | +21 | +19 to +16 |
+| 12 | +28 | +25 | +22 | +20 to +17 |
+| 13 | +30 | +27 | +24 | +22 to +19 |
+| 14 | +31 | +28 | +25 | +23 to +20 |
+| 15 | +33 | +30 | +27 | +25 to +21 |
+| 16 | +35 | +32 | +28 | +26 to +23 |
+| 17 | +36 | +33 | +30 | +28 to +24 |
+| 18 | +38 | +35 | +31 | +29 to +25 |
+| 19 | +40 | +37 | +33 | +31 to +27 |
+| 20 | +41 | +38 | +34 | +32 to +28 |
+| 21 | +43 | +40 | +36 | +34 to +29 |
+| 22 | +45 | +42 | +37 | +35 to +31 |
+| 23 | +46 | +43 | +38 | +36 to +32 |
+| 24 | +48 | +45 | +40 | +38 to +33 |
+
+---
+
+Source on Archives of Nethys: [Skills](https://2e.aonprd.com/Rules.aspx?ID=2885)

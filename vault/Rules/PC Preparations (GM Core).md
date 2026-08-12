@@ -1,0 +1,41 @@
+---
+title: "PC Preparations"
+type: "rules"
+aon_id: "rules-3069"
+aon_url: "https://2e.aonprd.com/Rules.aspx?ID=3069"
+tags:
+  - pf2e/rules
+  - rarity/common
+breadcrumbs:
+  - "Chapter 4: Subsystems"
+  - "Infiltration"
+is_standard_ancestry_feat: false
+next_link:
+  - "label Reputation"
+  - "url /Rules.aspx?ID=3072"
+previous_link:
+  - "label Building an Infiltration"
+  - "url /Rules.aspx?ID=3060"
+primary_source: "GM Core"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2023-11-15"
+source:
+  - "GM Core"
+source_category:
+  - "Rulebooks"
+---
+
+# PC Preparations  *Rules*
+
+**Source** [[Sources/GM Core]] pg. 198
+
+Sometimes the party has a chance to prepare before conducting their infiltration, by scouting a location, bribing officials, and so on. This takes the form of special downtime activities that can give the PCs Edge Points (EP): resources and advantages they can bring to bear during their infiltration, such as stolen uniforms, forged documents, and the like. As with infiltration opportunities, careless work runs the risk of increasing Awareness Points—but in this case, before the infiltration even begins!
+
+Typically, you'll limit the preparation phase in some way, such as by setting a number of days the PCs have to prepare and by constraining how many preparation activities are available to make sure the PCs aren't entering the infiltration with so many Edge Points that the infiltration is no longer suspenseful. The more opportunities for Edge Points you give, the lower you should set the Awareness Point thresholds for complications and failure. Also decide how many times the characters can benefit from each preparation activity—most activities should grant their benefits only once.
+
+You can use the activities below for your infiltration by adjusting the details, but you should also create custom activities that link directly to your story.
+
+---
+
+Source on Archives of Nethys: [PC Preparations](https://2e.aonprd.com/Rules.aspx?ID=3069)

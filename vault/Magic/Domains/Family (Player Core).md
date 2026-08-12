@@ -1,0 +1,147 @@
+---
+title: "Family"
+type: "domain"
+aon_id: "domain-74"
+aon_url: "https://2e.aonprd.com/Domains.aspx?ID=74"
+tags:
+  - pf2e/domain
+  - rarity/common
+advanced_domain_spell: "Unity"
+deity:
+  - "Acavna"
+  - "Adanye"
+  - "Adanye"
+  - "Aleth"
+  - "Andoletta"
+  - "Andoletta"
+  - "Arqueros"
+  - "Arqueros"
+  - "Arshea"
+  - "Atropos"
+  - "Bergelmir"
+  - "Bergelmir"
+  - "Bes"
+  - "Bes"
+  - "Bolka"
+  - "Bolka"
+  - "Chohar"
+  - "Chohar"
+  - "Daikitsu"
+  - "Daikitsu"
+  - "Dalenydra"
+  - "Demon Bringers"
+  - "Dolok Darkfur"
+  - "Drokalion"
+  - "Dwarven Pantheon"
+  - "Elion"
+  - "Emmeton Galardaria"
+  - "Erastil"
+  - "Falayna"
+  - "Fandarra"
+  - "Fandarra"
+  - "Findeladlara"
+  - "Findeladlara"
+  - "Folgrit"
+  - "Folgrit"
+  - "Followers of Fate"
+  - "Followers of Fate"
+  - "Gendowyn"
+  - "Gendowyn"
+  - "Good Neighbors"
+  - "Grandmother Spider"
+  - "Grandmother Spider"
+  - "Grundinnar"
+  - "Grundinnar"
+  - "Guardians of the Sacred Self"
+  - "Hathor"
+  - "Hathor"
+  - "Hearth and Harvest"
+  - "Iggeret"
+  - "Imbrex"
+  - "Imbrex"
+  - "Isis"
+  - "Isis"
+  - "Izuyaku"
+  - "Jaidi"
+  - "Jaidi"
+  - "Jukha"
+  - "Kazutal"
+  - "Kazutal"
+  - "Keepers of the Hearth"
+  - "Ketephys"
+  - "Laivatiniel"
+  - "Lamashtu"
+  - "Lorris"
+  - "Mahja Firehair"
+  - "Mazludeh"
+  - "Mazludeh"
+  - "Myr"
+  - "Nalinivati"
+  - "Nephthys"
+  - "Nivi Rhombodazzle"
+  - "Nivi Rhombodazzle"
+  - "Phi Deva"
+  - "Phlegyas"
+  - "Radiant Prism"
+  - "Ragdya"
+  - "Ragdya"
+  - "Rowdrosh"
+  - "Rowdrosh"
+  - "Sairazul"
+  - "Sairazul"
+  - "Shei"
+  - "Shei"
+  - "Shelyn"
+  - "Stag Mother of the Forest of Stones"
+  - "Stag Mother of the Forest of Stones"
+  - "Stone's Blood"
+  - "Teki Stronggut"
+  - "The Offering Plate"
+  - "The Prismatic Ray"
+  - "Thisamet"
+  - "Thisamet"
+  - "Torag"
+  - "Touch of the Sun"
+  - "Uirch"
+  - "Upion and Warrik"
+  - "Vavaalrav"
+  - "Vudravati"
+  - "Walkena"
+  - "Walkena"
+  - "Wards of the Pharaoh"
+  - "Yig"
+  - "Yrmidar"
+domain:
+  - "Family"
+domain_spell: "Soothing Words"
+is_standard_ancestry_feat: false
+pfs: "Standard"
+primary_source: "Player Core"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2023-11-15"
+source:
+  - "Player Core"
+source_category:
+  - "Rulebooks"
+spell:
+  - "Unity"
+  - "Soothing Words"
+---
+
+# Family  *Domain*
+
+**Source** [[Sources/Player Core]] pg. 39
+
+**Deities**
+[[Setting/Deities/Acavna]], [[Setting/Deities/Adanye]], [[Setting/Deities/Adanye (Divine Mysteries Web Supplement)|Adanye]], [[Setting/Deities/Aleth]], [[Setting/Deities/Andoletta]], [[Setting/Deities/Andoletta (Divine Mysteries)|Andoletta]], [[Setting/Deities/Arqueros]], [[Setting/Deities/Arqueros (Divine Mysteries Web Supplement)|Arqueros]], [[Setting/Deities/Arshea]], [[Setting/Deities/Atropos]], [[Setting/Deities/Bergelmir]], [[Setting/Deities/Bergelmir (Divine Mysteries)|Bergelmir]], [[Setting/Deities/Bes]], [[Setting/Deities/Bes (Divine Mysteries Web Supplement)|Bes]], [[Setting/Deities/Bolka]], [[Setting/Deities/Bolka (Divine Mysteries)|Bolka]], [[Setting/Deities/Chohar]], [[Setting/Deities/Chohar (Divine Mysteries Web Supplement)|Chohar]], [[Setting/Deities/Daikitsu]], [[Setting/Deities/Daikitsu (Divine Mysteries Web Supplement)|Daikitsu]], [[Setting/Deities/Dalenydra]], [[Setting/Deities/Demon Bringers]], [[Setting/Deities/Dolok Darkfur]], [[Setting/Deities/Drokalion]], [[Setting/Deities/Dwarven Pantheon]], [[Setting/Deities/Elion]], [[Setting/Deities/Emmeton Galardaria]], [[Setting/Deities/Erastil (Divine Mysteries)|Erastil]], [[Setting/Deities/Falayna (Pathfinder -218- Titanbane)|Falayna]], [[Setting/Deities/Fandarra]], [[Setting/Deities/Fandarra (Divine Mysteries)|Fandarra]], [[Setting/Deities/Findeladlara]], [[Setting/Deities/Findeladlara (Divine Mysteries)|Findeladlara]], [[Setting/Deities/Folgrit]], [[Setting/Deities/Folgrit (Divine Mysteries)|Folgrit]], [[Setting/Deities/Followers of Fate]], [[Setting/Deities/Followers of Fate (Divine Mysteries Web Supplement)|Followers of Fate]], [[Setting/Deities/Gendowyn]], [[Setting/Deities/Gendowyn (Divine Mysteries Web Supplement)|Gendowyn]], [[Setting/Deities/Good Neighbors]], [[Setting/Deities/Grandmother Spider]], [[Setting/Deities/Grandmother Spider (Divine Mysteries)|Grandmother Spider]], [[Setting/Deities/Grundinnar]], [[Setting/Deities/Grundinnar (Divine Mysteries)|Grundinnar]], [[Setting/Deities/Guardians of the Sacred Self]], [[Setting/Deities/Hathor]], [[Setting/Deities/Hathor (Divine Mysteries Web Supplement)|Hathor]], [[Setting/Deities/Hearth and Harvest]], [[Setting/Deities/Iggeret]], [[Setting/Deities/Imbrex]], [[Setting/Deities/Imbrex (Divine Mysteries)|Imbrex]], [[Setting/Deities/Isis]], [[Setting/Deities/Isis (Divine Mysteries)|Isis]], [[Setting/Deities/Izuyaku]], [[Setting/Deities/Jaidi]], [[Setting/Deities/Jaidi (Divine Mysteries)|Jaidi]], [[Setting/Deities/Jukha]], [[Setting/Deities/Kazutal]], [[Setting/Deities/Kazutal (Divine Mysteries)|Kazutal]], [[Setting/Deities/Keepers of the Hearth]], [[Setting/Deities/Ketephys (Divine Mysteries)|Ketephys]], [[Setting/Deities/Laivatiniel]], [[Setting/Deities/Lamashtu (Divine Mysteries)|Lamashtu]], [[Setting/Deities/Lorris]], [[Setting/Deities/Mahja Firehair]], [[Setting/Deities/Mazludeh]], [[Setting/Deities/Mazludeh (Divine Mysteries Web Supplement)|Mazludeh]], [[Setting/Deities/Myr]], [[Setting/Deities/Nalinivati (Divine Mysteries Web Supplement)|Nalinivati]], [[Setting/Deities/Nephthys]], [[Setting/Deities/Nivi Rhombodazzle]], [[Setting/Deities/Nivi Rhombodazzle (Divine Mysteries)|Nivi Rhombodazzle]], [[Setting/Deities/Phi Deva]], [[Setting/Deities/Phlegyas]], [[Setting/Deities/Radiant Prism]], [[Setting/Deities/Ragdya]], [[Setting/Deities/Ragdya (Divine Mysteries)|Ragdya]], [[Setting/Deities/Rowdrosh]], [[Setting/Deities/Rowdrosh (Divine Mysteries Web Supplement)|Rowdrosh]], [[Setting/Deities/Sairazul]], [[Setting/Deities/Sairazul (Divine Mysteries)|Sairazul]], [[Setting/Deities/Shei]], [[Setting/Deities/Shei (Divine Mysteries Web Supplement)|Shei]], [[Setting/Deities/Shelyn (Divine Mysteries)|Shelyn]], [[Setting/Deities/Stag Mother of the Forest of Stones]], [[Setting/Deities/Stag Mother of the Forest of Stones (Divine Mysteries)|Stag Mother of the Forest of Stones]], [[Setting/Deities/Stone's Blood]], [[Setting/Deities/Teki Stronggut]], [[Setting/Deities/The Offering Plate]], [[Setting/Deities/The Prismatic Ray]], [[Setting/Deities/Thisamet]], [[Setting/Deities/Thisamet (Divine Mysteries Web Supplement)|Thisamet]], [[Setting/Deities/Torag (Divine Mysteries)|Torag]], [[Setting/Deities/Touch of the Sun]], [[Setting/Deities/Uirch]], [[Setting/Deities/Upion and Warrik]], [[Setting/Deities/Vavaalrav]], [[Setting/Deities/Vudravati]], [[Setting/Deities/Walkena]], [[Setting/Deities/Walkena (Divine Mysteries Web Supplement)|Walkena]], [[Setting/Deities/Wards of the Pharaoh]], [[Setting/Deities/Yig]], [[Setting/Deities/Yrmidar]]
+
+**Domain Spell** [[Spells/Soothing Words (Player Core)|Soothing Words]]
+
+**Advanced Domain Spell** [[Spells/Unity (Player Core)|Unity]]
+
+You aid and protect your family and community more effectively.
+
+---
+
+Source on Archives of Nethys: [Family](https://2e.aonprd.com/Domains.aspx?ID=74)

@@ -1,0 +1,45 @@
+---
+title: "Start Sketching"
+type: "rules"
+aon_id: "rules-991"
+aon_url: "https://2e.aonprd.com/Rules.aspx?ID=991"
+tags:
+  - pf2e/rules
+  - rarity/common
+breadcrumbs:
+  - "Chapter 1: Gamemastery Basics"
+  - "Drawing Maps"
+is_standard_ancestry_feat: false
+next_link:
+  - "label Number Encounter Areas"
+  - "url /Rules.aspx?ID=992"
+previous_link:
+  - "label Create a Legend"
+  - "url /Rules.aspx?ID=990"
+primary_source: "Gamemastery Guide"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2020-02-26"
+source:
+  - "Gamemastery Guide"
+source_category:
+  - "Rulebooks"
+---
+
+# Start Sketching  *Rules*
+
+**Source** [[Sources/Gamemastery Guide]] pg. 52
+
+Now that you have your legend, it’s time to start the map. Grab a pencil and begin sketching your adventure site.
+
+ If you’re drawing a dungeon complex, start by detailing the corridors and rooms. If you’re creating an outdoor area, begin with any bodies of water, rivers, and topography. No matter what you are drawing, do so with soft lines so you can easily erase—you might make mistakes, or you might have better ideas later in the process. As your map starts to take shape, start populating it with features matching the symbols you’ve designated in your map key.
+
+ Try not to overcomplicate your maps. Keeping your map as simple as possible will make sure important details stand out and aids in the map’s legibility.
+
+ When sketching your maps—especially when drawing areas of wilderness or buildings—pull inspiration from the real world. An internet search will turn up reference images that can help when you’re deciding the placement of trees and shapes of canyons and streams, or when you’re replicating ancient, medieval, renaissance, or fantasy architecture. Basing your terrain and buildings on these references will help your creation seem more natural and believable.
+
+ When you draw dungeons and similar adventure sites, remember the size of the creatures that live in your complex, and give them enough room to live and move around. In other words, make sure the ancient black dragon fits through the entrance to its lair! Second, avoid empty rooms, and don’t put rooms in just to have them. Each room should have a purpose. Maybe it’s an abandoned purpose, but each time you create a chamber, ask yourself, “Why was this room built?” Lastly, avoid symmetrical or just plain dull structures. Part of the fun of exploring is being surprised by what you find, and needless symmetry and repetitive layouts can ruin that surprise.
+
+---
+
+Source on Archives of Nethys: [Start Sketching](https://2e.aonprd.com/Rules.aspx?ID=991)

@@ -1,0 +1,118 @@
+---
+title: "Frost Vial (Lesser)"
+type: "equipment"
+aon_id: "equipment-3293-3145"
+aon_url: "https://2e.aonprd.com/Equipment.aspx?ID=3293"
+tags:
+  - pf2e/equipment
+  - rarity/common
+  - trait/alchemical
+  - trait/bomb
+  - trait/cold
+  - trait/consumable
+  - trait/splash
+actions: "Single Action"
+actions_number: 2
+bulk: 0.1
+is_standard_ancestry_feat: false
+item_category: "Alchemical Items"
+item_subcategory: "Alchemical Bombs"
+legacy_name:
+  - "Frost Vial"
+level: 1
+pfs: "Standard"
+price: 300
+primary_source: "Player Core 2"
+primary_source_category: "Rulebooks"
+rarity: "common"
+release_date: "2024-08-01"
+source:
+  - "Player Core 2"
+source_category:
+  - "Rulebooks"
+trait:
+  - "Alchemical"
+  - "Bomb"
+  - "Cold"
+  - "Consumable"
+  - "Splash"
+trait_group:
+  - "Monster"
+  - "Equipment"
+  - "Weapon"
+  - "Energy"
+  - "Mechanics"
+usage: "held in 1 hand"
+---
+
+# Frost Vial  *Item 1+*
+
+**Traits** [[Traits/Alchemical (Player Core)|Alchemical]], [[Traits/Bomb (Player Core)|Bomb]], [[Traits/Cold (Player Core)|Cold]], [[Traits/Consumable (Player Core)|Consumable]], [[Traits/Splash (GM Core)|Splash]]
+
+**Source** [[Sources/Player Core 2]] pg. 285
+
+**Usage** held in 1 hand
+
+**Bulk** L
+
+**Activate**
+
+single action
+
+Strike
+
+---
+
+The bright blue liquid reagents in this vial rapidly absorb heat when exposed to air. A frost vial deals the listed cold damage and cold [[Traits/Splash (GM Core)|splash]] damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls.
+
+## Frost Vial (Lesser)  *Item 1*
+
+**Source** [[Sources/Player Core 2]] pg. 285, [[Sources/Core Rulebook]] pg. 545
+
+**Price** 3 gp
+
+**Bulk** L
+
+---
+
+The bomb deals 1d6 cold damage and 1 cold splash damage, and the target takes a –5-foot penalty.
+
+## Frost Vial (Moderate)  *Item 3*
+
+**Source** [[Sources/Player Core 2]] pg. 285, [[Sources/Core Rulebook]] pg. 545
+
+**Price** 10 gp
+
+**Bulk** L
+
+---
+
+You gain a +1 item bonus to attack rolls. The bomb deals 2d6 cold damage and 2 cold splash damage, and the target takes a –10-foot penalty.
+
+## Frost Vial (Greater)  *Item 11*
+
+**Source** [[Sources/Player Core 2]] pg. 285, [[Sources/Core Rulebook]] pg. 545
+
+**Price** 250 gp
+
+**Bulk** L
+
+---
+
+You gain a +2 item bonus to attack rolls. The bomb deals 3d6 cold damage and 3 cold splash damage, and the target takes a –10-foot penalty.
+
+## Frost Vial (Major)  *Item 17*
+
+**Source** [[Sources/Player Core 2]] pg. 285, [[Sources/Core Rulebook]] pg. 545
+
+**Price** 2,500 gp
+
+**Bulk** L
+
+---
+
+You gain a +3 item bonus to attack rolls. The bomb deals 4d6 cold damage and 4 cold splash damage, and the target takes a –15-foot penalty.
+
+---
+
+Source on Archives of Nethys: [Frost Vial (Lesser)](https://2e.aonprd.com/Equipment.aspx?ID=3293)

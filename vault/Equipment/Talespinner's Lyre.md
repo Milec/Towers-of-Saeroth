@@ -1,0 +1,78 @@
+---
+title: "Talespinner's Lyre"
+type: "equipment"
+aon_id: "equipment-4660"
+aon_url: "https://2e.aonprd.com/Equipment.aspx?ID=4660"
+tags:
+  - pf2e/equipment
+  - rarity/uncommon
+  - trait/auditory
+  - trait/consumable
+  - trait/illusion
+  - trait/magical
+  - trait/olfactory
+  - trait/uncommon
+  - trait/visual
+actions: "Two Actions"
+actions_number: 4
+bulk: 0.1
+is_standard_ancestry_feat: false
+item_category: "Consumables"
+item_subcategory: "Other Consumables"
+level: 11
+pfs: "Standard"
+price: 23500
+primary_source: "Treasure Vault"
+primary_source_category: "Rulebooks"
+rarity: "uncommon"
+release_date: "2023-02-22"
+school: "illusion"
+source:
+  - "Treasure Vault"
+source_category:
+  - "Rulebooks"
+trait:
+  - "Auditory"
+  - "Consumable"
+  - "Illusion"
+  - "Magical"
+  - "Olfactory"
+  - "Uncommon"
+  - "Visual"
+trait_group:
+  - "Sense"
+  - "Equipment"
+  - "School"
+  - "Monster"
+  - "Mechanics"
+  - "Rarity"
+usage: "held in 2 hands"
+---
+
+# Talespinner's Lyre  *Item 11*
+
+**Traits** [[Traits/Uncommon]], [[Traits/Auditory]], [[Traits/Consumable]], [[Traits/Illusion]], [[Traits/Magical]], [[Traits/Olfactory]], [[Traits/Visual]]
+
+**Source** [[Sources/Treasure Vault]] pg. 98
+
+**Price** 235 gp
+
+**Usage** held in 2 hands
+
+**Bulk** L
+
+**Activate**
+
+two actions
+
+envision, Interact
+
+---
+
+Plucking a _talespinner’s lyre_ while focusing on an event you witnessed causes the instrument to create an illusion in a 50-foot [[Rules/Emanation (Player Core)|emanation]] that plays out your memory of the event in real time, complete with sights, sounds, and smells. You can Sustain the Activation for up to 1 minute to keep it playing. The scene reproduces only what’s in its area, including nothing beyond that even if present in the memory. The scene is realistic, but all observers can clearly tell it’s an illusion. Observers can’t interact with the scene directly nor can they taste or touch elements of it to get a sensation you didn’t personally experience, but they can attempt skill checks to discern more about the scene without altering its contents. For example, no one could see something you didn’t, such as the true form of a creature [[Traits/Polymorph (Player Core)|polymorphed]] into a squirrel, but an observer might be able to use [[Rules/Perception (Player Core)|Perception]] and [[Actions/Sense Motive (Player Core)|Sense Motive]] to discern the squirrel was acting unlike a squirrel should.
+
+Once the magic is used, the lyre remains as a non-magical virtuoso instrument.
+
+---
+
+Source on Archives of Nethys: [Talespinner's Lyre](https://2e.aonprd.com/Equipment.aspx?ID=4660)
