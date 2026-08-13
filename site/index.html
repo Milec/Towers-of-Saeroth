@@ -66,6 +66,14 @@
       vault is 41,718 notes and 457,000 links — pick individual folders rather
       than all of it.</p>
     <div id="scopes" class="scopes"></div>
+    <label class="fieldrow"><span>Colour by</span>
+      <select id="colorBy">
+        <option value="domain">Campaign vs rules</option>
+        <option value="type" selected>Note type</option>
+        <option value="folder">Folder</option>
+      </select>
+    </label>
+    <div id="glegend" class="legend"></div>
     <label class="chk"><input type="checkbox" id="hideOrphans" checked> Hide notes with no links</label>
     <div class="gcount" id="gcount">—</div>
     <button id="renderGraph" class="btn">Render graph</button>
