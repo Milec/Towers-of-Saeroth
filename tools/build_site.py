@@ -35,6 +35,20 @@ def copy_notes(paths):
 
 
 WIKI = re.compile(r'\[\[([^\]|#]+)')
+TYPE = re.compile(r'^type:\s*["\']?([\w -]+)', re.M)
+
+
+def note_type(path):
+    """The frontmatter `type:` of a note, for graph colouring."""
+    try:
+        head = open(os.path.join(ROOT, path), encoding='utf-8').read(600)
+    except Exception:
+        return ''
+    m = FM.match(head)
+    if not m:
+        return ''
+    m2 = TYPE.search(m.group(0))
+    return m2.group(1).strip() if m2 else ''
 
 
 def links_of(path):
@@ -89,7 +103,7 @@ def main():
     notes = []
     for p in campaign:
         body, links = analyse(p)
-        notes.append({'p': p, 'body': body, 'l': links})
+        notes.append({'p': p, 'body': body, 'l': links, 't': note_type(p)})
     json.dump({'notes': notes},
               open(os.path.join(OUT, 'index-campaign.json'), 'w', encoding='utf-8'),
               separators=(',', ':'))

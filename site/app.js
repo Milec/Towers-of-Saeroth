@@ -14,6 +14,7 @@ const state = {
   text: new Map(),   // campaign path -> lowercased body, for full-text search
   links: new Map(),  // campaign path -> outbound wikilink targets (from the build)
   vaultIndexOf: new Map(), // vault path -> row index in index-vault-links
+  type: new Map(),   // path -> frontmatter type, for graph colouring
   tree: null,
   vaultLoaded: false,
   current: null,
@@ -446,7 +447,31 @@ function showResults(list) {
    Canvas force-directed layout. Scope is chosen before anything is built:
    graphing all 41,718 vault notes and their 457,000 links would lock the
    browser, so the vault is opt-in folder by folder. */
-const graph = { nodes: [], edges: [], raf: 0, scale: 1, ox: 0, oy: 0, hover: -1, alpha: 0 };
+/* Categorical palette, both modes selected from the same ramps.
+   Only THREE hues are used, and that is a hard limit rather than taste: a node
+   graph shows every pair of marks at once, and validating this palette
+   all-pairs shows the first three slots are the largest set that clears both
+   the CVD floor and the normal-vision floor in light *and* dark. A fourth hue
+   fails outright (blue↔violet ΔE 9.8 in dark — indistinguishable even with
+   full colour vision). So beyond three categories the rest fold into a neutral
+   "Other", and the legend — not colour alone — carries identity. */
+const PALETTE = {
+  light: ['#2a78d6', '#eb6834', '#1baf7a'],
+  dark:  ['#3987e5', '#d95926', '#199e70'],
+};
+const MAX_HUES = PALETTE.light.length;
+
+const COLOR_MODES = {
+  domain: { label: 'Campaign vs rules', of: (n) => (n.p.startsWith('campaign/') ? 'Campaign' : 'Rules vault') },
+  type:   { label: 'Note type', of: (n) => n.type || folderOf(n.p) },
+  folder: { label: 'Folder', of: (n) => folderOf(n.p) },
+};
+function folderOf(p) {
+  const parts = p.split('/');
+  return parts.length > 2 ? parts[1] : parts[0];
+}
+
+const graph = { nodes: [], edges: [], raf: 0, scale: 1, ox: 0, oy: 0, hover: -1, alpha: 0, legend: [] };
 window.__g = graph;   // exposed for automated UI tests
 let vaultLinks = null;   // {names:[], links:[[id,...]]} — fetched on demand
 
@@ -510,8 +535,8 @@ async function collectGraph() {
   const idx = new Map(paths.map((p, i) => [p, i]));
   const nodes = paths.map((p) => ({
     p, name: p.split('/').pop().replace(/\.md$/, ''),
-    campaign: p.startsWith('campaign/'), deg: 0,
-    x: 0, y: 0, vx: 0, vy: 0,
+    campaign: p.startsWith('campaign/'), type: state.type.get(p) || '', deg: 0,
+    cat: '', slot: -1, x: 0, y: 0, vx: 0, vy: 0,
   }));
 
   // outbound links, by source path
@@ -571,10 +596,50 @@ async function renderGraphNow() {
     const a = (i / ns.length) * Math.PI * 2, r = R * (0.35 + 0.65 * Math.random());
     n.x = Math.cos(a) * r; n.y = Math.sin(a) * r; n.vx = n.vy = 0;
   });
+  assignColours(ns);
+  graph.labelCut = null;
   graph.nodes = ns; graph.edges = es; graph.alpha = 1;
   graph.scale = Math.min(1, 420 / (R || 420)); graph.ox = 0; graph.oy = 0;
   $('ghint').hidden = ns.length === 0;
   tick();
+}
+
+/* Largest categories get the validated hues, in fixed order by size; the tail
+   folds into a neutral "Other" rather than inventing a fourth hue. */
+function assignColours(ns) {
+  const mode = COLOR_MODES[$('colorBy').value] || COLOR_MODES.domain;
+  const counts = new Map();
+  for (const n of ns) {
+    n.cat = mode.of(n) || 'Other';
+    counts.set(n.cat, (counts.get(n.cat) || 0) + 1);
+  }
+  const ranked = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  const slotOf = new Map(ranked.slice(0, MAX_HUES).map(([k], i) => [k, i]));
+  for (const n of ns) n.slot = slotOf.has(n.cat) ? slotOf.get(n.cat) : -1;
+
+  graph.legend = ranked.slice(0, MAX_HUES).map(([k], i) => ({ label: k, slot: i, n: counts.get(k) }));
+  const restN = ranked.slice(MAX_HUES).reduce((a, [, v]) => a + v, 0);
+  if (restN) graph.legend.push({ label: `Other (${ranked.length - MAX_HUES} more)`, slot: -1, n: restN });
+  drawLegend();
+}
+
+function paletteNow() {
+  const dark = getComputedStyle(document.documentElement).colorScheme.includes('dark')
+    || document.documentElement.dataset.theme === 'dark'
+    || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+  return PALETTE[dark ? 'dark' : 'light'];
+}
+function slotColour(slot) {
+  if (slot < 0) return getComputedStyle(document.body).getPropertyValue('--muted').trim() || '#888';
+  return paletteNow()[slot];
+}
+
+function drawLegend() {
+  const el = $('glegend');
+  if (!graph.legend.length) { el.innerHTML = ''; return; }
+  el.innerHTML = '<div class="scope-h">Legend</div>' + graph.legend.map((l) =>
+    `<div class="lgd"><span class="sw" style="background:${slotColour(l.slot)}"></span>
+      <span>${escapeHtml(l.label)}</span><span class="muted">${l.n.toLocaleString()}</span></div>`).join('');
 }
 
 function tick() {
@@ -660,29 +725,50 @@ function drawGraph() {
   }
 
   ctx.globalAlpha = 1;
-  const accent = css.getPropertyValue('--accent') || '#a33';
   const ink = css.getPropertyValue('--ink') || '#222';
+  const surface = css.getPropertyValue('--bg') || '#fff';
+  const pal = paletteNow();
+  const muted = css.getPropertyValue('--muted').trim() || '#888';
   for (let i = 0; i < ns.length; i++) {
     const n = ns[i];
-    const r = Math.min(11, 3 + Math.sqrt(n.deg) * 1.4);
+    const r = Math.min(12, 3.4 + Math.sqrt(n.deg) * 1.5);
+    ctx.globalAlpha = hover >= 0 && i !== hover && !near.has(i) ? 0.28 : 1;
+    // 2px surface ring so overlapping nodes stay separable
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, r + 1.4 / graph.scale, 0, Math.PI * 2);
+    ctx.fillStyle = surface;
+    ctx.fill();
     ctx.beginPath();
     ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
-    ctx.fillStyle = i === hover ? accent : (n.campaign ? accent : ink);
-    ctx.globalAlpha = hover >= 0 && i !== hover && !near.has(i) ? 0.3 : (n.campaign ? 1 : 0.62);
+    ctx.fillStyle = n.slot >= 0 ? pal[n.slot] : muted;
     ctx.fill();
-  }
-  ctx.globalAlpha = 1;
-  const showLabels = ns.length <= 260 || hover >= 0;
-  if (showLabels) {
-    ctx.fillStyle = ink;
-    ctx.font = `${Math.max(10, 12 / graph.scale)}px system-ui, sans-serif`;
-    ctx.textAlign = 'center';
-    for (let i = 0; i < ns.length; i++) {
-      if (hover >= 0 && i !== hover && !near.has(i)) continue;
-      const n = ns[i];
-      ctx.fillText(n.name, n.x, n.y - 9);
+    if (i === hover) {
+      ctx.lineWidth = 2.2 / graph.scale;
+      ctx.strokeStyle = ink;
+      ctx.stroke();
     }
   }
+  ctx.globalAlpha = 1;
+  /* Selective labels: the best-connected nodes plus whatever is hovered.
+     Labelling all of them turns a dense graph into a wall of overlapping
+     text — zooming in reveals progressively more. */
+  ctx.fillStyle = ink;
+  ctx.font = `${Math.max(9.5, 12 / graph.scale)}px system-ui, sans-serif`;
+  ctx.textAlign = 'center';
+  const budget = Math.round(26 * Math.max(1, graph.scale));
+  const cut = graph.labelCut ?? (graph.labelCut = (() => {
+    const degs = ns.map((n) => n.deg).sort((a, b) => b - a);
+    return degs.length > budget ? degs[budget] : 0;
+  })());
+  for (let i = 0; i < ns.length; i++) {
+    const n = ns[i];
+    const isNear = hover >= 0 && (i === hover || near.has(i));
+    if (hover >= 0 && !isNear) continue;
+    if (hover < 0 && !(n.deg > cut || graph.scale > 1.8)) continue;
+    ctx.globalAlpha = isNear ? 1 : 0.85;
+    ctx.fillText(n.name, n.x, n.y - Math.min(12, 5 + Math.sqrt(n.deg) * 1.5) - 3);
+  }
+  ctx.globalAlpha = 1;
   ctx.restore();
 }
 
@@ -740,6 +826,7 @@ async function init() {
   for (const it of state.campaign) {
     if (it.body) state.text.set(it.p, it.body);
     state.links.set(it.p, it.l || []);
+    if (it.t) state.type.set(it.p, it.t);
   }
 
   buildTree(state.campaign.map((n) => n.p), $('tree'), { open: 2 });
@@ -750,10 +837,12 @@ async function init() {
     const cur = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
     document.documentElement.dataset.theme = cur;
     localStorage.setItem('theme', cur);
+    if (graph.nodes.length) drawLegend();   // palette swaps with the theme
   };
   $('graphBtn').onclick = openGraph;
   $('graphClose').onclick = closeGraph;
   $('renderGraph').onclick = renderGraphNow;
+  $('colorBy').onchange = () => { if (graph.nodes.length) { assignColours(graph.nodes); } };
   initGraphEvents();
   $('searchBtn').onclick = async () => {
     $('searchModal').hidden = false; $('searchInput').focus();
