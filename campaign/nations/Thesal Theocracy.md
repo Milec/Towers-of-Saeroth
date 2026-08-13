@@ -17,6 +17,6 @@ nations need a mediator neither side will refuse, they send for Thesal.
 - **Military** Paladins, clerics, defensive militias, hospital corps
 - **Government** Council of High Clerics representing every recognized faith
 - **Reputation** Trusted mediators and healers
-- **Faith** Temples to [[Setting/Deities/Sarenrae]], [[Setting/Deities/Desna]], and every other good or neutral deity stand side by side
+- **Faith** Patron [[Setting/Deities/Sarenrae]], goddess of healing and redemption, whose hospices are the nation's most visible export. By charter every good or neutral faith holds a temple in Concord — [[Setting/Deities/Shelyn]], [[Setting/Deities/Desna]] and [[Setting/Deities/Pharasma]] hold the largest after hers
 - **Tension** [[Dalstan]] missionaries have started preaching openly in the border shrines, and Thesal's own doctrine of tolerance is the reason it can't simply expel them
 - **Relations** Allied with the [[Vaelic Principality]]'s knightly orders; the [[Dalstan]] court's brand of zealotry is treated as everything Thesal deliberately refuses to become

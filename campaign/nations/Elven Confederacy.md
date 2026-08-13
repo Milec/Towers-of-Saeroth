@@ -17,5 +17,6 @@ dispute season for a decade before ruling on it.
 - **Military** Elite archers, druids, rangers, beast riders
 - **Government** Council of tribal chiefs
 - **Reputation** Ancient, graceful, patient
+- **Faith** Patron [[Setting/Deities/Ketephys]], the elven hunter, honored by every tribe regardless of what else they disagree on. [[Setting/Deities/Yuelral]] holds the magical traditions and [[Setting/Deities/Findeladlara]] the artistic ones; several forest tribes keep the [[Setting/Deities/Green Faith]] instead of any named god
 - **Tension** The tribes cannot agree whether encroachment on the old forests warrants a council at all, and the delay is itself becoming the answer
 - **Relations** Watches [[Khazan Khaganate]] encroachment on the old forests with wary patience; regards the younger [[Thornwild Confederation]] as distant, unruly cousins-in-nature

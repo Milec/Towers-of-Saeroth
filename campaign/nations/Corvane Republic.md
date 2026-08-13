@@ -20,5 +20,6 @@ its most exhausting one, depending who's arguing.
 - **Military** Citizen militia drawn from every trade, volunteer regiments, a coastal defense fleet, city watch companies
 - **Government** Elected Assembly of Citizens, led by a term-limited Chancellor
 - **Reputation** Idealistic, argumentative, and welcoming to anyone willing to work
+- **Faith** Patron [[Setting/Deities/Milani]], goddess of hope and uprising, whose worship the Republic's founders brought with them out of the places they fled. [[Setting/Deities/Cayden Cailean]] is nearly as popular for liberty's sake, and the Assembly itself keeps [[Setting/Deities/Abadar]] for the civic law
 - **Tension** The refugee influx from [[Dalstan]] has outpaced the housing, and the Assembly is discovering how its founding principle sounds when it becomes expensive
 - **Relations** A steady trickle of refugees, including many Tieflings, flees [[Dalstan]]'s persecution for Corvane's borders; its citizen-assembly model stands as a standing philosophical rebuke to the wealth-gated senate of the [[Thurion Merchant Alliance]]; growing shipbuilding trade with [[Aquoniti]]

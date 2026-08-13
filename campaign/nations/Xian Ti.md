@@ -18,5 +18,6 @@ them.
 - **Military** Professional armies, monastic warriors, horse archers, battle mages
 - **Government** Celestial Emperor supported by scholar officials
 - **Reputation** Sophisticated and powerful
+- **Faith** Patron [[Setting/Deities/Irori]], god of self-perfection — the philosophical justification for the entire examination system. [[Setting/Deities/Shizuru]] is the imperial house's own goddess of sun and honorable ancestry, [[Setting/Deities/Daikitsu]] the peasantry's harvest goddess, and [[Setting/Deities/Abadar]] the ministries'
 - **Tension** A cheating scandal in the scholar examinations has reached high enough that exposing it fully would discredit the ministry that would have to investigate it
 - **Relations** Frontier raiding tension with the [[Khazan Khaganate]]; luxury trade rivalry with [[Quivar]] over who defines "refined" taste
