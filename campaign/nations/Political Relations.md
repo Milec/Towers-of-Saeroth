@@ -1,6 +1,7 @@
 ---
 title: Political Relations
 type: index
+view: relations
 ---
 
 Every standing relationship between nations, drawn from the Relations bullet on

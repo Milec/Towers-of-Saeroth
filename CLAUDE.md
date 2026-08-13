@@ -5,6 +5,70 @@ Private PF2e worldbuilding vault. `campaign/` is the user's own notes;
 [Milec/AON-Scrap](https://github.com/Milec/AON-Scrap); `.claude/skills/pf2e-gm/`
 queries that reference for encounters, rules, treasure, shops, and NPCs.
 
+## This repo publishes a website — read this before building anything visual
+
+`site/` is a self-contained PWA that renders the whole vault, and
+`.github/workflows/pages.yml` deploys it to **GitHub Pages** on every push to
+`main` touching `campaign/`, `vault/`, `site/` or the build script. It is live
+at <https://milec.github.io/Towers-of-Saeroth/>, and the user has it installed
+to their phone's home screen.
+
+**So anything visual, interactive, or presentational belongs in `site/`** — not
+in a standalone HTML file, and not in a published Claude artifact. A chart, a
+map, a timeline, a relationship web, a random-table roller: all of it goes into
+the app, where it inherits the parchment theme, the router, offline caching,
+and links to the notes it describes. An artifact is a dead end by comparison —
+separate URL, no wikilinks, no offline, and stale the moment a note changes.
+Only reach for one if the user explicitly asks for something outside the site.
+
+How the app is put together:
+
+- `site/index.html` + `app.js` + `styles.css` — no framework, no build step and
+  no dependencies beyond a vendored `marked.min.js`. Plain, unbundled JS.
+- `tools/build_site.py` assembles `_site/`: it copies `site/`, copies the notes
+  to `_site/content/` as **raw markdown**, and writes the search and link
+  indexes. Nothing is pre-rendered — the browser parses the markdown, which is
+  what keeps the deployed site about the same size as the repo.
+- Notes are addressed by hash route: `#/campaign/nations/Dalstan/Dalstan.md`.
+  Use `resolveTarget(name)` to turn a bare note name into its path rather than
+  hardcoding one; it resolves by filename the way Obsidian does.
+- Theme is entirely CSS custom properties on `:root`, declared three times
+  over: bare `:root` (light), `:root[data-theme="dark"]`, and
+  `@media (prefers-color-scheme: dark) :root:not([data-theme="light"])`. Add a
+  new colour as a token in **all three** blocks, never as a literal in a rule.
+- Bump `VERSION` in `site/sw.js` when the app shell changes, or returning
+  visitors keep serving the cached one.
+- Never hardcode the topbar's height. Installed to an iOS home screen it grows
+  by `env(safe-area-inset-top)`; `--topbar-h` is remeasured from the live
+  element by `syncTopbarHeight()`, and the sidebar, scrim and graph overlay are
+  all positioned from it.
+
+**Test in a real browser before committing.** There is no test suite, and a
+silent JS error just leaves a blank note body:
+
+```
+python3 tools/build_site.py --no-vault      # skips the 41k-note reference
+python3 -m http.server 8899 -d _site
+```
+
+Then drive it with Playwright — Chromium is preinstalled, and the module lives
+at `/opt/node22/lib/node_modules/playwright`. Watch the console for errors and
+check both themes plus a phone-sized viewport. `window.__g` (graph view) and
+`window.__rel` (relations web) are exposed for exactly this.
+
+### Rendering a note as something other than prose
+
+A note opts into a custom view with a `view:` field in its frontmatter, which
+`route()` dispatches on: `view: relations` on
+`campaign/nations/Political Relations.md` turns that note's markdown table into
+an interactive force-directed web of the nations.
+
+The rule that makes this worth doing: **the markdown stays the single source of
+truth.** The view parses the note's *own table* instead of carrying a second
+copy of the data, so the note still reads correctly in Obsidian and on GitHub,
+and adding a row to the table adds an edge to the web with no code change.
+Follow that pattern for any new view — never duplicate campaign data into JS.
+
 ## Pull request workflow
 
 Claude pushes changes on a feature branch and opens a PR rather than
