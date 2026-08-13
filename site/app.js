@@ -1,0 +1,441 @@
+/* Towers of Saeroth — static vault browser.
+   Renders the repo's markdown client-side with Obsidian wikilinks and the two
+   PF2e Obsidian plugins (statblocks + action icons) reimplemented natively. */
+'use strict';
+
+const BASE = location.pathname.replace(/\/[^/]*$/, '/');
+const $ = (id) => document.getElementById(id);
+
+const state = {
+  campaign: [],      // [{p:path, t:title}]
+  vault: [],         // [{p:path, t:title}]  (lazy)
+  byName: new Map(), // lowercased basename -> [paths]
+  byPath: new Set(),
+  text: new Map(),   // campaign path -> lowercased body, for full-text search
+  links: new Map(),  // campaign path -> outbound wikilink targets (from the build)
+  vaultLoaded: false,
+  current: null,
+};
+
+/* ------------------------------------------------------------------ icons */
+// Font-independent action glyphs. The Obsidian plugins use an embedded icon
+// font that overlaps adjacent text on iOS; these are plain SVG and don't.
+const ACTIONS = {
+  1: { n: 1, label: 'single action' },
+  2: { n: 2, label: 'two actions' },
+  3: { n: 3, label: 'three actions' },
+  0: { n: 0, label: 'free action' },
+  r: { n: 'r', label: 'reaction' },
+};
+function actionSVG(kind) {
+  const a = ACTIONS[kind];
+  if (!a) return '';
+  const cls = 'pf2-action';
+  if (a.n === 'r') {
+    return `<svg class="${cls}" viewBox="0 0 24 24" role="img" aria-label="${a.label}">
+      <path d="M20 12a8 8 0 1 1-2.7-6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M20 3.2V10h-6.6z"/></svg>`;
+  }
+  if (a.n === 0) {
+    return `<svg class="${cls}" viewBox="0 0 24 24" role="img" aria-label="${a.label}">
+      <path d="M12 2.6 21.4 12 12 21.4 2.6 12z" fill="none" stroke="currentColor" stroke-width="3"/></svg>`;
+  }
+  const w = a.n * 9 + 6;
+  let d = '';
+  for (let i = 0; i < a.n; i++) d += `<path d="M${i * 9 + 5.2} 2.6 ${i * 9 + 9.6} 12 ${i * 9 + 5.2} 21.4 ${i * 9 + 0.8} 12z"/>`;
+  return `<svg class="${cls}" viewBox="0 0 ${w} 24" role="img" aria-label="${a.label}">${d}</svg>`;
+}
+const NAMED_ACTIONS = {
+  'one-action': 1, 'two-actions': 2, 'three-actions': 3,
+  'free-action': 0, 'reaction': 'r',
+};
+
+/* ------------------------------------------------------- link resolution */
+function normalize(s) { return s.trim().toLowerCase(); }
+
+function resolveTarget(target) {
+  const clean = target.replace(/\\/g, '/').replace(/\.md$/i, '').trim();
+  // exact path first (vault-style links like Setting/Deities/Nethys)
+  for (const root of ['campaign/', 'vault/']) {
+    const cand = clean.startsWith(root) ? clean : root + clean;
+    if (state.byPath.has(cand + '.md')) return cand + '.md';
+  }
+  // otherwise resolve by filename, preferring campaign notes
+  const hits = state.byName.get(normalize(clean.split('/').pop()));
+  if (!hits || !hits.length) return null;
+  return hits.find((p) => p.startsWith('campaign/')) || hits[0];
+}
+
+/* ------------------------------------------------- markdown configuration */
+function stripFrontmatter(src) {
+  const m = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/.exec(src);
+  if (!m) return { fm: null, body: src };
+  return { fm: m[1], body: src.slice(m[0].length) };
+}
+
+const wikilink = {
+  name: 'wikilink', level: 'inline',
+  start(src) { return src.indexOf('[['); },
+  tokenizer(src) {
+    const m = /^!?\[\[([^\]\n]+?)\]\]/.exec(src);
+    if (!m) return;
+    const raw = m[1];
+    const [targetPart, ...aliasParts] = raw.split('|');
+    const [target, hash] = targetPart.split('#');
+    return {
+      type: 'wikilink', raw: m[0],
+      target: target.trim(), hash: (hash || '').trim(),
+      text: (aliasParts.join('|') || hash || target).trim(),
+    };
+  },
+  renderer(t) {
+    const path = resolveTarget(t.target);
+    const label = escapeHtml(t.text);
+    if (!path) return `<span class="wl broken" title="Unresolved: ${escapeHtml(t.target)}">${label}</span>`;
+    const frag = t.hash ? '%23' + encodeURIComponent(t.hash) : '';
+    return `<a class="wl" href="#/${encodeURI(path)}${frag}">${label}</a>`;
+  },
+};
+
+const highlight = {
+  name: 'highlight', level: 'inline',
+  start(src) { return src.indexOf('=='); },
+  tokenizer(src) {
+    const m = /^==([^=\n]+)==/.exec(src);
+    if (!m) return;
+    return { type: 'highlight', raw: m[0], text: m[1] };
+  },
+  renderer(t) { return `<mark>${escapeHtml(t.text)}</mark>`; },
+};
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+/* --------------------------------------------------- statblock rendering */
+// Renders a ```pf2e-stats / ```sf2e-stats block the way the Obsidian plugin does.
+function renderStatblock(src, starfinder) {
+  const lines = src.split(/\r?\n/);
+  let out = '';
+  let listOpen = false;
+  const closeList = () => { if (listOpen) { out += '</div>'; listOpen = false; } };
+
+  for (let raw of lines) {
+    const indent = (/^(\t+|\s{4,})/.exec(raw) || [''])[0].length;
+    const line = raw.trim();
+    if (!line) { closeList(); continue; }
+
+    if (/^#\s+/.test(line)) {
+      closeList();
+      out += `<div class="sb-title">${inlineSB(line.replace(/^#\s+/, ''))}</div>`;
+      continue;
+    }
+    if (/^##\s+/.test(line)) {
+      closeList();
+      out += `<div class="sb-level">${inlineSB(line.replace(/^##\s+/, ''))}</div>`;
+      continue;
+    }
+    if (/^###\s+/.test(line)) {
+      closeList();
+      out += `<div class="sb-traits">${traitPills(line.replace(/^###\s+/, ''))}</div>`;
+      continue;
+    }
+    if (/^-{3,}$/.test(line)) { closeList(); out += '<hr class="sb-rule">'; continue; }
+    if (/^==/.test(line) && /==$/.test(line)) {
+      closeList();
+      out += `<div class="sb-traits">${traitPills(line)}</div>`;
+      continue;
+    }
+    const cls = indent ? ' class="sb-indent"' : '';
+    out += `<p${cls}>${inlineSB(line)}</p>`;
+  }
+  closeList();
+  return `<div class="statblock${starfinder ? ' sf' : ''}">${out}</div>`;
+}
+
+function traitPills(s) {
+  const pills = [...s.matchAll(/==([^=]+)==/g)].map((m) => m[1].trim());
+  const src = pills.length ? pills : s.split(/\s{2,}|,/).map((x) => x.trim()).filter(Boolean);
+  return src.map((t) => `<span class="trait ${traitClass(t)}">${escapeHtml(t)}</span>`).join('');
+}
+const SIZES = ['tiny', 'small', 'medium', 'large', 'huge', 'gargantuan'];
+const RARITY = { common: 'common', uncommon: 'uncommon', rare: 'rare', unique: 'unique' };
+function traitClass(t) {
+  const k = t.toLowerCase();
+  if (RARITY[k]) return 'r-' + RARITY[k];
+  if (SIZES.includes(k)) return 'r-size';
+  if (/^(lg|ng|cg|ln|n|cn|le|ne|ce)$/.test(k)) return 'r-align';
+  return '';
+}
+
+// inline formatting inside a statblock: bold, italics, action icons, wikilinks
+function inlineSB(s) {
+  let h = escapeHtml(s);
+  h = h.replace(/`\[(one-action|two-actions|three-actions|free-action|reaction)\]`/g,
+    (_, k) => actionSVG(NAMED_ACTIONS[k]));
+  h = h.replace(/`pf2:([0-3r])`/gi, (_, k) => actionSVG(k.toLowerCase() === 'r' ? 'r' : Number(k)));
+  h = h.replace(/\[\[([^\]]+?)\]\]/g, (_, raw) => {
+    const [tp, ...al] = raw.split('|');
+    const [target] = tp.split('#');
+    const p = resolveTarget(target);
+    const label = escapeHtml((al.join('|') || target).trim());
+    return p ? `<a class="wl" href="#/${encodeURI(p)}">${label}</a>`
+             : `<span class="wl broken">${label}</span>`;
+  });
+  h = h.replace(/==([^=]+)==/g, (_, t) => `<span class="trait ${traitClass(t)}">${t}</span>`);
+  h = h.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  h = h.replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>');
+  h = h.replace(/`([^`]+)`/g, '<code>$1</code>');
+  return h;
+}
+
+/* --------------------------------------------------------- marked wiring */
+/* marked 12 passes positional arguments to renderer methods, not token
+   objects — the token-object signature only arrived in later majors. */
+const renderer = {
+  code(code, infostring) {
+    const lang = (infostring || '').trim().toLowerCase();
+    if (lang === 'pf2e-stats' || lang === 'sf2e-stats') {
+      return renderStatblock(code, lang === 'sf2e-stats');
+    }
+    return `<pre><code>${escapeHtml(code)}</code></pre>`;
+  },
+  // `text` arrives already HTML-escaped by marked, so it is not escaped again.
+  codespan(text) {
+    let m = /^pf2:([0-3r])$/i.exec(text);
+    if (m) return actionSVG(m[1].toLowerCase() === 'r' ? 'r' : Number(m[1]));
+    m = /^\[(one-action|two-actions|three-actions|free-action|reaction)\]$/.exec(text);
+    if (m) return actionSVG(NAMED_ACTIONS[m[1]]);
+    return `<code>${text}</code>`;
+  },
+  // `quote` is the already-rendered inner HTML.
+  blockquote(quote) {
+    const m = /^\s*<p>\s*\[!(\w+)\]([^<\n]*)/.exec(quote);
+    if (m) {
+      const kind = m[1].toLowerCase();
+      const title = (m[2] || '').trim() || kind[0].toUpperCase() + kind.slice(1);
+      const body = quote.replace(/^\s*<p>\s*\[!\w+\][^<\n]*/, '<p>').replace(/^<p>\s*<\/p>\s*/, '');
+      return `<div class="callout c-${kind}"><div class="callout-t">${escapeHtml(title)}</div>${body}</div>`;
+    }
+    return `<blockquote>${quote}</blockquote>`;
+  },
+  heading(text, level, raw) {
+    const id = String(raw || text).toLowerCase().replace(/<[^>]*>/g, '')
+      .replace(/[^\w]+/g, '-').replace(/^-|-$/g, '');
+    return `<h${level} id="${id}">${text}</h${level}>`;
+  },
+};
+
+marked.use({ extensions: [wikilink, highlight], renderer, gfm: true, breaks: false });
+
+/* ------------------------------------------------------------- rendering */
+async function fetchNote(path) {
+  const res = await fetch(BASE + 'content/' + path.split('/').map(encodeURIComponent).join('/'));
+  if (!res.ok) throw new Error(res.status + ' ' + path);
+  return res.text();
+}
+
+function frontmatterTable(fm) {
+  if (!fm) return '';
+  const rows = [];
+  for (const line of fm.split(/\r?\n/)) {
+    const m = /^([A-Za-z0-9_ -]+):\s*(.*)$/.exec(line);
+    if (m && m[2].trim()) rows.push([m[1], m[2].replace(/^["']|["']$/g, '')]);
+  }
+  if (!rows.length) return '';
+  return `<details class="props"><summary>Properties</summary><dl>` +
+    rows.map(([k, v]) => `<dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd>`).join('') +
+    `</dl></details>`;
+}
+
+async function route() {
+  const hash = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
+  const [path, frag] = hash.split('#');
+  const target = path || 'campaign/README.md';
+  state.current = target;
+  const el = $('content');
+  try {
+    const raw = await fetchNote(target);
+    const { fm, body } = stripFrontmatter(raw);
+    el.innerHTML =
+      `<nav class="crumbs">${crumbs(target)}</nav>` +
+      frontmatterTable(fm) +
+      marked.parse(body);
+    document.title = target.split('/').pop().replace(/\.md$/, '') + ' — Towers of Saeroth';
+    renderBacklinks(target);
+    if (frag) {
+      const t = document.getElementById(frag.toLowerCase().replace(/[^\w]+/g, '-'));
+      if (t) t.scrollIntoView();
+    } else {
+      $('main').scrollTop = 0;
+    }
+  } catch (e) {
+    el.innerHTML = `<h1>Not found</h1><p class="muted">Could not load <code>${escapeHtml(target)}</code>.</p>`;
+  }
+  markActive(target);
+  closeSidebar();
+}
+
+function crumbs(path) {
+  const parts = path.split('/');
+  return parts.map((p, i) =>
+    i === parts.length - 1
+      ? `<span>${escapeHtml(p.replace(/\.md$/, ''))}</span>`
+      : `<span class="muted">${escapeHtml(p)}</span>`
+  ).join('<span class="sep">/</span>');
+}
+
+/* Backlinks: which campaign notes link here. Vault is too large to scan.
+   Uses the outbound-link lists captured at build time — the searchable body
+   has wikilinks flattened to their display text, so it cannot be used here. */
+function renderBacklinks(target) {
+  const name = normalize(target.split('/').pop().replace(/\.md$/, ''));
+  const hits = [];
+  for (const [p, links] of state.links) {
+    if (p !== target && links.includes(name)) hits.push(p);
+  }
+  const box = $('backlinks');
+  if (!hits.length) { box.hidden = true; box.innerHTML = ''; return; }
+  box.hidden = false;
+  box.innerHTML = `<h2>Linked from</h2><ul>` + hits.sort().map((p) =>
+    `<li><a href="#/${encodeURI(p)}">${escapeHtml(p.split('/').pop().replace(/\.md$/, ''))}</a></li>`
+  ).join('') + '</ul>';
+}
+
+/* ------------------------------------------------------------ navigation */
+function buildTree(paths, mount, opts = {}) {
+  const root = {};
+  for (const p of paths) {
+    const parts = p.split('/');
+    let node = root;
+    parts.forEach((seg, i) => {
+      if (i === parts.length - 1) (node.__files ||= []).push({ seg, p });
+      else node = (node[seg] ||= {});
+    });
+  }
+  mount.innerHTML = renderNode(root, '', opts.open || 0);
+}
+function renderNode(node, prefix, openDepth, depth = 0) {
+  let html = '';
+  for (const key of Object.keys(node).filter((k) => k !== '__files').sort()) {
+    const open = depth < openDepth ? ' open' : '';
+    html += `<details${open}><summary>${escapeHtml(key)}</summary>` +
+      renderNode(node[key], prefix + key + '/', openDepth, depth + 1) + '</details>';
+  }
+  for (const f of (node.__files || []).sort((a, b) => a.seg.localeCompare(b.seg))) {
+    html += `<a class="leaf" data-path="${escapeHtml(f.p)}" href="#/${encodeURI(f.p)}">${escapeHtml(f.seg.replace(/\.md$/, ''))}</a>`;
+  }
+  return html;
+}
+function markActive(path) {
+  document.querySelectorAll('.leaf.active').forEach((a) => a.classList.remove('active'));
+  const a = document.querySelector(`.leaf[data-path="${CSS.escape(path)}"]`);
+  if (a) { a.classList.add('active'); a.closest('details') && openParents(a); }
+}
+function openParents(el) {
+  let d = el.closest('details');
+  while (d) { d.open = true; d = d.parentElement.closest('details'); }
+}
+
+/* ---------------------------------------------------------------- search */
+async function ensureVault() {
+  if (state.vaultLoaded) return;
+  const res = await fetch(BASE + 'index-vault.json');
+  const list = await res.json();
+  state.vault = list;
+  for (const it of list) indexEntry(it.p);
+  state.vaultLoaded = true;
+}
+function indexEntry(p) {
+  state.byPath.add(p);
+  const n = normalize(p.split('/').pop().replace(/\.md$/, ''));
+  if (!state.byName.has(n)) state.byName.set(n, []);
+  state.byName.get(n).push(p);
+}
+
+function search(q) {
+  const needle = normalize(q);
+  if (!needle) return [];
+  const out = [];
+  for (const it of state.campaign) {
+    const name = it.p.split('/').pop().replace(/\.md$/, '');
+    const inTitle = normalize(name).includes(needle);
+    const body = state.text.get(it.p) || '';
+    const at = body.indexOf(needle);
+    if (inTitle || at >= 0) {
+      out.push({ p: it.p, name, score: inTitle ? 0 : 1,
+        snippet: at >= 0 ? body.slice(Math.max(0, at - 40), at + 80) : '' });
+    }
+  }
+  if (state.vaultLoaded) {
+    for (const it of state.vault) {
+      const name = it.p.split('/').pop().replace(/\.md$/, '');
+      if (normalize(name).includes(needle)) out.push({ p: it.p, name, score: 2, snippet: '' });
+    }
+  }
+  return out.sort((a, b) => a.score - b.score || a.name.length - b.name.length).slice(0, 60);
+}
+
+function showResults(list) {
+  $('searchResults').innerHTML = list.length
+    ? list.map((r) => `<a href="#/${encodeURI(r.p)}"><strong>${escapeHtml(r.name)}</strong>
+        <span class="muted">${escapeHtml(r.p.split('/').slice(0, -1).join('/'))}</span>
+        ${r.snippet ? `<span class="snip">…${escapeHtml(r.snippet)}…</span>` : ''}</a>`).join('')
+    : '<p class="muted pad">No matches.</p>';
+}
+
+/* ------------------------------------------------------------------ boot */
+function openSidebar() { $('sidebar').classList.add('open'); $('scrim').hidden = false; $('menuBtn').setAttribute('aria-expanded', 'true'); }
+function closeSidebar() { $('sidebar').classList.remove('open'); $('scrim').hidden = true; $('menuBtn').setAttribute('aria-expanded', 'false'); }
+
+async function init() {
+  const theme = localStorage.getItem('theme');
+  if (theme) document.documentElement.dataset.theme = theme;
+
+  const idx = await (await fetch(BASE + 'index-campaign.json')).json();
+  state.campaign = idx.notes;
+  for (const it of state.campaign) indexEntry(it.p);
+  for (const it of state.campaign) {
+    if (it.body) state.text.set(it.p, it.body);
+    state.links.set(it.p, it.l || []);
+  }
+
+  buildTree(state.campaign.map((n) => n.p), $('tree'), { open: 2 });
+
+  $('menuBtn').onclick = () => ($('sidebar').classList.contains('open') ? closeSidebar() : openSidebar());
+  $('scrim').onclick = closeSidebar;
+  $('themeBtn').onclick = () => {
+    const cur = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = cur;
+    localStorage.setItem('theme', cur);
+  };
+  $('searchBtn').onclick = async () => {
+    $('searchModal').hidden = false; $('searchInput').focus();
+    ensureVault().catch(() => {});
+  };
+  $('searchModal').onclick = (e) => { if (e.target.id === 'searchModal') $('searchModal').hidden = true; };
+  $('searchInput').oninput = (e) => showResults(search(e.target.value));
+  $('searchResults').onclick = () => { $('searchModal').hidden = true; };
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { $('searchModal').hidden = true; closeSidebar(); }
+    if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === '/') {
+      if (document.activeElement.tagName === 'INPUT') return;
+      e.preventDefault(); $('searchBtn').click();
+    }
+  });
+  $('filter').oninput = (e) => {
+    const q = normalize(e.target.value);
+    if (!q) { buildTree(state.campaign.map((n) => n.p), $('tree'), { open: 2 }); markActive(state.current); return; }
+    const hits = state.campaign.map((n) => n.p).filter((p) => normalize(p).includes(q));
+    buildTree(hits, $('tree'), { open: 9 });
+  };
+
+  addEventListener('hashchange', route);
+  await route();
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(BASE + 'sw.js').catch(() => {});
+  }
+}
+init();

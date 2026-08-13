@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Towers of Saeroth">
+  <rect width="512" height="512" rx="96" fill="#1b1a18"/>
+  <g fill="#d98b6a">
+    <!-- three towers -->
+    <path d="M118 214h56v182h-56z"/>
+    <path d="M110 214h72l-36-46z"/>
+    <path d="M394 214h-56v182h56z"/>
+    <path d="M402 214h-72l36-46z"/>
+    <path d="M222 168h68v228h-68z"/>
+    <path d="M212 168h88l-44-56z"/>
+  </g>
+  <g fill="#1b1a18">
+    <rect x="136" y="250" width="20" height="30" rx="9"/>
+    <rect x="356" y="250" width="20" height="30" rx="9"/>
+    <rect x="246" y="212" width="20" height="32" rx="9"/>
+  </g>
+  <path d="M96 400h320v26H96z" fill="#8a4230"/>
+</svg>

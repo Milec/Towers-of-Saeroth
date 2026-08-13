@@ -1,0 +1,66 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'campaign/**'
+      - 'vault/**'
+      - 'site/**'
+      - 'tools/build_site.py'
+      - 'tools/make_icons.py'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+    inputs:
+      include_vault:
+        description: 'Include the full rules vault (~108 MB, slower deploy)'
+        type: boolean
+        default: true
+
+# Pages needs these to mint the deployment token.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; let an in-flight one finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate PWA icons
+        run: python3 tools/make_icons.py
+
+      - name: Build site
+        run: |
+          if [ "${{ github.event.inputs.include_vault }}" = "false" ]; then
+            python3 tools/build_site.py --no-vault
+          else
+            python3 tools/build_site.py
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

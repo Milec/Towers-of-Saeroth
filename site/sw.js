@@ -1,0 +1,71 @@
+/* Service worker.
+   campaign/ is small (under 1 MB) so it is precached in full and works fully
+   offline. vault/ is ~192 MB across 41k files, so it is cached lazily as pages
+   are actually opened — anything you have read once stays available offline. */
+const VERSION = 'v1';
+const SHELL = 'shell-' + VERSION;
+const NOTES = 'notes-' + VERSION;
+
+const SHELL_FILES = [
+  '', 'index.html', 'app.js', 'styles.css', 'marked.min.js',
+  'manifest.webmanifest', 'index-campaign.json', 'icons/icon.svg',
+];
+
+self.addEventListener('install', (e) => {
+  e.waitUntil((async () => {
+    const cache = await caches.open(SHELL);
+    const base = new URL('./', self.registration.scope).pathname;
+    await cache.addAll(SHELL_FILES.map((f) => base + f));
+    // precache every campaign note
+    try {
+      const list = await (await fetch(base + 'precache.json')).json();
+      const notes = await caches.open(NOTES);
+      await Promise.all(list.map((p) =>
+        notes.add(base + 'content/' + p.split('/').map(encodeURIComponent).join('/')).catch(() => {})));
+    } catch (_) { /* offline install: shell only */ }
+    self.skipWaiting();
+  })());
+});
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil((async () => {
+    for (const k of await caches.keys()) {
+      if (!k.endsWith(VERSION)) await caches.delete(k);
+    }
+    await self.clients.claim();
+  })());
+});
+
+self.addEventListener('fetch', (e) => {
+  const req = e.request;
+  if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
+
+  // Notes and the vault index: cache-first, then network, then remember it.
+  if (/\/content\/|index-vault\.json$/.test(req.url)) {
+    e.respondWith((async () => {
+      const hit = await caches.match(req);
+      if (hit) return hit;
+      try {
+        const res = await fetch(req);
+        if (res.ok) (await caches.open(NOTES)).put(req, res.clone());
+        return res;
+      } catch (err) {
+        return new Response('# Offline\n\nThis note has not been opened before, so it is not cached yet.',
+          { headers: { 'Content-Type': 'text/markdown' } });
+      }
+    })());
+    return;
+  }
+
+  // App shell: network-first so updates land, falling back to cache offline.
+  e.respondWith((async () => {
+    try {
+      const res = await fetch(req);
+      if (res.ok) (await caches.open(SHELL)).put(req, res.clone());
+      return res;
+    } catch (err) {
+      return (await caches.match(req)) ||
+             (await caches.match(new URL('./index.html', self.registration.scope).pathname));
+    }
+  })());
+});
