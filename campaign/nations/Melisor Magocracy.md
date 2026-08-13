@@ -13,7 +13,7 @@ utterly indispensable to anyone who needs magic done properly.
 
 - **Capital** Thelemar, a city of competing spires where each great academy builds upward to overlook its rivals
 - **Geography** A high plateau chosen for the ley-lines beneath it; academy-cities scattered across it, linked by teleportation circles rather than roads
-- **Races** [[Ancestries/Human (Player Core)|Humans]], [[Ancestries/Elf (Player Core)|Elves]], [[Ancestries/Gnome (Player Core)|Gnomes]], [[Ancestries/Tiefling|Tieflings]], [[Ancestries/Fetchling|Fetchlings]], any race with magical aptitude
+- **Races** [[Human|Humans]], [[Elf|Elves]], [[Gnome|Gnomes]], [[Tiefling|Tieflings]], [[Fetchling|Fetchlings]], any race with magical aptitude
 - **Economic Specialties** Spellcasting services, enchanted items, magical education, teleportation networks, alchemy, magical research
 - **Military** Battle mages, arcane artillery, summoners, golems, elite mage hunters
 - **Government** Council of Archmages representing the greatest magical academies

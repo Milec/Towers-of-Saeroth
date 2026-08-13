@@ -46,13 +46,13 @@ matched the concept closely enough at this level.
 
 **Speed** 25 feet
 
-**Melee** `[one-action]` greatsword +17 ([[Traits/Sweep]], [[Traits/Versatile (Player Core)|versatile P]]), **Damage** 2d6+8 slashing
+**Melee** `[one-action]` greatsword +17 (sweep, versatile P), **Damage** 2d6+8 slashing
 
-**Melee** `[one-action]` fist +15 ([[Traits/Agile]], [[Traits/Finesse]], [[Traits/Nonlethal]]), **Damage** 1d4+8 bludgeoning
+**Melee** `[one-action]` fist +15 (agile, finesse, nonlethal), **Damage** 1d4+8 bludgeoning
 
 **Blade Storm** `[two-actions]` Garrick makes one melee Strike against each of up to two adjacent creatures, using the same attack roll against both.
 
-**Unstoppable Advance** `[one-action]` ([[Traits/Move]]) Garrick Strides up to his Speed, ignoring difficult terrain, then Strikes.
+**Unstoppable Advance** `[one-action]` (move) Garrick Strides up to his Speed, ignoring difficult terrain, then Strikes.
 ```
 
 **Tactics** Garrick opens a fight by closing the distance — `pf2:1` Unstoppable Advance into range, then swings for the biggest cluster he can find with `pf2:2` Blade Storm. If two foes are ever adjacent to him at once, that's the fight; if not, he just trades hits and lets Reactive Strike (`pf2:r`) punish anyone who tries to walk past him. His weak Will save is the way in — rattle him first and the rest gets easier.

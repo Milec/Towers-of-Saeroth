@@ -10,8 +10,8 @@ Empire. That distinction is the whole reason a commoner and a duke's son
 compete at the Trial on equal footing: both are entering Imperial service,
 not a lord's retinue.
 
-Membership is restricted to [[Ancestries/Human (Player Core)|humans]] and
-half-humans ([[Ancestries/Half-Elf|half-elves]], [[Ancestries/Half-Orc|half-orcs]]),
+Membership is restricted to [[Human|humans]] and
+half-humans ([[Half-Elf|half-elves]], [[Half-Orc|half-orcs]]),
 in keeping with [[Vaelic Principality]]'s broader ancestry hierarchy. The
 restriction bites hardest at the very first rung, not just at the top —
 every other ancestry is barred not only from the Order's higher ranks but

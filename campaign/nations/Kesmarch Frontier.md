@@ -14,7 +14,7 @@ claimed is land that has to be defended, not land that was granted.
 
 - **Capital** Charterhold, a stockade town that has outgrown its walls twice and rebuilt them further out both times
 - **Geography** Open plains giving way to jungle edge in the south; the border is wherever the newest homestead stands this year
-- **Races** [[Ancestries/Human (Player Core)|Humans]], [[Ancestries/Halfling (Player Core)|Halflings]], [[Ancestries/Dwarf (Player Core)|Dwarves]], [[Ancestries/Half-Orc|Half-Orcs]], [[Ancestries/Gnome (Player Core)|Gnomes]] — settlers drawn from every neighboring nation's overflow
+- **Races** [[Human|Humans]], [[Halfling|Halflings]], [[Dwarf|Dwarves]], [[Half-Orc|Half-Orcs]], [[Gnome|Gnomes]] — settlers drawn from every neighboring nation's overflow
 - **Economic Specialties** Furs, timber, ranching, homestead grain, prospecting, wagon-trade
 - **Military** Militia rangers, homestead defense companies, scout cavalry, frontier marshals
 - **Government** Elected Territorial Council, ratified under a founding charter

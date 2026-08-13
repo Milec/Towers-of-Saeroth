@@ -12,7 +12,7 @@ continent outmaneuvers theirs.
 
 - **Capital** Thalassar, half of it built on the archipelago's largest island and half of it built below the waterline
 - **Geography** A wide archipelago and the reef-cities beneath it; the Tide Lords' authority is measured in sea lanes rather than land borders
-- **Races** [[Ancestries/Merfolk|Merfolk]], [[Bestiary/Triton|Tritons]], [[Ancestries/Azarketi|Azarketi]], [[Ancestries/Heritages/Aquatic Elf|Sea Elves]], [[Ancestries/Athamaru|Athamaru]], [[Ancestries/Tripkee|Tripkee]]
+- **Races** [[Merfolk|Merfolk]], [[Triton|Tritons]], [[Azarketi|Azarketi]], [[Aquatic Elf|Sea Elves]], [[Athamaru|Athamaru]], [[Tripkee|Tripkee]]
 - **Economic Specialties** Pearls, coral, fisheries, maritime trade, salvage
 - **Military** Naval fleets, marine infantry, sea beast cavalry, water magic
 - **Government** Council of Tide Lords

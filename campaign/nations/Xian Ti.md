@@ -13,7 +13,7 @@ them.
 
 - **Capital** Renshan, the Celestial City, laid out on a strict grid where a household's address states its rank
 - **Geography** Eastern river valleys and terraced highlands, with a long fortified frontier facing the steppe
-- **Races** [[Ancestries/Human (Player Core)|Humans]], [[Ancestries/Tengu (Player Core 2)|Tengu]], [[Ancestries/Kitsune|Kitsune]], [[Ancestries/Samsaran|Samsarans]], [[Ancestries/Wayang|Wayang]], [[Ancestries/Nagaji|Nagaji]], [[Ancestries/Tanuki|Tanuki]]
+- **Races** [[Human|Humans]], [[Tengu|Tengu]], [[Kitsune|Kitsune]], [[Samsaran|Samsarans]], [[Wayang|Wayang]], [[Nagaji|Nagaji]], [[Tanuki|Tanuki]]
 - **Economic Specialties** Silk, tea, porcelain, paper, scholarship
 - **Military** Professional armies, monastic warriors, horse archers, battle mages
 - **Government** Celestial Emperor supported by scholar officials

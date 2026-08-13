@@ -15,7 +15,7 @@ its most exhausting one, depending who's arguing.
 
 - **Capital** Vantry, a harbor city whose assembly hall was deliberately built with public galleries larger than the floor
 - **Geography** Coastal lowlands and working harbors; little defensible terrain, which is why the militia matters
-- **Races** [[Ancestries/Human (Player Core)|Humans]], [[Ancestries/Elf (Player Core)|Elves]], [[Ancestries/Dwarf (Player Core)|Dwarves]], [[Ancestries/Halfling (Player Core)|Halflings]], [[Ancestries/Half-Elf|Half-Elves]], [[Ancestries/Half-Orc|Half-Orcs]], [[Ancestries/Tiefling|Tieflings]] — refugees and dissidents of every kind
+- **Races** [[Human|Humans]], [[Elf|Elves]], [[Dwarf|Dwarves]], [[Halfling|Halflings]], [[Half-Elf|Half-Elves]], [[Half-Orc|Half-Orcs]], [[Tiefling|Tieflings]] — refugees and dissidents of every kind
 - **Economic Specialties** Printing and publishing, shipbuilding, textiles, civic engineering, legal and diplomatic services
 - **Military** Citizen militia drawn from every trade, volunteer regiments, a coastal defense fleet, city watch companies
 - **Government** Elected Assembly of Citizens, led by a term-limited Chancellor

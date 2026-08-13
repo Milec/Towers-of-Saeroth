@@ -13,7 +13,7 @@ fearsome warriors who keep their word.
 
 - **Capital** Ordu-Khazan, a tent-city of forty thousand that strikes camp and moves with the Great Khagan
 - **Geography** Open steppe from horizon to horizon, broken by iron-rich hill country in the south and the horse-pastures the whole economy rests on
-- **Races** [[Ancestries/Orc (Player Core)|Orcs]], [[Ancestries/Hobgoblin (Player Core 2)|Hobgoblins]], [[Ancestries/Goblin (Player Core)|Goblins]], [[Bestiary/Families/Bugbear (Monster Core)|Bugbears]], [[Bestiary/Families/Ogre (Monster Core)|Ogres]], [[Ancestries/Kobold (Player Core 2)|Kobolds]], [[Ancestries/Centaur|Centaurs]], [[Ancestries/Minotaur|Minotaurs]], other monstrous peoples
+- **Races** [[Orc|Orcs]], [[Hobgoblin|Hobgoblins]], [[Goblin|Goblins]], [[Bugbear|Bugbears]], [[Ogre|Ogres]], [[Kobold|Kobolds]], [[Centaur|Centaurs]], [[Minotaur|Minotaurs]], other monstrous peoples
 - **Economic Specialties** Iron, livestock, horses, mercenary companies, leatherworking, mining
 - **Military** Massive cavalry, wolf riders, heavy infantry, siege beasts, monster auxiliaries
 - **Government** Great Khagan elected by the assembled khans

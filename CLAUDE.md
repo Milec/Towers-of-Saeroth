@@ -34,11 +34,21 @@ Obsidian-flavoured markdown, matching the convention already used throughout
   actually known — a stat block reference, a level, a settlement's region, a
   faction's goal. Skip fields with nothing to say rather than leaving them
   blank.
-- **`[[Wikilinks]]`** for every cross-reference — to other campaign notes and
-  to `vault/` entries alike (e.g. `[[Bestiary/Fence]]` when an NPC is statted
-  as a published creature, `[[Setting/Deities/Sarenrae]]` for a cleric's
-  patron). A plain prose mention doesn't link back to anything; a wikilink
+- **`[[Wikilinks]]`** for every cross-reference between campaign notes — an
+  NPC to their faction, a faction to its nation, a nation to its patron
+  deity. A plain prose mention doesn't link back to anything; a wikilink
   does, which is the whole point of a vault.
+- **Never link into `vault/` from a campaign note.** Obsidian opens
+  `campaign/` as the vault root (the full `vault/` is 41k files, too large to
+  index), so `[[Setting/Deities/Sarenrae]]` or
+  `[[Ancestries/Human (Player Core)]]` points *above* the root and silently
+  resolves to nothing — the note looks fine in the editor and the link is
+  dead in the graph. Instead: copy the flavour into `campaign/` (see
+  `campaign/deities/` and `campaign/ancestries/` for the pattern), link that
+  local note, and cite the rules source as plain text at the bottom —
+  `` *Full entry: `vault/Ancestries/Kholo.md` — Player Core 2 pg. 16* ``.
+  Campaign notes keep short filenames with no source suffix (`Human.md`, not
+  `Human (Player Core).md`).
 - **A short body**, not a wall of text: a paragraph or two, then bullet facts.
   Long narrative belongs in `sessions/`, not baked into an NPC or location
   note.
@@ -138,8 +148,12 @@ it is the job:
   backticked `` `[one-action]` `` form.
 - Tab-indent degrees of success (`**Critical Success**`, `**Success**`, …)
   beneath their ability.
-- Keep the AON `[[Wikilinks]]` on traits, spells and abilities — they
-  survive inside the codeblock and are the point of the vault.
+- **Strip the AON `[[Wikilinks]]` on traits, spells and abilities to plain
+  text.** They point into `vault/` and so resolve to nothing from the
+  `campaign/`-rooted Obsidian vault (see the wikilink rule above). Weapon
+  traits read fine unlinked — `(sweep, versatile P)` — which is how AON
+  prints them anyway. Only link out to a note that exists inside
+  `campaign/`.
 
 Use `sf2e-stats` instead of `pf2e-stats` only for Starfinder 2e content. For
 abbreviated blocks (a one-line NPC blurb) the plugin wants traits as an H3

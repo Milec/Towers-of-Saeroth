@@ -18,7 +18,7 @@ grace — and it decides often.
 
 - **Capital** Ostravin, the Gilded See, where the cathedral's roof is worth more than the district beneath it
 - **Geography** Hill country of cathedral-towns and pilgrim shrines, prosperous in the valleys and conspicuously poor on the slopes
-- **Races** [[Ancestries/Human (Player Core)|Humans]] (clergy and nobility), [[Ancestries/Aasimar|Aasimar]] (revered as living proof of favor), [[Ancestries/Tiefling|Tieflings]] (a persecuted underclass, blamed on principle)
+- **Races** [[Human|Humans]] (clergy and nobility), [[Aasimar|Aasimar]] (revered as living proof of favor), [[Tiefling|Tieflings]] (a persecuted underclass, blamed on principle)
 - **Economic Specialties** Gilded relics, penitent's silk, ceremonial armaments, tithe-banking, indulgence brokerage
 - **Culture** Faith is inseparable from status; the richer the display of devotion, the more genuine it's assumed to be. Suffering is sanctified only when it's someone else's.
 - **Military** Inquisitorial knights, flagellant shock troops, cathedral guard, relic-bound zealots

@@ -12,7 +12,7 @@ its irrigation canals and clockwork feed half the continent.
 
 - **Capital** Brightfurrow, a canal-town where the guildhalls sit level with the locks they govern
 - **Geography** A fertile lowland basin threaded by an irrigation network that took four generations to dig and is maintained obsessively
-- **Races** [[Ancestries/Gnome (Player Core)|Gnomes]], [[Ancestries/Halfling (Player Core)|Halflings]], [[Ancestries/Leshy (Player Core)|Leshies]]
+- **Races** [[Gnome|Gnomes]], [[Halfling|Halflings]], [[Leshy|Leshies]]
 - **Economic Specialties** Agriculture, irrigation, machinery, clockwork, food exports
 - **Military** Engineers, crossbow corps, defensive fortifications, construct support
 - **Government** Council of guildmasters and elected engineers

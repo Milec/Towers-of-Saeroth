@@ -12,7 +12,7 @@ last of its kind; it's meant to be inherited.
 
 - **Capital** Highforge, the oldest and deepest hold, whose great furnace has not been allowed to go out in nine centuries
 - **Geography** A northern mountain range, with most of the nation's living space cut downward into it rather than built on top
-- **Races** [[Ancestries/Dwarf (Player Core)|Dwarves]], small [[Ancestries/Human (Player Core)|human]] merchant communities
+- **Races** [[Dwarf|Dwarves]], small [[Human|human]] merchant communities
 - **Economic Specialties** Steel, gold, gems, engineering, masterwork weapons
 - **Military** Heavy infantry, shield walls, tunnel fighters, engineers
 - **Government** Assembly of High Thanes
