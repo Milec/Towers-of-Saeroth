@@ -842,59 +842,127 @@ function graphPointer(ev) {
   return best;
 }
 
+/* Zoom about a screen point rather than the canvas centre, so pinching or
+   scrolling keeps whatever is under the fingers/cursor in place. */
+function zoomAt(sx, sy, factor) {
+  const r = $('gcanvas').getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const wx = (sx - cx - graph.ox) / graph.scale;
+  const wy = (sy - cy - graph.oy) / graph.scale;
+  const next = Math.max(0.06, Math.min(6, graph.scale * factor));
+  graph.scale = next;
+  graph.ox = sx - cx - wx * next;
+  graph.oy = sy - cy - wy * next;
+}
+
 function initGraphEvents() {
   const cv = $('gcanvas');
-  let dragging = false, lx = 0, ly = 0, moved = 0, holdTimer = 0, held = false;
+  // Every active pointer is tracked, because a phone needs two of them: one
+  // finger pans or holds, two pinch to zoom.
+  const pts = new Map();
+  let moved = 0, holdTimer = 0, held = false, pinchD = 0;
+  const TOUCH_SLOP = 16;   // a finger jitters far more than a mouse
 
   const cancelHold = () => { clearTimeout(holdTimer); holdTimer = 0; };
+  const centre = () => {
+    let x = 0, y = 0;
+    for (const q of pts.values()) { x += q.x; y += q.y; }
+    return { x: x / pts.size, y: y / pts.size };
+  };
+  const spread = () => {
+    const [a, b] = [...pts.values()];
+    return Math.hypot(a.x - b.x, a.y - b.y);
+  };
 
   cv.addEventListener('pointerdown', (e) => {
-    dragging = true; moved = 0; held = false;
-    lx = e.clientX; ly = e.clientY;
     cv.setPointerCapture(e.pointerId);
-    // Press-and-hold highlights a node's neighbourhood. Touch has no hover, so
-    // without this the highlight is desktop-only.
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    if (pts.size === 2) {          // second finger down: start pinching
+      cancelHold();
+      held = false; graph.hover = -1;
+      pinchD = spread();
+      return;
+    }
+    if (pts.size > 2) { cancelHold(); return; }
+
+    moved = 0; held = false;
+    const sx = e.clientX, sy = e.clientY;
     cancelHold();
     holdTimer = setTimeout(() => {
-      if (moved < 8) {
-        const i = graphPointer(e);
+      if (moved < TOUCH_SLOP && pts.size === 1) {
+        const i = graphPointer({ clientX: sx, clientY: sy });
         if (i >= 0) {
           held = true;
           graph.hover = i;
-          if (navigator.vibrate) navigator.vibrate(12);
+          if (navigator.vibrate) { try { navigator.vibrate(12); } catch (_) {} }
         }
       }
-    }, 320);
+    }, 300);
   });
 
   cv.addEventListener('pointermove', (e) => {
-    if (dragging) {
-      const dx = e.clientX - lx, dy = e.clientY - ly;
-      moved += Math.abs(dx) + Math.abs(dy);
-      if (moved > 8) cancelHold();
-      if (!held) { graph.ox += dx; graph.oy += dy; }   // holding inspects, doesn't pan
-      lx = e.clientX; ly = e.clientY;
-    } else if (e.pointerType !== 'touch') {
-      graph.hover = graphPointer(e);
+    const prev = pts.get(e.pointerId);
+    if (!prev) {
+      if (e.pointerType !== 'touch') graph.hover = graphPointer(e);   // mouse hover
+      return;
     }
+    const dx = e.clientX - prev.x, dy = e.clientY - prev.y;
+    prev.x = e.clientX; prev.y = e.clientY;
+
+    if (pts.size >= 2) {                    // pinch: scale by finger spread
+      const d = spread();
+      if (pinchD > 0 && d > 0) {
+        const c = centre();
+        zoomAt(c.x, c.y, d / pinchD);
+      }
+      pinchD = d;
+      return;
+    }
+
+    moved += Math.abs(dx) + Math.abs(dy);
+    if (moved > TOUCH_SLOP) cancelHold();
+    if (!held) { graph.ox += dx; graph.oy += dy; }   // holding inspects, never pans
   });
 
-  cv.addEventListener('pointerup', (e) => {
-    dragging = false;
+  const release = (e) => {
+    const wasPinching = pts.size >= 2;
+    pts.delete(e.pointerId);
+    if (pts.size < 2) pinchD = 0;
+    if (pts.size > 0 || wasPinching) { cancelHold(); return; }  // ignore the tail of a pinch
+
     cancelHold();
-    if (held) { held = false; graph.hover = -1; return; }   // release ends the highlight
-    if (moved < 5) {
+    if (held) { held = false; graph.hover = -1; return; }        // release ends the highlight
+    if (moved < 8) {
       const i = graphPointer(e);
       if (i >= 0) { location.hash = '#/' + encodeURI(graph.nodes[i].p); closeGraph(); }
     }
+  };
+  cv.addEventListener('pointerup', release);
+  cv.addEventListener('pointercancel', (e) => {
+    pts.delete(e.pointerId);
+    if (pts.size < 2) pinchD = 0;
+    cancelHold();
+    if (!pts.size) { held = false; graph.hover = -1; }
   });
-  cv.addEventListener('pointercancel', () => { dragging = false; held = false; cancelHold(); graph.hover = -1; });
-  cv.addEventListener('contextmenu', (e) => { if (held) e.preventDefault(); });
+  // Stop iOS turning a long press into a selection callout, which cancels the
+  // pointer stream and kills the hold.
+  cv.addEventListener('contextmenu', (e) => e.preventDefault());
+
   cv.addEventListener('wheel', (e) => {
     e.preventDefault();
-    const f = e.deltaY < 0 ? 1.12 : 1 / 1.12;
-    graph.scale = Math.max(0.06, Math.min(6, graph.scale * f));
+    zoomAt(e.clientX, e.clientY, e.deltaY < 0 ? 1.12 : 1 / 1.12);
   }, { passive: false });
+
+  // Double-tap / double-click to zoom in a step, anchored where you tapped.
+  let lastTap = 0, lastX = 0, lastY = 0;
+  cv.addEventListener('pointerup', (e) => {
+    const now = Date.now();
+    if (now - lastTap < 300 && Math.hypot(e.clientX - lastX, e.clientY - lastY) < 30) {
+      zoomAt(e.clientX, e.clientY, 1.6);
+      lastTap = 0;
+    } else { lastTap = now; lastX = e.clientX; lastY = e.clientY; }
+  });
 }
 
 function setPanel(open) {
