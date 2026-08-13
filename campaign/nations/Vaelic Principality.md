@@ -15,12 +15,12 @@ Nobility is hereditary by default, but the [[Drake Rider Order]] and the
 Imperial judiciary both let a commoner climb to real rank on merit alone —
 provided they're human or half-human. That's the whole of Vaelic's
 ancestry hierarchy: humans and half-humans are eligible for nobility and
-Imperial service; every other ancestry, [[Ancestries/Halfling (Player Core)|halflings]]
+Imperial service; every other ancestry, [[Halfling|halflings]]
 included, lives under local lords' law with no path upward.
 
 - **Capital** Reichsmund, a fortified river-city that holds the Diet and the High Prince's court
 - **Geography** Rolling grain plains and river valleys, thick with castles and walled market towns; the drake aeries sit on the wilder margins
-- **Races** [[Ancestries/Human (Player Core)|Humans]] and [[Ancestries/Half-Elf|half-elves]]/[[Ancestries/Half-Orc|half-orcs]] (full legal standing), [[Ancestries/Halfling (Player Core)|Halfling]] minorities (barred from nobility and Imperial service)
+- **Races** [[Human|Humans]] and [[Half-Elf|half-elves]]/[[Half-Orc|half-orcs]] (full legal standing), [[Halfling|Halfling]] minorities (barred from nobility and Imperial service)
 - **Economic Specialties** Grain, wool, steel, fine armor, horses
 - **Military** Longbowmen, heavy cavalry, men-at-arms, castle engineers, and the [[Drake Rider Order]] — an Imperial institution answering to the High Prince directly, outside the conventional chain of command
 - **Government** A **High Prince**, elected for life by seven **Elector Princes** at a Diet convened on the old Prince's death or abdication: five territorial houses ([[House Dravensk]], [[House Kesslin]], [[House Thornwycke]], [[House Hallcrest]], [[House Aldreich]]) plus two non-hereditary seats, the High Judiciar ([[Edmure Voss]]) and Marshal-Elector ([[Petra Halvard]]). Roughly 30 territorial nobles and a dozen self-governing Free Cities fill out the Diet beyond the electors; local rule is otherwise left entirely to the landed nobility.

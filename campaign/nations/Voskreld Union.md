@@ -14,7 +14,7 @@ books. They don't always.
 
 - **Capital** Voskgrad, chosen as capital precisely because it belonged to none of the old duchies
 - **Geography** River plains between the mountains and the steppe — good farmland with no natural defensive line, which is the whole reason the duchies unified
-- **Races** [[Ancestries/Human (Player Core)|Humans]] (from several once-rival provincial peoples), [[Ancestries/Dwarf (Player Core)|Dwarves]], [[Ancestries/Halfling (Player Core)|Halflings]], [[Ancestries/Goblin (Player Core)|Goblins]], [[Ancestries/Half-Elf|Half-Elves]]
+- **Races** [[Human|Humans]] (from several once-rival provincial peoples), [[Dwarf|Dwarves]], [[Halfling|Halflings]], [[Goblin|Goblins]], [[Half-Elf|Half-Elves]]
 - **Economic Specialties** Standardized coinage and measures, armaments manufacturing, grain surplus redistribution, road and canal infrastructure
 - **Military** The Unified Legion — an integrated multiethnic conscript army — provincial militia reserves, engineer corps, royal cannon foundries
 - **Government** The Voskreld Crown, advised by a Provincial Council of the old duchies

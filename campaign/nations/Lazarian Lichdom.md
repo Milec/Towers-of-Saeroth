@@ -12,7 +12,7 @@ centuries — competence doesn't expire just because the body did.
 
 - **Capital** Grauthaven, a city of black basalt where the living quarter is the smallest district
 - **Geography** Fog-drowned marshland and old battlefields — terrain chosen for what's buried in it rather than what grows on it
-- **Races** [[Ancestries/Skeleton|Intelligent undead]], [[Ancestries/Dhampir (Player Core 2)|Dhampirs]], necromancers, [[Bestiary/Families/Vampire (Monster Core)|vampires]], living servants
+- **Races** [[Skeleton|Intelligent undead]], [[Dhampir|Dhampirs]], necromancers, [[Vampire|vampires]], living servants
 - **Economic Specialties** Alchemy, necromancy, ancient relics, undead labor, magical artifacts
 - **Military** Skeleton legions, Death Knights, vampire nobles, necromancers, bone constructs
 - **Government** Immortal Lich Emperor

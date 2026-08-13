@@ -13,6 +13,19 @@ the repo root matter to it.
   economy; see [[Nations of the World]] for the full list
 - `deities/` — gods actually worshipped in the setting, copied out of `vault/`
   so this folder stands alone as an Obsidian vault; see [[Gods of the World]]
+- `ancestries/` — the peoples of the setting: culture, appearance and outlook,
+  no mechanics; see [[Peoples of the World]]
+
+## This folder is the Obsidian vault
+
+Obsidian opens `campaign/`, not the repo root — `vault/` is far too large to
+index. So **every `[[wikilink]]` in here must resolve inside `campaign/`**. A
+link like `[[Setting/Deities/Nethys]]` or `[[Ancestries/Human (Player Core)]]`
+points above the vault root and silently resolves to nothing.
+
+When a note needs a rules reference, copy the flavour into `campaign/` and cite
+the source as plain text at the bottom (`` *Full entry: `vault/...`* ``) rather
+than linking to it.
 - `sessions/` — session logs / prep notes, one per session
 - `pcs/` — player character summaries, for hooks and continuity
 

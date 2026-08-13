@@ -12,7 +12,7 @@ a hard death.
 
 - **Capital** Hravnfjord, a deepwater harbor town that swells fourfold whenever the Great Thing is called
 - **Geography** Fjords, taiga, and whale coasts; the interior is mountain and the sea is the road
-- **Races** [[Ancestries/Human (Player Core)|Humans]], [[Ancestries/Dwarf (Player Core)|Dwarves]], [[Ancestries/Jotunborn|Goliaths]]
+- **Races** [[Human|Humans]], [[Dwarf|Dwarves]], [[Jotunborn|Goliaths]]
 - **Economic Specialties** Timber, furs, amber, iron, shipbuilding, whaling
 - **Military** Shield walls, berserkers, longship fleets, elite axemen, mountain scouts
 - **Government** The High King is elected by the assembly of Jarls at the Great Thing

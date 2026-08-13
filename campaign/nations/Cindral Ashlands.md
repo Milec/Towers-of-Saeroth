@@ -13,7 +13,7 @@ them. The Emberlord's throne is reforged, not inherited.
 
 - **Capital** Emberthrone, built into the flank of the largest live volcano in the chain, which the Cindral consider the safest possible address
 - **Geography** A chain of active volcanoes and the obsidian flats between them; the land is fertile, lethal, and reshapes itself every few decades
-- **Races** [[Ancestries/Ifrit|Ifrits]], [[Ancestries/Oread|Oreads]], [[Ancestries/Dwarf (Player Core)|Dwarves]] (volcanic-forge lineages, distinct from the northern holds), [[Ancestries/Human (Player Core)|Humans]]
+- **Races** [[Ifrit|Ifrits]], [[Oread|Oreads]], [[Dwarf|Dwarves]] (volcanic-forge lineages, distinct from the northern holds), [[Human|Humans]]
 - **Economic Specialties** Volcanic glass, fire-forged steel, obsidian craftsmanship, geothermal engineering, rare pyroclastic minerals
 - **Culture** Trial by fire is not a metaphor in Cindral — it's a literal rite of passage for rulers, smiths, and soldiers alike. What survives the forge is trusted; what doesn't wasn't worth keeping.
 - **Military** Magma-forged warbands, elemental-bound berserkers, obsidian legionnaires, volcano wardens

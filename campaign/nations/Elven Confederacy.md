@@ -12,7 +12,7 @@ dispute season for a decade before ruling on it.
 
 - **Capital** None by design; the tribal council convenes at Sylanthir, a grove-city that stands mostly empty between gatherings
 - **Geography** Ancient forest belts spanning several climates — temperate heartwood, northern pine, desert oasis-groves, and drowned coastal woods
-- **Races** [[Ancestries/Heritages/Woodland Elf (Player Core)|Forest Elves]], [[Ancestries/Heritages/Arctic Elf (Player Core)|Winter Elves]], [[Ancestries/Heritages/Desert Elf|Desert Elves]], [[Ancestries/Heritages/Aquatic Elf|Sea Elves]], other elven ancestries
+- **Races** [[Woodland Elf|Forest Elves]], [[Arctic Elf|Winter Elves]], [[Desert Elf|Desert Elves]], [[Aquatic Elf|Sea Elves]], other elven ancestries
 - **Economic Specialties** Rare timber, herbs, wines, silk, magical plants
 - **Military** Elite archers, druids, rangers, beast riders
 - **Government** Council of tribal chiefs
