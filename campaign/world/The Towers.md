@@ -19,7 +19,7 @@ seamless. Nothing grows on it. Nothing has weathered.
 Every tower that anyone has found is open. There is a way in, and it is not
 guarded, and it does not close. People have walked into all of them.
 
-Nobody has walked out of any of them.
+The door stays open behind you. It simply will not let you back through it.
 
 ## What is actually known
 
@@ -43,11 +43,18 @@ Very little, and the little is all from the outside:
   to live or sail. The world is much larger than the places people watch, so at
   any moment there are three separate categories: towers found, towers standing
   somewhere nobody has walked in years, and towers that have not appeared yet.
+- **The threshold is one-way, and this is the one thing the world is certain
+  of.** It is certain because it can be tested from the outside, and in a year
+  it has been tested a great many times. Send one person a single pace in on a
+  rope, in full view, and try to draw them back: the rope comes back and the
+  person does not. They are a stride away, past an open door, and there is no
+  power anyone has found that returns them. This is why the towers are
+  understood as death sentences rather than as dangerous places.
 - **Nobody has returned.** Not one person, from any tower, ever. Not wounded,
-  not raving, not changed. There is no survivor account of the inside of a
-  tower because nobody has come out to give one — which is not the same thing
-  as nobody being alive in there, though the world has stopped drawing the
-  distinction.
+  not raving, not changed. But that follows from the threshold rather than from
+  the killing — nobody has come out to give an account because nobody *can*,
+  which is not the same as nobody being alive in there. The world stopped
+  drawing that distinction within about a month, and has grieved accordingly.
 - **Nothing gets a message out.** Sending, scrying, dream, familiar, bonded
   item, a rope tied to a companion's waist: everything that should carry word
   from inside to outside fails at the threshold, and fails silently. The
@@ -104,6 +111,12 @@ The rumour is believed almost universally anyway, and it is already reshaping
 the map. Where a crown finds that inconvenient it has usually chosen to believe
 the rumour and dispute only the ownership.
 
+There is a crueller turn in it. Because the only way out is through, the rumour
+does not need to be true to be obeyed. Anyone standing inside a tower — sceptic,
+conscript, someone who was pushed — has exactly one course of action available
+to them, and it is the one the rumour describes. Inside, the rumour stops being
+a claim about the world and becomes the only plan anybody has.
+
 ## What this is doing to the world
 
 The towers are a year old, so no nation has an institution for them yet. Every
@@ -129,6 +142,23 @@ so far has stood on open ground, water or stone. Whether that is a rule or a
 coincidence of a single year's sample is exactly the question Melisor cannot
 answer, and exactly the question the [[Thurion Merchant Alliance]]'s insurers
 have started to ask about their harbour cities.
+
+## Who is inside
+
+A consequence the outside has not followed through, because following it
+through is unbearable: **everyone who has ever survived a tower is still in
+one.** Nobody who lived got out, because getting out is not available. The
+Aquoniti survey crews, the chartered companies, the ventures nobody claimed —
+whatever fraction of them are alive are alive *in there*, and have been for
+months.
+
+Long enough to have run out of what they carried in. Long enough to have
+learned things nobody outside knows. Long enough to have made arrangements with
+each other, or not.
+
+A party that enters a tower is not entering an empty building. It is entering
+the only place in the world where a year of the world's best-equipped
+expeditions all went and none of them left.
 
 ## The known towers
 
@@ -181,6 +211,19 @@ between two crowns racing for the same ground.
 That gives the towers a year of weight before anyone opens one, and it means
 the first threshold is a decision the party makes rather than a premise they
 were handed.
+
+**Be blunt with the players about the threshold before they cross it.** In-world
+this is common knowledge — it is the one thing everybody is sure of — so there
+is no surprise to preserve and a great deal of trust to lose. Crossing it ends
+the campaign's outside phase. There is no withdrawing to resupply, no coming
+back at a higher level, no selling what you find until it is over. A tower run
+is a closed system, and consumables, rations and morale are all finite in a way
+no ordinary dungeon makes them.
+
+It also means pitch is a promise you are making to the table. A party that
+walks into a **Far above** tower is not facing a hard fight, it is facing the
+end — which is why the one door they should be able to walk away from must be
+one they have not yet walked through.
 
 At the table, pitch is the whole dial:
 

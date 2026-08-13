@@ -23,8 +23,10 @@ beyond.
 - **Where** Outer survey lanes, a day and a half from the nearest reef-city
 - **Depth** Crown to within forty feet of the surface; base unmeasured
 - **Entrance** Below the waterline, open, and dry past the threshold
-- **Entered by** Two Aquoniti survey crews, one Thurion-underwritten venture, and one party nobody has claimed
-- **Returned** Nobody
+- **Entered by** Two Aquoniti survey crews, one Thurion-underwritten venture,
+  and one party nobody has claimed
+- **Returned** Nobody — which is what the threshold guarantees, not what the
+  Spire proved
 - **Claim** [[Aquoniti]]'s, in the sense that it lies inside lanes the Tide
   Lords have policed for centuries. The Council has never said so out loud
 
