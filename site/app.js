@@ -479,6 +479,16 @@ function folderOf(p) {
   return parts.length > 2 ? parts[1] : parts[0];
 }
 
+/* Layout tuning, in one place. `repel`/`springLen` set how airy the graph is;
+   `range` matters more than it looks — repulsion is only computed between
+   nearby cells, so if it is too small a dense cluster has nothing pushing it
+   apart globally and collapses into a ball. */
+const SIM = {
+  repel: 1400, minD: 30, range: 190,
+  springLen: 95, springK: 0.0055, springCap: 1.2,
+  centre: 0.00040, damp: 0.86, maxV: 3.5, decay: 0.988,
+};
+
 const graph = { nodes: [], edges: [], raf: 0, scale: 1, ox: 0, oy: 0, hover: -1, alpha: 0, legend: [] };
 window.__g = graph;   // exposed for automated UI tests
 let vaultLinks = null;   // {names:[], links:[[id,...]]} — fetched on demand
@@ -602,7 +612,7 @@ async function renderGraphNow() {
   // Phyllotaxis seeding: evenly spread and deterministic. Random radii used to
   // drop nodes almost on top of each other, which is what the repulsion term
   // then turned into an explosion on the first few frames.
-  const R = Math.max(120, Math.sqrt(ns.length) * 26);
+  const R = Math.max(160, Math.sqrt(ns.length) * 40);
   const GOLDEN = Math.PI * (3 - Math.sqrt(5));
   ns.forEach((n, i) => {
     const r = R * Math.sqrt((i + 0.5) / ns.length);
@@ -615,15 +625,22 @@ async function renderGraphNow() {
   // Settle most of the layout before the first frame. The big rearrangement is
   // inherently fast and jumpy; running it off-screen means the animation the
   // user actually sees is only the gentle tail of the settle.
-  const warm = ns.length > 4000 ? 60 : 90;
+  const warm = ns.length > 4000 ? 90 : 240;
   for (let i = 0; i < warm; i++) if (!step()) break;
-  // Fit the settled layout to whatever canvas we actually have — a fixed zoom
-  // left the graph as a small island on a tall phone screen.
+  /* Initial zoom is driven by how far apart neighbours actually ended up, not
+     by fitting the whole graph. Fitting alone is self-defeating: spreading the
+     layout in world units just zooms out by the same factor and the on-screen
+     spacing neverchanges. So aim for a comfortable pixel gap between typical
+     neighbours, clamped so the graph still fits reasonably and never blows up. */
   const cvEl = $('gcanvas');
   const cw = cvEl.clientWidth || 800, chh = cvEl.clientHeight || 600;
   let maxR = 1;
   for (const n of ns) maxR = Math.max(maxR, Math.hypot(n.x, n.y));
-  graph.scale = Math.max(0.15, Math.min(2.2, (Math.min(cw, chh) * 0.44) / maxR));
+  const fit = (Math.min(cw, chh) * 0.46) / maxR;
+  const nn = medianNearest(ns);
+  const wanted = TARGET_GAP_PX / Math.max(nn, 1);
+  const slack = cw < 700 ? 1.55 : 2.3;   // less overflow on a phone
+  graph.scale = Math.max(0.06, Math.min(6, Math.max(fit, Math.min(wanted, fit * slack))));
   graph.ox = 0; graph.oy = 0;
   $('ghint').hidden = ns.length === 0;
   if (innerWidth <= 860) setPanel(false);   // hand the screen to the graph
@@ -632,6 +649,27 @@ async function renderGraphNow() {
 
 /* Largest categories get the validated hues, in fixed order by size; the tail
    folds into a neutral "Other" rather than inventing a fourth hue. */
+const TARGET_GAP_PX = 54;   // desired on-screen distance between neighbours
+
+/* Median distance to nearest neighbour, sampled for big graphs so this stays
+   linear-ish rather than O(n²) on 40k nodes. */
+function medianNearest(ns) {
+  if (ns.length < 2) return 1;
+  const step = ns.length > 1200 ? Math.ceil(ns.length / 600) : 1;
+  const out = [];
+  for (let i = 0; i < ns.length; i += step) {
+    let best = Infinity;
+    for (let j = 0; j < ns.length; j++) {
+      if (i === j) continue;
+      const d = Math.hypot(ns[i].x - ns[j].x, ns[i].y - ns[j].y);
+      if (d < best) best = d;
+    }
+    if (best < Infinity) out.push(best);
+  }
+  out.sort((a, b) => a - b);
+  return out[Math.floor(out.length / 2)] || 1;
+}
+
 function assignColours(ns) {
   const mode = COLOR_MODES[$('colorBy').value] || COLOR_MODES.domain;
   const counts = new Map();
@@ -677,10 +715,10 @@ function step() {
     // Forces scale with alpha so the layout eases to a stop instead of running
     // at full strength and then cutting off — which left nodes still drifting
     // under the cursor when the graph looked settled.
-    const k = graph.alpha, cell = 64;
-    const MIN_D = 26;      // repulsion floor: without it two nodes that start
+    const k = graph.alpha, cell = SIM.range / 2;
+    const MIN_D = SIM.minD;      // repulsion floor: without it two nodes that start
                            // close get flung apart at hundreds of units a frame
-    const MAX_V = 3.5;       // per-axis speed cap, so nothing can ever explode
+    const MAX_V = SIM.maxV;       // per-axis speed cap, so nothing can ever explode
     const grid = new Map();
     for (let i = 0; i < ns.length; i++) {
       const gx = Math.round(ns[i].x / cell), gy = Math.round(ns[i].y / cell);
@@ -703,7 +741,7 @@ function step() {
           if (d2 > cell * cell * 4) continue;
           const d = Math.sqrt(d2);
           const dc = Math.max(d, MIN_D);           // clamped for the magnitude
-          const f = (300 * k) / (dc * dc);         // unit direction × bounded magnitude
+          const f = (SIM.repel * k) / (dc * dc);         // unit direction × bounded magnitude
           a.vx += (ddx / d) * f; a.vy += (ddy / d) * f;
         }
       }
@@ -716,7 +754,7 @@ function step() {
       const a = ns[i], b = ns[j];
       const dx = b.x - a.x, dy = b.y - a.y;
       const d = Math.hypot(dx, dy) || 1;
-      const f = Math.max(-1.2, Math.min(1.2, (d - 52) * 0.006)) * k;
+      const f = Math.max(-SIM.springCap, Math.min(SIM.springCap, (d - SIM.springLen) * SIM.springK)) * k;
       const ux = dx / d, uy = dy / d;
       const sa = 1 / (1 + Math.sqrt(a.deg) * 0.6);
       const sb = 1 / (1 + Math.sqrt(b.deg) * 0.6);
@@ -727,14 +765,14 @@ function step() {
     // with distance, so outlying nodes were yanked at the middle.
     for (const n of ns) {
       const d = Math.hypot(n.x, n.y) || 1;
-      const pull = Math.min(d, 600) * 0.0010 * k;
+      const pull = Math.min(d, 700) * SIM.centre * k;
       n.vx -= (n.x / d) * pull;
       n.vy -= (n.y / d) * pull;
-      n.vx = Math.max(-MAX_V, Math.min(MAX_V, n.vx * 0.84));
-      n.vy = Math.max(-MAX_V, Math.min(MAX_V, n.vy * 0.84));
+      n.vx = Math.max(-MAX_V, Math.min(MAX_V, n.vx * SIM.damp));
+      n.vy = Math.max(-MAX_V, Math.min(MAX_V, n.vy * SIM.damp));
       n.x += n.vx; n.y += n.vy;
     }
-    graph.alpha *= 0.986;
+    graph.alpha *= SIM.decay;
   }
   return true;
 }
@@ -787,7 +825,7 @@ function drawGraph() {
   const muted = css.getPropertyValue('--muted').trim() || '#888';
   for (let i = 0; i < ns.length; i++) {
     const n = ns[i];
-    const r = Math.min(12, 3.4 + Math.sqrt(n.deg) * 1.5);
+    const r = Math.min(10, 3 + Math.sqrt(n.deg) * 1.3);
     ctx.globalAlpha = hover >= 0 && i !== hover && !near.has(i) ? 0.28 : 1;
     // 2px surface ring so overlapping nodes stay separable
     ctx.beginPath();
@@ -813,18 +851,34 @@ function drawGraph() {
   ctx.textAlign = 'center';
   const area = (cv.clientWidth || 800) * (cv.clientHeight || 600);
   const budget = Math.round(Math.max(7, Math.min(34, area / 26000)) * Math.max(1, graph.scale));
-  if (graph.labelBudget !== budget) { graph.labelBudget = budget; graph.labelCut = null; }
-  const cut = graph.labelCut ?? (graph.labelCut = (() => {
-    const degs = ns.map((n) => n.deg).sort((a, b) => b - a);
-    return degs.length > budget ? degs[budget] : 0;
-  })());
+  // Candidates, best-connected first, so the important names win a contested spot
+  const cand = [];
   for (let i = 0; i < ns.length; i++) {
-    const n = ns[i];
     const isNear = hover >= 0 && (i === hover || near.has(i));
     if (hover >= 0 && !isNear) continue;
-    if (hover < 0 && !(n.deg > cut || graph.scale > 1.8)) continue;
-    ctx.globalAlpha = isNear ? 1 : 0.85;
-    ctx.fillText(n.name, n.x, n.y - Math.min(12, 5 + Math.sqrt(n.deg) * 1.5) - 3);
+    cand.push(i);
+  }
+  cand.sort((a, b) => (a === hover ? -1 : b === hover ? 1 : ns[b].deg - ns[a].deg));
+
+  const placed = [];
+  const pad = 2 / graph.scale;
+  let drawn = 0;
+  for (const i of cand) {
+    if (hover < 0 && drawn >= budget) break;
+    const n = ns[i];
+    const w = ctx.measureText(n.name).width;
+    const h = 12 / graph.scale;
+    const x = n.x - w / 2, y = n.y - Math.min(11, 4 + Math.sqrt(n.deg) * 1.3) - 3 - h;
+    // skip anything that would sit on top of a label already drawn
+    let clash = false;
+    for (const r of placed) {
+      if (x - pad < r.x + r.w && x + w + pad > r.x && y - pad < r.y + r.h && y + h + pad > r.y) { clash = true; break; }
+    }
+    if (clash) continue;
+    placed.push({ x, y, w, h });
+    ctx.globalAlpha = (hover >= 0 && i !== hover) ? 0.9 : 1;
+    ctx.fillText(n.name, n.x, y + h);
+    drawn++;
   }
   ctx.globalAlpha = 1;
   ctx.restore();
@@ -957,6 +1011,8 @@ function initGraphEvents() {
   // Double-tap / double-click to zoom in a step, anchored where you tapped.
   let lastTap = 0, lastX = 0, lastY = 0;
   cv.addEventListener('pointerup', (e) => {
+    // If the release already opened a note the graph is gone; don't also zoom.
+    if ($('graphView').hidden) { lastTap = 0; return; }
     const now = Date.now();
     if (now - lastTap < 300 && Math.hypot(e.clientX - lastX, e.clientY - lastY) < 30) {
       zoomAt(e.clientX, e.clientY, 1.6);
