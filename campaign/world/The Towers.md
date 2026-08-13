@@ -1,17 +1,20 @@
 ---
 title: The Towers
 type: index
-appeared: Within the last year
-known: A few; the rest unfound
+appeared: Began within the last year, and has not stopped
+known: A few found; others unfound, and more still arriving
 returned: Nobody
 ---
 
-A year ago there were no towers. Now there are, and nobody can say how many.
+A year ago there were no towers. Then there was one, and then there were
+several, and there are more now than there were last season. Nobody can say how
+many, and — this is the part the crowns have been slow to say out loud — nobody
+can say how many there will be.
 
-They did not rise, and nobody watched one arrive. A tower is simply *there* one
-morning where the previous evening there was pasture, or reef, or a road that
-people had used for two hundred years. The stone is unfamiliar and seamless.
-Nothing grows on it. Nothing has weathered.
+They do not rise, and nobody has ever watched one arrive. A tower is simply
+*there* one morning where the previous evening there was pasture, or reef, or a
+road that people had used for two hundred years. The stone is unfamiliar and
+seamless. Nothing grows on it. Nothing has weathered.
 
 Every tower that anyone has found is open. There is a way in, and it is not
 guarded, and it does not close. People have walked into all of them.
@@ -26,9 +29,20 @@ Very little, and the little is all from the outside:
   chronicle, no saga, no Xian Ti ministry record and no elven tribal memory
   describes anything like them before that — and between them those archives
   cover a great deal of time.
+- **They are still arriving.** This is the fact that matters most and the one
+  least often stated plainly. The towers were not a single event that the world
+  is now slowly discovering the extent of. New ones appear. Reports come in
+  faster than anyone can send someone to confirm them, so the count is always
+  a floor rather than a number.
+- **Nobody has found a pattern.** Not in where they appear, nor how often, nor
+  what the ground was doing beforehand. Melisor has three competing models and
+  a year of data, which is not enough data to tell three models apart. Whether
+  the rate is rising, steadying or falling is genuinely unknown, and the
+  argument about it is now itself political.
 - **Only a handful have been found.** The known ones stand where people happen
-  to live or sail. The world is much larger than the places people watch, and
-  there is no reason to think the found ones are most of them.
+  to live or sail. The world is much larger than the places people watch, so at
+  any moment there are three separate categories: towers found, towers standing
+  somewhere nobody has walked in years, and towers that have not appeared yet.
 - **Nobody has returned.** Not one person, from any tower, ever. Not wounded,
   not raving, not changed. There is no survivor account of the inside of a
   tower because there are no survivors.
@@ -69,21 +83,41 @@ response so far is improvised, and mostly by whoever was standing nearest.
   each of them has sent someone.
 - A tower standing on disputed ground converts a border argument into a race.
 - [[Aquoniti]] has stopped sending survey ships and will not explain why.
+- **Nobody can wait this out.** A crown that decided to ignore the towers
+  entirely would still have to answer for the next one, and the one after that.
+  Refusing to play is only a strategy while the board stops changing, and it
+  has not stopped changing.
+
+And the thing that no court has yet put in writing: nothing anyone has learned
+rules out a tower appearing somewhere that is already occupied. Every one found
+so far has stood on open ground, water or stone. Whether that is a rule or a
+coincidence of a single year's sample is exactly the question Melisor cannot
+answer, and exactly the question the [[Thurion Merchant Alliance]]'s insurers
+have started to ask about their harbour cities.
 
 ## The known towers
 
-Three are documented here. There are certainly others, and at least two crowns
-are believed to be sitting on a sighting rather than reporting it.
+Three are documented here, in the order they were found. There are certainly
+others, at least two crowns are believed to be sitting on a sighting rather
+than reporting it, and this table has needed a new row roughly every season so
+far.
 
-| Tower | Where | Standing claim |
-| --- | --- | --- |
-| [[The Drowned Spire]] | Deep water inside Aquoniti's charted lanes | Aquoniti, unenforced and unannounced |
-| [[The Charter Tower]] | The unsurveyed jungle edge between Kesmarch and the Thornwild | Disputed outright |
-| [[The Sealed Ascent]] | Below the Undertide Reaches, past a hold that shut itself in | Undertide, who deny it exists |
+| Tower | Found | Where | Standing claim |
+| --- | --- | --- | --- |
+| [[The Drowned Spire]] | ~9 months ago | Deep water inside Aquoniti's charted lanes | Aquoniti, unenforced and unannounced |
+| [[The Charter Tower]] | ~4 months ago | The unsurveyed jungle edge between Kesmarch and the Thornwild | Disputed outright |
+| [[The Sealed Ascent]] | Officially never | Below the Undertide Reaches, past a hold that shut itself in | Undertide, who deny it exists |
+
+Unconfirmed reports run well ahead of that. There is a standing sighting in the
+Khazan steppe that three separate riders describe consistently and no envoy has
+been permitted to visit, and something the Cindral wardens have twice declined
+to discuss.
 
 ## The question nobody has answered
 
-The towers are assumed to be new because they were not there a year ago.
+The towers are assumed to be new because they were not there a year ago, and
+because more of them keep turning up. But a thing that keeps arriving is a
+thing arriving *from* somewhere, and nobody has proposed where.
 
 The Undertide's deep holds and the Stoneborn frontier both went quiet at
 roughly the time the first towers were sighted above ground, and neither nation

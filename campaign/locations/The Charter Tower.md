@@ -19,6 +19,11 @@ nations can reach it overland in a week, neither can hold the approach, and it
 sits in the one place on the map that was already the likeliest thing to start
 a war.
 
+It is also the clearest proof that the towers are still arriving. A Thornwild
+scouting party crossed that exact ground eleven days before it was found there,
+and says so — the clan has no reason to lie about it and every reason to wish
+it were otherwise.
+
 - **Where** Jungle edge, eight days from Charterhold and six from Rootmeet
 - **Approach** Open ground on the Kesmarch side, canopy on the Thornwild side
 - **Entrance** At the base, facing no particular direction, standing open
