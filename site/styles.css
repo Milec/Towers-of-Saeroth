@@ -106,6 +106,8 @@ body {
 .content th, .content td { border: 1px solid var(--rule); padding: 7px 10px; text-align: left; vertical-align: top; }
 .content th { background: var(--panel); }
 .content hr { border: 0; border-top: 1px solid var(--rule); margin: 1.6em 0; }
+.cite { text-decoration: none; }
+.cite code { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
 .wl.broken { color: var(--muted); border-bottom: 1px dotted var(--muted); cursor: help; }
 
 .props { margin: 0 0 16px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--panel); }
