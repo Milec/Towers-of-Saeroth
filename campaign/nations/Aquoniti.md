@@ -16,4 +16,4 @@ continent outmaneuvers theirs.
 - **Government** Council of Tide Lords
 - **Reputation** Masters of naval warfare
 - **Faith** [[Setting/Deities/Gozreh]] governs the moods of the sea that Aquoniti sailors read like a second language
-- **Relations** Trade and insurance partnership with the [[Thurion Merchant Alliance]]; an old, mostly good-natured rivalry with [[Nordheim]] over the northern shipping lanes, and a newer, less settled one with [[Windrift Skyholds]] over who really controls the trade routes
+- **Relations** Trade and insurance partnership with the [[Thurion Merchant Alliance]]; an old, mostly good-natured rivalry with [[Nordheim]] over the northern shipping lanes; growing shipbuilding trade with the [[Corvane Republic]]
