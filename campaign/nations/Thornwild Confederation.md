@@ -11,7 +11,7 @@ rather than clearing it. Clan-kinship extends to totem beasts as readily as
 to blood relatives, and a stranger is judged first by which animals trust
 them.
 
-- **Races** [[Ancestries/Catfolk (Player Core 2)|Catfolk]], [[Ancestries/Gnoll|Gnolls]], [[Ancestries/Ratfolk (Player Core 2)|Ratfolk]], [[Ancestries/Vanara|Vanara]], [[Ancestries/Kholo|Kholo]]
+- **Races** [[Ancestries/Catfolk (Player Core 2)|Catfolk]], [[Ancestries/Gnoll|Gnolls]], [[Ancestries/Ratfolk (Player Core 2)|Ratfolk]], [[Ancestries/Vanara|Vanara]], [[Ancestries/Kholo|Kholo]], [[Ancestries/Grippli|Grippli]]
 - **Economic Specialties** Jungle medicinals, exotic pelts, beast-tamed livestock, canopy timber, venom and toxin trade
 - **Culture** Instinct is trusted over doctrine. Clan bonds run through shared totem-kinship as much as bloodline, and a Thornwild elder's authority rests on the respect of the beasts as much as the people.
 - **Military** Beast-bonded skirmishers, canopy archers, totem-warriors, venom scouts

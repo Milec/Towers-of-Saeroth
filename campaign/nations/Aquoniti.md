@@ -10,7 +10,7 @@ exploration are treated as sacred traditions, and a captain who charts new
 water is honored the way other nations honor generals. No fleet on the
 continent outmaneuvers theirs.
 
-- **Races** [[Ancestries/Merfolk|Merfolk]], [[Bestiary/Triton|Tritons]], [[Ancestries/Azarketi|Azarketi]], [[Ancestries/Heritages/Aquatic Elf|Sea Elves]]
+- **Races** [[Ancestries/Merfolk|Merfolk]], [[Bestiary/Triton|Tritons]], [[Ancestries/Azarketi|Azarketi]], [[Ancestries/Heritages/Aquatic Elf|Sea Elves]], [[Ancestries/Athamaru|Athamaru]], [[Ancestries/Tripkee|Tripkee]]
 - **Economic Specialties** Pearls, coral, fisheries, maritime trade, salvage
 - **Military** Naval fleets, marine infantry, sea beast cavalry, water magic
 - **Government** Council of Tide Lords

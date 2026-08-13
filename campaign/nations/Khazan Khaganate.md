@@ -11,7 +11,7 @@ plunder — a khan who wins cruelly is remembered poorly, no matter how much
 territory he takes. Outsiders expect savagery and find something stranger:
 fearsome warriors who keep their word.
 
-- **Races** [[Ancestries/Orc (Player Core)|Orcs]], [[Ancestries/Hobgoblin (Player Core 2)|Hobgoblins]], [[Ancestries/Goblin (Player Core)|Goblins]], [[Bestiary/Families/Bugbear (Monster Core)|Bugbears]], [[Bestiary/Families/Ogre (Monster Core)|Ogres]], [[Ancestries/Kobold (Player Core 2)|Kobolds]], other monstrous peoples
+- **Races** [[Ancestries/Orc (Player Core)|Orcs]], [[Ancestries/Hobgoblin (Player Core 2)|Hobgoblins]], [[Ancestries/Goblin (Player Core)|Goblins]], [[Bestiary/Families/Bugbear (Monster Core)|Bugbears]], [[Bestiary/Families/Ogre (Monster Core)|Ogres]], [[Ancestries/Kobold (Player Core 2)|Kobolds]], [[Ancestries/Centaur|Centaurs]], [[Ancestries/Minotaur|Minotaurs]], other monstrous peoples
 - **Economic Specialties** Iron, livestock, horses, mercenary companies, leatherworking, mining
 - **Military** Massive cavalry, wolf riders, heavy infantry, siege beasts, monster auxiliaries
 - **Government** Great Khagan elected by the assembled khans
