@@ -46,7 +46,7 @@ matched the concept closely enough at this level.
 
 **Speed** 25 feet
 
-**Melee** `[one-action]` greatsword +17 ([[Traits/Sweep]], [[Traits/Versatile P|versatile P]]), **Damage** 2d6+8 slashing
+**Melee** `[one-action]` greatsword +17 ([[Traits/Sweep]], [[Traits/Versatile (Player Core)|versatile P]]), **Damage** 2d6+8 slashing
 
 **Melee** `[one-action]` fist +15 ([[Traits/Agile]], [[Traits/Finesse]], [[Traits/Nonlethal]]), **Damage** 1d4+8 bludgeoning
 

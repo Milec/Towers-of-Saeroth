@@ -6,7 +6,9 @@ the repo root matter to it.
 
 - `npcs/` — one file per NPC: identity, wants, stat block reference
 - `locations/` — settlements, dungeons, regions
-- `factions/` — organizations, their goals and tensions
+- `factions/<Nation>/` — organizations, their goals and tensions, filed in a
+  subfolder per parent nation (e.g. `factions/Vaelic/House Dravensk.md`).
+  Factions that genuinely span nations can sit loose at the `factions/` root
 - `nations/` — sovereign nations and empires: government, culture, military,
   economy; see [[Nations of the World]] for the full list
 - `sessions/` — session logs / prep notes, one per session

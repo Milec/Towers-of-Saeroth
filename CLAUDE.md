@@ -44,6 +44,13 @@ Obsidian-flavoured markdown, matching the convention already used throughout
   note.
 - **Filenames match the title** (`Harbormaster Corwin Ledd.md`, not
   `npc_corrupt_harbormaster_final.md`), so wikilinks stay short and readable.
+- **Factions go in a subfolder per parent nation** —
+  `campaign/factions/Vaelic/House Dravensk.md`, not
+  `campaign/factions/House Dravensk.md`. Create the nation's subfolder if it
+  doesn't exist yet; only genuinely cross-border organizations belong loose at
+  the `factions/` root. Keep using short `[[House Dravensk]]` wikilinks
+  regardless — Obsidian resolves those by filename, so the subfolder never
+  needs to appear in a link.
 
 The aim is a note that's actually usable at the table and that Obsidian's
 graph view renders as a real web of connections — not a document dump.
