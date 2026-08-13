@@ -1046,24 +1046,34 @@ function closeGraph() { $('graphView').hidden = true; cancelAnimationFrame(graph
    and GitHub render, and it is what this parses — so adding a row to the note
    adds an edge here with no code change and nothing to keep in sync by hand.
 
-   Seven standings is well past what hue alone can carry; the graph view's
-   three-hue ceiling is the same constraint arriving from the other direction.
-   So each standing gets its own dash pattern and stroke weight as well as a
-   colour, and the legend, tags and ledger all name it in words. Colour is the
-   last of four cues here, never the only one. */
+   Eight standings is far past what hue alone can carry, and measurably so: to
+   normal vision the warm four are comfortably apart, but simulate deuteranopia
+   and trade/friction/territorial/hostile collapse into each other — friction
+   and territorial sit at ΔE 9.2 normally and 0.6 under CVD. That is not a
+   palette that can be fixed by picking better oranges; four warm categories
+   simply do not survive red-green colour blindness. So the dash patterns and
+   stroke weights below are load-bearing rather than decorative, and the legend,
+   tags and ledger all name the standing in words. Colour is the last of four
+   cues here, never the only one.
+
+   Line style also carries valence: the three standings that are warm or
+   neutral are solid, weighted by how strong the bond is, and every negative
+   standing is broken. Where two encodings do sit close — Allied and Friendly
+   are both solid greens — they are deliberately neighbours in meaning, so
+   mistaking one for the other costs almost nothing. */
 const STANDINGS = [
-  ['allied', 'Allied'], ['trade', 'Trade'], ['rivalry', 'Rivalry'],
-  ['friction', 'Friction'], ['territorial', 'Territorial'],
+  ['allied', 'Allied'], ['friendly', 'Friendly'], ['trade', 'Trade'],
+  ['rivalry', 'Rivalry'], ['friction', 'Friction'], ['territorial', 'Territorial'],
   ['hostile', 'Hostile'], ['covert', 'Covert'],
 ];
 const STANDING_LABEL = new Map(STANDINGS);
-const FRIENDLY = new Set(['allied', 'trade']);
+const WARM = new Set(['allied', 'friendly', 'trade']);
 const DASH = {
-  allied: '', trade: '', rivalry: '7 5', friction: '2 5',
+  allied: '', friendly: '', trade: '', rivalry: '7 5', friction: '2 5',
   territorial: '13 4', hostile: '5 4', covert: '1.5 8',
 };
 const STROKE = {
-  allied: 2.6, trade: 1.5, rivalry: 1.9, friction: 2.0,
+  allied: 3.2, friendly: 2.1, trade: 1.3, rivalry: 1.9, friction: 2.0,
   territorial: 3.0, hostile: 3.2, covert: 1.6,
 };
 
@@ -1072,7 +1082,7 @@ const STROKE = {
    settle close together, territorial and hostile pairs are shoved apart. The
    trade web ends up holding the middle and the flashpoints splay to the rim. */
 const REST = {
-  allied: 104, trade: 128, rivalry: 168, friction: 186,
+  allied: 104, friendly: 116, trade: 132, rivalry: 168, friction: 186,
   territorial: 230, hostile: 248, covert: 198,
 };
 const RSIM = { repel: 13000, centre: 0.0032, spring: 0.05, damp: 0.82, pad: 54 };
@@ -1252,8 +1262,11 @@ function mountRelations(container, body) {
       </div>
       <aside class="rel-ledger" aria-live="polite"></aside>
     </div>
-    <figcaption>Distance is an argument, not decoration: allies and trading
-      partners are pulled together, territorial and hostile pairs pushed apart.</figcaption>`;
+    <figcaption>Distance is an argument, not decoration: the warmer the
+      standing the closer the pull, so allies sit tightest and territorial and
+      hostile pairs are pushed to the rim. Solid lines are warm or neutral
+      standings, weighted by the strength of the bond; every broken line is a
+      grievance.</figcaption>`;
 
   // Sit the web directly above the table it was read from, and fold that table
   // away — it is still the source of truth and still fully readable, it just no
@@ -1387,10 +1400,12 @@ function relOverview() {
   // Deliberately a high bar: at three ties "no friends" is common enough to be
   // noise, and listing six nations buries the one or two that actually stand out.
   const friendless = rel.nodes
-    .filter((n) => n.deg >= 4 && !n.ties.some((t) => FRIENDLY.has(t.standing)))
+    .filter((n) => n.deg >= 4 && !n.ties.some((t) => WARM.has(t.standing)))
     .sort((a, b) => b.deg - a.deg || a.name.localeCompare(b.name));
+  // Specifically trade, not warmth generally — this sentence is about who the
+  // shipping runs through, and Thesal is well liked without moving cargo.
   const anchors = rel.nodes
-    .map((n) => ({ n, c: count(n, (t) => FRIENDLY.has(t.standing)) }))
+    .map((n) => ({ n, c: count(n, (t) => t.standing === 'trade') }))
     .sort((a, b) => b.c - a.c || a.n.name.localeCompare(b.n.name))
     .filter((x) => x.c >= 3).slice(0, 2);
 
@@ -1405,8 +1420,8 @@ function relOverview() {
       `${terr.c} territorial borders, more than anyone else. Most land wars start there.</p>`);
   }
   if (friendless.length) {
-    out.push(`<p>${names(friendless)} ${friendless.length > 1 ? 'have' : 'has'} no allies ` +
-      `and no trading partners — every tie is a rivalry or worse.</p>`);
+    out.push(`<p>${names(friendless)} ${friendless.length > 1 ? 'have' : 'has'} nothing warmer ` +
+      `than a rivalry on the board — no ally, no friend, not one trading partner.</p>`);
   }
   if (anchors.length === 2) {
     out.push(`<p>${names(anchors.map((x) => x.n))} anchor the trade web, which is why the ` +

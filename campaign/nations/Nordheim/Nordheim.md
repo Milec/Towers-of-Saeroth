@@ -21,6 +21,8 @@ a hard death.
 - **Tension** The High King is dying and the Great Thing must be called before the ice closes the fjords, which means the jarls who arrive late will have no say at all
 - **Relations**
     - [[Stoneborn Holds]] — **Allied**: Northern trade and dwarven kinship both
+    - [[Kesmarch Frontier]] — **Friendly**: Cayden Cailean on both sides of the water, and the same conviction that a person is whatever they built after they arrived
+    - [[Khazan Khaganate]] — **Friendly**: Two warrior codes that recognise each other across a thousand miles — both keep Gorum, both hold that a fight badly won is no victory, and neither has ever had cause to test the other
     - [[Corvane Republic]] — **Trade**: Nordheim timber, Corvane yards — half the Republic's fleet is northern pine
     - [[Silicar]] — **Trade**: Iron and timber south, Silicar grain north; the fjords cannot feed themselves through a hard winter
     - [[Thurion Merchant Alliance]] — **Trade**: Amber, furs and whale oil, moved south under Alliance insurance

@@ -22,6 +22,8 @@ claimed is land that has to be defended, not land that was granted.
 - **Faith** Patron [[Erastil]], god of the homestead, the hunt and the family that holds them — the frontier's god almost by definition. [[Desna]] is kept by anyone still travelling and [[Cayden Cailean]] by everyone who left somewhere else to get here
 - **Tension** The Territorial Council keeps issuing homestead charters for land it has never surveyed, and some of those deeds describe [[Thornwild Confederation]] ground
 - **Relations**
+    - [[Nordheim]] — **Friendly**: Cayden Cailean on both sides of the water, and the same conviction that a person is whatever they built after they arrived
+    - [[Silicar]] — **Friendly**: Seed grain, ploughs and canal plans sent south for very little back; Erastil's clergy at both ends arranged it and neither council was really consulted
     - [[Corvane Republic]] — **Trade**: The same migration seen from both ends — Corvane ships supply homesteads that Corvane's own overflow settled
     - [[Thurion Merchant Alliance]] — **Trade**: Furs, ore and wagon-freight; the Alliance is the frontier's only reliable buyer
     - [[Vaelic Principality]] — **Trade**: Not commerce but people: Kesmarch's settlers are largely Vaelic second sons and disinherited daughters

@@ -20,6 +20,7 @@ everyone at court knows it.
 - **Faith** Patron [[Shelyn]], goddess of art, beauty and love — the face Quivar presents, and genuinely beloved. [[Calistria]], goddess of intrigue, revenge and exquisite grudges, is the one the court actually prays to, and everyone knows it
 - **Tension** The monarch has two plausible heirs and has declined to indicate a preference, which has turned every salon in Valmont into a recruiting ground
 - **Relations**
+    - [[Thesal Theocracy]] — **Friendly**: Shelyn's temple in Concord is Quivari-funded and entirely sincere, which is the one thing about Quivar that nobody suspects of being an operation
     - [[Aquoniti]] — **Trade**: Pearl and coral, graded at sea and sold on to the Valmont ateliers
     - [[Elven Confederacy]] — **Trade**: Heartwood wine and elven silk — the only foreign court the tribes consider worth dressing for
     - [[Dalstan]] — **Rivalry**: One-sided: Dalstan's nobility imitates Quivari fashion badly enough to be a court joke

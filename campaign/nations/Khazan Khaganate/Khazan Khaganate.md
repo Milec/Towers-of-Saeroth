@@ -21,6 +21,7 @@ fearsome warriors who keep their word.
 - **Faith** Patron [[Gorum]], who cares only that a fight was fought well — war-bands ride under his sign. [[Desna]] is the other half of Khazan devotion: goddess of stars and the open road, and every nomad navigates by her
 - **Tension** The Great Khagan is old and has named no favorite; the khans are already counting each other's riders
 - **Relations**
+    - [[Nordheim]] — **Friendly**: Two warrior codes that recognise each other across a thousand miles — both keep Gorum, both hold that a fight badly won is no victory, and neither has ever had cause to test the other
     - [[Thurion Merchant Alliance]] — **Trade**: Mercenary contracts: the Alliance hires steppe riders by the thousand and leases them to whoever is losing
     - [[Elven Confederacy]] — **Territorial**: An old, unresolved argument over the ancient forest claims
     - [[Thornwild Confederation]] — **Territorial**: Periodic raids for beast-stock; the Thornwild has not forgotten

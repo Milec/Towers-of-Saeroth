@@ -20,6 +20,9 @@ its irrigation canals and clockwork feed half the continent.
 - **Faith** Patron [[Brigh]], goddess of invention and clockwork, whose shrines are workshops with an altar in the corner. [[Erastil]] is the older faith of the farming villages, and the two clergies argue amiably about which one actually feeds the nation
 - **Tension** An upstream canal has begun silting faster than it can be cleared, and no one has told the export partners who depend on the harvest yet
 - **Relations**
+    - [[Corvane Republic]] — **Friendly**: Merit over birth treated as self-evident in both, one by charter and one by workshop; Silicar's guilds read the Vantry papers and Corvane cites Silicar in every tariff argument
+    - [[Kesmarch Frontier]] — **Friendly**: Seed grain, ploughs and canal plans sent south for very little back; Erastil's clergy at both ends arranged it and neither council was really consulted
+    - [[Thesal Theocracy]] — **Friendly**: Two small nations nobody has ever had cause to fear, who started by trading grain for medicine and discovered they agree about nearly everything
     - [[Nordheim]] — **Trade**: Iron and timber south, Silicar grain north; the fjords cannot feed themselves through a hard winter
     - [[Stoneborn Holds]] — **Trade**: Machinery and engineering exports
     - [[Thurion Merchant Alliance]] — **Trade**: Same exports, sold on

@@ -5,31 +5,51 @@ view: relations
 ---
 
 Every standing relationship between nations, drawn from the Relations bullet on
-each nation's own note — 69 ties across all 21. Read a row as symmetric unless
+each nation's own note — 79 ties across all 21. Read a row as symmetric unless
 the detail says otherwise; most of these are felt differently from each side.
 
-**Standing** is a rough label for how the relationship behaves at the table:
+**Standing** is a rough label for how the relationship behaves at the table.
+Read it as a scale running from warm to hostile, with **Trade** sitting off to
+one side — commerce is not affection, and some of the busiest trade routes here
+run between nations that cannot stand each other:
 
 | Label | Means |
 | --- | --- |
 | **Allied** | Formal alliance; mutual obligation is assumed |
-| **Trade** | Commercial dependency, cordial by default |
+| **Friendly** | Real goodwill — kinship, shared faith, long habit — but nothing anyone signed |
+| **Trade** | Commercial dependency, cordial by default and no deeper than the ledger |
 | **Rivalry** | Competitive, not violent — prestige, markets, influence |
 | **Friction** | Real grievance, no open conflict yet |
 | **Territorial** | Land, borders or raiding; the ones most likely to turn into war |
 | **Hostile** | Active enmity, ideological or otherwise |
 | **Covert** | Deniable dealings both sides publicly disown |
 
+The difference between **Allied** and **Friendly** is obligation, not warmth. An
+ally is expected to march; a friend is expected to be glad to see you. Several
+of the friendships here are older and steadier than any of the alliances — the
+Tide Lords and the elven tribes have shared the drowned woods so long that
+neither can produce the terms — but none of them would put an army in the field.
+
 ## The table
 
 | Nations | Standing | The relationship |
 | --- | --- | --- |
-| [[Aquoniti]] ↔ [[Elven Confederacy]] | **Allied** | The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms |
 | [[Corvane Republic]] ↔ [[Thesal Theocracy]] | **Allied** | A standing accord over the Dalstani refugee flow — Thesal hospices staff Corvane's overflowing wards, and Corvane's assembly argues Thesal's case where a theocracy's own word carries less |
 | [[Nordheim]] ↔ [[Stoneborn Holds]] | **Allied** | Northern trade and dwarven kinship both |
 | [[Thesal Theocracy]] ↔ [[Vaelic Principality]] | **Allied** | Long-standing; Thesal clergy anoint Vaelic knights |
 | [[Vaelic Principality]] ↔ [[Voskreld Union]] | **Allied** | Mutual defence against the steppe — Vaelic drill-masters train the Unified Legion, and neither can afford Khazan turning its whole weight on one of them alone |
 | [[Voskreld Union]] ↔ [[Xian Ti]] | **Allied** | Two fortified frontiers on the same steppe; they trade raid intelligence season by season, and each quietly hopes Khazan rides at the other |
+| [[Aquoniti]] ↔ [[Elven Confederacy]] | **Friendly** | The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms |
+| [[Aquoniti]] ↔ [[Thornwild Confederation]] | **Friendly** | Gozreh is the one god both nations name — storm and beast being the same power, seen from a boat or from the canopy |
+| [[Corvane Republic]] ↔ [[Silicar]] | **Friendly** | Merit over birth treated as self-evident in both, one by charter and one by workshop; Silicar's guilds read the Vantry papers and Corvane cites Silicar in every tariff argument |
+| [[Kesmarch Frontier]] ↔ [[Nordheim]] | **Friendly** | Cayden Cailean on both sides of the water, and the same conviction that a person is whatever they built after they arrived |
+| [[Kesmarch Frontier]] ↔ [[Silicar]] | **Friendly** | Seed grain, ploughs and canal plans sent south for very little back; Erastil's clergy at both ends arranged it and neither council was really consulted |
+| [[Khazan Khaganate]] ↔ [[Nordheim]] | **Friendly** | Two warrior codes that recognise each other across a thousand miles — both keep Gorum, both hold that a fight badly won is no victory, and neither has ever had cause to test the other |
+| [[Quivar]] ↔ [[Thesal Theocracy]] | **Friendly** | Shelyn's temple in Concord is Quivari-funded and entirely sincere, which is the one thing about Quivar that nobody suspects of being an operation |
+| [[Silicar]] ↔ [[Thesal Theocracy]] | **Friendly** | Two small nations nobody has ever had cause to fear, who started by trading grain for medicine and discovered they agree about nearly everything |
+| [[Stoneborn Holds]] ↔ [[Vaelic Principality]] | **Friendly** | Torag's forge-halls in both, and Vaelic castle engineers have trained in Stoneborn holds for nine centuries |
+| [[Thesal Theocracy]] ↔ [[Xian Ti]] | **Friendly** | Scholarship and tolerance recognising one another; Concord's libraries are the only foreign collection the Celestial ministries will call a peer |
+| [[Thurigypt]] ↔ [[Xian Ti]] | **Friendly** | Two old and disciplined states with nothing to fight over, sharing a private conviction that the younger nations are in a hurry about everything |
 | [[Aquoniti]] ↔ [[Corvane Republic]] | **Trade** | Shipbuilding, and growing |
 | [[Aquoniti]] ↔ [[Quivar]] | **Trade** | Pearl and coral, graded at sea and sold on to the Valmont ateliers |
 | [[Aquoniti]] ↔ [[Thurigypt]] | **Trade** | Old river-trade ties |
@@ -96,55 +116,65 @@ the detail says otherwise; most of these are felt differently from each side.
 
 ## Reading the board
 
-**[[Thurion Merchant Alliance]]** is the single most connected power on the
-map, and deliberately so — it trades with twelve nations including both
+**[[Thurion Merchant Alliance]]** is the most connected power on the map and
+deliberately so: it trades with twelve nations, including both
 [[Khazan Khaganate]], whose riders it leases out as mercenaries, and
-[[Dalstan]], whose tithe-banking it handles without asking a single question
-about doctrine. Neutrality is not a principle here, it is a business model, and
-it means the Alliance has something to lose in every war on this list.
+[[Dalstan]], whose tithe-banking it handles without a single question about
+doctrine. Neutrality is not a principle here, it is a business model — and it
+means the Alliance has something to lose in every war on this list. Note how
+little of that is warmth: almost all of Thurion's ties are Trade or Rivalry.
 
-**[[Vaelic Principality]]** is the diplomatic centre of gravity: nine ties,
-spanning a sworn alliance with [[Thesal Theocracy]], a defensive pact with
-[[Voskreld Union]], generational border pressure from [[Khazan Khaganate]], an
-undead nation raising armies from its dead, a constitutional rivalry with
-[[Corvane Republic]], and Quivari agents in its Diet. Almost every kind of
-relationship on the board runs through Reichsmund at once.
+**[[Thesal Theocracy]]** is the opposite kind of hub. Ten ties, and the warmest
+board position of any nation — an alliance with [[Vaelic Principality]], an
+accord with [[Corvane Republic]], and standing friendships with [[Silicar]],
+[[Xian Ti]] and even [[Quivar]], whose funding of Shelyn's temple in Concord is
+the one Quivari gesture nobody suspects of being an operation. Thesal is liked
+in a way the Alliance is merely needed.
+
+**[[Vaelic Principality]]** is the pivot: ten ties spanning almost every
+standing on the board at once — sworn to Thesal, pacted with
+[[Voskreld Union]], old friends with [[Stoneborn Holds]] over nine centuries of
+shared forge-halls, pressed by [[Khazan Khaganate]], haunted by
+[[Lazarian Lichdom]] raising armies from Vaelic dead, at constitutional odds
+with [[Corvane Republic]], and quietly worked by Quivari agents in its own Diet.
 
 Three blocs do most of the work:
 
 - **The steppe pact.** [[Vaelic Principality]], [[Voskreld Union]] and
   [[Xian Ti]] are bound by a shared border with [[Khazan Khaganate]] and very
-  little else. It holds only as long as the Khagan is a bigger problem than
-  each other — and the Great Khagan is old with no named heir.
-- **The values bloc.** [[Thesal Theocracy]] anchors both an old alliance with
-  [[Vaelic Principality]] and a newer humanitarian accord with
-  [[Corvane Republic]], built on the refugees [[Dalstan]] produces. It is the
-  only bloc organised around what its members believe rather than who they fear.
-- **The trade web.** [[Thurion Merchant Alliance]] and [[Aquoniti]] between
-  them touch most of the coast, and their partners' quarrels are all, from
-  Vessene's point of view, disruptions to the schedule.
+  little else. It holds only while the Khagan is a bigger problem than each
+  other — and the Great Khagan is old with no named heir.
+- **The values bloc.** [[Thesal Theocracy]] anchors an old alliance with
+  [[Vaelic Principality]] and a newer accord with [[Corvane Republic]], built on
+  the refugees [[Dalstan]] produces. The only bloc organised around what its
+  members believe rather than who they fear.
+- **The trade web.** [[Thurion Merchant Alliance]] and [[Aquoniti]] between them
+  touch most of the coast, and their partners' quarrels are, from Vessene's
+  point of view, disruptions to the schedule.
 
 Two nations are pressure points rather than powers:
 
-- **[[Khazan Khaganate]]** still has five territorial borders, more than
-  anyone. What is new is that it also has a paying customer — the mercenary
-  contracts are the reason the steppe can afford to keep pressing on all five.
-- **[[Elven Confederacy]]** is being encroached on from three directions at
-  once — [[Khazan Khaganate]] in the forests, [[Nordheim]] logging the northern
-  pine, [[Thurigypt]] over oasis water — which is precisely why the tribes
-  cannot agree whether any single one of them warrants calling a council.
+- **[[Khazan Khaganate]]** still has five territorial borders, more than anyone.
+  What is new is that it also has a paying customer and one genuine friendship —
+  [[Nordheim]], across a thousand miles, on the strength of two warrior codes
+  that have never had cause to test each other.
+- **[[Elven Confederacy]]** is encroached on from three directions at once —
+  [[Khazan Khaganate]] in the forests, [[Nordheim]] logging the northern pine,
+  [[Thurigypt]] over oasis water — which is precisely why the tribes cannot
+  agree whether any single one of them warrants calling a council.
 
-**[[Lazarian Lichdom]]** is the only nation on the map with no ally and no
-trading partner. Everything it has is hostile or deniable, and three of its six
-ties are relic trades that the other party would deny under oath — including
-[[Dalstan]], which condemns undeath from a gilded pulpit and sources its relics
-from Lazarian grave-fields.
+**[[Lazarian Lichdom]]** is the only nation on the map with nothing warmer than
+a rivalry: no ally, no friend, not one trading partner. Everything it has is
+hostile or deniable, and three of its six ties are relic trades the other party
+would deny under oath — including [[Dalstan]], which condemns undeath from a
+gilded pulpit and sources its relics from Lazarian grave-fields.
 
 The likeliest flashpoint that isn't already a war remains
 [[Kesmarch Frontier]] ↔ [[Thornwild Confederation]]: the Territorial Council is
 issuing homestead charters for land it has never surveyed, and the Circle of
-First Packs has adjourned twice without deciding what to do about it. The
-difference now is that neither side is alone — Kesmarch sells through
-[[Thurion Merchant Alliance]], and the Thornwild's medicinal trade runs to
-[[Thesal Theocracy]], so a shooting war on the jungle edge would be felt in two
-capitals that have no border with either.
+First Packs has adjourned twice without deciding what to do about it. Neither
+side is alone any more — Kesmarch sells through
+[[Thurion Merchant Alliance]] and counts [[Nordheim]] and [[Silicar]] as
+friends, while the Thornwild's medicinals run to [[Thesal Theocracy]] and its
+storm-god is shared with [[Aquoniti]]. A shooting war on the jungle edge would
+now be felt in four capitals with no border on it.
