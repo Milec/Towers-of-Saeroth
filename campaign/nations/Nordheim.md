@@ -10,7 +10,7 @@ remembered through songs and oral tradition, and every person strives to
 leave behind a worthy saga — a Nordheimer fears a forgotten life more than
 a hard death.
 
-- **Races** [[Ancestries/Human (Player Core)|Humans]], [[Ancestries/Dwarf (Player Core)|Dwarves]], Goliaths
+- **Races** [[Ancestries/Human (Player Core)|Humans]], [[Ancestries/Dwarf (Player Core)|Dwarves]], [[Ancestries/Jotunborn|Goliaths]]
 - **Economic Specialties** Timber, furs, amber, iron, shipbuilding, whaling
 - **Military** Shield walls, berserkers, longship fleets, elite axemen, mountain scouts
 - **Government** The High King is elected by the assembly of Jarls at the Great Thing
