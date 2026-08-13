@@ -1,4 +1,6 @@
 # Skill query index — rebuilt automatically on first use
+*.pyc
 .pf2e-index.sqlite3
 __pycache__/
-*.pyc
+_site/
+node_modules/

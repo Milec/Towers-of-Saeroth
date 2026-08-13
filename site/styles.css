@@ -1,0 +1,178 @@
+/* Towers of Saeroth — parchment-and-ink theme, light and dark. */
+:root {
+  --bg: #f6f2e8; --panel: #efe8d8; --ink: #2a2622; --muted: #6d6459;
+  --rule: #d9cfba; --accent: #7a1f1f; --link: #8a3324; --mark: #f2e2a8;
+  --sb-bg: #fbf6ea; --sb-border: #6e2b1e; --code: #eee6d4;
+  --radius: 10px;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #171614; --panel: #1f1e1b; --ink: #e8e2d6; --muted: #a49a8b;
+  --rule: #35322c; --accent: #d98b6a; --link: #e0a186; --mark: #4a3f1d;
+  --sb-bg: #1c1b18; --sb-border: #8a4230; --code: #262420;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171614; --panel: #1f1e1b; --ink: #e8e2d6; --muted: #a49a8b;
+    --rule: #35322c; --accent: #d98b6a; --link: #e0a186; --mark: #4a3f1d;
+    --sb-bg: #1c1b18; --sb-border: #8a4230; --code: #262420;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 16px/1.6 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  -webkit-text-size-adjust: 100%;
+}
+.muted { color: var(--muted); }
+
+/* topbar */
+.topbar {
+  position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 8px;
+  padding: max(8px, env(safe-area-inset-top)) 12px 8px;
+  background: var(--panel); border-bottom: 1px solid var(--rule);
+}
+.brand { font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: .01em; }
+.spacer { flex: 1; }
+.iconbtn {
+  display: grid; place-items: center; width: 38px; height: 38px; padding: 0;
+  background: none; border: 1px solid transparent; border-radius: 9px;
+  color: var(--ink); cursor: pointer;
+}
+.iconbtn:hover { border-color: var(--rule); background: var(--bg); }
+.iconbtn svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; }
+
+/* layout */
+.layout { display: flex; height: calc(100% - 55px); }
+.sidebar {
+  width: 300px; flex: 0 0 300px; overflow: auto; background: var(--panel);
+  border-right: 1px solid var(--rule); padding-bottom: 40px;
+}
+.sidehead { position: sticky; top: 0; background: var(--panel); padding: 10px; border-bottom: 1px solid var(--rule); }
+.sidehead input, .modalbox input {
+  width: 100%; padding: 9px 11px; border: 1px solid var(--rule); border-radius: 9px;
+  background: var(--bg); color: var(--ink); font: inherit; font-size: 15px;
+}
+.tree { padding: 8px 6px 24px; font-size: 15px; }
+.tree details > summary {
+  cursor: pointer; padding: 5px 8px; border-radius: 7px; list-style: none;
+  color: var(--muted); font-weight: 600;
+}
+.tree details > summary::-webkit-details-marker { display: none; }
+.tree details > summary::before { content: "▸ "; }
+.tree details[open] > summary::before { content: "▾ "; }
+.tree details > summary:hover { background: var(--bg); }
+.tree details { margin-left: 8px; }
+.leaf {
+  display: block; padding: 5px 10px; margin-left: 10px; border-radius: 7px;
+  color: var(--ink); text-decoration: none;
+}
+.leaf:hover { background: var(--bg); }
+.leaf.active { background: var(--accent); color: #fff; }
+
+.main { flex: 1; overflow: auto; padding: 22px clamp(14px, 4vw, 44px) 90px; }
+.content { max-width: 74ch; margin: 0 auto; }
+.scrim { position: fixed; inset: 55px 0 0; background: rgba(0,0,0,.45); z-index: 18; }
+
+@media (max-width: 860px) {
+  .sidebar {
+    position: fixed; z-index: 20; top: 55px; bottom: 0; left: 0;
+    transform: translateX(-102%); transition: transform .18s ease;
+  }
+  .sidebar.open { transform: none; }
+}
+
+/* content */
+.crumbs { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+.crumbs .sep { opacity: .5; margin: 0 5px; }
+.content h1 { font-size: 1.95em; margin: .2em 0 .5em; border-bottom: 2px solid var(--rule); padding-bottom: .2em; }
+.content h2 { font-size: 1.4em; margin: 1.5em 0 .4em; }
+.content h3 { font-size: 1.15em; margin: 1.2em 0 .3em; }
+.content a { color: var(--link); }
+.content img { max-width: 100%; }
+.content ul, .content ol { padding-left: 1.35em; }
+.content li { margin: .25em 0; }
+.content code { background: var(--code); padding: .12em .35em; border-radius: 5px; font-size: .9em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.content pre { background: var(--code); padding: 12px 14px; border-radius: var(--radius); overflow-x: auto; }
+.content pre code { background: none; padding: 0; }
+.content blockquote { margin: 1em 0; padding: .1em 1em; border-left: 3px solid var(--rule); color: var(--muted); }
+.content mark { background: var(--mark); color: inherit; padding: 0 .18em; border-radius: 3px; }
+.content table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; margin: 1em 0; }
+.content th, .content td { border: 1px solid var(--rule); padding: 7px 10px; text-align: left; vertical-align: top; }
+.content th { background: var(--panel); }
+.content hr { border: 0; border-top: 1px solid var(--rule); margin: 1.6em 0; }
+.wl.broken { color: var(--muted); border-bottom: 1px dotted var(--muted); cursor: help; }
+
+.props { margin: 0 0 16px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--panel); }
+.props summary { cursor: pointer; padding: 8px 12px; color: var(--muted); font-size: 14px; }
+.props dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0; padding: 0 14px 12px; font-size: 14px; }
+.props dt { color: var(--muted); }
+.props dd { margin: 0; }
+
+.callout { margin: 1em 0; padding: 10px 14px; border-left: 4px solid var(--accent);
+  background: var(--panel); border-radius: 0 var(--radius) var(--radius) 0; }
+.callout-t { font-weight: 700; margin-bottom: 4px; }
+
+.backlinks { max-width: 74ch; margin: 34px auto 0; border-top: 1px solid var(--rule); padding-top: 14px; }
+.backlinks h2 { font-size: 1em; color: var(--muted); margin: 0 0 6px; }
+.backlinks ul { margin: 0; padding-left: 1.2em; }
+
+/* ---- PF2e action icons -------------------------------------------------
+   Drawn as SVG rather than an icon font: the Obsidian plugin's embedded font
+   overlaps the following word on iOS, which this avoids entirely. */
+.pf2-action {
+  height: .95em; width: auto; vertical-align: -0.11em;
+  margin: 0 .12em; fill: currentColor; stroke: none;
+}
+
+/* ---- statblocks --------------------------------------------------------- */
+.statblock {
+  background: var(--sb-bg); border: 1px solid var(--rule);
+  border-top: 5px solid var(--sb-border); border-radius: var(--radius);
+  padding: 14px 16px; margin: 1.3em 0; font-size: .96em;
+}
+.statblock.sf { border-top-color: #2b5c8a; }
+.statblock p { margin: .38em 0; }
+.statblock .sb-indent { margin-left: 1.4em; }
+.sb-title {
+  font-variant: small-caps; font-weight: 700; font-size: 1.45em;
+  letter-spacing: .02em; display: inline-block;
+}
+.sb-level {
+  float: right; font-variant: small-caps; font-weight: 700; font-size: 1.2em;
+  letter-spacing: .02em;
+}
+.sb-traits { clear: both; margin: .5em 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.trait {
+  display: inline-block; padding: 1px 8px; font-size: .8em; letter-spacing: .06em;
+  text-transform: uppercase; font-variant: normal; font-family: system-ui, sans-serif;
+  background: #5d0f0f; color: #fff; border: 1px solid #f0e5c8;
+}
+.trait.r-size    { background: #3b6b35; }
+.trait.r-align   { background: #35526b; }
+.trait.r-uncommon{ background: #98590c; }
+.trait.r-rare    { background: #0c1f66; }
+.trait.r-unique  { background: #5a0f66; }
+.trait.r-common  { background: #4a463f; }
+.sb-rule { border: 0; border-top: 2px solid var(--sb-border); margin: .55em 0; clear: both; }
+
+/* search */
+.modal { position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,.5); display: grid;
+  place-items: start center; padding: 8vh 14px 14px; }
+/* `display:grid` above outranks the UA rule for [hidden], which would leave the
+   overlay invisible but still swallowing every click on the page. */
+.modal[hidden], .scrim[hidden], .backlinks[hidden] { display: none; }
+.modalbox { width: min(680px, 100%); background: var(--panel); border: 1px solid var(--rule);
+  border-radius: 14px; padding: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.35); }
+.results { max-height: 60vh; overflow: auto; margin-top: 10px; }
+.results a { display: block; padding: 9px 11px; border-radius: 9px; text-decoration: none; color: var(--ink); }
+.results a:hover { background: var(--bg); }
+.results .muted { font-size: 12px; margin-left: 8px; }
+.results .snip { display: block; font-size: 12.5px; color: var(--muted); }
+.hint { font-size: 12px; margin: 8px 4px 2px; }
+.pad { padding: 10px; }
