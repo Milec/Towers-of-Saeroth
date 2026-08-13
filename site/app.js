@@ -255,6 +255,13 @@ async function route() {
   const target = path || 'campaign/README.md';
   state.current = target;
   const el = $('content');
+  // Vault notes cross-link heavily to other vault notes, so the vault index
+  // has to be in memory before rendering or every one of those links renders
+  // as unresolved. Campaign notes never link into the vault, so this stays
+  // lazy and the common path never pays for it.
+  if (target.startsWith('vault/')) {
+    try { await ensureVault(); } catch (_) { /* offline: links degrade to plain text */ }
+  }
   try {
     const raw = await fetchNote(target);
     const { fm, body } = stripFrontmatter(raw);
