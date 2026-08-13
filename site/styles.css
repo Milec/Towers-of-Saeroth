@@ -5,9 +5,12 @@
   --sb-bg: #fbf6ea; --sb-border: #6e2b1e; --code: #eee6d4;
   --radius: 10px;
   color-scheme: light;
-  /* Diplomatic standings. Seven is past what hue alone can separate, so these
-     always ride alongside a dash pattern and a written label — see app.js. */
-  --rel-allied: #2f6b46; --rel-trade: #8a6320; --rel-rivalry: #63478c;
+  /* Diplomatic standings. Eight is far past what hue alone can separate — the
+     warm four collapse under red-green colour blindness — so these always ride
+     alongside a dash pattern, a stroke weight and a written label. See app.js
+     for the measurements. */
+  --rel-allied: #2f6b46; --rel-friendly: #3f8f6f; --rel-trade: #8a6320;
+  --rel-rivalry: #63478c;
   --rel-friction: #b05f26; --rel-territorial: #c04a26; --rel-hostile: #8f1d24;
   --rel-covert: #256b78; --rel-tag-ink: #fff;
 }
@@ -16,7 +19,8 @@
   --rule: #35322c; --accent: #d98b6a; --link: #e0a186; --mark: #4a3f1d;
   --sb-bg: #1c1b18; --sb-border: #8a4230; --code: #262420;
   color-scheme: dark;
-  --rel-allied: #6cbb85; --rel-trade: #cba55c; --rel-rivalry: #ab92da;
+  --rel-allied: #4da570; --rel-friendly: #7fd0ab; --rel-trade: #cba55c;
+  --rel-rivalry: #ab92da;
   --rel-friction: #dd8f55; --rel-territorial: #e57c56; --rel-hostile: #d95a63;
   --rel-covert: #5fb4c4; --rel-tag-ink: #17150f;
 }
@@ -26,7 +30,8 @@
     --rule: #35322c; --accent: #d98b6a; --link: #e0a186; --mark: #4a3f1d;
     --sb-bg: #1c1b18; --sb-border: #8a4230; --code: #262420;
     color-scheme: dark;
-    --rel-allied: #6cbb85; --rel-trade: #cba55c; --rel-rivalry: #ab92da;
+    --rel-allied: #4da570; --rel-friendly: #7fd0ab; --rel-trade: #cba55c;
+    --rel-rivalry: #ab92da;
     --rel-friction: #dd8f55; --rel-territorial: #e57c56; --rel-hostile: #d95a63;
     --rel-covert: #5fb4c4; --rel-tag-ink: #17150f;
   }
@@ -276,6 +281,7 @@ body {
 
 .rel-edge { fill: none; transition: opacity .18s ease; }
 .rel-edge.s-allied      { stroke: var(--rel-allied); }
+.rel-edge.s-friendly    { stroke: var(--rel-friendly); }
 .rel-edge.s-trade       { stroke: var(--rel-trade); opacity: .85; }
 .rel-edge.s-rivalry     { stroke: var(--rel-rivalry); }
 .rel-edge.s-friction    { stroke: var(--rel-friction); }
@@ -321,6 +327,7 @@ body {
   color: var(--rel-tag-ink);
 }
 .rel-tag.s-allied      { background: var(--rel-allied); }
+.rel-tag.s-friendly    { background: var(--rel-friendly); }
 .rel-tag.s-trade       { background: var(--rel-trade); }
 .rel-tag.s-rivalry     { background: var(--rel-rivalry); }
 .rel-tag.s-friction    { background: var(--rel-friction); }

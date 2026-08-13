@@ -20,7 +20,7 @@ dispute season for a decade before ruling on it.
 - **Faith** Patron [[Ketephys]], the elven hunter, honored by every tribe regardless of what else they disagree on. [[Yuelral]] holds the magical traditions and [[Findeladlara]] the artistic ones; several forest tribes keep the [[Green Faith]] instead of any named god
 - **Tension** The tribes cannot agree whether encroachment on the old forests warrants a council at all, and the delay is itself becoming the answer
 - **Relations**
-    - [[Aquoniti]] — **Allied**: The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms
+    - [[Aquoniti]] — **Friendly**: The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms
     - [[Melisor Magocracy]] — **Trade**: Magical plants for the academies, on terms the tribes renegotiate roughly once a century
     - [[Quivar]] — **Trade**: Heartwood wine and elven silk — the only foreign court the tribes consider worth dressing for
     - [[Thornwild Confederation]] — **Friction**: The Confederacy regards the Thornwild as unruly distant kin; the Thornwild did not ask to be anyone's cousin

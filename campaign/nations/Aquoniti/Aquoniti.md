@@ -20,7 +20,8 @@ continent outmaneuvers theirs.
 - **Faith** Patron [[Gozreh]], who governs the moods of the sea Aquoniti sailors read like a second language. [[Desna]] is the navigator's goddess, worshipped by star-sight; the salvage crews and privateers keep [[Besmara]] and don't advertise it
 - **Tension** Three deepwater charts have come back wrong in the same season, and the Council of Tide Lords has not explained why it stopped sending survey ships
 - **Relations**
-    - [[Elven Confederacy]] — **Allied**: The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms
+    - [[Elven Confederacy]] — **Friendly**: The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms
+    - [[Thornwild Confederation]] — **Friendly**: Gozreh is the one god both nations name — storm and beast being the same power, seen from a boat or from the canopy
     - [[Corvane Republic]] — **Trade**: Shipbuilding, and growing
     - [[Quivar]] — **Trade**: Pearl and coral, graded at sea and sold on to the Valmont ateliers
     - [[Thurigypt]] — **Trade**: Old river-trade ties

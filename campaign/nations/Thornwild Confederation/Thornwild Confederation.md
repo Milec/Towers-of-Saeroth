@@ -22,6 +22,7 @@ them.
 - **Faith** The [[Green Faith]] rather than any named patron — the Thornwild reveres the living world directly, and finds the idea of a god who lives elsewhere faintly absurd. [[Gozreh]] is the exception most clans will name, invoked for storm and beast alike
 - **Tension** Two clans want to answer [[Kesmarch Frontier]]'s encroachment with blood and the rest want to wait, and Rootmeet has adjourned twice without deciding
 - **Relations**
+    - [[Aquoniti]] — **Friendly**: Gozreh is the one god both nations name — storm and beast being the same power, seen from a boat or from the canopy
     - [[Thesal Theocracy]] — **Trade**: Jungle medicinals for the hospices; the only outsiders the Circle deals with by standing arrangement
     - [[Thurion Merchant Alliance]] — **Trade**: Pelts, venom and toxin, bought at the river mouths and never asked about
     - [[Elven Confederacy]] — **Friction**: The Confederacy regards the Thornwild as unruly distant kin; the Thornwild did not ask to be anyone's cousin

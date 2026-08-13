@@ -31,6 +31,7 @@ included, lives under local lords' law with no path upward.
 - **Relations**
     - [[Thesal Theocracy]] — **Allied**: Long-standing; Thesal clergy anoint Vaelic knights
     - [[Voskreld Union]] — **Allied**: Mutual defence against the steppe — Vaelic drill-masters train the Unified Legion, and neither can afford Khazan turning its whole weight on one of them alone
+    - [[Stoneborn Holds]] — **Friendly**: Torag's forge-halls in both, and Vaelic castle engineers have trained in Stoneborn holds for nine centuries
     - [[Cindral Ashlands]] — **Trade**: Fire-forged steel into the Vaelic armories, which would rather not discuss buying abroad
     - [[Kesmarch Frontier]] — **Trade**: Not commerce but people: Kesmarch's settlers are largely Vaelic second sons and disinherited daughters
     - [[Corvane Republic]] — **Rivalry**: An elected assembly and a hereditary Diet, each privately certain the other's model cannot last the century
