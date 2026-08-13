@@ -37,6 +37,15 @@ def copy_notes(paths):
 WIKI = re.compile(r'\[\[([^\]|#]+)')
 
 
+def links_of(path):
+    """Outbound wikilink targets, lowercased basenames, deduped."""
+    try:
+        s = FM.sub('', open(os.path.join(ROOT, path), encoding='utf-8').read())
+    except Exception:
+        return []
+    return sorted({m.split('/')[-1].strip().lower() for m in WIKI.findall(s) if m.strip()})
+
+
 def analyse(path, limit=6000):
     """Return (searchable body, outbound wikilink targets).
 
@@ -86,6 +95,24 @@ def main():
               separators=(',', ':'))
     json.dump([{'p': p} for p in vault],
               open(os.path.join(OUT, 'index-vault.json'), 'w', encoding='utf-8'),
+              separators=(',', ':'))
+
+    # Vault edges live in their own file: ~1M links across 41k notes would
+    # several-times the main vault index, and they are only needed when a vault
+    # scope is actually graphed. Targets are interned to integers to keep it
+    # from ballooning — the same basename recurs thousands of times.
+    interned, order, edges = {}, [], []
+    for p in vault:
+        ids = []
+        for t in links_of(p):
+            i = interned.get(t)
+            if i is None:
+                i = interned[t] = len(order)
+                order.append(t)
+            ids.append(i)
+        edges.append(ids)
+    json.dump({'names': order, 'links': edges},
+              open(os.path.join(OUT, 'index-vault-links.json'), 'w', encoding='utf-8'),
               separators=(',', ':'))
     json.dump(campaign, open(os.path.join(OUT, 'precache.json'), 'w', encoding='utf-8'),
               separators=(',', ':'))

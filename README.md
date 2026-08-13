@@ -25,8 +25,14 @@ installable site — no Obsidian download needed.
 - **Installable PWA.** All of `campaign/` is precached, so the worldbuilding
   works fully offline; the 41k-note rules vault is fetched on demand and any
   page you've opened stays cached.
+- **Graph view** like Obsidian's, with a twist: you pick which folders to
+  include *before* it renders, with live node and link counts. The full vault
+  is 41,718 notes and 457,000 links — unrenderable as one graph — so the vault
+  is opt-in folder by folder.
+- **The whole vault is browsable** in the file tree, which loads lazily: only
+  the folder you expand is put in the DOM.
 - Full-text search across `campaign/`, title search across `vault/`, backlinks,
-  a file tree, and a light/dark theme.
+  and a light/dark theme.
 
 Build it locally with `python3 tools/build_site.py && python3 -m http.server -d _site`.
 Pass `--no-vault` to skip the rules reference for a much faster build.
