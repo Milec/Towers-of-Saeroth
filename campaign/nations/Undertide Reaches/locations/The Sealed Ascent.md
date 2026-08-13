@@ -6,6 +6,7 @@ region: Deep cavern beneath the Undertide Reaches
 found: Officially, never
 claim: Undertide Reaches, who deny it exists
 entered: Unknown
+pitch: Far above party level — GM only; unknowable in-world
 ---
 
 The Warden-Conclave has voted twice not to investigate a deep hold that sealed

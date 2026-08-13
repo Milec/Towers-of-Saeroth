@@ -45,7 +45,9 @@ Very little, and the little is all from the outside:
   somewhere nobody has walked in years, and towers that have not appeared yet.
 - **Nobody has returned.** Not one person, from any tower, ever. Not wounded,
   not raving, not changed. There is no survivor account of the inside of a
-  tower because there are no survivors.
+  tower because nobody has come out to give one — which is not the same thing
+  as nobody being alive in there, though the world has stopped drawing the
+  distinction.
 - **Nothing gets a message out.** Sending, scrying, dream, familiar, bonded
   item, a rope tied to a companion's waist: everything that should carry word
   from inside to outside fails at the threshold, and fails silently. The
@@ -54,6 +56,39 @@ Very little, and the little is all from the outside:
 
 That is the entire body of confirmed fact. Everything else — the wealth, the
 power, the idea that a tower can be *conquered* at all — is rumour.
+
+## How dangerous a tower is
+
+Every tower answers the party that walks into it. What it answers *with* is not
+the same in every tower, and that is the whole of the problem.
+
+- **Difficulty is a relation, not a quantity.** No tower is hard in the
+  abstract. It is hard, or fair, or merciful *for you* — measured against
+  whoever crossed the threshold, and adjusted to them.
+- **The relation is fixed per tower.** One will always come in above whoever
+  enters it. Another will always sit a shade below. A veteran company and four
+  half-trained nobodies walking into the same tower do not get the same tower,
+  but they get it pitched at the same angle relative to themselves.
+- **Nothing outside tells you which kind you have.** The stone is the same. The
+  door is the same. There is no mark, no sign, no reading anyone has found that
+  distinguishes a merciful tower from a lethal one, and the only test is to
+  walk in.
+- **Survival inside is possible.** It is simply unlikely — and it has never yet
+  been followed by getting out.
+
+Two things follow from this that the world has not worked out, because working
+them out requires somebody to come back.
+
+The first is that sending your best is not obviously the right move, and may be
+the wrong one. Every crown has sent veterans, because that is what you send at
+a thing that kills people, and every crown has lost them. Nobody has tried the
+opposite, because no Diet in the world votes to send four unknowns at the prize
+of the age.
+
+The second is that somewhere out there stands a merciful tower that nobody has
+found. When the first tower in history is finally conquered, the most likely
+explanation is that someone walked into that one. And within a month the world
+will have drawn precisely the wrong lesson from it.
 
 ## The rumour
 
@@ -102,11 +137,17 @@ others, at least two crowns are believed to be sitting on a sighting rather
 than reporting it, and this table has needed a new row roughly every season so
 far.
 
-| Tower | Found | Where | Standing claim |
-| --- | --- | --- | --- |
-| [[The Drowned Spire]] | ~9 months ago | Deep water inside Aquoniti's charted lanes | Aquoniti, unenforced and unannounced |
-| [[The Charter Tower]] | ~4 months ago | The unsurveyed jungle edge between Kesmarch and the Thornwild | Disputed outright |
-| [[The Sealed Ascent]] | Officially never | Below the Undertide Reaches, past a hold that shut itself in | Undertide, who deny it exists |
+| Tower | Found | Where | Standing claim | Pitch (GM) |
+| --- | --- | --- | --- | --- |
+| [[The Drowned Spire]] | ~9 months ago | Deep water inside Aquoniti's charted lanes | Aquoniti, unenforced and unannounced | Above |
+| [[The Charter Tower]] | ~4 months ago | The unsurveyed jungle edge between Kesmarch and the Thornwild | Disputed outright | Level |
+| [[The Sealed Ascent]] | Officially never | Below the Undertide Reaches, past a hold that shut itself in | Undertide, who deny it exists | Far above |
+
+**Pitch** is the fixed relation that tower holds to whoever walks in, and it is
+GM information only. Nobody in the world knows it, no examination reveals it,
+and no character should ever be able to find it out from outside. None of the
+three found so far is merciful, which is a fact about which towers get *found* —
+the ones near shipping lanes and disputed borders — rather than about towers.
 
 Unconfirmed reports run well ahead of that. There is a standing sighting in the
 Khazan steppe that three separate riders describe consistently and no envoy has
@@ -127,3 +168,29 @@ surface — and the question changes from *what arrived* to *what finally reache
 us*.
 
 Nobody who could answer that has come back either.
+
+## Running this
+
+The towers are the spine of the campaign, not its opening. A party is expected
+to do ordinary adventuring work first — and much of that work now has a tower
+somewhere behind it, because the whole world is reorganising around them.
+Escort a chartered company to a door they will not come back out of. Recover
+what an expedition left on the outside. Carry a claim, or a bribe, or a warning
+between two crowns racing for the same ground.
+
+That gives the towers a year of weight before anyone opens one, and it means
+the first threshold is a decision the party makes rather than a premise they
+were handed.
+
+At the table, pitch is the whole dial:
+
+| Pitch | What it means | Use it for |
+| --- | --- | --- |
+| **Merciful** | Encounters below party level | The first conquest anyone in history manages, and the wrong lesson the world learns from it |
+| **Level** | Encounters at party level | A fair, lethal, winnable tower — the standard |
+| **Above** | Encounters a notch above | A tower that has already eaten better parties than this one |
+| **Far above** | Not survivable yet, and honest about it | Late-campaign, or a door the party is meant to walk away from |
+
+Because pitch is relative rather than fixed, a tower does not stop being a
+threat as the party levels — and a party that grows strong enough to shrug off
+the world outside has not gained one inch on the thing it came for.
