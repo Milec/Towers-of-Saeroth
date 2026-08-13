@@ -11,6 +11,8 @@ the repo root matter to it.
   Factions that genuinely span nations can sit loose at the `factions/` root
 - `nations/` — sovereign nations and empires: government, culture, military,
   economy; see [[Nations of the World]] for the full list
+- `deities/` — gods actually worshipped in the setting, copied out of `vault/`
+  so this folder stands alone as an Obsidian vault; see [[Gods of the World]]
 - `sessions/` — session logs / prep notes, one per session
 - `pcs/` — player character summaries, for hooks and continuity
 

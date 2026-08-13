@@ -17,6 +17,6 @@ lanes, so the Alliance stays neutral whenever staying neutral pays.
 - **Military** Professional navy, privateers, mercenary companies, marines
 - **Government** Merchant Senate elected by the great trade houses
 - **Reputation** Rich, influential, and politically neutral when profitable
-- **Faith** Patron [[Setting/Deities/Abadar]] in his aspect as god of contracts and honest wealth — practically the Alliance's founding charter. [[Setting/Deities/Desna]] is the sailors' luck; [[Setting/Deities/Norgorber]] is the god nobody admits to keeping, and every great house has a shrine to him somewhere unlit
+- **Faith** Patron [[Abadar]] in his aspect as god of contracts and honest wealth — practically the Alliance's founding charter. [[Desna]] is the sailors' luck; [[Norgorber]] is the god nobody admits to keeping, and every great house has a shrine to him somewhere unlit
 - **Tension** One of the great houses has quietly underwritten more insurance than it can cover, and everyone who suspects it is deciding whether to warn the others or profit first
 - **Relations** Trade and insurance backbone shared with [[Aquoniti]]; a long, low-grade rivalry with [[Quivar]]'s intelligence service over who actually controls which trade secrets

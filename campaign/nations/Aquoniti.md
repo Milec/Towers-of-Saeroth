@@ -17,6 +17,6 @@ continent outmaneuvers theirs.
 - **Military** Naval fleets, marine infantry, sea beast cavalry, water magic
 - **Government** Council of Tide Lords
 - **Reputation** Masters of naval warfare
-- **Faith** Patron [[Setting/Deities/Gozreh]], who governs the moods of the sea Aquoniti sailors read like a second language. [[Setting/Deities/Desna]] is the navigator's goddess, worshipped by star-sight; the salvage crews and privateers keep [[Setting/Deities/Besmara]] and don't advertise it
+- **Faith** Patron [[Gozreh]], who governs the moods of the sea Aquoniti sailors read like a second language. [[Desna]] is the navigator's goddess, worshipped by star-sight; the salvage crews and privateers keep [[Besmara]] and don't advertise it
 - **Tension** Three deepwater charts have come back wrong in the same season, and the Council of Tide Lords has not explained why it stopped sending survey ships
 - **Relations** Trade and insurance partnership with the [[Thurion Merchant Alliance]]; an old, mostly good-natured rivalry with [[Nordheim]] over the northern shipping lanes; growing shipbuilding trade with the [[Corvane Republic]]
