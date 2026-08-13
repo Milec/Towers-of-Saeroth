@@ -11,7 +11,7 @@ son who passes the scholar's trial can sit above a lord's. The empire has
 weathered raiders on its frontier for generations by simply outlasting
 them.
 
-- **Races** [[Ancestries/Human (Player Core)|Humans]], [[Ancestries/Tengu (Player Core 2)|Tengu]], [[Ancestries/Kitsune|Kitsune]], [[Ancestries/Samsaran|Samsarans]], [[Ancestries/Wayang|Wayang]], [[Ancestries/Nagaji|Nagaji]]
+- **Races** [[Ancestries/Human (Player Core)|Humans]], [[Ancestries/Tengu (Player Core 2)|Tengu]], [[Ancestries/Kitsune|Kitsune]], [[Ancestries/Samsaran|Samsarans]], [[Ancestries/Wayang|Wayang]], [[Ancestries/Nagaji|Nagaji]], [[Ancestries/Tanuki|Tanuki]]
 - **Economic Specialties** Silk, tea, porcelain, paper, scholarship
 - **Military** Professional armies, monastic warriors, horse archers, battle mages
 - **Government** Celestial Emperor supported by scholar officials
