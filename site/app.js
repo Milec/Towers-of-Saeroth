@@ -210,6 +210,14 @@ const renderer = {
     if (m) return actionSVG(m[1].toLowerCase() === 'r' ? 'r' : Number(m[1]));
     m = /^\[(one-action|two-actions|three-actions|free-action|reaction)\]$/.exec(text);
     if (m) return actionSVG(NAMED_ACTIONS[m[1]]);
+    // "Full entry: `vault/Ancestries/Kholo.md`" citations. These are plain code
+    // in the markdown because a wikilink there would be dead in Obsidian, whose
+    // vault root is campaign/ — but this app serves the whole repo, so make
+    // them navigable. Linked optimistically: the vault index may not be loaded
+    // yet, and a wrong path lands on the app's own "Not found" page.
+    if (/^(vault|campaign)\/[^\s]+\.md$/.test(text)) {
+      return `<a class="wl cite" href="#/${encodeURI(text)}"><code>${text}</code></a>`;
+    }
     return `<code>${text}</code>`;
   },
   // `quote` is the already-rendered inner HTML.
@@ -645,7 +653,10 @@ function drawLegend() {
 function tick() {
   const { nodes: ns, edges: es } = graph;
   if (graph.alpha > 0.005 && ns.length) {
-    const k = 1, cell = 60;
+    // Forces scale with alpha so the layout eases to a stop instead of running
+    // at full strength and then cutting off — which left nodes still drifting
+    // under the cursor when the graph looked settled.
+    const k = graph.alpha, cell = 60;
     const grid = new Map();
     for (let i = 0; i < ns.length; i++) {
       const gx = Math.round(ns[i].x / cell), gy = Math.round(ns[i].y / cell);
@@ -675,12 +686,12 @@ function tick() {
       const a = ns[i], b = ns[j];
       const dx = b.x - a.x, dy = b.y - a.y;
       const d = Math.hypot(dx, dy) || 1;
-      const f = (d - 46) * 0.012;
+      const f = (d - 46) * 0.012 * graph.alpha;
       const fx = (dx / d) * f, fy = (dy / d) * f;
       a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
     }
     for (const n of ns) {                          // gravity + damping
-      n.vx -= n.x * 0.0016; n.vy -= n.y * 0.0016;
+      n.vx -= n.x * 0.0016 * graph.alpha; n.vy -= n.y * 0.0016 * graph.alpha;
       n.x += (n.vx *= 0.82); n.y += (n.vy *= 0.82);
     }
     graph.alpha *= 0.985;
