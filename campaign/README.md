@@ -7,6 +7,8 @@ the repo root matter to it.
 - `npcs/` — one file per NPC: identity, wants, stat block reference
 - `locations/` — settlements, dungeons, regions
 - `factions/` — organizations, their goals and tensions
+- `nations/` — sovereign nations and empires: government, culture, military,
+  economy; see [[Nations of the World]] for the full list
 - `sessions/` — session logs / prep notes, one per session
 - `pcs/` — player character summaries, for hooks and continuity
 
