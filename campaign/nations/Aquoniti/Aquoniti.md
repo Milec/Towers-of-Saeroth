@@ -19,4 +19,10 @@ continent outmaneuvers theirs.
 - **Reputation** Masters of naval warfare
 - **Faith** Patron [[Gozreh]], who governs the moods of the sea Aquoniti sailors read like a second language. [[Desna]] is the navigator's goddess, worshipped by star-sight; the salvage crews and privateers keep [[Besmara]] and don't advertise it
 - **Tension** Three deepwater charts have come back wrong in the same season, and the Council of Tide Lords has not explained why it stopped sending survey ships
-- **Relations** Trade and insurance partnership with the [[Thurion Merchant Alliance]]; an old, mostly good-natured rivalry with [[Nordheim]] over the northern shipping lanes; growing shipbuilding trade with the [[Corvane Republic]]
+- **Relations**
+    - [[Elven Confederacy]] — **Allied**: The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms
+    - [[Corvane Republic]] — **Trade**: Shipbuilding, and growing
+    - [[Quivar]] — **Trade**: Pearl and coral, graded at sea and sold on to the Valmont ateliers
+    - [[Thurigypt]] — **Trade**: Old river-trade ties
+    - [[Thurion Merchant Alliance]] — **Trade**: The shipping-and-insurance backbone of the whole continent
+    - [[Nordheim]] — **Rivalry**: Centuries old, over the northern lanes, and genuinely good-natured

@@ -21,4 +21,11 @@ books. They don't always.
 - **Reputation** Disciplined, ambitious, and one bad harvest away from remembering old grievances
 - **Faith** Patron [[Abadar]] in his aspect as god of roads, law and the standardized measure — deliberately chosen at unification as a god belonging to none of the old duchies. [[Erastil]] remains the provinces' real faith, and [[Gorum]] the Unified Legion's
 - **Tension** A poor harvest in one province has revived the old argument about which duchy feeds which, in almost the original wording
-- **Relations** Centuries of [[Khazan Khaganate]] raids are the reason the old rival duchies ever agreed to unite in the first place; watches [[Dalstan]]'s religious fervor warily as a potential source of unrest among its more devout provinces
+- **Relations**
+    - [[Vaelic Principality]] — **Allied**: Mutual defence against the steppe — Vaelic drill-masters train the Unified Legion, and neither can afford Khazan turning its whole weight on one of them alone
+    - [[Xian Ti]] — **Allied**: Two fortified frontiers on the same steppe; they trade raid intelligence season by season, and each quietly hopes Khazan rides at the other
+    - [[Silicar]] — **Trade**: Lock and canal engineering — Voskreld's waterways were surveyed by Silicar guilds
+    - [[Stoneborn Holds]] — **Trade**: Ore and finished steel for the royal cannon foundries
+    - [[Cindral Ashlands]] — **Rivalry**: Two armament industries bidding for the same contracts; Voskreld's foundries are cheaper, Cindral's steel is better, and both sides know it
+    - [[Dalstan]] — **Friction**: Voskreld watches Dalstani zealotry as a live source of unrest in its own devout provinces
+    - [[Khazan Khaganate]] — **Territorial**: Centuries of raids are the reason the old duchies unified at all

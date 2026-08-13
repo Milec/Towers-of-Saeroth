@@ -20,4 +20,9 @@ them.
 - **Reputation** Sophisticated and powerful
 - **Faith** Patron [[Irori]], god of self-perfection — the philosophical justification for the entire examination system. [[Shizuru]] is the imperial house's own goddess of sun and honorable ancestry, [[Daikitsu]] the peasantry's harvest goddess, and [[Abadar]] the ministries'
 - **Tension** A cheating scandal in the scholar examinations has reached high enough that exposing it fully would discredit the ministry that would have to investigate it
-- **Relations** Frontier raiding tension with the [[Khazan Khaganate]]; luxury trade rivalry with [[Quivar]] over who defines "refined" taste
+- **Relations**
+    - [[Voskreld Union]] — **Allied**: Two fortified frontiers on the same steppe; they trade raid intelligence season by season, and each quietly hopes Khazan rides at the other
+    - [[Melisor Magocracy]] — **Trade**: Scholarship traded as freely as goods; both nations keep Irori, and each thinks the other misreads him
+    - [[Thurion Merchant Alliance]] — **Trade**: Silk, tea and porcelain: the single most profitable route the Alliance runs
+    - [[Quivar]] — **Rivalry**: Luxury trade, and who gets to define “refined”
+    - [[Khazan Khaganate]] — **Territorial**: Raiding along the fortified frontier

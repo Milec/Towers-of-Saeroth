@@ -28,4 +28,13 @@ included, lives under local lords' law with no path upward.
 - **Reputation** Reliable allies, slow to change
 - **Faith** Patron [[Iomedae]], whose code of honorable valor underpins the knightly orders and the Drake Riders' oath alike. [[Abadar]] is the judiciary's god and nearly co-equal in the cities; [[Torag]] is kept by the castle engineers and armorers
 - **Tension** [[House Aldreich]]'s succession is unsettled and [[House Kesslin]] is quietly assembling votes against the [[Drake Rider Order]] — the next Diet will be an ugly one
-- **Relations** Long-standing alliance with the [[Thesal Theocracy]], whose clergy anoint Vaelic knights; generational border pressure from the [[Khazan Khaganate]]; many of [[Kesmarch Frontier]]'s settlers are Vaelic-born second sons and disinherited daughters who left for a fresh start
+- **Relations**
+    - [[Thesal Theocracy]] — **Allied**: Long-standing; Thesal clergy anoint Vaelic knights
+    - [[Voskreld Union]] — **Allied**: Mutual defence against the steppe — Vaelic drill-masters train the Unified Legion, and neither can afford Khazan turning its whole weight on one of them alone
+    - [[Cindral Ashlands]] — **Trade**: Fire-forged steel into the Vaelic armories, which would rather not discuss buying abroad
+    - [[Kesmarch Frontier]] — **Trade**: Not commerce but people: Kesmarch's settlers are largely Vaelic second sons and disinherited daughters
+    - [[Corvane Republic]] — **Rivalry**: An elected assembly and a hereditary Diet, each privately certain the other's model cannot last the century
+    - [[Dalstan]] — **Friction**: The Cathedral Court has begun licensing inquisitions across the border, and the Imperial judiciary is the only body with standing to refuse it
+    - [[Khazan Khaganate]] — **Territorial**: Generational border pressure
+    - [[Lazarian Lichdom]] — **Hostile**: The old battlefields Lazarian was built on are full of Vaelic dead, and Vaelic knights have met their own ancestors in the field
+    - [[Quivar]] — **Covert**: Valmont keeps agents in the Diet and a considerable interest in who the next High Prince will owe

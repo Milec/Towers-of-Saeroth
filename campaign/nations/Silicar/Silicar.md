@@ -19,4 +19,9 @@ its irrigation canals and clockwork feed half the continent.
 - **Reputation** Small but astonishingly inventive
 - **Faith** Patron [[Brigh]], goddess of invention and clockwork, whose shrines are workshops with an altar in the corner. [[Erastil]] is the older faith of the farming villages, and the two clergies argue amiably about which one actually feeds the nation
 - **Tension** An upstream canal has begun silting faster than it can be cleared, and no one has told the export partners who depend on the harvest yet
-- **Relations** Machinery and engineering exports flow steadily to [[Stoneborn Holds]] and the [[Thurion Merchant Alliance]]; [[Melisor Magocracy]] academics can't decide whether Silicar's clockwork is beneath magic or quietly outperforming it
+- **Relations**
+    - [[Nordheim]] — **Trade**: Iron and timber south, Silicar grain north; the fjords cannot feed themselves through a hard winter
+    - [[Stoneborn Holds]] — **Trade**: Machinery and engineering exports
+    - [[Thurion Merchant Alliance]] — **Trade**: Same exports, sold on
+    - [[Voskreld Union]] — **Trade**: Lock and canal engineering — Voskreld's waterways were surveyed by Silicar guilds
+    - [[Melisor Magocracy]] — **Rivalry**: Melisor's academics can't decide whether Silicar's clockwork is beneath magic or quietly outperforming it

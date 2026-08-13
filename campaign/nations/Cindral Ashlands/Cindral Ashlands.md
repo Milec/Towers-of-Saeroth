@@ -21,4 +21,10 @@ them. The Emberlord's throne is reforged, not inherited.
 - **Reputation** Intense, unyielding, and quietly generous to anyone who's earned it
 - **Faith** Patron [[Angradd]], the forge-fire and the god of war fought face-forward, whose trial the Emberlord's own succession imitates. [[Torag]] is honored beside him by the dwarven lineages, and [[Sarenrae]] for fire's cleansing rather than its making
 - **Tension** The Emberlord's trial-by-forge is due and two candidates have already survived it once, which the charter does not actually address
-- **Relations** Trades obsidian and rare ore with [[Stoneborn Holds]], who find Cindral's forging rites needlessly dramatic; the [[Thesal Theocracy]] views Cindral's elemental reverence as reckless faith, though never says so to a Cindral envoy's face
+- **Relations**
+    - [[Melisor Magocracy]] — **Trade**: Elemental reagents no other forge can produce, at prices the academies resent and pay
+    - [[Stoneborn Holds]] — **Trade**: Obsidian and rare ore — though the Stoneborn find Cindral's forging rites needlessly dramatic
+    - [[Thurigypt]] — **Trade**: The delta's glassworks run on Cindral obsidian, and pay in gold
+    - [[Vaelic Principality]] — **Trade**: Fire-forged steel into the Vaelic armories, which would rather not discuss buying abroad
+    - [[Voskreld Union]] — **Rivalry**: Two armament industries bidding for the same contracts; Voskreld's foundries are cheaper, Cindral's steel is better, and both sides know it
+    - [[Thesal Theocracy]] — **Friction**: Thesal considers Cindral's elemental reverence reckless faith, and never says so to an envoy's face

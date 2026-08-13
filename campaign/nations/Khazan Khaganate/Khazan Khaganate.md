@@ -20,4 +20,10 @@ fearsome warriors who keep their word.
 - **Reputation** Fearsome warriors, surprisingly honorable
 - **Faith** Patron [[Gorum]], who cares only that a fight was fought well — war-bands ride under his sign. [[Desna]] is the other half of Khazan devotion: goddess of stars and the open road, and every nomad navigates by her
 - **Tension** The Great Khagan is old and has named no favorite; the khans are already counting each other's riders
-- **Relations** Generational border pressure on the [[Vaelic Principality]] and raiding tension along the [[Xian Ti]] frontier; regards the [[Elven Confederacy]]'s ancient forest claims as an old, unresolved argument; centuries of Khazan raids are the reason the old rival duchies of the [[Voskreld Union]] ever agreed to unite in the first place
+- **Relations**
+    - [[Thurion Merchant Alliance]] — **Trade**: Mercenary contracts: the Alliance hires steppe riders by the thousand and leases them to whoever is losing
+    - [[Elven Confederacy]] — **Territorial**: An old, unresolved argument over the ancient forest claims
+    - [[Thornwild Confederation]] — **Territorial**: Periodic raids for beast-stock; the Thornwild has not forgotten
+    - [[Vaelic Principality]] — **Territorial**: Generational border pressure
+    - [[Voskreld Union]] — **Territorial**: Centuries of raids are the reason the old duchies unified at all
+    - [[Xian Ti]] — **Territorial**: Raiding along the fortified frontier
