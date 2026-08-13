@@ -206,7 +206,12 @@ body {
 }
 .gfab[hidden] { display: none; }
 .gfab svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
-#gcanvas { width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+#gcanvas {
+  width: 100%; height: 100%; display: block; cursor: grab;
+  touch-action: none;                 /* we handle pan/pinch ourselves */
+  -webkit-touch-callout: none;        /* iOS long-press would cancel the hold */
+  -webkit-user-select: none; user-select: none;
+}
 #gcanvas:active { cursor: grabbing; }
 .ghint { position: absolute; left: 12px; bottom: 12px; font-size: 12px; pointer-events: none; }
 
