@@ -164,6 +164,17 @@ Obsidian-flavoured markdown, matching the convention already used throughout
   NPC to their faction, a faction to its nation, a nation to its patron
   deity. A plain prose mention doesn't link back to anything; a wikilink
   does, which is the whole point of a vault.
+- **An index note links to what it indexes, and nothing else.**
+  `Gods of the World.md` links the gods; `Peoples of the World.md` links the
+  ancestries; `Nations of the World.md` links the nations. When such a table
+  has a second column — which nations worship this god, where this ancestry is
+  found — **write those as plain text, not wikilinks.** They are already linked
+  from both ends (the deity note's Worship bullet and the nation's Faith
+  bullet), so linking them again adds no reachable information and wires the
+  index into half the vault: those two tables alone were 40 duplicate edges,
+  and made the two indexes the busiest nodes in the graph by a wide margin.
+  The general rule is that a hub should be one hop from its subjects, not one
+  hop from everything its subjects mention.
 - **Never link into `vault/` from a campaign note.** Obsidian opens
   `campaign/` as the vault root (the full `vault/` is 41k files, too large to
   index), so `[[Setting/Deities/Sarenrae]]` or
