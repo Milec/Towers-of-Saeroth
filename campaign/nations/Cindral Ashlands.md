@@ -19,6 +19,6 @@ them. The Emberlord's throne is reforged, not inherited.
 - **Military** Magma-forged warbands, elemental-bound berserkers, obsidian legionnaires, volcano wardens
 - **Government** The Emberlord, chosen by trial-by-forge
 - **Reputation** Intense, unyielding, and quietly generous to anyone who's earned it
-- **Faith** Patron [[Setting/Deities/Angradd]], the forge-fire and the god of war fought face-forward, whose trial the Emberlord's own succession imitates. [[Setting/Deities/Torag]] is honored beside him by the dwarven lineages, and [[Setting/Deities/Sarenrae]] for fire's cleansing rather than its making
+- **Faith** Patron [[Angradd]], the forge-fire and the god of war fought face-forward, whose trial the Emberlord's own succession imitates. [[Torag]] is honored beside him by the dwarven lineages, and [[Sarenrae]] for fire's cleansing rather than its making
 - **Tension** The Emberlord's trial-by-forge is due and two candidates have already survived it once, which the charter does not actually address
 - **Relations** Trades obsidian and rare ore with [[Stoneborn Holds]], who find Cindral's forging rites needlessly dramatic; the [[Thesal Theocracy]] views Cindral's elemental reverence as reckless faith, though never says so to a Cindral envoy's face

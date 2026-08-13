@@ -20,6 +20,6 @@ what actually lives down here.
 - **Military** Tunnel ambush corps, construct sentinels, fungal beast handlers, deep scouts
 - **Government** Warden-Conclave of the Deep Holds
 - **Reputation** Secretive, self-sufficient, and unnervingly hard to surprise
-- **Faith** Patron [[Setting/Deities/Norgorber]], god of secrets — an unsettlingly literal fit for a nation whose currency is information. [[Setting/Deities/Pharasma]] is kept in the deepest holds, where the dead are numerous and very old
+- **Faith** Patron [[Norgorber]], god of secrets — an unsettlingly literal fit for a nation whose currency is information. [[Pharasma]] is kept in the deepest holds, where the dead are numerous and very old
 - **Tension** A deep hold has sealed itself from the inside and the Warden-Conclave has voted twice not to investigate, which tells the other holds everything they need to know
 - **Relations** Disputes ancient stonecraft claims with [[Stoneborn Holds]]; moves relics through back channels that lead, eventually and deniably, to the [[Lazarian Lichdom]]

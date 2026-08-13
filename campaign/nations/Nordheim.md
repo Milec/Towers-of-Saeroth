@@ -17,6 +17,6 @@ a hard death.
 - **Military** Shield walls, berserkers, longship fleets, elite axemen, mountain scouts
 - **Government** The High King is elected by the assembly of Jarls at the Great Thing
 - **Reputation** Stoic explorers, fierce warriors, and steadfast allies
-- **Faith** Patron [[Setting/Deities/Cayden Cailean]], god of bravery, freedom and the guest-cup — the closest thing Nordheim has to a national creed. [[Setting/Deities/Gorum]] is kept for war and [[Setting/Deities/Desna]] for the long voyages; the oldest sagas still invoke [[Setting/Deities/Trudd]]
+- **Faith** Patron [[Cayden Cailean]], god of bravery, freedom and the guest-cup — the closest thing Nordheim has to a national creed. [[Gorum]] is kept for war and [[Desna]] for the long voyages; the oldest sagas still invoke [[Trudd]]
 - **Tension** The High King is dying and the Great Thing must be called before the ice closes the fjords, which means the jarls who arrive late will have no say at all
 - **Relations** Shared northern trade and dwarven kinship with [[Stoneborn Holds]]; a friendly, centuries-old rivalry with [[Aquoniti]] over the northern waters

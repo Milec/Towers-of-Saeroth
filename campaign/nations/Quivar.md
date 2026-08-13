@@ -17,6 +17,6 @@ everyone at court knows it.
 - **Military** Elite chevaliers, Royal Guard, musketeer-style skirmishers, intelligence service
 - **Government** Absolute monarchy supported by an influential royal court
 - **Reputation** The cultural heart of the world, but never fully trusted
-- **Faith** Patron [[Setting/Deities/Shelyn]], goddess of art, beauty and love — the face Quivar presents, and genuinely beloved. [[Setting/Deities/Calistria]], goddess of intrigue, revenge and exquisite grudges, is the one the court actually prays to, and everyone knows it
+- **Faith** Patron [[Shelyn]], goddess of art, beauty and love — the face Quivar presents, and genuinely beloved. [[Calistria]], goddess of intrigue, revenge and exquisite grudges, is the one the court actually prays to, and everyone knows it
 - **Tension** The monarch has two plausible heirs and has declined to indicate a preference, which has turned every salon in Valmont into a recruiting ground
 - **Relations** Trade-secret rivalry with the [[Thurion Merchant Alliance]]; [[Dalstan]]'s nobility imitates Quivari fashion badly enough to be a running joke at court
