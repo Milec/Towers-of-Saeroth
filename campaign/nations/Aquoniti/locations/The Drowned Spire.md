@@ -6,6 +6,7 @@ region: Deep water on the outer survey lanes, Aquoniti
 found: Roughly nine months ago
 claim: Aquoniti, unenforced and unannounced
 entered: Four crews; none returned
+pitch: Above party level — GM only; unknowable in-world
 ---
 
 The first anyone knew of it was three deepwater charts coming back wrong in the

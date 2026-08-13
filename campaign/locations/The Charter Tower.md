@@ -6,6 +6,7 @@ region: The unsurveyed jungle edge between Kesmarch and the Thornwild
 found: Four months ago
 claim: Disputed outright
 entered: At least six parties; none returned
+pitch: At party level — GM only; unknowable in-world
 ---
 
 It stands in jungle that the [[Kesmarch Frontier]]'s Territorial Council had
