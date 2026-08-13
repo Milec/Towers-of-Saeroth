@@ -58,6 +58,10 @@
   <aside class="gpanel">
     <div class="gpanel-head">
       <strong>Graph view</strong>
+      <span class="spacer"></span>
+      <button id="gCollapse" class="iconbtn" aria-label="Hide options" title="Hide options">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
       <button id="graphClose" class="iconbtn" aria-label="Close graph">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
@@ -81,7 +85,11 @@
   </aside>
   <div class="gcanvas-wrap">
     <canvas id="gcanvas"></canvas>
-    <div id="ghint" class="ghint muted">Drag to pan · scroll to zoom · click a node to open it</div>
+    <button id="gExpand" class="gfab" aria-label="Show options" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <span>Options</span>
+    </button>
+    <div id="ghint" class="ghint muted">Drag to pan · scroll to zoom · tap a node to open it · press and hold to highlight its links</div>
   </div>
 </div>
 
