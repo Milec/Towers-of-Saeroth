@@ -17,4 +17,4 @@ them.
 - **Military** Beast-bonded skirmishers, canopy archers, totem-warriors, venom scouts
 - **Government** The Circle of First Packs — one voice per founding clan-lineage
 - **Reputation** Wild, fiercely loyal to their own, and dangerously easy to underestimate
-- **Relations** Regarded by the [[Elven Confederacy]] as unruly distant kin in nature, if not in temperament; periodically raided by the [[Khazan Khaganate]] for beast-stock, a grievance the Thornwild has not forgotten
+- **Relations** Regarded by the [[Elven Confederacy]] as unruly distant kin in nature, if not in temperament; periodically raided by the [[Khazan Khaganate]] for beast-stock, a grievance the Thornwild has not forgotten; increasingly pressured on its other border by [[Kesmarch Frontier]] homesteaders clearing jungle for farmland

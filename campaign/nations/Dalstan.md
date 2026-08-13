@@ -25,4 +25,4 @@ grace — and it decides often.
 - **Faith** [[Setting/Deities/Zon-Kuthon]]'s doctrine that suffering refines the soul has been reinterpreted, gradually and self-servingly, into an excuse for splendor
 - **Want** The Cathedral Court wants every neighboring court to convert, gilded shrine by gilded shrine.
 - **Won't** Dalstan will not admit that its faith and its avarice are the same appetite wearing different robes.
-- **Relations** Regarded by the [[Thesal Theocracy]] as a cautionary tale about what faith becomes without compassion; envies and clumsily imitates [[Quivar]]'s court fashion; [[Thurigypt]] considers its opulence undisciplined
+- **Relations** Regarded by the [[Thesal Theocracy]] as a cautionary tale about what faith becomes without compassion; envies and clumsily imitates [[Quivar]]'s court fashion; [[Thurigypt]] considers its opulence undisciplined; its persecution of Tieflings and dissidents feeds a steady trickle of refugees to the [[Corvane Republic]]; the [[Voskreld Union]] watches its zealotry warily as a potential source of unrest among its own devout provinces

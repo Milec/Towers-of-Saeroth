@@ -17,4 +17,4 @@ fearsome warriors who keep their word.
 - **Government** Great Khagan elected by the assembled khans
 - **Reputation** Fearsome warriors, surprisingly honorable
 - **Faith** War-bands ride under [[Setting/Deities/Gorum]], who cares only that a fight was fought well
-- **Relations** Generational border pressure on the [[Vaelic Principality]] and raiding tension along the [[Xian Ti]] frontier; regards the [[Elven Confederacy]]'s ancient forest claims as an old, unresolved argument
+- **Relations** Generational border pressure on the [[Vaelic Principality]] and raiding tension along the [[Xian Ti]] frontier; regards the [[Elven Confederacy]]'s ancient forest claims as an old, unresolved argument; centuries of Khazan raids are the reason the old rival duchies of the [[Voskreld Union]] ever agreed to unite in the first place

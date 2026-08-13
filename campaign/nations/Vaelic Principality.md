@@ -16,4 +16,4 @@ novelty — but an ally sworn is an ally kept.
 - **Government** Elector princes choose the High Prince
 - **Reputation** Reliable allies, slow to change
 - **Faith** [[Setting/Deities/Iomedae]]'s code of honorable valor underpins the knightly orders
-- **Relations** Long-standing alliance with the [[Thesal Theocracy]], whose clergy anoint Vaelic knights; generational border pressure from the [[Khazan Khaganate]]
+- **Relations** Long-standing alliance with the [[Thesal Theocracy]], whose clergy anoint Vaelic knights; generational border pressure from the [[Khazan Khaganate]]; many of [[Kesmarch Frontier]]'s settlers are Vaelic-born second sons and disinherited daughters who left for a fresh start
