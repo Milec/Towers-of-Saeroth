@@ -69,6 +69,61 @@ copy of the data, so the note still reads correctly in Obsidian and on GitHub,
 and adding a row to the table adds an edge to the web with no code change.
 Follow that pattern for any new view — never duplicate campaign data into JS.
 
+## Changing the political relations
+
+The diplomacy exists in three places at once, and **all three move together or
+the vault starts lying about itself**:
+
+1. the table in `campaign/nations/Political Relations.md`,
+2. the **Relations** bullet on each of the 21 `campaign/nations/<Nation>/<Nation>.md` notes,
+3. the relations web on the site, which is drawn from that table.
+
+The table is the source of truth. Its own first line claims the relationships
+are "drawn from the Relations bullet on each nation's own note", which is only
+true if the notes actually agree with it — so never hand-edit a nation's
+Relations bullet, and never add a row to the table and stop there.
+
+**The workflow, every time:**
+
+```
+# 1. edit the table in campaign/nations/Political Relations.md
+# 2. push it out to all 21 nation notes
+python3 tools/sync_relations.py
+
+# 3. rebuild and look at the web in a real browser
+python3 tools/build_site.py --no-vault && python3 -m http.server 8899 -d _site
+```
+
+`sync_relations.py` rewrites every nation's Relations bullet from the table,
+and refuses to run if the table is malformed: an unknown standing, a duplicate
+pair, a nation with no folder, a nation related to itself. The unknown-standing
+check matters most because that failure is otherwise **silent** — the view
+skips rows whose standing it doesn't recognise, so the tie would just quietly
+vanish from the web. `--check` verifies without writing and exits non-zero on
+drift, which is the fast way to confirm nothing has slipped.
+
+**Then actually look at the graph.** Density is not free: going from 32 ties to
+69 made the springs overwhelm repulsion and nodes started overlapping. Load the
+note, and check `window.__rel` — if
+
+```js
+// smallest gap between any two node edges; must stay comfortably positive
+Math.min(...__rel.nodes.flatMap((a,i) => __rel.nodes.slice(i+1).map(b =>
+  Math.hypot(a.x-b.x, a.y-b.y) - a.r - b.r)))
+```
+
+is near zero or negative, retune `RSIM`/`REST` in `app.js` rather than shipping
+a knot. Check the standing filters still isolate cleanly, and check a
+phone-sized viewport.
+
+**Adding a new standing** touches four places, and missing any one of them
+breaks it quietly: `STANDINGS`, `DASH`, `STROKE` and `REST` in `site/app.js`;
+the `--rel-*` token in **all three** `:root` blocks plus the `.rel-edge.s-*`
+and `.rel-tag.s-*` rules in `site/styles.css`; the legend table in the note;
+and the new colour needs validating rather than eyeballing — eight standings is
+far past what hue alone separates, which is why dash pattern and stroke weight
+carry the identity and colour is only the last cue.
+
 ## Pull request workflow
 
 Claude pushes changes on a feature branch and opens a PR rather than
