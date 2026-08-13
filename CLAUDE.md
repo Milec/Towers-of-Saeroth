@@ -169,6 +169,12 @@ Obsidian-flavoured markdown, matching the convention already used throughout
   NPC to their faction, a faction to its nation, a nation to its patron
   deity. A plain prose mention doesn't link back to anything; a wikilink
   does, which is the whole point of a vault.
+- **Never let a `[[wikilink]]` wrap across a line break.** Both Obsidian and
+  this site tokenise wikilinks within a single line, so `[[Thornwild\nConfederation]]`
+  is not a broken link — it is not a link at all, and renders as literal
+  bracketed text. It shows up in no broken-link check because nothing ever
+  parsed it. When reflowing a paragraph to 80 columns, break *before* the link
+  rather than inside it.
 - **An index note links to what it indexes, and nothing else.**
   `Gods of the World.md` links the gods; `Peoples of the World.md` links the
   ancestries; `Nations of the World.md` links the nations. When such a table
