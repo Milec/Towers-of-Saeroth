@@ -76,6 +76,12 @@ function stripFrontmatter(src) {
   return { fm: m[1], body: src.slice(m[0].length) };
 }
 
+function fmField(fm, key) {
+  if (!fm) return '';
+  const m = new RegExp('^' + key + ':\\s*(.*)$', 'mi').exec(fm);
+  return m ? m[1].trim().replace(/^["']|["']$/g, '') : '';
+}
+
 const wikilink = {
   name: 'wikilink', level: 'inline',
   start(src) { return src.indexOf('[['); },
@@ -276,10 +282,14 @@ async function route() {
   try {
     const raw = await fetchNote(target);
     const { fm, body } = stripFrontmatter(raw);
+    el.classList.remove('wide');   // only a relations note widens the column
     el.innerHTML =
       `<nav class="crumbs">${crumbs(target)}</nav>` +
       frontmatterTable(fm) +
       marked.parse(body);
+    if (fmField(fm, 'view') === 'relations') {
+      try { mountRelations(el, body); } catch (_) { /* the table still renders */ }
+    }
     document.title = target.split('/').pop().replace(/\.md$/, '') + ' — Towers of Saeroth';
     renderBacklinks(target);
     if (frag) {
@@ -1028,13 +1038,503 @@ function setPanel(open) {
 function openGraph() { $('graphView').hidden = false; setPanel(true); buildScopeUI(); }
 function closeGraph() { $('graphView').hidden = true; cancelAnimationFrame(graph.raf); graph.raf = 0; }
 
+/* ------------------------------------------------------------ relations web
+   A note carrying `view: relations` in its frontmatter has its diplomacy table
+   redrawn as a force-directed web, in place, above the table it came from.
+
+   The markdown table stays the single source of truth — it is what Obsidian
+   and GitHub render, and it is what this parses — so adding a row to the note
+   adds an edge here with no code change and nothing to keep in sync by hand.
+
+   Seven standings is well past what hue alone can carry; the graph view's
+   three-hue ceiling is the same constraint arriving from the other direction.
+   So each standing gets its own dash pattern and stroke weight as well as a
+   colour, and the legend, tags and ledger all name it in words. Colour is the
+   last of four cues here, never the only one. */
+const STANDINGS = [
+  ['allied', 'Allied'], ['trade', 'Trade'], ['rivalry', 'Rivalry'],
+  ['friction', 'Friction'], ['territorial', 'Territorial'],
+  ['hostile', 'Hostile'], ['covert', 'Covert'],
+];
+const STANDING_LABEL = new Map(STANDINGS);
+const FRIENDLY = new Set(['allied', 'trade']);
+const DASH = {
+  allied: '', trade: '', rivalry: '7 5', friction: '2 5',
+  territorial: '13 4', hostile: '5 4', covert: '1.5 8',
+};
+const STROKE = {
+  allied: 2.6, trade: 1.5, rivalry: 1.9, friction: 2.0,
+  territorial: 3.0, hostile: 3.2, covert: 1.6,
+};
+
+/* Rest length per standing, so the layout itself carries the argument rather
+   than just colouring one someone else made: allies and trading partners
+   settle close together, territorial and hostile pairs are shoved apart. The
+   trade web ends up holding the middle and the flashpoints splay to the rim. */
+const REST = {
+  allied: 104, trade: 128, rivalry: 168, friction: 186,
+  territorial: 230, hostile: 248, covert: 198,
+};
+const RSIM = { repel: 8200, centre: 0.006, spring: 0.045, damp: 0.82, pad: 54 };
+const RVIEW = { w: 1000, h: 680 };
+const SVGNS = 'http://www.w3.org/2000/svg';
+
+const rel = { nodes: [], edges: [], sel: null, active: new Set(), themes: new Map() };
+window.__rel = rel;   // exposed for automated UI tests, like window.__g
+
+function svgEl(tag, attrs) {
+  const e = document.createElementNS(SVGNS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+
+/* Label widths are measured on a canvas rather than read back with getBBox:
+   getBBox needs the node laid out in the document, and the web is built while
+   the article is still being assembled offscreen. */
+const LABEL_FONT = '600 11.5px system-ui, -apple-system, "Segoe UI", sans-serif';
+let _mctx = null;
+function labelWidth(s) {
+  if (!_mctx) _mctx = document.createElement('canvas').getContext('2d');
+  _mctx.font = LABEL_FONT;
+  return _mctx.measureText(s).width;
+}
+
+/* Rows look like `| [[A]] ↔ [[B]] | **Standing** | prose |`. Anything that is
+   not two wikilinks plus a known standing is skipped, which is what keeps the
+   note's own legend table (| Label | Means |) out of the graph. */
+function parseRelations(body) {
+  const byName = new Map();
+  const edges = [];
+  const node = (name) => {
+    let n = byName.get(name);
+    if (!n) byName.set(name, (n = { name, deg: 0, ties: [], x: 0, y: 0, vx: 0, vy: 0, r: 0 }));
+    return n;
+  };
+  for (const raw of body.split(/\r?\n/)) {
+    const line = raw.trim();
+    if (line[0] !== '|') continue;
+    const cells = line.replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
+    if (cells.length < 2) continue;
+    const pair = [...cells[0].matchAll(/\[\[([^\]|#]+)[^\]]*\]\]/g)].map((m) => m[1].trim());
+    if (pair.length !== 2 || pair[0] === pair[1]) continue;
+    const standing = cells[1].replace(/\*+/g, '').trim().toLowerCase();
+    if (!STANDING_LABEL.has(standing)) continue;
+    const a = node(pair[0]), b = node(pair[1]);
+    const e = { a, b, standing, desc: cells[2] || '' };
+    a.deg++; b.deg++; a.ties.push(e); b.ties.push(e);
+    edges.push(e);
+  }
+  const nodes = [...byName.values()];
+  for (const n of nodes) n.r = 12 + Math.min(n.deg, 6) * 2.4;
+  return { nodes, edges };
+}
+
+/* Seeded, so the same note lays out the same way on every visit. A random seed
+   would redraw differently each time it is opened and nothing about the shape
+   would ever become familiar. */
+function mulberry32(a) {
+  return () => {
+    a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function relaxRelations(nodes, edges, iters, frozen) {
+  const { w, h } = RVIEW;
+  for (let it = 0; it < iters; it++) {
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      for (let j = i + 1; j < nodes.length; j++) {
+        const b = nodes[j];
+        let dx = a.x - b.x, dy = a.y - b.y;
+        let d2 = dx * dx + dy * dy;
+        if (d2 < 1) { dx = 1; dy = 0.3; d2 = 1.09; }
+        const d = Math.sqrt(d2), f = RSIM.repel / d2;
+        a.vx += (dx / d) * f; a.vy += (dy / d) * f;
+        b.vx -= (dx / d) * f; b.vy -= (dy / d) * f;
+      }
+      a.vx += (w / 2 - a.x) * RSIM.centre;
+      a.vy += (h / 2 - a.y) * RSIM.centre;
+    }
+    for (const e of edges) {
+      const dx = e.b.x - e.a.x, dy = e.b.y - e.a.y;
+      const d = Math.hypot(dx, dy) || 1;
+      const f = (d - REST[e.standing]) * RSIM.spring;
+      e.a.vx += (dx / d) * f; e.a.vy += (dy / d) * f;
+      e.b.vx -= (dx / d) * f; e.b.vy -= (dy / d) * f;
+    }
+    for (const n of nodes) {
+      if (n === frozen) { n.vx = n.vy = 0; continue; }
+      n.vx *= RSIM.damp; n.vy *= RSIM.damp;
+      n.x += n.vx; n.y += n.vy;
+      n.x = Math.min(w - RSIM.pad - n.r, Math.max(RSIM.pad + n.r, n.x));
+      n.y = Math.min(h - RSIM.pad - n.r, Math.max(RSIM.pad + n.r, n.y));
+    }
+  }
+}
+
+function chipSwatch(k) {
+  return `<svg class="rel-sw" viewBox="0 0 28 10" aria-hidden="true"><line x1="1" y1="5" x2="27" y2="5"
+    stroke="var(--rel-${k})" stroke-width="${STROKE[k]}" stroke-linecap="round"
+    ${DASH[k] ? `stroke-dasharray="${DASH[k]}"` : ''}/></svg>`;
+}
+
+function mountRelations(container, body) {
+  const { nodes, edges } = parseRelations(body);
+  if (edges.length < 2) return;
+  rel.nodes = nodes; rel.edges = edges; rel.sel = null;
+  rel.active = new Set(STANDINGS.map(([k]) => k));
+
+  const rand = mulberry32(0x5AE407);
+  nodes.forEach((n, i) => {
+    const a = (i / nodes.length) * Math.PI * 2;
+    const r = 180 + rand() * 95;
+    n.x = RVIEW.w / 2 + Math.cos(a) * r;
+    n.y = RVIEW.h / 2 + Math.sin(a) * r;
+    n.vx = n.vy = 0;
+  });
+  relaxRelations(nodes, edges, 520, null);
+
+  const counts = new Map(STANDINGS.map(([k]) => [k, 0]));
+  for (const e of edges) counts.set(e.standing, counts.get(e.standing) + 1);
+
+  const fig = document.createElement('figure');
+  fig.className = 'relweb';
+  fig.innerHTML = `
+    <div class="rel-controls" role="group" aria-label="Filter ties by standing">
+      ${STANDINGS.filter(([k]) => counts.get(k)).map(([k, label]) =>
+        `<button type="button" class="rel-chip" data-k="${k}" aria-pressed="true">
+           ${chipSwatch(k)}<span>${label}</span><span class="muted">${counts.get(k)}</span>
+         </button>`).join('')}
+      <button type="button" class="rel-reset linkbtn">Reset</button>
+    </div>
+    <div class="rel-board">
+      <div class="rel-canvas">
+        <svg class="rel-svg" viewBox="0 0 ${RVIEW.w} ${RVIEW.h}" role="img"
+             aria-label="Web of ${edges.length} diplomatic ties between ${nodes.length} nations">
+          <g class="rel-edges"></g><g class="rel-nodes"></g>
+        </svg>
+        <p class="rel-hint muted">Tap a nation for its ties · drag to untangle · double-tap opens its note</p>
+      </div>
+      <aside class="rel-ledger" aria-live="polite"></aside>
+    </div>
+    <figcaption>Distance is an argument, not decoration: allies and trading
+      partners are pulled together, territorial and hostile pairs pushed apart.</figcaption>`;
+
+  // Sit the web directly above the table it was read from, and fold that table
+  // away — it is still the source of truth and still fully readable, it just no
+  // longer needs to be the first thirty rows you scroll past.
+  container.classList.add('wide');
+  const table = [...container.querySelectorAll('table')]
+    .find((t) => /↔|<->/.test(t.textContent) && /\[\[|\w/.test(t.textContent));
+  if (table) {
+    // Go above the heading that introduces the table, not just above the table,
+    // so the page doesn't read "The table" followed by a picture of a web.
+    const prev = table.previousElementSibling;
+    const anchor = prev && /^H[2-4]$/.test(prev.tagName) ? prev : table;
+    anchor.parentNode.insertBefore(fig, anchor);
+    const det = document.createElement('details');
+    det.className = 'relsource';
+    det.innerHTML = `<summary>The ${edges.length} rows this is read from</summary>`;
+    table.parentNode.insertBefore(det, table);
+    det.appendChild(table);
+  } else {
+    container.appendChild(fig);
+  }
+
+  buildRelSvg(fig);
+  wireRelations(fig);
+  renderRelLedger(fig);
+  loadNationThemes(fig);
+}
+
+function buildRelSvg(fig) {
+  const eLayer = fig.querySelector('.rel-edges');
+  const nLayer = fig.querySelector('.rel-nodes');
+  eLayer.textContent = ''; nLayer.textContent = '';
+
+  for (const e of rel.edges) {
+    e.el = svgEl('line', {
+      class: 'rel-edge s-' + e.standing,
+      'stroke-width': STROKE[e.standing],
+      'stroke-linecap': DASH[e.standing] ? 'round' : 'butt',
+      x1: e.a.x, y1: e.a.y, x2: e.b.x, y2: e.b.y,
+    });
+    if (DASH[e.standing]) e.el.setAttribute('stroke-dasharray', DASH[e.standing]);
+    eLayer.appendChild(e.el);
+  }
+
+  for (const n of rel.nodes) {
+    const g = svgEl('g', {
+      class: 'rel-node', tabindex: '0', role: 'button',
+      'aria-label': `${n.name}, ${n.deg} relationship${n.deg === 1 ? '' : 's'}`,
+    });
+    n.circle = svgEl('circle', { class: 'rel-dot', cx: n.x, cy: n.y, r: n.r });
+    n.bg = svgEl('rect', { class: 'rel-labelbg', rx: 3 });
+    n.label = svgEl('text', { class: 'rel-label', 'text-anchor': 'middle' });
+    n.label.textContent = n.name;
+    g.append(n.circle, n.bg, n.label);
+    nLayer.appendChild(g);
+    n.el = g;
+  }
+  placeRelLabels();
+}
+
+/* Labels sit under their node by default and flip above when that would land
+   on one already placed — nation names are far wider than the dots they belong
+   to, so without this the crowded middle of the web reads as one run-on word.
+   Best-connected first, so the names that matter keep the natural position. */
+function placeRelLabels() {
+  const placed = [];
+  const hits = (r) => placed.some((p) =>
+    r.x < p.x + p.w && r.x + r.w > p.x && r.y < p.y + p.h && r.y + r.h > p.y);
+
+  for (const n of rel.nodes) {
+    n.circle.setAttribute('cx', n.x);
+    n.circle.setAttribute('cy', n.y);
+  }
+  for (const n of [...rel.nodes].sort((a, b) => b.deg - a.deg)) {
+    const w = labelWidth(n.name);
+    const rect = (y) => ({ x: n.x - w / 2 - 3, y: y - 9.5, w: w + 6, h: 13 });
+    const below = n.y + n.r + 13, above = n.y - n.r - 6;
+    const y = (hits(rect(below)) && !hits(rect(above))) ? above : below;
+    const r = rect(y);
+    placed.push(r);
+    n.label.setAttribute('x', n.x); n.label.setAttribute('y', y);
+    n.bg.setAttribute('x', r.x); n.bg.setAttribute('y', r.y);
+    n.bg.setAttribute('width', r.w); n.bg.setAttribute('height', r.h);
+  }
+  for (const e of rel.edges) {
+    e.el.setAttribute('x1', e.a.x); e.el.setAttribute('y1', e.a.y);
+    e.el.setAttribute('x2', e.b.x); e.el.setAttribute('y2', e.b.y);
+  }
+}
+
+function applyRelFilter() {
+  for (const e of rel.edges) e.el.classList.toggle('off', !rel.active.has(e.standing));
+  for (const n of rel.nodes) {
+    const live = n.ties.some((t) => rel.active.has(t.standing));
+    n.el.classList.toggle('off', !live && !rel.sel);
+  }
+}
+
+function selectRelNode(fig, node) {
+  rel.sel = node;
+  for (const n of rel.nodes) n.el.classList.remove('sel', 'near', 'far');
+  for (const e of rel.edges) e.el.classList.remove('lit', 'dim');
+  if (node) {
+    node.el.classList.add('sel');
+    const near = new Set();
+    for (const t of node.ties) {
+      const other = t.a === node ? t.b : t.a;
+      near.add(other);
+      t.el.classList.add('lit');
+    }
+    for (const e of rel.edges) if (!e.el.classList.contains('lit')) e.el.classList.add('dim');
+    for (const n of rel.nodes) {
+      if (n === node) continue;
+      n.el.classList.add(near.has(n) ? 'near' : 'far');
+    }
+  }
+  applyRelFilter();
+  renderRelLedger(fig);
+}
+
+/* The default panel is derived, not written down: it re-reads the parsed rows
+   every time, so it stays true when the table changes. */
+function relOverview() {
+  const count = (n, pred) => n.ties.filter(pred).length;
+  const maxDeg = Math.max(...rel.nodes.map((n) => n.deg));
+  const busiest = rel.nodes.filter((n) => n.deg === maxDeg)
+    .sort((a, b) => a.name.localeCompare(b.name));
+  const terr = rel.nodes
+    .map((n) => ({ n, c: count(n, (t) => t.standing === 'territorial') }))
+    .sort((a, b) => b.c - a.c)[0];
+  // Deliberately a high bar: at three ties "no friends" is common enough to be
+  // noise, and listing six nations buries the one or two that actually stand out.
+  const friendless = rel.nodes
+    .filter((n) => n.deg >= 4 && !n.ties.some((t) => FRIENDLY.has(t.standing)))
+    .sort((a, b) => b.deg - a.deg || a.name.localeCompare(b.name));
+  const anchors = rel.nodes
+    .map((n) => ({ n, c: count(n, (t) => FRIENDLY.has(t.standing)) }))
+    .sort((a, b) => b.c - a.c || a.n.name.localeCompare(b.n.name))
+    .filter((x) => x.c >= 3).slice(0, 2);
+
+  const names = (list) => list.map((n) => `<strong>${escapeHtml(n.name)}</strong>`)
+    .join(list.length === 2 ? ' and ' : ', ');
+
+  const out = ['<h3>Reading the board</h3>'];
+  out.push(`<p>${names(busiest)} ${busiest.length > 1 ? 'each carry' : 'carries'} ` +
+    `the most ties here — ${maxDeg} ${busiest.length > 1 ? 'apiece' : 'of them'}.</p>`);
+  if (terr && terr.c >= 3) {
+    out.push(`<p><strong>${escapeHtml(terr.n.name)}</strong> is the pressure source: ` +
+      `${terr.c} territorial borders, more than anyone else. Most land wars start there.</p>`);
+  }
+  if (friendless.length) {
+    out.push(`<p>${names(friendless)} ${friendless.length > 1 ? 'have' : 'has'} no allies ` +
+      `and no trading partners — every tie is a rivalry or worse.</p>`);
+  }
+  if (anchors.length === 2) {
+    out.push(`<p>${names(anchors.map((x) => x.n))} anchor the trade web, which is why the ` +
+      `layout pulls them inward and they stay clear of most fights.</p>`);
+  }
+  out.push('<p class="muted rel-cta">Tap any nation in the web for its full ledger.</p>');
+  return out.join('');
+}
+
+function renderRelLedger(fig) {
+  const box = fig.querySelector('.rel-ledger');
+  const n = rel.sel;
+  if (!n) { box.innerHTML = relOverview(); return; }
+
+  const order = STANDINGS.map(([k]) => k);
+  const ties = [...n.ties].sort((a, b) =>
+    order.indexOf(a.standing) - order.indexOf(b.standing));
+  const path = resolveTarget(n.name);
+  const theme = rel.themes.get(n.name);
+
+  box.innerHTML =
+    `<h3>${escapeHtml(n.name)}</h3>` +
+    (theme ? `<p class="rel-theme muted">${escapeHtml(theme)}</p>` : '') +
+    (path ? `<p><a class="rel-open" href="#/${encodeURI(path)}">Open the note →</a></p>` : '') +
+    `<ul class="rel-ties">` + ties.map((t) => {
+      const other = t.a === n ? t.b : t.a;
+      return `<li>
+        <div class="rel-tie-h">
+          <span class="rel-tag s-${t.standing}">${STANDING_LABEL.get(t.standing)}</span>
+          <button type="button" class="rel-jump" data-to="${escapeHtml(other.name)}">${escapeHtml(other.name)}</button>
+        </div>
+        ${t.desc ? `<p class="muted">${escapeHtml(t.desc)}</p>` : ''}
+      </li>`;
+    }).join('') + `</ul>`;
+}
+
+function wireRelations(fig) {
+  const svg = fig.querySelector('.rel-svg');
+
+  fig.querySelectorAll('.rel-chip').forEach((btn) => {
+    btn.onclick = () => {
+      const k = btn.dataset.k;
+      if (rel.active.has(k)) rel.active.delete(k); else rel.active.add(k);
+      btn.setAttribute('aria-pressed', rel.active.has(k) ? 'true' : 'false');
+      applyRelFilter();
+    };
+  });
+  fig.querySelector('.rel-reset').onclick = () => {
+    rel.active = new Set(STANDINGS.map(([k]) => k));
+    fig.querySelectorAll('.rel-chip').forEach((b) => b.setAttribute('aria-pressed', 'true'));
+    selectRelNode(fig, null);
+  };
+  fig.querySelector('.rel-ledger').addEventListener('click', (ev) => {
+    const jump = ev.target.closest('.rel-jump');
+    if (!jump) return;
+    const target = rel.nodes.find((n) => n.name === jump.dataset.to);
+    if (target) selectRelNode(fig, target);
+  });
+
+  // Pointer handling mirrors the graph view's: a press that does not travel is
+  // a select, one that does is a drag. Dragging re-settles everything except
+  // the node under the finger, so the web reflows around it.
+  const pt = svg.createSVGPoint();
+  const toLocal = (ev) => {
+    pt.x = ev.clientX; pt.y = ev.clientY;
+    const m = svg.getScreenCTM();
+    return m ? pt.matrixTransform(m.inverse()) : { x: 0, y: 0 };
+  };
+
+  let drag = null, moved = false, start = null, lastTap = 0;
+
+  for (const n of rel.nodes) {
+    n.el.addEventListener('pointerdown', (ev) => {
+      drag = n; moved = false; start = toLocal(ev);
+      try { n.el.setPointerCapture(ev.pointerId); } catch (_) { /* synthetic event */ }
+      ev.preventDefault();
+    });
+    n.el.addEventListener('pointermove', (ev) => {
+      if (drag !== n) return;
+      const p = toLocal(ev);
+      if (Math.abs(p.x - start.x) > 4 || Math.abs(p.y - start.y) > 4) moved = true;
+      if (!moved) return;
+      n.x = Math.min(RVIEW.w - 20, Math.max(20, p.x));
+      n.y = Math.min(RVIEW.h - 20, Math.max(20, p.y));
+      relaxRelations(rel.nodes, rel.edges, 5, n);
+      placeRelLabels();
+    });
+    const end = () => {
+      if (drag !== n) return;
+      drag = null;
+      if (moved) return;
+      const now = Date.now();
+      if (now - lastTap < 320 && rel.sel === n) {      // double-tap opens the note
+        const path = resolveTarget(n.name);
+        if (path) { location.hash = '#/' + encodeURI(path); return; }
+      }
+      lastTap = now;
+      selectRelNode(fig, rel.sel === n ? null : n);
+    };
+    n.el.addEventListener('pointerup', end);
+    n.el.addEventListener('pointercancel', () => { drag = null; });
+    n.el.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        selectRelNode(fig, rel.sel === n ? null : n);
+      }
+    });
+  }
+
+  svg.addEventListener('pointerdown', (ev) => {
+    if (ev.target === svg) selectRelNode(fig, null);
+  });
+}
+
+/* Themes are a nicety, so this never blocks the web: if the index note moves or
+   its table changes shape, the ledger simply renders without the subtitle. */
+async function loadNationThemes(fig) {
+  if (rel.themes.size) { renderRelLedger(fig); return; }
+  const path = resolveTarget('Nations of the World');
+  if (!path) return;
+  try {
+    const raw = await fetchNote(path);
+    for (const line of raw.split(/\r?\n/)) {
+      const t = line.trim();
+      if (t[0] !== '|') continue;
+      const cells = t.replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
+      if (cells.length < 2) continue;
+      const m = /\[\[([^\]|#]+)[^\]]*\]\]/.exec(cells[0]);
+      if (!m) continue;
+      const theme = cells[1].replace(/\*+/g, '').replace(/\s*\(new\)\s*/i, '').trim();
+      if (theme) rel.themes.set(m[1].trim(), theme);
+    }
+    if (rel.sel) renderRelLedger(fig);
+  } catch (_) { /* offline or moved: the ledger just has no subtitle */ }
+}
+
 /* ------------------------------------------------------------------ boot */
+/* The topbar's height is not a constant: installed to the home screen on iOS it
+   grows by env(safe-area-inset-top), and the sidebar, scrim and graph overlay
+   are all positioned from its bottom edge. Measuring it beats guessing — with
+   the guess, standalone mode put the sidebar and its sticky filter box up
+   underneath the bar and left the tree scrolling behind it. */
+function syncTopbarHeight() {
+  const bar = document.querySelector('.topbar');
+  if (bar) document.documentElement.style.setProperty('--topbar-h', bar.offsetHeight + 'px');
+}
+
 function openSidebar() { $('sidebar').classList.add('open'); $('scrim').hidden = false; $('menuBtn').setAttribute('aria-expanded', 'true'); }
 function closeSidebar() { $('sidebar').classList.remove('open'); $('scrim').hidden = true; $('menuBtn').setAttribute('aria-expanded', 'false'); }
 
 async function init() {
   const theme = localStorage.getItem('theme');
   if (theme) document.documentElement.dataset.theme = theme;
+
+  syncTopbarHeight();
+  addEventListener('resize', syncTopbarHeight);
+  addEventListener('orientationchange', syncTopbarHeight);
+  // Safari settles the safe-area insets a frame or two after first paint.
+  requestAnimationFrame(syncTopbarHeight);
+  addEventListener('load', syncTopbarHeight);
 
   const idx = await (await fetch(BASE + 'index-campaign.json')).json();
   state.campaign = idx.notes;

@@ -5,12 +5,20 @@
   --sb-bg: #fbf6ea; --sb-border: #6e2b1e; --code: #eee6d4;
   --radius: 10px;
   color-scheme: light;
+  /* Diplomatic standings. Seven is past what hue alone can separate, so these
+     always ride alongside a dash pattern and a written label — see app.js. */
+  --rel-allied: #2f6b46; --rel-trade: #8a6320; --rel-rivalry: #63478c;
+  --rel-friction: #b05f26; --rel-territorial: #c04a26; --rel-hostile: #8f1d24;
+  --rel-covert: #256b78; --rel-tag-ink: #fff;
 }
 :root[data-theme="dark"] {
   --bg: #171614; --panel: #1f1e1b; --ink: #e8e2d6; --muted: #a49a8b;
   --rule: #35322c; --accent: #d98b6a; --link: #e0a186; --mark: #4a3f1d;
   --sb-bg: #1c1b18; --sb-border: #8a4230; --code: #262420;
   color-scheme: dark;
+  --rel-allied: #6cbb85; --rel-trade: #cba55c; --rel-rivalry: #ab92da;
+  --rel-friction: #dd8f55; --rel-territorial: #e57c56; --rel-hostile: #d95a63;
+  --rel-covert: #5fb4c4; --rel-tag-ink: #17150f;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -18,11 +26,17 @@
     --rule: #35322c; --accent: #d98b6a; --link: #e0a186; --mark: #4a3f1d;
     --sb-bg: #1c1b18; --sb-border: #8a4230; --code: #262420;
     color-scheme: dark;
+    --rel-allied: #6cbb85; --rel-trade: #cba55c; --rel-rivalry: #ab92da;
+    --rel-friction: #dd8f55; --rel-territorial: #e57c56; --rel-hostile: #d95a63;
+    --rel-covert: #5fb4c4; --rel-tag-ink: #17150f;
   }
 }
 
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
+/* The dynamic viewport unit is what keeps this honest in an installed PWA,
+   where the usable height is not the same as the window height. */
+@supports (height: 100dvh) { html, body { height: 100dvh; } }
 body {
   background: var(--bg); color: var(--ink);
   font: 16px/1.6 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -30,7 +44,13 @@ body {
 }
 .muted { color: var(--muted); }
 
-/* topbar */
+/* topbar
+   --topbar-h is remeasured from the real element in app.js on load, resize and
+   orientation change. It must never be assumed: installed on iOS the bar grows
+   by env(safe-area-inset-top) — around 50px on a notched phone — and every
+   fixed overlay below is positioned against it. Hardcoding a height here is
+   what put the sidebar underneath the bar in standalone mode. */
+:root { --topbar-h: 55px; }
 .topbar {
   position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 8px;
   padding: max(8px, env(safe-area-inset-top)) 12px 8px;
@@ -47,7 +67,7 @@ body {
 .iconbtn svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; }
 
 /* layout */
-.layout { display: flex; height: calc(100% - 55px); }
+.layout { display: flex; height: calc(100% - var(--topbar-h)); }
 .sidebar {
   width: 300px; flex: 0 0 300px; overflow: auto; background: var(--panel);
   border-right: 1px solid var(--rule); padding-bottom: 40px;
@@ -76,11 +96,11 @@ body {
 
 .main { flex: 1; overflow: auto; padding: 22px clamp(14px, 4vw, 44px) 90px; }
 .content { max-width: 74ch; margin: 0 auto; }
-.scrim { position: fixed; inset: 55px 0 0; background: rgba(0,0,0,.45); z-index: 18; }
+.scrim { position: fixed; inset: var(--topbar-h) 0 0; background: rgba(0,0,0,.45); z-index: 18; }
 
 @media (max-width: 860px) {
   .sidebar {
-    position: fixed; z-index: 20; top: 55px; bottom: 0; left: 0;
+    position: fixed; z-index: 20; top: var(--topbar-h); bottom: 0; left: 0;
     transform: translateX(-102%); transition: transform .18s ease;
   }
   .sidebar.open { transform: none; }
@@ -164,7 +184,7 @@ body {
 .sb-rule { border: 0; border-top: 2px solid var(--sb-border); margin: .55em 0; clear: both; }
 
 /* graph view */
-.graphview { position: fixed; inset: 55px 0 0; z-index: 40; display: flex; background: var(--bg); }
+.graphview { position: fixed; inset: var(--topbar-h) 0 0; z-index: 40; display: flex; background: var(--bg); }
 .graphview[hidden] { display: none; }
 .gpanel {
   width: 310px; flex: 0 0 310px; overflow: auto; padding: 12px 14px 30px;
@@ -218,6 +238,109 @@ body {
 @media (max-width: 860px) {
   .graphview { flex-direction: column; }
   .gpanel { width: auto; flex: 0 0 auto; max-height: 46%; border-right: 0; border-bottom: 1px solid var(--rule); }
+}
+
+/* ---- relations web ------------------------------------------------------
+   Drawn for a note with `view: relations`, from that note's own table. SVG
+   rather than the graph view's canvas: at a couple of dozen nations the text
+   stays crisp, hit-testing and focus come free, and the whole thing themes
+   itself off the CSS variables without a redraw. */
+
+/* The web wants far more width than a column of prose does, so the note gets
+   a wider content box and everything that is not the figure is pulled back to
+   the normal measure. */
+.content.wide { max-width: 1100px; }
+/* Prose stays at the normal measure but keeps the figure's left edge, rather
+   than centring itself in the wider box and drifting out of alignment. */
+.content.wide > :not(.relweb):not(.relsource) { max-width: 74ch; }
+
+.relweb { margin: 1.7em 0; padding: 0; }
+.relweb figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; max-width: 68ch; }
+
+.rel-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 10px; }
+.rel-chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px 5px 7px;
+  border: 1px solid var(--rule); border-radius: 999px; background: var(--panel);
+  color: var(--ink); font: inherit; font-size: 13.5px; cursor: pointer;
+}
+.rel-chip:hover { border-color: var(--muted); }
+.rel-chip[aria-pressed="false"] { opacity: .42; }
+.rel-chip .muted { font-size: 12px; }
+.rel-sw { width: 28px; height: 10px; flex: 0 0 28px; }
+.rel-reset { margin-left: auto; }
+
+.rel-board { display: grid; grid-template-columns: 1fr 290px; gap: 14px; align-items: start; }
+.rel-canvas { position: relative; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); }
+.rel-svg { display: block; width: 100%; height: auto; touch-action: none; -webkit-user-select: none; user-select: none; }
+.rel-hint { position: absolute; left: 12px; bottom: 9px; font-size: 12px; pointer-events: none; }
+
+.rel-edge { fill: none; transition: opacity .18s ease; }
+.rel-edge.s-allied      { stroke: var(--rel-allied); }
+.rel-edge.s-trade       { stroke: var(--rel-trade); opacity: .85; }
+.rel-edge.s-rivalry     { stroke: var(--rel-rivalry); }
+.rel-edge.s-friction    { stroke: var(--rel-friction); }
+.rel-edge.s-territorial { stroke: var(--rel-territorial); }
+.rel-edge.s-hostile     { stroke: var(--rel-hostile); }
+.rel-edge.s-covert      { stroke: var(--rel-covert); opacity: .8; }
+.rel-edge.dim { opacity: .09; }
+.rel-edge.lit { opacity: 1; }
+.rel-edge.off { display: none; }
+
+.rel-node { cursor: grab; }
+.rel-node:active { cursor: grabbing; }
+.rel-node:focus { outline: none; }
+.rel-node:focus-visible .rel-dot { stroke: var(--accent); stroke-width: 3; }
+.rel-node.far { opacity: .3; }
+.rel-node.off { opacity: .22; }
+.rel-dot { fill: var(--bg); stroke: var(--muted); stroke-width: 1.5; transition: fill .15s ease, stroke .15s ease; }
+.rel-node:hover .rel-dot { stroke: var(--ink); }
+.rel-node.sel .rel-dot { fill: var(--accent); stroke: var(--accent); }
+.rel-node.near .rel-dot { stroke: var(--accent); stroke-width: 2.4; }
+.rel-label { font: 600 11.5px system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink); pointer-events: none; }
+.rel-labelbg { fill: var(--panel); opacity: .85; pointer-events: none; }
+.rel-node.sel .rel-label { fill: var(--accent); }
+
+.rel-ledger {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 12px 14px 16px; font-size: 14px; max-height: 620px; overflow: auto;
+}
+.rel-ledger h3 { margin: 0 0 2px; font-size: 1.15em; }
+.rel-ledger p { margin: 0 0 9px; }
+.rel-theme { font-size: 12.5px; margin-bottom: 8px !important; }
+.rel-open { color: var(--link); text-decoration: none; font-weight: 700; }
+.rel-open:hover { text-decoration: underline; }
+.rel-cta { font-size: 12.5px; border-top: 1px dashed var(--rule); padding-top: 9px; }
+.rel-ties { list-style: none; margin: 4px 0 0; padding: 0; }
+.rel-ties li { border-top: 1px solid var(--rule); padding: 9px 0 0; margin-top: 9px; }
+.rel-ties li:first-child { border-top: 0; margin-top: 0; }
+.rel-ties p { font-size: 13px; margin: 3px 0 0; }
+.rel-tie-h { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.rel-tag {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  font-family: system-ui, sans-serif; padding: 1px 6px; border-radius: 4px;
+  color: var(--rel-tag-ink);
+}
+.rel-tag.s-allied      { background: var(--rel-allied); }
+.rel-tag.s-trade       { background: var(--rel-trade); }
+.rel-tag.s-rivalry     { background: var(--rel-rivalry); }
+.rel-tag.s-friction    { background: var(--rel-friction); }
+.rel-tag.s-territorial { background: var(--rel-territorial); }
+.rel-tag.s-hostile     { background: var(--rel-hostile); }
+.rel-tag.s-covert      { background: var(--rel-covert); }
+.rel-jump {
+  background: none; border: 0; padding: 0; font: inherit; font-weight: 700; font-size: 14px;
+  color: var(--ink); cursor: pointer; text-decoration: underline;
+  text-decoration-color: var(--rule); text-underline-offset: 2px;
+}
+.rel-jump:hover { color: var(--link); text-decoration-color: currentColor; }
+
+.relsource { margin: 1.2em 0; }
+.relsource > summary { cursor: pointer; color: var(--muted); font-size: 14px; padding: 4px 0; }
+
+@media (max-width: 900px) {
+  .rel-board { grid-template-columns: 1fr; }
+  .rel-ledger { max-height: none; }
+  .content.wide { max-width: 74ch; }
 }
 
 /* search */

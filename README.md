@@ -13,7 +13,8 @@ PF2e worldbuilding vault, readable as a website and installable as an app.
 ## The web app
 
 Every push to `main` deploys the whole repo to GitHub Pages as a browsable,
-installable site — no Obsidian download needed.
+installable site — no Obsidian download needed:
+**<https://milec.github.io/Towers-of-Saeroth/>**
 
 - **Wikilinks work**, resolved by filename the way Obsidian does, including
   `[[Note|alias]]` and `[[Note#heading]]`.
@@ -29,6 +30,12 @@ installable site — no Obsidian download needed.
   include *before* it renders, with live node and link counts. The full vault
   is 41,718 notes and 457,000 links — unrenderable as one graph — so the vault
   is opt-in folder by folder.
+- **Notes can render as something other than prose.** A `view:` field in a
+  note's frontmatter picks a custom view: `view: relations` redraws
+  *Political Relations* as an interactive web of the nations — filter by
+  standing, tap a nation for its ledger, drag to untangle, tap through to its
+  note. It parses the note's own markdown table, so the table stays the single
+  source of truth and a new row becomes a new edge with no code change.
 - **The whole vault is browsable** in the file tree, which loads lazily: only
   the folder you expand is put in the DOM.
 - Full-text search across `campaign/`, title search across `vault/`, backlinks,
