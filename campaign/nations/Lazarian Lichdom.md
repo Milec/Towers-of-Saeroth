@@ -10,7 +10,7 @@ morality in every calculation the state makes. A Lazarian bureaucrat sees
 nothing strange in a skeleton clerk who has held the same post for three
 centuries — competence doesn't expire just because the body did.
 
-- **Races** Intelligent undead, [[Ancestries/Dhampir (Player Core 2)|Dhampirs]], necromancers, vampires, living servants
+- **Races** [[Ancestries/Skeleton|Intelligent undead]], [[Ancestries/Dhampir (Player Core 2)|Dhampirs]], necromancers, [[Bestiary/Families/Vampire (Monster Core)|vampires]], living servants
 - **Economic Specialties** Alchemy, necromancy, ancient relics, undead labor, magical artifacts
 - **Military** Skeleton legions, Death Knights, vampire nobles, necromancers, bone constructs
 - **Government** Immortal Lich Emperor
