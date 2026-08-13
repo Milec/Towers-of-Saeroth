@@ -18,6 +18,6 @@ utterly indispensable to anyone who needs magic done properly.
 - **Military** Battle mages, arcane artillery, summoners, golems, elite mage hunters
 - **Government** Council of Archmages representing the greatest magical academies
 - **Reputation** Arrogant, brilliant, indispensable
-- **Faith** [[Setting/Deities/Nethys]] is venerated above all as patron of magic in all its forms
+- **Faith** Patron [[Setting/Deities/Nethys]], god of magic in all its forms, whose temple sits at the centre of every academy campus. [[Setting/Deities/Irori]] is the scholar's second god here — self-perfection through study is how Melisor justifies its own hierarchy
 - **Tension** Two academies claim the same discovery, and the Council of Archmages has stalled on ruling for a year rather than hand either one the prestige
 - **Relations** Deep ideological rivalry with the [[Lazarian Lichdom]] over what magic should never be used for; quietly bankrolled in part by [[Thurion Merchant Alliance]] contracts for enchanted goods

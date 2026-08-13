@@ -24,7 +24,7 @@ grace — and it decides often.
 - **Military** Inquisitorial knights, flagellant shock troops, cathedral guard, relic-bound zealots
 - **Government** Grand Inquisitor-King, anointed for life by the Cathedral Court
 - **Reputation** Devout to the point of cruelty, and richer than its piety should allow
-- **Faith** [[Setting/Deities/Zon-Kuthon]]'s doctrine that suffering refines the soul has been reinterpreted, gradually and self-servingly, into an excuse for splendor
+- **Faith** Patron [[Setting/Deities/Zon-Kuthon]], whose doctrine that suffering refines the soul has been reinterpreted, gradually and self-servingly, into an excuse for splendor. [[Setting/Deities/Asmodeus]] supplies the rest of the theology — hierarchy, binding contract, and the indulgence trade that funds the cathedrals
 - **Want** The Cathedral Court wants every neighboring court to convert, gilded shrine by gilded shrine.
 - **Won't** Dalstan will not admit that its faith and its avarice are the same appetite wearing different robes.
 - **Tension** The Cathedral Court has begun licensing inquisitions beyond Dalstan's own borders, and has not yet been told no by anyone with the standing to make it stick

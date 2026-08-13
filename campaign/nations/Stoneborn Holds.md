@@ -17,6 +17,6 @@ last of its kind; it's meant to be inherited.
 - **Military** Heavy infantry, shield walls, tunnel fighters, engineers
 - **Government** Assembly of High Thanes
 - **Reputation** Unbreakable and dependable
-- **Faith** [[Setting/Deities/Torag]] is honored in every forge-hall as the maker who never stops working
+- **Faith** Patron [[Setting/Deities/Torag]], honored in every forge-hall as the maker who never stops working. [[Setting/Deities/Magrim]] receives the dead and the oaths that outlive them; the human merchant quarters keep [[Setting/Deities/Abadar]] instead, which the thanes tolerate as a trade concession
 - **Tension** A minor hold on the deep frontier has stopped answering the Assembly's messengers, and nobody wants to be the thane who says why out loud
 - **Relations** Steady trade partnership with [[Silicar]] and [[Nordheim]]; quiet contempt for the [[Undertide Reaches]]' claim to "true" stonework

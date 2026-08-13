@@ -19,5 +19,6 @@ them.
 - **Military** Beast-bonded skirmishers, canopy archers, totem-warriors, venom scouts
 - **Government** The Circle of First Packs — one voice per founding clan-lineage
 - **Reputation** Wild, fiercely loyal to their own, and dangerously easy to underestimate
+- **Faith** The [[Setting/Deities/Green Faith]] rather than any named patron — the Thornwild reveres the living world directly, and finds the idea of a god who lives elsewhere faintly absurd. [[Setting/Deities/Gozreh]] is the exception most clans will name, invoked for storm and beast alike
 - **Tension** Two clans want to answer [[Kesmarch Frontier]]'s encroachment with blood and the rest want to wait, and Rootmeet has adjourned twice without deciding
 - **Relations** Regarded by the [[Elven Confederacy]] as unruly distant kin in nature, if not in temperament; periodically raided by the [[Khazan Khaganate]] for beast-stock, a grievance the Thornwild has not forgotten; increasingly pressured on its other border by [[Kesmarch Frontier]] homesteaders clearing jungle for farmland

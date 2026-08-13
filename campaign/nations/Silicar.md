@@ -17,5 +17,6 @@ its irrigation canals and clockwork feed half the continent.
 - **Military** Engineers, crossbow corps, defensive fortifications, construct support
 - **Government** Council of guildmasters and elected engineers
 - **Reputation** Small but astonishingly inventive
+- **Faith** Patron [[Setting/Deities/Brigh]], goddess of invention and clockwork, whose shrines are workshops with an altar in the corner. [[Setting/Deities/Erastil]] is the older faith of the farming villages, and the two clergies argue amiably about which one actually feeds the nation
 - **Tension** An upstream canal has begun silting faster than it can be cleared, and no one has told the export partners who depend on the harvest yet
 - **Relations** Machinery and engineering exports flow steadily to [[Stoneborn Holds]] and the [[Thurion Merchant Alliance]]; [[Melisor Magocracy]] academics can't decide whether Silicar's clockwork is beneath magic or quietly outperforming it

@@ -19,5 +19,6 @@ claimed is land that has to be defended, not land that was granted.
 - **Military** Militia rangers, homestead defense companies, scout cavalry, frontier marshals
 - **Government** Elected Territorial Council, ratified under a founding charter
 - **Reputation** Rugged, independent, and a little lawless at the edges
+- **Faith** Patron [[Setting/Deities/Erastil]], god of the homestead, the hunt and the family that holds them — the frontier's god almost by definition. [[Setting/Deities/Desna]] is kept by anyone still travelling and [[Setting/Deities/Cayden Cailean]] by everyone who left somewhere else to get here
 - **Tension** The Territorial Council keeps issuing homestead charters for land it has never surveyed, and some of those deeds describe [[Thornwild Confederation]] ground
 - **Relations** Many Kesmarch settlers are [[Vaelic Principality]]-born second sons and disinherited daughters who left for a fresh start; homesteaders clearing jungle for farmland increasingly press on [[Thornwild Confederation]] land the Thornwild consider already spoken for
