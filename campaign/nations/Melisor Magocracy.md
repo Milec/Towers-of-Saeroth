@@ -11,10 +11,13 @@ academies are fierce — a professor's feud with a rival chair can shape
 national policy as much as any war. The nation is arrogant, brilliant, and
 utterly indispensable to anyone who needs magic done properly.
 
+- **Capital** Thelemar, a city of competing spires where each great academy builds upward to overlook its rivals
+- **Geography** A high plateau chosen for the ley-lines beneath it; academy-cities scattered across it, linked by teleportation circles rather than roads
 - **Races** [[Ancestries/Human (Player Core)|Humans]], [[Ancestries/Elf (Player Core)|Elves]], [[Ancestries/Gnome (Player Core)|Gnomes]], [[Ancestries/Tiefling|Tieflings]], [[Ancestries/Fetchling|Fetchlings]], any race with magical aptitude
 - **Economic Specialties** Spellcasting services, enchanted items, magical education, teleportation networks, alchemy, magical research
 - **Military** Battle mages, arcane artillery, summoners, golems, elite mage hunters
 - **Government** Council of Archmages representing the greatest magical academies
 - **Reputation** Arrogant, brilliant, indispensable
 - **Faith** [[Setting/Deities/Nethys]] is venerated above all as patron of magic in all its forms
+- **Tension** Two academies claim the same discovery, and the Council of Archmages has stalled on ruling for a year rather than hand either one the prestige
 - **Relations** Deep ideological rivalry with the [[Lazarian Lichdom]] over what magic should never be used for; quietly bankrolled in part by [[Thurion Merchant Alliance]] contracts for enchanted goods

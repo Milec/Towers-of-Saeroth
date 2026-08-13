@@ -10,10 +10,13 @@ morality in every calculation the state makes. A Lazarian bureaucrat sees
 nothing strange in a skeleton clerk who has held the same post for three
 centuries — competence doesn't expire just because the body did.
 
+- **Capital** Grauthaven, a city of black basalt where the living quarter is the smallest district
+- **Geography** Fog-drowned marshland and old battlefields — terrain chosen for what's buried in it rather than what grows on it
 - **Races** [[Ancestries/Skeleton|Intelligent undead]], [[Ancestries/Dhampir (Player Core 2)|Dhampirs]], necromancers, [[Bestiary/Families/Vampire (Monster Core)|vampires]], living servants
 - **Economic Specialties** Alchemy, necromancy, ancient relics, undead labor, magical artifacts
 - **Military** Skeleton legions, Death Knights, vampire nobles, necromancers, bone constructs
 - **Government** Immortal Lich Emperor
 - **Reputation** Universally feared
 - **Faith** [[Setting/Deities/Urgathoa]]'s doctrine of hunger and undeath as ascension runs through Lazarian state philosophy
+- **Tension** The Lich Emperor has not issued an edict in eleven years; the court insists this is deliberation, and quietly governs without him
 - **Relations** Ideological enemy of the [[Thesal Theocracy]] and the frequent target of [[Melisor Magocracy]] condemnation, though the two trade in relics through intermediaries neither will name

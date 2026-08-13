@@ -18,6 +18,8 @@ ancestry hierarchy: humans and half-humans are eligible for nobility and
 Imperial service; every other ancestry, [[Ancestries/Halfling (Player Core)|halflings]]
 included, lives under local lords' law with no path upward.
 
+- **Capital** Reichsmund, a fortified river-city that holds the Diet and the High Prince's court
+- **Geography** Rolling grain plains and river valleys, thick with castles and walled market towns; the drake aeries sit on the wilder margins
 - **Races** [[Ancestries/Human (Player Core)|Humans]] and [[Ancestries/Half-Elf|half-elves]]/[[Ancestries/Half-Orc|half-orcs]] (full legal standing), [[Ancestries/Halfling (Player Core)|Halfling]] minorities (barred from nobility and Imperial service)
 - **Economic Specialties** Grain, wool, steel, fine armor, horses
 - **Military** Longbowmen, heavy cavalry, men-at-arms, castle engineers, and the [[Drake Rider Order]] — an Imperial institution answering to the High Prince directly, outside the conventional chain of command
@@ -25,4 +27,5 @@ included, lives under local lords' law with no path upward.
 - **History** Founded when its first High Prince used the newly-created [[Drake Rider Order]] to bring the other electorates under one crown, then bound the Order's oath to the office rather than his bloodline — the concession that makes the Order's throne-eligible Grand Marshal seat, and Vaelic's whole meritocratic side-door, possible.
 - **Reputation** Reliable allies, slow to change
 - **Faith** [[Setting/Deities/Iomedae]]'s code of honorable valor underpins the knightly orders
+- **Tension** [[House Aldreich]]'s succession is unsettled and [[House Kesslin]] is quietly assembling votes against the [[Drake Rider Order]] — the next Diet will be an ugly one
 - **Relations** Long-standing alliance with the [[Thesal Theocracy]], whose clergy anoint Vaelic knights; generational border pressure from the [[Khazan Khaganate]]; many of [[Kesmarch Frontier]]'s settlers are Vaelic-born second sons and disinherited daughters who left for a fresh start
