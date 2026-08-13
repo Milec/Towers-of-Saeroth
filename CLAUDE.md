@@ -45,6 +45,11 @@ How the app is put together:
   vault-scale graph also drops to sampled edges via `markInteracting()`, because
   a full redraw at 457,000 edges is ~200ms; that flag restores itself on a
   timer, so never set `graph.interacting` directly.
+- The graph is a full-screen overlay at `z-index: 40`, so anything that must
+  appear over it needs to clear that: the sidebar and its scrim sit at 50/48,
+  and the tree gets `.over` so the menu button behaves the same at every width.
+  Keep at least one exit from the graph visible on the canvas itself — the
+  options panel auto-collapses on a phone, taking its own close button with it.
 - Never hardcode the topbar's height. Installed to an iOS home screen it grows
   by `env(safe-area-inset-top)`; `--topbar-h` is remeasured from the live
   element by `syncTopbarHeight()`, and the sidebar, scrim and graph overlay are

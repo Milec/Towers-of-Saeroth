@@ -76,6 +76,43 @@ function stripFrontmatter(src) {
   return { fm: m[1], body: src.slice(m[0].length) };
 }
 
+/* ------------------------------------------------------------- history
+   Installed to a home screen there is no browser chrome and therefore no back
+   button, so the app keeps its own trail. It is a real stack rather than a call
+   to history.back(): the app can be launched straight onto a note, and going
+   "back" from there would leave the app entirely.
+
+   The browser's own back/forward still fire hashchange, so a step that lands on
+   the neighbouring entry is treated as movement along this stack rather than a
+   new visit — otherwise pressing the desktop back button would push a duplicate
+   and the trail would grow instead of unwinding. */
+const nav = { stack: [], i: -1 };
+
+function navRecord(path) {
+  if (nav.i >= 0 && nav.stack[nav.i] === path) return;          // same note again
+  if (nav.i > 0 && nav.stack[nav.i - 1] === path) { nav.i--; }  // browser back
+  else if (nav.stack[nav.i + 1] === path) { nav.i++; }          // browser forward
+  else {
+    nav.stack.length = nav.i + 1;   // a new path truncates the forward trail
+    nav.stack.push(path);
+    nav.i = nav.stack.length - 1;
+  }
+  syncBackBtn();
+}
+
+function syncBackBtn() {
+  const b = $('backBtn');
+  if (!b) return;
+  const can = nav.i > 0;
+  b.disabled = !can;
+  b.title = can ? 'Back to ' + nav.stack[nav.i - 1].split('/').pop().replace(/\.md$/, '') : '';
+}
+
+function goBack() {
+  if (nav.i <= 0) return;
+  location.hash = '#/' + encodeURI(nav.stack[nav.i - 1]);   // navRecord sees the step
+}
+
 function fmField(fm, key) {
   if (!fm) return '';
   const m = new RegExp('^' + key + ':\\s*(.*)$', 'mi').exec(fm);
@@ -271,6 +308,10 @@ async function route() {
   const [path, frag] = hash.split('#');
   const target = path || 'campaign/README.md';
   state.current = target;
+  navRecord(target);
+  // Navigating means the reader wants the note, so the graph gets out of the
+  // way — whether they came from a node, the tree, or the back arrow.
+  if (!$('graphView').hidden) closeGraph();
   const el = $('content');
   // Vault notes cross-link heavily to other vault notes, so the vault index
   // has to be in memory before rendering or every one of those links renders
@@ -1237,9 +1278,15 @@ function setPanel(open) {
   $('graphView').classList.toggle('collapsed', !open);
   $('gExpand').hidden = open;
 }
-function openGraph() { $('graphView').hidden = false; setPanel(true); buildScopeUI(); }
+function openGraph() {
+  $('graphView').hidden = false;
+  $('graphBtn').setAttribute('aria-pressed', 'true');
+  setPanel(true);
+  buildScopeUI();
+}
 function closeGraph() {
   $('graphView').hidden = true;
+  $('graphBtn').setAttribute('aria-pressed', 'false');
   cancelAnimationFrame(graph.raf);
   graph.raf = 0;
   clearGraphSelection();
@@ -1776,8 +1823,21 @@ function syncTopbarHeight() {
   if (bar) document.documentElement.style.setProperty('--topbar-h', bar.offsetHeight + 'px');
 }
 
-function openSidebar() { $('sidebar').classList.add('open'); $('scrim').hidden = false; $('menuBtn').setAttribute('aria-expanded', 'true'); }
-function closeSidebar() { $('sidebar').classList.remove('open'); $('scrim').hidden = true; $('menuBtn').setAttribute('aria-expanded', 'false'); }
+function openSidebar() {
+  const sb = $('sidebar');
+  sb.classList.add('open');
+  // On a wide screen the tree normally sits in the layout, where the graph
+  // overlay would cover it. `over` lifts it above the graph at any width, so
+  // the menu button means the same thing everywhere.
+  sb.classList.toggle('over', !$('graphView').hidden);
+  $('scrim').hidden = false;
+  $('menuBtn').setAttribute('aria-expanded', 'true');
+}
+function closeSidebar() {
+  $('sidebar').classList.remove('open', 'over');
+  $('scrim').hidden = true;
+  $('menuBtn').setAttribute('aria-expanded', 'false');
+}
 
 async function init() {
   const theme = localStorage.getItem('theme');
@@ -1809,8 +1869,10 @@ async function init() {
     localStorage.setItem('theme', cur);
     if (graph.nodes.length) { drawLegend(); needsDraw(); }   // palette swaps with the theme
   };
-  $('graphBtn').onclick = openGraph;
+  $('graphBtn').onclick = () => ($('graphView').hidden ? openGraph() : closeGraph());
   $('graphClose').onclick = closeGraph;
+  $('gLeave').onclick = closeGraph;
+  $('backBtn').onclick = goBack;
   $('renderGraph').onclick = renderGraphNow;
   $('gCollapse').onclick = () => setPanel(false);
   $('gExpand').onclick = () => setPanel(true);
