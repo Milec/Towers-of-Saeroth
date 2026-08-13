@@ -599,16 +599,34 @@ async function renderGraphNow() {
     es = edges.map(([a, b]) => [keepIdx.get(a), keepIdx.get(b)])
               .filter(([a, b]) => a != null && b != null);
   }
+  // Phyllotaxis seeding: evenly spread and deterministic. Random radii used to
+  // drop nodes almost on top of each other, which is what the repulsion term
+  // then turned into an explosion on the first few frames.
   const R = Math.max(120, Math.sqrt(ns.length) * 26);
+  const GOLDEN = Math.PI * (3 - Math.sqrt(5));
   ns.forEach((n, i) => {
-    const a = (i / ns.length) * Math.PI * 2, r = R * (0.35 + 0.65 * Math.random());
+    const r = R * Math.sqrt((i + 0.5) / ns.length);
+    const a = i * GOLDEN;
     n.x = Math.cos(a) * r; n.y = Math.sin(a) * r; n.vx = n.vy = 0;
   });
   assignColours(ns);
   graph.labelCut = null;
   graph.nodes = ns; graph.edges = es; graph.alpha = 1;
-  graph.scale = Math.min(1, 420 / (R || 420)); graph.ox = 0; graph.oy = 0;
+  // Settle most of the layout before the first frame. The big rearrangement is
+  // inherently fast and jumpy; running it off-screen means the animation the
+  // user actually sees is only the gentle tail of the settle.
+  const warm = ns.length > 4000 ? 60 : 90;
+  for (let i = 0; i < warm; i++) if (!step()) break;
+  // Fit the settled layout to whatever canvas we actually have — a fixed zoom
+  // left the graph as a small island on a tall phone screen.
+  const cvEl = $('gcanvas');
+  const cw = cvEl.clientWidth || 800, chh = cvEl.clientHeight || 600;
+  let maxR = 1;
+  for (const n of ns) maxR = Math.max(maxR, Math.hypot(n.x, n.y));
+  graph.scale = Math.max(0.15, Math.min(2.2, (Math.min(cw, chh) * 0.44) / maxR));
+  graph.ox = 0; graph.oy = 0;
   $('ghint').hidden = ns.length === 0;
+  if (innerWidth <= 860) setPanel(false);   // hand the screen to the graph
   tick();
 }
 
@@ -650,13 +668,19 @@ function drawLegend() {
       <span>${escapeHtml(l.label)}</span><span class="muted">${l.n.toLocaleString()}</span></div>`).join('');
 }
 
-function tick() {
+/* One physics iteration, separated from drawing so the layout can be warmed
+   up off-screen before the first paint. */
+function step() {
   const { nodes: ns, edges: es } = graph;
-  if (graph.alpha > 0.005 && ns.length) {
+  if (!(graph.alpha > 0.005 && ns.length)) return false;
+  {
     // Forces scale with alpha so the layout eases to a stop instead of running
     // at full strength and then cutting off — which left nodes still drifting
     // under the cursor when the graph looked settled.
-    const k = graph.alpha, cell = 60;
+    const k = graph.alpha, cell = 64;
+    const MIN_D = 26;      // repulsion floor: without it two nodes that start
+                           // close get flung apart at hundreds of units a frame
+    const MAX_V = 3.5;       // per-axis speed cap, so nothing can ever explode
     const grid = new Map();
     for (let i = 0; i < ns.length; i++) {
       const gx = Math.round(ns[i].x / cell), gy = Math.round(ns[i].y / cell);
@@ -675,27 +699,48 @@ function tick() {
           const b = ns[j];
           let ddx = a.x - b.x, ddy = a.y - b.y;
           let d2 = ddx * ddx + ddy * ddy;
-          if (d2 < 1e-4) { ddx = Math.random() - .5; ddy = Math.random() - .5; d2 = 1; }
+          if (d2 < 1e-6) { ddx = Math.random() - .5; ddy = Math.random() - .5; d2 = 0.25; }
           if (d2 > cell * cell * 4) continue;
-          const f = (260 * k) / d2;
-          a.vx += ddx * f; a.vy += ddy * f;
+          const d = Math.sqrt(d2);
+          const dc = Math.max(d, MIN_D);           // clamped for the magnitude
+          const f = (300 * k) / (dc * dc);         // unit direction × bounded magnitude
+          a.vx += (ddx / d) * f; a.vy += (ddy / d) * f;
         }
       }
     }
-    for (const [i, j] of es) {                    // spring attraction
+    /* Spring attraction. Two guards matter here: the per-edge force is capped,
+       and each endpoint's share is divided by its degree. Without the second,
+       a hub with twenty edges accumulates twenty pulls in a single frame and
+       slingshots across the canvas — that was the "spazzing", not repulsion. */
+    for (const [i, j] of es) {
       const a = ns[i], b = ns[j];
       const dx = b.x - a.x, dy = b.y - a.y;
       const d = Math.hypot(dx, dy) || 1;
-      const f = (d - 46) * 0.012 * graph.alpha;
-      const fx = (dx / d) * f, fy = (dy / d) * f;
-      a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+      const f = Math.max(-1.2, Math.min(1.2, (d - 52) * 0.006)) * k;
+      const ux = dx / d, uy = dy / d;
+      const sa = 1 / (1 + Math.sqrt(a.deg) * 0.6);
+      const sb = 1 / (1 + Math.sqrt(b.deg) * 0.6);
+      a.vx += ux * f * sa; a.vy += uy * f * sa;
+      b.vx -= ux * f * sb; b.vy -= uy * f * sb;
     }
-    for (const n of ns) {                          // gravity + damping
-      n.vx -= n.x * 0.0016 * graph.alpha; n.vy -= n.y * 0.0016 * graph.alpha;
-      n.x += (n.vx *= 0.82); n.y += (n.vy *= 0.82);
+    // Centering: a weak, distance-capped pull. The old one grew without bound
+    // with distance, so outlying nodes were yanked at the middle.
+    for (const n of ns) {
+      const d = Math.hypot(n.x, n.y) || 1;
+      const pull = Math.min(d, 600) * 0.0010 * k;
+      n.vx -= (n.x / d) * pull;
+      n.vy -= (n.y / d) * pull;
+      n.vx = Math.max(-MAX_V, Math.min(MAX_V, n.vx * 0.84));
+      n.vy = Math.max(-MAX_V, Math.min(MAX_V, n.vy * 0.84));
+      n.x += n.vx; n.y += n.vy;
     }
-    graph.alpha *= 0.985;
+    graph.alpha *= 0.986;
   }
+  return true;
+}
+
+function tick() {
+  step();
   drawGraph();
   graph.raf = requestAnimationFrame(tick);
 }
@@ -766,7 +811,9 @@ function drawGraph() {
   ctx.fillStyle = ink;
   ctx.font = `${Math.max(9.5, 12 / graph.scale)}px system-ui, sans-serif`;
   ctx.textAlign = 'center';
-  const budget = Math.round(26 * Math.max(1, graph.scale));
+  const area = (cv.clientWidth || 800) * (cv.clientHeight || 600);
+  const budget = Math.round(Math.max(7, Math.min(34, area / 26000)) * Math.max(1, graph.scale));
+  if (graph.labelBudget !== budget) { graph.labelBudget = budget; graph.labelCut = null; }
   const cut = graph.labelCut ?? (graph.labelCut = (() => {
     const degs = ns.map((n) => n.deg).sort((a, b) => b - a);
     return degs.length > budget ? degs[budget] : 0;
@@ -797,22 +844,52 @@ function graphPointer(ev) {
 
 function initGraphEvents() {
   const cv = $('gcanvas');
-  let dragging = false, lx = 0, ly = 0, moved = 0;
-  cv.addEventListener('pointerdown', (e) => { dragging = true; moved = 0; lx = e.clientX; ly = e.clientY; cv.setPointerCapture(e.pointerId); });
+  let dragging = false, lx = 0, ly = 0, moved = 0, holdTimer = 0, held = false;
+
+  const cancelHold = () => { clearTimeout(holdTimer); holdTimer = 0; };
+
+  cv.addEventListener('pointerdown', (e) => {
+    dragging = true; moved = 0; held = false;
+    lx = e.clientX; ly = e.clientY;
+    cv.setPointerCapture(e.pointerId);
+    // Press-and-hold highlights a node's neighbourhood. Touch has no hover, so
+    // without this the highlight is desktop-only.
+    cancelHold();
+    holdTimer = setTimeout(() => {
+      if (moved < 8) {
+        const i = graphPointer(e);
+        if (i >= 0) {
+          held = true;
+          graph.hover = i;
+          if (navigator.vibrate) navigator.vibrate(12);
+        }
+      }
+    }, 320);
+  });
+
   cv.addEventListener('pointermove', (e) => {
     if (dragging) {
-      graph.ox += e.clientX - lx; graph.oy += e.clientY - ly;
-      moved += Math.abs(e.clientX - lx) + Math.abs(e.clientY - ly);
+      const dx = e.clientX - lx, dy = e.clientY - ly;
+      moved += Math.abs(dx) + Math.abs(dy);
+      if (moved > 8) cancelHold();
+      if (!held) { graph.ox += dx; graph.oy += dy; }   // holding inspects, doesn't pan
       lx = e.clientX; ly = e.clientY;
-    } else graph.hover = graphPointer(e);
+    } else if (e.pointerType !== 'touch') {
+      graph.hover = graphPointer(e);
+    }
   });
+
   cv.addEventListener('pointerup', (e) => {
     dragging = false;
+    cancelHold();
+    if (held) { held = false; graph.hover = -1; return; }   // release ends the highlight
     if (moved < 5) {
       const i = graphPointer(e);
       if (i >= 0) { location.hash = '#/' + encodeURI(graph.nodes[i].p); closeGraph(); }
     }
   });
+  cv.addEventListener('pointercancel', () => { dragging = false; held = false; cancelHold(); graph.hover = -1; });
+  cv.addEventListener('contextmenu', (e) => { if (held) e.preventDefault(); });
   cv.addEventListener('wheel', (e) => {
     e.preventDefault();
     const f = e.deltaY < 0 ? 1.12 : 1 / 1.12;
@@ -820,7 +897,11 @@ function initGraphEvents() {
   }, { passive: false });
 }
 
-function openGraph() { $('graphView').hidden = false; buildScopeUI(); }
+function setPanel(open) {
+  $('graphView').classList.toggle('collapsed', !open);
+  $('gExpand').hidden = open;
+}
+function openGraph() { $('graphView').hidden = false; setPanel(true); buildScopeUI(); }
 function closeGraph() { $('graphView').hidden = true; cancelAnimationFrame(graph.raf); graph.raf = 0; }
 
 /* ------------------------------------------------------------------ boot */
@@ -853,6 +934,8 @@ async function init() {
   $('graphBtn').onclick = openGraph;
   $('graphClose').onclick = closeGraph;
   $('renderGraph').onclick = renderGraphNow;
+  $('gCollapse').onclick = () => setPanel(false);
+  $('gExpand').onclick = () => setPanel(true);
   $('colorBy').onchange = () => { if (graph.nodes.length) { assignColours(graph.nodes); } };
   initGraphEvents();
   $('searchBtn').onclick = async () => {
