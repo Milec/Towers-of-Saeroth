@@ -499,7 +499,16 @@ const SIM = {
   centre: 0.00040, damp: 0.86, maxV: 3.5, decay: 0.988,
 };
 
-const graph = { nodes: [], edges: [], raf: 0, scale: 1, ox: 0, oy: 0, hover: -1, alpha: 0, legend: [] };
+/* `sel` is the selected node and `nbr`/`selEdges` are its neighbourhood, cached
+   at selection time rather than recomputed per frame. That caching is the whole
+   reason selection is affordable here: the old hover highlight rescanned all
+   457,000 edges on every single frame, and a selection that persists would have
+   paid that cost forever. */
+const graph = {
+  nodes: [], edges: [], raf: 0, scale: 1, ox: 0, oy: 0,
+  hover: -1, sel: -1, nbr: null, selEdges: null,
+  alpha: 0, legend: [], mute: new Set(), dirty: false, interacting: false,
+};
 window.__g = graph;   // exposed for automated UI tests
 let vaultLinks = null;   // {names:[], links:[[id,...]]} — fetched on demand
 
@@ -610,6 +619,9 @@ async function updateCounts() {
 
 async function renderGraphNow() {
   cancelAnimationFrame(graph.raf);
+  graph.raf = 0;
+  clearGraphSelection();     // node indices are about to change under it
+  graph.hover = -1;
   const { nodes, edges } = await collectGraph();
   let ns = nodes, es = edges;
   if ($('hideOrphans').checked) {
@@ -681,6 +693,7 @@ function medianNearest(ns) {
 }
 
 function assignColours(ns) {
+  graph.mute.clear();   // slots are about to be reassigned
   const mode = COLOR_MODES[$('colorBy').value] || COLOR_MODES.domain;
   const counts = new Map();
   for (const n of ns) {
@@ -708,12 +721,29 @@ function slotColour(slot) {
   return paletteNow()[slot];
 }
 
+/* The legend doubles as a filter, the way the relations web's standing chips do:
+   clicking a category mutes it, so a graph of everything can be narrowed to the
+   one kind of note you are actually looking for without re-rendering. */
 function drawLegend() {
   const el = $('glegend');
   if (!graph.legend.length) { el.innerHTML = ''; return; }
-  el.innerHTML = '<div class="scope-h">Legend</div>' + graph.legend.map((l) =>
-    `<div class="lgd"><span class="sw" style="background:${slotColour(l.slot)}"></span>
-      <span>${escapeHtml(l.label)}</span><span class="muted">${l.n.toLocaleString()}</span></div>`).join('');
+  el.innerHTML = '<div class="scope-h">Legend <span class="muted">— click to filter</span></div>' +
+    graph.legend.map((l) =>
+      `<button type="button" class="lgd" data-slot="${l.slot}"
+         aria-pressed="${graph.mute.has(l.slot) ? 'false' : 'true'}">
+        <span class="sw" style="background:${slotColour(l.slot)}"></span>
+        <span>${escapeHtml(l.label)}</span><span class="muted">${l.n.toLocaleString()}</span>
+      </button>`).join('');
+  el.querySelectorAll('.lgd').forEach((b) => {
+    b.onclick = () => {
+      // Keyed on the colour slot, not the label: the tail category's legend row
+      // reads "Other (12 more)", which matches no node's category name.
+      const slot = Number(b.dataset.slot);
+      if (graph.mute.has(slot)) graph.mute.delete(slot); else graph.mute.add(slot);
+      b.setAttribute('aria-pressed', graph.mute.has(slot) ? 'false' : 'true');
+      needsDraw();
+    };
+  });
 }
 
 /* One physics iteration, separated from drawing so the layout can be warmed
@@ -787,10 +817,121 @@ function step() {
   return true;
 }
 
+/* Two ways to draw. `tick` runs while the layout is still settling; once it
+   stops moving the loop ends and nothing is drawn until something actually
+   changes. The old loop ran requestAnimationFrame forever — redrawing an
+   unchanging picture at 60fps, which on a phone that has the site installed is
+   pure battery burn for no visible difference. */
 function tick() {
-  step();
+  const moving = step();
   drawGraph();
-  graph.raf = requestAnimationFrame(tick);
+  graph.raf = moving ? requestAnimationFrame(tick) : 0;
+}
+
+let idleTimer = 0;
+function markInteracting() {
+  graph.interacting = true;
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => { graph.interacting = false; needsDraw(); }, 180);
+}
+
+function needsDraw() {
+  if (graph.raf || graph.dirty) return;      // already scheduled
+  graph.dirty = true;
+  requestAnimationFrame(() => { graph.dirty = false; drawGraph(); });
+}
+
+/* Neighbourhood of one node: a single O(edges) pass, run on selection rather
+   than on every frame. */
+function neighbourhood(i) {
+  const nbr = new Set(), selEdges = [];
+  for (let e = 0; e < graph.edges.length; e++) {
+    const [a, b] = graph.edges[e];
+    if (a === i) { nbr.add(b); selEdges.push(e); }
+    else if (b === i) { nbr.add(a); selEdges.push(e); }
+  }
+  return { nbr, selEdges };
+}
+
+/* Nudge a node into the visible area, keeping clear of the selection card.
+   Without this, walking to a link in the card is silent when the target happens
+   to be off-screen or behind the card — you click a name and nothing appears to
+   happen. Pan only, never zoom: changing the scale under someone mid-exploration
+   loses their sense of where they were. */
+function panIntoView(i) {
+  const cv = $('gcanvas');
+  const w = cv.clientWidth || 800, h = cv.clientHeight || 600;
+  const n = graph.nodes[i];
+  const sx = w / 2 + graph.ox + n.x * graph.scale;
+  const sy = h / 2 + graph.oy + n.y * graph.scale;
+  const narrow = w <= 860;
+  const pad = 70;
+  const left = pad, right = w - (narrow ? pad : 300);
+  const top = pad, bottom = h - (narrow ? h * 0.46 : pad);
+  let dx = 0, dy = 0;
+  if (sx < left) dx = left - sx; else if (sx > right) dx = right - sx;
+  if (sy < top) dy = top - sy; else if (sy > bottom) dy = bottom - sy;
+  if (dx || dy) { graph.ox += dx; graph.oy += dy; }
+}
+
+function selectGraphNode(i) {
+  if (i < 0 || i >= graph.nodes.length) return clearGraphSelection();
+  graph.sel = i;
+  const { nbr, selEdges } = neighbourhood(i);
+  graph.nbr = nbr; graph.selEdges = selEdges;
+  renderGraphCard();
+  panIntoView(i);
+  needsDraw();
+}
+
+function clearGraphSelection() {
+  graph.sel = -1; graph.nbr = null; graph.selEdges = null;
+  const card = $('gsel');
+  card.hidden = true; card.innerHTML = '';
+  needsDraw();
+}
+
+/* The selection card is the graph's answer to the relations ledger: clicking a
+   note tells you about it instead of navigating away from it, and its links are
+   themselves clickable so the graph can be walked without ever leaving. */
+function renderGraphCard() {
+  const card = $('gsel');
+  const n = graph.nodes[graph.sel];
+  if (!n) { card.hidden = true; return; }
+  // Carry the index alongside the node — looking it up again with indexOf would
+  // be an O(nodes) scan per link, which at 40k notes is not free.
+  const links = [...graph.nbr]
+    .map((j) => ({ i: j, n: graph.nodes[j] }))
+    .sort((a, b) => b.n.deg - a.n.deg || a.n.name.localeCompare(b.n.name));
+  const shown = links.slice(0, 40);
+  const folder = n.p.split('/').slice(0, -1).join('/');
+
+  card.hidden = false;
+  card.innerHTML =
+    `<div class="gsel-head">
+       <strong>${escapeHtml(n.name)}</strong>
+       <button class="iconbtn gsel-x" aria-label="Clear selection">
+         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+       </button>
+     </div>
+     <p class="gsel-path muted">${escapeHtml(folder)}</p>
+     <p><a class="gsel-open" href="#/${encodeURI(n.p)}">Open the note →</a></p>
+     <p class="gsel-count muted">${links.length} link${links.length === 1 ? '' : 's'}${
+       n.type ? ` · ${escapeHtml(n.type)}` : ''}</p>` +
+    (links.length
+      ? `<ul class="gsel-links">` + shown.map((m) =>
+          `<li><button type="button" data-i="${m.i}">${escapeHtml(m.n.name)}</button></li>`
+        ).join('') +
+        (links.length > shown.length
+          ? `<li class="muted gsel-more">…and ${links.length - shown.length} more</li>` : '') +
+        `</ul>`
+      : '<p class="muted">Nothing links here.</p>');
+
+  card.querySelector('.gsel-x').onclick = clearGraphSelection;
+  card.querySelectorAll('.gsel-links button').forEach((b) => {
+    b.onclick = () => selectGraphNode(Number(b.dataset.i));
+  });
+  card.querySelector('.gsel-open').onclick = () => closeGraph();
 }
 
 function drawGraph() {
@@ -806,78 +947,114 @@ function drawGraph() {
   ctx.translate(w / 2 + graph.ox, h / 2 + graph.oy);
   ctx.scale(graph.scale, graph.scale);
 
-  const { nodes: ns, edges: es, hover } = graph;
-  const near = new Set();
-  if (hover >= 0) for (const [a, b] of es) { if (a === hover) near.add(b); if (b === hover) near.add(a); }
+  const { nodes: ns, edges: es } = graph;
+  /* A selection outranks a hover, and unlike a hover it persists — so the
+     neighbourhood comes from the cache rather than another sweep of the edges.
+     A hover is transient enough to be worth one scan. */
+  let focus = -1, near = null, focusEdges = null;
+  if (graph.sel >= 0) {
+    focus = graph.sel; near = graph.nbr; focusEdges = graph.selEdges;
+  } else if (graph.hover >= 0) {
+    focus = graph.hover;
+    const nb = neighbourhood(focus);
+    near = nb.nbr; focusEdges = nb.selEdges;
+  }
+  const filtering = graph.mute.size > 0;
+  const lit = (i) => !filtering || !graph.mute.has(ns[i].slot);
+
+  /* A full draw of the whole vault is ~130ms, which is fine for a one-off but
+     makes a drag feel like mud. While the pointer is actually moving, a big
+     graph draws a sampled sixth of its edges and skips the per-node surface
+     ring; the full picture is redrawn the moment it stops. Structure stays
+     legible throughout — it is detail that is deferred, not the shape. */
+  const huge = es.length > 60000 || ns.length > 8000;
+  const cheap = graph.interacting && huge;
+  const edgeStep = cheap ? 6 : 1;
 
   ctx.lineWidth = 1 / graph.scale;
   ctx.strokeStyle = css.getPropertyValue('--rule') || '#ccc';
-  ctx.globalAlpha = hover >= 0 ? 0.25 : 0.55;
+  ctx.globalAlpha = focus >= 0 ? 0.18 : (cheap ? 0.4 : 0.55);
   ctx.beginPath();
-  for (const [a, b] of es) {
+  for (let e = 0; e < es.length; e += edgeStep) {
+    const [a, b] = es[e];
+    if (filtering && !(lit(a) && lit(b))) continue;
     ctx.moveTo(ns[a].x, ns[a].y); ctx.lineTo(ns[b].x, ns[b].y);
   }
   ctx.stroke();
-  if (hover >= 0) {
+  if (focus >= 0) {
     ctx.globalAlpha = 1;
     ctx.strokeStyle = css.getPropertyValue('--accent') || '#a33';
+    ctx.lineWidth = 1.8 / graph.scale;
     ctx.beginPath();
-    for (const [a, b] of es) if (a === hover || b === hover) {
+    for (const e of focusEdges) {
+      const [a, b] = es[e];
       ctx.moveTo(ns[a].x, ns[a].y); ctx.lineTo(ns[b].x, ns[b].y);
     }
     ctx.stroke();
+    ctx.lineWidth = 1 / graph.scale;
   }
 
   ctx.globalAlpha = 1;
   const ink = css.getPropertyValue('--ink') || '#222';
   const surface = css.getPropertyValue('--bg') || '#fff';
   const pal = paletteNow();
-  const muted = css.getPropertyValue('--muted').trim() || '#888';
+  const dim = css.getPropertyValue('--muted').trim() || '#888';
+  const accent = css.getPropertyValue('--accent').trim() || '#a33';
   for (let i = 0; i < ns.length; i++) {
     const n = ns[i];
     const r = Math.min(10, 3 + Math.sqrt(n.deg) * 1.3);
-    ctx.globalAlpha = hover >= 0 && i !== hover && !near.has(i) ? 0.28 : 1;
-    // 2px surface ring so overlapping nodes stay separable
-    ctx.beginPath();
-    ctx.arc(n.x, n.y, r + 1.4 / graph.scale, 0, Math.PI * 2);
-    ctx.fillStyle = surface;
-    ctx.fill();
+    const inFocus = focus < 0 || i === focus || near.has(i);
+    ctx.globalAlpha = (inFocus ? 1 : 0.22) * (lit(i) ? 1 : 0.15);
+    // 2px surface ring so overlapping nodes stay separable — the first thing
+    // worth dropping mid-drag, since it doubles the arc count
+    if (!cheap) {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, r + 1.4 / graph.scale, 0, Math.PI * 2);
+      ctx.fillStyle = surface;
+      ctx.fill();
+    }
     ctx.beginPath();
     ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
-    ctx.fillStyle = n.slot >= 0 ? pal[n.slot] : muted;
+    ctx.fillStyle = i === graph.sel ? accent : (n.slot >= 0 ? pal[n.slot] : dim);
     ctx.fill();
-    if (i === hover) {
-      ctx.lineWidth = 2.2 / graph.scale;
-      ctx.strokeStyle = ink;
+    if (i === focus || (near && near.has(i))) {
+      ctx.lineWidth = (i === focus ? 2.6 : 1.8) / graph.scale;
+      ctx.strokeStyle = i === focus ? accent : ink;
       ctx.stroke();
     }
   }
   ctx.globalAlpha = 1;
-  /* Selective labels: the best-connected nodes plus whatever is hovered.
-     Labelling all of them turns a dense graph into a wall of overlapping
-     text — zooming in reveals progressively more. */
-  ctx.fillStyle = ink;
-  ctx.font = `${Math.max(9.5, 12 / graph.scale)}px system-ui, sans-serif`;
+  /* Selective labels: the best-connected notes, plus the whole neighbourhood of
+     whatever is focused. Labelling everything turns a dense graph into a wall of
+     overlapping text — zooming in reveals progressively more.
+
+     Focused labels get a background chip, the same trick the relations web uses:
+     a bare name is unreadable once it crosses three or four edges, and the
+     neighbourhood is exactly the text the reader is trying to read. */
+  const fontPx = Math.max(9.5, 12 / graph.scale);
+  ctx.font = `${fontPx}px system-ui, sans-serif`;
   ctx.textAlign = 'center';
+  ctx.textBaseline = 'alphabetic';
   const area = (cv.clientWidth || 800) * (cv.clientHeight || 600);
   const budget = Math.round(Math.max(7, Math.min(34, area / 26000)) * Math.max(1, graph.scale));
-  // Candidates, best-connected first, so the important names win a contested spot
+
   const cand = [];
   for (let i = 0; i < ns.length; i++) {
-    const isNear = hover >= 0 && (i === hover || near.has(i));
-    if (hover >= 0 && !isNear) continue;
+    if (focus >= 0 && !(i === focus || near.has(i))) continue;
+    if (!lit(i)) continue;
     cand.push(i);
   }
-  cand.sort((a, b) => (a === hover ? -1 : b === hover ? 1 : ns[b].deg - ns[a].deg));
+  // Best-connected first, so the names that matter win a contested spot
+  cand.sort((a, b) => (a === focus ? -1 : b === focus ? 1 : ns[b].deg - ns[a].deg));
 
   const placed = [];
   const pad = 2 / graph.scale;
   let drawn = 0;
   for (const i of cand) {
-    if (hover < 0 && drawn >= budget) break;
+    if (focus < 0 && drawn >= budget) break;
     const n = ns[i];
     const w = ctx.measureText(n.name).width;
-    const h = 12 / graph.scale;
+    const h = fontPx;
     const x = n.x - w / 2, y = n.y - Math.min(11, 4 + Math.sqrt(n.deg) * 1.3) - 3 - h;
     // skip anything that would sit on top of a label already drawn
     let clash = false;
@@ -886,7 +1063,13 @@ function drawGraph() {
     }
     if (clash) continue;
     placed.push({ x, y, w, h });
-    ctx.globalAlpha = (hover >= 0 && i !== hover) ? 0.9 : 1;
+    if (focus >= 0) {
+      ctx.globalAlpha = 0.82;
+      ctx.fillStyle = surface;
+      ctx.fillRect(x - pad * 1.5, y - pad, w + pad * 3, h + pad * 2);
+    }
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = i === focus ? accent : ink;
     ctx.fillText(n.name, n.x, y + h);
     drawn++;
   }
@@ -917,6 +1100,7 @@ function zoomAt(sx, sy, factor) {
   graph.scale = next;
   graph.ox = sx - cx - wx * next;
   graph.oy = sy - cy - wy * next;
+  needsDraw();
 }
 
 function initGraphEvents() {
@@ -959,6 +1143,7 @@ function initGraphEvents() {
         if (i >= 0) {
           held = true;
           graph.hover = i;
+          needsDraw();
           if (navigator.vibrate) { try { navigator.vibrate(12); } catch (_) {} }
         }
       }
@@ -968,7 +1153,9 @@ function initGraphEvents() {
   cv.addEventListener('pointermove', (e) => {
     const prev = pts.get(e.pointerId);
     if (!prev) {
-      if (e.pointerType !== 'touch') graph.hover = graphPointer(e);   // mouse hover
+      if (e.pointerType === 'touch') return;
+      const h = graphPointer(e);                       // mouse hover
+      if (h !== graph.hover) { graph.hover = h; needsDraw(); }
       return;
     }
     const dx = e.clientX - prev.x, dy = e.clientY - prev.y;
@@ -981,12 +1168,14 @@ function initGraphEvents() {
         zoomAt(c.x, c.y, d / pinchD);
       }
       pinchD = d;
+      markInteracting();
+      needsDraw();
       return;
     }
 
     moved += Math.abs(dx) + Math.abs(dy);
     if (moved > TOUCH_SLOP) cancelHold();
-    if (!held) { graph.ox += dx; graph.oy += dy; }   // holding inspects, never pans
+    if (!held) { graph.ox += dx; graph.oy += dy; markInteracting(); needsDraw(); }   // holding inspects, never pans
   });
 
   const release = (e) => {
@@ -996,10 +1185,15 @@ function initGraphEvents() {
     if (pts.size > 0 || wasPinching) { cancelHold(); return; }  // ignore the tail of a pinch
 
     cancelHold();
-    if (held) { held = false; graph.hover = -1; return; }        // release ends the highlight
+    if (held) { held = false; graph.hover = -1; needsDraw(); return; }   // release ends the preview
     if (moved < 8) {
+      /* A tap selects and explains; it does not navigate. Opening the note was
+         the old behaviour and it made the graph almost unusable for browsing —
+         one stray tap and you had left the graph entirely, losing the layout,
+         the scope you picked and where you were looking. Double-tap still
+         opens, and so does the link in the selection card. */
       const i = graphPointer(e);
-      if (i >= 0) { location.hash = '#/' + encodeURI(graph.nodes[i].p); closeGraph(); }
+      if (i >= 0) selectGraphNode(i); else clearGraphSelection();
     }
   };
   cv.addEventListener('pointerup', release);
@@ -1015,17 +1209,25 @@ function initGraphEvents() {
 
   cv.addEventListener('wheel', (e) => {
     e.preventDefault();
+    markInteracting();
     zoomAt(e.clientX, e.clientY, e.deltaY < 0 ? 1.12 : 1 / 1.12);
   }, { passive: false });
 
-  // Double-tap / double-click to zoom in a step, anchored where you tapped.
+  /* Double-tap opens the note when it lands on one, and otherwise zooms a step
+     in, anchored where you tapped. Splitting it this way is what lets a single
+     tap be free to mean "tell me about this". */
   let lastTap = 0, lastX = 0, lastY = 0;
   cv.addEventListener('pointerup', (e) => {
-    // If the release already opened a note the graph is gone; don't also zoom.
     if ($('graphView').hidden) { lastTap = 0; return; }
     const now = Date.now();
     if (now - lastTap < 300 && Math.hypot(e.clientX - lastX, e.clientY - lastY) < 30) {
-      zoomAt(e.clientX, e.clientY, 1.6);
+      const i = graphPointer(e);
+      if (i >= 0) {
+        location.hash = '#/' + encodeURI(graph.nodes[i].p);
+        closeGraph();
+      } else {
+        zoomAt(e.clientX, e.clientY, 1.6);
+      }
       lastTap = 0;
     } else { lastTap = now; lastX = e.clientX; lastY = e.clientY; }
   });
@@ -1036,7 +1238,12 @@ function setPanel(open) {
   $('gExpand').hidden = open;
 }
 function openGraph() { $('graphView').hidden = false; setPanel(true); buildScopeUI(); }
-function closeGraph() { $('graphView').hidden = true; cancelAnimationFrame(graph.raf); graph.raf = 0; }
+function closeGraph() {
+  $('graphView').hidden = true;
+  cancelAnimationFrame(graph.raf);
+  graph.raf = 0;
+  clearGraphSelection();
+}
 
 /* ------------------------------------------------------------ relations web
    A note carrying `view: relations` in its frontmatter has its diplomacy table
@@ -1600,14 +1807,14 @@ async function init() {
     const cur = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
     document.documentElement.dataset.theme = cur;
     localStorage.setItem('theme', cur);
-    if (graph.nodes.length) drawLegend();   // palette swaps with the theme
+    if (graph.nodes.length) { drawLegend(); needsDraw(); }   // palette swaps with the theme
   };
   $('graphBtn').onclick = openGraph;
   $('graphClose').onclick = closeGraph;
   $('renderGraph').onclick = renderGraphNow;
   $('gCollapse').onclick = () => setPanel(false);
   $('gExpand').onclick = () => setPanel(true);
-  $('colorBy').onchange = () => { if (graph.nodes.length) { assignColours(graph.nodes); } };
+  $('colorBy').onchange = () => { if (graph.nodes.length) { assignColours(graph.nodes); needsDraw(); } };
   initGraphEvents();
   $('searchBtn').onclick = async () => {
     $('searchModal').hidden = false; $('searchInput').focus();

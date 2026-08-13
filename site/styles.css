@@ -209,7 +209,14 @@ body {
   background: var(--bg); color: var(--ink); font: inherit; font-size: 14px;
 }
 .legend { margin-top: 6px; }
-.lgd { display: flex; align-items: center; gap: 8px; padding: 3px 2px; font-size: 13.5px; }
+.lgd {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  padding: 4px 6px; font: inherit; font-size: 13.5px; text-align: left;
+  background: none; border: 1px solid transparent; border-radius: 7px;
+  color: var(--ink); cursor: pointer;
+}
+.lgd:hover { border-color: var(--rule); background: var(--bg); }
+.lgd[aria-pressed="false"] { opacity: .4; }
 .lgd span:nth-of-type(2) { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .lgd .muted { font-size: 12px; }
 .sw { width: 12px; height: 12px; border-radius: 3px; flex: 0 0 12px; box-shadow: 0 0 0 1px rgba(0,0,0,.18) inset; }
@@ -239,6 +246,46 @@ body {
 }
 #gcanvas:active { cursor: grabbing; }
 .ghint { position: absolute; left: 12px; bottom: 12px; font-size: 12px; pointer-events: none; }
+
+/* Selection card — the graph's equivalent of the relations ledger. Floats over
+   the canvas rather than living in the options panel, so picking a note never
+   fights with the panel being collapsed. */
+.gsel {
+  position: absolute; top: 12px; right: 12px; z-index: 6;
+  width: 272px; max-height: calc(100% - 24px); overflow: auto;
+  background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 10px 12px 12px; font-size: 14px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.22);
+}
+.gsel[hidden] { display: none; }
+.gsel-head { display: flex; align-items: flex-start; gap: 6px; }
+.gsel-head strong { flex: 1; font-size: 15px; line-height: 1.3; }
+.gsel-x { width: 28px; height: 28px; flex: 0 0 28px; }
+.gsel-x svg { width: 16px; height: 16px; }
+.gsel-path { font-size: 12px; margin: 2px 0 8px; word-break: break-word; }
+.gsel p { margin: 0 0 8px; }
+.gsel-open { color: var(--link); font-weight: 700; text-decoration: none; }
+.gsel-open:hover { text-decoration: underline; }
+.gsel-count { font-size: 12.5px; border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+.gsel-links { list-style: none; margin: 0; padding: 0; }
+.gsel-links li { margin: 0; }
+.gsel-links button {
+  display: block; width: 100%; text-align: left; padding: 5px 7px;
+  background: none; border: 0; border-radius: 6px;
+  font: inherit; font-size: 13.5px; color: var(--ink); cursor: pointer;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.gsel-links button:hover { background: var(--bg); color: var(--link); }
+.gsel-more { padding: 5px 7px; font-size: 12.5px; }
+
+@media (max-width: 860px) {
+  /* Bottom sheet on a phone: a floating card would cover the graph it describes */
+  .gsel {
+    top: auto; left: 12px; right: 12px; bottom: 12px;
+    width: auto; max-height: 42%;
+  }
+  .ghint { display: none; }
+}
 
 @media (max-width: 860px) {
   .graphview { flex-direction: column; }

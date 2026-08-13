@@ -38,6 +38,13 @@ How the app is put together:
   new colour as a token in **all three** blocks, never as a literal in a rule.
 - Bump `VERSION` in `site/sw.js` when the app shell changes, or returning
   visitors keep serving the cached one.
+- The graph view draws **on demand**, not on a permanent `requestAnimationFrame`
+  loop: `tick()` runs only while the layout is still settling, and everything
+  else calls `needsDraw()`. Any new interaction that moves the camera or changes
+  what is drawn has to call it, or the canvas will simply not update. Panning a
+  vault-scale graph also drops to sampled edges via `markInteracting()`, because
+  a full redraw at 457,000 edges is ~200ms; that flag restores itself on a
+  timer, so never set `graph.interacting` directly.
 - Never hardcode the topbar's height. Installed to an iOS home screen it grows
   by `env(safe-area-inset-top)`; `--topbar-h` is remeasured from the live
   element by `syncTopbarHeight()`, and the sidebar, scrim and graph overlay are
