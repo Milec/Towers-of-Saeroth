@@ -19,4 +19,9 @@ last of its kind; it's meant to be inherited.
 - **Reputation** Unbreakable and dependable
 - **Faith** Patron [[Torag]], honored in every forge-hall as the maker who never stops working. [[Magrim]] receives the dead and the oaths that outlive them; the human merchant quarters keep [[Abadar]] instead, which the thanes tolerate as a trade concession
 - **Tension** A minor hold on the deep frontier has stopped answering the Assembly's messengers, and nobody wants to be the thane who says why out loud
-- **Relations** Steady trade partnership with [[Silicar]] and [[Nordheim]]; quiet contempt for the [[Undertide Reaches]]' claim to "true" stonework
+- **Relations**
+    - [[Nordheim]] — **Allied**: Northern trade and dwarven kinship both
+    - [[Cindral Ashlands]] — **Trade**: Obsidian and rare ore — though the Stoneborn find Cindral's forging rites needlessly dramatic
+    - [[Silicar]] — **Trade**: Machinery and engineering exports
+    - [[Voskreld Union]] — **Trade**: Ore and finished steel for the royal cannon foundries
+    - [[Undertide Reaches]] — **Territorial**: The Reaches claim caverns running directly beneath Stoneborn holds, and a deep-frontier hold has stopped answering the Assembly's messengers

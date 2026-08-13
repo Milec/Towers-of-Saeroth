@@ -19,4 +19,16 @@ lanes, so the Alliance stays neutral whenever staying neutral pays.
 - **Reputation** Rich, influential, and politically neutral when profitable
 - **Faith** Patron [[Abadar]] in his aspect as god of contracts and honest wealth — practically the Alliance's founding charter. [[Desna]] is the sailors' luck; [[Norgorber]] is the god nobody admits to keeping, and every great house has a shrine to him somewhere unlit
 - **Tension** One of the great houses has quietly underwritten more insurance than it can cover, and everyone who suspects it is deciding whether to warn the others or profit first
-- **Relations** Trade and insurance backbone shared with [[Aquoniti]]; a long, low-grade rivalry with [[Quivar]]'s intelligence service over who actually controls which trade secrets
+- **Relations**
+    - [[Aquoniti]] — **Trade**: The shipping-and-insurance backbone of the whole continent
+    - [[Dalstan]] — **Trade**: Tithe-banking and the indulgence trade — the one partner Dalstan has that asks nothing about doctrine
+    - [[Kesmarch Frontier]] — **Trade**: Furs, ore and wagon-freight; the Alliance is the frontier's only reliable buyer
+    - [[Khazan Khaganate]] — **Trade**: Mercenary contracts: the Alliance hires steppe riders by the thousand and leases them to whoever is losing
+    - [[Melisor Magocracy]] — **Trade**: Alliance contracts for enchanted goods quietly bankroll the academies
+    - [[Nordheim]] — **Trade**: Amber, furs and whale oil, moved south under Alliance insurance
+    - [[Silicar]] — **Trade**: Same exports, sold on
+    - [[Thornwild Confederation]] — **Trade**: Pelts, venom and toxin, bought at the river mouths and never asked about
+    - [[Xian Ti]] — **Trade**: Silk, tea and porcelain: the single most profitable route the Alliance runs
+    - [[Corvane Republic]] — **Rivalry**: Corvane's citizen assembly is a standing philosophical rebuke to Thurion's wealth-gated senate
+    - [[Quivar]] — **Rivalry**: A long, low-grade contest over who really controls which trade secrets
+    - [[Undertide Reaches]] — **Covert**: The Reaches sell secret-keeping as a service, and more than one great house has quietly bought it

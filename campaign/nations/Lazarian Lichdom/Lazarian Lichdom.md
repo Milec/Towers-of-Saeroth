@@ -19,4 +19,10 @@ centuries — competence doesn't expire just because the body did.
 - **Reputation** Universally feared
 - **Faith** Patron [[Urgathoa]], whose doctrine of undeath as ascension runs through Lazarian state philosophy. [[Norgorber]] is kept quietly by the alchemists and relic-brokers. [[Pharasma]]'s faith is outlawed outright — she judges the dead, which makes her the one god the state cannot bargain with
 - **Tension** The Lich Emperor has not issued an edict in eleven years; the court insists this is deliberation, and quietly governs without him
-- **Relations** Ideological enemy of the [[Thesal Theocracy]] and the frequent target of [[Melisor Magocracy]] condemnation, though the two trade in relics through intermediaries neither will name
+- **Relations**
+    - [[Thesal Theocracy]] — **Hostile**: Ideological enemies outright
+    - [[Thurigypt]] — **Hostile**: Life against undeath in the plainest terms: Thurigypt's patron is the one goddess Lazarian has outlawed
+    - [[Vaelic Principality]] — **Hostile**: The old battlefields Lazarian was built on are full of Vaelic dead, and Vaelic knights have met their own ancestors in the field
+    - [[Dalstan]] — **Covert**: Dalstan's relic trade sources from Lazarian grave-fields through brokers the Cathedral Court is careful never to meet
+    - [[Melisor Magocracy]] — **Covert**: Public condemnation over what magic should never be used for — and a relic trade through intermediaries neither will name
+    - [[Undertide Reaches]] — **Covert**: Relics move through back channels that lead, deniably, to Lazarian hands

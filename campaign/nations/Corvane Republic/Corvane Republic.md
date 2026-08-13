@@ -22,4 +22,12 @@ its most exhausting one, depending who's arguing.
 - **Reputation** Idealistic, argumentative, and welcoming to anyone willing to work
 - **Faith** Patron [[Milani]], goddess of hope and uprising, whose worship the Republic's founders brought with them out of the places they fled. [[Cayden Cailean]] is nearly as popular for liberty's sake, and the Assembly itself keeps [[Abadar]] for the civic law
 - **Tension** The refugee influx from [[Dalstan]] has outpaced the housing, and the Assembly is discovering how its founding principle sounds when it becomes expensive
-- **Relations** A steady trickle of refugees, including many Tieflings, flees [[Dalstan]]'s persecution for Corvane's borders; its citizen-assembly model stands as a standing philosophical rebuke to the wealth-gated senate of the [[Thurion Merchant Alliance]]; growing shipbuilding trade with [[Aquoniti]]
+- **Relations**
+    - [[Thesal Theocracy]] — **Allied**: A standing accord over the Dalstani refugee flow — Thesal hospices staff Corvane's overflowing wards, and Corvane's assembly argues Thesal's case where a theocracy's own word carries less
+    - [[Aquoniti]] — **Trade**: Shipbuilding, and growing
+    - [[Kesmarch Frontier]] — **Trade**: The same migration seen from both ends — Corvane ships supply homesteads that Corvane's own overflow settled
+    - [[Nordheim]] — **Trade**: Nordheim timber, Corvane yards — half the Republic's fleet is northern pine
+    - [[Thurion Merchant Alliance]] — **Rivalry**: Corvane's citizen assembly is a standing philosophical rebuke to Thurion's wealth-gated senate
+    - [[Vaelic Principality]] — **Rivalry**: An elected assembly and a hereditary Diet, each privately certain the other's model cannot last the century
+    - [[Quivar]] — **Friction**: Corvane's presses print what Valmont's court would rather went unread, and Quivar's intelligence service works Vantry harder than anywhere else
+    - [[Dalstan]] — **Hostile**: Dalstan's persecution of Tieflings and dissidents feeds a steady refugee flow into Corvane

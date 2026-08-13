@@ -20,4 +20,11 @@ utterly indispensable to anyone who needs magic done properly.
 - **Reputation** Arrogant, brilliant, indispensable
 - **Faith** Patron [[Nethys]], god of magic in all its forms, whose temple sits at the centre of every academy campus. [[Irori]] is the scholar's second god here — self-perfection through study is how Melisor justifies its own hierarchy
 - **Tension** Two academies claim the same discovery, and the Council of Archmages has stalled on ruling for a year rather than hand either one the prestige
-- **Relations** Deep ideological rivalry with the [[Lazarian Lichdom]] over what magic should never be used for; quietly bankrolled in part by [[Thurion Merchant Alliance]] contracts for enchanted goods
+- **Relations**
+    - [[Cindral Ashlands]] — **Trade**: Elemental reagents no other forge can produce, at prices the academies resent and pay
+    - [[Elven Confederacy]] — **Trade**: Magical plants for the academies, on terms the tribes renegotiate roughly once a century
+    - [[Thurion Merchant Alliance]] — **Trade**: Alliance contracts for enchanted goods quietly bankroll the academies
+    - [[Undertide Reaches]] — **Trade**: Construct labour and salvaged relics, contracted openly and delivered without explanation
+    - [[Xian Ti]] — **Trade**: Scholarship traded as freely as goods; both nations keep Irori, and each thinks the other misreads him
+    - [[Silicar]] — **Rivalry**: Melisor's academics can't decide whether Silicar's clockwork is beneath magic or quietly outperforming it
+    - [[Lazarian Lichdom]] — **Covert**: Public condemnation over what magic should never be used for — and a relic trade through intermediaries neither will name

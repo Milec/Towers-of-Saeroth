@@ -21,4 +21,9 @@ them.
 - **Reputation** Wild, fiercely loyal to their own, and dangerously easy to underestimate
 - **Faith** The [[Green Faith]] rather than any named patron — the Thornwild reveres the living world directly, and finds the idea of a god who lives elsewhere faintly absurd. [[Gozreh]] is the exception most clans will name, invoked for storm and beast alike
 - **Tension** Two clans want to answer [[Kesmarch Frontier]]'s encroachment with blood and the rest want to wait, and Rootmeet has adjourned twice without deciding
-- **Relations** Regarded by the [[Elven Confederacy]] as unruly distant kin in nature, if not in temperament; periodically raided by the [[Khazan Khaganate]] for beast-stock, a grievance the Thornwild has not forgotten; increasingly pressured on its other border by [[Kesmarch Frontier]] homesteaders clearing jungle for farmland
+- **Relations**
+    - [[Thesal Theocracy]] — **Trade**: Jungle medicinals for the hospices; the only outsiders the Circle deals with by standing arrangement
+    - [[Thurion Merchant Alliance]] — **Trade**: Pelts, venom and toxin, bought at the river mouths and never asked about
+    - [[Elven Confederacy]] — **Friction**: The Confederacy regards the Thornwild as unruly distant kin; the Thornwild did not ask to be anyone's cousin
+    - [[Kesmarch Frontier]] — **Territorial**: Homesteaders clearing jungle the Thornwild consider already spoken for — the likeliest of these to turn into a shooting war
+    - [[Khazan Khaganate]] — **Territorial**: Periodic raids for beast-stock; the Thornwild has not forgotten

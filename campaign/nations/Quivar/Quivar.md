@@ -19,4 +19,11 @@ everyone at court knows it.
 - **Reputation** The cultural heart of the world, but never fully trusted
 - **Faith** Patron [[Shelyn]], goddess of art, beauty and love — the face Quivar presents, and genuinely beloved. [[Calistria]], goddess of intrigue, revenge and exquisite grudges, is the one the court actually prays to, and everyone knows it
 - **Tension** The monarch has two plausible heirs and has declined to indicate a preference, which has turned every salon in Valmont into a recruiting ground
-- **Relations** Trade-secret rivalry with the [[Thurion Merchant Alliance]]; [[Dalstan]]'s nobility imitates Quivari fashion badly enough to be a running joke at court
+- **Relations**
+    - [[Aquoniti]] — **Trade**: Pearl and coral, graded at sea and sold on to the Valmont ateliers
+    - [[Elven Confederacy]] — **Trade**: Heartwood wine and elven silk — the only foreign court the tribes consider worth dressing for
+    - [[Dalstan]] — **Rivalry**: One-sided: Dalstan's nobility imitates Quivari fashion badly enough to be a court joke
+    - [[Thurion Merchant Alliance]] — **Rivalry**: A long, low-grade contest over who really controls which trade secrets
+    - [[Xian Ti]] — **Rivalry**: Luxury trade, and who gets to define “refined”
+    - [[Corvane Republic]] — **Friction**: Corvane's presses print what Valmont's court would rather went unread, and Quivar's intelligence service works Vantry harder than anywhere else
+    - [[Vaelic Principality]] — **Covert**: Valmont keeps agents in the Diet and a considerable interest in who the next High Prince will owe

@@ -28,4 +28,12 @@ grace — and it decides often.
 - **Want** The Cathedral Court wants every neighboring court to convert, gilded shrine by gilded shrine.
 - **Won't** Dalstan will not admit that its faith and its avarice are the same appetite wearing different robes.
 - **Tension** The Cathedral Court has begun licensing inquisitions beyond Dalstan's own borders, and has not yet been told no by anyone with the standing to make it stick
-- **Relations** Regarded by the [[Thesal Theocracy]] as a cautionary tale about what faith becomes without compassion; envies and clumsily imitates [[Quivar]]'s court fashion; [[Thurigypt]] considers its opulence undisciplined; its persecution of Tieflings and dissidents feeds a steady trickle of refugees to the [[Corvane Republic]]; the [[Voskreld Union]] watches its zealotry warily as a potential source of unrest among its own devout provinces
+- **Relations**
+    - [[Thurion Merchant Alliance]] — **Trade**: Tithe-banking and the indulgence trade — the one partner Dalstan has that asks nothing about doctrine
+    - [[Quivar]] — **Rivalry**: One-sided: Dalstan's nobility imitates Quivari fashion badly enough to be a court joke
+    - [[Thurigypt]] — **Friction**: Thurigypt reads Dalstani opulence as decadence without discipline
+    - [[Vaelic Principality]] — **Friction**: The Cathedral Court has begun licensing inquisitions across the border, and the Imperial judiciary is the only body with standing to refuse it
+    - [[Voskreld Union]] — **Friction**: Voskreld watches Dalstani zealotry as a live source of unrest in its own devout provinces
+    - [[Corvane Republic]] — **Hostile**: Dalstan's persecution of Tieflings and dissidents feeds a steady refugee flow into Corvane
+    - [[Thesal Theocracy]] — **Hostile**: Thesal treats Dalstan as a cautionary tale about faith without compassion
+    - [[Lazarian Lichdom]] — **Covert**: Dalstan's relic trade sources from Lazarian grave-fields through brokers the Cathedral Court is careful never to meet

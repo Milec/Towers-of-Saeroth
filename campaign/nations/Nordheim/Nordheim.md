@@ -19,4 +19,11 @@ a hard death.
 - **Reputation** Stoic explorers, fierce warriors, and steadfast allies
 - **Faith** Patron [[Cayden Cailean]], god of bravery, freedom and the guest-cup — the closest thing Nordheim has to a national creed. [[Gorum]] is kept for war and [[Desna]] for the long voyages; the oldest sagas still invoke [[Trudd]]
 - **Tension** The High King is dying and the Great Thing must be called before the ice closes the fjords, which means the jarls who arrive late will have no say at all
-- **Relations** Shared northern trade and dwarven kinship with [[Stoneborn Holds]]; a friendly, centuries-old rivalry with [[Aquoniti]] over the northern waters
+- **Relations**
+    - [[Stoneborn Holds]] — **Allied**: Northern trade and dwarven kinship both
+    - [[Corvane Republic]] — **Trade**: Nordheim timber, Corvane yards — half the Republic's fleet is northern pine
+    - [[Silicar]] — **Trade**: Iron and timber south, Silicar grain north; the fjords cannot feed themselves through a hard winter
+    - [[Thurion Merchant Alliance]] — **Trade**: Amber, furs and whale oil, moved south under Alliance insurance
+    - [[Aquoniti]] — **Rivalry**: Centuries old, over the northern lanes, and genuinely good-natured
+    - [[Undertide Reaches]] — **Friction**: Undertide passages keep surfacing inside Nordheim's mountains, always somewhere no jarl agreed to
+    - [[Elven Confederacy]] — **Territorial**: Nordheim timber camps working northern pine the Winter Elf tribes have never ceded

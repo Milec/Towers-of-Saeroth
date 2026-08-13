@@ -1075,8 +1075,8 @@ const REST = {
   allied: 104, trade: 128, rivalry: 168, friction: 186,
   territorial: 230, hostile: 248, covert: 198,
 };
-const RSIM = { repel: 8200, centre: 0.006, spring: 0.045, damp: 0.82, pad: 54 };
-const RVIEW = { w: 1000, h: 680 };
+const RSIM = { repel: 13000, centre: 0.0032, spring: 0.05, damp: 0.82, pad: 54 };
+const RVIEW = { w: 1120, h: 780 };
 const SVGNS = 'http://www.w3.org/2000/svg';
 
 const rel = { nodes: [], edges: [], sel: null, active: new Set(), themes: new Map() };
@@ -1158,12 +1158,18 @@ function relaxRelations(nodes, edges, iters, frozen) {
       a.vx += (w / 2 - a.x) * RSIM.centre;
       a.vy += (h / 2 - a.y) * RSIM.centre;
     }
+    /* Each endpoint's pull is divided by its degree, the same guard the graph
+       view uses. Without it a hub like the Merchant Alliance accumulates a
+       dozen pulls per frame and drags its partners into a knot on top of it —
+       which is exactly what happened when the table grew from 32 ties to 69. */
     for (const e of edges) {
       const dx = e.b.x - e.a.x, dy = e.b.y - e.a.y;
       const d = Math.hypot(dx, dy) || 1;
       const f = (d - REST[e.standing]) * RSIM.spring;
-      e.a.vx += (dx / d) * f; e.a.vy += (dy / d) * f;
-      e.b.vx -= (dx / d) * f; e.b.vy -= (dy / d) * f;
+      const sa = 1 / (1 + Math.sqrt(e.a.deg) * 0.55);
+      const sb = 1 / (1 + Math.sqrt(e.b.deg) * 0.55);
+      e.a.vx += (dx / d) * f * sa; e.a.vy += (dy / d) * f * sa;
+      e.b.vx -= (dx / d) * f * sb; e.b.vy -= (dy / d) * f * sb;
     }
     for (const n of nodes) {
       if (n === frozen) { n.vx = n.vy = 0; continue; }
@@ -1172,6 +1178,31 @@ function relaxRelations(nodes, edges, iters, frozen) {
       n.x = Math.min(w - RSIM.pad - n.r, Math.max(RSIM.pad + n.r, n.x));
       n.y = Math.min(h - RSIM.pad - n.r, Math.max(RSIM.pad + n.r, n.y));
     }
+  }
+}
+
+/* The forces decide where nations sit relative to each other; this decides how
+   much of the frame that arrangement gets to use. Settling alone reliably
+   leaves a clump in the middle with a third of the canvas empty, and the answer
+   is not more force tuning — scale the settled result out to the edges instead.
+   Uniform, so every distance the layout argued for is preserved in proportion. */
+function fitRelations() {
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  for (const n of rel.nodes) {
+    minX = Math.min(minX, n.x); maxX = Math.max(maxX, n.x);
+    minY = Math.min(minY, n.y); maxY = Math.max(maxY, n.y);
+  }
+  // Asymmetric on purpose: every node carries a label underneath it, and the
+  // bottom strip belongs to the hint line.
+  const padX = 78, padTop = 62, padBottom = 112;
+  const s = Math.min((RVIEW.w - padX * 2) / Math.max(1, maxX - minX),
+                     (RVIEW.h - padTop - padBottom) / Math.max(1, maxY - minY));
+  const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+  const midY = padTop + (RVIEW.h - padTop - padBottom) / 2;
+  for (const n of rel.nodes) {
+    n.x = RVIEW.w / 2 + (n.x - cx) * s;
+    n.y = midY + (n.y - cy) * s;
+    n.vx = n.vy = 0;
   }
 }
 
@@ -1196,6 +1227,7 @@ function mountRelations(container, body) {
     n.vx = n.vy = 0;
   });
   relaxRelations(nodes, edges, 520, null);
+  fitRelations();
 
   const counts = new Map(STANDINGS.map(([k]) => [k, 0]));
   for (const e of edges) counts.set(e.standing, counts.get(e.standing) + 1);

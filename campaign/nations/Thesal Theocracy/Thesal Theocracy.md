@@ -19,4 +19,11 @@ nations need a mediator neither side will refuse, they send for Thesal.
 - **Reputation** Trusted mediators and healers
 - **Faith** Patron [[Sarenrae]], goddess of healing and redemption, whose hospices are the nation's most visible export. By charter every good or neutral faith holds a temple in Concord — [[Shelyn]], [[Desna]] and [[Pharasma]] hold the largest after hers
 - **Tension** [[Dalstan]] missionaries have started preaching openly in the border shrines, and Thesal's own doctrine of tolerance is the reason it can't simply expel them
-- **Relations** Allied with the [[Vaelic Principality]]'s knightly orders; the [[Dalstan]] court's brand of zealotry is treated as everything Thesal deliberately refuses to become
+- **Relations**
+    - [[Corvane Republic]] — **Allied**: A standing accord over the Dalstani refugee flow — Thesal hospices staff Corvane's overflowing wards, and Corvane's assembly argues Thesal's case where a theocracy's own word carries less
+    - [[Vaelic Principality]] — **Allied**: Long-standing; Thesal clergy anoint Vaelic knights
+    - [[Thornwild Confederation]] — **Trade**: Jungle medicinals for the hospices; the only outsiders the Circle deals with by standing arrangement
+    - [[Thurigypt]] — **Trade**: Grain for medicine, and a shared devotion to Sarenrae that keeps the terms generous on both sides
+    - [[Cindral Ashlands]] — **Friction**: Thesal considers Cindral's elemental reverence reckless faith, and never says so to an envoy's face
+    - [[Dalstan]] — **Hostile**: Thesal treats Dalstan as a cautionary tale about faith without compassion
+    - [[Lazarian Lichdom]] — **Hostile**: Ideological enemies outright

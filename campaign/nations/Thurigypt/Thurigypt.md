@@ -19,4 +19,10 @@ battlefield achievement as any campaign.
 - **Reputation** Disciplined and proud
 - **Faith** Patron [[Pharasma]], who governs birth as well as death — in Thurigypt she is the goddess of the bloodline continuing, not of endings. [[Sarenrae]] is venerated as the sun that makes the delta live, and [[Erastil]] by the farming and soldiering families both
 - **Tension** The flood has come in short two years running, and the priest-kings disagree publicly about whether that is a failure of engineering or of the Pharaoh
-- **Relations** Old river-trade ties to [[Aquoniti]]; regards [[Dalstan]]'s opulence as decadence without discipline
+- **Relations**
+    - [[Aquoniti]] — **Trade**: Old river-trade ties
+    - [[Cindral Ashlands]] — **Trade**: The delta's glassworks run on Cindral obsidian, and pay in gold
+    - [[Thesal Theocracy]] — **Trade**: Grain for medicine, and a shared devotion to Sarenrae that keeps the terms generous on both sides
+    - [[Dalstan]] — **Friction**: Thurigypt reads Dalstani opulence as decadence without discipline
+    - [[Elven Confederacy]] — **Territorial**: Water rights at the desert oasis-groves, argued every generation and settled in none of them
+    - [[Lazarian Lichdom]] — **Hostile**: Life against undeath in the plainest terms: Thurigypt's patron is the one goddess Lazarian has outlawed
