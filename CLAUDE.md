@@ -54,13 +54,18 @@ Obsidian-flavoured markdown, matching the convention already used throughout
   note.
 - **Filenames match the title** (`Harbormaster Corwin Ledd.md`, not
   `npc_corrupt_harbormaster_final.md`), so wikilinks stay short and readable.
-- **Factions go in a subfolder per parent nation** —
-  `campaign/factions/Vaelic/House Dravensk.md`, not
-  `campaign/factions/House Dravensk.md`. Create the nation's subfolder if it
-  doesn't exist yet; only genuinely cross-border organizations belong loose at
-  the `factions/` root. Keep using short `[[House Dravensk]]` wikilinks
-  regardless — Obsidian resolves those by filename, so the subfolder never
-  needs to appear in a link.
+- **Anything belonging to one nation lives in that nation's folder.** The
+  layout is nation-first: `campaign/nations/<Nation>/` holds the nation note
+  itself plus `factions/`, `locations/` and `npcs/` subfolders — so
+  `campaign/nations/Vaelic Principality/factions/House Dravensk.md`. Only
+  things that genuinely span nations go in the top-level `campaign/factions/`,
+  `npcs/` or `locations/`; setting-wide reference (deities, ancestries,
+  planes, world history) goes under `campaign/world/`. Create the folders if
+  they don't exist. **`campaign/README.md` has the full tree — read it before
+  adding a new kind of note.**
+- Wikilinks resolve **by filename, not path**, so keep them short
+  (`[[House Dravensk]]`) no matter how deeply nested the note is. Never put a
+  folder path in a link, and don't update links when moving notes.
 
 The aim is a note that's actually usable at the table and that Obsidian's
 graph view renders as a real web of connections — not a document dump.
