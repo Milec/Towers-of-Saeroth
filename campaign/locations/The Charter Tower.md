@@ -30,7 +30,8 @@ it were otherwise.
 - **Entrance** At the base, facing no particular direction, standing open
 - **Entered by** Two chartered Kesmarch companies, a Thornwild clan-party, and
   at least three ventures that told nobody whose they were
-- **Returned** Nobody
+- **Returned** Nobody. Six parties in four months, not one of which could have
+  come out even if it had wanted to
 - **Claim** Disputed. Kesmarch has a charter with a surveyor's seal on land no
   surveyor has walked. The Thornwild has a claim older than Kesmarch
 
@@ -41,7 +42,8 @@ deciding what to do, and the two clans arguing for blood have stopped losing
 the argument.
 
 Nobody is fighting over the tower. They are fighting over who gets to lose
-people in it.
+people in it — and both sides have now lost enough that the arguing has taken
+on the shape of a grievance rather than a race.
 
 *See [[The Towers]] for what is known about towers generally, which is very
 little.*
