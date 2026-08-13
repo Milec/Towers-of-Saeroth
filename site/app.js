@@ -13,6 +13,8 @@ const state = {
   byPath: new Set(),
   text: new Map(),   // campaign path -> lowercased body, for full-text search
   links: new Map(),  // campaign path -> outbound wikilink targets (from the build)
+  vaultIndexOf: new Map(), // vault path -> row index in index-vault-links
+  tree: null,
   vaultLoaded: false,
   current: null,
 };
@@ -310,30 +312,78 @@ function renderBacklinks(target) {
   ).join('') + '</ul>';
 }
 
-/* ------------------------------------------------------------ navigation */
-function buildTree(paths, mount, opts = {}) {
-  const root = {};
+/* ------------------------------------------------------------ navigation
+   The tree holds up to ~42k notes, so only one level is ever put in the DOM
+   at a time; children are rendered the first time a folder is expanded. */
+function makeTreeData(paths) {
+  const root = { dirs: new Map(), files: [] };
   for (const p of paths) {
     const parts = p.split('/');
     let node = root;
     parts.forEach((seg, i) => {
-      if (i === parts.length - 1) (node.__files ||= []).push({ seg, p });
-      else node = (node[seg] ||= {});
+      if (i === parts.length - 1) node.files.push({ seg, p });
+      else {
+        if (!node.dirs.has(seg)) node.dirs.set(seg, { dirs: new Map(), files: [] });
+        node = node.dirs.get(seg);
+      }
     });
   }
-  mount.innerHTML = renderNode(root, '', opts.open || 0);
+  return root;
 }
-function renderNode(node, prefix, openDepth, depth = 0) {
-  let html = '';
-  for (const key of Object.keys(node).filter((k) => k !== '__files').sort()) {
-    const open = depth < openDepth ? ' open' : '';
-    html += `<details${open}><summary>${escapeHtml(key)}</summary>` +
-      renderNode(node[key], prefix + key + '/', openDepth, depth + 1) + '</details>';
+
+function renderLevel(node, mount, openDepth = 0, depth = 0) {
+  mount.textContent = '';
+  for (const key of [...node.dirs.keys()].sort()) {
+    const child = node.dirs.get(key);
+    const d = document.createElement('details');
+    const s = document.createElement('summary');
+    s.textContent = key;
+    d.appendChild(s);
+    const holder = document.createElement('div');
+    d.appendChild(holder);
+    d.addEventListener('toggle', async () => {
+      if (!d.open || d.dataset.filled) return;
+      d.dataset.filled = '1';
+      // The vault subtree (41,718 notes) is only fetched and built when
+      // someone actually opens it.
+      if (child.lazy) {
+        holder.innerHTML = '<p class="muted pad small">Loading 41,718 notes…</p>';
+        try {
+          await ensureVault();
+          const built = makeTreeData(state.vault.map((v) => v.p)).dirs.get('vault');
+          if (built) { node.dirs.set(key, built); renderLevel(built, holder); return; }
+          holder.innerHTML = '<p class="muted pad small">No notes found.</p>';
+        } catch (_) {
+          holder.innerHTML = '<p class="muted pad small">Could not load — offline?</p>';
+          d.dataset.filled = '';
+        }
+        return;
+      }
+      renderLevel(child, holder);
+    });
+    // Never auto-expand a lazy branch: that would mark it filled from its
+    // empty placeholder and the real load would never fire.
+    if (depth < openDepth && !child.lazy) {
+      d.open = true; d.dataset.filled = '1';
+      renderLevel(child, holder, openDepth, depth + 1);
+    }
+    mount.appendChild(d);
   }
-  for (const f of (node.__files || []).sort((a, b) => a.seg.localeCompare(b.seg))) {
-    html += `<a class="leaf" data-path="${escapeHtml(f.p)}" href="#/${encodeURI(f.p)}">${escapeHtml(f.seg.replace(/\.md$/, ''))}</a>`;
+  for (const f of node.files.sort((a, b) => a.seg.localeCompare(b.seg))) {
+    const a = document.createElement('a');
+    a.className = 'leaf';
+    a.dataset.path = f.p;
+    a.href = '#/' + encodeURI(f.p);
+    a.textContent = f.seg.replace(/\.md$/, '');
+    mount.appendChild(a);
   }
-  return html;
+}
+
+function buildTree(paths, mount, opts = {}) {
+  state.tree = makeTreeData(paths);
+  // placeholder branch; populated from index-vault.json on first expand
+  state.tree.dirs.set('vault', { dirs: new Map(), files: [], lazy: true });
+  renderLevel(state.tree, mount, opts.open || 0);
 }
 function markActive(path) {
   document.querySelectorAll('.leaf.active').forEach((a) => a.classList.remove('active'));
@@ -351,7 +401,7 @@ async function ensureVault() {
   const res = await fetch(BASE + 'index-vault.json');
   const list = await res.json();
   state.vault = list;
-  for (const it of list) indexEntry(it.p);
+  list.forEach((it, i) => { indexEntry(it.p); state.vaultIndexOf.set(it.p, i); });
   state.vaultLoaded = true;
 }
 function indexEntry(p) {
@@ -392,6 +442,290 @@ function showResults(list) {
     : '<p class="muted pad">No matches.</p>';
 }
 
+/* ------------------------------------------------------------- graph view
+   Canvas force-directed layout. Scope is chosen before anything is built:
+   graphing all 41,718 vault notes and their 457,000 links would lock the
+   browser, so the vault is opt-in folder by folder. */
+const graph = { nodes: [], edges: [], raf: 0, scale: 1, ox: 0, oy: 0, hover: -1, alpha: 0 };
+window.__g = graph;   // exposed for automated UI tests
+let vaultLinks = null;   // {names:[], links:[[id,...]]} — fetched on demand
+
+function scopeKey(p) {
+  const parts = p.split('/');
+  return parts.length > 2 ? parts[0] + '/' + parts[1] : parts[0];
+}
+
+function buildScopeUI() {
+  const box = $('scopes');
+  const groups = new Map();
+  for (const it of state.campaign) {
+    const k = scopeKey(it.p);
+    groups.set(k, (groups.get(k) || 0) + 1);
+  }
+  const vaultGroups = new Map();
+  if (state.vaultLoaded) {
+    for (const it of state.vault) {
+      const k = scopeKey(it.p);
+      vaultGroups.set(k, (vaultGroups.get(k) || 0) + 1);
+    }
+  }
+  const row = (k, n, checked) =>
+    `<label class="chk"><input type="checkbox" class="scope" value="${escapeHtml(k)}"${checked ? ' checked' : ''}>
+      <span>${escapeHtml(k)}</span><span class="muted">${n.toLocaleString()}</span></label>`;
+  box.innerHTML =
+    '<div class="scope-h">Campaign</div>' +
+    [...groups.keys()].sort().map((k) => row(k, groups.get(k), true)).join('') +
+    '<div class="scope-h">Rules vault' +
+      (state.vaultLoaded ? '' : ' <button id="loadVault" class="linkbtn">load list</button>') + '</div>' +
+    (state.vaultLoaded
+      ? [...vaultGroups.keys()].sort().map((k) => row(k, vaultGroups.get(k), false)).join('')
+      : '<p class="muted small pad">41,718 notes — load to pick folders.</p>');
+
+  const lv = $('loadVault');
+  if (lv) lv.onclick = async () => {
+    lv.textContent = 'loading…';
+    await ensureVault();
+    buildScopeUI();
+    updateCounts();
+  };
+  box.querySelectorAll('.scope').forEach((c) => (c.onchange = updateCounts));
+  $('hideOrphans').onchange = updateCounts;
+  updateCounts();
+}
+
+function selectedScopes() {
+  return [...document.querySelectorAll('.scope:checked')].map((c) => c.value);
+}
+
+async function collectGraph() {
+  const scopes = new Set(selectedScopes());
+  const wantVault = [...scopes].some((s) => s.startsWith('vault'));
+  if (wantVault && !vaultLinks) {
+    vaultLinks = await (await fetch(BASE + 'index-vault-links.json')).json();
+  }
+  const paths = [];
+  for (const it of state.campaign) if (scopes.has(scopeKey(it.p))) paths.push(it.p);
+  if (wantVault) for (const it of state.vault) if (scopes.has(scopeKey(it.p))) paths.push(it.p);
+
+  const idx = new Map(paths.map((p, i) => [p, i]));
+  const nodes = paths.map((p) => ({
+    p, name: p.split('/').pop().replace(/\.md$/, ''),
+    campaign: p.startsWith('campaign/'), deg: 0,
+    x: 0, y: 0, vx: 0, vy: 0,
+  }));
+
+  // outbound links, by source path
+  const linksFor = (p, i) => {
+    if (p.startsWith('campaign/')) return state.links.get(p) || [];
+    if (!vaultLinks) return [];
+    const vi = state.vaultIndexOf.get(p);
+    return vi == null ? [] : vaultLinks.links[vi].map((id) => vaultLinks.names[id]);
+  };
+
+  const edges = [];
+  const seen = new Set();
+  paths.forEach((p, i) => {
+    for (const t of linksFor(p, i)) {
+      const tp = resolveTarget(t);
+      if (!tp) continue;
+      const j = idx.get(tp);
+      if (j == null || j === i) continue;
+      const key = i < j ? i + ':' + j : j + ':' + i;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      edges.push([i, j]);
+      nodes[i].deg++; nodes[j].deg++;
+    }
+  });
+  return { nodes, edges };
+}
+
+async function updateCounts() {
+  const el = $('gcount');
+  el.textContent = 'counting…';
+  try {
+    const { nodes, edges } = await collectGraph();
+    const keep = $('hideOrphans').checked ? nodes.filter((n) => n.deg > 0).length : nodes.length;
+    el.textContent = `${keep.toLocaleString()} nodes · ${edges.length.toLocaleString()} links`;
+    const warn = $('gwarn');
+    if (keep > 4000 || edges.length > 12000) {
+      warn.hidden = false;
+      warn.textContent = 'That is a lot to draw — expect it to be slow and tangled. Fewer folders reads better.';
+    } else warn.hidden = true;
+  } catch (e) { el.textContent = 'count failed'; }
+}
+
+async function renderGraphNow() {
+  cancelAnimationFrame(graph.raf);
+  const { nodes, edges } = await collectGraph();
+  let ns = nodes, es = edges;
+  if ($('hideOrphans').checked) {
+    const keepIdx = new Map();
+    ns = [];
+    nodes.forEach((n, i) => { if (n.deg > 0) { keepIdx.set(i, ns.length); ns.push(n); } });
+    es = edges.map(([a, b]) => [keepIdx.get(a), keepIdx.get(b)])
+              .filter(([a, b]) => a != null && b != null);
+  }
+  const R = Math.max(120, Math.sqrt(ns.length) * 26);
+  ns.forEach((n, i) => {
+    const a = (i / ns.length) * Math.PI * 2, r = R * (0.35 + 0.65 * Math.random());
+    n.x = Math.cos(a) * r; n.y = Math.sin(a) * r; n.vx = n.vy = 0;
+  });
+  graph.nodes = ns; graph.edges = es; graph.alpha = 1;
+  graph.scale = Math.min(1, 420 / (R || 420)); graph.ox = 0; graph.oy = 0;
+  $('ghint').hidden = ns.length === 0;
+  tick();
+}
+
+function tick() {
+  const { nodes: ns, edges: es } = graph;
+  if (graph.alpha > 0.005 && ns.length) {
+    const k = 1, cell = 60;
+    const grid = new Map();
+    for (let i = 0; i < ns.length; i++) {
+      const gx = Math.round(ns[i].x / cell), gy = Math.round(ns[i].y / cell);
+      const key = gx + ',' + gy;
+      (grid.get(key) || grid.set(key, []).get(key)).push(i);
+    }
+    // repulsion, only against nearby cells — O(n) instead of O(n²)
+    for (let i = 0; i < ns.length; i++) {
+      const a = ns[i];
+      const gx = Math.round(a.x / cell), gy = Math.round(a.y / cell);
+      for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+        const bucket = grid.get((gx + dx) + ',' + (gy + dy));
+        if (!bucket) continue;
+        for (const j of bucket) {
+          if (j === i) continue;
+          const b = ns[j];
+          let ddx = a.x - b.x, ddy = a.y - b.y;
+          let d2 = ddx * ddx + ddy * ddy;
+          if (d2 < 1e-4) { ddx = Math.random() - .5; ddy = Math.random() - .5; d2 = 1; }
+          if (d2 > cell * cell * 4) continue;
+          const f = (260 * k) / d2;
+          a.vx += ddx * f; a.vy += ddy * f;
+        }
+      }
+    }
+    for (const [i, j] of es) {                    // spring attraction
+      const a = ns[i], b = ns[j];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.hypot(dx, dy) || 1;
+      const f = (d - 46) * 0.012;
+      const fx = (dx / d) * f, fy = (dy / d) * f;
+      a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+    }
+    for (const n of ns) {                          // gravity + damping
+      n.vx -= n.x * 0.0016; n.vy -= n.y * 0.0016;
+      n.x += (n.vx *= 0.82); n.y += (n.vy *= 0.82);
+    }
+    graph.alpha *= 0.985;
+  }
+  drawGraph();
+  graph.raf = requestAnimationFrame(tick);
+}
+
+function drawGraph() {
+  const cv = $('gcanvas'), ctx = cv.getContext('2d');
+  const dpr = devicePixelRatio || 1;
+  const w = cv.clientWidth, h = cv.clientHeight;
+  if (cv.width !== w * dpr) { cv.width = w * dpr; cv.height = h * dpr; }
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const css = getComputedStyle(document.body);
+  ctx.fillStyle = css.getPropertyValue('--bg') || '#fff';
+  ctx.fillRect(0, 0, w, h);
+  ctx.save();
+  ctx.translate(w / 2 + graph.ox, h / 2 + graph.oy);
+  ctx.scale(graph.scale, graph.scale);
+
+  const { nodes: ns, edges: es, hover } = graph;
+  const near = new Set();
+  if (hover >= 0) for (const [a, b] of es) { if (a === hover) near.add(b); if (b === hover) near.add(a); }
+
+  ctx.lineWidth = 1 / graph.scale;
+  ctx.strokeStyle = css.getPropertyValue('--rule') || '#ccc';
+  ctx.globalAlpha = hover >= 0 ? 0.25 : 0.55;
+  ctx.beginPath();
+  for (const [a, b] of es) {
+    ctx.moveTo(ns[a].x, ns[a].y); ctx.lineTo(ns[b].x, ns[b].y);
+  }
+  ctx.stroke();
+  if (hover >= 0) {
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = css.getPropertyValue('--accent') || '#a33';
+    ctx.beginPath();
+    for (const [a, b] of es) if (a === hover || b === hover) {
+      ctx.moveTo(ns[a].x, ns[a].y); ctx.lineTo(ns[b].x, ns[b].y);
+    }
+    ctx.stroke();
+  }
+
+  ctx.globalAlpha = 1;
+  const accent = css.getPropertyValue('--accent') || '#a33';
+  const ink = css.getPropertyValue('--ink') || '#222';
+  for (let i = 0; i < ns.length; i++) {
+    const n = ns[i];
+    const r = Math.min(11, 3 + Math.sqrt(n.deg) * 1.4);
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+    ctx.fillStyle = i === hover ? accent : (n.campaign ? accent : ink);
+    ctx.globalAlpha = hover >= 0 && i !== hover && !near.has(i) ? 0.3 : (n.campaign ? 1 : 0.62);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  const showLabels = ns.length <= 260 || hover >= 0;
+  if (showLabels) {
+    ctx.fillStyle = ink;
+    ctx.font = `${Math.max(10, 12 / graph.scale)}px system-ui, sans-serif`;
+    ctx.textAlign = 'center';
+    for (let i = 0; i < ns.length; i++) {
+      if (hover >= 0 && i !== hover && !near.has(i)) continue;
+      const n = ns[i];
+      ctx.fillText(n.name, n.x, n.y - 9);
+    }
+  }
+  ctx.restore();
+}
+
+function graphPointer(ev) {
+  const cv = $('gcanvas'), r = cv.getBoundingClientRect();
+  const x = (ev.clientX - r.left - r.width / 2 - graph.ox) / graph.scale;
+  const y = (ev.clientY - r.top - r.height / 2 - graph.oy) / graph.scale;
+  let best = -1, bd = 14 / graph.scale;
+  graph.nodes.forEach((n, i) => {
+    const d = Math.hypot(n.x - x, n.y - y);
+    if (d < bd) { bd = d; best = i; }
+  });
+  return best;
+}
+
+function initGraphEvents() {
+  const cv = $('gcanvas');
+  let dragging = false, lx = 0, ly = 0, moved = 0;
+  cv.addEventListener('pointerdown', (e) => { dragging = true; moved = 0; lx = e.clientX; ly = e.clientY; cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener('pointermove', (e) => {
+    if (dragging) {
+      graph.ox += e.clientX - lx; graph.oy += e.clientY - ly;
+      moved += Math.abs(e.clientX - lx) + Math.abs(e.clientY - ly);
+      lx = e.clientX; ly = e.clientY;
+    } else graph.hover = graphPointer(e);
+  });
+  cv.addEventListener('pointerup', (e) => {
+    dragging = false;
+    if (moved < 5) {
+      const i = graphPointer(e);
+      if (i >= 0) { location.hash = '#/' + encodeURI(graph.nodes[i].p); closeGraph(); }
+    }
+  });
+  cv.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const f = e.deltaY < 0 ? 1.12 : 1 / 1.12;
+    graph.scale = Math.max(0.06, Math.min(6, graph.scale * f));
+  }, { passive: false });
+}
+
+function openGraph() { $('graphView').hidden = false; buildScopeUI(); }
+function closeGraph() { $('graphView').hidden = true; cancelAnimationFrame(graph.raf); graph.raf = 0; }
+
 /* ------------------------------------------------------------------ boot */
 function openSidebar() { $('sidebar').classList.add('open'); $('scrim').hidden = false; $('menuBtn').setAttribute('aria-expanded', 'true'); }
 function closeSidebar() { $('sidebar').classList.remove('open'); $('scrim').hidden = true; $('menuBtn').setAttribute('aria-expanded', 'false'); }
@@ -417,6 +751,10 @@ async function init() {
     document.documentElement.dataset.theme = cur;
     localStorage.setItem('theme', cur);
   };
+  $('graphBtn').onclick = openGraph;
+  $('graphClose').onclick = closeGraph;
+  $('renderGraph').onclick = renderGraphNow;
+  initGraphEvents();
   $('searchBtn').onclick = async () => {
     $('searchModal').hidden = false; $('searchInput').focus();
     ensureVault().catch(() => {});
@@ -425,7 +763,7 @@ async function init() {
   $('searchInput').oninput = (e) => showResults(search(e.target.value));
   $('searchResults').onclick = () => { $('searchModal').hidden = true; };
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { $('searchModal').hidden = true; closeSidebar(); }
+    if (e.key === 'Escape') { $('searchModal').hidden = true; closeSidebar(); if (!$('graphView').hidden) closeGraph(); }
     if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === '/') {
       if (document.activeElement.tagName === 'INPUT') return;
       e.preventDefault(); $('searchBtn').click();
@@ -435,7 +773,8 @@ async function init() {
     const q = normalize(e.target.value);
     if (!q) { buildTree(state.campaign.map((n) => n.p), $('tree'), { open: 2 }); markActive(state.current); return; }
     const hits = state.campaign.map((n) => n.p).filter((p) => normalize(p).includes(q));
-    buildTree(hits, $('tree'), { open: 9 });
+    state.tree = makeTreeData(hits);
+    renderLevel(state.tree, $('tree'), 9);
   };
 
   addEventListener('hashchange', route);
