@@ -58,6 +58,12 @@ nation's folder. If it spans several, it goes in the matching top-level folder.
 A faction operating in three nations belongs in `factions/`, not in whichever
 one it happens to be headquartered in.
 
+**Towers** follow the same rule and are marked `tower: true` in their
+frontmatter so they can be found regardless of where they sit. One inside a
+nation's borders or its charted waters goes in that nation's `locations/`; one
+on disputed or unclaimed ground goes in the top-level `locations/`. The premise
+itself lives in `world/The Towers.md`, which indexes the known ones.
+
 ## Note format
 
 See the repo's `CLAUDE.md` for the note format — frontmatter, `[[wikilinks]]`,
