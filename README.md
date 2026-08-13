@@ -27,10 +27,13 @@ installable site — no Obsidian download needed:
 - **Installable PWA.** All of `campaign/` is precached, so the worldbuilding
   works fully offline; the 41k-note rules vault is fetched on demand and any
   page you've opened stays cached.
-- **Graph view** like Obsidian's, with a twist: you pick which folders to
-  include *before* it renders, with live node and link counts. The full vault
-  is 41,718 notes and 457,000 links — unrenderable as one graph — so the vault
-  is opt-in folder by folder.
+- **Graph view** like Obsidian's, with two twists. You pick which folders to
+  include *before* it renders, with live node and link counts — the full vault
+  is 41,718 notes and 457,000 links, unrenderable as one graph, so it's opt-in
+  folder by folder. And tapping a note **selects** it rather than navigating
+  away: its links light up, everything else dims, and a card lists them so you
+  can walk the graph note to note. Double-tap opens; the legend doubles as a
+  category filter.
 - **Notes can render as something other than prose.** A `view:` field in a
   note's frontmatter picks a custom view: `view: relations` redraws
   *Political Relations* as an interactive web of the nations — filter by
