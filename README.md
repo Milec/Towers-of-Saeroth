@@ -44,6 +44,9 @@ installable site — no Obsidian download needed:
   the folder you expand is put in the DOM.
 - Full-text search across `campaign/`, title search across `vault/`, backlinks,
   and a light/dark theme.
+- **A back arrow in the topbar**, because installed to a home screen there is no
+  browser chrome to go back with. It walks the app's own trail rather than the
+  browser's, so it can never step out of the app.
 
 Build it locally with `python3 tools/build_site.py && python3 -m http.server -d _site`.
 Pass `--no-vault` to skip the rules reference for a much faster build.
