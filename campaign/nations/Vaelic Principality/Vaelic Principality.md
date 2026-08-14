@@ -29,7 +29,7 @@ included, lives under local lords' law with no path upward.
 - **Faith** Patron [[Iomedae]], whose code of honorable valor underpins the knightly orders and the Drake Riders' oath alike. [[Abadar]] is the judiciary's god and nearly co-equal in the cities; [[Torag]] is kept by the castle engineers and armorers
 - **Tension** [[House Aldreich]]'s succession is unsettled and [[House Kesslin]] is quietly assembling votes against the [[Drake Rider Order]] — the next Diet will be an ugly one
 - **Relations**
-    - [[Thesal Theocracy]] — **Allied**: Long-standing; Thesal clergy anoint Vaelic knights
+    - [[Thesal Theocracy]] — **Allied**: Long-standing, and worn into the ground between them: Thesal clergy anoint Vaelic knights, and no Vaelic prince has been crowned without a Thesal celebrant since the alliance was struck. The coronation road runs from one capital to the other across a shared border
     - [[Voskreld Union]] — **Allied**: Mutual defence against the steppe — Vaelic drill-masters train the Unified Legion, and neither can afford Khazan turning its whole weight on one of them alone
     - [[Stoneborn Holds]] — **Friendly**: Torag's forge-halls in both, and Vaelic castle engineers have trained in Stoneborn holds for nine centuries
     - [[Cindral Ashlands]] — **Trade**: Fire-forged steel into the Vaelic armories, which would rather not discuss buying abroad

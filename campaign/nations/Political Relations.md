@@ -36,7 +36,7 @@ neither can produce the terms — but none of them would put an army in the fiel
 | --- | --- | --- |
 | [[Corvane Republic]] ↔ [[Thesal Theocracy]] | **Allied** | A standing accord over the Dalstani refugee flow — Thesal hospices staff Corvane's overflowing wards, and Corvane's assembly argues Thesal's case where a theocracy's own word carries less |
 | [[Nordheim]] ↔ [[Stoneborn Holds]] | **Allied** | Northern trade and dwarven kinship both |
-| [[Thesal Theocracy]] ↔ [[Vaelic Principality]] | **Allied** | Long-standing; Thesal clergy anoint Vaelic knights |
+| [[Thesal Theocracy]] ↔ [[Vaelic Principality]] | **Allied** | Long-standing, and worn into the ground between them: Thesal clergy anoint Vaelic knights, and no Vaelic prince has been crowned without a Thesal celebrant since the alliance was struck. The coronation road runs from one capital to the other across a shared border |
 | [[Vaelic Principality]] ↔ [[Voskreld Union]] | **Allied** | Mutual defence against the steppe — Vaelic drill-masters train the Unified Legion, and neither can afford Khazan turning its whole weight on one of them alone |
 | [[Voskreld Union]] ↔ [[Xian Ti]] | **Allied** | Two fortified frontiers on the same steppe; they trade raid intelligence season by season, and each quietly hopes Khazan rides at the other |
 | [[Aquoniti]] ↔ [[Elven Confederacy]] | **Friendly** | The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms |
