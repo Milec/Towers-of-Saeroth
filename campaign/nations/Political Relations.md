@@ -96,7 +96,7 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Nordheim]] ↔ [[Undertide Reaches]] | **Friction** | Undertide passages keep surfacing inside Nordheim's mountains, always somewhere no jarl agreed to |
 | [[Elven Confederacy]] ↔ [[Khazan Khaganate]] | **Territorial** | An old, unresolved argument over the ancient forest claims |
 | [[Elven Confederacy]] ↔ [[Nordheim]] | **Territorial** | Nordheim timber camps working northern pine the Winter Elf tribes have never ceded |
-| [[Elven Confederacy]] ↔ [[Thurigypt]] | **Territorial** | Water rights at the desert oasis-groves, argued every generation and settled in none of them |
+| [[Elven Confederacy]] ↔ [[Thurigypt]] | **Territorial** | Water rights at the desert oasis-groves — wardens' work the Confederacy has never stopped claiming on ground it has never held. The two share no frontier, so the argument travels by envoy and caravan, and is settled in no generation |
 | [[Kesmarch Frontier]] ↔ [[Thornwild Confederation]] | **Territorial** | Homesteaders clearing jungle the Thornwild consider already spoken for — the likeliest of these to turn into a shooting war |
 | [[Khazan Khaganate]] ↔ [[Thornwild Confederation]] | **Territorial** | Periodic raids for beast-stock, ridden across other people's ground rather than over a shared border; the Thornwild has not forgotten |
 | [[Khazan Khaganate]] ↔ [[Vaelic Principality]] | **Territorial** | Generational border pressure |

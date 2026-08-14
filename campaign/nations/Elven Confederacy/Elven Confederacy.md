@@ -26,4 +26,4 @@ dispute season for a decade before ruling on it.
     - [[Thornwild Confederation]] — **Friction**: The Confederacy regards the Thornwild as unruly distant kin; the Thornwild did not ask to be anyone's cousin
     - [[Khazan Khaganate]] — **Territorial**: An old, unresolved argument over the ancient forest claims
     - [[Nordheim]] — **Territorial**: Nordheim timber camps working northern pine the Winter Elf tribes have never ceded
-    - [[Thurigypt]] — **Territorial**: Water rights at the desert oasis-groves, argued every generation and settled in none of them
+    - [[Thurigypt]] — **Territorial**: Water rights at the desert oasis-groves — wardens' work the Confederacy has never stopped claiming on ground it has never held. The two share no frontier, so the argument travels by envoy and caravan, and is settled in no generation

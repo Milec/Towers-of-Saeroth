@@ -156,7 +156,10 @@ worldbuilding notes.
 
 Whenever you create or edit a note under `campaign/`, write it as
 Obsidian-flavoured markdown, matching the convention already used throughout
-`vault/`:
+`vault/`. **The site is what actually reads these notes** — it renders the raw
+markdown, so what you write is what it shows — and the format stays
+Obsidian-flavoured because that is what `vault/` uses and what still opens
+correctly on GitHub:
 
 - **One subject per file.** An NPC, a location, a faction — not a folder of
   prose covering several.
@@ -169,8 +172,8 @@ Obsidian-flavoured markdown, matching the convention already used throughout
   NPC to their faction, a faction to its nation, a nation to its patron
   deity. A plain prose mention doesn't link back to anything; a wikilink
   does, which is the whole point of a vault.
-- **Never let a `[[wikilink]]` wrap across a line break.** Both Obsidian and
-  this site tokenise wikilinks within a single line, so `[[Thornwild\nConfederation]]`
+- **Never let a `[[wikilink]]` wrap across a line break.** Wikilinks are
+  tokenised within a single line, so `[[Thornwild\nConfederation]]`
   is not a broken link — it is not a link at all, and renders as literal
   bracketed text. It shows up in no broken-link check because nothing ever
   parsed it. When reflowing a paragraph to 80 columns, break *before* the link
@@ -186,14 +189,15 @@ Obsidian-flavoured markdown, matching the convention already used throughout
   and made the two indexes the busiest nodes in the graph by a wide margin.
   The general rule is that a hub should be one hop from its subjects, not one
   hop from everything its subjects mention.
-- **Never link into `vault/` from a campaign note.** Obsidian opens
-  `campaign/` as the vault root (the full `vault/` is 41k files, too large to
-  index), so `[[Setting/Deities/Sarenrae]]` or
-  `[[Ancestries/Human (Player Core)]]` points *above* the root and silently
-  resolves to nothing — the note looks fine in the editor and the link is
-  dead in the graph. Instead: copy the flavour into `campaign/` (see
-  `campaign/deities/` and `campaign/ancestries/` for the pattern), link that
-  local note, and cite the rules source as plain text at the bottom —
+- **Don't link into `vault/` from a campaign note.** The site *will* resolve
+  `[[Setting/Deities/Sarenrae]]` — `resolveTarget` tries the `vault/` root
+  after `campaign/` — so this is a convention, not a broken link. It is still
+  the convention: such a link drags the 41,000-note index into a page that
+  didn't need it, puts campaign notes one hop from a 457,000-link graph, and
+  is dead in Obsidian, which opens `campaign/` as its root and cannot see
+  above it. Instead: copy the flavour into `campaign/` (see
+  `campaign/world/deities/` and `campaign/world/ancestries/` for the pattern),
+  link that local note, and cite the rules source as plain text at the bottom —
   `` *Full entry: `vault/Ancestries/Kholo.md` — Player Core 2 pg. 16* ``.
   Campaign notes keep short filenames with no source suffix (`Human.md`, not
   `Human (Player Core).md`).
@@ -215,16 +219,17 @@ Obsidian-flavoured markdown, matching the convention already used throughout
   (`[[House Dravensk]]`) no matter how deeply nested the note is. Never put a
   folder path in a link, and don't update links when moving notes.
 
-The aim is a note that's actually usable at the table and that Obsidian's
+The aim is a note that's actually usable at the table and that the site's
 graph view renders as a real web of connections — not a document dump.
 
 See `campaign/README.md` for the suggested folder layout.
 
 ## Formatting statblocks
 
-Two community plugins are installed and should be used whenever a note
-contains a creature/NPC statblock (a built NPC, a reskinned monster, a boss
-write-up, etc.) — not just linked to one:
+Two community-plugin syntaxes are used whenever a note contains a creature or
+NPC statblock (a built NPC, a reskinned monster, a boss write-up) — not just
+links to one. **The site implements both natively**, so these render wherever
+the notes are read; the plugin links below are the syntax reference:
 
 - **[PF2e Statblocks](https://github.com/pixley/pf2e-statblock-for-obsidian)**
   — wrap the whole statblock in a `pf2e-stats` codeblock:
@@ -276,8 +281,8 @@ write-up, etc.) — not just linked to one:
 
 ### Which action syntax where
 
-The two plugins use **different, non-interchangeable codes**. Each README
-documents its own:
+The two syntaxes use **different, non-interchangeable codes**, and the site
+implements them separately just as the plugins do:
 
 | Context | Syntax |
 | --- | --- |
@@ -302,8 +307,9 @@ it is the job:
 - Tab-indent degrees of success (`**Critical Success**`, `**Success**`, …)
   beneath their ability.
 - **Strip the AON `[[Wikilinks]]` on traits, spells and abilities to plain
-  text.** They point into `vault/` and so resolve to nothing from the
-  `campaign/`-rooted Obsidian vault (see the wikilink rule above). Weapon
+  text.** They point into `vault/` (see the wikilink rule above), and a
+  statblock is the last place that should be dragging in the rules index on
+  every trait. Weapon
   traits read fine unlinked — `(sweep, versatile P)` — which is how AON
   prints them anyway. Only link out to a note that exists inside
   `campaign/`.
@@ -312,23 +318,14 @@ Use `sf2e-stats` instead of `pf2e-stats` only for Starfinder 2e content. For
 abbreviated blocks (a one-line NPC blurb) the plugin wants traits as an H3
 (`###`) line rather than `==wrapped==`.
 
-### Known mobile viewing quirks
+### Rendering
 
-Both plugins are written and tested against desktop; editing happens there
-(see below). Viewing on iOS Obsidian, as confirmed against
-`campaign/npcs/Garrick Thorne.md`:
+The site renders both syntaxes as inline SVG rather than an icon font, which
+fixes the one real problem the Obsidian plugins have: on iOS their embedded font
+overlaps the word after each action glyph, sometimes eating its first letter.
+Nothing about the authoring syntax changes — write the documented forms above
+and they render correctly everywhere the notes are read.
 
-- **Action Icons** `` `pf2:N` `` codes render only in **Reading view** — they
-  render as nothing (not even the raw code) in Live Preview/editing view on
-  mobile. Switch views before assuming a note's icons are broken.
-- **PF2e Statblocks** `` `[one-action]` ``-style icons inside a `pf2e-stats`
-  codeblock render but visually overlap the text right after them on
-  mobile (icon glyph runs into the next word, sometimes eating its first
-  letter), even in Reading view. This looks like a font-width/kerning bug
-  in the plugin's embedded icon font on iOS, not a syntax mistake — the
-  markup matches the plugin's own README example. No upstream issue is
-  filed for it and no workaround is confirmed; it's a desktop-view plugin
-  used here on a best-effort basis on mobile.
-
-Don't try to "fix" this by changing the authoring syntax — write the
-documented forms above regardless of how they render on any given device.
+If a note is also opened in Obsidian, both plugins must be installed there, and
+the `` `pf2:N` `` codes only render in Reading view on mobile. That is an
+Obsidian limitation, not a reason to write the markup differently.
