@@ -98,7 +98,7 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Elven Confederacy]] ↔ [[Nordheim]] | **Territorial** | Nordheim timber camps working northern pine the Winter Elf tribes have never ceded |
 | [[Elven Confederacy]] ↔ [[Thurigypt]] | **Territorial** | Water rights at the desert oasis-groves, argued every generation and settled in none of them |
 | [[Kesmarch Frontier]] ↔ [[Thornwild Confederation]] | **Territorial** | Homesteaders clearing jungle the Thornwild consider already spoken for — the likeliest of these to turn into a shooting war |
-| [[Khazan Khaganate]] ↔ [[Thornwild Confederation]] | **Territorial** | Periodic raids for beast-stock; the Thornwild has not forgotten |
+| [[Khazan Khaganate]] ↔ [[Thornwild Confederation]] | **Territorial** | Periodic raids for beast-stock, ridden across other people's ground rather than over a shared border; the Thornwild has not forgotten |
 | [[Khazan Khaganate]] ↔ [[Vaelic Principality]] | **Territorial** | Generational border pressure |
 | [[Khazan Khaganate]] ↔ [[Voskreld Union]] | **Territorial** | Centuries of raids are the reason the old duchies unified at all |
 | [[Khazan Khaganate]] ↔ [[Xian Ti]] | **Territorial** | Raiding along the fortified frontier |

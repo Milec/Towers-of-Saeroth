@@ -27,4 +27,4 @@ them.
     - [[Thurion Merchant Alliance]] — **Trade**: Pelts, venom and toxin, bought at the river mouths and never asked about
     - [[Elven Confederacy]] — **Friction**: The Confederacy regards the Thornwild as unruly distant kin; the Thornwild did not ask to be anyone's cousin
     - [[Kesmarch Frontier]] — **Territorial**: Homesteaders clearing jungle the Thornwild consider already spoken for — the likeliest of these to turn into a shooting war
-    - [[Khazan Khaganate]] — **Territorial**: Periodic raids for beast-stock; the Thornwild has not forgotten
+    - [[Khazan Khaganate]] — **Territorial**: Periodic raids for beast-stock, ridden across other people's ground rather than over a shared border; the Thornwild has not forgotten
