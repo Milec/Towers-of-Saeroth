@@ -34,6 +34,7 @@ included, lives under local lords' law with no path upward.
     - [[Stoneborn Holds]] — **Friendly**: Torag's forge-halls in both, and Vaelic castle engineers have trained in Stoneborn holds for nine centuries
     - [[Cindral Ashlands]] — **Trade**: Fire-forged steel into the Vaelic armories, which would rather not discuss buying abroad
     - [[Kesmarch Frontier]] — **Trade**: Not commerce but people: Kesmarch's settlers are largely Vaelic second sons and disinherited daughters
+    - [[Ninefold Sanctum]] — **Trade**: Every Vaelic coronation is witnessed and recorded at Vault Abbey, and has been for four centuries
     - [[Corvane Republic]] — **Rivalry**: An elected assembly and a hereditary Diet, each privately certain the other's model cannot last the century
     - [[Dalstan]] — **Friction**: The Cathedral Court has begun licensing inquisitions across the border, and the Imperial judiciary is the only body with standing to refuse it
     - [[Khazan Khaganate]] — **Territorial**: Generational border pressure

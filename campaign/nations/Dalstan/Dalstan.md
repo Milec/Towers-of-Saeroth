@@ -35,5 +35,6 @@ grace — and it decides often.
     - [[Vaelic Principality]] — **Friction**: The Cathedral Court has begun licensing inquisitions across the border, and the Imperial judiciary is the only body with standing to refuse it
     - [[Voskreld Union]] — **Friction**: Voskreld watches Dalstani zealotry as a live source of unrest in its own devout provinces
     - [[Corvane Republic]] — **Hostile**: Dalstan's persecution of Tieflings and dissidents feeds a steady refugee flow into Corvane
+    - [[Tessine]] — **Hostile**: Dalstan wants its heretics back; Tessine has never returned anyone and does not intend to start
     - [[Thesal Theocracy]] — **Hostile**: Thesal treats Dalstan as a cautionary tale about faith without compassion
     - [[Lazarian Lichdom]] — **Covert**: Dalstan's relic trade sources from Lazarian grave-fields through brokers the Cathedral Court is careful never to meet

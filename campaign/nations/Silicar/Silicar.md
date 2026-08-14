@@ -23,8 +23,11 @@ its irrigation canals and clockwork feed half the continent.
     - [[Corvane Republic]] — **Friendly**: Merit over birth treated as self-evident in both, one by charter and one by workshop; Silicar's guilds read the Vantry papers and Corvane cites Silicar in every tariff argument
     - [[Kesmarch Frontier]] — **Friendly**: Seed grain, ploughs and canal plans sent south for very little back; Erastil's clergy at both ends arranged it and neither council was really consulted
     - [[Thesal Theocracy]] — **Friendly**: Two small nations nobody has ever had cause to fear, who started by trading grain for medicine and discovered they agree about nearly everything
+    - [[Ashkar Pale]] — **Trade**: The two most agricultural nations on the continent are each other's best customers: Pale grain against Silicar machinery
+    - [[Kelvary March]] — **Trade**: Field kit, remount tack and repair shops, on a standing order that has outlasted several wars
     - [[Nordheim]] — **Trade**: Iron and timber south, Silicar grain north; the fjords cannot feed themselves through a hard winter
     - [[Stoneborn Holds]] — **Trade**: Machinery and engineering exports
     - [[Thurion Merchant Alliance]] — **Trade**: Same exports, sold on
     - [[Voskreld Union]] — **Trade**: Lock and canal engineering — Voskreld's waterways were surveyed by Silicar guilds
     - [[Melisor Magocracy]] — **Rivalry**: Melisor's academics can't decide whether Silicar's clockwork is beneath magic or quietly outperforming it
+    - [[Tal Ulad]] — **Territorial**: Silicar's ploughs advance a field a year onto grazing the Ulad have used for six generations, and neither side thinks it is the one moving

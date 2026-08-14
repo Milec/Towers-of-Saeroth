@@ -25,6 +25,7 @@ its most exhausting one, depending who's arguing.
 - **Relations**
     - [[Thesal Theocracy]] — **Allied**: A standing accord over the Dalstani refugee flow — Thesal hospices staff Corvane's overflowing wards, and Corvane's assembly argues Thesal's case where a theocracy's own word carries less
     - [[Silicar]] — **Friendly**: Merit over birth treated as self-evident in both, one by charter and one by workshop; Silicar's guilds read the Vantry papers and Corvane cites Silicar in every tariff argument
+    - [[Tessine]] — **Friendly**: The only two states that will take a political exile without asking what he did
     - [[Aquoniti]] — **Trade**: Shipbuilding, and growing
     - [[Kesmarch Frontier]] — **Trade**: The same migration seen from both ends — Corvane ships supply homesteads that Corvane's own overflow settled
     - [[Nordheim]] — **Trade**: Nordheim timber, Corvane yards — half the Republic's fleet is northern pine

@@ -25,4 +25,5 @@ centuries — competence doesn't expire just because the body did.
     - [[Vaelic Principality]] — **Hostile**: The old battlefields Lazarian was built on are full of Vaelic dead, and Vaelic knights have met their own ancestors in the field
     - [[Dalstan]] — **Covert**: Dalstan's relic trade sources from Lazarian grave-fields through brokers the Cathedral Court is careful never to meet
     - [[Melisor Magocracy]] — **Covert**: Public condemnation over what magic should never be used for — and a relic trade through intermediaries neither will name
+    - [[Sarrowmere]] — **Covert**: Reagents that grow nowhere but the mere, shipped to a customer the cantons have never been willing to name
     - [[Undertide Reaches]] — **Covert**: Relics move through back channels that lead, deniably, to Lazarian hands
