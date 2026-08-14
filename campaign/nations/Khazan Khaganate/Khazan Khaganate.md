@@ -24,7 +24,7 @@ fearsome warriors who keep their word.
     - [[Nordheim]] — **Friendly**: Two warrior codes that recognise each other across a thousand miles — both keep Gorum, both hold that a fight badly won is no victory, and neither has ever had cause to test the other
     - [[Thurion Merchant Alliance]] — **Trade**: Mercenary contracts: the Alliance hires steppe riders by the thousand and leases them to whoever is losing
     - [[Elven Confederacy]] — **Territorial**: An old, unresolved argument over the ancient forest claims
-    - [[Thornwild Confederation]] — **Territorial**: Periodic raids for beast-stock; the Thornwild has not forgotten
+    - [[Thornwild Confederation]] — **Territorial**: Periodic raids for beast-stock, ridden across other people's ground rather than over a shared border; the Thornwild has not forgotten
     - [[Vaelic Principality]] — **Territorial**: Generational border pressure
     - [[Voskreld Union]] — **Territorial**: Centuries of raids are the reason the old duchies unified at all
     - [[Xian Ti]] — **Territorial**: Raiding along the fortified frontier
