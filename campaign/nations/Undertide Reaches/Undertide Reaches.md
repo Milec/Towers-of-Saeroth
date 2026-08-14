@@ -23,7 +23,9 @@ what actually lives down here.
 - **Faith** Patron [[Norgorber]], god of secrets — an unsettlingly literal fit for a nation whose currency is information. [[Pharasma]] is kept in the deepest holds, where the dead are numerous and very old
 - **Tension** A deep hold has sealed itself from the inside and the Warden-Conclave has voted twice not to investigate, which tells the other holds everything they need to know
 - **Relations**
+    - [[Ashkar Pale]] — **Friendly**: The Reaches have mapped every evacuation road beneath the Pale, and twice opened them without being asked
     - [[Melisor Magocracy]] — **Trade**: Construct labour and salvaged relics, contracted openly and delivered without explanation
+    - [[Ninefold Sanctum]] — **Friction**: Something in the archive concerns the Reaches, and the Reaches have asked, politely and repeatedly, to read it
     - [[Nordheim]] — **Friction**: Undertide passages keep surfacing inside Nordheim's mountains, always somewhere no jarl agreed to
     - [[Stoneborn Holds]] — **Territorial**: The Reaches claim caverns running directly beneath Stoneborn holds, and a deep-frontier hold has stopped answering the Assembly's messengers
     - [[Lazarian Lichdom]] — **Covert**: Relics move through back channels that lead, deniably, to Lazarian hands

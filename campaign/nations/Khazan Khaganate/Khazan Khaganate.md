@@ -23,6 +23,8 @@ fearsome warriors who keep their word.
 - **Relations**
     - [[Nordheim]] — **Friendly**: Two warrior codes that recognise each other across a thousand miles — both keep Gorum, both hold that a fight badly won is no victory, and neither has ever had cause to test the other
     - [[Thurion Merchant Alliance]] — **Trade**: Mercenary contracts: the Alliance hires steppe riders by the thousand and leases them to whoever is losing
+    - [[Kelvary March]] — **Rivalry**: Professional contempt in both directions about what soldiering is actually for
+    - [[Tal Ulad]] — **Friction**: The Khaganate keeps addressing the Ulad as kin who have forgotten themselves, and the Ulad keep declining the compliment
     - [[Elven Confederacy]] — **Territorial**: An old, unresolved argument over the ancient forest claims
     - [[Thornwild Confederation]] — **Territorial**: Periodic raids for beast-stock, ridden across other people's ground rather than over a shared border; the Thornwild has not forgotten
     - [[Vaelic Principality]] — **Territorial**: Generational border pressure

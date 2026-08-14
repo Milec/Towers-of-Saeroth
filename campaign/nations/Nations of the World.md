@@ -9,7 +9,11 @@ added to cover ground the first pass left untouched — the deep places
 under the world, elemental fire, the primal jungle, and three grounded,
 multiethnic archetypes (a citizen republic, a frontier settler nation, and
 a unification state) that replaced an earlier, more fantastical first
-attempt at those last three.
+attempt at those last three. The six marked *(minor)* are smaller states on
+the eastern continent, added because a world of nothing but great powers reads
+as a small one — a mercenary republic, a free port, a fen of physicians, an
+archive that takes no side, a nation of herders, and the farmers who live
+downwind of a volcano.
 
 | Nation | Primary Theme |
 | --- | --- |
@@ -34,8 +38,14 @@ attempt at those last three.
 | [[Corvane Republic]] | Liberty and self-governance *(new)* |
 | [[Kesmarch Frontier]] | Settlement and self-reliance *(new)* |
 | [[Voskreld Union]] | Unity through integration *(new)* |
+| [[Ashkar Pale]] | Endurance in the ash *(minor)* |
+| [[Sarrowmere]] | Physic and poison *(minor)* |
+| [[Ninefold Sanctum]] | Memory and vigil *(minor)* |
+| [[Kelvary March]] | War as a trade *(minor)* |
+| [[Tessine]] | Refuge and revenue *(minor)* |
+| [[Tal Ulad]] | Herds and horizons *(minor)* |
 
 Each nation note carries its own **Relations** bullet pointing at the
 nations it borders, trades with, or resents — follow those links, or open
 graph view, to see how the pieces actually fit together rather than reading
-this table as twenty-one unconnected entries.
+this table as twenty-seven unconnected entries.

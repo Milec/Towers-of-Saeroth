@@ -27,4 +27,5 @@ them. The Emberlord's throne is reforged, not inherited.
     - [[Thurigypt]] — **Trade**: The delta's glassworks run on Cindral obsidian, and pay in gold
     - [[Vaelic Principality]] — **Trade**: Fire-forged steel into the Vaelic armories, which would rather not discuss buying abroad
     - [[Voskreld Union]] — **Rivalry**: Two armament industries bidding for the same contracts; Voskreld's foundries are cheaper, Cindral's steel is better, and both sides know it
+    - [[Ashkar Pale]] — **Friction**: The ash that makes the Pale the richest farmland on the continent also buries it, and Cindral has never once apologised for living upwind
     - [[Thesal Theocracy]] — **Friction**: Thesal considers Cindral's elemental reverence reckless faith, and never says so to an envoy's face

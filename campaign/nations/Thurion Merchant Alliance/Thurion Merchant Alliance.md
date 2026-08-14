@@ -27,8 +27,10 @@ lanes, so the Alliance stays neutral whenever staying neutral pays.
     - [[Melisor Magocracy]] — **Trade**: Alliance contracts for enchanted goods quietly bankroll the academies
     - [[Nordheim]] — **Trade**: Amber, furs and whale oil, moved south under Alliance insurance
     - [[Silicar]] — **Trade**: Same exports, sold on
+    - [[Tal Ulad]] — **Trade**: Safe passage across the uplands, sold by the season and honoured to the letter
     - [[Thornwild Confederation]] — **Trade**: Pelts, venom and toxin, bought at the river mouths and never asked about
     - [[Xian Ti]] — **Trade**: Silk, tea and porcelain: the single most profitable route the Alliance runs
     - [[Corvane Republic]] — **Rivalry**: Corvane's citizen assembly is a standing philosophical rebuke to Thurion's wealth-gated senate
     - [[Quivar]] — **Rivalry**: A long, low-grade contest over who really controls which trade secrets
+    - [[Tessine]] — **Rivalry**: Two free ports, one trade, and a permanent argument about who is undercutting whom
     - [[Undertide Reaches]] — **Covert**: The Reaches sell secret-keeping as a service, and more than one great house has quietly bought it

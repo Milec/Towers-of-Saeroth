@@ -23,8 +23,12 @@ everyone at court knows it.
     - [[Thesal Theocracy]] — **Friendly**: Shelyn's temple in Concord is Quivari-funded and entirely sincere, which is the one thing about Quivar that nobody suspects of being an operation
     - [[Aquoniti]] — **Trade**: Pearl and coral, graded at sea and sold on to the Valmont ateliers
     - [[Elven Confederacy]] — **Trade**: Heartwood wine and elven silk — the only foreign court the tribes consider worth dressing for
+    - [[Kelvary March]] — **Trade**: Quivar hires and Kelvary asks nothing, which is precisely what Quivar is paying for
+    - [[Sarrowmere]] — **Trade**: Physicians and poisons, bought on the same manifest and never itemised separately
+    - [[Tal Ulad]] — **Trade**: Horses, and Quivar is the only buyer that has ever paid what the Ulad say they are worth
     - [[Dalstan]] — **Rivalry**: One-sided: Dalstan's nobility imitates Quivari fashion badly enough to be a court joke
     - [[Thurion Merchant Alliance]] — **Rivalry**: A long, low-grade contest over who really controls which trade secrets
     - [[Xian Ti]] — **Rivalry**: Luxury trade, and who gets to define “refined”
     - [[Corvane Republic]] — **Friction**: Corvane's presses print what Valmont's court would rather went unread, and Quivar's intelligence service works Vantry harder than anywhere else
+    - [[Tessine]] — **Covert**: Valmont works out of Tessine because everyone works out of Tessine, and the Signory prefers not to know whose money it is holding
     - [[Vaelic Principality]] — **Covert**: Valmont keeps agents in the Diet and a considerable interest in who the next High Prince will owe

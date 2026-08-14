@@ -24,6 +24,7 @@ claimed is land that has to be defended, not land that was granted.
 - **Relations**
     - [[Nordheim]] — **Friendly**: Cayden Cailean on both sides of the water, and the same conviction that a person is whatever they built after they arrived
     - [[Silicar]] — **Friendly**: Seed grain, ploughs and canal plans sent south for very little back; Erastil's clergy at both ends arranged it and neither council was really consulted
+    - [[Ashkar Pale]] — **Trade**: Seed stock going one way and settlers the other, in numbers neither government has bothered to count
     - [[Corvane Republic]] — **Trade**: The same migration seen from both ends — Corvane ships supply homesteads that Corvane's own overflow settled
     - [[Thurion Merchant Alliance]] — **Trade**: Furs, ore and wagon-freight; the Alliance is the frontier's only reliable buyer
     - [[Vaelic Principality]] — **Trade**: Not commerce but people: Kesmarch's settlers are largely Vaelic second sons and disinherited daughters

@@ -1356,10 +1356,15 @@ const STROKE = {
    settle close together, territorial and hostile pairs are shoved apart. The
    trade web ends up holding the middle and the flashpoints splay to the rim. */
 const REST = {
-  allied: 104, friendly: 116, trade: 132, rivalry: 168, friction: 186,
-  territorial: 230, hostile: 248, covert: 198,
+  allied: 120, friendly: 134, trade: 152, rivalry: 193, friction: 214,
+  territorial: 265, hostile: 285, covert: 228,
 };
-const RSIM = { repel: 13000, centre: 0.0032, spring: 0.05, damp: 0.82, pad: 54 };
+/* Retuned when the board went from 21 nations / 79 ties to 27 / 108: at that
+   density the springs overwhelmed repulsion and the middle of the web closed
+   into a knot. Repulsion and the rest lengths both go up together, because the
+   whole thing is rescaled to fit afterwards — it is the RATIO that decides how
+   much clear space a node ends up with, not the absolute numbers. */
+const RSIM = { repel: 22000, centre: 0.0026, spring: 0.05, damp: 0.82, pad: 54 };
 const RVIEW = { w: 1120, h: 780 };
 const SVGNS = 'http://www.w3.org/2000/svg';
 
