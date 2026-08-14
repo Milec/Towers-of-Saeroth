@@ -391,18 +391,23 @@ function makeTreeData(paths) {
   return root;
 }
 
-function renderLevel(node, mount, openDepth = 0, depth = 0) {
+function renderLevel(node, mount, openDepth = 0, depth = 0, prefix = '') {
   mount.textContent = '';
   for (const key of [...node.dirs.keys()].sort()) {
     const child = node.dirs.get(key);
+    const path = prefix ? prefix + '/' + key : key;
     const d = document.createElement('details');
+    d.dataset.dir = path;
     const s = document.createElement('summary');
     s.textContent = key;
     d.appendChild(s);
     const holder = document.createElement('div');
     d.appendChild(holder);
-    d.addEventListener('toggle', async () => {
-      if (!d.open || d.dataset.filled) return;
+    // Kept as a method rather than only a toggle handler, because `toggle` is
+    // queued rather than dispatched synchronously: revealing the folder a note
+    // lives in has to be able to fill it and read its children in one go.
+    d.fill = async () => {
+      if (d.dataset.filled) return;
       d.dataset.filled = '1';
       // The vault subtree (41,718 notes) is only fetched and built when
       // someone actually opens it.
@@ -411,7 +416,7 @@ function renderLevel(node, mount, openDepth = 0, depth = 0) {
         try {
           await ensureVault();
           const built = makeTreeData(state.vault.map((v) => v.p)).dirs.get('vault');
-          if (built) { node.dirs.set(key, built); renderLevel(built, holder); return; }
+          if (built) { node.dirs.set(key, built); renderLevel(built, holder, 0, 0, path); return; }
           holder.innerHTML = '<p class="muted pad small">No notes found.</p>';
         } catch (_) {
           holder.innerHTML = '<p class="muted pad small">Could not load — offline?</p>';
@@ -419,13 +424,14 @@ function renderLevel(node, mount, openDepth = 0, depth = 0) {
         }
         return;
       }
-      renderLevel(child, holder);
-    });
+      renderLevel(child, holder, 0, 0, path);
+    };
+    d.addEventListener('toggle', () => { if (d.open) d.fill(); });
     // Never auto-expand a lazy branch: that would mark it filled from its
     // empty placeholder and the real load would never fire.
     if (depth < openDepth && !child.lazy) {
       d.open = true; d.dataset.filled = '1';
-      renderLevel(child, holder, openDepth, depth + 1);
+      renderLevel(child, holder, openDepth, depth + 1, path);
     }
     mount.appendChild(d);
   }
@@ -445,14 +451,28 @@ function buildTree(paths, mount, opts = {}) {
   state.tree.dirs.set('vault', { dirs: new Map(), files: [], lazy: true });
   renderLevel(state.tree, mount, opts.open || 0);
 }
-function markActive(path) {
+/* The tree opens fully collapsed, so the note being read is not in the DOM at
+   all until its folders are filled. Walk down to it, opening and filling each
+   level in turn, then highlight it.
+
+   Not on the very first route, though: landing on the app should show a closed
+   tree, not one already opened onto whatever note the URL happened to carry. */
+async function markActive(path) {
   document.querySelectorAll('.leaf.active').forEach((a) => a.classList.remove('active'));
+  if (!path || !state.routed) { state.routed = true; return; }
+  const segs = path.split('/');
+  segs.pop();
+  let mount = $('tree'), acc = '';
+  for (const seg of segs) {
+    acc = acc ? acc + '/' + seg : seg;
+    const d = mount.querySelector(`:scope > details[data-dir="${CSS.escape(acc)}"]`);
+    if (!d) return;
+    if (d.fill) await d.fill();
+    d.open = true;
+    mount = d.lastElementChild;
+  }
   const a = document.querySelector(`.leaf[data-path="${CSS.escape(path)}"]`);
-  if (a) { a.classList.add('active'); a.closest('details') && openParents(a); }
-}
-function openParents(el) {
-  let d = el.closest('details');
-  while (d) { d.open = true; d = d.parentElement.closest('details'); }
+  if (a) a.classList.add('active');
 }
 
 /* ---------------------------------------------------------------- search */
@@ -1859,7 +1879,7 @@ async function init() {
     if (it.t) state.type.set(it.p, it.t);
   }
 
-  buildTree(state.campaign.map((n) => n.p), $('tree'), { open: 2 });
+  buildTree(state.campaign.map((n) => n.p), $('tree'));   // everything collapsed
 
   $('menuBtn').onclick = () => ($('sidebar').classList.contains('open') ? closeSidebar() : openSidebar());
   $('scrim').onclick = closeSidebar;
@@ -1894,10 +1914,10 @@ async function init() {
   });
   $('filter').oninput = (e) => {
     const q = normalize(e.target.value);
-    if (!q) { buildTree(state.campaign.map((n) => n.p), $('tree'), { open: 2 }); markActive(state.current); return; }
+    if (!q) { buildTree(state.campaign.map((n) => n.p), $('tree')); markActive(state.current); return; }
     const hits = state.campaign.map((n) => n.p).filter((p) => normalize(p).includes(q));
     state.tree = makeTreeData(hits);
-    renderLevel(state.tree, $('tree'), 9);
+    renderLevel(state.tree, $('tree'), 9);   // a filter shows its matches, so this one opens
   };
 
   addEventListener('hashchange', route);

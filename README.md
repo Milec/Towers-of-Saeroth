@@ -6,8 +6,9 @@ PF2e worldbuilding vault, readable as a website and installable as an app.
 - `vault/` — the full Archives of Nethys reference (41,700+ notes), from
   [Milec/AON-Scrap](https://github.com/Milec/AON-Scrap)
 - `site/` — the web app that browses both (see below)
-- `tools/` — the static-site build, and `sync_relations.py`, which pushes the
-  Political Relations table out to all 21 nation notes so the two can't drift
+- `tools/` — `build_site.py` (the static-site build), `sync_relations.py`,
+  which pushes the Political Relations table out to all 21 nation notes so the
+  two can't drift, and `make_icons.py` for the PWA icons
 - `.claude/skills/pf2e-gm/` — a Claude Code skill that queries the reference:
   encounter building, rules lookup, treasure, shops, NPC stat blocks
 
@@ -40,8 +41,10 @@ installable site — no Obsidian download needed:
   standing, tap a nation for its ledger, drag to untangle, tap through to its
   note. It parses the note's own markdown table, so the table stays the single
   source of truth and a new row becomes a new edge with no code change.
-- **The whole vault is browsable** in the file tree, which loads lazily: only
-  the folder you expand is put in the DOM.
+- **The whole vault is browsable** in the file tree, which starts fully
+  collapsed and loads lazily: only the folder you expand is put in the DOM, and
+  the 41k-note branch isn't even fetched until you open it. Navigating to a
+  note opens the tree down to it.
 - Full-text search across `campaign/`, title search across `vault/`, backlinks,
   and a light/dark theme.
 - **A back arrow in the topbar**, because installed to a home screen there is no

@@ -25,5 +25,5 @@ battlefield achievement as any campaign.
     - [[Cindral Ashlands]] — **Trade**: The delta's glassworks run on Cindral obsidian, and pay in gold
     - [[Thesal Theocracy]] — **Trade**: Grain for medicine, and a shared devotion to Sarenrae that keeps the terms generous on both sides
     - [[Dalstan]] — **Friction**: Thurigypt reads Dalstani opulence as decadence without discipline
-    - [[Elven Confederacy]] — **Territorial**: Water rights at the desert oasis-groves, argued every generation and settled in none of them
+    - [[Elven Confederacy]] — **Territorial**: Water rights at the desert oasis-groves — wardens' work the Confederacy has never stopped claiming on ground it has never held. The two share no frontier, so the argument travels by envoy and caravan, and is settled in no generation
     - [[Lazarian Lichdom]] — **Hostile**: Life against undeath in the plainest terms: Thurigypt's patron is the one goddess Lazarian has outlawed
