@@ -224,6 +224,35 @@ graph view renders as a real web of connections — not a document dump.
 
 See `campaign/README.md` for the suggested folder layout.
 
+## The world map
+
+`campaign/Saeroth.map` is the world of Saeroth as an Azgaar Fantasy Map
+Generator file — 27 nations laid out to match the notes, not rolled at random.
+It is **generated**, not hand-drawn: `tools/mapgen/` builds it, and
+`tools/mapgen/world.js` is the campaign's own facts as data (each nation's
+latitude, climate, size weight, required borders, capital name from its note,
+and trade specialties from its Economic Specialties bullet).
+
+**So when a nation note changes, the map does not follow on its own.** Edit
+`world.js` to match, rebuild, and check the diagnostics — the same way
+`sync_relations.py` keeps the diplomacy from drifting.
+
+`docs/azgaar-map-generation.md` is the manual for all of this: how to drive
+Azgaar from a script, its pipeline order, and the traps. Read it before
+touching `forge.js` — several of its rules look arbitrary and are not, and the
+doc records which plausible-sounding fixes have already been tried and failed.
+`tools/mapgen/README.md` covers running it and reading the output.
+
+Two things worth knowing before changing anything there:
+
+- **Sweep seeds, don't tune parameters.** Most remaining defects are
+  seed-dependent. Rank a dozen seeds on continent coherence first — every other
+  metric is per-nation, and a country stranded alone on an island scores
+  perfectly on all of them.
+- **Don't add a correction pass without checking what created the problem.**
+  Three passes once existed only to repair damage from a single line capping
+  territory growth; deleting that line deleted all three and improved the map.
+
 ## Formatting statblocks
 
 Two community-plugin syntaxes are used whenever a note contains a creature or
