@@ -18,7 +18,7 @@ centuries — competence doesn't expire just because the body did.
 - **Government** Immortal Lich Emperor
 - **Reputation** Universally feared
 - **Faith** Patron [[Urgathoa]], whose doctrine of undeath as ascension runs through Lazarian state philosophy. [[Norgorber]] is kept quietly by the alchemists and relic-brokers. [[Pharasma]]'s faith is outlawed outright — she judges the dead, which makes her the one god the state cannot bargain with
-- **Tension** The Lich Emperor has not issued an edict in eleven years; the court insists this is deliberation, and quietly governs without him
+- **Tension** [[Lazarus]] has not issued an edict in eleven years; the Cathedral Court insists this is deliberation, and quietly governs without him — nobody in the court will call it a disappearance, and nobody has been let close enough to know if that's actually wrong
 - **Relations**
     - [[Thesal Theocracy]] — **Hostile**: Ideological enemies outright
     - [[Thurigypt]] — **Hostile**: Life against undeath in the plainest terms: Thurigypt's patron is the one goddess Lazarian has outlawed
