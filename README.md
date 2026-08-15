@@ -11,6 +11,8 @@ PF2e worldbuilding vault, readable as a website and installable as an app.
   two can't drift, and `make_icons.py` for the PWA icons
 - `.claude/skills/pf2e-gm/` — a Claude Code skill that queries the reference:
   encounter building, rules lookup, treasure, shops, NPC stat blocks
+- `docs/` — [driving Azgaar's Fantasy Map Generator from a script](docs/azgaar-map-generation.md),
+  the notes from generating the world map to match these campaign notes
 
 ## The web app
 
