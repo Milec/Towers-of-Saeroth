@@ -44,10 +44,14 @@ The ritual was too far along to simply unwind — an empire cannot be handed
 back its million ordinary deaths — so the gods finished the erasure
 themselves, on their own terms instead of the ritual's.
 
-- **The empire is gone.** Not conquered, not fallen — erased. Every city,
-  every record, every grave. The two settled continents were left as open,
-  unclaimed ground for whoever eventually walked back into them, which is
-  exactly what the twenty-seven nations are standing on now.
+- **The empire is gone, almost entirely.** The erasure across both settled
+  continents was total in effect — every capital, nearly every record,
+  nearly every grave — but not surgical. Unmaking a civilization at that
+  scale missed things, and a handful of fragmentary ruins survive scattered
+  across the mainland and the east, rare enough that nobody has ever
+  connected one to another. The two settled continents were otherwise left
+  open, unclaimed ground for whoever eventually walked back into them,
+  which is exactly what the twenty-seven nations are standing on now.
 - **The southern continent was not erased — it was sealed.** The capital,
   and the ritual's own point of origin, could not be unmade without risking
   whatever the ritual had already started. The gods walled it off instead,
@@ -97,6 +101,14 @@ themselves, on their own terms instead of the ritual's.
   temples remember only that "something happened," in the same vague terms
   every other faith does, because the erasure did not spare divine memory
   either. A cleric who prays on this gets silence, not a lie.
+- **[[Lazarus]] is the closest anyone has come, and he is still nowhere
+  close.** A relic through the Lichdom's own grave-trade told him an
+  empire existed and that it commanded real power — nothing about who, why,
+  or that it already tried and failed at exactly what he has centuries free
+  to attempt. He is not a step on the way to the truth; he is what the
+  erasure looks like when the one person chasing it happens to be immortal.
+  Whether he ever gets close enough to matter is a call to make
+  deliberately, not one to let slip out of an NPC scene.
 
 *See [[The Towers]] for what the world actually knows, and [[The Wildlands]]
 for the continent this left behind.*
