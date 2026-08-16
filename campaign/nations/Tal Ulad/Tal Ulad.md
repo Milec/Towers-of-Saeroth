@@ -27,7 +27,6 @@ left alone on both.
 *Mobile, unconquerable, and holding the overland trade route — the Ulad are
 who a party has to deal with to cross the continent by land at all.*
 - **Relations**
-    - [[Ninefold Sanctum]] — **Friendly**: The only power that ever wrote the herd routes down as the Ulad describe them, rather than as someone else's border
     - [[Quivar]] — **Trade**: Horses, and Quivar is the only buyer that has ever paid what the Ulad say they are worth
     - [[Thurion Merchant Alliance]] — **Trade**: Safe passage across the uplands, sold by the season and honoured to the letter
     - [[Khazan Khaganate]] — **Friction**: The Khaganate keeps addressing the Ulad as kin who have forgotten themselves, and the Ulad keep declining the compliment

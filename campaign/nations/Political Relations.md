@@ -5,7 +5,7 @@ view: relations
 ---
 
 Every standing relationship between nations, drawn from the Relations bullet on
-each nation's own note — 108 ties across all 27. Read a row as symmetric unless
+each nation's own note — 108 ties across all 28. Read a row as symmetric unless
 the detail says otherwise; most of these are felt differently from each side.
 
 **Standing** is a rough label for how the relationship behaves at the table.
@@ -51,10 +51,8 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Thesal Theocracy]] ↔ [[Xian Ti]] | **Friendly** | Scholarship and tolerance recognising one another; Concord's libraries are the only foreign collection the Celestial ministries will call a peer |
 | [[Thurigypt]] ↔ [[Xian Ti]] | **Friendly** | Two old and disciplined states with nothing to fight over, sharing a private conviction that the younger nations are in a hurry about everything |
 | [[Ashkar Pale]] ↔ [[Undertide Reaches]] | **Friendly** | The Reaches have mapped every evacuation road beneath the Pale, and twice opened them without being asked |
-| [[Ninefold Sanctum]] ↔ [[Stoneborn Holds]] | **Friendly** | The Holds cut the abbeys and keep the passes open; the Sanctum keeps the Holds' charters, which is the older debt |
 | [[Sarrowmere]] ↔ [[Thesal Theocracy]] | **Friendly** | Thesal's hospices are stocked by Sarrowmere and staffed by Thesal, and neither has ever wanted to change the arrangement |
 | [[Corvane Republic]] ↔ [[Tessine]] | **Friendly** | The only two states that will take a political exile without asking what he did |
-| [[Ninefold Sanctum]] ↔ [[Tal Ulad]] | **Friendly** | The only power that ever wrote the herd routes down as the Ulad describe them, rather than as someone else's border |
 | [[Aquoniti]] ↔ [[Corvane Republic]] | **Trade** | Shipbuilding, and growing |
 | [[Aquoniti]] ↔ [[Quivar]] | **Trade** | Pearl and coral, graded at sea and sold on to the Valmont ateliers |
 | [[Aquoniti]] ↔ [[Thurigypt]] | **Trade** | Old river-trade ties |
@@ -88,9 +86,11 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Ashkar Pale]] ↔ [[Kesmarch Frontier]] | **Trade** | Seed stock going one way and settlers the other, in numbers neither government has bothered to count |
 | [[Ashkar Pale]] ↔ [[Sarrowmere]] | **Trade** | Ash-glaze vessels are the only containers that hold the mere's compounds without spoiling them |
 | [[Quivar]] ↔ [[Sarrowmere]] | **Trade** | Physicians and poisons, bought on the same manifest and never itemised separately |
-| [[Ninefold Sanctum]] ↔ [[Vaelic Principality]] | **Trade** | Every Vaelic coronation is witnessed and recorded at Vault Abbey, and has been for four centuries |
-| [[Kelvary March]] ↔ [[Ninefold Sanctum]] | **Trade** | Every Kelvary contract is lodged with the Sanctum, which is the only reason any of them are enforceable |
 | [[Kelvary March]] ↔ [[Quivar]] | **Trade** | Quivar hires and Kelvary asks nothing, which is precisely what Quivar is paying for |
+| [[Sahenna Compact]] ↔ [[Kesmarch Frontier]] | **Trade** | Salt and dyed cloth north for seed grain and iron, along caravan roads Kesmarch's own settlers rarely travel themselves |
+| [[Sahenna Compact]] ↔ [[Thornwild Confederation]] | **Trade** | Dyes and jungle goods for salt and hides, exchanged at treeline markets neither nation calls a border |
+| [[Sahenna Compact]] ↔ [[Qeshara Sultanate]] | **Trade** | The caravan road between the savanna and the sultanate is older than either nation's own founding record |
+| [[Qeshara Sultanate]] ↔ [[Thurigypt]] | **Trade** | Incense and dyed silk for grain and stone; two old desert powers who have never needed to like each other to profit from each other |
 | [[Kelvary March]] ↔ [[Tessine]] | **Trade** | Tessine banks the companies' pay and insures their contracts, and takes a cut of both |
 | [[Kelvary March]] ↔ [[Silicar]] | **Trade** | Field kit, remount tack and repair shops, on a standing order that has outlasted several wars |
 | [[Aquoniti]] ↔ [[Tessine]] | **Trade** | Aquoniti hulls carry most of what leaves Tessine, and ask no more about the cargo than Tessine asks about the crew |
@@ -107,6 +107,7 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Melisor Magocracy]] ↔ [[Sarrowmere]] | **Rivalry** | Whether the fen's compounds are medicine or a shabby kind of magic; both nations are certain and neither will test it |
 | [[Kelvary March]] ↔ [[Khazan Khaganate]] | **Rivalry** | Professional contempt in both directions about what soldiering is actually for |
 | [[Tessine]] ↔ [[Thurion Merchant Alliance]] | **Rivalry** | Two free ports, one trade, and a permanent argument about who is undercutting whom |
+| [[Qeshara Sultanate]] ↔ [[Melisor Magocracy]] | **Rivalry** | Whether the sultanate's star-charts or the academies' astral theory read the sky more truly, argued in papers neither side lets the other see first |
 | [[Cindral Ashlands]] ↔ [[Thesal Theocracy]] | **Friction** | Thesal considers Cindral's elemental reverence reckless faith, and never says so to an envoy's face |
 | [[Corvane Republic]] ↔ [[Quivar]] | **Friction** | Corvane's presses print what Valmont's court would rather went unread, and Quivar's intelligence service works Vantry harder than anywhere else |
 | [[Dalstan]] ↔ [[Thurigypt]] | **Friction** | Thurigypt reads Dalstani opulence as decadence without discipline |
@@ -115,9 +116,8 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Elven Confederacy]] ↔ [[Thornwild Confederation]] | **Friction** | The Confederacy regards the Thornwild as unruly distant kin; the Thornwild did not ask to be anyone's cousin |
 | [[Nordheim]] ↔ [[Undertide Reaches]] | **Friction** | Undertide passages keep surfacing inside Nordheim's mountains, always somewhere no jarl agreed to |
 | [[Ashkar Pale]] ↔ [[Cindral Ashlands]] | **Friction** | The ash that makes the Pale the richest farmland on the continent also buries it, and Cindral has never once apologised for living upwind |
-| [[Melisor Magocracy]] ↔ [[Ninefold Sanctum]] | **Friction** | The academies have wanted copying rights for two centuries and the conclave has refused for two centuries |
-| [[Ninefold Sanctum]] ↔ [[Undertide Reaches]] | **Friction** | Something in the archive concerns the Reaches, and the Reaches have asked, politely and repeatedly, to read it |
 | [[Khazan Khaganate]] ↔ [[Tal Ulad]] | **Friction** | The Khaganate keeps addressing the Ulad as kin who have forgotten themselves, and the Ulad keep declining the compliment |
+| [[Sahenna Compact]] ↔ [[Thurigypt]] | **Friction** | The witchcraft accusation hasn't stopped salt and dyed cloth moving through Setharu's markets, but it has stopped anyone at either end pretending the relationship is warm |
 | [[Elven Confederacy]] ↔ [[Khazan Khaganate]] | **Territorial** | An old, unresolved argument over the ancient forest claims |
 | [[Elven Confederacy]] ↔ [[Nordheim]] | **Territorial** | Nordheim timber camps working northern pine the Winter Elf tribes have never ceded |
 | [[Elven Confederacy]] ↔ [[Thurigypt]] | **Territorial** | Water rights at the desert oasis-groves — wardens' work the Confederacy has never stopped claiming on ground it has never held. The two share no frontier, so the argument travels by envoy and caravan, and is settled in no generation |

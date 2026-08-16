@@ -26,6 +26,7 @@ claimed is land that has to be defended, not land that was granted.
     - [[Silicar]] — **Friendly**: Seed grain, ploughs and canal plans sent south for very little back; Erastil's clergy at both ends arranged it and neither council was really consulted
     - [[Ashkar Pale]] — **Trade**: Seed stock going one way and settlers the other, in numbers neither government has bothered to count
     - [[Corvane Republic]] — **Trade**: The same migration seen from both ends — Corvane ships supply homesteads that Corvane's own overflow settled
+    - [[Sahenna Compact]] — **Trade**: Salt and dyed cloth north for seed grain and iron, along caravan roads Kesmarch's own settlers rarely travel themselves
     - [[Thurion Merchant Alliance]] — **Trade**: Furs, ore and wagon-freight; the Alliance is the frontier's only reliable buyer
     - [[Vaelic Principality]] — **Trade**: Not commerce but people: Kesmarch's settlers are largely Vaelic second sons and disinherited daughters
     - [[Thornwild Confederation]] — **Territorial**: Homesteaders clearing jungle the Thornwild consider already spoken for — the likeliest of these to turn into a shooting war

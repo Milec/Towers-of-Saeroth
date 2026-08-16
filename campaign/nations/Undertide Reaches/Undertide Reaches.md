@@ -25,7 +25,6 @@ what actually lives down here.
 - **Relations**
     - [[Ashkar Pale]] — **Friendly**: The Reaches have mapped every evacuation road beneath the Pale, and twice opened them without being asked
     - [[Melisor Magocracy]] — **Trade**: Construct labour and salvaged relics, contracted openly and delivered without explanation
-    - [[Ninefold Sanctum]] — **Friction**: Something in the archive concerns the Reaches, and the Reaches have asked, politely and repeatedly, to read it
     - [[Nordheim]] — **Friction**: Undertide passages keep surfacing inside Nordheim's mountains, always somewhere no jarl agreed to
     - [[Stoneborn Holds]] — **Territorial**: The Reaches claim caverns running directly beneath Stoneborn holds, and a deep-frontier hold has stopped answering the Assembly's messengers
     - [[Lazarian Lichdom]] — **Covert**: Relics move through back channels that lead, deniably, to Lazarian hands
