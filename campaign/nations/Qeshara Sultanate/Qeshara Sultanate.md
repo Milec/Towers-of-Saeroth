@@ -35,6 +35,9 @@ Viziers finds hardest to dispute.
   Court of Viziers has quietly declined to confirm. Neither side has made
   the disagreement public, which is the only reason it hasn't become one yet
 - **Relations**
+    - [[Cindral Ashlands]] — **Trade**: Sand-glass against fire-glass, sold to the same caravans that can't tell one furnace's work from the other
     - [[Sahenna Compact]] — **Trade**: The caravan road between the savanna and the sultanate is older than either nation's own founding record
+    - [[Tessine]] — **Trade**: Caravan wealth banked and insured the moment it reaches tidewater, on the same terms Tessine already gives Kelvary March
     - [[Thurigypt]] — **Trade**: Incense and dyed silk for grain and stone; two old desert powers who have never needed to like each other to profit from each other
     - [[Melisor Magocracy]] — **Rivalry**: Whether the sultanate's star-charts or the academies' astral theory read the sky more truly, argued in papers neither side lets the other see first
+    - [[Quivar]] — **Covert**: Valmont has taken an interest in which claimant the Court of Viziers eventually backs, and has not been subtle enough about it for the Sultan's own spies to miss

@@ -24,6 +24,7 @@ continent outmaneuvers theirs.
     - [[Thornwild Confederation]] — **Friendly**: Gozreh is the one god both nations name — storm and beast being the same power, seen from a boat or from the canopy
     - [[Corvane Republic]] — **Trade**: Shipbuilding, and growing
     - [[Quivar]] — **Trade**: Pearl and coral, graded at sea and sold on to the Valmont ateliers
+    - [[Sahenna Compact]] — **Trade**: Aquoniti hulls are the only ships that call at the Compact's own coast, trading salt and hides for pearls and fish neither clan has ever had reason to harvest itself
     - [[Tessine]] — **Trade**: Aquoniti hulls carry most of what leaves Tessine, and ask no more about the cargo than Tessine asks about the crew
     - [[Thurigypt]] — **Trade**: Old river-trade ties
     - [[Thurion Merchant Alliance]] — **Trade**: The shipping-and-insurance backbone of the whole continent
