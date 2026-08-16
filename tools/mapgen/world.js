@@ -26,7 +26,9 @@ const SIZE = {
   'Undertide Reaches': 0.3,
   // the six minor states of the eastern continent
   'Kelvary March': 0.45, 'Tal Ulad': 0.5, 'Sarrowmere': 0.4,
-  'Ashkar Pale': 0.4, 'Ninefold Sanctum': 0.28, 'Tessine': 0.15,
+  'Ashkar Pale': 0.4, 'Tessine': 0.15,
+  // filled a gap in the setting's real-world inspirations
+  'Sahenna Compact': 0.5, 'Qeshara Sultanate': 0.45,
 };
 
 // tlat  target latitude in degrees north (the map runs 66°N to 30°S)
@@ -61,7 +63,8 @@ const LAND = {
   'Cindral Ashlands':          { ridged: 1, tlat: 20, temp: 24, prec: 1, elev: [58, 92], volcanic: 1, why: 'volcanic highland, hot and bare' },
 
   // ---- the six minor states of the eastern continent ---------------------
-  'Ninefold Sanctum':          { tlat: 48, temp: 6, prec: 7, elev: [38, 55], takeMul: 0.25, why: 'nine high valleys along the mountain spine' },
+  'Sahenna Compact':           { tlat: 15, temp: 24, prec: 2,  elev: [22, 36], why: 'open savanna between the frontier jungle and the equatorial rainforest' },
+  'Qeshara Sultanate':         { tlat: 26, temp: 22, prec: -2, elev: [32, 48], why: 'a highland desert of oasis valleys' },
   'Kelvary March':             { tlat: 38, temp: 13, prec: 3, elev: [30, 50], why: 'rolling hill country and horse pasture' },
   'Tessine':                   { tlat: 35, temp: 16, prec: 9, elev: [18, 28], coastal: 2, why: 'a deepwater bay behind a headland' },
   'Sarrowmere':                { tlat: 32, temp: 18, prec: 27, elev: [26, 38], why: 'a vast freshwater fen' },
@@ -83,8 +86,9 @@ const CLAIM = {
   'Lazarian Lichdom': 'wetland', 'Corvane Republic': 'coast',
   'Thurion Merchant Alliance': 'coast', 'Aquoniti': 'islands',
   'Kesmarch Frontier': 'jungle', 'Elven Confederacy': 'forest',
-  'Ninefold Sanctum': 'hills', 'Kelvary March': 'grass', 'Tessine': 'coast',
+  'Kelvary March': 'grass', 'Tessine': 'coast',
   'Sarrowmere': 'wetland', 'Tal Ulad': 'grass', 'Ashkar Pale': 'grass',
+  'Sahenna Compact': 'grass', 'Qeshara Sultanate': 'desert',
 };
 
 const BORDERS = [
@@ -119,7 +123,16 @@ const BORDERS = [
   ['Ashkar Pale', 'Cindral Ashlands'],
   ['Kelvary March', 'Tal Ulad'],
   ['Silicar', 'Tal Ulad'],
-  ['Ninefold Sanctum', 'Stoneborn Holds'],
+  // Sahenna's own note calls it the savanna between the frontier jungle and
+  // the equatorial rainforest — a claim that needs an actual shared line on
+  // the ground with at least one of the two to be true rather than poetic.
+  ['Sahenna Compact', 'Kesmarch Frontier'],
+  // Without a forced border here Qeshara's capital seed landed on a small
+  // offshore plate at this seed and came out a wholly isolated island —
+  // wrong for a caravan-and-camel sultanate, and it undercuts the trade
+  // relationship the note describes ("the caravan road... older than either
+  // nation's own founding record"). Force it onto the mainland.
+  ['Sahenna Compact', 'Qeshara Sultanate'],
 ];
 
 // Which continent each nation belongs to.
@@ -133,8 +146,13 @@ const GROUP = {
   // Kesmarch and Thornwild move east: neither is tied to the mainland bloc by
   // a required border, and the eastern continent needed the weight
   'Kesmarch Frontier': 1, 'Thornwild Confederation': 1,
-  'Ninefold Sanctum': 1, 'Kelvary March': 1, 'Tessine': 1,
+  'Kelvary March': 1, 'Tessine': 1,
   'Sarrowmere': 1, 'Tal Ulad': 1, 'Ashkar Pale': 1,
+  // Sahenna's required border puts it here; Qeshara follows its trade
+  // partners (Sahenna, Melisor) rather than Thurigypt, whose own Trade tie
+  // to it crosses the gap between continents the way Thurion's does to
+  // Xian Ti — commerce, not a shared frontier
+  'Sahenna Compact': 1, 'Qeshara Sultanate': 1,
   'Aquoniti': 2, 'Thurion Merchant Alliance': 2,
 };
 
@@ -203,7 +221,6 @@ const NAME_BASE = {
   'Silicar': 9,                     // Finnic — a wet basin cut with rivers
   'Quivar': 2,                      // French — soft coast and deciduous valleys
   'Cindral Ashlands': 39,           // Draconic — volcanic highland
-  'Ninefold Sanctum': 12,           // Japanese — nine monastic valleys
   'Kelvary March': 1,               // English — horse pasture and marches
   'Tessine': 13,                    // Portuguese — a deepwater bay
   'Sarrowmere': 20,                 // Basque — the great fen
@@ -211,6 +228,8 @@ const NAME_BASE = {
   'Ashkar Pale': 24,                // Iranian — terraces under the volcano
   'Kesmarch Frontier': 28,          // Swahili — the jungle frontier
   'Thornwild Confederation': 21,    // Nigerian — equatorial rainforest
+  'Sahenna Compact': 17,            // Berber — the caravan roads and the salt trade
+  'Qeshara Sultanate': 42,          // Levantine — the sultanate's own base, distinct from Thurigypt's Arabic
   // the sea powers
   'Thurion Merchant Alliance': 4,   // Castillian — the harbour league
   'Aquoniti': 25,                   // Hawaiian — warm island seas
@@ -222,8 +241,8 @@ const CULTURE_TYPE = {
   'Quivar': 'Naval',
   'Stoneborn Holds': 'Highland', 'Undertide Reaches': 'Highland',
   'Cindral Ashlands': 'Highland', 'Melisor Magocracy': 'Highland',
-  'Ninefold Sanctum': 'Highland',
-  'Khazan Khaganate': 'Nomadic', 'Tal Ulad': 'Nomadic',
+  'Qeshara Sultanate': 'Highland',
+  'Khazan Khaganate': 'Nomadic', 'Tal Ulad': 'Nomadic', 'Sahenna Compact': 'Nomadic',
   'Thurigypt': 'River', 'Lazarian Lichdom': 'River', 'Silicar': 'River',
   'Sarrowmere': 'River', 'Xian Ti': 'River',
 };
@@ -248,9 +267,10 @@ const CAPITAL = {
   'Khazan Khaganate': 'Ordu-Khazan',
   'Lazarian Lichdom': 'Grauthaven',
   'Melisor Magocracy': 'Thelemar',
-  'Ninefold Sanctum': 'Vault Abbey',
   'Nordheim': 'Hravnfjord',
   'Quivar': 'Valmont',
+  'Qeshara Sultanate': 'Myrrhkand',
+  'Sahenna Compact': 'Bonemarket',
   'Sarrowmere': 'Ilmen Wharf',
   'Silicar': 'Brightfurrow',
   'Stoneborn Holds': 'Highforge',
@@ -285,9 +305,10 @@ const SPECIALTY = {
   'Khazan Khaganate': ['Horses', 'Iron', 'Cattle'],
   'Lazarian Lichdom': ['Gemstones', 'Saltpeter', 'Dyes'],
   'Melisor Magocracy': ['Gemstones', 'Silver', 'Incense'],
-  'Ninefold Sanctum': ['Hemp', 'Wood', 'Honey'],
   'Nordheim': ['Wood', 'Furs', 'Amber', 'Iron', 'Whales'],
+  'Qeshara Sultanate': ['Incense', 'Spices', 'Silk'],
   'Quivar': ['Wine', 'Dyes', 'Spices'],
+  'Sahenna Compact': ['Salt', 'Cattle', 'Dyes'],
   'Sarrowmere': ['Hemp', 'Honey', 'Clay'],
   'Silicar': ['Grain', 'Iron', 'Clay'],
   'Stoneborn Holds': ['Iron', 'Gold', 'Gemstones'],

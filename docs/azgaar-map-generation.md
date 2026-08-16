@@ -1,6 +1,6 @@
 # Driving Azgaar's Fantasy Map Generator from a script
 
-Notes from building `Saeroth.map` — a 27-nation world generated to match the
+Notes from building `Saeroth.map` — a 28-nation world generated to match the
 campaign notes rather than at random. Written down because the useful parts
 were all discovered the hard way, and most of them are not in Azgaar's docs.
 
