@@ -227,7 +227,7 @@ See `campaign/README.md` for the suggested folder layout.
 ## The world map
 
 `campaign/Saeroth.map` is the world of Saeroth as an Azgaar Fantasy Map
-Generator file — 27 nations laid out to match the notes, not rolled at random.
+Generator file — 28 nations laid out to match the notes, not rolled at random.
 It is **generated**, not hand-drawn: `tools/mapgen/` builds it, and
 `tools/mapgen/world.js` is the campaign's own facts as data (each nation's
 latitude, climate, size weight, required borders, capital name from its note,

@@ -58,10 +58,14 @@ stranded alone on an island scores perfectly on all of them.
 
 ## The current map
 
-`campaign/Saeroth.map` is seed 818: 27 nations, one landmass per continent,
-17/17 required borders, 27/27 terrain majorities, 733 rivers, 1,232 settlements
-named from 27 per-nation cultures, 26 capitals taken from the nation notes.
+`campaign/Saeroth.map` is seed 818: 28 nations, one landmass per continent,
+18/18 required borders, 28/28 terrain majorities, 805 rivers, 1,238 settlements
+named from 28 per-nation cultures, 27 capitals taken from the nation notes.
 
-Known-imperfect: Stoneborn, Melisor and Sarrowmere sit at 0.2–0.3× their size
-weight — mountain nations ringed by their own ranges, which cost-distance
-growth cannot easily push out of.
+Known-imperfect: Ashkar Pale, Tal Ulad and Melisor Magocracy sit at 0.3–0.5×
+their size weight — Ashkar and Melisor are ringed by their own mountains,
+which cost-distance growth cannot easily push out of; Qeshara Sultanate
+needed a forced border with Sahenna Compact (`BORDERS` in `world.js`) after
+its capital seed landed on an offshore island at this seed and came out
+completely isolated — worth rechecking if the seed or the surrounding
+nations' weights ever change.

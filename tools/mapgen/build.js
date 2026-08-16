@@ -42,6 +42,7 @@ const FORMS = {
   'Thurigypt': ['Monarchy', 'Pharaonate'], 'Cindral Ashlands': ['Monarchy', 'Ashlands'],
   'Thornwild Confederation': ['Union', 'Confederation'], 'Kesmarch Frontier': ['Republic', 'Frontier'],
   'Elven Confederacy': ['Union', 'Confederacy'],
+  'Sahenna Compact': ['Union', 'Compact'], 'Qeshara Sultanate': ['Monarchy', 'Sultanate'],
 };
 const SHORT = {
   'Thurion Merchant Alliance': 'Thurion', 'Stoneborn Holds': 'Stoneborn',
@@ -51,6 +52,7 @@ const SHORT = {
   'Lazarian Lichdom': 'Lazarian', 'Corvane Republic': 'Corvane',
   'Cindral Ashlands': 'Cindral', 'Thornwild Confederation': 'Thornwild',
   'Kesmarch Frontier': 'Kesmarch', 'Elven Confederacy': 'Elvenhome',
+  'Sahenna Compact': 'Sahenna', 'Qeshara Sultanate': 'Qeshara',
 };
 
 function readTies() {

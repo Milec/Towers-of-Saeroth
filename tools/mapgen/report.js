@@ -27,7 +27,7 @@ L.push('# Saeroth, as a map\n');
 L.push('Nothing here was generated and then edited to fit. **The landmass, the');
 L.push('climate and the borders are all consequences of the vault.**\n');
 L.push('## How the world was built\n');
-L.push('1. **All 21 nations are laid out at once, in open water.** The diplomacy');
+L.push(`1. **All ${P.prof.length} nations are laid out at once, in open water.** The diplomacy`);
 L.push('   graph pulls together every pair that must share a border, pushes the');
 L.push('   rest apart, and drags each nation to the *latitude* its climate belongs');
 L.push('   at. That is why the settled continent runs arctic-to-equator: it has to');
@@ -65,7 +65,7 @@ L.push(`Canvas ${w}×${h}, ${P.cells} map cells. World seed \`${P.opts && P.opts
        `${Math.round((P.intricacy || 0) * 100)}% of land on a shoreline.\n`);
 const settled = P.landTotal - P.wildTotal;
 const nB = W.BORDERS.length;
-L.push(`**Every nation has its own terrain as a majority** (${P.majority}/21), ` +
+L.push(`**Every nation has its own terrain as a majority** (${P.majority}/${P.prof.length}), ` +
        (P.borders >= nB ? `all ${nB} required borders exist` :
         `${P.borders} of the ${nB} required borders exist`) +
        `, and every one of the ${settled} settled land cells belongs to somebody ` +

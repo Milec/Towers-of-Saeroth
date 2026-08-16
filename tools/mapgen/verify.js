@@ -11,8 +11,10 @@ const fs=require('fs');
   console.log('before load:', before.join(', '));
 
   // feed the .map file through the app's own uploader
-  await p.setInputFiles('#mapToLoad', (process.env.MAP || '/tmp/claude-0/-home-user-Towers-of-Saeroth/eb28eaca-92cf-5d5a-b71d-c45b741961c6/scratchpad/Saeroth.map')).catch(async e=>{
-    console.log('  no #mapToLoad input, trying Services.Load'); 
+  const mapPath = process.env.MAP || '/home/user/Towers-of-Saeroth/campaign/Saeroth.map';
+  await p.setInputFiles('#mapToLoad', mapPath).catch(async e=>{
+    console.log('  FAILED to load', mapPath, '-', e.message);
+    throw e;
   });
   await p.waitForTimeout(25000);
   const after = await p.evaluate(()=>({
