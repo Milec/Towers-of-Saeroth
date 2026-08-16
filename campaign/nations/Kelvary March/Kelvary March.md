@@ -26,7 +26,6 @@ would have to do it would be hiring Kelvary to help.
 *A mercenary state gives a GM an army for hire, a rival party, and a reason
 for any two nations to escalate faster than either intended.*
 - **Relations**
-    - [[Ninefold Sanctum]] — **Trade**: Every Kelvary contract is lodged with the Sanctum, which is the only reason any of them are enforceable
     - [[Quivar]] — **Trade**: Quivar hires and Kelvary asks nothing, which is precisely what Quivar is paying for
     - [[Silicar]] — **Trade**: Field kit, remount tack and repair shops, on a standing order that has outlasted several wars
     - [[Tessine]] — **Trade**: Tessine banks the companies' pay and insures their contracts, and takes a cut of both

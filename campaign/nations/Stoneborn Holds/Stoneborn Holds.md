@@ -21,7 +21,6 @@ last of its kind; it's meant to be inherited.
 - **Tension** A minor hold on the deep frontier has stopped answering the Assembly's messengers, and nobody wants to be the thane who says why out loud
 - **Relations**
     - [[Nordheim]] — **Allied**: Northern trade and dwarven kinship both
-    - [[Ninefold Sanctum]] — **Friendly**: The Holds cut the abbeys and keep the passes open; the Sanctum keeps the Holds' charters, which is the older debt
     - [[Vaelic Principality]] — **Friendly**: Torag's forge-halls in both, and Vaelic castle engineers have trained in Stoneborn holds for nine centuries
     - [[Cindral Ashlands]] — **Trade**: Obsidian and rare ore — though the Stoneborn find Cindral's forging rites needlessly dramatic
     - [[Silicar]] — **Trade**: Machinery and engineering exports

@@ -23,7 +23,9 @@ battlefield achievement as any campaign.
     - [[Xian Ti]] — **Friendly**: Two old and disciplined states with nothing to fight over, sharing a private conviction that the younger nations are in a hurry about everything
     - [[Aquoniti]] — **Trade**: Old river-trade ties
     - [[Cindral Ashlands]] — **Trade**: The delta's glassworks run on Cindral obsidian, and pay in gold
+    - [[Qeshara Sultanate]] — **Trade**: Incense and dyed silk for grain and stone; two old desert powers who have never needed to like each other to profit from each other
     - [[Thesal Theocracy]] — **Trade**: Grain for medicine, and a shared devotion to Sarenrae that keeps the terms generous on both sides
     - [[Dalstan]] — **Friction**: Thurigypt reads Dalstani opulence as decadence without discipline
+    - [[Sahenna Compact]] — **Friction**: The witchcraft accusation hasn't stopped salt and dyed cloth moving through Setharu's markets, but it has stopped anyone at either end pretending the relationship is warm
     - [[Elven Confederacy]] — **Territorial**: Water rights at the desert oasis-groves — wardens' work the Confederacy has never stopped claiming on ground it has never held. The two share no frontier, so the argument travels by envoy and caravan, and is settled in no generation
     - [[Lazarian Lichdom]] — **Hostile**: Life against undeath in the plainest terms: Thurigypt's patron is the one goddess Lazarian has outlawed

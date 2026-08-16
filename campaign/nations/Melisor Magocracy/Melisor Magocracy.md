@@ -26,7 +26,7 @@ utterly indispensable to anyone who needs magic done properly.
     - [[Thurion Merchant Alliance]] — **Trade**: Alliance contracts for enchanted goods quietly bankroll the academies
     - [[Undertide Reaches]] — **Trade**: Construct labour and salvaged relics, contracted openly and delivered without explanation
     - [[Xian Ti]] — **Trade**: Scholarship traded as freely as goods; both nations keep Irori, and each thinks the other misreads him
+    - [[Qeshara Sultanate]] — **Rivalry**: Whether the sultanate's star-charts or the academies' astral theory read the sky more truly, argued in papers neither side lets the other see first
     - [[Sarrowmere]] — **Rivalry**: Whether the fen's compounds are medicine or a shabby kind of magic; both nations are certain and neither will test it
     - [[Silicar]] — **Rivalry**: Melisor's academics can't decide whether Silicar's clockwork is beneath magic or quietly outperforming it
-    - [[Ninefold Sanctum]] — **Friction**: The academies have wanted copying rights for two centuries and the conclave has refused for two centuries
     - [[Lazarian Lichdom]] — **Covert**: Public condemnation over what magic should never be used for — and a relic trade through intermediaries neither will name
