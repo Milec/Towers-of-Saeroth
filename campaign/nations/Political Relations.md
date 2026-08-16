@@ -5,7 +5,7 @@ view: relations
 ---
 
 Every standing relationship between nations, drawn from the Relations bullet on
-each nation's own note — 108 ties across all 28. Read a row as symmetric unless
+each nation's own note — 113 ties across all 28. Read a row as symmetric unless
 the detail says otherwise; most of these are felt differently from each side.
 
 **Standing** is a rough label for how the relationship behaves at the table.
@@ -91,6 +91,10 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Sahenna Compact]] ↔ [[Thornwild Confederation]] | **Trade** | Dyes and jungle goods for salt and hides, exchanged at treeline markets neither nation calls a border |
 | [[Sahenna Compact]] ↔ [[Qeshara Sultanate]] | **Trade** | The caravan road between the savanna and the sultanate is older than either nation's own founding record |
 | [[Qeshara Sultanate]] ↔ [[Thurigypt]] | **Trade** | Incense and dyed silk for grain and stone; two old desert powers who have never needed to like each other to profit from each other |
+| [[Aquoniti]] ↔ [[Sahenna Compact]] | **Trade** | Aquoniti hulls are the only ships that call at the Compact's own coast, trading salt and hides for pearls and fish neither clan has ever had reason to harvest itself |
+| [[Sahenna Compact]] ↔ [[Cindral Ashlands]] | **Trade** | Salt-cured meat and cattle north into a highland that grows nothing it doesn't mine |
+| [[Qeshara Sultanate]] ↔ [[Cindral Ashlands]] | **Trade** | Sand-glass against fire-glass, sold to the same caravans that can't tell one furnace's work from the other |
+| [[Qeshara Sultanate]] ↔ [[Tessine]] | **Trade** | Caravan wealth banked and insured the moment it reaches tidewater, on the same terms Tessine already gives Kelvary March |
 | [[Kelvary March]] ↔ [[Tessine]] | **Trade** | Tessine banks the companies' pay and insures their contracts, and takes a cut of both |
 | [[Kelvary March]] ↔ [[Silicar]] | **Trade** | Field kit, remount tack and repair shops, on a standing order that has outlasted several wars |
 | [[Aquoniti]] ↔ [[Tessine]] | **Trade** | Aquoniti hulls carry most of what leaves Tessine, and ask no more about the cargo than Tessine asks about the crew |
@@ -142,18 +146,20 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Thurion Merchant Alliance]] ↔ [[Undertide Reaches]] | **Covert** | The Reaches sell secret-keeping as a service, and more than one great house has quietly bought it |
 | [[Lazarian Lichdom]] ↔ [[Sarrowmere]] | **Covert** | Reagents that grow nowhere but the mere, shipped to a customer the cantons have never been willing to name |
 | [[Quivar]] ↔ [[Tessine]] | **Covert** | Valmont works out of Tessine because everyone works out of Tessine, and the Signory prefers not to know whose money it is holding |
+| [[Qeshara Sultanate]] ↔ [[Quivar]] | **Covert** | Valmont has taken an interest in which claimant the Court of Viziers eventually backs, and has not been subtle enough about it for the Sultan's own spies to miss |
 
 ## Reading the board
 
 **[[Thurion Merchant Alliance]]** is the most connected power on the map and
-deliberately so: it trades with twelve nations, including both
+deliberately so: it has dealings, of one kind or another, with fourteen
+nations, including both
 [[Khazan Khaganate]], whose riders it leases out as mercenaries, and
 [[Dalstan]], whose tithe-banking it handles without a single question about
 doctrine. Neutrality is not a principle here, it is a business model — and it
 means the Alliance has something to lose in every war on this list. Note how
 little of that is warmth: almost all of Thurion's ties are Trade or Rivalry.
 
-**[[Thesal Theocracy]]** is the opposite kind of hub. Ten ties, and the warmest
+**[[Thesal Theocracy]]** is the opposite kind of hub. Eleven ties, and the warmest
 board position of any nation — an alliance with [[Vaelic Principality]], an
 accord with [[Corvane Republic]], and standing friendships with [[Silicar]],
 [[Xian Ti]] and even [[Quivar]], whose funding of Shelyn's temple in Concord is
@@ -194,9 +200,9 @@ Two nations are pressure points rather than powers:
 
 **[[Lazarian Lichdom]]** is the only nation on the map with nothing warmer than
 a rivalry: no ally, no friend, not one trading partner. Everything it has is
-hostile or deniable, and three of its six ties are relic trades the other party
-would deny under oath — including [[Dalstan]], which condemns undeath from a
-gilded pulpit and sources its relics from Lazarian grave-fields.
+hostile or deniable, and four of its seven ties are relic trades the other
+party would deny under oath — including [[Dalstan]], which condemns undeath
+from a gilded pulpit and sources its relics from Lazarian grave-fields.
 
 The likeliest flashpoint that isn't already a war remains
 [[Kesmarch Frontier]] ↔ [[Thornwild Confederation]]: the Territorial Council is

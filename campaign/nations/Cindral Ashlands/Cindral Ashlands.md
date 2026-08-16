@@ -23,6 +23,8 @@ them. The Emberlord's throne is reforged, not inherited.
 - **Tension** The Emberlord's trial-by-forge is due and two candidates have already survived it once, which the charter does not actually address
 - **Relations**
     - [[Melisor Magocracy]] — **Trade**: Elemental reagents no other forge can produce, at prices the academies resent and pay
+    - [[Qeshara Sultanate]] — **Trade**: Sand-glass against fire-glass, sold to the same caravans that can't tell one furnace's work from the other
+    - [[Sahenna Compact]] — **Trade**: Salt-cured meat and cattle north into a highland that grows nothing it doesn't mine
     - [[Stoneborn Holds]] — **Trade**: Obsidian and rare ore — though the Stoneborn find Cindral's forging rites needlessly dramatic
     - [[Thurigypt]] — **Trade**: The delta's glassworks run on Cindral obsidian, and pay in gold
     - [[Vaelic Principality]] — **Trade**: Fire-forged steel into the Vaelic armories, which would rather not discuss buying abroad

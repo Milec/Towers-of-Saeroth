@@ -30,5 +30,6 @@ everyone at court knows it.
     - [[Thurion Merchant Alliance]] — **Rivalry**: A long, low-grade contest over who really controls which trade secrets
     - [[Xian Ti]] — **Rivalry**: Luxury trade, and who gets to define “refined”
     - [[Corvane Republic]] — **Friction**: Corvane's presses print what Valmont's court would rather went unread, and Quivar's intelligence service works Vantry harder than anywhere else
+    - [[Qeshara Sultanate]] — **Covert**: Valmont has taken an interest in which claimant the Court of Viziers eventually backs, and has not been subtle enough about it for the Sultan's own spies to miss
     - [[Tessine]] — **Covert**: Valmont works out of Tessine because everyone works out of Tessine, and the Signory prefers not to know whose money it is holding
     - [[Vaelic Principality]] — **Covert**: Valmont keeps agents in the Diet and a considerable interest in who the next High Prince will owe

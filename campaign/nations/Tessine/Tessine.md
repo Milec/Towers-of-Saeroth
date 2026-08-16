@@ -29,6 +29,7 @@ no questions. The one nation on the map that is a single city.*
     - [[Corvane Republic]] — **Friendly**: The only two states that will take a political exile without asking what he did
     - [[Aquoniti]] — **Trade**: Aquoniti hulls carry most of what leaves Tessine, and ask no more about the cargo than Tessine asks about the crew
     - [[Kelvary March]] — **Trade**: Tessine banks the companies' pay and insures their contracts, and takes a cut of both
+    - [[Qeshara Sultanate]] — **Trade**: Caravan wealth banked and insured the moment it reaches tidewater, on the same terms Tessine already gives Kelvary March
     - [[Thurion Merchant Alliance]] — **Rivalry**: Two free ports, one trade, and a permanent argument about who is undercutting whom
     - [[Dalstan]] — **Hostile**: Dalstan wants its heretics back; Tessine has never returned anyone and does not intend to start
     - [[Quivar]] — **Covert**: Valmont works out of Tessine because everyone works out of Tessine, and the Signory prefers not to know whose money it is holding

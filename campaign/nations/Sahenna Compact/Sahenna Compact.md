@@ -38,6 +38,8 @@ memory, by people trained from childhood to hold it there and nowhere else.
   The Council has not decided whether answering it or ignoring it does less
   damage, and the silence is being read as confirmation
 - **Relations**
+    - [[Aquoniti]] — **Trade**: Aquoniti hulls are the only ships that call at the Compact's own coast, trading salt and hides for pearls and fish neither clan has ever had reason to harvest itself
+    - [[Cindral Ashlands]] — **Trade**: Salt-cured meat and cattle north into a highland that grows nothing it doesn't mine
     - [[Kesmarch Frontier]] — **Trade**: Salt and dyed cloth north for seed grain and iron, along caravan roads Kesmarch's own settlers rarely travel themselves
     - [[Qeshara Sultanate]] — **Trade**: The caravan road between the savanna and the sultanate is older than either nation's own founding record
     - [[Thornwild Confederation]] — **Trade**: Dyes and jungle goods for salt and hides, exchanged at treeline markets neither nation calls a border
