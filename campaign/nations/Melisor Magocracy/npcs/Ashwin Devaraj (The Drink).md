@@ -1,5 +1,5 @@
 ---
-title: Ashwin Devaraj "The Drink"
+title: Ashwin Devaraj (The Drink)
 type: npc
 level: 6
 role: spellblade duelist, colloquially "The Drink"
@@ -25,7 +25,7 @@ knows the Drink.
   seat in exchange has meant it as a condition, not a courtesy.
 
 ```pf2e-stats
-# Ashwin Devaraj "The Drink"
+# Ashwin Devaraj (The Drink)
 ## Creature 6
 
 ---
