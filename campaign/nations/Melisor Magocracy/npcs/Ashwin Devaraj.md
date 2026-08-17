@@ -11,12 +11,13 @@ for one. He fights with a rune-etched longsword in one hand and a flask of
 raw [[Cindral Ashlands]] elemental reagent in the other, and drinks the
 second to make the first hit harder than steel has any right to. Academy
 purists call it vulgar. Nobody who has seen him empty a vial mid-duel calls
-it that twice.
+it that twice — they call him **the Drink**.
 
 The nickname isn't a boast he chose. It followed him out of his first public
 duel, when a rival's second shouted "someone stop him before he drinks that"
-loud enough for the gallery to hear, and it stuck harder than his actual
-name ever did.
+loud enough for the gallery to hear, and it stuck harder than Ashwin Devaraj
+ever did — half of Thelemar couldn't tell you his real name, but everyone
+knows the Drink.
 
 - **Want** A tenured chair, on his own terms — spellblade theory taught as
   a discipline, not tolerated as a stunt.
