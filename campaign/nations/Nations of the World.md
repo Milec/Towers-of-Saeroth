@@ -9,10 +9,10 @@ added in two later passes. Six cover ground the first pass left untouched —
 the deep places under the world, elemental fire, the primal jungle, and
 three grounded, multiethnic archetypes (a citizen republic, a frontier
 settler nation, and a unification state) that replaced an earlier, more
-fantastical first attempt at those last three. Two more, [[Sahenna
-Compact]] and [[Qeshara Sultanate]], filled a gap the setting had left in
-its real-world inspirations. The five marked *(minor)* are smaller states
-on the eastern continent, added because a world of nothing but great
+fantastical first attempt at those last three. Two more,
+[[Sahenna Compact]] and [[Qeshara Sultanate]], filled a gap the setting had
+left in its real-world inspirations. The five marked *(minor)* are smaller
+states on the eastern continent, added because a world of nothing but great
 powers reads as a small one — a mercenary republic, a free port, a fen of
 physicians, a nation of herders, and the farmers who live downwind of a
 volcano.

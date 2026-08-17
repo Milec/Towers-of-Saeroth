@@ -5,9 +5,9 @@ theme: Clans, caravans, and memory kept without ink
 government: Council of Elders, one per clan, bound by the Storytellers' record
 ---
 
-The savanna belt between [[Thurigypt]]'s desert and the [[Thornwild
-Confederation]]'s jungle — dry season and wet season, salt pan and grass —
-answers to no crown. It answers to a compact between clans old enough that
+The savanna belt between [[Thurigypt]]'s desert and the
+[[Thornwild Confederation]]'s jungle — dry season and wet season, salt pan
+and grass — answers to no crown. It answers to a compact between clans old enough that
 nobody alive remembers it being signed, because it never was. It is kept in
 memory, by people trained from childhood to hold it there and nowhere else.
 
