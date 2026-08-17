@@ -1,5 +1,5 @@
 ---
-title: Ashwin Devaraj
+title: Ashwin Devaraj "The Drink"
 type: npc
 level: 6
 role: spellblade duelist, colloquially "The Drink"
