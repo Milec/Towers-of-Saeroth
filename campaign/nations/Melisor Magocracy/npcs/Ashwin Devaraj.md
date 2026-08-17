@@ -25,7 +25,7 @@ knows the Drink.
   seat in exchange has meant it as a condition, not a courtesy.
 
 ```pf2e-stats
-# Ashwin Devaraj
+# Ashwin Devaraj "The Drink"
 ## Creature 6
 
 ---
