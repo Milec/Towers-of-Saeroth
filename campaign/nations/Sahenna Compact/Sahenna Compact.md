@@ -26,7 +26,11 @@ memory, by people trained from childhood to hold it there and nowhere else.
   afford the Compact's price
 - **Government** A Council of Elders, one matriarch per clan, with law and
   treaty held not on paper but by the Storytellers who are trained from
-  childhood to keep it exactly
+  childhood to keep it exactly. Five clans hold the weight of the Council
+  between them — [[Clan Longmarch]], [[Clan Duskherd]],
+  [[Clan Marrowkeep]], [[Clan Farsight]] and [[Clan Salthollow]] — with
+  smaller clans seated but rarely deciding anything the five haven't
+  already agreed on
 - **Reputation** Feared for customs outsiders have never bothered to
   understand correctly
 - **Faith** Patron [[Pharasma]], kept as guardian of the ancestors rather
@@ -36,7 +40,9 @@ memory, by people trained from childhood to hold it there and nowhere else.
 - **Tension** A Thurigypt caravan-priest's report calling Sahenna funeral
   rites "cannibal witchcraft" has circulated the trade routes for two years.
   The Council has not decided whether answering it or ignoring it does less
-  damage, and the silence is being read as confirmation
+  damage, and the silence is being read as confirmation —
+  [[Clan Salthollow]], whose own pans and caravans sit closest to
+  Thurigypt, is the loudest voice against staying quiet any longer
 - **Relations**
     - [[Aquoniti]] — **Trade**: Aquoniti hulls are the only ships that call at the Compact's own coast, trading salt and hides for pearls and fish neither clan has ever had reason to harvest itself
     - [[Cindral Ashlands]] — **Trade**: Salt-cured meat and cattle north into a highland that grows nothing it doesn't mine
