@@ -23,9 +23,9 @@ books. They don't always.
 - **Tension** A poor harvest in one province has revived the old argument about which duchy feeds which, in almost the original wording
 - **Relations**
     - [[Vaelic Principality]] — **Allied**: Mutual defence against the steppe — Vaelic drill-masters train the Unified Legion, and neither can afford Khazan turning its whole weight on one of them alone
-    - [[Xian Ti]] — **Allied**: Two fortified frontiers on the same steppe; they trade raid intelligence season by season, and each quietly hopes Khazan rides at the other
+    - [[Xian Ti]] — **Allied**: Two states whose institutions were built against the same enemy from opposite sides of an ocean — Voskreld against the raids that unified it, Xian Ti against the ones still coming over its wall. They trade raid intelligence season by season, and each quietly hopes the Khagan's attention stays with the other
     - [[Silicar]] — **Trade**: Lock and canal engineering — Voskreld's waterways were surveyed by Silicar guilds
     - [[Stoneborn Holds]] — **Trade**: Ore and finished steel for the royal cannon foundries
     - [[Cindral Ashlands]] — **Rivalry**: Two armament industries bidding for the same contracts; Voskreld's foundries are cheaper, Cindral's steel is better, and both sides know it
     - [[Dalstan]] — **Friction**: Voskreld watches Dalstani zealotry as a live source of unrest in its own devout provinces
-    - [[Khazan Khaganate]] — **Territorial**: Centuries of raids are the reason the old duchies unified at all
+    - [[Khazan Khaganate]] — **Friction**: Centuries of raids are the reason the old duchies unified at all, and the Union has never once let go of the institutions it built for them — a standing muster, a war chest and a grievance, all aimed across water the Khaganate has no fleet to cross

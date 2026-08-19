@@ -39,41 +39,39 @@ const SIZE = {
 // ridged   sits on a fold belt: gets the collision uplift and parallel ridges
 // coastal  seeded on an OCEAN shore rather than the edge of an inland sea
 const LAND = {
-  // ---- the Long Continent, arctic to equator ----------------------------
-  'Nordheim':                  { tlat: 54, temp: -1, prec: 9,  elev: [24, 46], coastal: 1, why: 'taiga and a fjord coast' },
-  'Elven Confederacy':         { tlat: 48, temp: 10, prec: 12, elev: [26, 48], coastal: 1, why: 'temperate rainforest on a wet western seaboard' },
-  'Voskreld Union':            { tlat: 46, temp: 10, prec: 3, varMul: 0.35,  elev: [24, 42], why: 'plains' },
-  'Dalstan':                   { tlat: 45, latW: 0.7, takeMul: 0.30, temp: 10, prec: 5, elev: [40, 56], why: 'hill country' },
-  'Khazan Khaganate':          { tlat: 43, latW: 1.3, temp: 11, prec: 3,  elev: [24, 42], why: 'open steppe in the continental interior' },
-  'Corvane Republic':          { tlat: 40, latW: 0.7, temp: 12, prec: 8,  elev: [21, 30], coastal: 1, why: 'coastal lowland' },
-  'Vaelic Principality':       { tlat: 39, latW: 1.5, temp: 12, prec: 8,  elev: [26, 46], why: 'deciduous river valleys' },
-  'Thesal Theocracy':          { tlat: 36, temp: 14, prec: 8,  elev: [28, 48], why: 'temperate crossroads country' },
-  'Xian Ti':                   { tlat: 33, temp: 15, prec: 8,  elev: [24, 42], why: 'settled deciduous river country' },
-  'Lazarian Lichdom':          { tlat: 30, temp: 19, prec: 27, elev: [27, 42], why: 'the drowned delta of a great river' },
-  'Kesmarch Frontier':         { tlat: 12, temp: 25, prec: 9,  elev: [24, 42], why: 'seasonal jungle at the frontier' },
-  'Thornwild Confederation':   { tlat: 3,   temp: 26, prec: 18, elev: [26, 44], why: 'equatorial rainforest' },
+  // ---- the European continent, arctic down to the steppe march ----------
+  'Nordheim':                   { tlat: 54, temp: -1, prec: 9,  elev: [24, 46], coastal: 1, why: 'taiga and a fjord coast' },
+  'Melisor Magocracy':          { ridged: 1, tlat: 54, temp: 3, prec: 5, elev: [44, 68], why: 'a high plateau' },
+  'Stoneborn Holds':            { ridged: 1, tlat: 52, temp: 4, prec: 4, elev: [59, 90], why: 'high cold mountains' },
+  'Undertide Reaches':          { ridged: 1, tlat: 50, temp: 4, prec: 4, elev: [59, 94], why: 'the mountains they live under' },
+  'Elven Confederacy':          { tlat: 48, temp: 10, prec: 12, elev: [26, 48], coastal: 1, why: 'temperate rainforest on a wet western seaboard' },
+  'Voskreld Union':             { tlat: 46, temp: 10, prec: 3, varMul: 0.35,  elev: [24, 42], why: 'plains' },
+  'Dalstan':                    { tlat: 45, latW: 0.7, takeMul: 0.30, temp: 10, prec: 5, elev: [40, 56], why: 'hill country' },
+  'Khazan Khaganate':           { tlat: 43, latW: 1.3, temp: 11, prec: 3,  elev: [24, 42], why: 'open steppe in the continental interior' },
+  'Silicar':                    { tlat: 43, temp: 11, prec: 25, elev: [27, 40], why: 'a wet low basin, cut with rivers' },
+  'Corvane Republic':           { tlat: 40, latW: 0.7, temp: 12, prec: 8,  elev: [21, 30], coastal: 1, why: 'coastal lowland' },
+  'Quivar':                     { tlat: 40, temp: 13, prec: 7,  elev: [24, 42], coastal: 1, why: 'deciduous valleys, soft coast' },
+  'Vaelic Principality':        { tlat: 39, latW: 1.5, temp: 12, prec: 8,  elev: [26, 46], why: 'deciduous river valleys' },
+  'Kelvary March':              { tlat: 38, temp: 13, prec: 3, elev: [30, 50], why: 'rolling hill country and horse pasture' },
+  'Thesal Theocracy':           { tlat: 36, temp: 14, prec: 8,  elev: [28, 48], why: 'temperate crossroads country' },
+  'Tessine':                    { tlat: 35, temp: 16, prec: 9, elev: [18, 28], coastal: 2, why: 'a deepwater bay behind a headland' },
+  'Sarrowmere':                 { tlat: 32, temp: 18, prec: 27, elev: [26, 38], why: 'a vast freshwater fen' },
+  'Lazarian Lichdom':           { tlat: 30, temp: 19, prec: 27, elev: [27, 42], why: 'the drowned delta of a great river' },
+  'Tal Ulad':                   { tlat: 28, temp: 19, prec: 3, elev: [28, 46], why: 'high open grassland grazed on a circuit' },
 
-  // ---- the far continent, a collision zone -------------------------------
-  'Melisor Magocracy':         { ridged: 1, tlat: 54, temp: 3, prec: 5, elev: [44, 68], why: 'a high plateau' },
-  'Stoneborn Holds':           { ridged: 1, tlat: 52, temp: 4, prec: 4, elev: [59, 90], why: 'high cold mountains' },
-  'Undertide Reaches':         { ridged: 1, tlat: 50, temp: 4, prec: 4, elev: [59, 94], why: 'the mountains they live under' },
-  'Silicar':                   { tlat: 43, temp: 11, prec: 25, elev: [27, 40], why: 'a wet low basin, cut with rivers' },
-  'Quivar':                    { tlat: 40, temp: 13, prec: 7,  elev: [24, 42], coastal: 1, why: 'deciduous valleys, soft coast' },
-  'Cindral Ashlands':          { ridged: 1, tlat: 20, temp: 24, prec: 1, elev: [58, 92], volcanic: 1, why: 'volcanic highland, hot and bare' },
+  // ---- everywhere else: the wall, the desert bloc, the jungles ----------
+  'Xian Ti':                    { tlat: 33, temp: 15, prec: 8,  elev: [24, 42], why: 'settled deciduous river country' },
+  'Qeshara Sultanate':          { tlat: 27, temp: 22, prec: -2, elev: [32, 48], why: 'a highland desert of oasis valleys' },
+  'Thurigypt':                  { tlat: 24, temp: 25, prec: -3, elev: [26, 40], why: 'hot desert; the river makes its own green belt' },
+  'Cindral Ashlands':           { ridged: 1, tlat: 20, temp: 24, prec: 1, elev: [58, 92], volcanic: 1, why: 'volcanic highland, hot and bare' },
+  'Ashkar Pale':                { tlat: 17, temp: 23, prec: 4, varMul: 0.55, elev: [24, 42], why: 'ash plains and terraced valleys under the volcano' },
+  'Sahenna Compact':            { tlat: 15, temp: 24, prec: 2,  elev: [22, 36], why: 'open savanna between the frontier jungle and the equatorial rainforest' },
+  'Kesmarch Frontier':          { tlat: 12, temp: 25, prec: 9,  elev: [24, 42], why: 'seasonal jungle at the frontier' },
+  'Thornwild Confederation':    { tlat: 3,   temp: 26, prec: 18, elev: [26, 44], why: 'equatorial rainforest' },
 
-  // ---- the desert bloc and the six minor states, eastern continent -------
-  'Qeshara Sultanate':         { tlat: 27, temp: 22, prec: -2, elev: [32, 48], why: 'a highland desert of oasis valleys' },
-  'Thurigypt':                 { tlat: 24, temp: 25, prec: -3, elev: [26, 40], why: 'hot desert; the river makes its own green belt' },
-  'Sahenna Compact':           { tlat: 15, temp: 24, prec: 2,  elev: [22, 36], why: 'open savanna between the frontier jungle and the equatorial rainforest' },
-  'Kelvary March':             { tlat: 38, temp: 13, prec: 3, elev: [30, 50], why: 'rolling hill country and horse pasture' },
-  'Tessine':                   { tlat: 35, temp: 16, prec: 9, elev: [18, 28], coastal: 2, why: 'a deepwater bay behind a headland' },
-  'Sarrowmere':                { tlat: 32, temp: 18, prec: 27, elev: [26, 38], why: 'a vast freshwater fen' },
-  'Tal Ulad':                  { tlat: 28, temp: 19, prec: 3, elev: [28, 46], why: 'high open grassland grazed on a circuit' },
-  'Ashkar Pale':               { tlat: 17, temp: 23, prec: 4, varMul: 0.55, elev: [24, 42], why: 'ash plains and terraced valleys under the volcano' },
-
-  // ---- the island seas ----------------------------------------------------
-  'Thurion Merchant Alliance': { tlat: 34, temp: 16, prec: 9,  elev: [21, 30], coastal: 1, why: 'harbours' },
-  'Aquoniti':                  { tlat: 21, temp: 22, prec: 11, elev: [21, 32], coastal: 1, why: 'warm island seas' },
+  // ---- the island seas --------------------------------------------------
+  'Thurion Merchant Alliance':  { tlat: 34, temp: 16, prec: 9,  elev: [21, 30], coastal: 1, why: 'harbours' },
+  'Aquoniti':                   { tlat: 21, temp: 22, prec: 11, elev: [21, 32], coastal: 1, why: 'warm island seas' },
 };
 
 // what each nation is judged on afterwards
@@ -92,7 +90,7 @@ const CLAIM = {
 };
 
 const BORDERS = [
-  ['Elven Confederacy', 'Khazan Khaganate'],
+  //   ['Elven Confederacy', 'Khazan Khaganate'],   // Khazan moved east; see GROUP
   ['Elven Confederacy', 'Nordheim'],
   // Elvenhome once had to reach the desert, and the only shape that satisfied
   // that was a thousand-mile ribbon down the seaboard — a Chile, drawn by a
@@ -107,8 +105,8 @@ const BORDERS = [
   // quarrel is "periodic raids for beast-stock", which steppe riders can do at
   // range, so that is the one that does not need a shared line on the ground:
   //   ['Khazan Khaganate', 'Thornwild Confederation'],
-  ['Khazan Khaganate', 'Vaelic Principality'],
-  ['Khazan Khaganate', 'Voskreld Union'],
+  //   ['Khazan Khaganate', 'Vaelic Principality'],   // Khazan moved east; see GROUP
+  //   ['Khazan Khaganate', 'Voskreld Union'],   // Khazan moved east; see GROUP
   ['Khazan Khaganate', 'Xian Ti'],
   // Keep this one even though the claim is on caverns *beneath* Stoneborn
   // rather than on a frontier: BORDERS is a layout constraint, not just a
@@ -145,42 +143,63 @@ const BORDERS = [
   ['Sahenna Compact', 'Qeshara Sultanate'],
 ];
 
-// Which continent each nation belongs to.
+// Which continent each nation belongs to — and the split is now thematic, not
+// just geometric. **Group 0 is the European-analogue continent**: Nordic,
+// Ruthenian, Celtic, Italian, German, Greek, French, Finnic, English,
+// Portuguese and Basque name bases, plus the Euro-adjacent fantasy peoples
+// (elves, dwarves, the dark-elf Reaches under them, the lichdom). **Group 1 is
+// everywhere else**: Chinese, Arabic, Berber, Levantine, Iranian, Swahili,
+// Nigerian, and the draconic ashlands.
+//
+// Two nations were rebased rather than moved, because their ground is bound to
+// neighbours on the European side but their names were not (see NAME_BASE):
+// Melisor Magocracy and Tal Ulad.
+//
+// Khazan Khaganate was the hard call. Keeping it west preserved three required
+// borders and the founding myths built on them; moving it east follows its
+// culture and — decisively — balances the continents. At 18 west to 8 east the
+// European side could not be given enough land to feed 18 nations without
+// starving the east into seven fragments, which is what the sweep showed.
+// Moving the Khaganate's 2.0 weight across takes the split to 17/9 and hands
+// the east its own internal quarrel: the steppe against the wall. The three
+// western ties it left behind are rewritten around a sea it no longer crosses,
+// and Khazan/Xian Ti — the Great Wall relationship — comes back as a real
+// frontier instead of raids by hired ship.
 const GROUP = {
-  'Xian Ti': 0, 'Khazan Khaganate': 0, 'Vaelic Principality': 0,
-  'Elven Confederacy': 0, 'Voskreld Union': 0, 'Nordheim': 0,
-  'Lazarian Lichdom': 0, 'Dalstan': 0, 'Corvane Republic': 0,
-  'Thesal Theocracy': 0,
-  'Quivar': 1, 'Silicar': 1, 'Stoneborn Holds': 1, 'Cindral Ashlands': 1,
-  'Melisor Magocracy': 1, 'Undertide Reaches': 1,
-  // Kesmarch and Thornwild move east: neither is tied to the mainland bloc by
-  // a required border, and the eastern continent needed the weight
-  'Kesmarch Frontier': 1, 'Thornwild Confederation': 1,
-  'Kelvary March': 1, 'Tessine': 1,
-  'Sarrowmere': 1, 'Tal Ulad': 1, 'Ashkar Pale': 1,
-  // The desert bloc. Thurigypt sat on the mainland while the two nations its
-  // notes tie it to sat here, so the vault claimed a Thurigypt border Sahenna
-  // could not possibly have — "the savanna belt between Thurigypt's desert and
-  // the Thornwild's jungle" was describing a map that did not exist. All three
-  // now share a continent, which is also what their real-world models suggest:
-  // a river empire, the savanna south of it, and a caravan sultanate east.
-  'Sahenna Compact': 1, 'Qeshara Sultanate': 1, 'Thurigypt': 1,
+  // ---- the European continent ----
+  'Nordheim': 0, 'Voskreld Union': 0, 'Dalstan': 0, 'Corvane Republic': 0,
+  'Vaelic Principality': 0, 'Thesal Theocracy': 0, 'Elven Confederacy': 0,
+  'Lazarian Lichdom': 0,
+  'Quivar': 0, 'Silicar': 0, 'Kelvary March': 0, 'Tessine': 0,
+  'Sarrowmere': 0, 'Stoneborn Holds': 0, 'Undertide Reaches': 0,
+  'Melisor Magocracy': 0, 'Tal Ulad': 0,
+  // ---- everywhere else ----
+  'Khazan Khaganate': 1, 'Xian Ti': 1, 'Thurigypt': 1, 'Sahenna Compact': 1, 'Qeshara Sultanate': 1,
+  'Ashkar Pale': 1, 'Kesmarch Frontier': 1, 'Thornwild Confederation': 1,
+  'Cindral Ashlands': 1,
+  // ---- the island seas ----
   'Aquoniti': 2, 'Thurion Merchant Alliance': 2,
 };
 
 // How much of the SETTLED land each continent gets, independent of how its
-// nations divide it up. Derived from SIZE alone the mainland took three
-// quarters of the world and the east looked like an afterthought; stated
-// outright, the relative scale of nations WITHIN each one is still theirs.
+// nations divide it up. Derived from SIZE alone one continent takes three
+// quarters of the world; stated outright, the relative scale of nations WITHIN
+// each one is still theirs.
 //
-// The two were an even 0.46/0.46 while Thurigypt anchored the mainland's
-// southern end. Moving it east took 6° off group 0's latitude span (it now
-// runs 30°-54°, not 24°-54°) while leaving its land untouched, and a continent
-// that cannot fit its band bulges past it — Vaelic wanted 39°N and was being
-// pushed to 18°N, which is the failure docs/azgaar-map-generation.md §8
-// describes exactly. The share now follows the band: group 0 holds a 24° strip
-// and group 1 a 51° one, so the land is split roughly in that proportion.
-const GROUP_SHARE = { 0: 0.40, 1: 0.52, 2: 0.08 };
+// This number has to be re-derived every time nations change continents,
+// because it is really a statement about LAND PER DEGREE OF LATITUDE. A
+// continent that cannot fit its band bulges past it, and no cost function pulls
+// it back (docs/azgaar-map-generation.md §8). After the European/everywhere-else
+// split, group 0 carries 17 nations and weight 12.1 across a 26° band
+// (28°N-54°N); group 1 carries 9 and weight 9.1 across 40° (3°N-43°N).
+// Land-by-weight wants 0.53/0.39 and land-by-band wants 0.36/0.56; 0.47/0.45
+// is what actually tested best between them. Push group 0 to 0.50 and the
+// European continent itself splits in two; drop it to 0.44 and its small
+// states (Tessine, Sarrowmere, Undertide) get crushed under the big ones. An
+// earlier 18/8 split could not be shared at any value — everything that fed
+// the European side enough starved the east into seven fragments, which is
+// what sent Khazan across the ocean.
+const GROUP_SHARE = { 0: 0.47, 1: 0.45, 2: 0.08 };
 // where each continent starts on the canvas, in fractions of width/height.
 // Only x really matters — latitude decides y from here on.
 const ANCHOR = [[0.24, 0.28], [0.76, 0.39], [0.50, 0.30]];
@@ -234,7 +253,7 @@ const NAME_BASE = {
   'Lazarian Lichdom': 41,           // Serpents — the drowned delta of the dead
   'Thurigypt': 18,                  // Arabic — the desert and its river
   // the east
-  'Melisor Magocracy': 26,          // Karnataka — the high plateau of mages
+  'Melisor Magocracy': 8,           // Roman — academies, arcane law, competing spires
   'Stoneborn Holds': 35,            // Dwarven
   'Undertide Reaches': 34,          // Dark Elven — the mountains they live under
   'Silicar': 9,                     // Finnic — a wet basin cut with rivers
@@ -243,7 +262,7 @@ const NAME_BASE = {
   'Kelvary March': 1,               // English — horse pasture and marches
   'Tessine': 13,                    // Portuguese — a deepwater bay
   'Sarrowmere': 20,                 // Basque — the great fen
-  'Tal Ulad': 16,                   // Turkish — grassland grazed on a circuit
+  'Tal Ulad': 15,                   // Hungarian — steppe horsemen who settled in a Europe
   'Ashkar Pale': 24,                // Iranian — terraces under the volcano
   'Kesmarch Frontier': 28,          // Swahili — the jungle frontier
   'Thornwild Confederation': 21,    // Nigerian — equatorial rainforest

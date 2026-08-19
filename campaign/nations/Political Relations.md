@@ -38,7 +38,7 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Nordheim]] ↔ [[Stoneborn Holds]] | **Allied** | Northern trade and dwarven kinship both |
 | [[Thesal Theocracy]] ↔ [[Vaelic Principality]] | **Allied** | Long-standing, and worn into the ground between them: Thesal clergy anoint Vaelic knights, and no Vaelic prince has been crowned without a Thesal celebrant since the alliance was struck. The coronation road runs from one capital to the other across a shared border |
 | [[Vaelic Principality]] ↔ [[Voskreld Union]] | **Allied** | Mutual defence against the steppe — Vaelic drill-masters train the Unified Legion, and neither can afford Khazan turning its whole weight on one of them alone |
-| [[Voskreld Union]] ↔ [[Xian Ti]] | **Allied** | Two fortified frontiers on the same steppe; they trade raid intelligence season by season, and each quietly hopes Khazan rides at the other |
+| [[Voskreld Union]] ↔ [[Xian Ti]] | **Allied** | Two states whose institutions were built against the same enemy from opposite sides of an ocean — Voskreld against the raids that unified it, Xian Ti against the ones still coming over its wall. They trade raid intelligence season by season, and each quietly hopes the Khagan's attention stays with the other |
 | [[Aquoniti]] ↔ [[Elven Confederacy]] | **Friendly** | The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms |
 | [[Aquoniti]] ↔ [[Thornwild Confederation]] | **Friendly** | Gozreh is the one god both nations name — storm and beast being the same power, seen from a boat or from the canopy |
 | [[Corvane Republic]] ↔ [[Silicar]] | **Friendly** | Merit over birth treated as self-evident in both, one by charter and one by workshop; Silicar's guilds read the Vantry papers and Corvane cites Silicar in every tariff argument |
@@ -122,13 +122,13 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Ashkar Pale]] ↔ [[Cindral Ashlands]] | **Friction** | The ash that makes the Pale the richest farmland on the continent also buries it, and Cindral has never once apologised for living upwind |
 | [[Khazan Khaganate]] ↔ [[Tal Ulad]] | **Friction** | The Khaganate keeps addressing the Ulad as kin who have forgotten themselves, and the Ulad keep declining the compliment |
 | [[Sahenna Compact]] ↔ [[Thurigypt]] | **Friction** | They share the frontier where the delta's irrigated belt gives out and the savanna starts, which is why a caravan-priest's word about Sahenna funeral rites carried as far as it did. The salt and dyed cloth still move through Setharu's markets; nobody at either end pretends the relationship is warm |
-| [[Elven Confederacy]] ↔ [[Khazan Khaganate]] | **Territorial** | An old, unresolved argument over the ancient forest claims |
+| [[Elven Confederacy]] ↔ [[Khazan Khaganate]] | **Territorial** | The oldest grievance on the board and the one with the least ground under it: the tribes claim groves the Khaganate burned in an age when riders could still reach them, and have never held that land or withdrawn the claim. The two share no frontier now, so it travels by envoy and is answered by silence |
 | [[Elven Confederacy]] ↔ [[Nordheim]] | **Territorial** | Nordheim timber camps working northern pine the Winter Elf tribes have never ceded |
 | [[Elven Confederacy]] ↔ [[Thurigypt]] | **Territorial** | Water rights at the desert oasis-groves — wardens' work the Confederacy has never stopped claiming on ground it has never held. The two share no frontier, so the argument travels by envoy and caravan, and is settled in no generation |
 | [[Kesmarch Frontier]] ↔ [[Thornwild Confederation]] | **Territorial** | Homesteaders clearing jungle the Thornwild consider already spoken for — the likeliest of these to turn into a shooting war |
 | [[Khazan Khaganate]] ↔ [[Thornwild Confederation]] | **Territorial** | Periodic raids for beast-stock, ridden across other people's ground rather than over a shared border; the Thornwild has not forgotten |
-| [[Khazan Khaganate]] ↔ [[Vaelic Principality]] | **Territorial** | Generational border pressure |
-| [[Khazan Khaganate]] ↔ [[Voskreld Union]] | **Territorial** | Centuries of raids are the reason the old duchies unified at all |
+| [[Khazan Khaganate]] ↔ [[Vaelic Principality]] | **Friction** | Vaelic's eastern castles were raised against a threat that now has an ocean in front of it, and the Diet still funds them every session. What actually arrives are Khazan riders under somebody else's contract, on whichever side of a Vaelic war has paid the [[Thurion Merchant Alliance]] more |
+| [[Khazan Khaganate]] ↔ [[Voskreld Union]] | **Friction** | Centuries of raids are the reason the old duchies unified at all, and the Union has never once let go of the institutions it built for them — a standing muster, a war chest and a grievance, all aimed across water the Khaganate has no fleet to cross |
 | [[Khazan Khaganate]] ↔ [[Xian Ti]] | **Territorial** | Raiding along the fortified frontier |
 | [[Stoneborn Holds]] ↔ [[Undertide Reaches]] | **Territorial** | The one land dispute on the board that no surveyor can draw: the Reaches claim caverns running directly *beneath* Stoneborn holds, so the disputed ground is stacked rather than side by side and the two share no frontier to argue over. A deep-frontier hold has stopped answering the Assembly's messengers |
 | [[Kelvary March]] ↔ [[Tal Ulad]] | **Territorial** | Kelvary's paymasters have begun ploughing a stretch of the spring route to feed the muster grounds, and the herd-councils are out of patience |
@@ -175,10 +175,14 @@ with [[Corvane Republic]], and quietly worked by Quivari agents in its own Diet.
 
 Three blocs do most of the work:
 
-- **The steppe pact.** [[Vaelic Principality]], [[Voskreld Union]] and
-  [[Xian Ti]] are bound by a shared border with [[Khazan Khaganate]] and very
-  little else. It holds only while the Khagan is a bigger problem than each
-  other — and the Great Khagan is old with no named heir.
+- **The steppe pact.** An alliance that has outlived its own frontier.
+  [[Voskreld Union]] and [[Vaelic Principality]] built their armies, their
+  musters and their entire habit of cooperating against
+  [[Khazan Khaganate]], and now have an ocean where the threat used to be.
+  [[Xian Ti]] is the only signatory still on the Khaganate's border, which
+  makes it the only one the pact is currently any use to — and the one paying
+  least for it. It holds while the Khagan is a bigger problem than each other,
+  and the Great Khagan is old with no named heir.
 - **The values bloc.** [[Thesal Theocracy]] anchors an old alliance with
   [[Vaelic Principality]] and a newer accord with [[Corvane Republic]], built on
   the refugees [[Dalstan]] produces. The only bloc organised around what its
@@ -189,16 +193,19 @@ Three blocs do most of the work:
 
 Two nations are pressure points rather than powers:
 
-- **[[Khazan Khaganate]]** still has five territorial borders, more than anyone.
-  What is new is that it also has a paying customer and one genuine friendship —
-  [[Nordheim]], across a thousand miles, on the strength of two warrior codes
-  that have never had cause to test each other.
-- **[[Elven Confederacy]]** is pressed from three sides, though only two of
-  them are on its own frontier: [[Khazan Khaganate]] in the forests and
-  [[Nordheim]] logging the northern pine, plus a claim on
-  [[Thurigypt]]'s oasis water that the tribes have pursued across an ocean
-  for generations and never once held ground for. That is precisely why they
-  cannot agree whether any single one of them warrants calling a council.
+- **[[Khazan Khaganate]]** is down to a single land border — [[Xian Ti]]'s
+  wall — and has lost none of its reach for it. Everything it used to take by
+  raiding the western powers it now sells them: the
+  [[Thurion Merchant Alliance]] leases its riders by the thousand, so a Khazan
+  lance turns up on whichever side of somebody else's war paid more. It also
+  keeps one genuine friendship, [[Nordheim]] across a thousand miles, on the
+  strength of two warrior codes that have never had cause to test each other.
+- **[[Elven Confederacy]]** carries three grievances and can only reach one of
+  them: [[Nordheim]] logging the northern pine is on its own frontier, while
+  the burned groves it blames [[Khazan Khaganate]] for and the oasis water it
+  claims from [[Thurigypt]] are both an ocean away and neither has ever been
+  held. A council can be called over a logging camp. It cannot be called over
+  two things nobody can march to, which is precisely why no council is called.
 
 **[[Lazarian Lichdom]]** is the only nation on the map with nothing warmer than
 a rivalry: no ally, no friend, not one trading partner. Everything it has is
