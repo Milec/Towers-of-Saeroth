@@ -16,16 +16,16 @@
 // Nordheim is a northern kingdom, not an empire; the theocracy, the magocracy
 // and the merchant league are city-states with a hinterland.
 const SIZE = {
-  'Xian Ti': 2.2, 'Khazan Khaganate': 2.0, 'Vaelic Principality': 1.8,
+  'Xian Ti': 2.2, 'Khazan Khaganate': 2.0, 'Vaelic Principality': 2.4,
   'Thurigypt': 1.4, 'Elven Confederacy': 1.3, 'Voskreld Union': 1.2,
-  'Nordheim': 0.9, 'Quivar': 0.9, 'Kesmarch Frontier': 0.8,
-  'Thornwild Confederation': 0.8, 'Aquoniti': 0.8, 'Lazarian Lichdom': 0.7,
+  'Nordheim': 0.9, 'Quivar': 0.55, 'Kesmarch Frontier': 0.8,
+  'Thornwild Confederation': 0.8, 'Aquoniti': 0.8, 'Lazarian Lichdom': 0.35,
   'Dalstan': 0.7, 'Corvane Republic': 0.55, 'Silicar': 0.6,
   'Stoneborn Holds': 0.6, 'Cindral Ashlands': 0.5, 'Thesal Theocracy': 0.5,
   'Melisor Magocracy': 0.55, 'Thurion Merchant Alliance': 0.34,
   'Undertide Reaches': 0.3,
   // the six minor states of the eastern continent
-  'Kelvary March': 0.45, 'Tal Ulad': 0.5, 'Sarrowmere': 0.4,
+  'Kelvary March': 0.45, 'Tal Ulad': 0.28, 'Sarrowmere': 0.4,
   'Ashkar Pale': 0.4, 'Tessine': 0.15,
   // filled a gap in the setting's real-world inspirations
   'Sahenna Compact': 0.5, 'Qeshara Sultanate': 0.45,
@@ -46,7 +46,7 @@ const LAND = {
   'Undertide Reaches':          { ridged: 1, tlat: 50, temp: 4, prec: 4, elev: [59, 94], why: 'the mountains they live under' },
   'Elven Confederacy':          { tlat: 48, temp: 10, prec: 12, elev: [26, 48], coastal: 1, why: 'temperate rainforest on a wet western seaboard' },
   'Voskreld Union':             { tlat: 46, temp: 10, prec: 3, varMul: 0.35,  elev: [24, 42], why: 'plains' },
-  'Dalstan':                    { tlat: 45, latW: 0.7, takeMul: 0.30, temp: 10, prec: 5, elev: [40, 56], why: 'hill country' },
+  'Dalstan':                    { ridged: 1, tlat: 45, latW: 0.7, takeMul: 0.30, temp: 10, prec: 5, elev: [40, 58], why: 'hill country' },
   'Khazan Khaganate':           { tlat: 43, latW: 1.3, temp: 11, prec: 3,  elev: [24, 42], why: 'open steppe in the continental interior' },
   'Silicar':                    { tlat: 43, temp: 11, prec: 25, elev: [27, 40], why: 'a wet low basin, cut with rivers' },
   'Corvane Republic':           { tlat: 40, latW: 0.7, temp: 12, prec: 8,  elev: [21, 30], coastal: 1, why: 'coastal lowland' },
@@ -61,10 +61,10 @@ const LAND = {
 
   // ---- everywhere else: the wall, the desert bloc, the jungles ----------
   'Xian Ti':                    { tlat: 33, temp: 15, prec: 8,  elev: [24, 42], why: 'settled deciduous river country' },
-  'Qeshara Sultanate':          { tlat: 27, temp: 22, prec: -2, elev: [32, 48], why: 'a highland desert of oasis valleys' },
-  'Thurigypt':                  { tlat: 24, temp: 25, prec: -3, elev: [26, 40], why: 'hot desert; the river makes its own green belt' },
+  'Qeshara Sultanate':          { ridged: 1, tlat: 27, temp: 22, prec: -2, elev: [34, 56], why: 'a highland desert of oasis valleys, on the northern arm of the range' },
+  'Thurigypt':                  { tlat: 24, temp: 25, prec: -3, elev: [26, 40], why: 'hot desert; the river makes its own green belt, and the range breaks around it' },
   'Cindral Ashlands':           { ridged: 1, tlat: 20, temp: 24, prec: 1, elev: [58, 92], volcanic: 1, why: 'volcanic highland, hot and bare' },
-  'Ashkar Pale':                { tlat: 17, temp: 23, prec: 4, varMul: 0.55, elev: [24, 42], why: 'ash plains and terraced valleys under the volcano' },
+  'Ashkar Pale':                { ridged: 1, tlat: 17, temp: 23, prec: 4, varMul: 0.55, elev: [25, 44], why: 'ash plains and terraced valleys under the volcano, on the range\'s southern arm' },
   'Sahenna Compact':            { tlat: 15, temp: 24, prec: 2,  elev: [22, 36], why: 'open savanna between the frontier jungle and the equatorial rainforest' },
   'Kesmarch Frontier':          { tlat: 12, temp: 25, prec: 9,  elev: [24, 42], why: 'seasonal jungle at the frontier' },
   'Thornwild Confederation':    { tlat: 3,   temp: 26, prec: 18, elev: [26, 44], why: 'equatorial rainforest' },
