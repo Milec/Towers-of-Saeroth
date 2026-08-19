@@ -1074,6 +1074,11 @@ async function forgeWorld(page, opts) {
         for (const n of members) {
           const r = Math.max(0.25, Math.min(4, got[n] / target[n]));
           k[n] *= Math.pow(r, O.growGain || 0.62);
+          // Widening this clamp does NOT stop a runaway, though it looks like it
+          // should: growth runs until every cell is claimed, so cost only decides
+          // where two nations MEET. A nation alone beside an empty lobe takes the
+          // whole lobe at any price. Oversize is geometric — fix it with a seed
+          // where the lobes fall to nations that should be large, or a neighbour.
           k[n] = Math.max(0.2, Math.min(5, k[n]));
         }
         if (recentre !== false && it % 5 === 4) {

@@ -58,39 +58,51 @@ stranded alone on an island scores perfectly on all of them.
 
 ## The current map
 
-`campaign/Saeroth.map` is seed 7: 28 nations, **15/15 required borders**,
-**28/28 terrain majorities**, 671 rivers, 27 capitals taken from the nation
-notes. The European continent is a single landmass.
+`campaign/Saeroth.map` is seed 111: 28 nations, **15/15 required borders**,
+27/28 terrain majorities, 729 rivers, 1,232 settlements. Both inhabited
+continents are a single landmass each.
 
-**The continents are split by culture, not just geometry.** Group 0 is the
-European analogue — Nordic, Ruthenian, Celtic, Italian, German, Greek, French,
-Finnic, English, Portuguese and Basque name bases plus the Euro-adjacent
-fantasy peoples (elves, dwarves, the dark-elf Reaches beneath them, the
-lichdom). Group 1 is everywhere else: Chinese, Mongolian, Arabic, Berber,
-Levantine, Iranian, Swahili, Nigerian, and the draconic ashlands.
+**The continents are split by culture.** Group 0 is the European analogue —
+Nordic, Ruthenian, Celtic, Italian, German, Greek, French, Finnic, English,
+Portuguese, Basque, plus the Euro-adjacent fantasy peoples. Group 1 is
+everywhere else: Chinese, Mongolian, Arabic, Berber, Levantine, Iranian,
+Swahili, Nigerian, draconic.
 
-Three things that split cost, and are worth knowing before changing it again:
+### Mountains are the only real brake on nation size
 
-- **Two nations were rebased rather than moved.** Melisor Magocracy (was
-  Karnataka) and Tal Ulad (was Turkish) are bound by borders to European
-  neighbours, so their `NAME_BASE` changed instead of their continent — Roman
-  for the academies, Hungarian for a steppe-horse people who settled in a
-  Europe. Moving them would have cost four required borders.
-- **Khazan Khaganate had to go east, and it is the reason the split works.**
-  Keeping the Mongolian khaganate west preserved three required borders and the
-  founding myths built on them, but left an 18/8 split that could not be shared
-  at any value of `GROUP_SHARE`: every number that fed 18 European nations
-  starved the east into seven fragments. Moving its 2.0 weight across makes it
-  17/9 and hands the east its own quarrel — the steppe against Xian Ti's wall,
-  a border that came *back* in the move.
-- **`GROUP_SHARE` is a statement about land per degree of latitude.** Group 0
-  holds 17 nations across a 26° band, group 1 holds 9 across 40°. Land-by-weight
-  wants 0.53/0.39, land-by-band wants 0.36/0.56; 0.47/0.45 tested best between
-  them. At 0.50 the European continent itself splits in two; at 0.44 its small
-  states get crushed under the big ones.
+`ridged: 1` puts a nation on the fold belt, and a *chain* of them makes a range
+that runs rather than a single massif. There are two: **Melisor - Stoneborn -
+Undertide - Dalstan** in the west, and **Qeshara - Cindral - Ashkar** in the
+east. Ranges are expensive to cross (`RIDGE_BAR`), so they settle borders and
+stop a neighbour spilling over — which is why the eastern range was extended
+past the one nation that claims mountains. A nation's own CLAIM is safe as long
+as it is a *biome* test: desert and grass do not care about height, so a range
+can run through Qeshara and Ashkar without costing them their terrain majority.
+Watch the `mountains inside lowland nations` line anyway — Ashkar hit 89% before
+its `elev` band was pulled back to `[25, 44]`.
 
-Known-imperfect on this seed: the eastern continent comes out as four landmasses
-rather than one, Tal Ulad grows to about 4x its size weight (it is the southern
-edge of the European continent, with open coast and no competitor below it), and
-Corvane, Voskreld and Tessine sit near 0.3x. More `growIters` does not fix the
-Tal Ulad case — it is where the land is, not a convergence failure.
+Two failures worth not repeating:
+
+- **Do not put Kelvary March on the belt.** At tlat 38 it pins Corvane (40)
+  between two ranges and crushes it to 11 cells.
+- **Thurigypt is not a mountain nation.** Ridging the delta gave it 29%
+  mountains and cost the Sahenna border. The range breaks around it, the way a
+  great river valley does.
+
+### Why oversize is not a tuning problem
+
+Territory grows until **every** cell is claimed, so the cost multiplier `k[n]`
+only decides where two nations *meet*. A nation seeded beside an empty lobe of
+coast takes the whole lobe at any price, and no amount of `growIters` or
+`growGain` changes that — 110 iterations behaves like 45. Widening the `k`
+clamp past its `[0.2, 5]` range does nothing either; that was tried and
+reverted. Oversize is **geometric**: fix it with a seed where the lobes fall to
+nations that should be large, a mountain chain across the lobe, or a neighbour
+seeded into it.
+
+Known-imperfect on this seed: Corvane Republic runs to 5.6x its weight on the
+southern lobe, Lazarian Lichdom sits at 2.8x, and Stoneborn Holds is pinched
+against the polar edge. Nation size is far more sensitive to seed than to
+`SIZE`: dropping Lazarian from 0.35 to 0.26 moved Tal Ulad from 189 cells to
+1271 and cost Corvane 2,600. Change one weight at a time and re-read the whole
+table, not just the nation you meant to change.

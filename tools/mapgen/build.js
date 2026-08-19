@@ -19,7 +19,7 @@ const OPTS = Object.assign({
   borderFix: 45, minCells: 60, microCorridor: 8,
   relaxRounds: 14, sizeTol: 0.18, blur: 2, plateYield: 0.85,
   orogenLift: 58, lakes: 6, lakeR: 4.0, arcFreq: 0.009, arcLand: 0.46, arcNeed: 1.15,
-  orogenyMinor: 0.30, foldFloor: 0.26, flatPush: 120000, flatFree: 0.20, flatCeil: 50, foldSharp: 1.7, spineAt: 0.38, orogeny: 2.9, beltWidth: 2.0, frontWarp: 14, frontFreq: 0.0060, rift: 1.6, riftWidth: 4.0, straitMin: 160, hotspots: 14, moat: 4.0, moatW: 3.4, iceY: 0.040,
+  orogenyMinor: 0.30, foldFloor: 0.26, flatPush: 120000, flatFree: 0.20, flatCeil: 50, foldSharp: 1.7, spineAt: 0.38, orogeny: 2.9, beltWidth: 2.7, frontWarp: 14, frontFreq: 0.0060, rift: 1.6, riftWidth: 4.0, straitMin: 160, hotspots: 14, moat: 4.0, moatW: 3.4, iceY: 0.040,
   contBase: 0.62, marginTop: 0.055, wildRelief: 2.0, wildFreq: 0.0050, reliefAmp: 0.98, minPond: 22,
   warpAmp: 165, warpFreq: 0.0016, coastNoise: 0.19, coastBand: 0.12, coastFreq: 0.007, fjordFreq: 0.022, weather: 1,
 }, JSON.parse(process.env.OPTS || '{}'));
