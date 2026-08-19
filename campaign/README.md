@@ -1,6 +1,6 @@
 # Campaign Notes
 
-Your worldbuilding lives here — 21 nations, their factions and people, plus the
+Your worldbuilding lives here — 28 nations, their factions and people, plus the
 setting-wide reference under `world/`. The layout below is the convention
 Claude follows; reorganize freely, the `pf2e-gm` skill doesn't care where things
 live, only the `vault/` and `.claude/` paths at the repo root matter to it.
@@ -117,7 +117,7 @@ The diplomacy exists in three places at once, and all three move together or
 the notes start lying about each other:
 
 1. the table in `nations/Political Relations.md` — **the source of truth**,
-2. the **Relations** bullet on each of the 21 `nations/<Nation>/<Nation>.md` notes,
+2. the **Relations** bullet on each of the 28 `nations/<Nation>/<Nation>.md` notes,
 3. the relations web on the site, drawn from that table.
 
 Never hand-edit a nation's Relations bullet, and never add a row to the table
@@ -125,8 +125,9 @@ and stop there. From the repo root:
 
 ```sh
 # 1. edit the table in campaign/nations/Political Relations.md
-python3 tools/sync_relations.py            # 2. push it out to all 21 nations
+python3 tools/sync_relations.py            # 2. push it out to all 28 nations
 python3 tools/sync_relations.py --check    #    verify; non-zero on drift
+python3 tools/lint_notes.py                #    the silent-failure checks
 python3 tools/build_site.py --no-vault     # 3. rebuild and look at the web
 python3 -m http.server 8899 -d _site
 ```
