@@ -58,33 +58,39 @@ stranded alone on an island scores perfectly on all of them.
 
 ## The current map
 
-`campaign/Saeroth.map` is seed 818: 28 nations, 16 of the 18 required borders,
-27/28 terrain majorities, 595 rivers, 1,226 settlements named from 28
-per-nation cultures, 27 capitals taken from the nation notes. The mainland is
-one landmass; the eastern continent is two, which is inside the ">2 is bad"
-threshold above.
+`campaign/Saeroth.map` is seed 7: 28 nations, **15/15 required borders**,
+**28/28 terrain majorities**, 671 rivers, 27 capitals taken from the nation
+notes. The European continent is a single landmass.
 
-**The desert bloc is the reason the layout looks the way it does.** Thurigypt
-used to sit on the mainland while Sahenna Compact and Qeshara Sultanate
-— the two nations its notes tie it to — sat on the eastern continent, so
-Sahenna's own opening line described a Thurigypt border that could not exist.
-All three now share a continent and are mutually adjacent.
+**The continents are split by culture, not just geometry.** Group 0 is the
+European analogue — Nordic, Ruthenian, Celtic, Italian, German, Greek, French,
+Finnic, English, Portuguese and Basque name bases plus the Euro-adjacent
+fantasy peoples (elves, dwarves, the dark-elf Reaches beneath them, the
+lichdom). Group 1 is everywhere else: Chinese, Mongolian, Arabic, Berber,
+Levantine, Iranian, Swahili, Nigerian, and the draconic ashlands.
 
-Two things that move together and are easy to get wrong:
+Three things that split cost, and are worth knowing before changing it again:
 
-- **`GROUP_SHARE` follows the latitude band, not the nation count.** Moving
-  Thurigypt east took 6° off group 0's span (it runs 30°-54° now) without
-  taking any land away, and a continent that cannot fit its band bulges past
-  it — Vaelic was being pushed from 39°N to 18°N. The split went 0.46/0.46 ->
-  0.40/0.52 to match.
-- **`BORDERS` is a layout constraint, not just a scorecard.** Deleting the
-  Stoneborn/Undertide entry because the claim is on caverns *beneath* Stoneborn
-  rather than on a frontier looked like tidying; it removed the pull holding
-  Stoneborn in place and collapsed it from 326 cells to 21. Both that entry and
-  Sahenna/Kesmarch stay listed even though this seed does not deliver either.
+- **Two nations were rebased rather than moved.** Melisor Magocracy (was
+  Karnataka) and Tal Ulad (was Turkish) are bound by borders to European
+  neighbours, so their `NAME_BASE` changed instead of their continent — Roman
+  for the academies, Hungarian for a steppe-horse people who settled in a
+  Europe. Moving them would have cost four required borders.
+- **Khazan Khaganate had to go east, and it is the reason the split works.**
+  Keeping the Mongolian khaganate west preserved three required borders and the
+  founding myths built on them, but left an 18/8 split that could not be shared
+  at any value of `GROUP_SHARE`: every number that fed 18 European nations
+  starved the east into seven fragments. Moving its 2.0 weight across makes it
+  17/9 and hands the east its own quarrel — the steppe against Xian Ti's wall,
+  a border that came *back* in the move.
+- **`GROUP_SHARE` is a statement about land per degree of latitude.** Group 0
+  holds 17 nations across a 26° band, group 1 holds 9 across 40°. Land-by-weight
+  wants 0.53/0.39, land-by-band wants 0.36/0.56; 0.47/0.45 tested best between
+  them. At 0.50 the European continent itself splits in two; at 0.44 its small
+  states get crushed under the big ones.
 
-Known-imperfect: Vaelic Principality, Stoneborn Holds and Tal Ulad come out at
-0.3-0.6x their size weight. Seed 818 was picked over better-scoring seeds
-because it is the only one swept that annihilates nobody — seed 256 scores a
-perfect 1/1 continent coherence and reduces Vaelic, the campaign's pivot
-nation, to 91 cells. Rank on the smallest nation before the headline numbers.
+Known-imperfect on this seed: the eastern continent comes out as four landmasses
+rather than one, Tal Ulad grows to about 4x its size weight (it is the southern
+edge of the European continent, with open coast and no competitor below it), and
+Corvane, Voskreld and Tessine sit near 0.3x. More `growIters` does not fix the
+Tal Ulad case — it is where the land is, not a convergence failure.

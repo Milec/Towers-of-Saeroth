@@ -25,8 +25,8 @@ fearsome warriors who keep their word.
     - [[Thurion Merchant Alliance]] — **Trade**: Mercenary contracts: the Alliance hires steppe riders by the thousand and leases them to whoever is losing
     - [[Kelvary March]] — **Rivalry**: Professional contempt in both directions about what soldiering is actually for
     - [[Tal Ulad]] — **Friction**: The Khaganate keeps addressing the Ulad as kin who have forgotten themselves, and the Ulad keep declining the compliment
-    - [[Elven Confederacy]] — **Territorial**: An old, unresolved argument over the ancient forest claims
+    - [[Vaelic Principality]] — **Friction**: Vaelic's eastern castles were raised against a threat that now has an ocean in front of it, and the Diet still funds them every session. What actually arrives are Khazan riders under somebody else's contract, on whichever side of a Vaelic war has paid the [[Thurion Merchant Alliance]] more
+    - [[Voskreld Union]] — **Friction**: Centuries of raids are the reason the old duchies unified at all, and the Union has never once let go of the institutions it built for them — a standing muster, a war chest and a grievance, all aimed across water the Khaganate has no fleet to cross
+    - [[Elven Confederacy]] — **Territorial**: The oldest grievance on the board and the one with the least ground under it: the tribes claim groves the Khaganate burned in an age when riders could still reach them, and have never held that land or withdrawn the claim. The two share no frontier now, so it travels by envoy and is answered by silence
     - [[Thornwild Confederation]] — **Territorial**: Periodic raids for beast-stock, ridden across other people's ground rather than over a shared border; the Thornwild has not forgotten
-    - [[Vaelic Principality]] — **Territorial**: Generational border pressure
-    - [[Voskreld Union]] — **Territorial**: Centuries of raids are the reason the old duchies unified at all
     - [[Xian Ti]] — **Territorial**: Raiding along the fortified frontier

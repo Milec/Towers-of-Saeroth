@@ -21,7 +21,7 @@ them.
 - **Faith** Patron [[Irori]], god of self-perfection — the philosophical justification for the entire examination system. [[Shizuru]] is the imperial house's own goddess of sun and honorable ancestry, [[Daikitsu]] the peasantry's harvest goddess, and [[Abadar]] the ministries'
 - **Tension** A cheating scandal in the scholar examinations has reached high enough that exposing it fully would discredit the ministry that would have to investigate it
 - **Relations**
-    - [[Voskreld Union]] — **Allied**: Two fortified frontiers on the same steppe; they trade raid intelligence season by season, and each quietly hopes Khazan rides at the other
+    - [[Voskreld Union]] — **Allied**: Two states whose institutions were built against the same enemy from opposite sides of an ocean — Voskreld against the raids that unified it, Xian Ti against the ones still coming over its wall. They trade raid intelligence season by season, and each quietly hopes the Khagan's attention stays with the other
     - [[Thesal Theocracy]] — **Friendly**: Scholarship and tolerance recognising one another; Concord's libraries are the only foreign collection the Celestial ministries will call a peer
     - [[Thurigypt]] — **Friendly**: Two old and disciplined states with nothing to fight over, sharing a private conviction that the younger nations are in a hurry about everything
     - [[Melisor Magocracy]] — **Trade**: Scholarship traded as freely as goods; both nations keep Irori, and each thinks the other misreads him
