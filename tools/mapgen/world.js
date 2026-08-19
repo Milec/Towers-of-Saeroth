@@ -50,7 +50,6 @@ const LAND = {
   'Thesal Theocracy':          { tlat: 36, temp: 14, prec: 8,  elev: [28, 48], why: 'temperate crossroads country' },
   'Xian Ti':                   { tlat: 33, temp: 15, prec: 8,  elev: [24, 42], why: 'settled deciduous river country' },
   'Lazarian Lichdom':          { tlat: 30, temp: 19, prec: 27, elev: [27, 42], why: 'the drowned delta of a great river' },
-  'Thurigypt':                 { tlat: 24, temp: 25, prec: -3, elev: [26, 40], why: 'hot desert; the river makes its own green belt' },
   'Kesmarch Frontier':         { tlat: 12, temp: 25, prec: 9,  elev: [24, 42], why: 'seasonal jungle at the frontier' },
   'Thornwild Confederation':   { tlat: 3,   temp: 26, prec: 18, elev: [26, 44], why: 'equatorial rainforest' },
 
@@ -62,9 +61,10 @@ const LAND = {
   'Quivar':                    { tlat: 40, temp: 13, prec: 7,  elev: [24, 42], coastal: 1, why: 'deciduous valleys, soft coast' },
   'Cindral Ashlands':          { ridged: 1, tlat: 20, temp: 24, prec: 1, elev: [58, 92], volcanic: 1, why: 'volcanic highland, hot and bare' },
 
-  // ---- the six minor states of the eastern continent ---------------------
+  // ---- the desert bloc and the six minor states, eastern continent -------
+  'Qeshara Sultanate':         { tlat: 27, temp: 22, prec: -2, elev: [32, 48], why: 'a highland desert of oasis valleys' },
+  'Thurigypt':                 { tlat: 24, temp: 25, prec: -3, elev: [26, 40], why: 'hot desert; the river makes its own green belt' },
   'Sahenna Compact':           { tlat: 15, temp: 24, prec: 2,  elev: [22, 36], why: 'open savanna between the frontier jungle and the equatorial rainforest' },
-  'Qeshara Sultanate':         { tlat: 26, temp: 22, prec: -2, elev: [32, 48], why: 'a highland desert of oasis valleys' },
   'Kelvary March':             { tlat: 38, temp: 13, prec: 3, elev: [30, 50], why: 'rolling hill country and horse pasture' },
   'Tessine':                   { tlat: 35, temp: 16, prec: 9, elev: [18, 28], coastal: 2, why: 'a deepwater bay behind a headland' },
   'Sarrowmere':                { tlat: 32, temp: 18, prec: 27, elev: [26, 38], why: 'a vast freshwater fen' },
@@ -110,11 +110,19 @@ const BORDERS = [
   ['Khazan Khaganate', 'Vaelic Principality'],
   ['Khazan Khaganate', 'Voskreld Union'],
   ['Khazan Khaganate', 'Xian Ti'],
+  // Keep this one even though the claim is on caverns *beneath* Stoneborn
+  // rather than on a frontier: BORDERS is a layout constraint, not just a
+  // scorecard, and deleting it let Stoneborn collapse from 326 cells to 21.
   ['Stoneborn Holds', 'Undertide Reaches'],
   ['Corvane Republic', 'Dalstan'],
   ['Dalstan', 'Thesal Theocracy'],
   ['Lazarian Lichdom', 'Thesal Theocracy'],
-  ['Lazarian Lichdom', 'Thurigypt'],
+  // Lazarian's quarrel with Thurigypt is "life against undeath in the plainest
+  // terms: Thurigypt's patron is the one goddess Lazarian has outlawed" — a
+  // theological enmity, not a border dispute, and the only tie Thurigypt had
+  // that asked for ground. It survives the move across the ocean unchanged,
+  // the same way the Elven oasis claim above does:
+  //   ['Lazarian Lichdom', 'Thurigypt'],
   ['Lazarian Lichdom', 'Vaelic Principality'],
   // The coronation road: no Vaelic prince is crowned without a Thesal
   // celebrant, and that is a road between two capitals, not a sea crossing.
@@ -123,10 +131,12 @@ const BORDERS = [
   ['Ashkar Pale', 'Cindral Ashlands'],
   ['Kelvary March', 'Tal Ulad'],
   ['Silicar', 'Tal Ulad'],
-  // Sahenna's own note calls it the savanna between the frontier jungle and
-  // the equatorial rainforest — a claim that needs an actual shared line on
-  // the ground with at least one of the two to be true rather than poetic.
+  // Sahenna's savanna sits against the jungle frontier on one side and
+  // Thurigypt's desert on the other; both pulls keep it wedged between them:
   ['Sahenna Compact', 'Kesmarch Frontier'],
+  // Sahenna's first line calls it the savanna between Thurigypt's desert and
+  // the Thornwild's jungle. That is a claim about the ground, so it needs one:
+  ['Sahenna Compact', 'Thurigypt'],
   // Without a forced border here Qeshara's capital seed landed on a small
   // offshore plate at this seed and came out a wholly isolated island —
   // wrong for a caravan-and-camel sultanate, and it undercuts the trade
@@ -137,7 +147,7 @@ const BORDERS = [
 
 // Which continent each nation belongs to.
 const GROUP = {
-  'Xian Ti': 0, 'Khazan Khaganate': 0, 'Vaelic Principality': 0, 'Thurigypt': 0,
+  'Xian Ti': 0, 'Khazan Khaganate': 0, 'Vaelic Principality': 0,
   'Elven Confederacy': 0, 'Voskreld Union': 0, 'Nordheim': 0,
   'Lazarian Lichdom': 0, 'Dalstan': 0, 'Corvane Republic': 0,
   'Thesal Theocracy': 0,
@@ -148,20 +158,29 @@ const GROUP = {
   'Kesmarch Frontier': 1, 'Thornwild Confederation': 1,
   'Kelvary March': 1, 'Tessine': 1,
   'Sarrowmere': 1, 'Tal Ulad': 1, 'Ashkar Pale': 1,
-  // Sahenna's required border puts it here; Qeshara follows its trade
-  // partners (Sahenna, Melisor) rather than Thurigypt, whose own Trade tie
-  // to it crosses the gap between continents the way Thurion's does to
-  // Xian Ti — commerce, not a shared frontier
-  'Sahenna Compact': 1, 'Qeshara Sultanate': 1,
+  // The desert bloc. Thurigypt sat on the mainland while the two nations its
+  // notes tie it to sat here, so the vault claimed a Thurigypt border Sahenna
+  // could not possibly have — "the savanna belt between Thurigypt's desert and
+  // the Thornwild's jungle" was describing a map that did not exist. All three
+  // now share a continent, which is also what their real-world models suggest:
+  // a river empire, the savanna south of it, and a caravan sultanate east.
+  'Sahenna Compact': 1, 'Qeshara Sultanate': 1, 'Thurigypt': 1,
   'Aquoniti': 2, 'Thurion Merchant Alliance': 2,
 };
 
 // How much of the SETTLED land each continent gets, independent of how its
 // nations divide it up. Derived from SIZE alone the mainland took three
 // quarters of the world and the east looked like an afterthought; stated
-// outright, the two inhabited continents come out the same size and the
-// relative scale of nations WITHIN each one is still theirs.
-const GROUP_SHARE = { 0: 0.46, 1: 0.46, 2: 0.08 };
+// outright, the relative scale of nations WITHIN each one is still theirs.
+//
+// The two were an even 0.46/0.46 while Thurigypt anchored the mainland's
+// southern end. Moving it east took 6° off group 0's latitude span (it now
+// runs 30°-54°, not 24°-54°) while leaving its land untouched, and a continent
+// that cannot fit its band bulges past it — Vaelic wanted 39°N and was being
+// pushed to 18°N, which is the failure docs/azgaar-map-generation.md §8
+// describes exactly. The share now follows the band: group 0 holds a 24° strip
+// and group 1 a 51° one, so the land is split roughly in that proportion.
+const GROUP_SHARE = { 0: 0.40, 1: 0.52, 2: 0.08 };
 // where each continent starts on the canvas, in fractions of width/height.
 // Only x really matters — latitude decides y from here on.
 const ANCHOR = [[0.24, 0.28], [0.76, 0.39], [0.50, 0.30]];

@@ -5,9 +5,10 @@ theme: Clans, caravans, and memory kept without ink
 government: Council of Elders, one per clan, bound by the Storytellers' record
 ---
 
-The savanna belt between [[Thurigypt]]'s desert and the
-[[Thornwild Confederation]]'s jungle — dry season and wet season, salt pan
-and grass — answers to no crown. It answers to a compact between clans old enough that
+The savanna belt that begins where [[Thurigypt]]'s irrigated delta gives
+out and runs east until it climbs into the ash slopes of
+[[Cindral Ashlands]] — dry season and wet season, salt pan and grass —
+answers to no crown. It answers to a compact between clans old enough that
 nobody alive remembers it being signed, because it never was. It is kept in
 memory, by people trained from childhood to hold it there and nowhere else.
 
@@ -49,4 +50,4 @@ memory, by people trained from childhood to hold it there and nowhere else.
     - [[Kesmarch Frontier]] — **Trade**: Salt and dyed cloth north for seed grain and iron, along caravan roads Kesmarch's own settlers rarely travel themselves
     - [[Qeshara Sultanate]] — **Trade**: The caravan road between the savanna and the sultanate is older than either nation's own founding record
     - [[Thornwild Confederation]] — **Trade**: Dyes and jungle goods for salt and hides, exchanged at treeline markets neither nation calls a border
-    - [[Thurigypt]] — **Friction**: The witchcraft accusation hasn't stopped salt and dyed cloth moving through Setharu's markets, but it has stopped anyone at either end pretending the relationship is warm
+    - [[Thurigypt]] — **Friction**: They share the frontier where the delta's irrigated belt gives out and the savanna starts, which is why a caravan-priest's word about Sahenna funeral rites carried as far as it did. The salt and dyed cloth still move through Setharu's markets; nobody at either end pretends the relationship is warm

@@ -32,7 +32,7 @@ grace — and it decides often.
     - [[Thurion Merchant Alliance]] — **Trade**: Tithe-banking and the indulgence trade — the one partner Dalstan has that asks nothing about doctrine
     - [[Quivar]] — **Rivalry**: One-sided: Dalstan's nobility imitates Quivari fashion badly enough to be a court joke
     - [[Thurigypt]] — **Friction**: Thurigypt reads Dalstani opulence as decadence without discipline
-    - [[Vaelic Principality]] — **Friction**: The Cathedral Court has begun licensing inquisitions across the border, and the Imperial judiciary is the only body with standing to refuse it
+    - [[Vaelic Principality]] — **Friction**: The Cathedral Court has begun licensing inquisitions in Vaelic lands it shares no border with — every one of them has to cross [[Thesal Theocracy]], which is Vaelic's sworn ally and Dalstan's declared enemy, and the Imperial judiciary is the only body with standing to refuse the writs once they arrive
     - [[Voskreld Union]] — **Friction**: Voskreld watches Dalstani zealotry as a live source of unrest in its own devout provinces
     - [[Corvane Republic]] — **Hostile**: Dalstan's persecution of Tieflings and dissidents feeds a steady refugee flow into Corvane
     - [[Tessine]] — **Hostile**: Dalstan wants its heretics back; Tessine has never returned anyone and does not intend to start

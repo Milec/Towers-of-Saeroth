@@ -115,13 +115,13 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Cindral Ashlands]] ↔ [[Thesal Theocracy]] | **Friction** | Thesal considers Cindral's elemental reverence reckless faith, and never says so to an envoy's face |
 | [[Corvane Republic]] ↔ [[Quivar]] | **Friction** | Corvane's presses print what Valmont's court would rather went unread, and Quivar's intelligence service works Vantry harder than anywhere else |
 | [[Dalstan]] ↔ [[Thurigypt]] | **Friction** | Thurigypt reads Dalstani opulence as decadence without discipline |
-| [[Dalstan]] ↔ [[Vaelic Principality]] | **Friction** | The Cathedral Court has begun licensing inquisitions across the border, and the Imperial judiciary is the only body with standing to refuse it |
+| [[Dalstan]] ↔ [[Vaelic Principality]] | **Friction** | The Cathedral Court has begun licensing inquisitions in Vaelic lands it shares no border with — every one of them has to cross [[Thesal Theocracy]], which is Vaelic's sworn ally and Dalstan's declared enemy, and the Imperial judiciary is the only body with standing to refuse the writs once they arrive |
 | [[Dalstan]] ↔ [[Voskreld Union]] | **Friction** | Voskreld watches Dalstani zealotry as a live source of unrest in its own devout provinces |
 | [[Elven Confederacy]] ↔ [[Thornwild Confederation]] | **Friction** | The Confederacy regards the Thornwild as unruly distant kin; the Thornwild did not ask to be anyone's cousin |
 | [[Nordheim]] ↔ [[Undertide Reaches]] | **Friction** | Undertide passages keep surfacing inside Nordheim's mountains, always somewhere no jarl agreed to |
 | [[Ashkar Pale]] ↔ [[Cindral Ashlands]] | **Friction** | The ash that makes the Pale the richest farmland on the continent also buries it, and Cindral has never once apologised for living upwind |
 | [[Khazan Khaganate]] ↔ [[Tal Ulad]] | **Friction** | The Khaganate keeps addressing the Ulad as kin who have forgotten themselves, and the Ulad keep declining the compliment |
-| [[Sahenna Compact]] ↔ [[Thurigypt]] | **Friction** | The witchcraft accusation hasn't stopped salt and dyed cloth moving through Setharu's markets, but it has stopped anyone at either end pretending the relationship is warm |
+| [[Sahenna Compact]] ↔ [[Thurigypt]] | **Friction** | They share the frontier where the delta's irrigated belt gives out and the savanna starts, which is why a caravan-priest's word about Sahenna funeral rites carried as far as it did. The salt and dyed cloth still move through Setharu's markets; nobody at either end pretends the relationship is warm |
 | [[Elven Confederacy]] ↔ [[Khazan Khaganate]] | **Territorial** | An old, unresolved argument over the ancient forest claims |
 | [[Elven Confederacy]] ↔ [[Nordheim]] | **Territorial** | Nordheim timber camps working northern pine the Winter Elf tribes have never ceded |
 | [[Elven Confederacy]] ↔ [[Thurigypt]] | **Territorial** | Water rights at the desert oasis-groves — wardens' work the Confederacy has never stopped claiming on ground it has never held. The two share no frontier, so the argument travels by envoy and caravan, and is settled in no generation |
@@ -130,7 +130,7 @@ neither can produce the terms — but none of them would put an army in the fiel
 | [[Khazan Khaganate]] ↔ [[Vaelic Principality]] | **Territorial** | Generational border pressure |
 | [[Khazan Khaganate]] ↔ [[Voskreld Union]] | **Territorial** | Centuries of raids are the reason the old duchies unified at all |
 | [[Khazan Khaganate]] ↔ [[Xian Ti]] | **Territorial** | Raiding along the fortified frontier |
-| [[Stoneborn Holds]] ↔ [[Undertide Reaches]] | **Territorial** | The Reaches claim caverns running directly beneath Stoneborn holds, and a deep-frontier hold has stopped answering the Assembly's messengers |
+| [[Stoneborn Holds]] ↔ [[Undertide Reaches]] | **Territorial** | The one land dispute on the board that no surveyor can draw: the Reaches claim caverns running directly *beneath* Stoneborn holds, so the disputed ground is stacked rather than side by side and the two share no frontier to argue over. A deep-frontier hold has stopped answering the Assembly's messengers |
 | [[Kelvary March]] ↔ [[Tal Ulad]] | **Territorial** | Kelvary's paymasters have begun ploughing a stretch of the spring route to feed the muster grounds, and the herd-councils are out of patience |
 | [[Silicar]] ↔ [[Tal Ulad]] | **Territorial** | Silicar's ploughs advance a field a year onto grazing the Ulad have used for six generations, and neither side thinks it is the one moving |
 | [[Corvane Republic]] ↔ [[Dalstan]] | **Hostile** | Dalstan's persecution of Tieflings and dissidents feeds a steady refugee flow into Corvane |
@@ -193,10 +193,12 @@ Two nations are pressure points rather than powers:
   What is new is that it also has a paying customer and one genuine friendship —
   [[Nordheim]], across a thousand miles, on the strength of two warrior codes
   that have never had cause to test each other.
-- **[[Elven Confederacy]]** is encroached on from three directions at once —
-  [[Khazan Khaganate]] in the forests, [[Nordheim]] logging the northern pine,
-  [[Thurigypt]] over oasis water — which is precisely why the tribes cannot
-  agree whether any single one of them warrants calling a council.
+- **[[Elven Confederacy]]** is pressed from three sides, though only two of
+  them are on its own frontier: [[Khazan Khaganate]] in the forests and
+  [[Nordheim]] logging the northern pine, plus a claim on
+  [[Thurigypt]]'s oasis water that the tribes have pursued across an ocean
+  for generations and never once held ground for. That is precisely why they
+  cannot agree whether any single one of them warrants calling a council.
 
 **[[Lazarian Lichdom]]** is the only nation on the map with nothing warmer than
 a rivalry: no ally, no friend, not one trading partner. Everything it has is

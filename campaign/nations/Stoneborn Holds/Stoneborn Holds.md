@@ -25,4 +25,4 @@ last of its kind; it's meant to be inherited.
     - [[Cindral Ashlands]] — **Trade**: Obsidian and rare ore — though the Stoneborn find Cindral's forging rites needlessly dramatic
     - [[Silicar]] — **Trade**: Machinery and engineering exports
     - [[Voskreld Union]] — **Trade**: Ore and finished steel for the royal cannon foundries
-    - [[Undertide Reaches]] — **Territorial**: The Reaches claim caverns running directly beneath Stoneborn holds, and a deep-frontier hold has stopped answering the Assembly's messengers
+    - [[Undertide Reaches]] — **Territorial**: The one land dispute on the board that no surveyor can draw: the Reaches claim caverns running directly *beneath* Stoneborn holds, so the disputed ground is stacked rather than side by side and the two share no frontier to argue over. A deep-frontier hold has stopped answering the Assembly's messengers
