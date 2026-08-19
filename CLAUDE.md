@@ -264,6 +264,12 @@ Two things worth knowing before changing anything there:
   seed-dependent. Rank a dozen seeds on continent coherence first — every other
   metric is per-nation, and a country stranded alone on an island scores
   perfectly on all of them.
+- **Run `tools/mapgen/inspect.py`, then actually open the PNG.** The build's
+  own counts can all pass while a nation sits in the polar ice or twenty
+  degrees out of its climate band; the inspector fails on exactly those, and
+  a sweep should rank on it before terrain or borders. It still does not tell
+  you whether the map *reads* as a world, so look at `saeroth-world.png`
+  before shipping one.
 - **Don't add a correction pass without checking what created the problem.**
   Three passes once existed only to repair damage from a single line capping
   territory growth; deleting that line deleted all three and improved the map.

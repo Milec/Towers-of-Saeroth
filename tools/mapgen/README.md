@@ -37,6 +37,33 @@ node tools/mapgen/verify.js
 `OPTS` is JSON merged over the defaults at the top of `build.js`, so any knob
 can be overridden per run without editing anything — which is how you sweep.
 
+## Look at the map — and make the machine look too
+
+`tools/mapgen/inspect.py` fails a build on the things a person notices at a
+glance. It exists because a map once reported "15/15 borders, 27/28 terrain"
+while Stoneborn Holds sat twelve degrees inside the arctic and Corvane had slid
+twenty-one degrees south into a lobe four times its size. Every number needed to
+catch both was already being printed. None of them failed.
+
+```sh
+python3 tools/mapgen/inspect.py        # after a build; non-zero if anything is wrong
+python3 tools/mapgen/inspect.py --quiet
+```
+
+It flags a nation centred above 60°N (in the polar cap), more than 12° from its
+target latitude (wrong climate band — desert beside taiga), under 100 cells (too
+small to put a settlement in), over 3× its share of its own continent (it has
+eaten a lobe), or scattered over more than two landmasses unless its CLAIM is
+`islands`.
+
+**Then still open the PNG.** The build writes `saeroth-world.png`; look at it
+before shipping. The inspector catches what is measurable, not whether the
+thing reads as a world. Both times a map went out looking wrong, the numbers
+had been fine.
+
+A sweep should rank on this before terrain and borders — a map with perfect
+counts and a country in the ice is worse than one a degree off everywhere.
+
 ## Reading the output
 
 The diagnostics matter more than the map looking nice at a glance:
