@@ -55,6 +55,21 @@ How the app is put together:
   element by `syncTopbarHeight()`, and the sidebar, scrim and graph overlay are
   all positioned from it.
 
+**Lint the notes before committing.** `tools/lint_notes.py` checks only the
+conventions that fail *silently* — where the build succeeds, the site renders,
+and the note simply says something untrue:
+
+```
+python3 tools/lint_notes.py       # exits non-zero on any problem
+```
+
+It catches wikilinks split across a line break (**not** a broken link — not a
+link at all, and invisible to every other check), wikilinks resolving to no
+note, a filename that has drifted from its own title, and a **Territorial** tie
+between nations `tools/mapgen/world.js` never requires a border for. That last
+one is how Thurigypt was found sitting on the wrong continent from the nations
+its own notes tie it to.
+
 **Test in a real browser before committing.** There is no test suite, and a
 silent JS error just leaves a blank note body:
 
@@ -87,7 +102,7 @@ The diplomacy exists in three places at once, and **all three move together or
 the vault starts lying about itself**:
 
 1. the table in `campaign/nations/Political Relations.md`,
-2. the **Relations** bullet on each of the 21 `campaign/nations/<Nation>/<Nation>.md` notes,
+2. the **Relations** bullet on each of the 28 `campaign/nations/<Nation>/<Nation>.md` notes,
 3. the relations web on the site, which is drawn from that table.
 
 The table is the source of truth. Its own first line claims the relationships
@@ -99,7 +114,7 @@ Relations bullet, and never add a row to the table and stop there.
 
 ```
 # 1. edit the table in campaign/nations/Political Relations.md
-# 2. push it out to all 21 nation notes
+# 2. push it out to all 28 nation notes
 python3 tools/sync_relations.py
 
 # 3. rebuild and look at the web in a real browser

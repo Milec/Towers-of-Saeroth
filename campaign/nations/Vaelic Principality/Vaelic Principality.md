@@ -35,7 +35,7 @@ included, lives under local lords' law with no path upward.
     - [[Cindral Ashlands]] — **Trade**: Fire-forged steel into the Vaelic armories, which would rather not discuss buying abroad
     - [[Kesmarch Frontier]] — **Trade**: Not commerce but people: Kesmarch's settlers are largely Vaelic second sons and disinherited daughters
     - [[Corvane Republic]] — **Rivalry**: An elected assembly and a hereditary Diet, each privately certain the other's model cannot last the century
-    - [[Dalstan]] — **Friction**: The Cathedral Court has begun licensing inquisitions across the border, and the Imperial judiciary is the only body with standing to refuse it
+    - [[Dalstan]] — **Friction**: The Cathedral Court has begun licensing inquisitions in Vaelic lands it shares no border with — every one of them has to cross [[Thesal Theocracy]], which is Vaelic's sworn ally and Dalstan's declared enemy, and the Imperial judiciary is the only body with standing to refuse the writs once they arrive
     - [[Khazan Khaganate]] — **Territorial**: Generational border pressure
     - [[Lazarian Lichdom]] — **Hostile**: The old battlefields Lazarian was built on are full of Vaelic dead, and Vaelic knights have met their own ancestors in the field
     - [[Quivar]] — **Covert**: Valmont keeps agents in the Diet and a considerable interest in who the next High Prince will owe

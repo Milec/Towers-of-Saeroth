@@ -58,14 +58,33 @@ stranded alone on an island scores perfectly on all of them.
 
 ## The current map
 
-`campaign/Saeroth.map` is seed 818: 28 nations, one landmass per continent,
-18/18 required borders, 28/28 terrain majorities, 805 rivers, 1,238 settlements
-named from 28 per-nation cultures, 27 capitals taken from the nation notes.
+`campaign/Saeroth.map` is seed 818: 28 nations, 16 of the 18 required borders,
+27/28 terrain majorities, 595 rivers, 1,226 settlements named from 28
+per-nation cultures, 27 capitals taken from the nation notes. The mainland is
+one landmass; the eastern continent is two, which is inside the ">2 is bad"
+threshold above.
 
-Known-imperfect: Ashkar Pale, Tal Ulad and Melisor Magocracy sit at 0.3–0.5×
-their size weight — Ashkar and Melisor are ringed by their own mountains,
-which cost-distance growth cannot easily push out of; Qeshara Sultanate
-needed a forced border with Sahenna Compact (`BORDERS` in `world.js`) after
-its capital seed landed on an offshore island at this seed and came out
-completely isolated — worth rechecking if the seed or the surrounding
-nations' weights ever change.
+**The desert bloc is the reason the layout looks the way it does.** Thurigypt
+used to sit on the mainland while Sahenna Compact and Qeshara Sultanate
+— the two nations its notes tie it to — sat on the eastern continent, so
+Sahenna's own opening line described a Thurigypt border that could not exist.
+All three now share a continent and are mutually adjacent.
+
+Two things that move together and are easy to get wrong:
+
+- **`GROUP_SHARE` follows the latitude band, not the nation count.** Moving
+  Thurigypt east took 6° off group 0's span (it runs 30°-54° now) without
+  taking any land away, and a continent that cannot fit its band bulges past
+  it — Vaelic was being pushed from 39°N to 18°N. The split went 0.46/0.46 ->
+  0.40/0.52 to match.
+- **`BORDERS` is a layout constraint, not just a scorecard.** Deleting the
+  Stoneborn/Undertide entry because the claim is on caverns *beneath* Stoneborn
+  rather than on a frontier looked like tidying; it removed the pull holding
+  Stoneborn in place and collapsed it from 326 cells to 21. Both that entry and
+  Sahenna/Kesmarch stay listed even though this seed does not deliver either.
+
+Known-imperfect: Vaelic Principality, Stoneborn Holds and Tal Ulad come out at
+0.3-0.6x their size weight. Seed 818 was picked over better-scoring seeds
+because it is the only one swept that annihilates nobody — seed 256 scores a
+perfect 1/1 continent coherence and reduces Vaelic, the campaign's pivot
+nation, to 91 cells. Rank on the smallest nation before the headline numbers.
