@@ -137,6 +137,9 @@ const BORDERS = [
   ['Lazarian Lichdom', 'Vaelic Principality'],
   // The coronation road: no Vaelic prince is crowned without a Thesal
   // celebrant, and that is a road between two capitals, not a sea crossing.
+  // On the built map this comes out as SEVEN cells, every one of them at
+  // height 100 — the shortest and highest border Vaelic has. The alliance's
+  // only physical link is a single pass, which the notes now say outright.
   ['Thesal Theocracy', 'Vaelic Principality'],
   // the eastern continent's own quarrels, which are all about ground
   ['Ashkar Pale', 'Cindral Ashlands'],
