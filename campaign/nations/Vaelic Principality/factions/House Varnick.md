@@ -5,11 +5,12 @@ seat: Non-elector comital house
 elector: false
 ---
 
-Descended from the commoner-born Grand Marshal who broke
-[[House Dravensk]]'s grip on the [[Drake Rider Order]]'s leadership four
-High Princes ago, ennobled to comital rank and granted land carved from
-the Crown's own holdings rather than any elector's territory. Not an
-elector house, and never will be — the seven seats are fixed by charter —
+A [[Vaelic Principality]] comital house descended from the commoner-born
+Grand Marshal who broke [[House Dravensk]]'s grip on the
+[[Drake Rider Order]]'s leadership four High Princes ago, ennobled to comital
+rank and granted land carved from the Crown's own holdings rather than any
+elector's territory. Not an elector house, and never will be — the seven seats
+are fixed by charter —
 but genuinely influential, and living proof at court that the Order's
 meritocracy isn't theoretical.
 

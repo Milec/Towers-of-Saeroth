@@ -2,7 +2,7 @@
 title: Pharasma
 type: deity
 alignment: N
-patron_of: ["Thurigypt"]
+patron_of: ["Sahenna Compact", "Sarrowmere", "Thurigypt"]
 ---
 
 **Pharasma (Lady of Graves)**
@@ -17,6 +17,6 @@ No record of history, and not even other gods, can recall a time before Pharasma
 - **Divine Skill** Medicine
 - **Favored Weapon** Dagger
 - **Domains** Death, Fate, Healing, Knowledge
-- **Worship** patron of [[Thurigypt]]; also kept in [[Lazarian Lichdom]], [[Thesal Theocracy]], [[Undertide Reaches]]
+- **Worship** patron of [[Sahenna Compact]], [[Sarrowmere]], [[Thurigypt]]; also kept in [[Ashkar Pale]], [[Lazarian Lichdom]], [[Thesal Theocracy]], [[Undertide Reaches]]
 
 *Full rules entry: `vault/Setting/Deities/Pharasma.md` — Core Rulebook pg. 439*

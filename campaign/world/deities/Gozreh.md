@@ -17,6 +17,6 @@ A timeless entity birthed from the first wind to stir the vast oceans, Gozreh wa
 - **Divine Skill** Survival
 - **Favored Weapon** Trident
 - **Domains** Air, Nature, Travel, Water
-- **Worship** patron of [[Aquoniti]]; also kept in [[Thornwild Confederation]]
+- **Worship** patron of [[Aquoniti]]; also kept in [[Tal Ulad]], [[Thornwild Confederation]]
 
 *Full rules entry: `vault/Setting/Deities/Gozreh.md` — Core Rulebook pg. 438*

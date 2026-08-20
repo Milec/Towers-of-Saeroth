@@ -70,6 +70,7 @@ campaign/
 │       └── npcs/                    people who belong to it
 ├── world/                           setting-wide reference, not nation-specific
 │   ├── The Towers.md                the campaign premise; indexes known towers
+│   ├── Trade Routes.md              the nine corridors, drawn on the world map
 │   ├── ancestries/                  the peoples: culture and flavour, no rules
 │   ├── deities/                     gods actually worshipped here
 │   ├── history/                     world timeline, ages, cataclysms

@@ -127,6 +127,16 @@ python3 tools/sync_relations.py
 python3 tools/build_site.py --no-vault && python3 -m http.server 8899 -d _site
 ```
 
+**The same applies to the gods.** A deity note's **Worship** bullet and a
+nation's **Faith** bullet are two ends of one fact, and only the nation end is
+ever edited — so adding a nation silently leaves eight deity notes claiming
+nobody keeps them:
+
+```
+python3 tools/sync_faith.py           # rewrite every Worship bullet + patron_of
+python3 tools/sync_faith.py --check   # non-zero on drift
+```
+
 `sync_relations.py` rewrites every nation's Relations bullet from the table,
 and refuses to run if the table is malformed: an unknown standing, a duplicate
 pair, a nation with no folder, a nation related to itself. The unknown-standing

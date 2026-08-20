@@ -2,6 +2,7 @@
 title: Lazarus
 type: npc
 role: Lich Emperor of Lazarian Lichdom
+visibility: GM only below the first section — what Lazarus found is the secret of [[The Nameless Empire]], and no in-world source can confirm any of it
 ---
 
 Lazarus has ruled [[Lazarian Lichdom]] for longer than any living record

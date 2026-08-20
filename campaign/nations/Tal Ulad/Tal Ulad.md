@@ -22,7 +22,7 @@ left alone on both.
 - **Government** Herd-councils of the families sharing a route, with a Season-Speaker elected at the spring gathering to speak for all of them until the next
 - **Reputation** Proud, hospitable, and utterly immovable about the route
 - **Faith** [[Gozreh]] for the weather that decides everything, and [[Desna]] for the road and the stars they navigate it by. [[Erastil]] is kept by the winter camps alone
-- **Tension** A neighbour has begun ploughing a stretch of the spring route, and the herd-councils are divided between negotiating, going around, and going through
+- **Tension** [[Silicar]]'s irrigation works have put a plough through a stretch of the spring route, and the herd-councils are divided between negotiating, going around, and going through
 
 *Mobile, unconquerable, and holding the overland trade route — the Ulad are
 who a party has to deal with to cross the continent by land at all.*
