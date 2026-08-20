@@ -98,6 +98,7 @@ Where the goods go is its own subject, and its own note: see [[Trade Routes]].
 | [[Qeshara Sultanate]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Where the Salt Road meets the sea: everything the caravans carry out of the eastern deserts goes onto Alliance hulls at Qeshara's coast |
 | [[Quivar]] ↔ [[Sarrowmere]] | **Trade** | Antitoxins to a court that poisons, in the quantities that implies, invoiced quarterly and never discussed |
 | [[Quivar]] ↔ [[Tal Ulad]] | **Trade** | Horses, and Quivar is the only buyer that has ever paid what the Ulad say they are worth |
+| [[Quivar]] ↔ [[Vaelic Principality]] | **Trade** | Grain, wool and remounts north out of the Diet's estates; wine, cloth and every luxury a Vaelic noble is not supposed to want, south. It is the last leg of the Uplad horse road and the busiest border either of them keeps — which is also the cover: Quivar's service has been inside the Diet for two generations, largely by way of the wine factors, and Vaelic knows, cannot prove it, and has begun feeding it things on purpose |
 | [[Sahenna Compact]] ↔ [[Thornwild Confederation]] | **Trade** | Dyed cloth and salt for jungle medicinals and pelts, traded clan to clan without either nation's council involved |
 | [[Sarrowmere]] ↔ [[Kelvary March]] | **Trade** | Field surgeons, antitoxins and the cultured moulds that stop a camp wound going bad. A war-trading nation buying its medicine from a nation with almost no army is a joke both of them have stopped making |
 | [[Silicar]] ↔ [[Stoneborn Holds]] | **Trade** | Dwarven steel for Silicar's gearwork and clockwork, which is the only export Stoneborn ships that comes back worth more than it left |
@@ -157,7 +158,6 @@ Where the goods go is its own subject, and its own note: see [[Trade Routes]].
 | [[Qeshara Sultanate]] ↔ [[Quivar]] | **Covert** | Two courts that spy on each other constantly and enjoy it enormously, exchanging intelligence, poets and — twice — an entire intelligence service's worth of deliberately false star-charts |
 | [[Quivar]] ↔ [[Tessine]] | **Covert** | Quivar's intelligence service runs on Tessine paper — forged and genuine, sold across the same counter — and the Signory's discretion is the actual product |
 | [[Quivar]] ↔ [[Undertide Reaches]] | **Covert** | The court is the Warden-Conclave's largest single client, and pays in wine, art and favours rather than anything that leaves a ledger entry |
-| [[Quivar]] ↔ [[Vaelic Principality]] | **Covert** | Quivar's service has been inside the Diet for two generations. Vaelic knows, cannot prove it, and has begun feeding it things on purpose |
 | [[Thurion Merchant Alliance]] ↔ [[Undertide Reaches]] | **Covert** | The Alliance's factors are the Conclave's best-paying customers and its most useful suppliers, and every contract between them is verbal |
 | [[Undertide Reaches]] ↔ [[Voskreld Union]] | **Covert** | Voskreld buys what it cannot be seen buying: route surveys, provincial correspondence, and the occasional accurate figure about its own duchies |
 
