@@ -31,6 +31,7 @@ REPO = os.path.dirname(HERE)
 CAMPAIGN = os.path.join(REPO, 'campaign')
 WORLD_JS = os.path.join(HERE, 'mapgen', 'world.js')
 TABLE = os.path.join(CAMPAIGN, 'nations', 'Political Relations.md')
+ROUTES = os.path.join(CAMPAIGN, 'world', 'Trade Routes.md')
 
 WIKILINK = re.compile(r'\[\[([^\]\n|#]+)')
 # a line that opens [[ after its last ]] and never closes it
@@ -132,9 +133,48 @@ def main():
                     f'Political Relations.md: {a} <-> {b} is Territorial but world.js does not '
                     f'require a border, and the row does not say they share no frontier')
 
+    # 5. Trade-route legs between nations with no relationship at all
+    #
+    # A corridor in Trade Routes.md runs through nations that must, at minimum,
+    # KNOW each other — the relations table is where that is recorded. A leg
+    # between two nations with no row at all is the silent kind of wrong: the
+    # line still draws, the note still reads, and the world quietly claims a
+    # caravan runs between two countries that have never been said to meet.
+    #
+    # Only a MISSING row is an error. A leg worked by rivals or across disputed
+    # ground is deliberate — see "The awkward legs" in the note — so anything
+    # with a standing on it passes.
+    ties = set()
+    if os.path.exists(TABLE):
+        for line in open(TABLE, encoding='utf-8'):
+            cells = [c.strip() for c in line.strip().strip('|').split('|')]
+            if len(cells) < 3:
+                continue
+            pair = re.findall(r'\[\[([^\]|#]+)', cells[0])
+            if len(pair) == 2:
+                ties.add(frozenset(x.strip() for x in pair))
+
+    n_legs = 0
+    if os.path.exists(ROUTES):
+        for line in open(ROUTES, encoding='utf-8'):
+            cells = [c.strip() for c in line.strip().strip('|').split('|')]
+            if len(cells) < 4:
+                continue
+            stops = [x.strip() for x in re.findall(r'\[\[([^\]|#]+)', cells[2])]
+            if len(stops) < 2:
+                continue
+            name = cells[0].replace('*', '').strip()
+            for a, b in zip(stops, stops[1:]):
+                n_legs += 1
+                if frozenset((a, b)) not in ties:
+                    problems.append(
+                        f'Trade Routes.md: {name} runs {a} -> {b}, but Political '
+                        f'Relations.md has no relationship between them at all')
+
     if not quiet:
         print(f'{len(list(notes()))} notes, {n_links} wikilinks, '
-              f'{n_terr} territorial ties, {len(required)} required borders')
+              f'{n_terr} territorial ties, {len(required)} required borders, '
+              f'{n_legs} route legs')
     if problems:
         print(f'\n{len(problems)} problem(s):', file=sys.stderr)
         for p in problems:

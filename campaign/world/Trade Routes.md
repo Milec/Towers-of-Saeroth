@@ -43,6 +43,26 @@ foreign policy.
   the only place on the eastern continent where a caravan can turn into a ship
   without going through the Alliance first.
 
+## The awkward legs
+
+Four stretches of road and water are worked by nations that are not friends,
+which is normal and worth knowing before it comes up at a table:
+
+- **[[Thurion Merchant Alliance]] ↔ [[Tessine]]**, on two of the sea routes.
+  The Alliance has the fleet, the Signory has the deposits, and every exile who
+  moves an account moves a little of the balance between them. The cargo goes
+  anyway. It always has.
+- **[[Thurigypt]] ↔ [[Qeshara Sultanate]]**, at the head of the Salt Road. Two
+  desert powers with one river system between them and four hundred years of
+  argument about who the incense road belongs to. Neither has ever closed it,
+  because closing it costs the closer more.
+- **[[Kesmarch Frontier]] ↔ [[Thornwild Confederation]]**, on the Wagon Road —
+  which runs straight through the ground the two of them are disputing. The
+  grain has to cross it and the medicinals have to come back out, so both sides
+  keep the road open while arguing about who owns what it crosses.
+- **The Delta Run entirely.** Nobody on it has a trading relationship with
+  anybody else on it that either would describe in those words.
+
 ## Where it breaks
 
 The Uplad Circuit is one ploughed field from closing: [[Silicar]]'s irrigation
