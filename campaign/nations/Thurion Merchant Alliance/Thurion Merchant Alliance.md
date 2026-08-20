@@ -18,7 +18,7 @@ lanes, so the Alliance stays neutral whenever staying neutral pays.
 - **Government** Merchant Senate elected by the great trade houses
 - **Reputation** Rich, influential, and politically neutral when profitable
 - **Faith** Patron [[Abadar]] in his aspect as god of contracts and honest wealth — practically the Alliance's founding charter. [[Desna]] is the sailors' luck; [[Norgorber]] is the god nobody admits to keeping, and every great house has a shrine to him somewhere unlit
-- **Tension** One of the great houses has quietly underwritten more insurance than it can cover, and everyone who suspects it is deciding whether to warn the others or profit first
+- **Tension** [[Casa Berruel]] has quietly underwritten more insurance than it can cover, and everyone who suspects it is deciding whether to warn the others or profit first
 - **Relations**
     - [[Dalstan]] — **Trade**: Gilded relics out, tithe-silver in, and the Alliance's factors are the only foreigners the Cathedral Court receives without an inquisitor present
     - [[Kesmarch Frontier]] — **Trade**: Furs, timber and prospected ore, which is how a frontier with no fleet reaches a market
