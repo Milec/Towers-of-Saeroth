@@ -17,6 +17,6 @@ Once a mortal human, Cayden Cailean is now one the few deities known as the Asce
 - **Divine Skill** Athletics
 - **Favored Weapon** Rapier
 - **Domains** Cities, Freedom, Indulgence, Might
-- **Worship** patron of [[Nordheim]]; also kept in [[Corvane Republic]], [[Kesmarch Frontier]]
+- **Worship** patron of [[Nordheim]]; also kept in [[Corvane Republic]], [[Kesmarch Frontier]], [[Tessine]]
 
 *Full rules entry: `vault/Setting/Deities/Cayden Cailean.md` — Core Rulebook pg. 437*

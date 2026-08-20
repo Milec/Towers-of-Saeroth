@@ -11,6 +11,11 @@ academies are fierce — a professor's feud with a rival chair can shape
 national policy as much as any war. The nation is arrogant, brilliant, and
 utterly indispensable to anyone who needs magic done properly.
 
+What the academies will not accredit still gets practised. No chair sanctions
+spellblade theory — mixing the sword into the working is held to be a failure
+of the working — which has left the discipline to duellists like
+[[Ashwin Devaraj (The Drink)]], who are hired constantly and cited never.
+
 - **Capital** Thelemar, a city of competing spires where each great academy builds upward to overlook its rivals
 - **Geography** A high plateau chosen for the ley-lines beneath it; academy-cities scattered across it, linked by teleportation circles rather than roads
 - **Races** [[Human|Humans]], [[Elf|Elves]], [[Gnome|Gnomes]], [[Tiefling|Tieflings]], [[Fetchling|Fetchlings]], any race with magical aptitude

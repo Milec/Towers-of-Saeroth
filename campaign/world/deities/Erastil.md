@@ -17,6 +17,6 @@ Unlike many other good deities, Erastil does not send his followers out into the
 - **Divine Skill** Survival
 - **Favored Weapon** Longbow
 - **Domains** Earth, Family, Nature, Wealth
-- **Worship** patron of [[Kesmarch Frontier]]; also kept in [[Silicar]], [[Thurigypt]], [[Voskreld Union]]
+- **Worship** patron of [[Kesmarch Frontier]]; also kept in [[Ashkar Pale]], [[Silicar]], [[Tal Ulad]], [[Thurigypt]], [[Voskreld Union]]
 
 *Full rules entry: `vault/Setting/Deities/Erastil.md` — Core Rulebook pg. 438*

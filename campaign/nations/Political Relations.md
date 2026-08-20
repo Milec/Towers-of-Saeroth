@@ -178,8 +178,10 @@ of them is stronger, with [[Thesal Theocracy]] bound to both.
 **In the east, the borders are new and the ground is not settled at all.** The
 [[Kesmarch Frontier]] issues charters for country it has never surveyed, which
 puts it against the [[Khazan Khaganate]] in the north and the
-[[Thornwild Confederation]] in the south simultaneously, and it is the only
-nation on the map with a territorial dispute in two directions. Everything else
+[[Thornwild Confederation]] in the south at once — two land disputes with a
+single cause, which is its own kind of achievement. The Khaganate is the only
+other nation carrying two, and one of those is this same argument seen from the
+other side. Everything else
 out there is older and steadier: [[Xian Ti]] and the [[Khazan Khaganate]] have
 faced each other across the same wall for longer than most western nations have
 existed, and [[Qeshara Sultanate]] and [[Sahenna Compact]] have kept the wells

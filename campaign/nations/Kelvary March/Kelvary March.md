@@ -13,6 +13,12 @@ proof of its professionalism and everyone else regards as the problem. Its
 own borders have not been attacked in living memory, because the people who
 would have to do it would be hiring Kelvary to help.
 
+Not everyone who fights for money holds a charter. The Muster Court has no
+authority over a man working alone, and the freelancers who drift between
+contracts — [[Garrick Thorne]] is the one every paymaster in Harrowgate can
+name — are tolerated precisely because they are useful for the work no
+chartered company will put its seal on.
+
 - **Capital** Harrowgate, less a city than a permanent muster ground with a town grown around the paymasters
 - **Geography** Rolling hill country and horse pasture, poor for grain and excellent for training; every ridge has an old earthwork on it from a company practising
 - **Races** [[Human|Humans]], [[Half-Orc|Half-Orcs]], [[Hobgoblin|Hobgoblins]], [[Dwarf|Dwarves]], [[Orc|Orcs]], [[Centaur|Centaurs]]

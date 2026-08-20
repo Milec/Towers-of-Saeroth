@@ -10,9 +10,10 @@ wells as they have caravans, and the fastest road across the western south
 belongs to a nation that does not build roads. What follows is where the goods
 actually go, and who takes a cut on the way.
 
-Nine corridors carry most of it. A nation can sit on several — [[Tessine]] is
-on four and produces almost nothing — and that is usually the whole of its
-foreign policy.
+Nine corridors carry most of it, and twenty-two of the twenty-eight nations
+sit on at least one. A nation can sit on several — [[Tessine]] is on three and
+produces almost nothing — and where it sits is usually the whole of its foreign
+policy.
 
 ## The corridors
 
@@ -30,15 +31,19 @@ foreign policy.
 
 ## Who holds the chokepoints
 
-- **[[Thurion Merchant Alliance]]** sits on three of the nine and insures most
-  of the rest. It is not liked and it is not optional, which the Merchant
+- **[[Thurion Merchant Alliance]]** sits on only two of the nine and matters
+  more than that suggests: both are the deep-water runs nobody else can sail,
+  and the Alliance insures, brokers or crews a good deal of what moves on the
+  other seven. It is not liked and it is not optional, which the Merchant
   Senate regards as the same thing as being trusted.
 - **[[Tal Ulad]]** is the only nation that sells a road rather than a good. The
   circuit is four seasons long, the herd-councils set the toll at the spring
   gathering, and every attempt to build a permanent road across the uplands has
   been met with the observation that there is already one.
-- **[[Tessine]]** is the terminus of four corridors and the origin of none.
-  Everything arrives, changes hands, changes paperwork and leaves.
+- **[[Tessine]]** is the terminus of three corridors and the origin of none —
+  more than any other nation on the board, and it grows, mines and makes
+  nothing worth the freight. Everything arrives, changes hands, changes
+  paperwork and leaves.
 - **[[Kesmarch Frontier]]** is where the Salt Road and the Wagon Road meet, and
   the only place on the eastern continent where a caravan can turn into a ship
   without going through the Alliance first.

@@ -17,6 +17,6 @@ Milani is the patron mother of those who war against oppression, rewarding those
 - **Divine Skill** Society
 - **Favored Weapon** Morningstar
 - **Domains** Change, Destruction, Freedom, Zeal
-- **Worship** patron of [[Corvane Republic]]
+- **Worship** patron of [[Corvane Republic]]; also kept in [[Sarrowmere]]
 
 *Full rules entry: `vault/Setting/Deities/Milani.md` — Gods & Magic pg. 66*

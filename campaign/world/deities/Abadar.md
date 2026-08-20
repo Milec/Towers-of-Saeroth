@@ -2,7 +2,7 @@
 title: Abadar
 type: deity
 alignment: LN
-patron_of: ["Thurion Merchant Alliance", "Voskreld Union"]
+patron_of: ["Qeshara Sultanate", "Thurion Merchant Alliance", "Voskreld Union"]
 ---
 
 **Abadar (Master of the First Vault)**
@@ -17,6 +17,6 @@ Abadar is worshipped as the god of cities, law, merchants, and wealth. Abadar’
 - **Divine Skill** Society
 - **Favored Weapon** Crossbow
 - **Domains** Cities, Earth, Travel, Wealth
-- **Worship** patron of [[Thurion Merchant Alliance]], [[Voskreld Union]]; also kept in [[Corvane Republic]], [[Stoneborn Holds]], [[Vaelic Principality]], [[Xian Ti]]
+- **Worship** patron of [[Qeshara Sultanate]], [[Thurion Merchant Alliance]], [[Voskreld Union]]; also kept in [[Corvane Republic]], [[Kelvary March]], [[Stoneborn Holds]], [[Tessine]], [[Vaelic Principality]], [[Xian Ti]]
 
 *Full rules entry: `vault/Setting/Deities/Abadar.md` — Core Rulebook pg. 437*

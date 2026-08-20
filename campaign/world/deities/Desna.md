@@ -18,6 +18,6 @@ The night didn’t know beauty until Desna came into existence. While the other 
 - **Divine Skill** Acrobatics
 - **Favored Weapon** Starknife
 - **Domains** Dreams, Luck, Moon, Travel
-- **Worship** also kept in [[Aquoniti]], [[Kesmarch Frontier]], [[Khazan Khaganate]], [[Nordheim]], [[Thesal Theocracy]], [[Thurion Merchant Alliance]]
+- **Worship** also kept in [[Aquoniti]], [[Kesmarch Frontier]], [[Khazan Khaganate]], [[Nordheim]], [[Tal Ulad]], [[Tessine]], [[Thesal Theocracy]], [[Thurion Merchant Alliance]]
 
 *Full rules entry: `vault/Setting/Deities/Desna.md` — Core Rulebook pg. 438*

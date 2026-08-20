@@ -19,6 +19,6 @@ The clash of steel, the cry of victory, the gasping denial of death: these are t
 - **Divine Skill** Athletics
 - **Favored Weapon** Greatsword
 - **Domains** Confidence, Destruction, Might, Zeal
-- **Worship** patron of [[Khazan Khaganate]]; also kept in [[Nordheim]], [[Voskreld Union]]
+- **Worship** patron of [[Khazan Khaganate]]; also kept in [[Kelvary March]], [[Nordheim]], [[Voskreld Union]]
 
 *Full rules entry: `vault/Setting/Deities/Gorum.md` — Core Rulebook pg. 438*
