@@ -22,10 +22,11 @@ books. They don't always.
 - **Faith** Patron [[Abadar]] in his aspect as god of roads, law and the standardized measure — deliberately chosen at unification as a god belonging to none of the old duchies. [[Erastil]] remains the provinces' real faith, and [[Gorum]] the Unified Legion's
 - **Tension** A poor harvest in one province has revived the old argument about which duchy feeds which, in almost the original wording
 - **Relations**
-    - [[Vaelic Principality]] — **Allied**: Mutual defence against the steppe — Vaelic drill-masters train the Unified Legion, and neither can afford Khazan turning its whole weight on one of them alone
-    - [[Xian Ti]] — **Allied**: Two states whose institutions were built against the same enemy from opposite sides of an ocean — Voskreld against the raids that unified it, Xian Ti against the ones still coming over its wall. They trade raid intelligence season by season, and each quietly hopes the Khagan's attention stays with the other
-    - [[Silicar]] — **Trade**: Lock and canal engineering — Voskreld's waterways were surveyed by Silicar guilds
-    - [[Stoneborn Holds]] — **Trade**: Ore and finished steel for the royal cannon foundries
-    - [[Cindral Ashlands]] — **Rivalry**: Two armament industries bidding for the same contracts; Voskreld's foundries are cheaper, Cindral's steel is better, and both sides know it
-    - [[Dalstan]] — **Friction**: Voskreld watches Dalstani zealotry as a live source of unrest in its own devout provinces
-    - [[Khazan Khaganate]] — **Friction**: Centuries of raids are the reason the old duchies unified at all, and the Union has never once let go of the institutions it built for them — a standing muster, a war chest and a grievance, all aimed across water the Khaganate has no fleet to cross
+    - [[Thesal Theocracy]] — **Allied**: Voskreld lays the road and Thesal staffs the hospice at the end of it. The Crown gets a network its provinces trust and the Council gets its charity carried to places a theocracy could never have reached on foot
+    - [[Vaelic Principality]] — **Allied**: The two heaviest land powers of the western centre, and neither wants to find out which is heavier. The treaty was written against the steppe and has quietly been re-aimed at what is actually adjacent: Dalstan's writs to the north-west and the Lichdom on Vaelic's own frontier
+    - [[Silicar]] — **Trade**: Silicar's machinery and Voskreld's grain surplus, moved on Voskreld's canals — the most efficient thing on the continent and the least romantic
+    - [[Stoneborn Holds]] — **Trade**: Stoneborn steel into Voskreld's foundries and cannon-works, at a standardized weight Voskreld invented and Stoneborn grudgingly adopted
+    - [[Melisor Magocracy]] — **Rivalry**: Who licenses magic. Voskreld says the Crown does, by the same authority that standardized the coin; Melisor says a state that cannot cast cannot license, and has never once submitted a return
+    - [[Quivar]] — **Rivalry**: The court against the crown, and the tariff schedule against the taste that ignores it. Voskreld standardizes what Quivar sells on the grounds that it is unique
+    - [[Sarrowmere]] — **Friction**: Voskreld's canal works are draining the eastern fen, cant by cant. The Union calls it drainage and improvement; the cantons call it what happens to a nation whose defence is water
+    - [[Undertide Reaches]] — **Covert**: Voskreld buys what it cannot be seen buying: route surveys, provincial correspondence, and the occasional accurate figure about its own duchies

@@ -21,10 +21,14 @@ them.
 - **Faith** Patron [[Irori]], god of self-perfection — the philosophical justification for the entire examination system. [[Shizuru]] is the imperial house's own goddess of sun and honorable ancestry, [[Daikitsu]] the peasantry's harvest goddess, and [[Abadar]] the ministries'
 - **Tension** A cheating scandal in the scholar examinations has reached high enough that exposing it fully would discredit the ministry that would have to investigate it
 - **Relations**
-    - [[Voskreld Union]] — **Allied**: Two states whose institutions were built against the same enemy from opposite sides of an ocean — Voskreld against the raids that unified it, Xian Ti against the ones still coming over its wall. They trade raid intelligence season by season, and each quietly hopes the Khagan's attention stays with the other
-    - [[Thesal Theocracy]] — **Friendly**: Scholarship and tolerance recognising one another; Concord's libraries are the only foreign collection the Celestial ministries will call a peer
-    - [[Thurigypt]] — **Friendly**: Two old and disciplined states with nothing to fight over, sharing a private conviction that the younger nations are in a hurry about everything
-    - [[Melisor Magocracy]] — **Trade**: Scholarship traded as freely as goods; both nations keep Irori, and each thinks the other misreads him
-    - [[Thurion Merchant Alliance]] — **Trade**: Silk, tea and porcelain: the single most profitable route the Alliance runs
-    - [[Quivar]] — **Rivalry**: Luxury trade, and who gets to define “refined”
-    - [[Khazan Khaganate]] — **Territorial**: Raiding along the fortified frontier
+    - [[Ashkar Pale]] — **Friendly**: Ward assemblies and examination halls: two administrative cultures that recognise each other on sight. Ashkar's grain feeds the southern prefectures, and Xian Ti's clerks find the Pale the only neighbour whose paperwork arrives in order
+    - [[Thesal Theocracy]] — **Friendly**: Hospice and academy: two states that conduct their entire friendship by letter and have found nothing in three centuries of correspondence worth falling out over
+    - [[Thurigypt]] — **Friendly**: Two old empires, each of which recognises the other as genuinely old — a courtesy neither extends to anybody else
+    - [[Aquoniti]] — **Trade**: Pearls and salvage east, silk and porcelain out to the islands — the shortest crossing in the world and the one Aquoniti sails without insuring
+    - [[Cindral Ashlands]] — **Trade**: Kiln-fire and fire-forged steel: the imperial porcelain works cannot reach their temperatures without Cindral's engineers, and say so in no document
+    - [[Melisor Magocracy]] — **Trade**: Two scholarly states with the same contempt for amateurs. Melisor sells teleport circles to the imperial academies and Xian Ti sells back the only paper that survives being written on by a spell
+    - [[Thurion Merchant Alliance]] — **Trade**: Silk, tea and porcelain west; the eastern terminus of everything, and the run the Alliance's whole fleet schedule is built around
+    - [[Quivar]] — **Rivalry**: Two cultural capitals on opposite oceans, each convinced the other is derivative, both correct
+    - [[Kesmarch Frontier]] — **Friction**: The Territorial Council issues charters on ground the Empire has called tributary since before the Council existed, and neither of them will submit the question to anyone
+    - [[Thornwild Confederation]] — **Friction**: Canopy timber concessions granted by an imperial ministry to imperial subjects, on land the Circle has never ceded and does not recognise the ministry's authority over
+    - [[Khazan Khaganate]] — **Territorial**: The wall, and everything on both sides of it. The oldest continuous military frontier in the world

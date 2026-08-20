@@ -2,7 +2,7 @@
    campaign/ is small (under 1 MB) so it is precached in full and works fully
    offline. vault/ is ~192 MB across 41k files, so it is cached lazily as pages
    are actually opened — anything you have read once stays available offline. */
-const VERSION = 'v10';
+const VERSION = 'v11';
 const SHELL = 'shell-' + VERSION;
 const NOTES = 'notes-' + VERSION;
 

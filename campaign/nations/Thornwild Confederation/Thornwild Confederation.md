@@ -23,9 +23,10 @@ them.
 - **Tension** Two clans want to answer [[Kesmarch Frontier]]'s encroachment with blood and the rest want to wait, and Rootmeet has adjourned twice without deciding
 - **Relations**
     - [[Aquoniti]] — **Friendly**: Gozreh is the one god both nations name — storm and beast being the same power, seen from a boat or from the canopy
-    - [[Sahenna Compact]] — **Trade**: Dyes and jungle goods for salt and hides, exchanged at treeline markets neither nation calls a border
-    - [[Thesal Theocracy]] — **Trade**: Jungle medicinals for the hospices; the only outsiders the Circle deals with by standing arrangement
-    - [[Thurion Merchant Alliance]] — **Trade**: Pelts, venom and toxin, bought at the river mouths and never asked about
-    - [[Elven Confederacy]] — **Friction**: The Confederacy regards the Thornwild as unruly distant kin; the Thornwild did not ask to be anyone's cousin
-    - [[Kesmarch Frontier]] — **Territorial**: Homesteaders clearing jungle the Thornwild consider already spoken for — the likeliest of these to turn into a shooting war
-    - [[Khazan Khaganate]] — **Territorial**: Periodic raids for beast-stock, ridden across other people's ground rather than over a shared border; the Thornwild has not forgotten
+    - [[Ashkar Pale]] — **Friendly**: When the mountain goes, the Pale evacuates into Thornwild canopy, and has done for six recorded falls. The Circle asks nothing for it beyond warning, which the Pale's wardens give better than anyone alive
+    - [[Sahenna Compact]] — **Trade**: Dyed cloth and salt for jungle medicinals and pelts, traded clan to clan without either nation's council involved
+    - [[Thesal Theocracy]] — **Trade**: Jungle medicinals — the Circle sells what the hospices cannot grow, and has never allowed a Thesal expedition to collect it directly
+    - [[Thurion Merchant Alliance]] — **Trade**: Venom, pelts and canopy timber, at the two coastal factories the Circle permits and nowhere else
+    - [[Cindral Ashlands]] — **Friction**: Geothermal works at the range's foot are killing canopy downstream, and the Emberlord's position is that a volcano was doing that before either nation existed
+    - [[Xian Ti]] — **Friction**: Canopy timber concessions granted by an imperial ministry to imperial subjects, on land the Circle has never ceded and does not recognise the ministry's authority over
+    - [[Kesmarch Frontier]] — **Territorial**: The Territorial Council is issuing homestead charters for land it has never surveyed, and the Circle of First Packs has adjourned twice without deciding what to do about it

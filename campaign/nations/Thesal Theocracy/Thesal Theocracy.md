@@ -21,13 +21,13 @@ nations need a mediator neither side will refuse, they send for Thesal.
 - **Tension** [[Dalstan]] missionaries have started preaching openly in the border shrines, and Thesal's own doctrine of tolerance is the reason it can't simply expel them
 - **Relations**
     - [[Corvane Republic]] — **Allied**: A standing accord over the Dalstani refugee flow — Thesal hospices staff Corvane's overflowing wards, and Corvane's assembly argues Thesal's case where a theocracy's own word carries less
-    - [[Vaelic Principality]] — **Allied**: Long-standing, and worn into the ground between them: Thesal clergy anoint Vaelic knights, and no Vaelic prince has been crowned without a Thesal celebrant since the alliance was struck. The coronation road runs from one capital to the other across a shared border
-    - [[Quivar]] — **Friendly**: Shelyn's temple in Concord is Quivari-funded and entirely sincere, which is the one thing about Quivar that nobody suspects of being an operation
-    - [[Sarrowmere]] — **Friendly**: Thesal's hospices are stocked by Sarrowmere and staffed by Thesal, and neither has ever wanted to change the arrangement
-    - [[Silicar]] — **Friendly**: Two small nations nobody has ever had cause to fear, who started by trading grain for medicine and discovered they agree about nearly everything
-    - [[Xian Ti]] — **Friendly**: Scholarship and tolerance recognising one another; Concord's libraries are the only foreign collection the Celestial ministries will call a peer
-    - [[Thornwild Confederation]] — **Trade**: Jungle medicinals for the hospices; the only outsiders the Circle deals with by standing arrangement
-    - [[Thurigypt]] — **Trade**: Grain for medicine, and a shared devotion to Sarenrae that keeps the terms generous on both sides
-    - [[Cindral Ashlands]] — **Friction**: Thesal considers Cindral's elemental reverence reckless faith, and never says so to an envoy's face
-    - [[Dalstan]] — **Hostile**: Thesal treats Dalstan as a cautionary tale about faith without compassion
-    - [[Lazarian Lichdom]] — **Hostile**: Ideological enemies outright
+    - [[Vaelic Principality]] — **Allied**: Worn into the ground between them: Thesal clergy anoint Vaelic knights, and no Vaelic prince has been crowned without a Thesal celebrant since the alliance was struck. The coronation road runs from one capital to the other across a shared border
+    - [[Voskreld Union]] — **Allied**: Voskreld lays the road and Thesal staffs the hospice at the end of it. The Crown gets a network its provinces trust and the Council gets its charity carried to places a theocracy could never have reached on foot
+    - [[Elven Confederacy]] — **Friendly**: Sarenrae's hospices treat the tribes at the forest edge and ask nothing for it, which the Council of chiefs has decided — after two centuries of watching for the catch — to take at face value
+    - [[Sarrowmere]] — **Friendly**: The two nations that everyone sends their dying to. Thesal heals by faith and Sarrowmere by reagent, they disagree about almost everything else, and the fen cantons have never once refused a Thesal courier
+    - [[Tal Ulad]] — **Friendly**: The one settled nation that treats the herd-councils as a nation rather than a trespass. Thesal's charter honours every good and neutral faith, which includes the weather-worship Dalstan writes up as paganism, and the Ulad have not forgotten who said it first
+    - [[Xian Ti]] — **Friendly**: Hospice and academy: two states that conduct their entire friendship by letter and have found nothing in three centuries of correspondence worth falling out over
+    - [[Thornwild Confederation]] — **Trade**: Jungle medicinals — the Circle sells what the hospices cannot grow, and has never allowed a Thesal expedition to collect it directly
+    - [[Thurigypt]] — **Trade**: Hospice medicine and trained physicians for grain, arranged temple to temple. Pharasma's priests and Sarenrae's have found a division of labour that neither theology strictly permits
+    - [[Dalstan]] — **Hostile**: Two faiths and one border. Zon-Kuthon's court calls Sarenrae's mercy a heresy that makes suffering meaningless; Thesal calls the Cathedral Court a business
+    - [[Lazarian Lichdom]] — **Hostile**: Sarenrae's clergy hold that undeath is the one thing that cannot be redeemed, which makes the Lichdom the single article of Thesal doctrine with no mercy in it

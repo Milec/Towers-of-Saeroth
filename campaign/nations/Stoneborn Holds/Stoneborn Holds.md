@@ -20,9 +20,11 @@ last of its kind; it's meant to be inherited.
 - **Faith** Patron [[Torag]], honored in every forge-hall as the maker who never stops working. [[Magrim]] receives the dead and the oaths that outlive them; the human merchant quarters keep [[Abadar]] instead, which the thanes tolerate as a trade concession
 - **Tension** A minor hold on the deep frontier has stopped answering the Assembly's messengers, and nobody wants to be the thane who says why out loud
 - **Relations**
-    - [[Nordheim]] — **Allied**: Northern trade and dwarven kinship both
+    - [[Nordheim]] — **Allied**: Northern kinship and the iron road both — Nordheim timber and amber up the coast, Stoneborn steel back down. The road runs through Elven pine, which is the one subject the two of them are careful never to raise together
+    - [[Cindral Ashlands]] — **Friendly**: Two forge cultures that keep Torag in the same corner of the workshop, half a world apart. Fire-forged steel and volcanic glass move by sea, but the correspondence between their smiths predates either state's current government and has never once been about price
     - [[Vaelic Principality]] — **Friendly**: Torag's forge-halls in both, and Vaelic castle engineers have trained in Stoneborn holds for nine centuries
-    - [[Cindral Ashlands]] — **Trade**: Obsidian and rare ore — though the Stoneborn find Cindral's forging rites needlessly dramatic
-    - [[Silicar]] — **Trade**: Machinery and engineering exports
-    - [[Voskreld Union]] — **Trade**: Ore and finished steel for the royal cannon foundries
-    - [[Undertide Reaches]] — **Territorial**: The one land dispute on the board that no surveyor can draw: the Reaches claim caverns running directly *beneath* Stoneborn holds, so the disputed ground is stacked rather than side by side and the two share no frontier to argue over. A deep-frontier hold has stopped answering the Assembly's messengers
+    - [[Elven Confederacy]] — **Trade**: Rare timber and herbs down, steel and tools up — the trade that keeps the northern mountains supplied and the one relationship the tribes conduct entirely by weight and measure
+    - [[Melisor Magocracy]] — **Trade**: Gems and masterwork settings for enchantment — the academies cannot make a focus that holds, and the Holds cannot make one that does anything
+    - [[Silicar]] — **Trade**: Dwarven steel for Silicar's gearwork and clockwork, which is the only export Stoneborn ships that comes back worth more than it left
+    - [[Voskreld Union]] — **Trade**: Stoneborn steel into Voskreld's foundries and cannon-works, at a standardized weight Voskreld invented and Stoneborn grudgingly adopted
+    - [[Undertide Reaches]] — **Territorial**: The same mountain claimed from above and below. The Holds hold the peaks and the Reaches hold what is under them, and the seam where the two claims meet has been fought over in the dark for two hundred years

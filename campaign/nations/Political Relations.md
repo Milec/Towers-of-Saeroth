@@ -5,8 +5,13 @@ view: relations
 ---
 
 Every standing relationship between nations, drawn from the Relations bullet on
-each nation's own note — 113 ties across all 28. Read a row as symmetric unless
+each nation's own note — 118 ties across all 28. Read a row as symmetric unless
 the detail says otherwise; most of these are felt differently from each side.
+
+The board was rebuilt against the world map: a nation quarrels over ground only
+where it actually shares a frontier, and everything crossing an ocean is
+carried by somebody — the two sea powers, the caravan roads, or a shared faith
+that predates the crossing.
 
 **Standing** is a rough label for how the relationship behaves at the table.
 Read it as a scale running from warm to hostile, with **Trade** sitting off to
@@ -27,198 +32,193 @@ run between nations that cannot stand each other:
 The difference between **Allied** and **Friendly** is obligation, not warmth. An
 ally is expected to march; a friend is expected to be glad to see you. Several
 of the friendships here are older and steadier than any of the alliances — the
-Tide Lords and the elven tribes have shared the drowned woods so long that
-neither can produce the terms — but none of them would put an army in the field.
+Pale has evacuated into Thornwild canopy through six recorded falls without
+either side ever writing terms — but none of them would put an army in the
+field.
+
+## How the goods actually move
+
+Four corridors carry nearly everything, and most of the Trade rows above are a
+leg of one of them:
+
+- **The Middle Sea.** [[Thurion Merchant Alliance]] and [[Aquoniti]] sit in the
+  water between the continents, and almost nothing crosses without touching
+  one of them. Thurion runs the long hauls and the contracts; Aquoniti runs the
+  short crossings, the salvage and the islands. They are neighbours, they are
+  rivals, and between them they are why a Vaelic breastplate can be bought in
+  [[Xian Ti]].
+- **The Salt Road.** [[Sahenna Compact]] caravans and [[Qeshara Sultanate]]
+  wells, running the eastern deserts from [[Thurigypt]]'s river to
+  [[Kesmarch Frontier]]'s markets and out to the coast onto Alliance hulls. The
+  only alliance on the board that is a trade route first.
+- **The Uplad circuit.** [[Tal Ulad]]'s four-season route is the overland road
+  across the western south, and the herd-councils sell safe passage on it. Every
+  nation that touches it either pays the toll ([[Kelvary March]],
+  [[Vaelic Principality]], [[Quivar]]) or is trying not to ([[Dalstan]]).
+- **The Voskreld roads and canals.** [[Voskreld Union]] standardized the coin,
+  the measure and the roadbed, then built the network they run on. Grain,
+  steel and machinery move across the western centre on it, which is most of
+  why [[Silicar]] and [[Stoneborn Holds]] can sell to anyone at all.
 
 ## The table
 
 | Nations | Standing | The relationship |
 | --- | --- | --- |
 | [[Corvane Republic]] ↔ [[Thesal Theocracy]] | **Allied** | A standing accord over the Dalstani refugee flow — Thesal hospices staff Corvane's overflowing wards, and Corvane's assembly argues Thesal's case where a theocracy's own word carries less |
-| [[Nordheim]] ↔ [[Stoneborn Holds]] | **Allied** | Northern trade and dwarven kinship both |
-| [[Thesal Theocracy]] ↔ [[Vaelic Principality]] | **Allied** | Long-standing, and worn into the ground between them: Thesal clergy anoint Vaelic knights, and no Vaelic prince has been crowned without a Thesal celebrant since the alliance was struck. The coronation road runs from one capital to the other across a shared border |
-| [[Vaelic Principality]] ↔ [[Voskreld Union]] | **Allied** | Mutual defence against the steppe — Vaelic drill-masters train the Unified Legion, and neither can afford Khazan turning its whole weight on one of them alone |
-| [[Voskreld Union]] ↔ [[Xian Ti]] | **Allied** | Two states whose institutions were built against the same enemy from opposite sides of an ocean — Voskreld against the raids that unified it, Xian Ti against the ones still coming over its wall. They trade raid intelligence season by season, and each quietly hopes the Khagan's attention stays with the other |
-| [[Aquoniti]] ↔ [[Elven Confederacy]] | **Friendly** | The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms |
+| [[Nordheim]] ↔ [[Stoneborn Holds]] | **Allied** | Northern kinship and the iron road both — Nordheim timber and amber up the coast, Stoneborn steel back down. The road runs through Elven pine, which is the one subject the two of them are careful never to raise together |
+| [[Qeshara Sultanate]] ↔ [[Sahenna Compact]] | **Allied** | The Salt Road pact, and the oldest working alliance on either continent: Sahenna clans guarantee the caravans and Qeshara guarantees the wells. Both courts keep the terms by memory as much as by charter, and neither has broken them in living record |
+| [[Thesal Theocracy]] ↔ [[Vaelic Principality]] | **Allied** | Worn into the ground between them: Thesal clergy anoint Vaelic knights, and no Vaelic prince has been crowned without a Thesal celebrant since the alliance was struck. The coronation road runs from one capital to the other across a shared border |
+| [[Thesal Theocracy]] ↔ [[Voskreld Union]] | **Allied** | Voskreld lays the road and Thesal staffs the hospice at the end of it. The Crown gets a network its provinces trust and the Council gets its charity carried to places a theocracy could never have reached on foot |
+| [[Vaelic Principality]] ↔ [[Voskreld Union]] | **Allied** | The two heaviest land powers of the western centre, and neither wants to find out which is heavier. The treaty was written against the steppe and has quietly been re-aimed at what is actually adjacent: Dalstan's writs to the north-west and the Lichdom on Vaelic's own frontier |
 | [[Aquoniti]] ↔ [[Thornwild Confederation]] | **Friendly** | Gozreh is the one god both nations name — storm and beast being the same power, seen from a boat or from the canopy |
+| [[Ashkar Pale]] ↔ [[Thornwild Confederation]] | **Friendly** | When the mountain goes, the Pale evacuates into Thornwild canopy, and has done for six recorded falls. The Circle asks nothing for it beyond warning, which the Pale's wardens give better than anyone alive |
+| [[Ashkar Pale]] ↔ [[Xian Ti]] | **Friendly** | Ward assemblies and examination halls: two administrative cultures that recognise each other on sight. Ashkar's grain feeds the southern prefectures, and Xian Ti's clerks find the Pale the only neighbour whose paperwork arrives in order |
+| [[Cindral Ashlands]] ↔ [[Stoneborn Holds]] | **Friendly** | Two forge cultures that keep Torag in the same corner of the workshop, half a world apart. Fire-forged steel and volcanic glass move by sea, but the correspondence between their smiths predates either state's current government and has never once been about price |
+| [[Corvane Republic]] ↔ [[Elven Confederacy]] | **Friendly** | The only neighbour that ever wrote it down: the Republic's charter recognises tribal timber title, which cost Corvane its cheapest lumber and bought it the one border in the north it has never had to garrison |
 | [[Corvane Republic]] ↔ [[Silicar]] | **Friendly** | Merit over birth treated as self-evident in both, one by charter and one by workshop; Silicar's guilds read the Vantry papers and Corvane cites Silicar in every tariff argument |
-| [[Kesmarch Frontier]] ↔ [[Nordheim]] | **Friendly** | Cayden Cailean on both sides of the water, and the same conviction that a person is whatever they built after they arrived |
-| [[Kesmarch Frontier]] ↔ [[Silicar]] | **Friendly** | Seed grain, ploughs and canal plans sent south for very little back; Erastil's clergy at both ends arranged it and neither council was really consulted |
-| [[Khazan Khaganate]] ↔ [[Nordheim]] | **Friendly** | Two warrior codes that recognise each other across a thousand miles — both keep Gorum, both hold that a fight badly won is no victory, and neither has ever had cause to test the other |
-| [[Quivar]] ↔ [[Thesal Theocracy]] | **Friendly** | Shelyn's temple in Concord is Quivari-funded and entirely sincere, which is the one thing about Quivar that nobody suspects of being an operation |
-| [[Silicar]] ↔ [[Thesal Theocracy]] | **Friendly** | Two small nations nobody has ever had cause to fear, who started by trading grain for medicine and discovered they agree about nearly everything |
+| [[Corvane Republic]] ↔ [[Tessine]] | **Friendly** | Two harbours that take anyone, for opposite reasons — one out of principle and one out of profit — and both of them full of people Dalstan wants back |
+| [[Elven Confederacy]] ↔ [[Thesal Theocracy]] | **Friendly** | Sarenrae's hospices treat the tribes at the forest edge and ask nothing for it, which the Council of chiefs has decided — after two centuries of watching for the catch — to take at face value |
+| [[Kesmarch Frontier]] ↔ [[Nordheim]] | **Friendly** | Half the frontier's charters are held by second sons out of the fjords, and the Territorial Council still runs its founding assembly on Nordheim's Thing procedure |
+| [[Kesmarch Frontier]] ↔ [[Silicar]] | **Friendly** | The frontier was built with Silicar ploughs and Silicar pumps, and Silicar's engineers treat the Kesmarch homesteads as a proving ground they get paid to visit |
+| [[Khazan Khaganate]] ↔ [[Nordheim]] | **Friendly** | Two warrior codes that have never had cause to test each other, an ocean apart. Envoys exchange gifts, drink, and a great deal of mutual professional respect, and both sides privately consider the arrangement improved by the distance |
+| [[Sarrowmere]] ↔ [[Thesal Theocracy]] | **Friendly** | The two nations that everyone sends their dying to. Thesal heals by faith and Sarrowmere by reagent, they disagree about almost everything else, and the fen cantons have never once refused a Thesal courier |
 | [[Stoneborn Holds]] ↔ [[Vaelic Principality]] | **Friendly** | Torag's forge-halls in both, and Vaelic castle engineers have trained in Stoneborn holds for nine centuries |
-| [[Thesal Theocracy]] ↔ [[Xian Ti]] | **Friendly** | Scholarship and tolerance recognising one another; Concord's libraries are the only foreign collection the Celestial ministries will call a peer |
-| [[Thurigypt]] ↔ [[Xian Ti]] | **Friendly** | Two old and disciplined states with nothing to fight over, sharing a private conviction that the younger nations are in a hurry about everything |
-| [[Ashkar Pale]] ↔ [[Undertide Reaches]] | **Friendly** | The Reaches have mapped every evacuation road beneath the Pale, and twice opened them without being asked |
-| [[Sarrowmere]] ↔ [[Thesal Theocracy]] | **Friendly** | Thesal's hospices are stocked by Sarrowmere and staffed by Thesal, and neither has ever wanted to change the arrangement |
-| [[Corvane Republic]] ↔ [[Tessine]] | **Friendly** | The only two states that will take a political exile without asking what he did |
-| [[Aquoniti]] ↔ [[Corvane Republic]] | **Trade** | Shipbuilding, and growing |
-| [[Aquoniti]] ↔ [[Quivar]] | **Trade** | Pearl and coral, graded at sea and sold on to the Valmont ateliers |
-| [[Aquoniti]] ↔ [[Thurigypt]] | **Trade** | Old river-trade ties |
-| [[Aquoniti]] ↔ [[Thurion Merchant Alliance]] | **Trade** | The shipping-and-insurance backbone of the whole continent |
-| [[Cindral Ashlands]] ↔ [[Melisor Magocracy]] | **Trade** | Elemental reagents no other forge can produce, at prices the academies resent and pay |
-| [[Cindral Ashlands]] ↔ [[Stoneborn Holds]] | **Trade** | Obsidian and rare ore — though the Stoneborn find Cindral's forging rites needlessly dramatic |
-| [[Cindral Ashlands]] ↔ [[Thurigypt]] | **Trade** | The delta's glassworks run on Cindral obsidian, and pay in gold |
-| [[Cindral Ashlands]] ↔ [[Vaelic Principality]] | **Trade** | Fire-forged steel into the Vaelic armories, which would rather not discuss buying abroad |
-| [[Corvane Republic]] ↔ [[Kesmarch Frontier]] | **Trade** | The same migration seen from both ends — Corvane ships supply homesteads that Corvane's own overflow settled |
-| [[Corvane Republic]] ↔ [[Nordheim]] | **Trade** | Nordheim timber, Corvane yards — half the Republic's fleet is northern pine |
-| [[Dalstan]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Tithe-banking and the indulgence trade — the one partner Dalstan has that asks nothing about doctrine |
-| [[Elven Confederacy]] ↔ [[Melisor Magocracy]] | **Trade** | Magical plants for the academies, on terms the tribes renegotiate roughly once a century |
-| [[Elven Confederacy]] ↔ [[Quivar]] | **Trade** | Heartwood wine and elven silk — the only foreign court the tribes consider worth dressing for |
-| [[Kesmarch Frontier]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Furs, ore and wagon-freight; the Alliance is the frontier's only reliable buyer |
-| [[Kesmarch Frontier]] ↔ [[Vaelic Principality]] | **Trade** | Not commerce but people: Kesmarch's settlers are largely Vaelic second sons and disinherited daughters |
-| [[Khazan Khaganate]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Mercenary contracts: the Alliance hires steppe riders by the thousand and leases them to whoever is losing |
-| [[Melisor Magocracy]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Alliance contracts for enchanted goods quietly bankroll the academies |
-| [[Melisor Magocracy]] ↔ [[Undertide Reaches]] | **Trade** | Construct labour and salvaged relics, contracted openly and delivered without explanation |
-| [[Melisor Magocracy]] ↔ [[Xian Ti]] | **Trade** | Scholarship traded as freely as goods; both nations keep Irori, and each thinks the other misreads him |
-| [[Nordheim]] ↔ [[Silicar]] | **Trade** | Iron and timber south, Silicar grain north; the fjords cannot feed themselves through a hard winter |
-| [[Nordheim]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Amber, furs and whale oil, moved south under Alliance insurance |
-| [[Silicar]] ↔ [[Stoneborn Holds]] | **Trade** | Machinery and engineering exports |
-| [[Silicar]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Same exports, sold on |
-| [[Silicar]] ↔ [[Voskreld Union]] | **Trade** | Lock and canal engineering — Voskreld's waterways were surveyed by Silicar guilds |
-| [[Stoneborn Holds]] ↔ [[Voskreld Union]] | **Trade** | Ore and finished steel for the royal cannon foundries |
-| [[Thesal Theocracy]] ↔ [[Thornwild Confederation]] | **Trade** | Jungle medicinals for the hospices; the only outsiders the Circle deals with by standing arrangement |
-| [[Thesal Theocracy]] ↔ [[Thurigypt]] | **Trade** | Grain for medicine, and a shared devotion to Sarenrae that keeps the terms generous on both sides |
-| [[Thornwild Confederation]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Pelts, venom and toxin, bought at the river mouths and never asked about |
-| [[Thurion Merchant Alliance]] ↔ [[Xian Ti]] | **Trade** | Silk, tea and porcelain: the single most profitable route the Alliance runs |
-| [[Ashkar Pale]] ↔ [[Silicar]] | **Trade** | The two most agricultural nations on the continent are each other's best customers: Pale grain against Silicar machinery |
-| [[Ashkar Pale]] ↔ [[Kesmarch Frontier]] | **Trade** | Seed stock going one way and settlers the other, in numbers neither government has bothered to count |
-| [[Ashkar Pale]] ↔ [[Sarrowmere]] | **Trade** | Ash-glaze vessels are the only containers that hold the mere's compounds without spoiling them |
-| [[Quivar]] ↔ [[Sarrowmere]] | **Trade** | Physicians and poisons, bought on the same manifest and never itemised separately |
-| [[Kelvary March]] ↔ [[Quivar]] | **Trade** | Quivar hires and Kelvary asks nothing, which is precisely what Quivar is paying for |
-| [[Sahenna Compact]] ↔ [[Kesmarch Frontier]] | **Trade** | Salt and dyed cloth north for seed grain and iron, along caravan roads Kesmarch's own settlers rarely travel themselves |
-| [[Sahenna Compact]] ↔ [[Thornwild Confederation]] | **Trade** | Dyes and jungle goods for salt and hides, exchanged at treeline markets neither nation calls a border |
-| [[Sahenna Compact]] ↔ [[Qeshara Sultanate]] | **Trade** | The caravan road between the savanna and the sultanate is older than either nation's own founding record |
-| [[Qeshara Sultanate]] ↔ [[Thurigypt]] | **Trade** | Incense and dyed silk for grain and stone; two old desert powers who have never needed to like each other to profit from each other |
-| [[Aquoniti]] ↔ [[Sahenna Compact]] | **Trade** | Aquoniti hulls are the only ships that call at the Compact's own coast, trading salt and hides for pearls and fish neither clan has ever had reason to harvest itself |
-| [[Sahenna Compact]] ↔ [[Cindral Ashlands]] | **Trade** | Salt-cured meat and cattle north into a highland that grows nothing it doesn't mine |
-| [[Qeshara Sultanate]] ↔ [[Cindral Ashlands]] | **Trade** | Sand-glass against fire-glass, sold to the same caravans that can't tell one furnace's work from the other |
-| [[Qeshara Sultanate]] ↔ [[Tessine]] | **Trade** | Caravan wealth banked and insured the moment it reaches tidewater, on the same terms Tessine already gives Kelvary March |
-| [[Kelvary March]] ↔ [[Tessine]] | **Trade** | Tessine banks the companies' pay and insures their contracts, and takes a cut of both |
-| [[Kelvary March]] ↔ [[Silicar]] | **Trade** | Field kit, remount tack and repair shops, on a standing order that has outlasted several wars |
-| [[Aquoniti]] ↔ [[Tessine]] | **Trade** | Aquoniti hulls carry most of what leaves Tessine, and ask no more about the cargo than Tessine asks about the crew |
-| [[Tal Ulad]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Safe passage across the uplands, sold by the season and honoured to the letter |
+| [[Tal Ulad]] ↔ [[Thesal Theocracy]] | **Friendly** | The one settled nation that treats the herd-councils as a nation rather than a trespass. Thesal's charter honours every good and neutral faith, which includes the weather-worship Dalstan writes up as paganism, and the Ulad have not forgotten who said it first |
+| [[Thesal Theocracy]] ↔ [[Xian Ti]] | **Friendly** | Hospice and academy: two states that conduct their entire friendship by letter and have found nothing in three centuries of correspondence worth falling out over |
+| [[Thurigypt]] ↔ [[Xian Ti]] | **Friendly** | Two old empires, each of which recognises the other as genuinely old — a courtesy neither extends to anybody else |
+| [[Aquoniti]] ↔ [[Corvane Republic]] | **Trade** | Corvane hulls for Aquoniti pearls, and a shared professional interest in what the Merchant Alliance is doing next |
+| [[Aquoniti]] ↔ [[Kesmarch Frontier]] | **Trade** | The island fleet works the frontier's river mouths, which is how a landlocked-feeling frontier turns out to have a coast after all |
+| [[Aquoniti]] ↔ [[Quivar]] | **Trade** | Pearls and coral to the court that sets what they are worth, and the one cargo Aquoniti insures at full value |
+| [[Aquoniti]] ↔ [[Tessine]] | **Trade** | The island fleet and the harbour that asks no questions of it — Tessine clears Aquoniti's salvage, and neither side inquires closely into where salvage ends |
+| [[Aquoniti]] ↔ [[Thurigypt]] | **Trade** | Grain and worked gold for pearls, coral and fish, on a run old enough that both sides quote the same customary rates |
+| [[Aquoniti]] ↔ [[Xian Ti]] | **Trade** | Pearls and salvage east, silk and porcelain out to the islands — the shortest crossing in the world and the one Aquoniti sails without insuring |
+| [[Ashkar Pale]] ↔ [[Kesmarch Frontier]] | **Trade** | Grain and ash-glaze ware to the frontier towns, and the Pale's salvage crews hire out to Kesmarch after a bad season |
+| [[Ashkar Pale]] ↔ [[Sahenna Compact]] | **Trade** | Glass and vine crops for salt and hides, on the short road around the range's southern arm |
+| [[Cindral Ashlands]] ↔ [[Qeshara Sultanate]] | **Trade** | Obsidian and volcanic glass into Qeshara's glassworks, which cut and sell it back at eight times the price to buyers who know exactly where it came from |
+| [[Cindral Ashlands]] ↔ [[Sahenna Compact]] | **Trade** | Salt and cattle up to the ash country, worked steel back — the Compact is the only supplier that will cross the Ashlands on credit |
+| [[Cindral Ashlands]] ↔ [[Xian Ti]] | **Trade** | Kiln-fire and fire-forged steel: the imperial porcelain works cannot reach their temperatures without Cindral's engineers, and say so in no document |
+| [[Corvane Republic]] ↔ [[Nordheim]] | **Trade** | Nordheim timber and amber into the Vantry yards, Corvane hulls back north. The single busiest stretch of water in the northern west |
+| [[Dalstan]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Gilded relics out, tithe-silver in, and the Alliance's factors are the only foreigners the Cathedral Court receives without an inquisitor present |
+| [[Elven Confederacy]] ↔ [[Melisor Magocracy]] | **Trade** | Magical plants to the academies. The Council sells the cuttings and refuses, absolutely, to sell the ground they came out of |
+| [[Elven Confederacy]] ↔ [[Quivar]] | **Trade** | Elven silk, wine and rare timber, and Quivar pays court prices for all three without haggling, which the tribes find suspicious and profitable in equal measure |
+| [[Elven Confederacy]] ↔ [[Stoneborn Holds]] | **Trade** | Rare timber and herbs down, steel and tools up — the trade that keeps the northern mountains supplied and the one relationship the tribes conduct entirely by weight and measure |
+| [[Kelvary March]] ↔ [[Silicar]] | **Trade** | Field kit, remount tack and the pumps that keep a camp alive, all built to the March's specification and sold to whoever the March is working for |
+| [[Kelvary March]] ↔ [[Tal Ulad]] | **Trade** | Remounts, fifteen thousand head a year, and the single largest movement of horses in the world. The March pays on the hoof at the summer gathering and the herd-councils have never once extended credit |
+| [[Kelvary March]] ↔ [[Tessine]] | **Trade** | Where the March's contracts are underwritten, insured and — when a company is destroyed on somebody else's ground — paid out |
+| [[Kesmarch Frontier]] ↔ [[Qeshara Sultanate]] | **Trade** | The frontier end of the Salt Road — furs and ore for salt, cloth and the wells' protection |
+| [[Kesmarch Frontier]] ↔ [[Sahenna Compact]] | **Trade** | Salt and hides for grain and iron, at the seasonal markets the clans keep on the savanna edge |
+| [[Kesmarch Frontier]] ↔ [[Thurigypt]] | **Trade** | Grain south into the frontier by the wagon-road, and the reason a homestead season that fails does not become a famine |
+| [[Kesmarch Frontier]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Furs, timber and prospected ore, which is how a frontier with no fleet reaches a market |
+| [[Kesmarch Frontier]] ↔ [[Vaelic Principality]] | **Trade** | Not commerce but people: Kesmarch's settlers are largely Vaelic second sons and disinherited daughters, and the goods follow the families |
+| [[Khazan Khaganate]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Mercenary contracts, brokered and insured. A Khazan lance turns up on whichever side of somebody else's war paid more, and the Alliance takes its percentage of both |
+| [[Melisor Magocracy]] ↔ [[Stoneborn Holds]] | **Trade** | Gems and masterwork settings for enchantment — the academies cannot make a focus that holds, and the Holds cannot make one that does anything |
+| [[Melisor Magocracy]] ↔ [[Undertide Reaches]] | **Trade** | Deep reagents and luminous fungus, sold by the Warden-Conclave at prices the academies resent and pay |
+| [[Melisor Magocracy]] ↔ [[Xian Ti]] | **Trade** | Two scholarly states with the same contempt for amateurs. Melisor sells teleport circles to the imperial academies and Xian Ti sells back the only paper that survives being written on by a spell |
+| [[Nordheim]] ↔ [[Thurion Merchant Alliance]] | **Trade** | The northern run — timber and whale oil, in the season when it can be sailed at all |
+| [[Nordheim]] ↔ [[Undertide Reaches]] | **Trade** | Amber and whale oil down into the deep holds, deep-vein iron back up. Neither nation has ever visited the other's capital |
+| [[Qeshara Sultanate]] ↔ [[Tessine]] | **Trade** | Incense, dyed silk and glass into a port that asks nothing about their provenance and charges accordingly |
+| [[Qeshara Sultanate]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Where the Salt Road meets the sea: everything the caravans carry out of the eastern deserts goes onto Alliance hulls at Qeshara's coast |
+| [[Quivar]] ↔ [[Sarrowmere]] | **Trade** | Antitoxins to a court that poisons, in the quantities that implies, invoiced quarterly and never discussed |
 | [[Quivar]] ↔ [[Tal Ulad]] | **Trade** | Horses, and Quivar is the only buyer that has ever paid what the Ulad say they are worth |
-| [[Aquoniti]] ↔ [[Nordheim]] | **Rivalry** | Centuries old, over the northern lanes, and genuinely good-natured |
-| [[Cindral Ashlands]] ↔ [[Voskreld Union]] | **Rivalry** | Two armament industries bidding for the same contracts; Voskreld's foundries are cheaper, Cindral's steel is better, and both sides know it |
-| [[Corvane Republic]] ↔ [[Thurion Merchant Alliance]] | **Rivalry** | Corvane's citizen assembly is a standing philosophical rebuke to Thurion's wealth-gated senate |
+| [[Sahenna Compact]] ↔ [[Thornwild Confederation]] | **Trade** | Dyed cloth and salt for jungle medicinals and pelts, traded clan to clan without either nation's council involved |
+| [[Sarrowmere]] ↔ [[Kelvary March]] | **Trade** | Field surgeons, antitoxins and the cultured moulds that stop a camp wound going bad. A war-trading nation buying its medicine from a nation with almost no army is a joke both of them have stopped making |
+| [[Silicar]] ↔ [[Stoneborn Holds]] | **Trade** | Dwarven steel for Silicar's gearwork and clockwork, which is the only export Stoneborn ships that comes back worth more than it left |
+| [[Silicar]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Food exports out through Thurion's holds, which is how a small inventive nation feeds three others |
+| [[Silicar]] ↔ [[Voskreld Union]] | **Trade** | Silicar's machinery and Voskreld's grain surplus, moved on Voskreld's canals — the most efficient thing on the continent and the least romantic |
+| [[Stoneborn Holds]] ↔ [[Voskreld Union]] | **Trade** | Stoneborn steel into Voskreld's foundries and cannon-works, at a standardized weight Voskreld invented and Stoneborn grudgingly adopted |
+| [[Tal Ulad]] ↔ [[Vaelic Principality]] | **Trade** | Warhorses to the Diet's heavy cavalry, driven down the eastern circuit each autumn. The one Vaelic institution the herd-councils will deal with directly rather than through a factor |
+| [[Thesal Theocracy]] ↔ [[Thornwild Confederation]] | **Trade** | Jungle medicinals — the Circle sells what the hospices cannot grow, and has never allowed a Thesal expedition to collect it directly |
+| [[Thesal Theocracy]] ↔ [[Thurigypt]] | **Trade** | Hospice medicine and trained physicians for grain, arranged temple to temple. Pharasma's priests and Sarenrae's have found a division of labour that neither theology strictly permits |
+| [[Thornwild Confederation]] ↔ [[Thurion Merchant Alliance]] | **Trade** | Venom, pelts and canopy timber, at the two coastal factories the Circle permits and nowhere else |
+| [[Thurion Merchant Alliance]] ↔ [[Vaelic Principality]] | **Trade** | Grain, wool and fine armour out through Thurion's holds — Vaelic's whole surplus reaches the rest of the world in somebody else's ships, which the Diet has voted to fix in every session for sixty years |
+| [[Thurion Merchant Alliance]] ↔ [[Xian Ti]] | **Trade** | Silk, tea and porcelain west; the eastern terminus of everything, and the run the Alliance's whole fleet schedule is built around |
+| [[Aquoniti]] ↔ [[Nordheim]] | **Rivalry** | Two seafaring peoples who each consider themselves the ones who invented it, separated by enough ocean to keep the argument theoretical |
+| [[Aquoniti]] ↔ [[Thurion Merchant Alliance]] | **Rivalry** | Two thalassocracies in one sea, and the sea is not large. Nothing has been sunk yet; a great deal has been undercut |
+| [[Corvane Republic]] ↔ [[Kelvary March]] | **Rivalry** | Two underwriting markets bidding to insure the same cargoes and the same regiments, and each publishing tables proving the other's rates are reckless |
+| [[Corvane Republic]] ↔ [[Thurion Merchant Alliance]] | **Rivalry** | Shipbuilders against shippers: Corvane builds better hulls than it can afford to sail, and the Alliance sails better than it builds |
 | [[Corvane Republic]] ↔ [[Vaelic Principality]] | **Rivalry** | An elected assembly and a hereditary Diet, each privately certain the other's model cannot last the century |
-| [[Dalstan]] ↔ [[Quivar]] | **Rivalry** | One-sided: Dalstan's nobility imitates Quivari fashion badly enough to be a court joke |
-| [[Melisor Magocracy]] ↔ [[Silicar]] | **Rivalry** | Melisor's academics can't decide whether Silicar's clockwork is beneath magic or quietly outperforming it |
-| [[Quivar]] ↔ [[Thurion Merchant Alliance]] | **Rivalry** | A long, low-grade contest over who really controls which trade secrets |
-| [[Quivar]] ↔ [[Xian Ti]] | **Rivalry** | Luxury trade, and who gets to define “refined” |
-| [[Melisor Magocracy]] ↔ [[Sarrowmere]] | **Rivalry** | Whether the fen's compounds are medicine or a shabby kind of magic; both nations are certain and neither will test it |
-| [[Kelvary March]] ↔ [[Khazan Khaganate]] | **Rivalry** | Professional contempt in both directions about what soldiering is actually for |
-| [[Tessine]] ↔ [[Thurion Merchant Alliance]] | **Rivalry** | Two free ports, one trade, and a permanent argument about who is undercutting whom |
-| [[Qeshara Sultanate]] ↔ [[Melisor Magocracy]] | **Rivalry** | Whether the sultanate's star-charts or the academies' astral theory read the sky more truly, argued in papers neither side lets the other see first |
-| [[Cindral Ashlands]] ↔ [[Thesal Theocracy]] | **Friction** | Thesal considers Cindral's elemental reverence reckless faith, and never says so to an envoy's face |
-| [[Corvane Republic]] ↔ [[Quivar]] | **Friction** | Corvane's presses print what Valmont's court would rather went unread, and Quivar's intelligence service works Vantry harder than anywhere else |
-| [[Dalstan]] ↔ [[Thurigypt]] | **Friction** | Thurigypt reads Dalstani opulence as decadence without discipline |
-| [[Dalstan]] ↔ [[Vaelic Principality]] | **Friction** | The Cathedral Court has begun licensing inquisitions in Vaelic lands it shares no border with — every one of them has to cross [[Thesal Theocracy]], which is Vaelic's sworn ally and Dalstan's declared enemy, and the Imperial judiciary is the only body with standing to refuse the writs once they arrive |
-| [[Dalstan]] ↔ [[Voskreld Union]] | **Friction** | Voskreld watches Dalstani zealotry as a live source of unrest in its own devout provinces |
-| [[Elven Confederacy]] ↔ [[Thornwild Confederation]] | **Friction** | The Confederacy regards the Thornwild as unruly distant kin; the Thornwild did not ask to be anyone's cousin |
-| [[Nordheim]] ↔ [[Undertide Reaches]] | **Friction** | Undertide passages keep surfacing inside Nordheim's mountains, always somewhere no jarl agreed to |
-| [[Ashkar Pale]] ↔ [[Cindral Ashlands]] | **Friction** | The ash that makes the Pale the richest farmland on the continent also buries it, and Cindral has never once apologised for living upwind |
-| [[Khazan Khaganate]] ↔ [[Tal Ulad]] | **Friction** | The Khaganate keeps addressing the Ulad as kin who have forgotten themselves, and the Ulad keep declining the compliment |
-| [[Sahenna Compact]] ↔ [[Thurigypt]] | **Friction** | They share the frontier where the delta's irrigated belt gives out and the savanna starts, which is why a caravan-priest's word about Sahenna funeral rites carried as far as it did. The salt and dyed cloth still move through Setharu's markets; nobody at either end pretends the relationship is warm |
-| [[Elven Confederacy]] ↔ [[Khazan Khaganate]] | **Territorial** | The oldest grievance on the board and the one with the least ground under it: the tribes claim groves the Khaganate burned in an age when riders could still reach them, and have never held that land or withdrawn the claim. The two share no frontier now, so it travels by envoy and is answered by silence |
-| [[Elven Confederacy]] ↔ [[Nordheim]] | **Territorial** | Nordheim timber camps working northern pine the Winter Elf tribes have never ceded |
-| [[Elven Confederacy]] ↔ [[Thurigypt]] | **Territorial** | Water rights at the desert oasis-groves — wardens' work the Confederacy has never stopped claiming on ground it has never held. The two share no frontier, so the argument travels by envoy and caravan, and is settled in no generation |
-| [[Kesmarch Frontier]] ↔ [[Thornwild Confederation]] | **Territorial** | Homesteaders clearing jungle the Thornwild consider already spoken for — the likeliest of these to turn into a shooting war |
-| [[Khazan Khaganate]] ↔ [[Thornwild Confederation]] | **Territorial** | Periodic raids for beast-stock, ridden across other people's ground rather than over a shared border; the Thornwild has not forgotten |
-| [[Khazan Khaganate]] ↔ [[Vaelic Principality]] | **Friction** | Vaelic's eastern castles were raised against a threat that now has an ocean in front of it, and the Diet still funds them every session. What actually arrives are Khazan riders under somebody else's contract, on whichever side of a Vaelic war has paid the [[Thurion Merchant Alliance]] more |
-| [[Khazan Khaganate]] ↔ [[Voskreld Union]] | **Friction** | Centuries of raids are the reason the old duchies unified at all, and the Union has never once let go of the institutions it built for them — a standing muster, a war chest and a grievance, all aimed across water the Khaganate has no fleet to cross |
-| [[Khazan Khaganate]] ↔ [[Xian Ti]] | **Territorial** | Raiding along the fortified frontier |
-| [[Stoneborn Holds]] ↔ [[Undertide Reaches]] | **Territorial** | The one land dispute on the board that no surveyor can draw: the Reaches claim caverns running directly *beneath* Stoneborn holds, so the disputed ground is stacked rather than side by side and the two share no frontier to argue over. A deep-frontier hold has stopped answering the Assembly's messengers |
-| [[Kelvary March]] ↔ [[Tal Ulad]] | **Territorial** | Kelvary's paymasters have begun ploughing a stretch of the spring route to feed the muster grounds, and the herd-councils are out of patience |
-| [[Silicar]] ↔ [[Tal Ulad]] | **Territorial** | Silicar's ploughs advance a field a year onto grazing the Ulad have used for six generations, and neither side thinks it is the one moving |
-| [[Corvane Republic]] ↔ [[Dalstan]] | **Hostile** | Dalstan's persecution of Tieflings and dissidents feeds a steady refugee flow into Corvane |
-| [[Dalstan]] ↔ [[Thesal Theocracy]] | **Hostile** | Thesal treats Dalstan as a cautionary tale about faith without compassion |
-| [[Lazarian Lichdom]] ↔ [[Thesal Theocracy]] | **Hostile** | Ideological enemies outright |
-| [[Lazarian Lichdom]] ↔ [[Thurigypt]] | **Hostile** | Life against undeath in the plainest terms: Thurigypt's patron is the one goddess Lazarian has outlawed |
-| [[Lazarian Lichdom]] ↔ [[Vaelic Principality]] | **Hostile** | The old battlefields Lazarian was built on are full of Vaelic dead, and Vaelic knights have met their own ancestors in the field |
-| [[Dalstan]] ↔ [[Tessine]] | **Hostile** | Dalstan wants its heretics back; Tessine has never returned anyone and does not intend to start |
-| [[Dalstan]] ↔ [[Lazarian Lichdom]] | **Covert** | Dalstan's relic trade sources from Lazarian grave-fields through brokers the Cathedral Court is careful never to meet |
-| [[Lazarian Lichdom]] ↔ [[Melisor Magocracy]] | **Covert** | Public condemnation over what magic should never be used for — and a relic trade through intermediaries neither will name |
-| [[Lazarian Lichdom]] ↔ [[Undertide Reaches]] | **Covert** | Relics move through back channels that lead, deniably, to Lazarian hands |
-| [[Quivar]] ↔ [[Vaelic Principality]] | **Covert** | Valmont keeps agents in the Diet and a considerable interest in who the next High Prince will owe |
-| [[Thurion Merchant Alliance]] ↔ [[Undertide Reaches]] | **Covert** | The Reaches sell secret-keeping as a service, and more than one great house has quietly bought it |
-| [[Lazarian Lichdom]] ↔ [[Sarrowmere]] | **Covert** | Reagents that grow nowhere but the mere, shipped to a customer the cantons have never been willing to name |
-| [[Quivar]] ↔ [[Tessine]] | **Covert** | Valmont works out of Tessine because everyone works out of Tessine, and the Signory prefers not to know whose money it is holding |
-| [[Qeshara Sultanate]] ↔ [[Quivar]] | **Covert** | Valmont has taken an interest in which claimant the Court of Viziers eventually backs, and has not been subtle enough about it for the Sultan's own spies to miss |
+| [[Kelvary March]] ↔ [[Khazan Khaganate]] | **Rivalry** | The two finest cavalry traditions alive, and the professional question of which is better has never been settled because they have never been hired onto the same field |
+| [[Melisor Magocracy]] ↔ [[Qeshara Sultanate]] | **Rivalry** | Arcane law against star-craft: two traditions that each regard the other as astrology with better funding |
+| [[Melisor Magocracy]] ↔ [[Sarrowmere]] | **Rivalry** | Physic against alchemy. Sarrowmere's cantons cure things the academies have proven incurable, using methods Melisor will not accredit and quietly buys |
+| [[Melisor Magocracy]] ↔ [[Silicar]] | **Rivalry** | Spell against machine, argued for four generations. Silicar keeps building things that do what a spell does, cheaper and without a mage, and Melisor keeps explaining why that is not the same |
+| [[Melisor Magocracy]] ↔ [[Thurion Merchant Alliance]] | **Rivalry** | The teleportation network is an existential problem for a shipping league and both sides know it. The Alliance's answer so far has been price, and Melisor's has been patience |
+| [[Melisor Magocracy]] ↔ [[Voskreld Union]] | **Rivalry** | Who licenses magic. Voskreld says the Crown does, by the same authority that standardized the coin; Melisor says a state that cannot cast cannot license, and has never once submitted a return |
+| [[Qeshara Sultanate]] ↔ [[Thurigypt]] | **Rivalry** | One river system, two claims on the incense road, and a court each that argues its case in verse. It has stayed a rivalry for four hundred years and neither side takes credit for that |
+| [[Quivar]] ↔ [[Voskreld Union]] | **Rivalry** | The court against the crown, and the tariff schedule against the taste that ignores it. Voskreld standardizes what Quivar sells on the grounds that it is unique |
+| [[Quivar]] ↔ [[Xian Ti]] | **Rivalry** | Two cultural capitals on opposite oceans, each convinced the other is derivative, both correct |
+| [[Tessine]] ↔ [[Thurion Merchant Alliance]] | **Rivalry** | Two money markets in one sea. The Alliance has the fleet and the Signory has the deposits, and every exile who moves an account moves a little of the balance |
+| [[Ashkar Pale]] ↔ [[Cindral Ashlands]] | **Friction** | Which of them is downwind, argued after every fall. The Pale digs out and the Ashlands send help, and both do it while blaming the other |
+| [[Cindral Ashlands]] ↔ [[Thornwild Confederation]] | **Friction** | Geothermal works at the range's foot are killing canopy downstream, and the Emberlord's position is that a volcano was doing that before either nation existed |
+| [[Dalstan]] ↔ [[Silicar]] | **Friction** | Indulgence brokers working Silicar's farm cantons, selling absolution to people the guilds consider their own. Silicar has banned the trade twice and enforced it never |
+| [[Dalstan]] ↔ [[Tal Ulad]] | **Friction** | Tolls on herds crossing the Dalstani stretch of the circuit, and inquisitors who describe the herd-councils' weather-worship as paganism in official correspondence |
+| [[Dalstan]] ↔ [[Vaelic Principality]] | **Friction** | The Cathedral Court has begun licensing inquisitions in Vaelic lands across their shared border, and the Imperial judiciary is the only body with standing to refuse the writs once they arrive |
+| [[Kelvary March]] ↔ [[Vaelic Principality]] | **Friction** | The Drake Rider Order will not take the field beside paid companies, and the March's charters sell to whoever pays — including, twice in the last century, to somebody fighting Vaelic |
+| [[Kesmarch Frontier]] ↔ [[Xian Ti]] | **Friction** | The Territorial Council issues charters on ground the Empire has called tributary since before the Council existed, and neither of them will submit the question to anyone |
+| [[Khazan Khaganate]] ↔ [[Thurigypt]] | **Friction** | Khazan outriders watering their herds at the delta canals in the dry season. The Pharaoh's spearmen escort them out every year and no one has yet been killed doing it |
+| [[Sahenna Compact]] ↔ [[Thurigypt]] | **Friction** | Salt pans and grazing rights on the desert margin, claimed by a nation that keeps its record in stone and a nation that keeps it in memory. Neither will accept the other's evidence |
+| [[Sarrowmere]] ↔ [[Voskreld Union]] | **Friction** | Voskreld's canal works are draining the eastern fen, cant by cant. The Union calls it drainage and improvement; the cantons call it what happens to a nation whose defence is water |
+| [[Thornwild Confederation]] ↔ [[Xian Ti]] | **Friction** | Canopy timber concessions granted by an imperial ministry to imperial subjects, on land the Circle has never ceded and does not recognise the ministry's authority over |
+| [[Elven Confederacy]] ↔ [[Nordheim]] | **Territorial** | Nordheim logging camps in the northern pine, on the Confederacy's own frontier and inside ground the tribes have marked for eleven centuries. The one grievance the elves can actually reach |
+| [[Kesmarch Frontier]] ↔ [[Khazan Khaganate]] | **Territorial** | Homestead charters issued across ground the Khagan's riders have grazed unchallenged for generations. The frontier marshals ride patrols they cannot enforce and the outriders come anyway |
+| [[Kesmarch Frontier]] ↔ [[Thornwild Confederation]] | **Territorial** | The Territorial Council is issuing homestead charters for land it has never surveyed, and the Circle of First Packs has adjourned twice without deciding what to do about it |
+| [[Khazan Khaganate]] ↔ [[Xian Ti]] | **Territorial** | The wall, and everything on both sides of it. The oldest continuous military frontier in the world |
+| [[Silicar]] ↔ [[Tal Ulad]] | **Territorial** | Silicar's irrigation works have put a plough through a stretch of the spring route, and the herd-councils are divided between negotiating, going around, and going through |
+| [[Stoneborn Holds]] ↔ [[Undertide Reaches]] | **Territorial** | The same mountain claimed from above and below. The Holds hold the peaks and the Reaches hold what is under them, and the seam where the two claims meet has been fought over in the dark for two hundred years |
+| [[Corvane Republic]] ↔ [[Dalstan]] | **Hostile** | The Republic shelters everyone the Cathedral Court wants back, publishes their accounts of what was done to them, and shares a border with the nation it is doing this to |
+| [[Dalstan]] ↔ [[Elven Confederacy]] | **Hostile** | Inquisitorial companies burning grove-shrines on the Confederacy's southern edge, on the doctrine that a faith without a named god is a faith with something to hide |
+| [[Dalstan]] ↔ [[Tessine]] | **Hostile** | Half the Cathedral Court's condemned live on Tessine deposits, and the Signory has never once honoured an extradition writ. Dalstan has stopped sending them and started sending other people |
+| [[Dalstan]] ↔ [[Thesal Theocracy]] | **Hostile** | Two faiths and one border. Zon-Kuthon's court calls Sarenrae's mercy a heresy that makes suffering meaningless; Thesal calls the Cathedral Court a business |
+| [[Lazarian Lichdom]] ↔ [[Thesal Theocracy]] | **Hostile** | Sarenrae's clergy hold that undeath is the one thing that cannot be redeemed, which makes the Lichdom the single article of Thesal doctrine with no mercy in it |
+| [[Lazarian Lichdom]] ↔ [[Thurigypt]] | **Hostile** | Life against undeath in the plainest terms: Thurigypt's patron is the one goddess Lazarian has outlawed, and the Pharaoh's temples fund every expedition that sails against the delta |
+| [[Lazarian Lichdom]] ↔ [[Vaelic Principality]] | **Hostile** | Vaelic's southern frontier is the Lichdom's northern one, and the Drake Rider Order exists in its current form because of it |
+| [[Dalstan]] ↔ [[Lazarian Lichdom]] | **Covert** | The Cathedral Court condemns undeath from a gilded pulpit and sources its relics from Lazarian grave-fields, through factors who are burned if they are ever named |
+| [[Lazarian Lichdom]] ↔ [[Melisor Magocracy]] | **Covert** | Research the academies cannot publish, conducted with materials they cannot account for. Four archmages know; the Council of Archmages, officially, does not |
+| [[Lazarian Lichdom]] ↔ [[Quivar]] | **Covert** | The court buys relics for reasons it does not explain, through intermediaries who are never the same twice |
+| [[Lazarian Lichdom]] ↔ [[Sarrowmere]] | **Covert** | The fen cantons buy reagents no living nation will admit a use for, and the Lichdom is the only supplier. Sarrowmere's answer, when asked, is that it treats what it is brought |
+| [[Lazarian Lichdom]] ↔ [[Undertide Reaches]] | **Covert** | The Warden-Conclave sells the Lichdom what it knows and sells the Lichdom's enemies what it knows about that, and has never been caught doing either |
+| [[Qeshara Sultanate]] ↔ [[Quivar]] | **Covert** | Two courts that spy on each other constantly and enjoy it enormously, exchanging intelligence, poets and — twice — an entire intelligence service's worth of deliberately false star-charts |
+| [[Quivar]] ↔ [[Tessine]] | **Covert** | Quivar's intelligence service runs on Tessine paper — forged and genuine, sold across the same counter — and the Signory's discretion is the actual product |
+| [[Quivar]] ↔ [[Undertide Reaches]] | **Covert** | The court is the Warden-Conclave's largest single client, and pays in wine, art and favours rather than anything that leaves a ledger entry |
+| [[Quivar]] ↔ [[Vaelic Principality]] | **Covert** | Quivar's service has been inside the Diet for two generations. Vaelic knows, cannot prove it, and has begun feeding it things on purpose |
+| [[Thurion Merchant Alliance]] ↔ [[Undertide Reaches]] | **Covert** | The Alliance's factors are the Conclave's best-paying customers and its most useful suppliers, and every contract between them is verbal |
+| [[Undertide Reaches]] ↔ [[Voskreld Union]] | **Covert** | Voskreld buys what it cannot be seen buying: route surveys, provincial correspondence, and the occasional accurate figure about its own duchies |
 
 ## Reading the board
 
-**[[Thurion Merchant Alliance]]** is the most connected power on the map and
-deliberately so: it has dealings, of one kind or another, with fourteen
-nations, including both
-[[Khazan Khaganate]], whose riders it leases out as mercenaries, and
-[[Dalstan]], whose tithe-banking it handles without a single question about
-doctrine. Neutrality is not a principle here, it is a business model — and it
-means the Alliance has something to lose in every war on this list. Note how
-little of that is warmth: almost all of Thurion's ties are Trade or Rivalry.
+- **[[Thurion Merchant Alliance]]** carries 14 ties, more than any other
+  nation, and only two of them are warm. It is the hub because it is
+  indispensable, not because it is liked: it insures the wars it also staffs,
+  and it is in a standing rivalry with all three of the other money powers —
+  [[Tessine]], [[Aquoniti]] and [[Corvane Republic]].
+- **[[Kesmarch Frontier]]** is the pressure point of the eastern continent.
+  Twelve ties, six land borders, and two of them territorial in opposite
+  directions: the [[Khazan Khaganate]] to the north over grazing the Khagan's
+  riders have never been challenged on, and the
+  [[Thornwild Confederation]] to the south over charters the Council issues
+  for ground it has never surveyed. It also feeds itself on
+  [[Thurigypt]] grain and sells through [[Thurion Merchant Alliance]], so a war
+  on either frontier would be felt in four capitals at once.
+- **[[Dalstan]]** is the western continent's problem. Four hostilities and
+  three frictions, every one of them with a nation it can walk to, and the only
+  warm relationship it has is with the Alliance factors who buy its relics.
+  Its neighbours are [[Corvane Republic]], which shelters everyone it wants
+  back, and [[Thesal Theocracy]], which it calls heresy.
+- **[[Melisor Magocracy]]** has no ally and no friend — four rivalries, one
+  buried arrangement with the Lichdom, and four trades that everyone conducts
+  because they have no alternative. Arrogant, brilliant, indispensable, in
+  exactly that order.
 
-**[[Thesal Theocracy]]** is the opposite kind of hub. Eleven ties, and the warmest
-board position of any nation — an alliance with [[Vaelic Principality]], an
-accord with [[Corvane Republic]], and standing friendships with [[Silicar]],
-[[Xian Ti]] and even [[Quivar]], whose funding of Shelyn's temple in Concord is
-the one Quivari gesture nobody suspects of being an operation. Thesal is liked
-in a way the Alliance is merely needed.
+**[[Lazarian Lichdom]]** is still the only nation on the map with nothing
+warmer than a deniable one: no ally, no friend, not one honest trading partner.
+Three hostilities, five covert arrangements, and the busiest of those is
+[[Dalstan]], which condemns undeath from a gilded pulpit and sources its relics
+from Lazarian grave-fields.
 
-**[[Vaelic Principality]]** is the pivot: ten ties spanning almost every
-standing on the board at once — sworn to Thesal, pacted with
-[[Voskreld Union]], old friends with [[Stoneborn Holds]] over nine centuries of
-shared forge-halls, pressed by [[Khazan Khaganate]], haunted by
-[[Lazarian Lichdom]] raising armies from Vaelic dead, at constitutional odds
-with [[Corvane Republic]], and quietly worked by Quivari agents in its own Diet.
-
-Three blocs do most of the work:
-
-- **The steppe pact.** An alliance that has outlived its own frontier.
-  [[Voskreld Union]] and [[Vaelic Principality]] built their armies, their
-  musters and their entire habit of cooperating against
-  [[Khazan Khaganate]], and now have an ocean where the threat used to be.
-  [[Xian Ti]] is the only signatory still on the Khaganate's border, which
-  makes it the only one the pact is currently any use to — and the one paying
-  least for it. It holds while the Khagan is a bigger problem than each other,
-  and the Great Khagan is old with no named heir.
-- **The values bloc.** [[Thesal Theocracy]] anchors an old alliance with
-  [[Vaelic Principality]] and a newer accord with [[Corvane Republic]], built on
-  the refugees [[Dalstan]] produces. The only bloc organised around what its
-  members believe rather than who they fear.
-- **The trade web.** [[Thurion Merchant Alliance]] and [[Aquoniti]] between them
-  touch most of the coast, and their partners' quarrels are, from Vessene's
-  point of view, disruptions to the schedule.
-
-Two nations are pressure points rather than powers:
-
-- **[[Khazan Khaganate]]** is down to a single land border — [[Xian Ti]]'s
-  wall — and has lost none of its reach for it. Everything it used to take by
-  raiding the western powers it now sells them: the
-  [[Thurion Merchant Alliance]] leases its riders by the thousand, so a Khazan
-  lance turns up on whichever side of somebody else's war paid more. It also
-  keeps one genuine friendship, [[Nordheim]] across a thousand miles, on the
-  strength of two warrior codes that have never had cause to test each other.
-- **[[Elven Confederacy]]** carries three grievances and can only reach one of
-  them: [[Nordheim]] logging the northern pine is on its own frontier, while
-  the burned groves it blames [[Khazan Khaganate]] for and the oasis water it
-  claims from [[Thurigypt]] are both an ocean away and neither has ever been
-  held. A council can be called over a logging camp. It cannot be called over
-  two things nobody can march to, which is precisely why no council is called.
-
-**[[Lazarian Lichdom]]** is the only nation on the map with nothing warmer than
-a rivalry: no ally, no friend, not one trading partner. Everything it has is
-hostile or deniable, and four of its seven ties are relic trades the other
-party would deny under oath — including [[Dalstan]], which condemns undeath
-from a gilded pulpit and sources its relics from Lazarian grave-fields.
-
-The likeliest flashpoint that isn't already a war remains
-[[Kesmarch Frontier]] ↔ [[Thornwild Confederation]]: the Territorial Council is
-issuing homestead charters for land it has never surveyed, and the Circle of
-First Packs has adjourned twice without deciding what to do about it. Neither
-side is alone any more — Kesmarch sells through
-[[Thurion Merchant Alliance]] and counts [[Nordheim]] and [[Silicar]] as
-friends, while the Thornwild's medicinals run to [[Thesal Theocracy]] and its
-storm-god is shared with [[Aquoniti]]. A shooting war on the jungle edge would
-now be felt in four capitals with no border on it.
+The quarrels that could still become wars are all on ground somebody shares.
+[[Silicar]] has put a plough through the Uplad spring route and the
+herd-councils have not decided what to do about it; the
+[[Stoneborn Holds]] and the [[Undertide Reaches]] have been fighting in the
+dark under the same mountain for two centuries; and
+[[Voskreld Union]]'s canals are draining the fen that is [[Sarrowmere]]'s
+entire defence. None of those needs a fleet, an ocean crossing or an ally to
+start.

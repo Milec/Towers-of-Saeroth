@@ -26,10 +26,10 @@ is currently living in it.
 *Somewhere for the party to fence anything, hide anyone, and hire a ship with
 no questions. The one nation on the map that is a single city.*
 - **Relations**
-    - [[Corvane Republic]] — **Friendly**: The only two states that will take a political exile without asking what he did
-    - [[Aquoniti]] — **Trade**: Aquoniti hulls carry most of what leaves Tessine, and ask no more about the cargo than Tessine asks about the crew
-    - [[Kelvary March]] — **Trade**: Tessine banks the companies' pay and insures their contracts, and takes a cut of both
-    - [[Qeshara Sultanate]] — **Trade**: Caravan wealth banked and insured the moment it reaches tidewater, on the same terms Tessine already gives Kelvary March
-    - [[Thurion Merchant Alliance]] — **Rivalry**: Two free ports, one trade, and a permanent argument about who is undercutting whom
-    - [[Dalstan]] — **Hostile**: Dalstan wants its heretics back; Tessine has never returned anyone and does not intend to start
-    - [[Quivar]] — **Covert**: Valmont works out of Tessine because everyone works out of Tessine, and the Signory prefers not to know whose money it is holding
+    - [[Corvane Republic]] — **Friendly**: Two harbours that take anyone, for opposite reasons — one out of principle and one out of profit — and both of them full of people Dalstan wants back
+    - [[Aquoniti]] — **Trade**: The island fleet and the harbour that asks no questions of it — Tessine clears Aquoniti's salvage, and neither side inquires closely into where salvage ends
+    - [[Kelvary March]] — **Trade**: Where the March's contracts are underwritten, insured and — when a company is destroyed on somebody else's ground — paid out
+    - [[Qeshara Sultanate]] — **Trade**: Incense, dyed silk and glass into a port that asks nothing about their provenance and charges accordingly
+    - [[Thurion Merchant Alliance]] — **Rivalry**: Two money markets in one sea. The Alliance has the fleet and the Signory has the deposits, and every exile who moves an account moves a little of the balance
+    - [[Dalstan]] — **Hostile**: Half the Cathedral Court's condemned live on Tessine deposits, and the Signory has never once honoured an extradition writ. Dalstan has stopped sending them and started sending other people
+    - [[Quivar]] — **Covert**: Quivar's intelligence service runs on Tessine paper — forged and genuine, sold across the same counter — and the Signory's discretion is the actual product

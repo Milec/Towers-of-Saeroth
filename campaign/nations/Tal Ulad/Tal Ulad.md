@@ -27,8 +27,9 @@ left alone on both.
 *Mobile, unconquerable, and holding the overland trade route — the Ulad are
 who a party has to deal with to cross the continent by land at all.*
 - **Relations**
+    - [[Thesal Theocracy]] — **Friendly**: The one settled nation that treats the herd-councils as a nation rather than a trespass. Thesal's charter honours every good and neutral faith, which includes the weather-worship Dalstan writes up as paganism, and the Ulad have not forgotten who said it first
+    - [[Kelvary March]] — **Trade**: Remounts, fifteen thousand head a year, and the single largest movement of horses in the world. The March pays on the hoof at the summer gathering and the herd-councils have never once extended credit
     - [[Quivar]] — **Trade**: Horses, and Quivar is the only buyer that has ever paid what the Ulad say they are worth
-    - [[Thurion Merchant Alliance]] — **Trade**: Safe passage across the uplands, sold by the season and honoured to the letter
-    - [[Khazan Khaganate]] — **Friction**: The Khaganate keeps addressing the Ulad as kin who have forgotten themselves, and the Ulad keep declining the compliment
-    - [[Kelvary March]] — **Territorial**: Kelvary's paymasters have begun ploughing a stretch of the spring route to feed the muster grounds, and the herd-councils are out of patience
-    - [[Silicar]] — **Territorial**: Silicar's ploughs advance a field a year onto grazing the Ulad have used for six generations, and neither side thinks it is the one moving
+    - [[Vaelic Principality]] — **Trade**: Warhorses to the Diet's heavy cavalry, driven down the eastern circuit each autumn. The one Vaelic institution the herd-councils will deal with directly rather than through a factor
+    - [[Dalstan]] — **Friction**: Tolls on herds crossing the Dalstani stretch of the circuit, and inquisitors who describe the herd-councils' weather-worship as paganism in official correspondence
+    - [[Silicar]] — **Territorial**: Silicar's irrigation works have put a plough through a stretch of the spring route, and the herd-councils are divided between negotiating, going around, and going through

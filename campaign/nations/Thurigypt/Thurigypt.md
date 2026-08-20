@@ -20,12 +20,11 @@ battlefield achievement as any campaign.
 - **Faith** Patron [[Pharasma]], who governs birth as well as death — in Thurigypt she is the goddess of the bloodline continuing, not of endings. [[Sarenrae]] is venerated as the sun that makes the delta live, and [[Erastil]] by the farming and soldiering families both
 - **Tension** The flood has come in short two years running, and the priest-kings disagree publicly about whether that is a failure of engineering or of the Pharaoh
 - **Relations**
-    - [[Xian Ti]] — **Friendly**: Two old and disciplined states with nothing to fight over, sharing a private conviction that the younger nations are in a hurry about everything
-    - [[Aquoniti]] — **Trade**: Old river-trade ties
-    - [[Cindral Ashlands]] — **Trade**: The delta's glassworks run on Cindral obsidian, and pay in gold
-    - [[Qeshara Sultanate]] — **Trade**: Incense and dyed silk for grain and stone; two old desert powers who have never needed to like each other to profit from each other
-    - [[Thesal Theocracy]] — **Trade**: Grain for medicine, and a shared devotion to Sarenrae that keeps the terms generous on both sides
-    - [[Dalstan]] — **Friction**: Thurigypt reads Dalstani opulence as decadence without discipline
-    - [[Sahenna Compact]] — **Friction**: They share the frontier where the delta's irrigated belt gives out and the savanna starts, which is why a caravan-priest's word about Sahenna funeral rites carried as far as it did. The salt and dyed cloth still move through Setharu's markets; nobody at either end pretends the relationship is warm
-    - [[Elven Confederacy]] — **Territorial**: Water rights at the desert oasis-groves — wardens' work the Confederacy has never stopped claiming on ground it has never held. The two share no frontier, so the argument travels by envoy and caravan, and is settled in no generation
-    - [[Lazarian Lichdom]] — **Hostile**: Life against undeath in the plainest terms: Thurigypt's patron is the one goddess Lazarian has outlawed
+    - [[Xian Ti]] — **Friendly**: Two old empires, each of which recognises the other as genuinely old — a courtesy neither extends to anybody else
+    - [[Aquoniti]] — **Trade**: Grain and worked gold for pearls, coral and fish, on a run old enough that both sides quote the same customary rates
+    - [[Kesmarch Frontier]] — **Trade**: Grain south into the frontier by the wagon-road, and the reason a homestead season that fails does not become a famine
+    - [[Thesal Theocracy]] — **Trade**: Hospice medicine and trained physicians for grain, arranged temple to temple. Pharasma's priests and Sarenrae's have found a division of labour that neither theology strictly permits
+    - [[Qeshara Sultanate]] — **Rivalry**: One river system, two claims on the incense road, and a court each that argues its case in verse. It has stayed a rivalry for four hundred years and neither side takes credit for that
+    - [[Khazan Khaganate]] — **Friction**: Khazan outriders watering their herds at the delta canals in the dry season. The Pharaoh's spearmen escort them out every year and no one has yet been killed doing it
+    - [[Sahenna Compact]] — **Friction**: Salt pans and grazing rights on the desert margin, claimed by a nation that keeps its record in stone and a nation that keeps it in memory. Neither will accept the other's evidence
+    - [[Lazarian Lichdom]] — **Hostile**: Life against undeath in the plainest terms: Thurigypt's patron is the one goddess Lazarian has outlawed, and the Pharaoh's temples fund every expedition that sails against the delta

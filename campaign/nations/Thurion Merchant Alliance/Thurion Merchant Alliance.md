@@ -20,17 +20,17 @@ lanes, so the Alliance stays neutral whenever staying neutral pays.
 - **Faith** Patron [[Abadar]] in his aspect as god of contracts and honest wealth — practically the Alliance's founding charter. [[Desna]] is the sailors' luck; [[Norgorber]] is the god nobody admits to keeping, and every great house has a shrine to him somewhere unlit
 - **Tension** One of the great houses has quietly underwritten more insurance than it can cover, and everyone who suspects it is deciding whether to warn the others or profit first
 - **Relations**
-    - [[Aquoniti]] — **Trade**: The shipping-and-insurance backbone of the whole continent
-    - [[Dalstan]] — **Trade**: Tithe-banking and the indulgence trade — the one partner Dalstan has that asks nothing about doctrine
-    - [[Kesmarch Frontier]] — **Trade**: Furs, ore and wagon-freight; the Alliance is the frontier's only reliable buyer
-    - [[Khazan Khaganate]] — **Trade**: Mercenary contracts: the Alliance hires steppe riders by the thousand and leases them to whoever is losing
-    - [[Melisor Magocracy]] — **Trade**: Alliance contracts for enchanted goods quietly bankroll the academies
-    - [[Nordheim]] — **Trade**: Amber, furs and whale oil, moved south under Alliance insurance
-    - [[Silicar]] — **Trade**: Same exports, sold on
-    - [[Tal Ulad]] — **Trade**: Safe passage across the uplands, sold by the season and honoured to the letter
-    - [[Thornwild Confederation]] — **Trade**: Pelts, venom and toxin, bought at the river mouths and never asked about
-    - [[Xian Ti]] — **Trade**: Silk, tea and porcelain: the single most profitable route the Alliance runs
-    - [[Corvane Republic]] — **Rivalry**: Corvane's citizen assembly is a standing philosophical rebuke to Thurion's wealth-gated senate
-    - [[Quivar]] — **Rivalry**: A long, low-grade contest over who really controls which trade secrets
-    - [[Tessine]] — **Rivalry**: Two free ports, one trade, and a permanent argument about who is undercutting whom
-    - [[Undertide Reaches]] — **Covert**: The Reaches sell secret-keeping as a service, and more than one great house has quietly bought it
+    - [[Dalstan]] — **Trade**: Gilded relics out, tithe-silver in, and the Alliance's factors are the only foreigners the Cathedral Court receives without an inquisitor present
+    - [[Kesmarch Frontier]] — **Trade**: Furs, timber and prospected ore, which is how a frontier with no fleet reaches a market
+    - [[Khazan Khaganate]] — **Trade**: Mercenary contracts, brokered and insured. A Khazan lance turns up on whichever side of somebody else's war paid more, and the Alliance takes its percentage of both
+    - [[Nordheim]] — **Trade**: The northern run — timber and whale oil, in the season when it can be sailed at all
+    - [[Qeshara Sultanate]] — **Trade**: Where the Salt Road meets the sea: everything the caravans carry out of the eastern deserts goes onto Alliance hulls at Qeshara's coast
+    - [[Silicar]] — **Trade**: Food exports out through Thurion's holds, which is how a small inventive nation feeds three others
+    - [[Thornwild Confederation]] — **Trade**: Venom, pelts and canopy timber, at the two coastal factories the Circle permits and nowhere else
+    - [[Vaelic Principality]] — **Trade**: Grain, wool and fine armour out through Thurion's holds — Vaelic's whole surplus reaches the rest of the world in somebody else's ships, which the Diet has voted to fix in every session for sixty years
+    - [[Xian Ti]] — **Trade**: Silk, tea and porcelain west; the eastern terminus of everything, and the run the Alliance's whole fleet schedule is built around
+    - [[Aquoniti]] — **Rivalry**: Two thalassocracies in one sea, and the sea is not large. Nothing has been sunk yet; a great deal has been undercut
+    - [[Corvane Republic]] — **Rivalry**: Shipbuilders against shippers: Corvane builds better hulls than it can afford to sail, and the Alliance sails better than it builds
+    - [[Melisor Magocracy]] — **Rivalry**: The teleportation network is an existential problem for a shipping league and both sides know it. The Alliance's answer so far has been price, and Melisor's has been patience
+    - [[Tessine]] — **Rivalry**: Two money markets in one sea. The Alliance has the fleet and the Signory has the deposits, and every exile who moves an account moves a little of the balance
+    - [[Undertide Reaches]] — **Covert**: The Alliance's factors are the Conclave's best-paying customers and its most useful suppliers, and every contract between them is verbal

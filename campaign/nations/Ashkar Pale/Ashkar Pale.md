@@ -27,8 +27,8 @@ cart.
 surviving it — the Pale is where a party goes for a deadline that is
 geological rather than political.*
 - **Relations**
-    - [[Undertide Reaches]] — **Friendly**: The Reaches have mapped every evacuation road beneath the Pale, and twice opened them without being asked
-    - [[Kesmarch Frontier]] — **Trade**: Seed stock going one way and settlers the other, in numbers neither government has bothered to count
-    - [[Sarrowmere]] — **Trade**: Ash-glaze vessels are the only containers that hold the mere's compounds without spoiling them
-    - [[Silicar]] — **Trade**: The two most agricultural nations on the continent are each other's best customers: Pale grain against Silicar machinery
-    - [[Cindral Ashlands]] — **Friction**: The ash that makes the Pale the richest farmland on the continent also buries it, and Cindral has never once apologised for living upwind
+    - [[Thornwild Confederation]] — **Friendly**: When the mountain goes, the Pale evacuates into Thornwild canopy, and has done for six recorded falls. The Circle asks nothing for it beyond warning, which the Pale's wardens give better than anyone alive
+    - [[Xian Ti]] — **Friendly**: Ward assemblies and examination halls: two administrative cultures that recognise each other on sight. Ashkar's grain feeds the southern prefectures, and Xian Ti's clerks find the Pale the only neighbour whose paperwork arrives in order
+    - [[Kesmarch Frontier]] — **Trade**: Grain and ash-glaze ware to the frontier towns, and the Pale's salvage crews hire out to Kesmarch after a bad season
+    - [[Sahenna Compact]] — **Trade**: Glass and vine crops for salt and hides, on the short road around the range's southern arm
+    - [[Cindral Ashlands]] — **Friction**: Which of them is downwind, argued after every fall. The Pale digs out and the Ashlands send help, and both do it while blaming the other
