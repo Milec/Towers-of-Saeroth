@@ -1369,7 +1369,40 @@ const RSIM = { repel: 26000, centre: 0.0026, spring: 0.05, damp: 0.82, pad: 54 }
 const RVIEW = { w: 1120, h: 780 };
 const SVGNS = 'http://www.w3.org/2000/svg';
 
-const rel = { nodes: [], edges: [], sel: null, active: new Set(), themes: new Map() };
+/* ---- the same web, laid over the world map -------------------------------
+   An optional second mode: instead of the force layout deciding where nations
+   sit, pin each one to where it actually is on `campaign/Saeroth.map`, so the
+   ties read as trade routes and borders rather than as an abstract graph.
+
+   Both halves of it are GENERATED — `tools/map_backdrop.js` writes
+   `nation-positions.json` and the backdrop image out of the .map file itself —
+   so when the map is rebuilt, rerunning that script moves the nodes with it.
+   Nothing here is hand-placed, and nothing about the force layout changed:
+   `web` is still the default and still the mode this note opens in. Deleting
+   the toggle, the JSON and the image removes the whole feature again. */
+const RMAP = {
+  data: null,          // null = not tried, false = unavailable, else the JSON
+  w: 1120,             // the map is drawn into the same width as the web
+  h: 780,              // recomputed from the map's own aspect once loaded
+  scale: 1,
+  labelScale: 9.5 / 11.5,   // names shrink with the dots they belong to
+};
+
+async function loadMapPositions() {
+  if (RMAP.data !== null) return RMAP.data;
+  try {
+    const d = await (await fetch(BASE + 'nation-positions.json')).json();
+    if (!d || !d.nations || !d.width) throw new Error('malformed');
+    RMAP.scale = RMAP.w / d.width;
+    RMAP.h = Math.round(d.height * RMAP.scale);
+    RMAP.data = d;
+  } catch (_) {
+    RMAP.data = false;   // no map on this deploy: the toggle simply never appears
+  }
+  return RMAP.data;
+}
+
+const rel = { nodes: [], edges: [], sel: null, active: new Set(), themes: new Map(), mode: 'web' };
 window.__rel = rel;   // exposed for automated UI tests, like window.__g
 
 function svgEl(tag, attrs) {
@@ -1415,7 +1448,15 @@ function parseRelations(body) {
     edges.push(e);
   }
   const nodes = [...byName.values()];
-  for (const n of nodes) n.r = 12 + Math.min(n.deg, 6) * 2.4;
+  /* Two radii, because the two modes are drawn at different densities. On the
+     map a node has to sit INSIDE its own country — Tessine is 81 cells — so the
+     dot shrinks to a pin. In the web it is the only thing on the canvas and can
+     afford to carry its degree at a glance. */
+  for (const n of nodes) {
+    n.rWeb = 12 + Math.min(n.deg, 6) * 2.4;
+    n.rMap = 2.6 + Math.min(n.deg, 12) * 0.42;
+    n.r = n.rWeb;
+  }
   return { nodes, edges };
 }
 
@@ -1518,6 +1559,7 @@ function mountRelations(container, body) {
   });
   relaxRelations(nodes, edges, 520, null);
   fitRelations();
+  for (const n of nodes) { n.wx = n.x; n.wy = n.y; }   // the web's own layout, kept
 
   const counts = new Map(STANDINGS.map(([k]) => [k, 0]));
   for (const e of edges) counts.set(e.standing, counts.get(e.standing) + 1);
@@ -1531,11 +1573,13 @@ function mountRelations(container, body) {
            ${chipSwatch(k)}<span>${label}</span><span class="muted">${counts.get(k)}</span>
          </button>`).join('')}
       <button type="button" class="rel-reset linkbtn">Reset</button>
+      <button type="button" class="rel-mode linkbtn" hidden aria-pressed="false">On the map</button>
     </div>
     <div class="rel-board">
       <div class="rel-canvas">
         <svg class="rel-svg" viewBox="0 0 ${RVIEW.w} ${RVIEW.h}" role="img"
              aria-label="Web of ${edges.length} diplomatic ties between ${nodes.length} nations">
+          <image class="rel-basemap" hidden preserveAspectRatio="none"></image>
           <g class="rel-edges"></g><g class="rel-nodes"></g>
         </svg>
         <p class="rel-hint muted">Tap a nation for its ties · drag to untangle · double-tap opens its note</p>
@@ -1573,6 +1617,68 @@ function mountRelations(container, body) {
   wireRelations(fig);
   renderRelLedger(fig);
   loadNationThemes(fig);
+  offerMapMode(fig);
+}
+
+/* The toggle only exists if the generated positions do. An older deploy, or a
+   service worker still holding the previous shell, simply gets the web. */
+async function offerMapMode(fig) {
+  const d = await loadMapPositions();
+  if (!d) return;
+  const missing = rel.nodes.filter((n) => !d.nations[n.name]);
+  // one or two nations off the map is survivable — they drop out of map mode
+  // and say so. Half of them missing means the JSON is stale, and a map with
+  // holes in it is worse than no map.
+  if (missing.length > rel.nodes.length / 4) return;
+  fig.querySelector('.rel-mode').hidden = false;
+}
+
+/* Switch the same nodes and the same edges between the two layouts. Nothing is
+   rebuilt: only positions, radii and the backdrop change. */
+function applyRelMode(fig) {
+  const map = rel.mode === 'map' && RMAP.data;
+  const svg = fig.querySelector('.rel-svg');
+  const img = fig.querySelector('.rel-basemap');
+  const hint = fig.querySelector('.rel-hint');
+
+  fig.classList.toggle('mapmode', !!map);
+  svg.setAttribute('viewBox', map ? `0 0 ${RMAP.w} ${RMAP.h}` : `0 0 ${RVIEW.w} ${RVIEW.h}`);
+
+  if (map) {
+    img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', BASE + RMAP.data.image);
+    img.setAttribute('href', BASE + RMAP.data.image);
+    img.setAttribute('x', 0); img.setAttribute('y', 0);
+    img.setAttribute('width', RMAP.w); img.setAttribute('height', RMAP.h);
+    img.hidden = false;
+    for (const n of rel.nodes) {
+      const p = RMAP.data.nations[n.name];
+      n.offmap = !p;
+      n.r = n.rMap;
+      if (p) { n.x = p[0] * RMAP.scale; n.y = p[1] * RMAP.scale; }
+    }
+  } else {
+    img.hidden = true;
+    for (const n of rel.nodes) {
+      n.offmap = false;
+      n.r = n.rWeb;
+      n.x = n.wx; n.y = n.wy;
+    }
+  }
+  for (const n of rel.nodes) {
+    n.el.classList.toggle('offmap', !!n.offmap);
+    n.circle.setAttribute('r', n.r);
+  }
+  for (const e of rel.edges) e.el.classList.toggle('offmap', !!(e.a.offmap || e.b.offmap));
+
+  const btn = fig.querySelector('.rel-mode');
+  btn.textContent = map ? 'As a web' : 'On the map';
+  btn.setAttribute('aria-pressed', map ? 'true' : 'false');
+  if (hint) {
+    hint.textContent = map
+      ? 'Every nation sits where it does on the world map · tap for its ties · double-tap opens its note'
+      : 'Tap a nation for its ties · drag to untangle · double-tap opens its note';
+  }
+  placeRelLabels();
 }
 
 function buildRelSvg(fig) {
@@ -1620,10 +1726,11 @@ function placeRelLabels() {
     n.circle.setAttribute('cx', n.x);
     n.circle.setAttribute('cy', n.y);
   }
+  const ls = rel.mode === 'map' ? RMAP.labelScale : 1;
   for (const n of [...rel.nodes].sort((a, b) => b.deg - a.deg)) {
-    const w = labelWidth(n.name);
-    const rect = (y) => ({ x: n.x - w / 2 - 3, y: y - 9.5, w: w + 6, h: 13 });
-    const below = n.y + n.r + 13, above = n.y - n.r - 6;
+    const w = labelWidth(n.name) * ls;
+    const rect = (y) => ({ x: n.x - w / 2 - 3, y: y - 9.5 * ls, w: w + 6, h: 13 * ls });
+    const below = n.y + n.r + 13 * ls, above = n.y - n.r - 6 * ls;
     const y = (hits(rect(below)) && !hits(rect(above))) ? above : below;
     const r = rect(y);
     placed.push(r);
@@ -1754,6 +1861,12 @@ function wireRelations(fig) {
     fig.querySelectorAll('.rel-chip').forEach((b) => b.setAttribute('aria-pressed', 'true'));
     selectRelNode(fig, null);
   };
+  fig.querySelector('.rel-mode').onclick = () => {
+    rel.mode = rel.mode === 'map' ? 'web' : 'map';
+    applyRelMode(fig);
+    applyRelFilter();
+    if (rel.sel) selectRelNode(fig, rel.sel);
+  };
   fig.querySelector('.rel-ledger').addEventListener('click', (ev) => {
     const jump = ev.target.closest('.rel-jump');
     if (!jump) return;
@@ -1776,6 +1889,10 @@ function wireRelations(fig) {
   for (const n of rel.nodes) {
     n.el.addEventListener('pointerdown', (ev) => {
       drag = n; moved = false; start = toLocal(ev);
+      // On the map a node is pinned to its own country, so there is nothing to
+      // drag — don't capture the pointer or swallow the gesture, or a swipe
+      // that starts on a nation stops the page scrolling under a thumb.
+      if (rel.mode === 'map') return;
       try { n.el.setPointerCapture(ev.pointerId); } catch (_) { /* synthetic event */ }
       ev.preventDefault();
     });
@@ -1783,10 +1900,12 @@ function wireRelations(fig) {
       if (drag !== n) return;
       const p = toLocal(ev);
       if (Math.abs(p.x - start.x) > 4 || Math.abs(p.y - start.y) > 4) moved = true;
-      if (!moved) return;
+      if (!moved || rel.mode === 'map') return;
       n.x = Math.min(RVIEW.w - 20, Math.max(20, p.x));
       n.y = Math.min(RVIEW.h - 20, Math.max(20, p.y));
+      n.wx = n.x; n.wy = n.y;      // the web keeps what you untangled
       relaxRelations(rel.nodes, rel.edges, 5, n);
+      for (const m of rel.nodes) { m.wx = m.x; m.wy = m.y; }
       placeRelLabels();
     });
     const end = () => {

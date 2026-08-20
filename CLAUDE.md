@@ -252,6 +252,20 @@ and trade specialties from its Economic Specialties bullet).
 `world.js` to match, rebuild, and check the diagnostics — the same way
 `sync_relations.py` keeps the diplomacy from drifting.
 
+**And when the map changes, the site's map view does not follow on its own
+either.** The relations web can be laid over the world map, with each nation
+pinned to its own territory; both halves of that are generated out of the
+`.map` file, so a rebuilt map needs them regenerated too:
+
+```
+node tools/map_backdrop.js       # backdrop render + site/nation-positions.json
+python3 tools/shrink_backdrop.py # 2.8 MB PNG -> ~0.2 MB JPEG, and repoints the JSON
+```
+
+Skip it and the nodes stay pinned to where the nations used to be, which no
+check will catch — the page still loads, the ties are still right, and every
+country is simply in the wrong place.
+
 `docs/azgaar-map-generation.md` is the manual for all of this: how to drive
 Azgaar from a script, its pipeline order, and the traps. Read it before
 touching `forge.js` — several of its rules look arbitrary and are not, and the
