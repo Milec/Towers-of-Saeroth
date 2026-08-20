@@ -45,9 +45,9 @@ memory, by people trained from childhood to hold it there and nowhere else.
   [[Clan Salthollow]], whose own pans and caravans sit closest to
   Thurigypt, is the loudest voice against staying quiet any longer
 - **Relations**
-    - [[Aquoniti]] — **Trade**: Aquoniti hulls are the only ships that call at the Compact's own coast, trading salt and hides for pearls and fish neither clan has ever had reason to harvest itself
-    - [[Cindral Ashlands]] — **Trade**: Salt-cured meat and cattle north into a highland that grows nothing it doesn't mine
-    - [[Kesmarch Frontier]] — **Trade**: Salt and dyed cloth north for seed grain and iron, along caravan roads Kesmarch's own settlers rarely travel themselves
-    - [[Qeshara Sultanate]] — **Trade**: The caravan road between the savanna and the sultanate is older than either nation's own founding record
-    - [[Thornwild Confederation]] — **Trade**: Dyes and jungle goods for salt and hides, exchanged at treeline markets neither nation calls a border
-    - [[Thurigypt]] — **Friction**: They share the frontier where the delta's irrigated belt gives out and the savanna starts, which is why a caravan-priest's word about Sahenna funeral rites carried as far as it did. The salt and dyed cloth still move through Setharu's markets; nobody at either end pretends the relationship is warm
+    - [[Qeshara Sultanate]] — **Allied**: The Salt Road pact, and the oldest working alliance on either continent: Sahenna clans guarantee the caravans and Qeshara guarantees the wells. Both courts keep the terms by memory as much as by charter, and neither has broken them in living record
+    - [[Ashkar Pale]] — **Trade**: Glass and vine crops for salt and hides, on the short road around the range's southern arm
+    - [[Cindral Ashlands]] — **Trade**: Salt and cattle up to the ash country, worked steel back — the Compact is the only supplier that will cross the Ashlands on credit
+    - [[Kesmarch Frontier]] — **Trade**: Salt and hides for grain and iron, at the seasonal markets the clans keep on the savanna edge
+    - [[Thornwild Confederation]] — **Trade**: Dyed cloth and salt for jungle medicinals and pelts, traded clan to clan without either nation's council involved
+    - [[Thurigypt]] — **Friction**: Salt pans and grazing rights on the desert margin, claimed by a nation that keeps its record in stone and a nation that keeps it in memory. Neither will accept the other's evidence

@@ -116,6 +116,11 @@ const BORDERS = [
   //   ['Khazan Khaganate', 'Vaelic Principality'],   // Khazan moved east; see GROUP
   //   ['Khazan Khaganate', 'Voskreld Union'],   // Khazan moved east; see GROUP
   ['Khazan Khaganate', 'Xian Ti'],
+  // Added when the board was reworked against the built map: the Khaganate and
+  // the frontier DO adjoin at seed 7, and the homestead charters the Council
+  // issues across the Khagan's grazing are now a territorial tie. The current
+  // map already satisfies this; it is here so a rebuild still does.
+  ['Khazan Khaganate', 'Kesmarch Frontier'],
   // Keep this one even though the claim is on caverns *beneath* Stoneborn
   // rather than on a frontier: BORDERS is a layout constraint, not just a
   // scorecard, and deleting it let Stoneborn collapse from 326 cells to 21.

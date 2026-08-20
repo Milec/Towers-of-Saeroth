@@ -23,9 +23,10 @@ what actually lives down here.
 - **Faith** Patron [[Norgorber]], god of secrets — an unsettlingly literal fit for a nation whose currency is information. [[Pharasma]] is kept in the deepest holds, where the dead are numerous and very old
 - **Tension** A deep hold has sealed itself from the inside and the Warden-Conclave has voted twice not to investigate, which tells the other holds everything they need to know
 - **Relations**
-    - [[Ashkar Pale]] — **Friendly**: The Reaches have mapped every evacuation road beneath the Pale, and twice opened them without being asked
-    - [[Melisor Magocracy]] — **Trade**: Construct labour and salvaged relics, contracted openly and delivered without explanation
-    - [[Nordheim]] — **Friction**: Undertide passages keep surfacing inside Nordheim's mountains, always somewhere no jarl agreed to
-    - [[Stoneborn Holds]] — **Territorial**: The one land dispute on the board that no surveyor can draw: the Reaches claim caverns running directly *beneath* Stoneborn holds, so the disputed ground is stacked rather than side by side and the two share no frontier to argue over. A deep-frontier hold has stopped answering the Assembly's messengers
-    - [[Lazarian Lichdom]] — **Covert**: Relics move through back channels that lead, deniably, to Lazarian hands
-    - [[Thurion Merchant Alliance]] — **Covert**: The Reaches sell secret-keeping as a service, and more than one great house has quietly bought it
+    - [[Melisor Magocracy]] — **Trade**: Deep reagents and luminous fungus, sold by the Warden-Conclave at prices the academies resent and pay
+    - [[Nordheim]] — **Trade**: Amber and whale oil down into the deep holds, deep-vein iron back up. Neither nation has ever visited the other's capital
+    - [[Stoneborn Holds]] — **Territorial**: The same mountain claimed from above and below. The Holds hold the peaks and the Reaches hold what is under them, and the seam where the two claims meet has been fought over in the dark for two hundred years
+    - [[Lazarian Lichdom]] — **Covert**: The Warden-Conclave sells the Lichdom what it knows and sells the Lichdom's enemies what it knows about that, and has never been caught doing either
+    - [[Quivar]] — **Covert**: The court is the Warden-Conclave's largest single client, and pays in wine, art and favours rather than anything that leaves a ledger entry
+    - [[Thurion Merchant Alliance]] — **Covert**: The Alliance's factors are the Conclave's best-paying customers and its most useful suppliers, and every contract between them is verbal
+    - [[Voskreld Union]] — **Covert**: Voskreld buys what it cannot be seen buying: route surveys, provincial correspondence, and the occasional accurate figure about its own duchies

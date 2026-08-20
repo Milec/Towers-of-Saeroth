@@ -21,12 +21,13 @@ utterly indispensable to anyone who needs magic done properly.
 - **Faith** Patron [[Nethys]], god of magic in all its forms, whose temple sits at the centre of every academy campus. [[Irori]] is the scholar's second god here — self-perfection through study is how Melisor justifies its own hierarchy
 - **Tension** Two academies claim the same discovery, and the Council of Archmages has stalled on ruling for a year rather than hand either one the prestige
 - **Relations**
-    - [[Cindral Ashlands]] — **Trade**: Elemental reagents no other forge can produce, at prices the academies resent and pay
-    - [[Elven Confederacy]] — **Trade**: Magical plants for the academies, on terms the tribes renegotiate roughly once a century
-    - [[Thurion Merchant Alliance]] — **Trade**: Alliance contracts for enchanted goods quietly bankroll the academies
-    - [[Undertide Reaches]] — **Trade**: Construct labour and salvaged relics, contracted openly and delivered without explanation
-    - [[Xian Ti]] — **Trade**: Scholarship traded as freely as goods; both nations keep Irori, and each thinks the other misreads him
-    - [[Qeshara Sultanate]] — **Rivalry**: Whether the sultanate's star-charts or the academies' astral theory read the sky more truly, argued in papers neither side lets the other see first
-    - [[Sarrowmere]] — **Rivalry**: Whether the fen's compounds are medicine or a shabby kind of magic; both nations are certain and neither will test it
-    - [[Silicar]] — **Rivalry**: Melisor's academics can't decide whether Silicar's clockwork is beneath magic or quietly outperforming it
-    - [[Lazarian Lichdom]] — **Covert**: Public condemnation over what magic should never be used for — and a relic trade through intermediaries neither will name
+    - [[Elven Confederacy]] — **Trade**: Magical plants to the academies. The Council sells the cuttings and refuses, absolutely, to sell the ground they came out of
+    - [[Stoneborn Holds]] — **Trade**: Gems and masterwork settings for enchantment — the academies cannot make a focus that holds, and the Holds cannot make one that does anything
+    - [[Undertide Reaches]] — **Trade**: Deep reagents and luminous fungus, sold by the Warden-Conclave at prices the academies resent and pay
+    - [[Xian Ti]] — **Trade**: Two scholarly states with the same contempt for amateurs. Melisor sells teleport circles to the imperial academies and Xian Ti sells back the only paper that survives being written on by a spell
+    - [[Qeshara Sultanate]] — **Rivalry**: Arcane law against star-craft: two traditions that each regard the other as astrology with better funding
+    - [[Sarrowmere]] — **Rivalry**: Physic against alchemy. Sarrowmere's cantons cure things the academies have proven incurable, using methods Melisor will not accredit and quietly buys
+    - [[Silicar]] — **Rivalry**: Spell against machine, argued for four generations. Silicar keeps building things that do what a spell does, cheaper and without a mage, and Melisor keeps explaining why that is not the same
+    - [[Thurion Merchant Alliance]] — **Rivalry**: The teleportation network is an existential problem for a shipping league and both sides know it. The Alliance's answer so far has been price, and Melisor's has been patience
+    - [[Voskreld Union]] — **Rivalry**: Who licenses magic. Voskreld says the Crown does, by the same authority that standardized the coin; Melisor says a state that cannot cast cannot license, and has never once submitted a return
+    - [[Lazarian Lichdom]] — **Covert**: Research the academies cannot publish, conducted with materials they cannot account for. Four archmages know; the Council of Archmages, officially, does not

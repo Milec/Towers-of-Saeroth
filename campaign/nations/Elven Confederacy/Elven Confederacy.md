@@ -20,10 +20,10 @@ dispute season for a decade before ruling on it.
 - **Faith** Patron [[Ketephys]], the elven hunter, honored by every tribe regardless of what else they disagree on. [[Yuelral]] holds the magical traditions and [[Findeladlara]] the artistic ones; several forest tribes keep the [[Green Faith]] instead of any named god
 - **Tension** The tribes cannot agree whether encroachment on the old forests warrants a council at all, and the delay is itself becoming the answer
 - **Relations**
-    - [[Aquoniti]] — **Friendly**: The drowned coastal woods are Sea Elf ground twice over; the Tide Lords and the tribes have shared them so long that neither can produce the terms
-    - [[Melisor Magocracy]] — **Trade**: Magical plants for the academies, on terms the tribes renegotiate roughly once a century
-    - [[Quivar]] — **Trade**: Heartwood wine and elven silk — the only foreign court the tribes consider worth dressing for
-    - [[Thornwild Confederation]] — **Friction**: The Confederacy regards the Thornwild as unruly distant kin; the Thornwild did not ask to be anyone's cousin
-    - [[Khazan Khaganate]] — **Territorial**: The oldest grievance on the board and the one with the least ground under it: the tribes claim groves the Khaganate burned in an age when riders could still reach them, and have never held that land or withdrawn the claim. The two share no frontier now, so it travels by envoy and is answered by silence
-    - [[Nordheim]] — **Territorial**: Nordheim timber camps working northern pine the Winter Elf tribes have never ceded
-    - [[Thurigypt]] — **Territorial**: Water rights at the desert oasis-groves — wardens' work the Confederacy has never stopped claiming on ground it has never held. The two share no frontier, so the argument travels by envoy and caravan, and is settled in no generation
+    - [[Corvane Republic]] — **Friendly**: The only neighbour that ever wrote it down: the Republic's charter recognises tribal timber title, which cost Corvane its cheapest lumber and bought it the one border in the north it has never had to garrison
+    - [[Thesal Theocracy]] — **Friendly**: Sarenrae's hospices treat the tribes at the forest edge and ask nothing for it, which the Council of chiefs has decided — after two centuries of watching for the catch — to take at face value
+    - [[Melisor Magocracy]] — **Trade**: Magical plants to the academies. The Council sells the cuttings and refuses, absolutely, to sell the ground they came out of
+    - [[Quivar]] — **Trade**: Elven silk, wine and rare timber, and Quivar pays court prices for all three without haggling, which the tribes find suspicious and profitable in equal measure
+    - [[Stoneborn Holds]] — **Trade**: Rare timber and herbs down, steel and tools up — the trade that keeps the northern mountains supplied and the one relationship the tribes conduct entirely by weight and measure
+    - [[Nordheim]] — **Territorial**: Nordheim logging camps in the northern pine, on the Confederacy's own frontier and inside ground the tribes have marked for eleven centuries. The one grievance the elves can actually reach
+    - [[Dalstan]] — **Hostile**: Inquisitorial companies burning grove-shrines on the Confederacy's southern edge, on the doctrine that a faith without a named god is a faith with something to hide

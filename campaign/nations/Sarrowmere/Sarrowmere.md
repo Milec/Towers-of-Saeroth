@@ -25,8 +25,9 @@ the suspicion useful and resent it simultaneously.
 *Full of hooks: a cure only Sarrowmere can make, a poison only Sarrowmere
 could have made, and a confederation with no way to police its own members.*
 - **Relations**
-    - [[Thesal Theocracy]] — **Friendly**: Thesal's hospices are stocked by Sarrowmere and staffed by Thesal, and neither has ever wanted to change the arrangement
-    - [[Ashkar Pale]] — **Trade**: Ash-glaze vessels are the only containers that hold the mere's compounds without spoiling them
-    - [[Quivar]] — **Trade**: Physicians and poisons, bought on the same manifest and never itemised separately
-    - [[Melisor Magocracy]] — **Rivalry**: Whether the fen's compounds are medicine or a shabby kind of magic; both nations are certain and neither will test it
-    - [[Lazarian Lichdom]] — **Covert**: Reagents that grow nowhere but the mere, shipped to a customer the cantons have never been willing to name
+    - [[Thesal Theocracy]] — **Friendly**: The two nations that everyone sends their dying to. Thesal heals by faith and Sarrowmere by reagent, they disagree about almost everything else, and the fen cantons have never once refused a Thesal courier
+    - [[Kelvary March]] — **Trade**: Field surgeons, antitoxins and the cultured moulds that stop a camp wound going bad. A war-trading nation buying its medicine from a nation with almost no army is a joke both of them have stopped making
+    - [[Quivar]] — **Trade**: Antitoxins to a court that poisons, in the quantities that implies, invoiced quarterly and never discussed
+    - [[Melisor Magocracy]] — **Rivalry**: Physic against alchemy. Sarrowmere's cantons cure things the academies have proven incurable, using methods Melisor will not accredit and quietly buys
+    - [[Voskreld Union]] — **Friction**: Voskreld's canal works are draining the eastern fen, cant by cant. The Union calls it drainage and improvement; the cantons call it what happens to a nation whose defence is water
+    - [[Lazarian Lichdom]] — **Covert**: The fen cantons buy reagents no living nation will admit a use for, and the Lichdom is the only supplier. Sarrowmere's answer, when asked, is that it treats what it is brought

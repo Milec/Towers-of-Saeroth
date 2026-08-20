@@ -20,16 +20,14 @@ everyone at court knows it.
 - **Faith** Patron [[Shelyn]], goddess of art, beauty and love — the face Quivar presents, and genuinely beloved. [[Calistria]], goddess of intrigue, revenge and exquisite grudges, is the one the court actually prays to, and everyone knows it
 - **Tension** The monarch has two plausible heirs and has declined to indicate a preference, which has turned every salon in Valmont into a recruiting ground
 - **Relations**
-    - [[Thesal Theocracy]] — **Friendly**: Shelyn's temple in Concord is Quivari-funded and entirely sincere, which is the one thing about Quivar that nobody suspects of being an operation
-    - [[Aquoniti]] — **Trade**: Pearl and coral, graded at sea and sold on to the Valmont ateliers
-    - [[Elven Confederacy]] — **Trade**: Heartwood wine and elven silk — the only foreign court the tribes consider worth dressing for
-    - [[Kelvary March]] — **Trade**: Quivar hires and Kelvary asks nothing, which is precisely what Quivar is paying for
-    - [[Sarrowmere]] — **Trade**: Physicians and poisons, bought on the same manifest and never itemised separately
+    - [[Aquoniti]] — **Trade**: Pearls and coral to the court that sets what they are worth, and the one cargo Aquoniti insures at full value
+    - [[Elven Confederacy]] — **Trade**: Elven silk, wine and rare timber, and Quivar pays court prices for all three without haggling, which the tribes find suspicious and profitable in equal measure
+    - [[Sarrowmere]] — **Trade**: Antitoxins to a court that poisons, in the quantities that implies, invoiced quarterly and never discussed
     - [[Tal Ulad]] — **Trade**: Horses, and Quivar is the only buyer that has ever paid what the Ulad say they are worth
-    - [[Dalstan]] — **Rivalry**: One-sided: Dalstan's nobility imitates Quivari fashion badly enough to be a court joke
-    - [[Thurion Merchant Alliance]] — **Rivalry**: A long, low-grade contest over who really controls which trade secrets
-    - [[Xian Ti]] — **Rivalry**: Luxury trade, and who gets to define “refined”
-    - [[Corvane Republic]] — **Friction**: Corvane's presses print what Valmont's court would rather went unread, and Quivar's intelligence service works Vantry harder than anywhere else
-    - [[Qeshara Sultanate]] — **Covert**: Valmont has taken an interest in which claimant the Court of Viziers eventually backs, and has not been subtle enough about it for the Sultan's own spies to miss
-    - [[Tessine]] — **Covert**: Valmont works out of Tessine because everyone works out of Tessine, and the Signory prefers not to know whose money it is holding
-    - [[Vaelic Principality]] — **Covert**: Valmont keeps agents in the Diet and a considerable interest in who the next High Prince will owe
+    - [[Voskreld Union]] — **Rivalry**: The court against the crown, and the tariff schedule against the taste that ignores it. Voskreld standardizes what Quivar sells on the grounds that it is unique
+    - [[Xian Ti]] — **Rivalry**: Two cultural capitals on opposite oceans, each convinced the other is derivative, both correct
+    - [[Lazarian Lichdom]] — **Covert**: The court buys relics for reasons it does not explain, through intermediaries who are never the same twice
+    - [[Qeshara Sultanate]] — **Covert**: Two courts that spy on each other constantly and enjoy it enormously, exchanging intelligence, poets and — twice — an entire intelligence service's worth of deliberately false star-charts
+    - [[Tessine]] — **Covert**: Quivar's intelligence service runs on Tessine paper — forged and genuine, sold across the same counter — and the Signory's discretion is the actual product
+    - [[Undertide Reaches]] — **Covert**: The court is the Warden-Conclave's largest single client, and pays in wine, art and favours rather than anything that leaves a ledger entry
+    - [[Vaelic Principality]] — **Covert**: Quivar's service has been inside the Diet for two generations. Vaelic knows, cannot prove it, and has begun feeding it things on purpose
