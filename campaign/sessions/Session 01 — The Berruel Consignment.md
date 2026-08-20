@@ -105,8 +105,11 @@ anyone who looks at the problem for one round instead of swinging at it.
   underwriter. The valuation is generous.
 
 **The hook out.** Somebody has to carry word of the loss to Vaelic, or back to
-Quivar, or to the expedition still waiting at the far end for supplies that are
-not coming. All three are different second sessions.
+Quivar, or up to the expedition still waiting in the passes for supplies that
+are not coming. All three are different second sessions — and the Vaelic one
+has an address: [[Drakenstein]], the Drake Rider mother-aerie above the third
+pass, which considers anything happening in those mountains its business within
+about two days whether or not anyone thought to tell it.
 
 ## The fight
 

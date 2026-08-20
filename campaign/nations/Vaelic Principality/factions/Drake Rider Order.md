@@ -50,6 +50,22 @@ locked to one family either. What became of House Dravensk's original
 claim since, and whether that argument has gone anywhere, are open
 threads.
 
+## Drakenstein
+
+The Order's seat is [[Drakenstein]], the mother-aerie cut into the granite of
+the eastern range above the third pass. Every bond is made there, every Trial
+is held there, and the Grand Marshal sits there when the Diet is not in
+session.
+
+It stands on **Imperial ground granted out of the Crown's own holdings**, not
+on any elector's territory, and that single fact is the load-bearing one: an
+Order housed on a prince's land answers to a prince eventually, whatever its
+charter says. Drakenstein is why the charter has held for as long as it has.
+
+It also faces east, at the four passes and the [[Lazarian Lichdom]] beyond
+them, which is the reason the Order exists in its present form rather than as
+a ceremonial guard. The grain country to the west has never needed drakes.
+
 ## Progression
 
 **Trial Candidate → Fledgling Rider → Field Rider → Wing Rider →**
@@ -115,8 +131,9 @@ eyes of the electors who have to live with the choice.
 ## Recurring political friction
 
 Chapter houses (aeries) are frequently built on an elector's or
-territorial prince's own land, but the riders stationed there answer up
-the Order's chain of command, not to the local lord. Electors resent
+territorial prince's own land — [[Drakenstein]] itself never was — but the
+riders stationed there answer up the Order's chain of command, not to the
+local lord. Electors resent
 housing an armed, dragon-mounted institution they don't control, and
 periodically push at the Diet to bring aeries under local authority —
 [[House Kesslin]]'s campaign to reclaim its aerie is the sharpest current
