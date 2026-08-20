@@ -4,19 +4,19 @@ type: index
 view: relations
 ---
 
-Every standing relationship between nations, drawn from the Relations bullet on
-each nation's own note — 118 ties across all 28. Read a row as symmetric unless
-the detail says otherwise; most of these are felt differently from each side.
+No war is being fought in Saeroth this season, which is not the same as peace
+and nobody involved confuses the two.
 
-The board was rebuilt against the world map: a nation quarrels over ground only
-where it actually shares a frontier, and everything crossing an ocean is
-carried by somebody — the two sea powers, the caravan roads, or a shared faith
-that predates the crossing.
+What holds instead is a set of standing arrangements — alliances written down,
+friendships that were never written down at all, trade nobody would call
+friendship, and a good deal of quiet loathing between neighbours who cannot
+afford to act on it. Most of these are felt differently from each end. Read a
+row as mutual unless the detail says otherwise.
 
-**Standing** is a rough label for how the relationship behaves at the table.
-Read it as a scale running from warm to hostile, with **Trade** sitting off to
-one side — commerce is not affection, and some of the busiest trade routes here
-run between nations that cannot stand each other:
+**Standing** is shorthand for how a relationship behaves when it comes up at
+the table. It runs warm to hostile, with **Trade** off to one side, because
+commerce is not affection: some of the busiest routes on the map run between
+nations that cannot stand each other.
 
 | Label | Means |
 | --- | --- |
@@ -29,36 +29,14 @@ run between nations that cannot stand each other:
 | **Hostile** | Active enmity, ideological or otherwise |
 | **Covert** | Deniable dealings both sides publicly disown |
 
-The difference between **Allied** and **Friendly** is obligation, not warmth. An
-ally is expected to march; a friend is expected to be glad to see you. Several
-of the friendships here are older and steadier than any of the alliances — the
-Pale has evacuated into Thornwild canopy through six recorded falls without
-either side ever writing terms — but none of them would put an army in the
-field.
+An ally is expected to march. A friend is expected to be glad to see you. The
+difference is obligation, not warmth, and several of the friendships here are
+older and steadier than any of the alliances — the [[Ashkar Pale]] has
+evacuated into [[Thornwild Confederation]] canopy through six recorded falls
+without either side ever putting terms on paper — but none of them would put an
+army in the field.
 
-## How the goods actually move
-
-Four corridors carry nearly everything, and most of the Trade rows above are a
-leg of one of them:
-
-- **The Middle Sea.** [[Thurion Merchant Alliance]] and [[Aquoniti]] sit in the
-  water between the continents, and almost nothing crosses without touching
-  one of them. Thurion runs the long hauls and the contracts; Aquoniti runs the
-  short crossings, the salvage and the islands. They are neighbours, they are
-  rivals, and between them they are why a Vaelic breastplate can be bought in
-  [[Xian Ti]].
-- **The Salt Road.** [[Sahenna Compact]] caravans and [[Qeshara Sultanate]]
-  wells, running the eastern deserts from [[Thurigypt]]'s river to
-  [[Kesmarch Frontier]]'s markets and out to the coast onto Alliance hulls. The
-  only alliance on the board that is a trade route first.
-- **The Uplad circuit.** [[Tal Ulad]]'s four-season route is the overland road
-  across the western south, and the herd-councils sell safe passage on it. Every
-  nation that touches it either pays the toll ([[Kelvary March]],
-  [[Vaelic Principality]], [[Quivar]]) or is trying not to ([[Dalstan]]).
-- **The Voskreld roads and canals.** [[Voskreld Union]] standardized the coin,
-  the measure and the roadbed, then built the network they run on. Grain,
-  steel and machinery move across the western centre on it, which is most of
-  why [[Silicar]] and [[Stoneborn Holds]] can sell to anyone at all.
+Where the goods go is its own subject, and its own note: see [[Trade Routes]].
 
 ## The table
 
@@ -183,42 +161,52 @@ leg of one of them:
 | [[Thurion Merchant Alliance]] ↔ [[Undertide Reaches]] | **Covert** | The Alliance's factors are the Conclave's best-paying customers and its most useful suppliers, and every contract between them is verbal |
 | [[Undertide Reaches]] ↔ [[Voskreld Union]] | **Covert** | Voskreld buys what it cannot be seen buying: route surveys, provincial correspondence, and the occasional accurate figure about its own duchies |
 
-## Reading the board
+## The shape of it
 
-- **[[Thurion Merchant Alliance]]** carries 14 ties, more than any other
-  nation, and only two of them are warm. It is the hub because it is
-  indispensable, not because it is liked: it insures the wars it also staffs,
-  and it is in a standing rivalry with all three of the other money powers —
-  [[Tessine]], [[Aquoniti]] and [[Corvane Republic]].
-- **[[Kesmarch Frontier]]** is the pressure point of the eastern continent.
-  Twelve ties, six land borders, and two of them territorial in opposite
-  directions: the [[Khazan Khaganate]] to the north over grazing the Khagan's
-  riders have never been challenged on, and the
-  [[Thornwild Confederation]] to the south over charters the Council issues
-  for ground it has never surveyed. It also feeds itself on
-  [[Thurigypt]] grain and sells through [[Thurion Merchant Alliance]], so a war
-  on either frontier would be felt in four capitals at once.
-- **[[Dalstan]]** is the western continent's problem. Four hostilities and
-  three frictions, every one of them with a nation it can walk to, and the only
-  warm relationship it has is with the Alliance factors who buy its relics.
-  Its neighbours are [[Corvane Republic]], which shelters everyone it wants
-  back, and [[Thesal Theocracy]], which it calls heresy.
-- **[[Melisor Magocracy]]** has no ally and no friend — four rivalries, one
-  buried arrangement with the Lichdom, and four trades that everyone conducts
-  because they have no alternative. Arrogant, brilliant, indispensable, in
-  exactly that order.
+Two continents, and they do not have the same problem.
 
-**[[Lazarian Lichdom]]** is still the only nation on the map with nothing
-warmer than a deniable one: no ally, no friend, not one honest trading partner.
-Three hostilities, five covert arrangements, and the busiest of those is
-[[Dalstan]], which condemns undeath from a gilded pulpit and sources its relics
-from Lazarian grave-fields.
+**In the west, the quarrels are old and the borders are hard.** Everyone has
+been where they are for a long time, and the arguments are about ground that
+has been argued over before. [[Dalstan]] is the centre of it — a gilded
+inquisition with a hostility on nearly every side, sheltering nothing and
+demanding everyone back — and the two nations that share its borders,
+[[Corvane Republic]] and [[Thesal Theocracy]], have made common cause chiefly
+because of it. Against that sits the heaviest thing on the continent: the
+Vaelic–Voskreld alliance, two land powers who would rather not find out which
+of them is stronger, with [[Thesal Theocracy]] bound to both.
 
-The quarrels that could still become wars are all on ground somebody shares.
-[[Silicar]] has put a plough through the Uplad spring route and the
-herd-councils have not decided what to do about it; the
-[[Stoneborn Holds]] and the [[Undertide Reaches]] have been fighting in the
-dark under the same mountain for two centuries; and
-[[Voskreld Union]]'s canals are draining the fen that is [[Sarrowmere]]'s
-entire defence. None of those needs a fleet, an ocean crossing or an ally to
-start.
+**In the east, the borders are new and the ground is not settled at all.** The
+[[Kesmarch Frontier]] issues charters for country it has never surveyed, which
+puts it against the [[Khazan Khaganate]] in the north and the
+[[Thornwild Confederation]] in the south simultaneously, and it is the only
+nation on the map with a territorial dispute in two directions. Everything else
+out there is older and steadier: [[Xian Ti]] and the [[Khazan Khaganate]] have
+faced each other across the same wall for longer than most western nations have
+existed, and [[Qeshara Sultanate]] and [[Sahenna Compact]] have kept the wells
+open between them for as long as anyone has counted.
+
+**Three nations have no friends, for three different reasons.** The
+[[Melisor Magocracy]] is resented — indispensable, insufferable, and owed money
+by half the continent. The [[Undertide Reaches]] sells secrets to everyone and
+is therefore trusted by no one, including its customers. And the
+[[Lazarian Lichdom]] is simply feared: three open enmities, five arrangements
+nobody will admit to, and not one honest trading partner. Its busiest
+relationship is with [[Dalstan]], which condemns undeath from a gilded pulpit
+and buys its relics out of Lazarian grave-fields.
+
+## What could still go wrong
+
+None of the likely wars need a fleet or an ally to start. They are all on
+ground somebody already shares.
+
+[[Silicar]] has run an irrigation cut through the [[Tal Ulad]] spring route,
+and the herd-councils have not yet decided between negotiating, going around,
+and going through. The [[Stoneborn Holds]] and the [[Undertide Reaches]] have
+been fighting in the dark under the same mountain for two centuries and neither
+has ever held the seam for a generation. [[Voskreld Union]]'s canal works are
+draining the fen that is [[Sarrowmere]]'s entire defence, one canton at a time,
+and calling it improvement.
+
+And on the far continent, the [[Kesmarch Frontier]] keeps issuing charters. The
+Circle of First Packs has adjourned twice without deciding what to do about it.
+The third time will decide something.

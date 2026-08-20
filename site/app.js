@@ -331,6 +331,9 @@ async function route() {
     if (fmField(fm, 'view') === 'relations') {
       try { mountRelations(el, body); } catch (_) { /* the table still renders */ }
     }
+    if (fmField(fm, 'view') === 'routes') {
+      mountRoutes(el, body).catch(() => { /* the table still renders */ });
+    }
     document.title = target.split('/').pop().replace(/\.md$/, '') + ' — Towers of Saeroth';
     renderBacklinks(target);
     if (frag) {
@@ -1999,6 +2002,216 @@ async function loadNationThemes(fig) {
     }
     if (rel.sel) renderRelLedger(fig);
   } catch (_) { /* offline or moved: the ledger just has no subtitle */ }
+}
+
+/* ------------------------------------------------------------- trade routes
+   A note carrying `view: routes` has its corridor table drawn on the world
+   map: each route becomes a line through the nations it actually runs through,
+   pinned to where those nations are.
+
+   Same rule as the relations web — the markdown table is the single source of
+   truth. A row is `| **Name** | Carried by | [[A]] → [[B]] → [[C]] | cargo |`,
+   the run is read as an ordered list of wikilinks, and adding a stop to the
+   note moves the line here with no code change. The `Carried by` column is
+   what the note already had to say anyway, and it chooses the line style, so a
+   sea lane and a caravan track do not read as the same kind of thing.
+
+   Positions and the backdrop are the same generated pair the relations map
+   mode uses; if they are missing this does nothing and the table stands. */
+const CARRY = {
+  sea:     { dash: '9 7',   width: 3.0 },
+  caravan: { dash: '2 6',   width: 3.2 },
+  road:    { dash: '',      width: 3.0 },
+  river:   { dash: '11 4 2 4', width: 2.4 },
+};
+const ROUTE_KEYS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
+const routes = { list: [], sel: null };
+window.__routes = routes;   // exposed for automated UI tests, like window.__rel
+
+/* Rows look like `| **Name** | Road | [[A]] → [[B]] | what it carries |`.
+   Anything without a name and at least two linked stops is skipped, which
+   keeps the note's own prose tables out of the drawing. */
+function parseRoutes(bodyText) {
+  const out = [];
+  for (const raw of bodyText.split(/\r?\n/)) {
+    const line = raw.trim();
+    if (line[0] !== '|') continue;
+    const cells = line.replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
+    if (cells.length < 4) continue;
+    const name = cells[0].replace(/\*+/g, '').trim();
+    const carry = cells[1].replace(/\*+/g, '').trim().toLowerCase();
+    const stops = [...cells[2].matchAll(/\[\[([^\]|#]+)[^\]]*\]\]/g)].map((m) => m[1].trim());
+    if (!name || stops.length < 2 || !CARRY[carry]) continue;
+    out.push({ name, carry, stops, cargo: cells[3] || '', key: ROUTE_KEYS[out.length % ROUTE_KEYS.length] });
+  }
+  return out;
+}
+
+async function mountRoutes(container, bodyText) {
+  const list = parseRoutes(bodyText);
+  if (!list.length) return;
+  const pos = await loadMapPositions();
+  if (!pos) return;                       // no map on this deploy: table only
+  const missing = list.filter((r) => r.stops.some((s) => !pos.nations[s]));
+  if (missing.length === list.length) return;
+  routes.list = list.filter((r) => r.stops.every((s) => pos.nations[s]));
+  routes.sel = null;
+
+  const P = (n) => [pos.nations[n][0] * RMAP.scale, pos.nations[n][1] * RMAP.scale];
+  const stops = [...new Set(routes.list.flatMap((r) => r.stops))];
+
+  const fig = document.createElement('figure');
+  fig.className = 'routemap';
+  fig.innerHTML = `
+    <div class="rel-controls" role="group" aria-label="Show one corridor">
+      ${routes.list.map((r) =>
+        `<button type="button" class="rel-chip route-chip r-${r.key}" data-r="${escapeHtml(r.name)}"
+                 aria-pressed="false"><span>${escapeHtml(r.name)}</span></button>`).join('')}
+      <button type="button" class="rel-reset linkbtn">All of them</button>
+    </div>
+    <div class="rel-board">
+      <div class="rel-canvas">
+        <svg class="rel-svg route-svg" viewBox="0 0 ${RMAP.w} ${RMAP.h}" role="img"
+             aria-label="The ${routes.list.length} trade corridors of Saeroth, drawn on the world map">
+          <image class="rel-basemap" preserveAspectRatio="none"
+                 x="0" y="0" width="${RMAP.w}" height="${RMAP.h}"></image>
+          <g class="route-lines"></g><g class="route-stops"></g>
+        </svg>
+        <p class="rel-hint muted">Tap a corridor for what it carries · tap a port to open its note</p>
+      </div>
+      <aside class="rel-ledger" aria-live="polite"></aside>
+    </div>
+    <figcaption>Every line runs through the nations the table names, pinned to
+      where they sit on the world map. Solid is a road, dashed is a sea lane,
+      dotted is a caravan track and the broken line is the river run nobody
+      admits to.</figcaption>`;
+
+  const table = [...container.querySelectorAll('table')]
+    .find((t) => /→/.test(t.textContent));
+  if (table) {
+    const prev = table.previousElementSibling;
+    const anchor = prev && /^H[2-4]$/.test(prev.tagName) ? prev : table;
+    anchor.parentNode.insertBefore(fig, anchor);
+    const det = document.createElement('details');
+    det.className = 'relsource';
+    det.innerHTML = `<summary>The ${routes.list.length} rows this is read from</summary>`;
+    table.parentNode.insertBefore(det, table);
+    det.appendChild(table);
+  } else {
+    container.appendChild(fig);
+  }
+  container.classList.add('wide');
+
+  const img = fig.querySelector('.rel-basemap');
+  img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', BASE + pos.image);
+  img.setAttribute('href', BASE + pos.image);
+
+  const lines = fig.querySelector('.route-lines');
+  for (const r of routes.list) {
+    const c = CARRY[r.carry];
+    const points = r.stops.map((s) => P(s).join(' ')).join(' ');
+    r.el = svgEl('polyline', {
+      class: 'route-line r-' + r.key, 'stroke-width': c.width,
+      'stroke-linecap': 'round', 'stroke-linejoin': 'round', points,
+    });
+    if (c.dash) r.el.setAttribute('stroke-dasharray', c.dash);
+    // a 3px line is not a touch target; this invisible one is 44px on a phone
+    r.hit = svgEl('polyline', { class: 'route-hit', 'stroke-width': 26, points });
+    lines.append(r.el, r.hit);
+  }
+
+  const sLayer = fig.querySelector('.route-stops');
+  const marks = new Map();
+  const placed = [];
+  const hits = (r) => placed.some((p) =>
+    r.x < p.x + p.w && r.x + r.w > p.x && r.y < p.y + p.h && r.y + r.h > p.y);
+  // busiest ports first, so the names that matter keep the natural position
+  // under the dot and the quiet ones are the ones that get flipped above
+  const byTraffic = [...stops].sort((a, b) =>
+    routes.list.filter((r) => r.stops.includes(b)).length -
+    routes.list.filter((r) => r.stops.includes(a)).length);
+  for (const s of byTraffic) {
+    const [x, y] = P(s);
+    const on = routes.list.filter((r) => r.stops.includes(s)).length;
+    const rad = 3.4 + Math.min(on, 4) * 0.9;
+    const g = svgEl('g', { class: 'route-stop', tabindex: '0', role: 'button',
+      'aria-label': `${s}, on ${on} corridor${on === 1 ? '' : 's'}` });
+    const dot = svgEl('circle', { class: 'route-dot', cx: x, cy: y, r: rad });
+    const bg = svgEl('rect', { class: 'rel-labelbg', rx: 3 });
+    const tx = svgEl('text', { class: 'rel-label route-label', 'text-anchor': 'middle', x });
+    tx.textContent = s;
+    const w = labelWidth(s) * RMAP.labelScale;
+    const box = (ly) => ({ x: x - w / 2 - 3, y: ly - 8, w: w + 6, h: 11 });
+    const below = y + rad + 9, above = y - rad - 4;
+    const ly = (hits(box(below)) && !hits(box(above))) ? above : below;
+    const b = box(ly);
+    placed.push(b);
+    tx.setAttribute('y', ly);
+    bg.setAttribute('x', b.x); bg.setAttribute('y', b.y);
+    bg.setAttribute('width', b.w); bg.setAttribute('height', b.h);
+    g.append(dot, bg, tx);
+    sLayer.appendChild(g);
+    marks.set(s, { g, x, y });
+  }
+
+  const ledger = fig.querySelector('.rel-ledger');
+  const overview = () => {
+    const busiest = stops
+      .map((s) => ({ s, c: routes.list.filter((r) => r.stops.includes(s)).length }))
+      .sort((a, b) => b.c - a.c || a.s.localeCompare(b.s));
+    const top = busiest.filter((x) => x.c === busiest[0].c);
+    ledger.innerHTML = `<h3>The network</h3>
+      <p>${routes.list.length} corridors, ${stops.length} nations on them.</p>
+      <p>${top.map((x) => `<strong>${escapeHtml(x.s)}</strong>`).join(' and ')}
+         ${top.length > 1 ? 'each sit' : 'sits'} on ${busiest[0].c} of them — more than
+         anyone else, and the reason ${top.length > 1 ? 'their' : 'its'} foreign policy
+         is mostly a freight schedule.</p>
+      <p class="rel-cta muted">Tap a corridor to follow it.</p>`;
+  };
+  const detail = (r) => {
+    ledger.innerHTML = `<h3>${escapeHtml(r.name)}</h3>
+      <p class="rel-theme muted">${escapeHtml(r.carry[0].toUpperCase() + r.carry.slice(1))} —
+         ${r.stops.length} stops</p>
+      <p>${r.stops.map((s) => `<a class="rel-open" href="#/${encodeURI(resolveTarget(s) || '')}">${escapeHtml(s)}</a>`).join(' → ')}</p>
+      <p>${escapeHtml(r.cargo)}</p>`;
+  };
+
+  const show = (r) => {
+    routes.sel = r;
+    for (const x of routes.list) {
+      x.el.classList.toggle('dim', !!r && x !== r);
+      x.el.classList.toggle('lit', !!r && x === r);
+    }
+    for (const [name, m] of marks) {
+      m.g.classList.toggle('far', !!r && !r.stops.includes(name));
+    }
+    fig.querySelectorAll('.route-chip').forEach((b) =>
+      b.setAttribute('aria-pressed', r && b.dataset.r === r.name ? 'true' : 'false'));
+    if (r) detail(r); else overview();
+  };
+
+  fig.querySelectorAll('.route-chip').forEach((btn) => {
+    btn.onclick = () => {
+      const r = routes.list.find((x) => x.name === btn.dataset.r);
+      show(routes.sel === r ? null : r);
+    };
+  });
+  fig.querySelector('.rel-reset').onclick = () => show(null);
+
+  for (const [name, m] of marks) {
+    const open = () => {
+      const path = resolveTarget(name);
+      if (path) location.hash = '#/' + encodeURI(path);
+    };
+    m.g.addEventListener('click', open);
+    m.g.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(); }
+    });
+  }
+  for (const r of routes.list) {
+    r.hit.addEventListener('click', () => show(routes.sel === r ? null : r));
+  }
+  show(null);
 }
 
 /* ------------------------------------------------------------------ boot */
