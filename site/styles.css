@@ -366,6 +366,36 @@ body {
 .rel-labelbg { fill: var(--panel); opacity: .85; pointer-events: none; }
 .rel-node.sel .rel-label { fill: var(--accent); }
 
+/* ---- the web laid over the world map ------------------------------------
+   An optional mode, off by default. The backdrop is a generated render of
+   campaign/Saeroth.map with no labels on it; everything written on top is the
+   overlay's own. It is held back so the ties stay the thing being read — the
+   map is there to say WHERE, not to be looked at. */
+.rel-basemap { opacity: .62; }
+.relweb.mapmode .rel-label { font-size: 9.5px; }
+.relweb.mapmode .rel-labelbg { opacity: .74; }
+.relweb.mapmode .rel-dot { stroke-width: 1.1; }
+.relweb.mapmode .rel-node { cursor: pointer; }        /* pinned: nothing to drag */
+.relweb.mapmode .rel-svg { touch-action: pan-y; }     /* so a swipe still scrolls */
+/* the map wants the whole width — a world squeezed into a 1fr column beside
+   the ledger puts the western continent's names on top of each other */
+.relweb.mapmode .rel-board { grid-template-columns: 1fr; }
+.relweb.mapmode .rel-ledger { max-height: none; }
+/* A world with 28 names on it cannot shrink to a phone: below this width the
+   map scrolls sideways inside its own box, at a size the labels survive, and
+   the page itself never scrolls horizontally. */
+.relweb.mapmode .rel-canvas { overflow-x: auto; }
+.relweb.mapmode .rel-svg { min-width: 720px; }
+/* the hint sits over the canvas in web mode, where the corners are empty —
+   on the map they are Nordheim and the Thornwild, so put it underneath */
+.relweb.mapmode .rel-hint { position: static; padding: 7px 2px 1px; }
+/* a nation in the table that the map has no state for */
+.rel-node.offmap, .rel-edge.offmap { display: none; }
+:root[data-theme="dark"] .rel-basemap { opacity: .38; filter: saturate(.72); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .rel-basemap { opacity: .38; filter: saturate(.72); }
+}
+
 .rel-ledger {
   background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius);
   padding: 12px 14px 16px; font-size: 14px; max-height: 620px; overflow: auto;
