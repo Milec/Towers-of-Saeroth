@@ -53,7 +53,7 @@ threads.
 ## Drakenstein
 
 The Order's seat is [[Drakenstein]], the mother-aerie cut into the granite of
-the eastern range above the third pass. Every bond is made there, every Trial
+the eastern range above the Sallow Gate. Every bond is made there, every Trial
 is held there, and the Grand Marshal sits there when the Diet is not in
 session.
 
@@ -62,9 +62,15 @@ on any elector's territory, and that single fact is the load-bearing one: an
 Order housed on a prince's land answers to a prince eventually, whatever its
 charter says. Drakenstein is why the charter has held for as long as it has.
 
-It also faces east, at the four passes and the [[Lazarian Lichdom]] beyond
-them, which is the reason the Order exists in its present form rather than as
-a ceremonial guard. The grain country to the west has never needed drakes.
+It also faces east, down the Sallow Gate at the [[Lazarian Lichdom]] beyond it,
+which is the reason the Order exists in its present form rather than as a
+ceremonial guard. The grain country to the west has never needed drakes.
+
+It is also the reason the Order is mounted at all. Three passes can be held by
+men. The four hundred miles of range between them cannot be held by anybody,
+and a wing of drakes is the only thing Vaelic has ever had that can cross it
+in a day. Everything the Order does that looks like glory-hunting is, on the
+Diet's books, patrol.
 
 ## Progression
 

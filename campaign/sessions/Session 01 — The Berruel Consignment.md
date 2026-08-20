@@ -107,9 +107,10 @@ anyone who looks at the problem for one round instead of swinging at it.
 **The hook out.** Somebody has to carry word of the loss to Vaelic, or back to
 Quivar, or up to the expedition still waiting in the passes for supplies that
 are not coming. All three are different second sessions — and the Vaelic one
-has an address: [[Drakenstein]], the Drake Rider mother-aerie above the third
-pass, which considers anything happening in those mountains its business within
-about two days whether or not anyone thought to tell it.
+has an address: [[Drakenstein]], the Drake Rider mother-aerie above the Sallow
+Gate. Word reaches it in about two days — though the expedition itself is up in
+the deep range, which nobody patrols and nobody could, and that is precisely
+why the Magocracy chose to look there.
 
 ## The fight
 
