@@ -2,13 +2,13 @@
 title: Drakenstein
 type: location
 nation: Vaelic Principality
-region: The eastern range, above the third pass
+region: The eastern range, above the Sallow Gate
 holds: The mother-aerie of the [[Drake Rider Order]]
 tenure: Imperial ground — no elector's land, by charter
 ---
 
 The mother-aerie of the [[Drake Rider Order]], cut into the granite above the
-third pass, high enough that the drakes launch downhill and the supply trains
+Sallow Gate, high enough that the drakes launch downhill and the supply trains
 come up switchbacks in four stages. It is where the Trial is held, where every
 bond is made, and where the Grand Marshal sits when he is not at the Diet.
 
@@ -31,15 +31,30 @@ oriented any other way or for any other reason.
   climb the same road and are housed in the same hall, which is either the
   finest thing about Vaelic or an elaborate piece of theatre, depending on who
   is telling you
-- **The passes** Four are worth the name along the eastern range. Drakenstein
-  watches the third and can reach the second and fourth inside a day on the
-  wing. The first is a week away and has been the subject of a funding argument
-  in the Diet for nineteen years
+- **The passes** Three, in four hundred miles of range, and that is the whole
+  strategic problem of Vaelic in one line:
+    - **The Sallow Gate**, east, down to the [[Lazarian Lichdom]]. Drakenstein
+      sits directly above it and the fortress is oriented to nothing else
+    - **The Marchgate**, west, back into the grain country. The supply road, the
+      Trial road, and the only reason the aerie can be fed
+    - **The Pilgrim's Stair**, north toward [[Thesal Theocracy]] — the short way
+      rather than the only way, and mostly hospice traffic, litters and
+      physicians going both directions
+- **What is not watched** Everything else. The three gates are held; the range
+  between them is four hundred miles of granite, snowfield and unmapped valley,
+  and no crown has ever pretended otherwise. Riders sweep what they can reach
+  and the Order's own maps go to hatching within two valleys of the passes.
+  Things live up there. Things are *put* up there. An expedition could work a
+  season in the high country without anyone in Reichsmund hearing of it —
+  which is exactly what one is doing
 - **Tension** [[House Kesslin]]'s campaign to bring its own aerie under local
   authority is aimed at Drakenstein by implication — nobody has yet said out
   loud that the mother-aerie should sit on some elector's roll, and everyone
   understands that is where the argument goes if the first one is won
 
-*Anything happening in the Vaelic mountains is Drakenstein's business within
-about two days, whether or not anyone thought to tell them. That includes
-expeditions nobody cleared with the Diet.*
+*Anything happening within reach of the three gates is Drakenstein's business
+within about two days, whether or not anyone thought to tell them. Anything
+happening in the deep range is Drakenstein's business whenever a wing happens
+to pass over it, which could be next week or could be next spring. That
+includes expeditions nobody cleared with the Diet — and it is why one would
+choose the deep range in the first place.*
