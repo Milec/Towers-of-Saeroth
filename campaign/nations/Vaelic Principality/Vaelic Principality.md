@@ -19,7 +19,7 @@ Imperial service; every other ancestry, [[Halfling|halflings]]
 included, lives under local lords' law with no path upward.
 
 - **Capital** Reichsmund, a fortified river-city that holds the Diet and the High Prince's court
-- **Geography** Rolling grain plains and river valleys, thick with castles and walled market towns; the drake aeries sit on the wilder margins
+- **Geography** Rolling grain plains and river valleys, thick with castles and walled market towns — and then, along the whole eastern frontier, mountains. Better than a fifth of the Principality is high ground: a spine of granite and snowfield standing between the grain country and the [[Lazarian Lichdom]], with perhaps four passes worth the name through the length of it. The heartland is flat and rich and everyone pictures it that way. The border is not, and the drake aeries are up in it, [[Drakenstein]] chief among them
 - **Races** [[Human|Humans]] and [[Half-Elf|half-elves]]/[[Half-Orc|half-orcs]] (full legal standing), [[Halfling|Halfling]] minorities (barred from nobility and Imperial service)
 - **Economic Specialties** Grain, wool, steel, fine armor, horses
 - **Military** Longbowmen, heavy cavalry, men-at-arms, castle engineers, and the [[Drake Rider Order]] — an Imperial institution answering to the High Prince directly, outside the conventional chain of command
