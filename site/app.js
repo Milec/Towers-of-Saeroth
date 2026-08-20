@@ -1874,54 +1874,102 @@ function wireRelations(fig) {
     if (target) selectRelNode(fig, target);
   });
 
-  // Pointer handling mirrors the graph view's: a press that does not travel is
-  // a select, one that does is a drag. Dragging re-settles everything except
-  // the node under the finger, so the web reflows around it.
+  /* Pointer handling. A press that does not travel is a select, one that does
+     is a drag, and dragging re-settles everything except the node under the
+     finger so the web reflows around it.
+
+     Everything below is measured in SCREEN pixels and converted, because the
+     two numbers that decide whether a tap works are both about a fingertip,
+     and the SVG's own units are not. At a 390px viewport the web renders 1120
+     viewBox units into about 355 real ones, so one viewBox unit is a third of
+     a pixel: a 12-unit dot is a 7px target, and a 4-unit move threshold is
+     just over a pixel of finger jitter. That combination is why selecting a
+     nation on a phone took several attempts — the dot was too small to hit,
+     and any hit that wobbled was read as a drag and selected nothing. */
+  const TOUCH_R = 22;    // half a 44px target, the platform minimum
+  // A press that travels less than this is still a tap. A finger jitters far
+  // more than a mouse — the graph view has used 16 for touch since it was
+  // written, and anything tighter turns an ordinary tap into a one-pixel drag
+  // that selects nothing.
+  const slopFor = (ev) => (ev.pointerType === 'touch' ? 16 : 5);
   const pt = svg.createSVGPoint();
   const toLocal = (ev) => {
     pt.x = ev.clientX; pt.y = ev.clientY;
     const m = svg.getScreenCTM();
     return m ? pt.matrixTransform(m.inverse()) : { x: 0, y: 0 };
   };
+  // viewBox units per screen pixel, live: the same web is 355px on a phone and
+  // 1100 on a desktop, and in map mode the viewBox changes as well
+  const perPx = () => {
+    const r = svg.getBoundingClientRect();
+    const vb = svg.viewBox.baseVal;
+    return (r.width && vb && vb.width) ? vb.width / r.width : 1;
+  };
 
-  let drag = null, moved = false, start = null, lastTap = 0;
+  /* Nearest node within reach, rather than whatever the finger happened to
+     land on. The drawn dot is not the target — a tap near a nation is a tap on
+     it, which is also what stops a near miss falling through to the background
+     and clearing the selection you were trying to make. */
+  const nodeAt = (p) => {
+    const scale = perPx();
+    let best = null, bestD = Infinity;
+    for (const n of rel.nodes) {
+      if (n.offmap) continue;
+      const d = Math.hypot(n.x - p.x, n.y - p.y);
+      if (d < bestD) { bestD = d; best = n; }
+    }
+    if (!best) return null;
+    // never reach so far that one tap could mean two different countries
+    const reach = Math.min(Math.max(best.r + 4, TOUCH_R * scale), 90);
+    return bestD <= reach ? best : null;
+  };
+
+  let drag = null, moved = false, start = null, lastTap = 0, held = null;
+
+  svg.addEventListener('pointerdown', (ev) => {
+    start = toLocal(ev);
+    held = nodeAt(start);
+    moved = false;
+    drag = null;
+    if (!held) return;
+    // On the map a node is pinned to its own country, so there is nothing to
+    // drag — don't capture the pointer or swallow the gesture, or a swipe that
+    // starts on a nation stops the page scrolling under a thumb.
+    if (rel.mode === 'map') return;
+    drag = held;
+    try { svg.setPointerCapture(ev.pointerId); } catch (_) { /* synthetic event */ }
+    ev.preventDefault();
+  });
+
+  svg.addEventListener('pointermove', (ev) => {
+    if (!held) return;
+    const p = toLocal(ev);
+    const tol = slopFor(ev) * perPx();
+    if (Math.abs(p.x - start.x) > tol || Math.abs(p.y - start.y) > tol) moved = true;
+    if (!drag || !moved) return;
+    drag.x = Math.min(RVIEW.w - 20, Math.max(20, p.x));
+    drag.y = Math.min(RVIEW.h - 20, Math.max(20, p.y));
+    relaxRelations(rel.nodes, rel.edges, 5, drag);
+    for (const m of rel.nodes) { m.wx = m.x; m.wy = m.y; }   // the web keeps what you untangled
+    placeRelLabels();
+  });
+
+  svg.addEventListener('pointerup', () => {
+    const n = held, dragged = drag && moved;
+    drag = null; held = null;
+    if (dragged) return;
+    if (!n) { selectRelNode(fig, null); return; }   // a tap on open canvas clears
+    const now = Date.now();
+    if (now - lastTap < 400 && rel.sel === n) {     // double-tap opens the note
+      const path = resolveTarget(n.name);
+      if (path) { location.hash = '#/' + encodeURI(path); return; }
+    }
+    lastTap = now;
+    selectRelNode(fig, rel.sel === n ? null : n);
+  });
+  svg.addEventListener('pointercancel', () => { drag = null; held = null; });
 
   for (const n of rel.nodes) {
-    n.el.addEventListener('pointerdown', (ev) => {
-      drag = n; moved = false; start = toLocal(ev);
-      // On the map a node is pinned to its own country, so there is nothing to
-      // drag — don't capture the pointer or swallow the gesture, or a swipe
-      // that starts on a nation stops the page scrolling under a thumb.
-      if (rel.mode === 'map') return;
-      try { n.el.setPointerCapture(ev.pointerId); } catch (_) { /* synthetic event */ }
-      ev.preventDefault();
-    });
-    n.el.addEventListener('pointermove', (ev) => {
-      if (drag !== n) return;
-      const p = toLocal(ev);
-      if (Math.abs(p.x - start.x) > 4 || Math.abs(p.y - start.y) > 4) moved = true;
-      if (!moved || rel.mode === 'map') return;
-      n.x = Math.min(RVIEW.w - 20, Math.max(20, p.x));
-      n.y = Math.min(RVIEW.h - 20, Math.max(20, p.y));
-      n.wx = n.x; n.wy = n.y;      // the web keeps what you untangled
-      relaxRelations(rel.nodes, rel.edges, 5, n);
-      for (const m of rel.nodes) { m.wx = m.x; m.wy = m.y; }
-      placeRelLabels();
-    });
-    const end = () => {
-      if (drag !== n) return;
-      drag = null;
-      if (moved) return;
-      const now = Date.now();
-      if (now - lastTap < 320 && rel.sel === n) {      // double-tap opens the note
-        const path = resolveTarget(n.name);
-        if (path) { location.hash = '#/' + encodeURI(path); return; }
-      }
-      lastTap = now;
-      selectRelNode(fig, rel.sel === n ? null : n);
-    };
-    n.el.addEventListener('pointerup', end);
-    n.el.addEventListener('pointercancel', () => { drag = null; });
     n.el.addEventListener('keydown', (ev) => {
       if (ev.key === 'Enter' || ev.key === ' ') {
         ev.preventDefault();
@@ -1929,10 +1977,6 @@ function wireRelations(fig) {
       }
     });
   }
-
-  svg.addEventListener('pointerdown', (ev) => {
-    if (ev.target === svg) selectRelNode(fig, null);
-  });
 }
 
 /* Themes are a nicety, so this never blocks the web: if the index note moves or
