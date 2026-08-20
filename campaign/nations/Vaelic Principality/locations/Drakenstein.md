@@ -37,9 +37,12 @@ oriented any other way or for any other reason.
       sits directly above it and the fortress is oriented to nothing else
     - **The Marchgate**, west, back into the grain country. The supply road, the
       Trial road, and the only reason the aerie can be fed
-    - **The Pilgrim's Stair**, north toward [[Thesal Theocracy]] — the short way
-      rather than the only way, and mostly hospice traffic, litters and
-      physicians going both directions
+    - **The Pilgrim's Stair**, north to [[Thesal Theocracy]]. Not the short way
+      — the *only* way. Vaelic and Thesal touch along one short stretch of
+      summit and nowhere else, and the alternative is a march through
+      [[Dalstan]], which is hostile to one ally and at odds with the other.
+      Hospice traffic, litters, physicians, and every coronation celebrant
+      Vaelic has ever had
 - **What is not watched** Everything else. The three gates are held; the range
   between them is four hundred miles of granite, snowfield and unmapped valley,
   and no crown has ever pretended otherwise. Riders sweep what they can reach
@@ -47,10 +50,17 @@ oriented any other way or for any other reason.
   Things live up there. Things are *put* up there. An expedition could work a
   season in the high country without anyone in Reichsmund hearing of it —
   which is exactly what one is doing
+- **The crowning** Because the Stair is the only road a Thesal celebrant can
+  take, the Order is the reason Vaelic can seat a High Prince at all: riders
+  clear it, hold it, and in two recorded winters have carried the celebrant
+  over it on drake-back when the snow closed the road entirely. No charter
+  says this is the Order's duty. Nobody has ever needed one to
 - **Tension** [[House Kesslin]]'s campaign to bring its own aerie under local
   authority is aimed at Drakenstein by implication — nobody has yet said out
   loud that the mother-aerie should sit on some elector's roll, and everyone
-  understands that is where the argument goes if the first one is won
+  understands that is where the argument goes if the first one is won. What
+  nobody has said out loud either is what an elector who held the Stair could
+  do to a succession
 
 *Anything happening within reach of the three gates is Drakenstein's business
 within about two days, whether or not anyone thought to tell them. Anything
