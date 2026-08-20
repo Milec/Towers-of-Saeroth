@@ -90,6 +90,12 @@ A note opts into a custom view with a `view:` field in its frontmatter, which
 `campaign/nations/Political Relations.md` turns that note's markdown table into
 an interactive force-directed web of the nations.
 
+`view: routes` on `campaign/world/Trade Routes.md` does the same for the trade
+corridors: each row's run of wikilinks becomes a line drawn through those
+nations' real positions on the world map, styled by the row's own **Carried
+by** column — solid road, dashed sea lane, dotted caravan track. It reuses the
+generated pair from `tools/map_backdrop.js`, so it moves when the map does.
+
 The rule that makes this worth doing: **the markdown stays the single source of
 truth.** The view parses the note's *own table* instead of carrying a second
 copy of the data, so the note still reads correctly in Obsidian and on GitHub,
@@ -128,6 +134,14 @@ check matters most because that failure is otherwise **silent** — the view
 skips rows whose standing it doesn't recognise, so the tie would just quietly
 vanish from the web. `--check` verifies without writing and exits non-zero on
 drift, which is the fast way to confirm nothing has slipped.
+
+**Hit testing is in screen pixels, never viewBox units.** The web renders 1120
+viewBox units into about 355 real ones on a phone, so a 12-unit dot is a 7px
+target and a 4-unit move threshold is one pixel of finger travel. Both were
+measured in the wrong space once, and selecting a nation on a phone took
+several tries. Reach is now derived from the element's live scale (44px in
+either layout, capped so one tap cannot mean two countries) and the tap-vs-drag
+threshold is 16px for touch, 5px for a mouse.
 
 **Then actually look at the graph.** Density is not free: going from 32 ties to
 69 made the springs overwhelm repulsion and nodes started overlapping. Load the

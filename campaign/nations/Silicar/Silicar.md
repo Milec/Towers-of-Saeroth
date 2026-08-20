@@ -13,8 +13,8 @@ its irrigation canals and clockwork feed half the continent.
 - **Capital** Brightfurrow, a canal-town where the guildhalls sit level with the locks they govern
 - **Geography** A fertile lowland basin threaded by an irrigation network that took four generations to dig and is maintained obsessively
 - **Races** [[Gnome|Gnomes]], [[Halfling|Halflings]], [[Leshy|Leshies]]
-- **Economic Specialties** Agriculture, irrigation, machinery, clockwork, food exports
-- **Military** Engineers, crossbow corps, defensive fortifications, construct support
+- **Economic Specialties** Agriculture, irrigation, machinery, clockwork, food exports, and the flintlock trade the guilds invented and have never licensed to anyone
+- **Military** Engineers, flintlock companies drilled in volley and reload, field artillery, defensive fortifications, construct support — Silicar's guilds built the first working firelock and still make the best ones, which is why a nation this small is left alone
 - **Government** Council of guildmasters and elected engineers
 - **Reputation** Small but astonishingly inventive
 - **Faith** Patron [[Brigh]], goddess of invention and clockwork, whose shrines are workshops with an altar in the corner. [[Erastil]] is the older faith of the farming villages, and the two clergies argue amiably about which one actually feeds the nation

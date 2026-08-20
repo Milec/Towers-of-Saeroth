@@ -331,6 +331,9 @@ async function route() {
     if (fmField(fm, 'view') === 'relations') {
       try { mountRelations(el, body); } catch (_) { /* the table still renders */ }
     }
+    if (fmField(fm, 'view') === 'routes') {
+      mountRoutes(el, body).catch(() => { /* the table still renders */ });
+    }
     document.title = target.split('/').pop().replace(/\.md$/, '') + ' — Towers of Saeroth';
     renderBacklinks(target);
     if (frag) {
@@ -1874,54 +1877,102 @@ function wireRelations(fig) {
     if (target) selectRelNode(fig, target);
   });
 
-  // Pointer handling mirrors the graph view's: a press that does not travel is
-  // a select, one that does is a drag. Dragging re-settles everything except
-  // the node under the finger, so the web reflows around it.
+  /* Pointer handling. A press that does not travel is a select, one that does
+     is a drag, and dragging re-settles everything except the node under the
+     finger so the web reflows around it.
+
+     Everything below is measured in SCREEN pixels and converted, because the
+     two numbers that decide whether a tap works are both about a fingertip,
+     and the SVG's own units are not. At a 390px viewport the web renders 1120
+     viewBox units into about 355 real ones, so one viewBox unit is a third of
+     a pixel: a 12-unit dot is a 7px target, and a 4-unit move threshold is
+     just over a pixel of finger jitter. That combination is why selecting a
+     nation on a phone took several attempts — the dot was too small to hit,
+     and any hit that wobbled was read as a drag and selected nothing. */
+  const TOUCH_R = 22;    // half a 44px target, the platform minimum
+  // A press that travels less than this is still a tap. A finger jitters far
+  // more than a mouse — the graph view has used 16 for touch since it was
+  // written, and anything tighter turns an ordinary tap into a one-pixel drag
+  // that selects nothing.
+  const slopFor = (ev) => (ev.pointerType === 'touch' ? 16 : 5);
   const pt = svg.createSVGPoint();
   const toLocal = (ev) => {
     pt.x = ev.clientX; pt.y = ev.clientY;
     const m = svg.getScreenCTM();
     return m ? pt.matrixTransform(m.inverse()) : { x: 0, y: 0 };
   };
+  // viewBox units per screen pixel, live: the same web is 355px on a phone and
+  // 1100 on a desktop, and in map mode the viewBox changes as well
+  const perPx = () => {
+    const r = svg.getBoundingClientRect();
+    const vb = svg.viewBox.baseVal;
+    return (r.width && vb && vb.width) ? vb.width / r.width : 1;
+  };
 
-  let drag = null, moved = false, start = null, lastTap = 0;
+  /* Nearest node within reach, rather than whatever the finger happened to
+     land on. The drawn dot is not the target — a tap near a nation is a tap on
+     it, which is also what stops a near miss falling through to the background
+     and clearing the selection you were trying to make. */
+  const nodeAt = (p) => {
+    const scale = perPx();
+    let best = null, bestD = Infinity;
+    for (const n of rel.nodes) {
+      if (n.offmap) continue;
+      const d = Math.hypot(n.x - p.x, n.y - p.y);
+      if (d < bestD) { bestD = d; best = n; }
+    }
+    if (!best) return null;
+    // never reach so far that one tap could mean two different countries
+    const reach = Math.min(Math.max(best.r + 4, TOUCH_R * scale), 90);
+    return bestD <= reach ? best : null;
+  };
+
+  let drag = null, moved = false, start = null, lastTap = 0, held = null;
+
+  svg.addEventListener('pointerdown', (ev) => {
+    start = toLocal(ev);
+    held = nodeAt(start);
+    moved = false;
+    drag = null;
+    if (!held) return;
+    // On the map a node is pinned to its own country, so there is nothing to
+    // drag — don't capture the pointer or swallow the gesture, or a swipe that
+    // starts on a nation stops the page scrolling under a thumb.
+    if (rel.mode === 'map') return;
+    drag = held;
+    try { svg.setPointerCapture(ev.pointerId); } catch (_) { /* synthetic event */ }
+    ev.preventDefault();
+  });
+
+  svg.addEventListener('pointermove', (ev) => {
+    if (!held) return;
+    const p = toLocal(ev);
+    const tol = slopFor(ev) * perPx();
+    if (Math.abs(p.x - start.x) > tol || Math.abs(p.y - start.y) > tol) moved = true;
+    if (!drag || !moved) return;
+    drag.x = Math.min(RVIEW.w - 20, Math.max(20, p.x));
+    drag.y = Math.min(RVIEW.h - 20, Math.max(20, p.y));
+    relaxRelations(rel.nodes, rel.edges, 5, drag);
+    for (const m of rel.nodes) { m.wx = m.x; m.wy = m.y; }   // the web keeps what you untangled
+    placeRelLabels();
+  });
+
+  svg.addEventListener('pointerup', () => {
+    const n = held, dragged = drag && moved;
+    drag = null; held = null;
+    if (dragged) return;
+    if (!n) { selectRelNode(fig, null); return; }   // a tap on open canvas clears
+    const now = Date.now();
+    if (now - lastTap < 400 && rel.sel === n) {     // double-tap opens the note
+      const path = resolveTarget(n.name);
+      if (path) { location.hash = '#/' + encodeURI(path); return; }
+    }
+    lastTap = now;
+    selectRelNode(fig, rel.sel === n ? null : n);
+  });
+  svg.addEventListener('pointercancel', () => { drag = null; held = null; });
 
   for (const n of rel.nodes) {
-    n.el.addEventListener('pointerdown', (ev) => {
-      drag = n; moved = false; start = toLocal(ev);
-      // On the map a node is pinned to its own country, so there is nothing to
-      // drag — don't capture the pointer or swallow the gesture, or a swipe
-      // that starts on a nation stops the page scrolling under a thumb.
-      if (rel.mode === 'map') return;
-      try { n.el.setPointerCapture(ev.pointerId); } catch (_) { /* synthetic event */ }
-      ev.preventDefault();
-    });
-    n.el.addEventListener('pointermove', (ev) => {
-      if (drag !== n) return;
-      const p = toLocal(ev);
-      if (Math.abs(p.x - start.x) > 4 || Math.abs(p.y - start.y) > 4) moved = true;
-      if (!moved || rel.mode === 'map') return;
-      n.x = Math.min(RVIEW.w - 20, Math.max(20, p.x));
-      n.y = Math.min(RVIEW.h - 20, Math.max(20, p.y));
-      n.wx = n.x; n.wy = n.y;      // the web keeps what you untangled
-      relaxRelations(rel.nodes, rel.edges, 5, n);
-      for (const m of rel.nodes) { m.wx = m.x; m.wy = m.y; }
-      placeRelLabels();
-    });
-    const end = () => {
-      if (drag !== n) return;
-      drag = null;
-      if (moved) return;
-      const now = Date.now();
-      if (now - lastTap < 320 && rel.sel === n) {      // double-tap opens the note
-        const path = resolveTarget(n.name);
-        if (path) { location.hash = '#/' + encodeURI(path); return; }
-      }
-      lastTap = now;
-      selectRelNode(fig, rel.sel === n ? null : n);
-    };
-    n.el.addEventListener('pointerup', end);
-    n.el.addEventListener('pointercancel', () => { drag = null; });
     n.el.addEventListener('keydown', (ev) => {
       if (ev.key === 'Enter' || ev.key === ' ') {
         ev.preventDefault();
@@ -1929,10 +1980,6 @@ function wireRelations(fig) {
       }
     });
   }
-
-  svg.addEventListener('pointerdown', (ev) => {
-    if (ev.target === svg) selectRelNode(fig, null);
-  });
 }
 
 /* Themes are a nicety, so this never blocks the web: if the index note moves or
@@ -1955,6 +2002,216 @@ async function loadNationThemes(fig) {
     }
     if (rel.sel) renderRelLedger(fig);
   } catch (_) { /* offline or moved: the ledger just has no subtitle */ }
+}
+
+/* ------------------------------------------------------------- trade routes
+   A note carrying `view: routes` has its corridor table drawn on the world
+   map: each route becomes a line through the nations it actually runs through,
+   pinned to where those nations are.
+
+   Same rule as the relations web — the markdown table is the single source of
+   truth. A row is `| **Name** | Carried by | [[A]] → [[B]] → [[C]] | cargo |`,
+   the run is read as an ordered list of wikilinks, and adding a stop to the
+   note moves the line here with no code change. The `Carried by` column is
+   what the note already had to say anyway, and it chooses the line style, so a
+   sea lane and a caravan track do not read as the same kind of thing.
+
+   Positions and the backdrop are the same generated pair the relations map
+   mode uses; if they are missing this does nothing and the table stands. */
+const CARRY = {
+  sea:     { dash: '9 7',   width: 3.0 },
+  caravan: { dash: '2 6',   width: 3.2 },
+  road:    { dash: '',      width: 3.0 },
+  river:   { dash: '11 4 2 4', width: 2.4 },
+};
+const ROUTE_KEYS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
+const routes = { list: [], sel: null };
+window.__routes = routes;   // exposed for automated UI tests, like window.__rel
+
+/* Rows look like `| **Name** | Road | [[A]] → [[B]] | what it carries |`.
+   Anything without a name and at least two linked stops is skipped, which
+   keeps the note's own prose tables out of the drawing. */
+function parseRoutes(bodyText) {
+  const out = [];
+  for (const raw of bodyText.split(/\r?\n/)) {
+    const line = raw.trim();
+    if (line[0] !== '|') continue;
+    const cells = line.replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
+    if (cells.length < 4) continue;
+    const name = cells[0].replace(/\*+/g, '').trim();
+    const carry = cells[1].replace(/\*+/g, '').trim().toLowerCase();
+    const stops = [...cells[2].matchAll(/\[\[([^\]|#]+)[^\]]*\]\]/g)].map((m) => m[1].trim());
+    if (!name || stops.length < 2 || !CARRY[carry]) continue;
+    out.push({ name, carry, stops, cargo: cells[3] || '', key: ROUTE_KEYS[out.length % ROUTE_KEYS.length] });
+  }
+  return out;
+}
+
+async function mountRoutes(container, bodyText) {
+  const list = parseRoutes(bodyText);
+  if (!list.length) return;
+  const pos = await loadMapPositions();
+  if (!pos) return;                       // no map on this deploy: table only
+  const missing = list.filter((r) => r.stops.some((s) => !pos.nations[s]));
+  if (missing.length === list.length) return;
+  routes.list = list.filter((r) => r.stops.every((s) => pos.nations[s]));
+  routes.sel = null;
+
+  const P = (n) => [pos.nations[n][0] * RMAP.scale, pos.nations[n][1] * RMAP.scale];
+  const stops = [...new Set(routes.list.flatMap((r) => r.stops))];
+
+  const fig = document.createElement('figure');
+  fig.className = 'routemap';
+  fig.innerHTML = `
+    <div class="rel-controls" role="group" aria-label="Show one corridor">
+      ${routes.list.map((r) =>
+        `<button type="button" class="rel-chip route-chip r-${r.key}" data-r="${escapeHtml(r.name)}"
+                 aria-pressed="false"><span>${escapeHtml(r.name)}</span></button>`).join('')}
+      <button type="button" class="rel-reset linkbtn">All of them</button>
+    </div>
+    <div class="rel-board">
+      <div class="rel-canvas">
+        <svg class="rel-svg route-svg" viewBox="0 0 ${RMAP.w} ${RMAP.h}" role="img"
+             aria-label="The ${routes.list.length} trade corridors of Saeroth, drawn on the world map">
+          <image class="rel-basemap" preserveAspectRatio="none"
+                 x="0" y="0" width="${RMAP.w}" height="${RMAP.h}"></image>
+          <g class="route-lines"></g><g class="route-stops"></g>
+        </svg>
+        <p class="rel-hint muted">Tap a corridor for what it carries · tap a port to open its note</p>
+      </div>
+      <aside class="rel-ledger" aria-live="polite"></aside>
+    </div>
+    <figcaption>Every line runs through the nations the table names, pinned to
+      where they sit on the world map. Solid is a road, dashed is a sea lane,
+      dotted is a caravan track and the broken line is the river run nobody
+      admits to.</figcaption>`;
+
+  const table = [...container.querySelectorAll('table')]
+    .find((t) => /→/.test(t.textContent));
+  if (table) {
+    const prev = table.previousElementSibling;
+    const anchor = prev && /^H[2-4]$/.test(prev.tagName) ? prev : table;
+    anchor.parentNode.insertBefore(fig, anchor);
+    const det = document.createElement('details');
+    det.className = 'relsource';
+    det.innerHTML = `<summary>The ${routes.list.length} rows this is read from</summary>`;
+    table.parentNode.insertBefore(det, table);
+    det.appendChild(table);
+  } else {
+    container.appendChild(fig);
+  }
+  container.classList.add('wide');
+
+  const img = fig.querySelector('.rel-basemap');
+  img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', BASE + pos.image);
+  img.setAttribute('href', BASE + pos.image);
+
+  const lines = fig.querySelector('.route-lines');
+  for (const r of routes.list) {
+    const c = CARRY[r.carry];
+    const points = r.stops.map((s) => P(s).join(' ')).join(' ');
+    r.el = svgEl('polyline', {
+      class: 'route-line r-' + r.key, 'stroke-width': c.width,
+      'stroke-linecap': 'round', 'stroke-linejoin': 'round', points,
+    });
+    if (c.dash) r.el.setAttribute('stroke-dasharray', c.dash);
+    // a 3px line is not a touch target; this invisible one is 44px on a phone
+    r.hit = svgEl('polyline', { class: 'route-hit', 'stroke-width': 26, points });
+    lines.append(r.el, r.hit);
+  }
+
+  const sLayer = fig.querySelector('.route-stops');
+  const marks = new Map();
+  const placed = [];
+  const hits = (r) => placed.some((p) =>
+    r.x < p.x + p.w && r.x + r.w > p.x && r.y < p.y + p.h && r.y + r.h > p.y);
+  // busiest ports first, so the names that matter keep the natural position
+  // under the dot and the quiet ones are the ones that get flipped above
+  const byTraffic = [...stops].sort((a, b) =>
+    routes.list.filter((r) => r.stops.includes(b)).length -
+    routes.list.filter((r) => r.stops.includes(a)).length);
+  for (const s of byTraffic) {
+    const [x, y] = P(s);
+    const on = routes.list.filter((r) => r.stops.includes(s)).length;
+    const rad = 3.4 + Math.min(on, 4) * 0.9;
+    const g = svgEl('g', { class: 'route-stop', tabindex: '0', role: 'button',
+      'aria-label': `${s}, on ${on} corridor${on === 1 ? '' : 's'}` });
+    const dot = svgEl('circle', { class: 'route-dot', cx: x, cy: y, r: rad });
+    const bg = svgEl('rect', { class: 'rel-labelbg', rx: 3 });
+    const tx = svgEl('text', { class: 'rel-label route-label', 'text-anchor': 'middle', x });
+    tx.textContent = s;
+    const w = labelWidth(s) * RMAP.labelScale;
+    const box = (ly) => ({ x: x - w / 2 - 3, y: ly - 8, w: w + 6, h: 11 });
+    const below = y + rad + 9, above = y - rad - 4;
+    const ly = (hits(box(below)) && !hits(box(above))) ? above : below;
+    const b = box(ly);
+    placed.push(b);
+    tx.setAttribute('y', ly);
+    bg.setAttribute('x', b.x); bg.setAttribute('y', b.y);
+    bg.setAttribute('width', b.w); bg.setAttribute('height', b.h);
+    g.append(dot, bg, tx);
+    sLayer.appendChild(g);
+    marks.set(s, { g, x, y });
+  }
+
+  const ledger = fig.querySelector('.rel-ledger');
+  const overview = () => {
+    const busiest = stops
+      .map((s) => ({ s, c: routes.list.filter((r) => r.stops.includes(s)).length }))
+      .sort((a, b) => b.c - a.c || a.s.localeCompare(b.s));
+    const top = busiest.filter((x) => x.c === busiest[0].c);
+    ledger.innerHTML = `<h3>The network</h3>
+      <p>${routes.list.length} corridors, ${stops.length} nations on them.</p>
+      <p>${top.map((x) => `<strong>${escapeHtml(x.s)}</strong>`).join(' and ')}
+         ${top.length > 1 ? 'each sit' : 'sits'} on ${busiest[0].c} of them — more than
+         anyone else, and the reason ${top.length > 1 ? 'their' : 'its'} foreign policy
+         is mostly a freight schedule.</p>
+      <p class="rel-cta muted">Tap a corridor to follow it.</p>`;
+  };
+  const detail = (r) => {
+    ledger.innerHTML = `<h3>${escapeHtml(r.name)}</h3>
+      <p class="rel-theme muted">${escapeHtml(r.carry[0].toUpperCase() + r.carry.slice(1))} —
+         ${r.stops.length} stops</p>
+      <p>${r.stops.map((s) => `<a class="rel-open" href="#/${encodeURI(resolveTarget(s) || '')}">${escapeHtml(s)}</a>`).join(' → ')}</p>
+      <p>${escapeHtml(r.cargo)}</p>`;
+  };
+
+  const show = (r) => {
+    routes.sel = r;
+    for (const x of routes.list) {
+      x.el.classList.toggle('dim', !!r && x !== r);
+      x.el.classList.toggle('lit', !!r && x === r);
+    }
+    for (const [name, m] of marks) {
+      m.g.classList.toggle('far', !!r && !r.stops.includes(name));
+    }
+    fig.querySelectorAll('.route-chip').forEach((b) =>
+      b.setAttribute('aria-pressed', r && b.dataset.r === r.name ? 'true' : 'false'));
+    if (r) detail(r); else overview();
+  };
+
+  fig.querySelectorAll('.route-chip').forEach((btn) => {
+    btn.onclick = () => {
+      const r = routes.list.find((x) => x.name === btn.dataset.r);
+      show(routes.sel === r ? null : r);
+    };
+  });
+  fig.querySelector('.rel-reset').onclick = () => show(null);
+
+  for (const [name, m] of marks) {
+    const open = () => {
+      const path = resolveTarget(name);
+      if (path) location.hash = '#/' + encodeURI(path);
+    };
+    m.g.addEventListener('click', open);
+    m.g.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(); }
+    });
+  }
+  for (const r of routes.list) {
+    r.hit.addEventListener('click', () => show(routes.sel === r ? null : r));
+  }
+  show(null);
 }
 
 /* ------------------------------------------------------------------ boot */

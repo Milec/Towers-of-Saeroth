@@ -13,6 +13,11 @@
   --rel-rivalry: #63478c;
   --rel-friction: #b05f26; --rel-territorial: #c04a26; --rel-hostile: #8f1d24;
   --rel-covert: #256b78; --rel-tag-ink: #fff;
+  /* trade corridors — nine lines that must stay apart from each other AND
+     from the eight standings, so these are their own scale */
+  --route-a: #1f5f8b; --route-b: #8a5a1f; --route-c: #2f6b46; --route-d: #7a2f5f;
+  --route-e: #5a4a9a; --route-f: #146b6b; --route-g: #9a3b26; --route-h: #4a5f22;
+  --route-i: #6b4a2f;
 }
 :root[data-theme="dark"] {
   --bg: #171614; --panel: #1f1e1b; --ink: #e8e2d6; --muted: #a49a8b;
@@ -23,6 +28,9 @@
   --rel-rivalry: #ab92da;
   --rel-friction: #dd8f55; --rel-territorial: #e57c56; --rel-hostile: #d95a63;
   --rel-covert: #5fb4c4; --rel-tag-ink: #17150f;
+  --route-a: #6fb6e0; --route-b: #d9a259; --route-c: #6cc394; --route-d: #d68ab8;
+  --route-e: #a99cf0; --route-f: #5fc4c4; --route-g: #e58a70; --route-h: #a8bf62;
+  --route-i: #c49b76;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -34,6 +42,9 @@
     --rel-rivalry: #ab92da;
     --rel-friction: #dd8f55; --rel-territorial: #e57c56; --rel-hostile: #d95a63;
     --rel-covert: #5fb4c4; --rel-tag-ink: #17150f;
+    --route-a: #6fb6e0; --route-b: #d9a259; --route-c: #6cc394; --route-d: #d68ab8;
+    --route-e: #a99cf0; --route-f: #5fc4c4; --route-g: #e58a70; --route-h: #a8bf62;
+    --route-i: #c49b76;
   }
 }
 
@@ -317,7 +328,7 @@ body {
 .content.wide { max-width: 1100px; }
 /* Prose stays at the normal measure but keeps the figure's left edge, rather
    than centring itself in the wider box and drifting out of alignment. */
-.content.wide > :not(.relweb):not(.relsource) { max-width: 74ch; }
+.content.wide > :not(.relweb):not(.relsource):not(.routemap) { max-width: 74ch; }
 
 .relweb { margin: 1.7em 0; padding: 0; }
 .relweb figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; max-width: 68ch; }
@@ -395,6 +406,39 @@ body {
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .rel-basemap { opacity: .38; filter: saturate(.72); }
 }
+
+/* ---- trade corridors, drawn on the map ---------------------------------- */
+.routemap { margin: 1.7em 0; padding: 0; }
+.routemap figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; max-width: 68ch; }
+/* the world needs the whole width — squeezed into a 1fr column beside the
+   ledger, a 720px-minimum map shows only the western continent */
+.routemap .rel-board { grid-template-columns: 1fr; }
+.routemap .rel-canvas { overflow-x: auto; }
+.route-svg { min-width: 720px; touch-action: pan-y; }
+.route-line { fill: none; transition: opacity .18s ease; }
+.route-line.dim { opacity: .13; }
+.route-line.lit { opacity: 1; }
+.route-hit { fill: none; stroke: transparent; pointer-events: stroke; cursor: pointer; }
+.route-line.r-a { stroke: var(--route-a); } .route-line.r-b { stroke: var(--route-b); }
+.route-line.r-c { stroke: var(--route-c); } .route-line.r-d { stroke: var(--route-d); }
+.route-line.r-e { stroke: var(--route-e); } .route-line.r-f { stroke: var(--route-f); }
+.route-line.r-g { stroke: var(--route-g); } .route-line.r-h { stroke: var(--route-h); }
+.route-line.r-i { stroke: var(--route-i); }
+.route-chip.r-a { border-left: 5px solid var(--route-a); } .route-chip.r-b { border-left: 5px solid var(--route-b); }
+.route-chip.r-c { border-left: 5px solid var(--route-c); } .route-chip.r-d { border-left: 5px solid var(--route-d); }
+.route-chip.r-e { border-left: 5px solid var(--route-e); } .route-chip.r-f { border-left: 5px solid var(--route-f); }
+.route-chip.r-g { border-left: 5px solid var(--route-g); } .route-chip.r-h { border-left: 5px solid var(--route-h); }
+.route-chip.r-i { border-left: 5px solid var(--route-i); }
+.route-chip[aria-pressed="false"] { opacity: 1; }
+.route-chip[aria-pressed="true"] { background: var(--bg); border-color: var(--ink); }
+.route-stop { cursor: pointer; transition: opacity .18s ease; }
+.route-stop.far { opacity: .28; }
+.route-stop:focus { outline: none; }
+.route-stop:focus-visible .route-dot { stroke: var(--accent); stroke-width: 3; }
+.route-dot { fill: var(--bg); stroke: var(--ink); stroke-width: 1.4; }
+.route-label { font-size: 9.5px; }
+.routemap .rel-hint { position: static; padding: 7px 2px 1px; }
+.routemap .rel-ledger { max-height: none; }
 
 .rel-ledger {
   background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius);
