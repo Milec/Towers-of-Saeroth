@@ -85,13 +85,13 @@ stranded alone on an island scores perfectly on all of them.
 
 ## The current map
 
-`campaign/Saeroth.map` is **seed 7**: 28 nations, 13/15 required borders, 26/28
-terrain majorities, 707 rivers. Both inhabited continents are a single landmass
-each, and `inspect.py` reports **3** problems — the lowest of ~30 seeds swept.
+`campaign/Saeroth.map` is **seed 7**: 28 nations, **15/15 required borders**,
+26/28 terrain majorities, both inhabited continents a single landmass each, and
+`inspect.py` reports **2** problems.
 
-It was chosen on the inspector, not on borders or terrain, and that is the
-point: the previous map scored better on both (15/15, 27/28) while putting
-Stoneborn Holds twelve degrees inside the arctic.
+It is still chosen on the inspector rather than on borders or terrain — the
+map before it scored 15/15 and 27/28 while putting Stoneborn Holds twelve
+degrees inside the arctic.
 
 **The European band was widened from 26 deg to 35 deg (21N-56N)** to make this
 possible. Seventeen nations in a 26-degree strip is more land than the band can
@@ -100,11 +100,38 @@ the ice at 64N, Corvane twenty-one degrees south. Widening the band cut the best
 seed's inspector score from 7 problems to 3. If nations start drifting again,
 widen the band before touching `GROUP_SHARE`.
 
-Known-imperfect, and all three are in the inspector output rather than hidden:
-Cindral Ashlands sits 13 deg south of its band, Kesmarch Frontier 21 deg south,
-and Tal Ulad has taken 3.8x its share. Vaelic Principality also comes out small
-(466 cells) despite carrying the largest SIZE weight on its continent — raising
-that weight to 3.4 does grow it to 811 and buys 15/15 borders, but costs six
-more inspector problems including Voskreld drifting 20 deg and Cindral collapsing
-to 59 cells. That trade is available if a bigger Vaelic matters more than a
-map that reads cleanly.
+Known-imperfect, and both are in the inspector output rather than hidden:
+Quivar sits 13 deg south of its band, and Tessine holds 81 cells — under the
+inspector's floor, though at 0.8x its own weight and 8 burgs it is a
+proportionate city-state rather than a failure.
+
+### Why Vaelic Principality is a southern realm
+
+It carries the largest SIZE weight in the west and used to come out at 466
+cells, 0.3x its share. Nothing local fixes that, because **the response to
+every growth lever is bimodal**: Vaelic either respects a band at 36N and stays
+at ~470 cells, or stops respecting it and takes the entire southern lobe at
+2600+, centred fifteen degrees out of its own climate. There is no setting in
+between — `latW` flips between the two states somewhere under 0.7, and a cheap
+`riverW` moves it by seventy cells.
+
+What works is admitting where it lives. Its required borders already put it
+between Thesal at 32N and the Lichdom at 24N, so `tlat: 26` is what the vault
+was already saying. At 26N it comes out at **1563 cells, 0.9x its share** — the
+largest nation on its continent, which is what its weight says it should be —
+and the ridged Tal Ulad plateau walls it off from the far south.
+
+**`tlat` is a layout parameter, not a local one.** Moving Vaelic ten degrees
+shifted the western band's centre of mass, and the *eastern* continent slid
+south out of its climate bands with it: seed 7 went from 3 inspector problems
+to 8, five of them eastern nations that had not been touched. Rebuilding with
+Tal Ulad un-ridged gave byte-identical eastern failures, which is how the
+latitude move was identified as the cause rather than the plateau.
+
+The repair was `latPull` 0.030 -> 0.08 and `groupGap` 1.9 -> 1.6 in `build.js`.
+Those two trade against each other: `latPull` holds a nation at its own
+latitude, `groupGap` is how hard the two continents shove each other apart, and
+at the old values the shoving won — which is why one nation moving could drag a
+continent it does not sit on. Fixing the balance took the same seed to 2
+problems and 15/15 borders. **If a change to one continent breaks the other,
+suspect this pair before the seed.**

@@ -59,7 +59,7 @@ const LAND = {
   'Silicar':                    { tlat: 41, temp: 11, prec: 25, elev: [27, 40], why: 'a wet low basin, cut with rivers' },
   'Corvane Republic':           { tlat: 37, latW: 0.7, temp: 12, prec: 8,  elev: [21, 30], coastal: 1, why: 'coastal lowland' },
   'Quivar':                     { tlat: 37, temp: 13, prec: 7,  elev: [24, 42], coastal: 1, why: 'deciduous valleys, soft coast' },
-  'Vaelic Principality':        { tlat: 26, latW: 1.5, riverW: 0.35, temp: 12, prec: 8,  elev: [26, 46], why: 'deciduous river valleys — the rivers are its roads, and its borders' },
+  'Vaelic Principality':        { tlat: 26, latW: 1.2, riverW: 0.35, temp: 12, prec: 8,  elev: [26, 46], why: 'deciduous river valleys — the rivers are its roads, and its borders' },
   'Kelvary March':              { tlat: 34, temp: 13, prec: 3, elev: [30, 50], why: 'rolling hill country and horse pasture' },
   'Thesal Theocracy':           { latW: 0.7, tlat: 32, temp: 14, prec: 8,  elev: [28, 48], why: 'temperate crossroads country' },
   'Tessine':                    { tlat: 30, temp: 16, prec: 9, elev: [18, 28], coastal: 2, why: 'a deepwater bay behind a headland' },
