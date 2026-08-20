@@ -64,6 +64,36 @@ had been fine.
 A sweep should rank on this before terrain and borders — a map with perfect
 counts and a country in the ice is worse than one a degree off everywhere.
 
+## Correcting a map without regenerating it
+
+`touchup.js` edits a saved `.map` in place. It loads the file through the app's
+own uploader, changes what it is told to, and saves back over it — same seed,
+same coastline, same borders, same everything else.
+
+```sh
+node tools/mapgen/touchup.js
+TARGETS='{"Silicar":28}' node tools/mapgen/touchup.js
+```
+
+What it exists for: Azgaar places burgs by habitability, and `build.js` tops any
+nation that comes out under `MIN_BURGS` up to a floor of six. Two nations hit
+that floor on a map that was otherwise worth keeping — Silicar, "a wet low basin,
+cut with rivers" exporting food, and the Qeshara Sultanate, a network of oasis
+towns on the caravan roads. Their terrain scored drier than their notes read, so
+neither earned its towns. Rerolling the world to fix two countries is the wrong
+trade; this adds the settlements with the app's own builder, so they get real
+coats of arms, markets and trade, and names off the nation's own culture.
+
+**It counts what is on the map, not what its loop thinks it did, and refuses to
+save if the two disagree.** The first version trusted its own counter, reported
+adding nothing, and had in fact put a burg on every land cell in both countries —
+`Burgs.add` returns the new burg's *ID*, not the burg. Take a backup of the
+`.map` before running it anyway.
+
+Always `node tools/mapgen/verify.js` afterwards: it reloads the saved file and
+re-checks states, burgs, diplomacy and every nation's terrain mix, which is how
+you know the save round-tripped rather than quietly dropping something.
+
 ## Reading the output
 
 The diagnostics matter more than the map looking nice at a glance:
