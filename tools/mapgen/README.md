@@ -37,6 +37,33 @@ node tools/mapgen/verify.js
 `OPTS` is JSON merged over the defaults at the top of `build.js`, so any knob
 can be overridden per run without editing anything — which is how you sweep.
 
+## Look at the map — and make the machine look too
+
+`tools/mapgen/inspect.py` fails a build on the things a person notices at a
+glance. It exists because a map once reported "15/15 borders, 27/28 terrain"
+while Stoneborn Holds sat twelve degrees inside the arctic and Corvane had slid
+twenty-one degrees south into a lobe four times its size. Every number needed to
+catch both was already being printed. None of them failed.
+
+```sh
+python3 tools/mapgen/inspect.py        # after a build; non-zero if anything is wrong
+python3 tools/mapgen/inspect.py --quiet
+```
+
+It flags a nation centred above 60°N (in the polar cap), more than 12° from its
+target latitude (wrong climate band — desert beside taiga), under 100 cells (too
+small to put a settlement in), over 3× its share of its own continent (it has
+eaten a lobe), or scattered over more than two landmasses unless its CLAIM is
+`islands`.
+
+**Then still open the PNG.** The build writes `saeroth-world.png`; look at it
+before shipping. The inspector catches what is measurable, not whether the
+thing reads as a world. Both times a map went out looking wrong, the numbers
+had been fine.
+
+A sweep should rank on this before terrain and borders — a map with perfect
+counts and a country in the ice is worse than one a degree off everywhere.
+
 ## Reading the output
 
 The diagnostics matter more than the map looking nice at a glance:
@@ -58,51 +85,26 @@ stranded alone on an island scores perfectly on all of them.
 
 ## The current map
 
-`campaign/Saeroth.map` is seed 111: 28 nations, **15/15 required borders**,
-27/28 terrain majorities, 729 rivers, 1,232 settlements. Both inhabited
-continents are a single landmass each.
+`campaign/Saeroth.map` is **seed 7**: 28 nations, 13/15 required borders, 26/28
+terrain majorities, 707 rivers. Both inhabited continents are a single landmass
+each, and `inspect.py` reports **3** problems — the lowest of ~30 seeds swept.
 
-**The continents are split by culture.** Group 0 is the European analogue —
-Nordic, Ruthenian, Celtic, Italian, German, Greek, French, Finnic, English,
-Portuguese, Basque, plus the Euro-adjacent fantasy peoples. Group 1 is
-everywhere else: Chinese, Mongolian, Arabic, Berber, Levantine, Iranian,
-Swahili, Nigerian, draconic.
+It was chosen on the inspector, not on borders or terrain, and that is the
+point: the previous map scored better on both (15/15, 27/28) while putting
+Stoneborn Holds twelve degrees inside the arctic.
 
-### Mountains are the only real brake on nation size
+**The European band was widened from 26 deg to 35 deg (21N-56N)** to make this
+possible. Seventeen nations in a 26-degree strip is more land than the band can
+hold, so the continent bulged and threw nations out of it — Stoneborn north into
+the ice at 64N, Corvane twenty-one degrees south. Widening the band cut the best
+seed's inspector score from 7 problems to 3. If nations start drifting again,
+widen the band before touching `GROUP_SHARE`.
 
-`ridged: 1` puts a nation on the fold belt, and a *chain* of them makes a range
-that runs rather than a single massif. There are two: **Melisor - Stoneborn -
-Undertide - Dalstan** in the west, and **Qeshara - Cindral - Ashkar** in the
-east. Ranges are expensive to cross (`RIDGE_BAR`), so they settle borders and
-stop a neighbour spilling over — which is why the eastern range was extended
-past the one nation that claims mountains. A nation's own CLAIM is safe as long
-as it is a *biome* test: desert and grass do not care about height, so a range
-can run through Qeshara and Ashkar without costing them their terrain majority.
-Watch the `mountains inside lowland nations` line anyway — Ashkar hit 89% before
-its `elev` band was pulled back to `[25, 44]`.
-
-Two failures worth not repeating:
-
-- **Do not put Kelvary March on the belt.** At tlat 38 it pins Corvane (40)
-  between two ranges and crushes it to 11 cells.
-- **Thurigypt is not a mountain nation.** Ridging the delta gave it 29%
-  mountains and cost the Sahenna border. The range breaks around it, the way a
-  great river valley does.
-
-### Why oversize is not a tuning problem
-
-Territory grows until **every** cell is claimed, so the cost multiplier `k[n]`
-only decides where two nations *meet*. A nation seeded beside an empty lobe of
-coast takes the whole lobe at any price, and no amount of `growIters` or
-`growGain` changes that — 110 iterations behaves like 45. Widening the `k`
-clamp past its `[0.2, 5]` range does nothing either; that was tried and
-reverted. Oversize is **geometric**: fix it with a seed where the lobes fall to
-nations that should be large, a mountain chain across the lobe, or a neighbour
-seeded into it.
-
-Known-imperfect on this seed: Corvane Republic runs to 5.6x its weight on the
-southern lobe, Lazarian Lichdom sits at 2.8x, and Stoneborn Holds is pinched
-against the polar edge. Nation size is far more sensitive to seed than to
-`SIZE`: dropping Lazarian from 0.35 to 0.26 moved Tal Ulad from 189 cells to
-1271 and cost Corvane 2,600. Change one weight at a time and re-read the whole
-table, not just the nation you meant to change.
+Known-imperfect, and all three are in the inspector output rather than hidden:
+Cindral Ashlands sits 13 deg south of its band, Kesmarch Frontier 21 deg south,
+and Tal Ulad has taken 3.8x its share. Vaelic Principality also comes out small
+(466 cells) despite carrying the largest SIZE weight on its continent — raising
+that weight to 3.4 does grow it to 811 and buys 15/15 borders, but costs six
+more inspector problems including Voskreld drifting 20 deg and Cindral collapsing
+to 59 cells. That trade is available if a bigger Vaelic matters more than a
+map that reads cleanly.

@@ -408,6 +408,6 @@ async function baseGen(p, c) {
     unclaimed: r.unclaimed, wildTotal: r.wildTotal, landTotal: r.landTotal, rivers: r.rivers,
     lakes: r.lakes, masses: r.masses, intricacy: r.intricacy, biomeMix: r.biomeMix,
     prof: r.prof, log: r.log, founded: r.founded, colonies: r.colonies,
-    claim: W.CLAIM, land: W.LAND }, null, 1));
+    claim: W.CLAIM, land: W.LAND, sizes: W.SIZE, group: W.GROUP }, null, 1));
   await b.close();
 })();
