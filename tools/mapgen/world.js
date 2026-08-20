@@ -38,6 +38,14 @@ const SIZE = {
 // elev  height band; >=60 reads as mountain, 40-59 as hills
 // ridged   sits on a fold belt: gets the collision uplift and parallel ridges
 // coastal  seeded on an OCEAN shore rather than the edge of an inland sea
+// latW     how hard the latitude band binds this nation, 1 by default. Below
+//          about 0.6 a nation stops respecting its band at all and relocates
+//          into whatever empty lobe is nearest — the response is a cliff, not
+//          a dial, so do not reach for a small number to buy a few cells
+// riverW   what a river costs this nation to cross, 1 by default. Below 1 the
+//          rivers are its roads (a delta polity, a valley principality); above
+//          1 they are its walls
+// takeMul  how much of the fold-belt uplift its own terrain takes
 const LAND = {
   // ---- the European continent, arctic down to the steppe march ----------
   'Nordheim':                   { tlat: 56, temp: -1, prec: 9,  elev: [24, 46], coastal: 1, why: 'taiga and a fjord coast' },
@@ -51,13 +59,13 @@ const LAND = {
   'Silicar':                    { tlat: 41, temp: 11, prec: 25, elev: [27, 40], why: 'a wet low basin, cut with rivers' },
   'Corvane Republic':           { tlat: 37, latW: 0.7, temp: 12, prec: 8,  elev: [21, 30], coastal: 1, why: 'coastal lowland' },
   'Quivar':                     { tlat: 37, temp: 13, prec: 7,  elev: [24, 42], coastal: 1, why: 'deciduous valleys, soft coast' },
-  'Vaelic Principality':        { tlat: 36, latW: 1.5, temp: 12, prec: 8,  elev: [26, 46], why: 'deciduous river valleys' },
+  'Vaelic Principality':        { tlat: 36, latW: 0.6, riverW: 0.35, temp: 12, prec: 8,  elev: [26, 46], why: 'deciduous river valleys — the rivers are its roads, and its borders' },
   'Kelvary March':              { tlat: 34, temp: 13, prec: 3, elev: [30, 50], why: 'rolling hill country and horse pasture' },
-  'Thesal Theocracy':           { tlat: 32, temp: 14, prec: 8,  elev: [28, 48], why: 'temperate crossroads country' },
+  'Thesal Theocracy':           { latW: 0.7, tlat: 32, temp: 14, prec: 8,  elev: [28, 48], why: 'temperate crossroads country' },
   'Tessine':                    { tlat: 30, temp: 16, prec: 9, elev: [18, 28], coastal: 2, why: 'a deepwater bay behind a headland' },
-  'Sarrowmere':                 { tlat: 26, temp: 18, prec: 27, elev: [26, 38], why: 'a vast freshwater fen' },
-  'Lazarian Lichdom':           { tlat: 24, temp: 19, prec: 27, elev: [27, 42], why: 'the drowned delta of a great river' },
-  'Tal Ulad':                   { tlat: 21, temp: 19, prec: 3, elev: [28, 46], why: 'high open grassland grazed on a circuit' },
+  'Sarrowmere':                 { latW: 0.7, tlat: 26, temp: 18, prec: 27, elev: [26, 38], why: 'a vast freshwater fen' },
+  'Lazarian Lichdom':           { tlat: 24, latW: 0.8, riverW: 0.15, temp: 19, prec: 27, elev: [27, 42], why: 'the drowned delta of a great river — it travels by water' },
+  'Tal Ulad':                   { tlat: 21, latW: 2.5, ridged: 1, takeMul: 0.30, temp: 19, prec: 3, elev: [32, 56], why: 'high open grassland grazed on a circuit — a plateau, and the southern wall' },
 
   // ---- everywhere else: the wall, the desert bloc, the jungles ----------
   'Xian Ti':                    { tlat: 33, temp: 15, prec: 8,  elev: [24, 42], why: 'settled deciduous river country' },
