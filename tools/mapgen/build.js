@@ -10,10 +10,14 @@ const CELLS = +(process.env.CELLS || 50000);
 
 const CFG = { tmpl: 'continents', eq: 29, np: -30, sp: -28, prec: 100, seed: '1' };
 const OPTS = Object.assign({
-  seed: 101,
+  seed: 7,
   landFraction: 0.43, settledFraction: 0.86,
   plates: 64, layoutIters: 900, attract: 0.10, touchAt: 0.82,
-  separate: 1.12, repel: 0.05, cohesion: 0.012, latPull: 0.030, groupGap: 1.9,
+  // latPull holds a nation at its own latitude; groupGap is how hard the two
+  // continents shove each other apart. They trade against one another: with
+  // the old 0.030/1.9 the shoving won, and moving ONE nation ten degrees
+  // dragged the whole eastern continent south out of its climate bands
+  separate: 1.12, repel: 0.05, cohesion: 0.012, latPull: 0.08, groupGap: 1.6,
   capIters: 50, growIters: 45, growGain: 0.30, snapIters: 26, coastPull: 1200, coastWant: 4, ridgePull: 6000, ridgeWant: 0.35,
   latCost: 14000, latFree: 4, latBar: 2.4, ruins: 26, keepC: 0.72, varT: 0.5, varP: 0.38,
   borderFix: 45, minCells: 60, microCorridor: 8,

@@ -4,3 +4,10 @@
 __pycache__/
 _site/
 node_modules/
+
+# build artifacts from tools/mapgen (renders and the profile dump)
+saeroth*-profile.json
+saeroth*.png
+probe*.png
+loaded-saeroth.png
+Saeroth-map-notes.md

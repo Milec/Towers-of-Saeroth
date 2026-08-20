@@ -6,7 +6,7 @@ government: Herd-councils under a Season-Speaker
 ---
 
 Tal Ulad is a nation that moves. Its people follow the herds across the
-eastern uplands on a route their grandmothers walked, and they regard a border
+high uplands on a route their grandmothers walked, and they regard a border
 as a thing that happens to other people. This has made them very difficult to
 negotiate with and impossible to invade profitably — there is nothing to take
 that will not simply have gone somewhere else by spring. Unlike the

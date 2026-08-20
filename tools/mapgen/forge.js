@@ -997,8 +997,10 @@ async function forgeWorld(page, opts) {
         const L = LAND[n];
         let c = Math.hypot(GP[b2][0] - GP[a2][0], GP[b2][1] - GP[a2][1]);
         // a river is the classic border: expensive to cross, so territory
-        // stops on the bank and the neighbour stops on the other one
-        if (drain[b2]) c *= 1 + (O.riverBar || 3.4);
+        // stops on the bank and the neighbour stops on the other one — but not
+        // for everyone. A delta polity moves BY the water, so riverW scales the
+        // toll per nation: below 1 the rivers are its roads, above 1 its walls
+        if (drain[b2]) c *= 1 + (O.riverBar || 3.4) * (L.riverW === undefined ? 1 : L.riverW);
         // and so is a watershed. Climbing is dear for everyone, but a nation
         // built to live up there pays a fraction of it
         const climb = Math.max(0, (G.h[b2] - 20) / 62);
