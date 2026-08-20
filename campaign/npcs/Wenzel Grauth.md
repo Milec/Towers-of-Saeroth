@@ -18,6 +18,12 @@ people who need it done outside a jurisdiction. He raises what the drainage
 cuts give him, he does not keep more than he can put down again, and he has
 never once been paid enough to stop.
 
+This job was different and he knows it. Raising a body to carry a bomb into a
+wagon destroys the body — you get one use and then you have nothing — and no
+one trained anywhere near the Lichdom would think of a raising that way. It is
+the detail that will convict whoever ordered it, and Grauth worked it out
+somewhere around the eleventh corpse.
+
 - **Want** Enough money to leave the frontier before the Lichdom notices him.
   Practising the art unlicensed within reach of Grauthaven is not illegal — it
   is worse than that, it is *unclaimed*, and the Lichdom collects
@@ -25,6 +31,10 @@ never once been paid enough to stop.
   border looking for him. He turned down more money once, for that reason
 - **Told** That the wagons were a Melisor consignment and that nobody aboard
   mattered. He was not told about the insurance and would not have cared
+- **Supplied** A crate of lesser alchemist's fire, twenty-four flasks, delivered
+  to him packed in straw. He did not buy it, he cannot make it, and he can
+  describe the crate down to the maker's mark — which is the single most useful
+  thing anyone can get out of him
 - **Left behind** A Melisor reagent flask, because he was told to. It is the
   one instruction he was given that he did not understand, and he has been
   thinking about it since
@@ -74,6 +84,12 @@ mirror image, spectral hand; **1st** grim tendrils, mystic armor, summon undead;
 body in wet ground and it gets up. He can hold at most six at once, and the
 sixth is always worse than the first — this is why the wave that arrives late
 is the one that has mud in its mouth and no boots.
+
+**Kindling** (manipulate) Grauth straps a case of alchemist's fire under a
+raising's ribs and runs a slow cord to the sternum. It takes him an hour a
+corpse and he hates doing it. The raising is destroyed by its own delivery,
+which is the part he cannot stop turning over: he was raised to think of a
+body as a thing you keep.
 ```
 
 *Not intended for a level 1 fight — at level 3 he is worth 80 XP against a
