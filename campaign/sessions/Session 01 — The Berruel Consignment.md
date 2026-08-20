@@ -54,23 +54,48 @@ road, the country empties out: this is the tri-point where Quivar, the
 three patrols it, because patrolling it means explaining what you were doing
 there. Vaelic castles are visible on the northern ridge and are not coming.
 
-**The ambush.** Zombies come out of a drainage cut on the flank, into the
-wagons rather than into the guards. See *The fight* below.
+**The ambush.** Zombies come out of a drainage cut on the flank — and they do
+not come for the guards. They walk past anyone who lets them, straight at the
+wagons, because each of them has a case of lesser alchemist's fire strapped
+under the ribs and a length of slow cord where its guts used to be.
 
-**The point of the fight is the wagons, not the kills.** Zombies are slowed;
-the party is not. They can win every exchange and still watch the consignment
-burn, because they cannot be in four places and the wagons cannot run. If the
-party is doing well, more come. If the party is struggling, the caravan's own
-guards buy them a round at a cost.
+They are a delivery mechanism. The corpses are packaging.
+
+**The trap in the encounter, and the reason to run it this way:** killing a
+kindled shambler is what sets the wagon alight. The party's correct instinct —
+put down the thing walking at the cargo — is precisely what destroys the cargo,
+and they will work that out one wagon too late. Everything that saves a wagon
+is something other than a killing blow at close range:
+
+- drop them at distance, before they close
+- Shove, Trip or grapple them away from the wagons (they are slowed 1 and
+  cannot recover well)
+- open the water barrels — the caravan is carrying an expedition's supply,
+  which includes water, and a doused shambler burns badly or not at all
+- cut the traces and run the wagons out from under them
+
+None of that is written on the players' sheets. All of it is available to
+anyone who looks at the problem for one round instead of swinging at it.
 
 **What can be found afterwards, in rough order of difficulty:**
 
-- The dead are *fresh* — weeks, not centuries. Lichdom raisings are worked on
-  grave-fields; these came out of a drainage cut with mud in their teeth and
-  nothing on them older than this season. (Medicine, Religion, or anyone who
-  has seen a real Lazarian raising.)
+- **The Lichdom does not do this.** This is the strongest tell in the session
+  and a Religion check gets it: Lazarian doctrine holds undeath to be
+  ascension, and a raising is *labour* — you do not strap a bomb to one and
+  throw it away. To a Lazarian necromancer this is not merely wasteful, it is
+  obscene. Whoever did it was not raised in the tradition they are being
+  blamed for.
+- **Somebody equipped them.** Harness, buckles, waxed cord, a shaped case under
+  the ribcage. Grave-raisings do not come with kit.
+- The dead are *fresh* — weeks, not centuries — and came out of a drainage cut
+  with mud in their teeth and nothing on them older than this season.
 - One of them is wearing a Kelvary-pattern boot. Somebody bought bodies.
 - The cut they came from was dug. Recently, and by tools.
+- **Unburnt flasks.** Not every case goes off. One or two survive intact in the
+  wreck, and lesser alchemist's fire is a *manufactured, purchased, recorded*
+  thing — a maker's mark, a lot number, and somewhere a ledger line for
+  twenty-odd flasks at three gold apiece. In a campaign whose villain's real
+  weapon is paperwork, this is the thread.
 - A Melisor reagent flask, empty, thrown into the brush upslope — the kind an
   academy issues by requisition number. (This is the thread to
   [[Cassian Merovel]]; it is also exactly the sort of thing the Magocracy will
@@ -87,16 +112,40 @@ not coming. All three are different second sessions.
 
 Assumed party: **4 characters at level 1**. Moderate is 80 XP, severe is 120.
 
-| Wave | What | XP |
-| --- | --- | --- |
-| Opening | 4 **Zombie Shamblers** (level −1) | 80 — moderate |
-| Round 3, if the party is winning comfortably | 2 more Shamblers | 120 total — severe |
+Two kinds of zombie, and the difference is the encounter:
 
-`Bestiary/Zombie Shambler (Monster Core)` — AC 12, HP 20, Fort +6 Ref +0
-Will +2, Perc +0, Speed 25, weak to slashing 5 and vitality 5, immune to mental
-and to bleed, poison and disease. **Slowed 1** permanently, which is the whole
-tactical shape of the encounter: they get one action a turn, so they will never
-catch a running character and will always reach a stationary wagon.
+| | What | Each | Role |
+| --- | --- | --- | --- |
+| **Kindled shambler** | Zombie Shambler carrying a case of lesser alchemist's fire | 30 XP (counted as level 0 for the death burst) | Walks at the wagons. Ignores anyone who lets it |
+| **Shambler** | plain `Bestiary/Zombie Shambler (Monster Core)` | 20 XP | Screens the kindled ones. Fights whoever is nearest |
+
+| Threat | Shape | XP |
+| --- | --- | --- |
+| Moderate | 2 kindled + 1 shambler | 80 |
+| Severe | 2 kindled + 3 shamblers | 120 |
+
+**Zombie Shambler** — AC 12, HP 20, Fort +6 Ref +0 Will +2, Perc +0, Speed 25,
+weak to slashing 5 and vitality 5, immune to mental and to bleed, poison and
+disease. **Slowed 1** permanently, which is the whole tactical shape of this:
+one action a turn, so they will never catch a running character and will
+always reach a stationary wagon.
+
+**Kindled shambler** — as above, plus:
+
+> **Death Throes** When a kindled shambler is destroyed, the case under its
+> ribs goes up in a 5-foot burst dealing **1d8 fire damage**, DC 15 basic
+> Reflex. On a failed save the target also takes **1 persistent fire damage**.
+> Anything flammable in the burst — a wagon, a tarpaulin, a season's dry
+> stores — catches.
+
+That is a lesser alchemist's fire (Item 1, 3 gp) doing what a lesser
+alchemist's fire does, which is deliberate: the players can identify it, and
+later they can *price* it.
+
+**Counted as level 0, not level −1.** A death burst is worth roughly a level on
+a creature this fragile, and pretending otherwise is how a "moderate" fight
+puts a level 1 character at dying 2. If your table would rather run the plain
+maths, use four plain shamblers and let the fire be narrative only.
 
 **[[Wenzel Grauth]] is not in this fight.** At level 3 he is worth 80 XP by
 himself, which would put the encounter past extreme. He watches from the
@@ -108,10 +157,10 @@ a second fight.
 Grauth (80) for 120 XP — severe, and a much harder fight, because he can
 actually hurt a level 1 character. Do not run six zombies and a necromancer.
 
-**Scaling.** At level 2 the same shapes cost less; use 5 Shamblers plus a pair
-of zombie hounds, or promote the opening wave to Plague Zombies (level 1,
-HP 50, and they carry Zombie Rot). At level 3, Grauth belongs in the fight and
-the zombies become the clock instead.
+**Scaling.** At level 2, run 3 kindled and 3 plain. At level 3, promote the
+kindled ones to Plague Zombies (level 1, HP 50, Zombie Rot) carrying the same
+cases, and Grauth belongs in the fight while the burning wagons become the
+clock instead.
 
 *Creatures: `vault/Bestiary/Zombie Shambler (Monster Core).md` and*
 *`vault/Bestiary/Plague Zombie (Monster Core).md` — Monster Core.*
@@ -121,11 +170,16 @@ the zombies become the clock instead.
 Four things this note deliberately does not settle, because they change what
 the campaign is about:
 
-1. **Is the cargo destroyed or resold?** Destroyed is cleaner for the claim.
-   Resold gives the party a thread they can physically follow — Alliance-marked
-   crates surfacing in a Tessine warehouse — and is the more capitalist answer.
-2. **Can the party save any of it?** Recommended: one wagon, of their choosing,
-   at a cost. It makes the loss theirs rather than scripted.
+1. ~~Destroyed or resold?~~ **Settled: destroyed.** The fire decides it, and
+   a burned consignment is the better claim anyway — there is no salvage for an
+   underwriter to argue the valuation down over. The cost of settling it this
+   way is that the party cannot follow the goods, so the paper trail carries the
+   investigation instead: who bought twenty flasks of alchemist's fire, and on
+   whose requisition.
+2. **Can the party save any of it?** Now answerable at the table rather than by
+   ruling: they save whatever they work out how to save. See the ambush section
+   — the wagons burn because killing a bomber next to one burns it, and every
+   way of avoiding that is available to a party that thinks for a round.
 3. **Does the caravan master know?** Knowing makes them the first villain and a
    loose end Casa Berruel must tidy. Not knowing makes them the first ally, and
    a witness the house now needs discredited. Not knowing is the stronger
