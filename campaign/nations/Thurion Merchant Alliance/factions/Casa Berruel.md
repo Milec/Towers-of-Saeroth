@@ -4,7 +4,6 @@ type: faction
 nation: Thurion Merchant Alliance
 seat: Vessene
 goal: Cover the paper before the paper comes due
-audience: gm
 ---
 
 One of the great houses of the [[Thurion Merchant Alliance]], and the one the

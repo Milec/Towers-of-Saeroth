@@ -4,7 +4,6 @@ type: npc
 level: 5
 nation: Melisor Magocracy
 role: adjunct lecturer in transmutation; twice passed over for a chair
-audience: gm
 ---
 
 Cassian Merovel has been an adjunct at Thelemar for eleven years. He is a

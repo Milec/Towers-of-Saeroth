@@ -55,48 +55,6 @@ How the app is put together:
   element by `syncTopbarHeight()`, and the sidebar, scrim and graph overlay are
   all positioned from it.
 
-### The site is public, and it has two audiences
-
-`milec.github.io/Towers-of-Saeroth/` is **readable by anyone with the URL**.
-The repository is private; GitHub Pages below Enterprise is not. Everything
-deployed is deployed to the players and to the internet, and for a long time
-that included the GM notes — an anonymous request could pull the full text of
-`The Nameless Empire`.
-
-So the deployed site is the **players'** site, and the GM half ships as
-ciphertext beside it:
-
-- `tools/player_view.py` holds the policy in one screen: which frontmatter
-  fields are stripped, which bullets are dropped per note `type`, and which
-  relationship standings are withheld. **Edit that file, not the notes**, when
-  the question is "would a traveller know this?"
-- `tools/gm_crypt.py` seals the GM half with AES-GCM under `GM_PASSPHRASE`
-  (a repository secret). **No passphrase means no GM material at all** — it
-  never falls back to shipping plaintext, and the workflow greps the built
-  artifact and fails the deploy if a GM note appears in the clear.
-- The GM opens it at `…/?gm`, once per device. Players never see the lock.
-
-Two ways to withhold something, and they are not the same:
-
-| | Marker | Use it when |
-| --- | --- | --- |
-| Nobody in the world knows it | `audience: gm` in the frontmatter, or `%%gm … %%` around a passage | The Nameless Empire, who burned the caravan, what Lazarus is chasing |
-| Somebody knows it, but not a traveller | the per-type policy in `player_view.py` | A nation's Military bullet, its current Tension, an NPC's Want |
-
-`%%gm … %%` is an Obsidian comment, so those passages are invisible in your
-own vault too — which is the point: you see the player's version while writing
-unless you go looking.
-
-**Check the split before you push**, because a leak here is the one mistake
-that cannot be taken back:
-
-```
-python3 tools/test_gm_crypt.py --browser        # seal/open, both languages
-GM_PASSPHRASE=... python3 tools/build_site.py --no-vault
-grep -ril "nameless empire\|casa berruel" _site/content   # must be empty
-python3 tools/build_site.py --gm --no-vault     # the GM's own local copy
-```
-
 **Lint the notes before committing.** `tools/lint_notes.py` checks only the
 conventions that fail *silently* — where the build succeeds, the site renders,
 and the note simply says something untrue:
