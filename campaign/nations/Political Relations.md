@@ -191,14 +191,10 @@ open between them for as long as anyone has counted.
 [[Melisor Magocracy]] is resented — indispensable, insufferable, and owed money
 by half the continent. The [[Undertide Reaches]] sells secrets to everyone and
 is therefore trusted by no one, including its customers. And the
-[[Lazarian Lichdom]] is simply feared: three open enmities and not one honest
-trading partner.
-
-%%gm
-Five of the Lichdom's arrangements are ones nobody will admit to, and its
-busiest relationship of all is with [[Dalstan]], which condemns undeath from a
-gilded pulpit and buys its relics out of Lazarian grave-fields.
-%%
+[[Lazarian Lichdom]] is simply feared: three open enmities, five arrangements
+nobody will admit to, and not one honest trading partner. Its busiest
+relationship is with [[Dalstan]], which condemns undeath from a gilded pulpit
+and buys its relics out of Lazarian grave-fields.
 
 ## What could still go wrong
 
