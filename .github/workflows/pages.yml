@@ -41,13 +41,36 @@ jobs:
       - name: Generate PWA icons
         run: python3 tools/make_icons.py
 
+      - name: Install the sealer
+        run: pip install --quiet pycryptodome
+
+      # The deployed site is the PLAYERS' site. GitHub Pages is public below
+      # Enterprise, so anything built here is readable by anyone with the URL —
+      # which is why the GM half is sealed rather than merely unlinked.
+      #
+      # GM_PASSPHRASE is a repository secret. If it is unset the build still
+      # succeeds and simply ships no GM material at all; it never falls back
+      # to publishing the plaintext.
       - name: Build site
+        env:
+          GM_PASSPHRASE: ${{ secrets.GM_PASSPHRASE }}
         run: |
           if [ "${{ github.event.inputs.include_vault }}" = "false" ]; then
             python3 tools/build_site.py --no-vault
           else
             python3 tools/build_site.py
           fi
+
+      # A build that published a GM note in the clear is the one failure that
+      # matters, so check the artifact rather than trusting the code.
+      - name: Refuse to deploy plaintext GM material
+        run: |
+          if grep -rqiE "sorcerer.king|nameless empire|casa berruel" _site/content _site/index-campaign.json; then
+            echo "::error::GM material found in the player build - refusing to deploy"
+            grep -rliE "sorcerer.king|nameless empire|casa berruel" _site/content _site/index-campaign.json
+            exit 1
+          fi
+          echo "player build is clean"
 
       - uses: actions/configure-pages@v5
 

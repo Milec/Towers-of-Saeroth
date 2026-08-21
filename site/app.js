@@ -283,8 +283,101 @@ const renderer = {
 
 marked.use({ extensions: [wikilink, highlight], renderer, gfm: true, breaks: false });
 
+/* ------------------------------------------------------------ the GM vault
+   The site is public — GitHub Pages below Enterprise has no access control —
+   so the GM half of the vault ships as AES-GCM ciphertext next to the player
+   half and is opened in the browser with a passphrase. Players are not shown
+   redacted notes with holes in them; the GM notes are simply not in their
+   index or their tree, and what is on the wire is a few hundred KB that means
+   nothing without the key.
+
+   Everything here is WebCrypto. The key is derived once per unlock and held in
+   memory; the passphrase is kept in localStorage so a phone that has been
+   unlocked once stays unlocked, which is the same trust boundary as the notes
+   being on that phone at all. */
+const gm = { open: false, notes: new Map(), only: new Set(), manifest: null };
+window.__gm = gm;                       // exposed for the browser tests
+
+const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+
+/* A brief message that does not need dismissing. */
+function toast(msg) {
+  let el = document.getElementById('toast');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'toast';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.hidden = false;
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => { el.hidden = true; }, 2600);
+}
+
+async function gmKey(phrase, manifest) {
+  const enc = new TextEncoder();
+  const base = await crypto.subtle.importKey('raw', enc.encode(phrase), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt: b64(manifest.salt), iterations: manifest.iterations, hash: 'SHA-256' },
+    base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+}
+
+async function gmOpenBlob(key, blob) {
+  const raw = b64(blob);
+  const plain = await crypto.subtle.decrypt(
+    { name: 'AES-GCM', iv: raw.slice(0, 12) }, key, raw.slice(12));
+  return new TextDecoder().decode(plain);
+}
+
+/* Is there anything to unlock on this deployment at all? */
+async function gmProbe() {
+  try {
+    const m = await (await fetch(BASE + 'gm-vault.json')).json();
+    gm.manifest = m && m.locked ? m : null;
+  } catch (_) { gm.manifest = null; }
+  return gm.manifest;
+}
+
+/* Wrong passphrase and corrupt file are different problems, so the bundle
+   carries a known plaintext to tell them apart before the real work starts. */
+async function gmUnlock(phrase) {
+  const m = gm.manifest || await gmProbe();
+  if (!m) throw new Error('no GM material on this site');
+  const key = await gmKey(phrase, m);
+  // AES-GCM authenticates, so a wrong key fails the tag check and WebCrypto
+  // throws OperationError. That is the expected path, not a fault, and the
+  // person typing does not need to be shown the DOM exception's name.
+  let ok = false;
+  try { ok = await gmOpenBlob(key, m.check) === 'saeroth'; } catch (_) { ok = false; }
+  if (!ok) throw new Error('That passphrase does not open this vault.');
+  const payload = JSON.parse(await gmOpenBlob(key, m.data));
+  const index = payload.__index__ || [];
+  delete payload.__index__;
+  for (const [path, text] of Object.entries(payload)) gm.notes.set(path, text);
+  for (const it of index) {
+    if (it.only) gm.only.add(it.p);
+    if (!state.campaign.some((n) => n.p === it.p)) state.campaign.push(it);
+    if (it.body) state.text.set(it.p, it.body);
+    state.links.set(it.p, it.l || []);
+    if (it.t) state.type.set(it.p, it.t);
+    indexEntry(it.p);
+  }
+  gm.open = true;
+  try { localStorage.setItem('gmPhrase', phrase); } catch (_) { /* private window */ }
+  return index.length;
+}
+
+function gmRelock() {
+  gm.open = false; gm.notes.clear(); gm.only.clear();
+  try { localStorage.removeItem('gmPhrase'); } catch (_) { /* private window */ }
+  location.reload();     // the player index is the honest starting point again
+}
+
 /* ------------------------------------------------------------- rendering */
 async function fetchNote(path) {
+  // An unlocked GM always gets the full text: for a redacted note the player
+  // copy is on disk and the full one is in the vault, and the vault wins.
+  if (gm.open && gm.notes.has(path)) return gm.notes.get(path);
   const res = await fetch(BASE + 'content/' + path.split('/').map(encodeURIComponent).join('/'));
   if (!res.ok) throw new Error(res.status + ' ' + path);
   return res.text();
@@ -441,6 +534,13 @@ function renderLevel(node, mount, openDepth = 0, depth = 0, prefix = '') {
   for (const f of node.files.sort((a, b) => a.seg.localeCompare(b.seg))) {
     const a = document.createElement('a');
     a.className = 'leaf';
+    // A GM working from the tree needs to see at a glance which notes the
+    // players cannot: gm-only is a note absent from their build entirely,
+    // gm-part is one they get a shortened version of.
+    if (gm.open) {
+      if (gm.only.has(f.p)) a.classList.add('gm-only');
+      else if (gm.notes.has(f.p)) a.classList.add('gm-part');
+    }
     a.dataset.path = f.p;
     a.href = '#/' + encodeURI(f.p);
     a.textContent = f.seg.replace(/\.md$/, '');
@@ -2271,6 +2371,54 @@ async function init() {
     localStorage.setItem('theme', cur);
     if (graph.nodes.length) { drawLegend(); needsDraw(); }   // palette swaps with the theme
   };
+  /* The GM control is not shown to players at all. The ciphertext is on the
+     same deployment as their notes — that is the whole design — but a padlock
+     in the topbar advertises that there is something to open and invites
+     exactly the guessing this is meant to make pointless. So the button
+     appears only for someone who already knows: a device that has unlocked
+     before, or a visit to ?gm. Bookmark the ?gm URL; the players get the bare
+     one and never see a lock. */
+  let gmInvited = false;
+  try { gmInvited = /(^|[?&])gm\b/.test(location.search) || !!localStorage.getItem('gmPhrase'); }
+  catch (_) { gmInvited = /(^|[?&])gm\b/.test(location.search); }
+  if (gmInvited && await gmProbe()) {
+    const btn = $('gmBtn'), modal = $('gmModal'), err = $('gmErr');
+    const paint = () => {
+      btn.hidden = false;
+      btn.setAttribute('aria-pressed', gm.open ? 'true' : 'false');
+      btn.title = gm.open ? 'GM notes unlocked — tap to relock' : 'Unlock GM notes';
+      document.documentElement.dataset.gm = gm.open ? 'on' : 'off';
+    };
+    const apply = async (phrase, quiet) => {
+      try {
+        const n = await gmUnlock(phrase);
+        buildTree(state.campaign.map((x) => x.p), $('tree'));
+        paint();
+        modal.hidden = true;
+        if (!quiet) toast(n + ' GM notes unlocked');
+        route();
+        return true;
+      } catch (e) {
+        if (!quiet) { err.textContent = String(e.message || e); err.hidden = false; }
+        return false;
+      }
+    };
+    paint();
+    btn.onclick = () => {
+      if (gm.open) { gmRelock(); return; }
+      err.hidden = true; $('gmPass').value = '';
+      modal.hidden = false; $('gmPass').focus();
+    };
+    $('gmCancel').onclick = () => { modal.hidden = true; };
+    $('gmGo').onclick = () => apply($('gmPass').value, false);
+    $('gmPass').onkeydown = (e) => { if (e.key === 'Enter') apply($('gmPass').value, false); };
+    modal.onclick = (e) => { if (e.target === modal) modal.hidden = true; };
+    // a phone unlocked once stays unlocked
+    let saved = null;
+    try { saved = localStorage.getItem('gmPhrase'); } catch (_) { /* private window */ }
+    if (saved) await apply(saved, true);
+  }
+
   $('graphBtn').onclick = () => ($('graphView').hidden ? openGraph() : closeGraph());
   $('graphClose').onclick = closeGraph;
   $('gLeave').onclick = closeGraph;
