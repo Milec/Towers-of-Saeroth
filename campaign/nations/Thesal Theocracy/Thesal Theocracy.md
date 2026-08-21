@@ -16,6 +16,7 @@ nations need a mediator neither side will refuse, they send for Thesal.
 - **Economic Specialties** Healing, religious pilgrimage, education, charity, medicine
 - **Military** Paladins, clerics, defensive militias, hospital corps
 - **Government** Council of High Clerics representing every recognized faith
+- **History** The remainder of the **Concord**, the church-state that [[Dalstan]] and the [[Lazarian Lichdom]] broke away from four centuries ago. Thesal kept the capital, the first order's doctrine and about a third of the people, and answered the loss by opening its precinct to every faith that would come — see [[The Sundering of the Concord]]
 - **Reputation** Trusted mediators and healers
 - **Faith** Patron [[Sarenrae]], goddess of healing and redemption, whose hospices are the nation's most visible export. By charter every good or neutral faith holds a temple in Concord — [[Shelyn]], [[Desna]] and [[Pharasma]] hold the largest after hers
 - **Tension** [[Dalstan]] missionaries have started preaching openly in the border shrines, and Thesal's own doctrine of tolerance is the reason it can't simply expel them
@@ -29,5 +30,5 @@ nations need a mediator neither side will refuse, they send for Thesal.
     - [[Xian Ti]] — **Friendly**: Hospice and academy: two states that conduct their entire friendship by letter and have found nothing in three centuries of correspondence worth falling out over
     - [[Thornwild Confederation]] — **Trade**: Jungle medicinals — the Circle sells what the hospices cannot grow, and has never allowed a Thesal expedition to collect it directly
     - [[Thurigypt]] — **Trade**: Hospice medicine and trained physicians for grain, arranged temple to temple. Pharasma's priests and Sarenrae's have found a division of labour that neither theology strictly permits
-    - [[Dalstan]] — **Hostile**: Two faiths and one border. Zon-Kuthon's court calls Sarenrae's mercy a heresy that makes suffering meaningless; Thesal calls the Cathedral Court a business
-    - [[Lazarian Lichdom]] — **Hostile**: Sarenrae's clergy hold that undeath is the one thing that cannot be redeemed, which makes the Lichdom the single article of Thesal doctrine with no mercy in it
+    - [[Dalstan]] — **Hostile**: One church, four hundred years ago, and one border now. Zon-Kuthon's court calls Sarenrae's mercy a heresy that makes suffering meaningless; Thesal calls the Cathedral Court a business. Both are claiming the same inheritance and neither will use the other's name for it — see [[The Sundering of the Concord]]
+    - [[Lazarian Lichdom]] — **Hostile**: Sarenrae's clergy hold that undeath is the one thing that cannot be redeemed, which makes the Lichdom the single article of Thesal doctrine with no mercy in it. It is also the older half of a family quarrel: the Lich Emperor was a high cleric of Thesal's own church before he walked into the delta

@@ -23,6 +23,7 @@ grace — and it decides often.
 - **Culture** Faith is inseparable from status; the richer the display of devotion, the more genuine it's assumed to be. Suffering is sanctified only when it's someone else's.
 - **Military** Inquisitorial knights, flagellant shock troops, cathedral guard, relic-bound zealots
 - **Government** Grand Inquisitor-King, anointed for life by the Cathedral Court
+- **History** The second order of the **Concord**, which walked out of the council four centuries ago with a third of the clergy, a third of the treasury and most of the relics, and founded its own see at Ostravin. It considers itself the Concord's true heir and [[Thesal Theocracy]] the remnant that lost its nerve — see [[The Sundering of the Concord]]
 - **Reputation** Devout to the point of cruelty, and richer than its piety should allow
 - **Faith** Patron [[Zon-Kuthon]], whose doctrine that suffering refines the soul has been reinterpreted, gradually and self-servingly, into an excuse for splendor. [[Asmodeus]] supplies the rest of the theology — hierarchy, binding contract, and the indulgence trade that funds the cathedrals
 - **Want** The Cathedral Court wants every neighboring court to convert, gilded shrine by gilded shrine.
@@ -36,5 +37,5 @@ grace — and it decides often.
     - [[Corvane Republic]] — **Hostile**: The Republic shelters everyone the Cathedral Court wants back, publishes their accounts of what was done to them, and shares a border with the nation it is doing this to
     - [[Elven Confederacy]] — **Hostile**: Inquisitorial companies burning grove-shrines on the Confederacy's southern edge, on the doctrine that a faith without a named god is a faith with something to hide
     - [[Tessine]] — **Hostile**: Half the Cathedral Court's condemned live on Tessine deposits, and the Signory has never once honoured an extradition writ. Dalstan has stopped sending them and started sending other people
-    - [[Thesal Theocracy]] — **Hostile**: Two faiths and one border. Zon-Kuthon's court calls Sarenrae's mercy a heresy that makes suffering meaningless; Thesal calls the Cathedral Court a business
-    - [[Lazarian Lichdom]] — **Covert**: The Cathedral Court condemns undeath from a gilded pulpit and sources its relics from Lazarian grave-fields, through factors who are burned if they are ever named
+    - [[Thesal Theocracy]] — **Hostile**: One church, four hundred years ago, and one border now. Zon-Kuthon's court calls Sarenrae's mercy a heresy that makes suffering meaningless; Thesal calls the Cathedral Court a business. Both are claiming the same inheritance and neither will use the other's name for it — see [[The Sundering of the Concord]]
+    - [[Lazarian Lichdom]] — **Covert**: The Cathedral Court condemns undeath from a gilded pulpit and sources its relics from Lazarian grave-fields, through factors who are burned if they are ever named. Every one of those relics was Concord property before it was anybody's, so both schismatics are quietly buying back their own inheritance — around the third of them that would seize the lot

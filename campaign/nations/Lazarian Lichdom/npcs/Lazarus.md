@@ -7,7 +7,11 @@ visibility: GM only below the first section — what Lazarus found is the secret
 
 Lazarus has ruled [[Lazarian Lichdom]] for longer than any living record
 agrees on — the Cathedral Court stopped arguing about his age decades ago
-and only argues about how much longer the current silence will last. By any
+and only argues about how much longer the current silence will last. The
+answer, which Thesal knows and cannot prove, is four hundred years: he is not
+a successor to the schismatic who founded the Lichdom, he *is* that man, the
+Concord's own third-order high cleric, still on the throne he made by leaving
+it. See [[The Sundering of the Concord]]. By any
 measure his own scholars can construct, he is the single most powerful
 individual walking Saeroth: centuries of unbroken practice across every
 school of forbidden art the Lichdom has spent that same span perfecting,
