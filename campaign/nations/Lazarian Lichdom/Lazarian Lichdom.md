@@ -16,14 +16,15 @@ centuries — competence doesn't expire just because the body did.
 - **Economic Specialties** Alchemy, necromancy, ancient relics, undead labor, magical artifacts
 - **Military** Skeleton legions, Death Knights, vampire nobles, necromancers, bone constructs
 - **Government** Immortal Lich Emperor
+- **History** The third order of the **Concord**, whose high cleric took the doctrine of death-as-a-door to its end, walked into the delta with his followers four centuries ago and did not die. He is still on the throne — see [[The Sundering of the Concord]] and [[Lazarus]]
 - **Reputation** Universally feared
 - **Faith** Patron [[Urgathoa]], whose doctrine of undeath as ascension runs through Lazarian state philosophy. [[Norgorber]] is kept quietly by the alchemists and relic-brokers. [[Pharasma]]'s faith is outlawed outright — she judges the dead, which makes her the one god the state cannot bargain with
 - **Tension** [[Lazarus]] has not issued an edict in eleven years; the Cathedral Court insists this is deliberation, and quietly governs without him — nobody in the court will call it a disappearance, and nobody has been let close enough to know if that's actually wrong
 - **Relations**
-    - [[Thesal Theocracy]] — **Hostile**: Sarenrae's clergy hold that undeath is the one thing that cannot be redeemed, which makes the Lichdom the single article of Thesal doctrine with no mercy in it
+    - [[Thesal Theocracy]] — **Hostile**: Sarenrae's clergy hold that undeath is the one thing that cannot be redeemed, which makes the Lichdom the single article of Thesal doctrine with no mercy in it. It is also the older half of a family quarrel: the Lich Emperor was a high cleric of Thesal's own church before he walked into the delta
     - [[Thurigypt]] — **Hostile**: Life against undeath in the plainest terms: Thurigypt's patron is the one goddess Lazarian has outlawed, and the Pharaoh's temples fund every expedition that sails against the delta
     - [[Vaelic Principality]] — **Hostile**: Vaelic's southern frontier is the Lichdom's northern one, and the Drake Rider Order exists in its current form because of it
-    - [[Dalstan]] — **Covert**: The Cathedral Court condemns undeath from a gilded pulpit and sources its relics from Lazarian grave-fields, through factors who are burned if they are ever named
+    - [[Dalstan]] — **Covert**: The Cathedral Court condemns undeath from a gilded pulpit and sources its relics from Lazarian grave-fields, through factors who are burned if they are ever named. Every one of those relics was Concord property before it was anybody's, so both schismatics are quietly buying back their own inheritance — around the third of them that would seize the lot
     - [[Melisor Magocracy]] — **Covert**: Research the academies cannot publish, conducted with materials they cannot account for. Four archmages know; the Council of Archmages, officially, does not
     - [[Quivar]] — **Covert**: The court buys relics for reasons it does not explain, through intermediaries who are never the same twice
     - [[Sarrowmere]] — **Covert**: The fen cantons buy reagents no living nation will admit a use for, and the Lichdom is the only supplier. Sarrowmere's answer, when asked, is that it treats what it is brought
