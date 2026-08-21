@@ -73,12 +73,37 @@ door, then the question is not what waits past it but why anyone should be
 required to go through. He walked out with his followers into the delta and
 did not die. He has not died since. He is still there.
 
-**[[Thesal Theocracy]]** is the remainder. It kept the city, the name of the
-city, the first order's doctrine and about a third of the people, and it
-responded to losing two-thirds of its own church by opening its precinct to
-every faith that would come. The dozen temples sharing one water supply in
-Concord today are not ecumenical warmth. They are a nation that learned what
-happens when one building holds only one argument.
+**[[Thesal Theocracy]]** is what stayed. It kept the city, the name of the
+city, the first order's doctrine and a third of the clergy, and it answered
+the loss of the other two thirds by opening its precinct to every faith that
+would come. The dozen temples sharing one water supply in Concord today are
+not ecumenical warmth. They are a nation that learned what happens when one
+building holds only one argument.
+
+## Concord did not shrink
+
+The *state* lost two thirds of itself. The **city** did not, and this is the
+thing most easily got wrong about the Sundering: Concord today is larger,
+richer and far busier than it ever was as the capital of a single church.
+
+Losing its monopoly turned out to be the making of it. A city that had been
+the seat of one faith became the sacred ground of a dozen, and pilgrimage —
+which the Concord had received as tribute from its own subjects — became a
+trade conducted with the whole world. The sacred precinct sprawls across
+districts the old Concord never built. Hospices take in the dying of nations
+that will not speak to each other. The schools train physicians who go home to
+courts that consider Thesal heretical and hire its graduates anyway.
+
+**And [[Vaelic Principality]] pays for a great deal of it, openly.** The
+Principality endows hospices, funds the schools, keeps the Pilgrim's Stair
+cleared and garrisons nothing — an alliance expressed in coin and roadwork
+rather than in troops. Vaelic's stated reason is faith and old obligation, and
+both are true. The unstated one is geography: a strong Concord is the only
+thing standing between the Vaelic frontier and two nations that would very
+much like to inherit it. Thesal knows this perfectly well and takes the money.
+
+It is the largest religious city in the world, and none of the three heirs
+disputes that. They dispute what it means that Thesal holds it.
 
 ## What it explains
 
