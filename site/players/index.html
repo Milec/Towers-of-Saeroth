@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saeroth — for players</title>
+<meta name="description" content="What a traveller in Saeroth could reasonably know.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* This page is deliberately its own small thing: no tree, no search, no
+     graph, no service worker, and no link to the vault in either direction.
+     It borrows the parchment palette from styles.css and nothing else. */
+  .pmain { max-width: 74ch; margin: 0 auto; padding: 26px clamp(14px, 4vw, 40px) 90px; }
+  .ptabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 22px; }
+  .ptab {
+    padding: 7px 13px; border: 1px solid var(--rule); border-radius: 999px;
+    background: var(--panel); color: var(--ink); font: inherit; font-size: 14.5px;
+    cursor: pointer;
+  }
+  .ptab:hover { border-color: var(--muted); }
+  .ptab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .pfoot { margin-top: 44px; padding-top: 14px; border-top: 1px solid var(--rule);
+           color: var(--muted); font-size: 13px; }
+  .pdoc h1 { font-size: 1.95em; margin: .1em 0 .5em; border-bottom: 2px solid var(--rule); padding-bottom: .2em; }
+  .pdoc h2 { font-size: 1.35em; margin: 1.5em 0 .4em; }
+  .pdoc table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; margin: 1em 0; }
+  .pdoc th, .pdoc td { border: 1px solid var(--rule); padding: 7px 10px; text-align: left; vertical-align: top; }
+  .pdoc th { background: var(--panel); }
+  .pdoc td:first-child { white-space: nowrap; }
+  .pdoc blockquote { margin: 1em 0; padding: .1em 1em; border-left: 3px solid var(--rule); color: var(--muted); }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <span class="brand">Saeroth <span class="muted" style="font-weight:400">· for players</span></span>
+  <div class="spacer"></div>
+  <button id="themeBtn" class="iconbtn" aria-label="Toggle theme">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+</header>
+
+<main class="pmain">
+  <div class="ptabs" id="tabs" role="tablist"></div>
+  <article class="pdoc" id="doc">Loading…</article>
+  <p class="pfoot">A traveller's picture of the world — what people say, not
+    necessarily what is so.</p>
+</main>
+
+<script src="../marked.min.js"></script>
+<script>
+(function () {
+  const theme = localStorage.getItem('theme');
+  if (theme) document.documentElement.dataset.theme = theme;
+  document.getElementById('themeBtn').onclick = () => {
+    const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  };
+
+  const tabs = document.getElementById('tabs');
+  const doc = document.getElementById('doc');
+  let pages = [];
+
+  // Wikilinks are stripped rather than resolved: these documents stand alone,
+  // and a link into the vault is exactly what this page is for not having.
+  const clean = (md) => md.replace(/\[\[([^\]|#]+)(\|([^\]]+))?\]\]/g, (_, t, __, alt) => alt || t);
+
+  async function show(i) {
+    [...tabs.children].forEach((b, n) => b.setAttribute('aria-selected', n === i ? 'true' : 'false'));
+    location.hash = '#' + encodeURIComponent(pages[i].file.replace(/\.md$/, ''));
+    doc.innerHTML = '<p class="muted">Loading…</p>';
+    try {
+      const res = await fetch('content/' + encodeURIComponent(pages[i].file));
+      if (!res.ok) throw new Error(res.status);
+      doc.innerHTML = marked.parse(clean(await res.text()));
+      scrollTo(0, 0);
+    } catch (e) {
+      doc.innerHTML = '<p class="muted">Could not load that page.</p>';
+    }
+  }
+
+  fetch('pages.json').then((r) => r.json()).then((list) => {
+    pages = list;
+    list.forEach((p, i) => {
+      const b = document.createElement('button');
+      b.className = 'ptab'; b.type = 'button'; b.role = 'tab';
+      b.textContent = p.title;
+      b.onclick = () => show(i);
+      tabs.appendChild(b);
+    });
+    const want = decodeURIComponent(location.hash.replace(/^#/, ''));
+    const at = list.findIndex((p) => p.file.replace(/\.md$/, '') === want);
+    show(at >= 0 ? at : 0);
+  }).catch(() => { doc.innerHTML = '<p class="muted">Nothing here yet.</p>'; });
+})();
+</script>
+</body>
+</html>

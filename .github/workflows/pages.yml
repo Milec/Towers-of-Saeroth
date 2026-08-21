@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'campaign/**'
+      - 'players/**'
       - 'vault/**'
       - 'site/**'
       - 'tools/build_site.py'
