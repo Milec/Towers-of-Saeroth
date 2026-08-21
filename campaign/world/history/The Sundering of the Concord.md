@@ -13,8 +13,7 @@ liturgy the other two would recognise if they could bear to attend it.
 
 It was called the **Concord**, and it was seated at the city of Concord, which
 is the same city [[Thesal Theocracy]] rules from today. That is not a
-coincidence and it is not sentiment. It is the whole of Thesal's claim: the
-others left, and Thesal is what stayed.
+coincidence and it is not luck. Two orders left; the first one held.
 
 ## What the Concord was
 
@@ -30,8 +29,9 @@ of them is true without the other two:
 For five hundred years these were three orders of one clergy, argued between
 in council, and the arguing was considered the point. The Concord's own
 scripture says as much: *a truth kept by one order alone becomes its own
-heresy.* Everyone has since proven that line correct, and none of the three
-can quote it comfortably any more.
+heresy.* Two of the three have since proved that line correct at appalling
+length. The third answered it by opening its doors — which is why Concord is
+the only one of the three heirs that still has other voices in the room.
 
 ## The whispering
 
@@ -54,31 +54,56 @@ from a cleric's own conscience. Thesal's position, that the Concord was
 subverted, happens to be exactly right, and Thesal cannot demonstrate one word
 of it.
 
+**The first order was not spared, and did not fall.** [[Sarenrae]]'s high
+cleric heard something too, in the same years and in the same voice, offering
+her the same flattery: that mercy was the whole of the truth and the other two
+orders were a weight on it. She stood up in open council and said so — that
+she had been tempted, and to what, and that she did not trust the source of a
+thought that arrived already agreeing with her. Saying it aloud was the end of
+it. A whisper cannot work on someone who reports it, and it never came back.
+
 ## The Sundering
 
 It broke in a single winter, and it broke into three.
 
-**[[Dalstan]]** went first and went loudly: the second order walked out of the
-council with a third of the clergy, a third of the treasury and most of the
-relics, and founded its own see at **Ostravin**. It has spent four centuries
-elaborating the refining fire into a theology of splendour — that suffering
-sanctifies, that those who sanctify it deserve to be gilded for the service,
-and that the gilding is evidence of grace rather than of accounting. Its
-Grand Inquisitor-King is anointed by a Cathedral Court whose forms are the
-Concord's own, filed down.
+**[[Dalstan]]** went first and went in fury. The second order did not merely
+withdraw — it demanded the council condemn mercy itself as a heresy that made
+suffering meaningless, and when the council would not, its high cleric called
+down wrath on the whole assembly and walked out with a third of the clergy, a
+third of the treasury and most of the relics, to found his own see at
+**Ostravin**. Four centuries of a wrathful church have since discovered that
+wrath is profitable: the refining fire elaborated into a theology of splendour,
+where suffering sanctifies, those who administer it deserve to be gilded for
+the service, and the gilding is evidence of grace rather than of accounting.
+Its Grand Inquisitor-King is anointed by a Cathedral Court whose forms are the
+Concord's own, filed down to an edge.
 
-**The Lichdom** went second, quietly, and did not stop where the others did.
-The third order's high cleric took his own doctrine to its end: if death is a
-door, then the question is not what waits past it but why anyone should be
-required to go through. He walked out with his followers into the delta and
-did not die. He has not died since. He is still there.
+**The Lichdom** went second, and went quietly, which is why nobody stopped it.
+The third order's high cleric denounced no one. He raised his voice in no
+session, signed every resolution put before him, and took his own doctrine to
+its end in private: if death is a door, then the question is not what waits
+past it but why anyone should be required to go through. He left in the night
+with his followers, walked into the delta, and did not die. He has not died
+since. He is still there. Of the two who left, he is the one the Concord never
+saw coming, and the one who has done the most harm.
 
-**[[Thesal Theocracy]]** is what stayed. It kept the city, the name of the
-city, the first order's doctrine and a third of the clergy, and it answered
-the loss of the other two thirds by opening its precinct to every faith that
-would come. The dozen temples sharing one water supply in Concord today are
-not ecumenical warmth. They are a nation that learned what happens when one
-building holds only one argument.
+**[[Thesal Theocracy]] held.** This is the part most easily misread as
+passivity, and it is the opposite. The first order kept the city, the archives,
+the charter and the standing to declare both departures heresy and call the
+faithful of five centuries to arms against them — and it had the numbers to
+win that war in the first year, before Ostravin was walled and before anything
+had crawled out of the delta.
+
+It refused. The Council would not compel belief and would not spill blood over
+doctrine, and so it let them go, knowing exactly what it was letting walk out
+into the world. That decision cost the church two thirds of itself, four
+hundred years of hostile neighbours on both flanks, and every death the
+Lichdom has caused since. The Council has been asked in every generation
+whether it was wrong. It has never once said yes.
+
+What it did instead was open the precinct to every faith that would come. Not
+as a manoeuvre — as the same conviction that had just refused the war, which is
+that no one holds a truth by holding it alone.
 
 ## Concord did not shrink
 
@@ -97,10 +122,12 @@ courts that consider Thesal heretical and hire its graduates anyway.
 **And [[Vaelic Principality]] pays for a great deal of it, openly.** The
 Principality endows hospices, funds the schools, keeps the Pilgrim's Stair
 cleared and garrisons nothing — an alliance expressed in coin and roadwork
-rather than in troops. Vaelic's stated reason is faith and old obligation, and
-both are true. The unstated one is geography: a strong Concord is the only
-thing standing between the Vaelic frontier and two nations that would very
-much like to inherit it. Thesal knows this perfectly well and takes the money.
+rather than in troops. Vaelic's reason is faith and old obligation, and it is
+also true that a strong Concord stands between the Vaelic frontier and two
+nations that would like to inherit it. That second reason is Vaelic's, and it
+has never been Thesal's price: the Council spends the endowment on the wards
+and the road and nothing else, and has twice sent one back for arriving with a
+condition attached.
 
 It is the largest religious city in the world, and none of the three heirs
 disputes that. They dispute what it means that Thesal holds it.
@@ -108,9 +135,11 @@ disputes that. They dispute what it means that Thesal holds it.
 ## What it explains
 
 - **Why Thesal sits between them.** Thesal borders both. [[Dalstan]] and the
-  [[Lazarian Lichdom]] do not border each other at all — the remainder is
+  [[Lazarian Lichdom]] do not border each other at all — the first order is
   physically in the way, which is the shape a state takes when two pieces tear
-  off opposite edges of it.
+  off opposite edges of it. It is also the shape of the last four centuries:
+  everything either of them has wanted from the other has had to cross the
+  nation that would not fight them.
 - **Why the relic trade is covert.** Dalstan condemns undeath from a gilded
   pulpit and buys from Lazarian grave-fields, and every one of those relics
   was Concord property before it was anybody's. Both parties are purchasing
@@ -118,10 +147,12 @@ disputes that. They dispute what it means that Thesal holds it.
   route runs around a nation that would seize the lot.
 - **Why both hatreds are theological rather than territorial.** Neither
   Dalstan nor the Lichdom wants Thesal's ground. They want to be the Concord's
-  true heir, and only one of the three can be.
+  true heir, and both know which of the three actually is.
 - **Why Thesal's charter reads as it does.** *By charter every good or neutral
-  faith holds a place in the precinct* is not tolerance for its own sake. It
-  is a structural answer to the thing that killed the Concord.
+  faith holds a place in the precinct* is tolerance meant sincerely, by a
+  church that has already paid for it once. That it is also the structural
+  answer to the thing that killed the Concord is not the reason it was
+  written — it is the reason it has held.
 
 ## Threads
 
@@ -133,13 +164,24 @@ disputes that. They dispute what it means that Thesal holds it.
   whispered to him once, and is currently, in his silence, listening for
   another voice.
 - **The archives at Concord.** Thesal keeps the Concord's records because
-  Thesal kept the building. Somewhere in them are the private letters of high
-  clerics arguing themselves toward a conclusion neither of them reached
-  alone. That is the closest thing to proof that exists, and Thesal has never
-  read it that way because Thesal already knows what it thinks.
-- **Neither heresy is stupid.** Both were right about something. Mercy without
-  the fire *does* become indulgence, and Thesal has that failure mode. A party
-  that expects Dalstan to be simply wrong will misplay it.
+  Thesal kept the building, and somewhere in them is the first order's high
+  cleric writing down the day she was tempted. She named what it offered and
+  never named what offered it, so to any modern reader it is one more
+  confession of doubt in an archive full of them — indistinguishable, and
+  filed accordingly. It is the closest thing to proof that exists. Someone who
+  already knows what happened could find it in a week.
+- **Neither heresy is stupid, and neither is right.** Both are argued well,
+  and plenty of people hold them sincerely — there are Dalstani priests who
+  have never gilded anything and genuinely tend their poor. The danger at the
+  table is not that Dalstan turns out to have a point about mercy. It is that
+  Dalstan is *charming*, and a party that expects a villain to announce itself
+  will be halfway into the Cathedral Court's debt before it notices.
+- **Thesal's cost is the price of the virtue, not a crack in it.** A nation
+  that will not compel cannot expel [[Dalstan]]'s missionaries from its own
+  border shrines, cannot refuse the pilgrim who should have been refused, and
+  cannot stop being used by people who have worked out that it will not strike
+  first. That is a real vulnerability and it is not corruption. Thesal knows
+  every bit of it and pays anyway, which is the whole of what the nation is.
 - **The Concord's ruin is not the towers.** Nothing about this connects to
   [[The Nameless Empire]] — the erasure predates the Concord's founding by
   centuries and the gods involved are not the same. The resemblance is worth
