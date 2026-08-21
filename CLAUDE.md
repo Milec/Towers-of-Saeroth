@@ -55,6 +55,28 @@ How the app is put together:
   element by `syncTopbarHeight()`, and the sidebar, scrim and graph overlay are
   all positioned from it.
 
+### `players/` is a separate site, on purpose
+
+`players/` holds a handful of hand-written documents deployed at
+`/players/` — what a traveller in Saeroth could reasonably know. It has its
+own small reader page in `site/players/`, and it is **not** part of the vault:
+no tree, no search, no graph, no service worker, nothing links to it and it
+links to nothing.
+
+That separation is the feature. These documents are *written*, not derived, so
+the vault can say anything it likes — a nation's Military bullet, an NPC's
+real motive, who actually burned the caravan — without any of it turning up in
+the players' copy by accident. Adding a note under `campaign/` never changes
+`/players/`. If you want the players to know something, write it there.
+
+Wikilinks are stripped rather than resolved when the page renders, so a stray
+`[[Link]]` degrades to plain text instead of reaching into the vault.
+
+Note that **the main site is public** — the repository is private, but GitHub
+Pages below Enterprise is not — so GM notes are readable by anyone who goes
+looking for them. That is a known and accepted trade here; `/players/` exists
+to be the thing you hand out, not a security boundary.
+
 **Lint the notes before committing.** `tools/lint_notes.py` checks only the
 conventions that fail *silently* — where the build succeeds, the site renders,
 and the note simply says something untrue:

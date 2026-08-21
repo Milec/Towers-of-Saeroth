@@ -34,6 +34,14 @@ def copy_notes(paths):
         shutil.copyfile(os.path.join(ROOT, p), dst)
 
 
+#: Tab order and tab labels for the players' page. Anything not listed still
+#: ships — it just sorts last under its own filename.
+PLAYER_SORT = {'Welcome to Saeroth': 0, 'The Towers': 1, 'The Nations': 2,
+               'Gods, Peoples and the Roads': 3}
+PLAYER_ORDER = {'Welcome to Saeroth': 'Welcome', 'The Towers': 'The Towers',
+                'The Nations': 'The Nations',
+                'Gods, Peoples and the Roads': 'Gods & Roads'}
+
 WIKI = re.compile(r'\[\[([^\]|#]+)')
 TYPE = re.compile(r'^type:\s*["\']?([\w -]+)', re.M)
 
@@ -94,6 +102,24 @@ def main():
         dst = os.path.join(OUT, name)
         shutil.copytree(src, dst) if os.path.isdir(src) else shutil.copyfile(src, dst)
 
+    # players/ is a separate little site at /players/ — a handful of hand-written
+    # documents with their own reader page. It is deliberately NOT part of the
+    # vault: nothing links to it, it links to nothing, it has no search, no
+    # graph and no service worker, and its documents are written by hand rather
+    # than derived from campaign notes. That is the whole point of it — the
+    # vault can say anything it likes without the players' copy changing.
+    players = sorted(f for f in os.listdir(os.path.join(ROOT, 'players'))
+                     if f.endswith('.md')) if os.path.isdir(os.path.join(ROOT, 'players')) else []
+    if players:
+        pdir = os.path.join(OUT, 'players', 'content')
+        os.makedirs(pdir, exist_ok=True)
+        for f in players:
+            shutil.copyfile(os.path.join(ROOT, 'players', f), os.path.join(pdir, f))
+        json.dump([{'file': f, 'title': PLAYER_ORDER.get(f[:-3], f[:-3])} for f in
+                   sorted(players, key=lambda f: PLAYER_SORT.get(f[:-3], 99))],
+                  open(os.path.join(OUT, 'players', 'pages.json'), 'w', encoding='utf-8'),
+                  ensure_ascii=False, separators=(',', ':'))
+
     campaign = collect('campaign')
     vault = [] if args.no_vault else collect('vault')
 
@@ -138,6 +164,7 @@ def main():
                 for dp, _, fs in os.walk(OUT) for f in fs)
     print(f'campaign notes : {len(campaign):,}')
     print(f'vault notes    : {len(vault):,}' + ('  (skipped)' if args.no_vault else ''))
+    print(f'players page   : {len(players)} documents at /players/')
     print(f'site size      : {total / 1e6:.1f} MB')
 
 
