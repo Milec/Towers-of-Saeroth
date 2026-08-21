@@ -16,7 +16,7 @@ centuries — competence doesn't expire just because the body did.
 - **Economic Specialties** Alchemy, necromancy, ancient relics, undead labor, magical artifacts
 - **Military** Skeleton legions, Death Knights, vampire nobles, necromancers, bone constructs
 - **Government** Immortal Lich Emperor
-- **History** The third order of the **Concord**, whose high cleric took the doctrine of death-as-a-door to its end, walked into the delta with his followers four centuries ago and did not die. He is still on the throne — see [[The Sundering of the Concord]] and [[Lazarus]]
+- **History** The third order of the **Concord**, whose high cleric denounced nobody, signed every resolution put in front of him, took the doctrine of death-as-a-door to its end in private, and left in the night for the delta four centuries ago with his followers. He did not die. He is still on the throne — of the two who broke the Concord he is the one nobody saw coming, and the one who has done the most harm — see [[The Sundering of the Concord]] and [[Lazarus]]
 - **Reputation** Universally feared
 - **Faith** Patron [[Urgathoa]], whose doctrine of undeath as ascension runs through Lazarian state philosophy. [[Norgorber]] is kept quietly by the alchemists and relic-brokers. [[Pharasma]]'s faith is outlawed outright — she judges the dead, which makes her the one god the state cannot bargain with
 - **Tension** [[Lazarus]] has not issued an edict in eleven years; the Cathedral Court insists this is deliberation, and quietly governs without him — nobody in the court will call it a disappearance, and nobody has been let close enough to know if that's actually wrong

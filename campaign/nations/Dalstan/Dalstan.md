@@ -23,7 +23,7 @@ grace — and it decides often.
 - **Culture** Faith is inseparable from status; the richer the display of devotion, the more genuine it's assumed to be. Suffering is sanctified only when it's someone else's.
 - **Military** Inquisitorial knights, flagellant shock troops, cathedral guard, relic-bound zealots
 - **Government** Grand Inquisitor-King, anointed for life by the Cathedral Court
-- **History** The second order of the **Concord**, which walked out of the council four centuries ago with a third of the clergy, a third of the treasury and most of the relics, and founded its own see at Ostravin. It considers itself the Concord's true heir and [[Thesal Theocracy]] the remnant that lost its nerve — see [[The Sundering of the Concord]]
+- **History** The second order of the **Concord**, which demanded the council condemn mercy itself as heresy and, refused, walked out in fury four centuries ago with a third of the clergy, a third of the treasury and most of the relics, to found its own see at Ostravin. Four centuries later the wrath has found it profitable. It considers itself the Concord's true heir and [[Thesal Theocracy]] the remnant that lost its nerve — see [[The Sundering of the Concord]]
 - **Reputation** Devout to the point of cruelty, and richer than its piety should allow
 - **Faith** Patron [[Zon-Kuthon]], whose doctrine that suffering refines the soul has been reinterpreted, gradually and self-servingly, into an excuse for splendor. [[Asmodeus]] supplies the rest of the theology — hierarchy, binding contract, and the indulgence trade that funds the cathedrals
 - **Want** The Cathedral Court wants every neighboring court to convert, gilded shrine by gilded shrine.
