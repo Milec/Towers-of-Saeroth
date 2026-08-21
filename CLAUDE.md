@@ -86,9 +86,12 @@ python3 tools/lint_notes.py       # exits non-zero on any problem
 ```
 
 It catches wikilinks split across a line break (**not** a broken link — not a
-link at all, and invisible to every other check), wikilinks resolving to no
-note, a filename that has drifted from its own title, and a **Territorial** tie
-between nations `tools/mapgen/world.js` never requires a border for. That last
+link at all, and invisible to every other check), an aliased `[[note|alias]]`
+inside a markdown table row (the `|` ends the cell, so the link renders as
+literal bracket text and the row grows a phantom column — use the plain form
+in tables), wikilinks resolving to no note, a filename that has drifted from
+its own title, and a **Territorial** tie between nations
+`tools/mapgen/world.js` never requires a border for. That last
 one is how Thurigypt was found sitting on the wrong continent from the nations
 its own notes tie it to.
 

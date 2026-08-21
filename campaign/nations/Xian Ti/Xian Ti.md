@@ -17,6 +17,8 @@ them.
 - **Economic Specialties** Silk, tea, porcelain, paper, scholarship
 - **Military** Professional armies, monastic warriors, horse archers, battle mages
 - **Government** Celestial Emperor supported by scholar officials
+- **Founded** The ministries are older than the dynasty and have outlasted three of them. Xian Ti dates itself from the first examination rather than from the first emperor, which is a claim about who actually runs the country and is meant to be read as one.
+- **History** Sent observers to the [[The Two-Crown War|Two-Crown War]] and wrote it up; the ministry's account of the Hungry Year is still the best that exists, and the western signatories quietly worked from it while drafting the [[The Pilgrim's Peace|Pilgrim's Peace]], to which Xian Ti acceded by letter. Its own frontier with the [[Khazan Khaganate]] has never been at peace and has never been at war.
 - **Reputation** Sophisticated and powerful
 - **Faith** Patron [[Irori]], god of self-perfection — the philosophical justification for the entire examination system. [[Shizuru]] is the imperial house's own goddess of sun and honorable ancestry, [[Daikitsu]] the peasantry's harvest goddess, and [[Abadar]] the ministries'
 - **Tension** A cheating scandal in the scholar examinations has reached high enough that exposing it fully would discredit the ministry that would have to investigate it

@@ -63,6 +63,9 @@ def title_of(text):
     return t.group(1).strip().strip('"\'') if t else None
 
 
+ALIAS_IN_ROW = re.compile(r'\[\[[^\]|]*\|[^\]]*\]\]')
+
+
 def main():
     quiet = '--quiet' in sys.argv
     problems = []
@@ -95,6 +98,14 @@ def main():
                 problems.append(f'{rel}:{i}: wikilink opens and never closes on this line — '
                                 f'if it wraps to the next line it is not a link at all: '
                                 f'{raw.strip()[-60:]!r}')
+            # 1b. aliased wikilink inside a markdown table row — the pipe
+            # ends the cell, so [[Note|Alias]] renders as literal bracket text
+            # and the row grows a phantom column. Silent: the link resolves,
+            # the build succeeds, and only the rendered page is wrong.
+            if line.lstrip().startswith('|') and ALIAS_IN_ROW.search(line):
+                problems.append(f'{rel}:{i}: aliased [[link|alias]] inside a table '
+                                f'row — the | ends the cell and the link renders as '
+                                f'literal text; use the plain [[link]] form here')
             # 2. unresolvable target
             for target in WIKILINK.findall(line):
                 target = target.strip()

@@ -4,8 +4,11 @@ type: index
 view: relations
 ---
 
-No war is being fought in Saeroth this season, which is not the same as peace
-and nobody involved confuses the two.
+No war is being fought in Saeroth this season, and none has been for six
+years — see [[The Delta War]] for the last one, and
+[[The Pilgrim's Peace|the Pilgrim's Peace]] for the sixty-year machinery that
+keeps ending them early. That is not the same as friendship, and nobody
+involved confuses the two.
 
 What holds instead is a set of standing arrangements — alliances written down,
 friendships that were never written down at all, trade nobody would call

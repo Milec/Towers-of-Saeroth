@@ -135,6 +135,13 @@ response so far is improvised, and mostly by whoever was standing nearest.
   entirely would still have to answer for the next one, and the one after that.
   Refusing to play is only a strategy while the board stops changing, and it
   has not stopped changing.
+- **The thing that has kept the peace for sixty years does not cover this.**
+  [[The Pilgrim's Peace]] works by making a war unaffordable — no signatory
+  will lend to one, charter for one, carry one or feed one. A tower is not a
+  border and an expedition is not an aggression, so none of that machinery
+  engages; and if the rumour is true at all, whoever comes out the master of a
+  tower stops being answerable to a ledger. The Concord Table has sat twice
+  since the towers began and adjourned twice without a finding.
 
 And the thing that no court has yet put in writing: nothing anyone has learned
 rules out a tower appearing somewhere that is already occupied. Every one found
@@ -211,6 +218,9 @@ between two crowns racing for the same ground.
 That gives the towers a year of weight before anyone opens one, and it means
 the first threshold is a decision the party makes rather than a premise they
 were handed.
+
+For what the towers are interrupting — the wars, the treaty and the sixty
+years of quiet the whole board is built on — see [[Ages of Saeroth]].
 
 **Be blunt with the players about the threshold before they cross it.** In-world
 this is common knowledge — it is the one thing everybody is sure of — so there

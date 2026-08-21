@@ -16,6 +16,8 @@ its irrigation canals and clockwork feed half the continent.
 - **Economic Specialties** Agriculture, irrigation, machinery, clockwork, food exports, and the flintlock trade the guilds invented and have never licensed to anyone
 - **Military** Engineers, flintlock companies drilled in volley and reload, field artillery, defensive fortifications, construct support — Silicar's guilds built the first working firelock and still make the best ones, which is why a nation this small is left alone
 - **Government** Council of guildmasters and elected engineers
+- **Founded** By the ditch. Four generations dug the irrigation network before there was a state to maintain it, and the Council of guildmasters is simply the body that was already coordinating the digging.
+- **History** Stood with Reichsmund in the [[The Two-Crown War|Two-Crown War]], had its canal works cut in the Hungry Year, and spent nine years putting them back. Its guilds built the first working firelock in the decade after the [[The Pilgrim's Peace|Pilgrim's Peace]] — a weapon designed, pointedly, for a militia that must be raised in a fortnight and can never be large.
 - **Reputation** Small but astonishingly inventive
 - **Faith** Patron [[Brigh]], goddess of invention and clockwork, whose shrines are workshops with an altar in the corner. [[Erastil]] is the older faith of the farming villages, and the two clergies argue amiably about which one actually feeds the nation
 - **Tension** An upstream canal has begun silting faster than it can be cleared, and no one has told the export partners who depend on the harvest yet

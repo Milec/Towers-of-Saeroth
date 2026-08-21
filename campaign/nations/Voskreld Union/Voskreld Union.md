@@ -18,6 +18,8 @@ books. They don't always.
 - **Economic Specialties** Standardized coinage and measures, armaments manufacturing, grain surplus redistribution, road and canal infrastructure
 - **Military** The Unified Legion — an integrated multiethnic conscript army — provincial militia reserves, engineer corps, royal cannon foundries
 - **Government** The Voskreld Crown, advised by a Provincial Council of the old duchies
+- **Founded** Out of fear of open ground. Seven duchies with no defensible line between them and the steppe unified on terms that gave none of them the capital — Voskgrad was chosen precisely because it belonged to nobody — and the Provincial Council is the old ducal court, kept on as a place to complain.
+- **History** Stood with Reichsmund from the first month of the [[The Two-Crown War|Two-Crown War]], because a hostile Vaelic on an undefendable border is not something Voskreld survives. The Unified Legion in its present integrated form was built during those eleven years, out of provincial levies that could not be trusted to fight beside each other, and was kept afterwards for exactly that reason.
 - **Reputation** Disciplined, ambitious, and one bad harvest away from remembering old grievances
 - **Faith** Patron [[Abadar]] in his aspect as god of roads, law and the standardized measure — deliberately chosen at unification as a god belonging to none of the old duchies. [[Erastil]] remains the provinces' real faith, and [[Gorum]] the Unified Legion's
 - **Tension** A poor harvest in one province has revived the old argument about which duchy feeds which, in almost the original wording

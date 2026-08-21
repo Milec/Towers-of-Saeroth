@@ -19,6 +19,8 @@ what actually lives down here.
 - **Culture** Information is currency, and everyone assumes everyone else is holding out. A Warden's authority rests entirely on knowing things no rival Warden does.
 - **Military** Tunnel ambush corps, construct sentinels, fungal beast handlers, deep scouts
 - **Government** Warden-Conclave of the Deep Holds
+- **Founded** The Warden-Conclave predates every claim made about it, including its own. What the Reaches say is that the deep holds were settled by people going down rather than out, and that the surface's dates for this are wrong.
+- **History** Fought nobody in the [[The Two-Crown War|Two-Crown War]] and sold each side everything it knew about the other. Nearly every covert arrangement the Conclave holds today began as a wartime one that nobody thought to cancel.
 - **Reputation** Secretive, self-sufficient, and unnervingly hard to surprise
 - **Faith** Patron [[Norgorber]], god of secrets — an unsettlingly literal fit for a nation whose currency is information. [[Pharasma]] is kept in the deepest holds, where the dead are numerous and very old
 - **Tension** A deep hold has sealed itself from the inside and the Warden-Conclave has voted twice not to investigate, which tells the other holds everything they need to know

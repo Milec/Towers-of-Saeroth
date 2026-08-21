@@ -18,6 +18,8 @@ them.
 - **Culture** Instinct is trusted over doctrine. Clan bonds run through shared totem-kinship as much as bloodline, and a Thornwild elder's authority rests on the respect of the beasts as much as the people.
 - **Military** Beast-bonded skirmishers, canopy archers, totem-warriors, venom scouts
 - **Government** The Circle of First Packs — one voice per founding clan-lineage
+- **Founded** The Circle of First Packs is a list of founding lineages, not a constitution. The Confederation is however many clans answer the call to Rootmeet in a given generation, and that number has changed twice in living memory.
+- **History** Has never fought a foreign war and has never stopped fighting on its own northern edge. The Circle was not asked to sign the [[The Pilgrim's Peace|Pilgrim's Peace]] and did not learn the Concord Table existed until a [[Kesmarch Frontier]] surveyor cited it at them, which is a fact the clans that want blood have never had to stop repeating.
 - **Reputation** Wild, fiercely loyal to their own, and dangerously easy to underestimate
 - **Faith** The [[Green Faith]] rather than any named patron — the Thornwild reveres the living world directly, and finds the idea of a god who lives elsewhere faintly absurd. [[Gozreh]] is the exception most clans will name, invoked for storm and beast alike
 - **Tension** Two clans want to answer [[Kesmarch Frontier]]'s encroachment with blood and the rest want to wait, and Rootmeet has adjourned twice without deciding

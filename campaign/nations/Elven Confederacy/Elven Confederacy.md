@@ -16,6 +16,8 @@ dispute season for a decade before ruling on it.
 - **Economic Specialties** Rare timber, herbs, wines, silk, magical plants
 - **Military** Elite archers, druids, rangers, beast riders
 - **Government** Council of tribal chiefs
+- **Founded** No founding. The Confederacy is what the tribes began calling themselves when settled nations needed a single name to address, and several chiefs still regard the word as a courtesy extended to outsiders rather than a description of anything.
+- **History** Refused both crowns in the [[The Two-Crown War|Two-Crown War]] and was burned anyway: Dalstani inquisitorial companies fired grove-shrines on the southern edge, well beyond any front, in a war the tribes had declined to join. The burnings did not stop when the war did. It is the one grievance the Council has never adjourned.
 - **Reputation** Ancient, graceful, patient
 - **Faith** Patron [[Ketephys]], the elven hunter, honored by every tribe regardless of what else they disagree on. [[Yuelral]] holds the magical traditions and [[Findeladlara]] the artistic ones; several forest tribes keep the [[Green Faith]] instead of any named god
 - **Tension** The tribes cannot agree whether encroachment on the old forests warrants a council at all, and the delay is itself becoming the answer
