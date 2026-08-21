@@ -16,6 +16,8 @@ a hard death.
 - **Economic Specialties** Timber, furs, amber, iron, shipbuilding, whaling
 - **Military** Shield walls, berserkers, longship fleets, elite axemen, mountain scouts
 - **Government** The High King is elected by the assembly of Jarls at the Great Thing
+- **Founded** The Great Thing is older than the kingship. Jarls met at the same fjord to settle blood-debt for centuries before they agreed to elect anybody, and the High King's authority still stops exactly where the assembly says it does.
+- **History** Joined neither crown in the [[The Two-Crown War|Two-Crown War]] and raided both coasts for nine years, which made Nordheim rich and is remembered along those coasts in more detail than Nordheim expects. It signed the [[The Pilgrim's Peace|Pilgrim's Peace]] four years late, after an argument at the Thing, and has kept it without a single complaint filed against it.
 - **Reputation** Stoic explorers, fierce warriors, and steadfast allies
 - **Faith** Patron [[Cayden Cailean]], god of bravery, freedom and the guest-cup — the closest thing Nordheim has to a national creed. [[Gorum]] is kept for war and [[Desna]] for the long voyages; the oldest sagas still invoke [[Trudd]]
 - **Tension** The High King is dying and the Great Thing must be called before the ice closes the fjords, which means the jarls who arrive late will have no say at all

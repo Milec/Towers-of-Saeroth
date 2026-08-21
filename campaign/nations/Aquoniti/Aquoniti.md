@@ -16,6 +16,8 @@ continent outmaneuvers theirs.
 - **Economic Specialties** Pearls, coral, fisheries, maritime trade, salvage
 - **Military** Naval fleets, marine infantry, sea beast cavalry, water magic
 - **Government** Council of Tide Lords
+- **Founded** Not founded so much as federated. The reef-cities were separate lordships until a bad century of piracy made one fleet cheaper than twelve, and the Council of Tide Lords began as the shipping cartel that paid for it. It has never formally become anything else.
+- **History** Blockade work for both sides of the [[The Two-Crown War|Two-Crown War]] made Aquoniti richer than it has ever been before or since, which it does not advertise and everyone remembers. Six years ago it refused to carry Thurigypt's troops to the delta at any price offered — see [[The Delta War]].
 - **Reputation** Masters of naval warfare
 - **Faith** Patron [[Gozreh]], who governs the moods of the sea Aquoniti sailors read like a second language. [[Desna]] is the navigator's goddess, worshipped by star-sight; the salvage crews and privateers keep [[Besmara]] and don't advertise it
 - **Tension** Three deepwater charts have come back wrong in the same season, and the Council of Tide Lords has not explained why it stopped sending survey ships

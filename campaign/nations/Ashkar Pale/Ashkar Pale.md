@@ -19,6 +19,8 @@ cart.
 - **Economic Specialties** Grain and vine crops of exceptional quality, sulphur, pumice, glass, ash-glaze pottery, salvage work after a fall
 - **Military** A militia of every able adult, organized by ward; drilled for evacuation as much as for war, and unnervingly good at both
 - **Government** A Warden elected for seven years, who may order an evacuation without consulting anyone and answers for it afterwards
+- **Founded** Four times, on the same stone footings, by the same people. The wards began as an evacuation system and acquired a government by doing the job well; the Warden's office started as whoever decided when to run.
+- **History** Ashkar Pale has never fought a war with a neighbour and has never needed to — the mountain has killed more Ashkari than every army in history put together. It sent nobody to the [[The Two-Crown War|Two-Crown War]] and took in eleven thousand who had nowhere else to go after the Hungry Year.
 - **Reputation** Stubborn, practical, impossible to frighten with anything short of a mountain
 - **Faith** [[Erastil]] for the harvest and the household, kept plainly; [[Pharasma]] for the counting of the dead after a fall, since the Pale has never pretended those years do not come
 - **Tension** The last fall was forty years ago and the current Warden has begun quietly re-marking the evacuation roads. Nobody has asked her why, and the silence is doing the asking

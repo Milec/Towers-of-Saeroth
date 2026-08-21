@@ -25,6 +25,8 @@ Viziers finds hardest to dispute.
   bound to guard the great caravanserai rather than the field
 - **Government** A Sultan chosen by the Court of Viziers from among the
   great caravan-houses, and confirmed by the reading of the stars
+- **Founded** On a reading of the stars that said a city belonged here, commissioned by a caravan-master who had every commercial reason to want one. Both accounts are taught, in that order, and the Court of Viziers considers the tension between them instructive.
+- **History** Too far from the [[The Two-Crown War|Two-Crown War]] to be in it and too well-placed not to profit by it. Qeshara acceded to the [[The Pilgrim's Peace|Pilgrim's Peace]] by letter and is one of two signatories never to have had a matter before the Concord Table.
 - **Reputation** Cosmopolitan, mercantile, and famously difficult to
   out-haggle
 - **Faith** Patron [[Abadar]], for a court built on trade and contract law;
