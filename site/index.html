@@ -33,7 +33,25 @@
   <button id="themeBtn" class="iconbtn" aria-label="Toggle theme">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
   </button>
+  <!-- Only rendered when a sealed GM bundle is actually present; a player's
+       build ships no ciphertext, so the button never appears for them. -->
+  <button id="gmBtn" class="iconbtn" aria-label="Unlock GM notes" title="GM notes" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+  </button>
 </header>
+
+<div id="gmModal" class="modal" hidden>
+  <div class="modalbox">
+    <h2 id="gmTitle">GM notes</h2>
+    <p class="muted" id="gmHint">Everything the players do not get to read. Unlocks on this device only.</p>
+    <input id="gmPass" type="password" autocomplete="current-password" placeholder="Passphrase" aria-labelledby="gmTitle">
+    <p id="gmErr" class="gm-err" hidden></p>
+    <div class="gm-actions">
+      <button id="gmCancel" class="linkbtn" type="button">Cancel</button>
+      <button id="gmGo" class="linkbtn" type="button">Unlock</button>
+    </div>
+  </div>
+</div>
 
 <div class="layout">
   <nav id="sidebar" class="sidebar" aria-label="Note tree">

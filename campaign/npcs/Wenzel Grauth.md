@@ -4,6 +4,7 @@ type: npc
 level: 3
 role: hedge-necromancer on the Quivar–Vaelic–Lazarian tri-point
 statblock: reskin of Mage For Hire (NPC Core), level 3
+audience: gm
 ---
 
 Nobody administers the ground where [[Quivar]], the [[Vaelic Principality]]
