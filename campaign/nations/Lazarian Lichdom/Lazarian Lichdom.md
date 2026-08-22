@@ -3,6 +3,7 @@ title: Lazarian Lichdom
 type: nation
 theme: Undeath and forbidden knowledge
 government: Immortal Lich Emperor
+founded: 1976 AR
 ---
 
 Death is merely another stage of existence here, and efficiency outweighs
@@ -16,7 +17,7 @@ centuries — competence doesn't expire just because the body did.
 - **Economic Specialties** Alchemy, necromancy, ancient relics, undead labor, magical artifacts
 - **Military** Skeleton legions, Death Knights, vampire nobles, necromancers, bone constructs
 - **Government** Immortal Lich Emperor
-- **Founded** The third order of the **Concord**, whose high cleric denounced nobody, signed every resolution put in front of him, took the doctrine of death-as-a-door to its end in private, and left in the night for the delta four centuries ago with his followers. He did not die. He is still on the throne — of the two who broke the Concord he is the one nobody saw coming, and the one who has done the most harm — see [[The Sundering of the Concord]] and [[Lazarus]]
+- **Founded** 1976 AR. The third order of the **Concord**, whose high cleric denounced nobody, signed every resolution put in front of him, took the doctrine of death-as-a-door to its end in private, and left in the night for the delta four centuries ago with his followers. He did not die. He is still on the throne — of the two who broke the Concord he is the one nobody saw coming, and the one who has done the most harm — see [[The Sundering of the Concord]] and [[Lazarus]]
 - **History** Declared for neither crown in the [[The Two-Crown War|Two-Crown War]], waited four years, and took a hundred miles of Vaelic's southern frontier while both were looking north. It has never given the ground back. It was never invited to sign the [[The Pilgrim's Peace|Pilgrim's Peace]] and is bound by none of it; six years ago it destroyed a full Thurigypt expedition in its own delta without, on the evidence of its own minutes, considering the year unusual — see [[The Delta War]].
 - **Reputation** Universally feared
 - **Faith** Patron [[Urgathoa]], whose doctrine of undeath as ascension runs through Lazarian state philosophy. [[Norgorber]] is kept quietly by the alchemists and relic-brokers. [[Pharasma]]'s faith is outlawed outright — she judges the dead, which makes her the one god the state cannot bargain with

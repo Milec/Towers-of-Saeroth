@@ -3,6 +3,7 @@ title: Dalstan
 type: nation
 theme: Zealotry and opulence
 government: Grand Inquisitor-King, anointed for life by the Cathedral Court
+founded: 1976 AR
 ---
 
 Dalstan's nobility measures devotion the way other nations measure gold —
@@ -23,7 +24,7 @@ grace — and it decides often.
 - **Culture** Faith is inseparable from status; the richer the display of devotion, the more genuine it's assumed to be. Suffering is sanctified only when it's someone else's.
 - **Military** Inquisitorial knights, flagellant shock troops, cathedral guard, relic-bound zealots
 - **Government** Grand Inquisitor-King, anointed for life by the Cathedral Court
-- **Founded** The second order of the **Concord**, which demanded the council condemn mercy itself as heresy and, refused, walked out in fury four centuries ago with a third of the clergy, a third of the treasury and most of the relics, to found its own see at Ostravin. Four centuries later the wrath has found it profitable. It considers itself the Concord's true heir and [[Thesal Theocracy]] the remnant that lost its nerve — see [[The Sundering of the Concord]]
+- **Founded** 1976 AR. The second order of the **Concord**, which demanded the council condemn mercy itself as heresy and, refused, walked out in fury four centuries ago with a third of the clergy, a third of the treasury and most of the relics, to found its own see at Ostravin. Four centuries later the wrath has found it profitable. It considers itself the Concord's true heir and [[Thesal Theocracy]] the remnant that lost its nerve — see [[The Sundering of the Concord]]
 - **History** Backed the Ostravin crown through all eleven years of the [[The Two-Crown War|Two-Crown War]] and came out of it with the thing it actually wanted: the precedent that the Cathedral Court's rite is a valid one. It has never retracted that claim, which is why licensing inquisitions abroad feels to Dalstan like an old right and to everyone else like the same move again.
 - **Reputation** Devout to the point of cruelty, and richer than its piety should allow
 - **Faith** Patron [[Zon-Kuthon]], whose doctrine that suffering refines the soul has been reinterpreted, gradually and self-servingly, into an excuse for splendor. [[Asmodeus]] supplies the rest of the theology — hierarchy, binding contract, and the indulgence trade that funds the cathedrals

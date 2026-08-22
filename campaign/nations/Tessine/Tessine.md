@@ -3,6 +3,7 @@ title: Tessine
 type: nation
 theme: Refuge and revenue
 government: Harbour Signory of resident factors
+founded: c. 1330 AR as a bay; 2316 as what it now is
 ---
 
 Tessine takes anyone. That is the whole of its constitution and most of its
@@ -19,7 +20,7 @@ is currently living in it.
 - **Economic Specialties** Entrepôt trade, banking and deposit, insurance, forged and genuine papers sold across the same counter, discreet shipping
 - **Military** A harbour chain, three batteries, and the certain knowledge that half the continent's exiled nobility keeps its money here
 - **Government** A Signory of resident factors — anyone who has paid the fee for twelve years may stand — chaired by a Harbourmaster with a one-year term and no re-election
-- **Founded** Twice. Once as a fishing bay nobody wanted, and once sixty years ago, when both sides' fortunes and both sides' exiles arrived in the same decade and the Harbour Signory decided to keep them. Everything Tessine now is dates from the second founding.
+- **Founded** twice — c. 1330 AR and again in 2316. Once as a fishing bay nobody wanted, and once when both sides' fortunes and both sides' exiles arrived in the same decade and the Harbour Signory decided to keep them. Everything Tessine now is dates from the second founding.
 - **History** Tessine has never fought anyone and its neutrality has never been a conviction — it is the product the city sells, priced accordingly. It has not honoured an extradition writ from any nation in sixty years, which is the whole of the guarantee, and the reason half a continent's exiled money is still here.
 - **Reputation** Open, mercenary, and utterly unbothered by what anyone thinks of it
 - **Faith** [[Abadar]] for the ledger and [[Cayden Cailean]] for the rest of it; [[Desna]] has a shrine at the harbour mouth that every arriving exile touches, whatever else they believe

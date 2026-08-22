@@ -3,6 +3,7 @@ title: Thurigypt
 type: nation
 theme: Strength through life
 government: Warrior Pharaoh advised by priest-kings
+founded: c. 420 AR
 ---
 
 A martial society that celebrates fertility, family, and the continuation
@@ -16,7 +17,7 @@ battlefield achievement as any campaign.
 - **Economic Specialties** Grain, spices, glass, gold, stoneworking
 - **Military** Spear formations, chariot cavalry, temple guards, beast tamers
 - **Government** Warrior Pharaoh advised by priest-kings
-- **Founded** By the flood, in the only sense that matters: the first Pharaoh was the man who organised the granaries, and every Pharaoh since has been legitimate exactly as long as the flood and the granaries agree with each other.
+- **Founded** c. 420 AR, by the flood, in the only sense that matters: the first Pharaoh was the man who organised the granaries, and every Pharaoh since has been legitimate exactly as long as the flood and the granaries agree with each other.
 - **History** [[The Delta War]], six years ago: a full commitment across the ocean against the [[Lazarian Lichdom]], launched on a reading of the Lich Emperor's silence that proved wrong. About a third of it came home. The treasury went into the ships, a generation of young men is still standing in that marsh, and the flood has come short twice since — which is what the priest-kings are really arguing about when they argue about engineering.
 - **Reputation** Disciplined and proud
 - **Faith** Patron [[Pharasma]], who governs birth as well as death — in Thurigypt she is the goddess of the bloodline continuing, not of endings. [[Sarenrae]] is venerated as the sun that makes the delta live, and [[Erastil]] by the farming and soldiering families both

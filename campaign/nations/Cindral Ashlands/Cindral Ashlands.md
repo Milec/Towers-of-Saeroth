@@ -3,6 +3,7 @@ title: Cindral Ashlands
 type: nation
 theme: Elemental fire and forging
 government: The Emberlord, chosen by trial-by-forge
+founded: c. 1150 AR, at the first trial-by-forge
 ---
 
 The Ashlands are built into and around a chain of active volcanoes, and
@@ -18,7 +19,7 @@ them. The Emberlord's throne is reforged, not inherited.
 - **Culture** Trial by fire is not a metaphor in Cindral — it's a literal rite of passage for rulers, smiths, and soldiers alike. What survives the forge is trusted; what doesn't wasn't worth keeping.
 - **Military** Magma-forged warbands, elemental-bound berserkers, obsidian legionnaires, volcano wardens
 - **Government** The Emberlord, chosen by trial-by-forge
-- **Founded** The forges came first. Smiths worked the obsidian flats seasonally for centuries before anyone wintered there, and the Emberlord's trial-by-forge is the old master-smith's proof, kept long after the office stopped being about smithing.
+- **Founded** c. 1150 AR, at the first trial-by-forge — but the forges came first. Smiths worked the obsidian flats seasonally for centuries before anyone wintered there, and the Emberlord's trial-by-forge is the old master-smith's proof, kept long after the office stopped being about smithing.
 - **History** Fought [[Ashkar Pale]] twice over the terraces between them, both times before the Peace, and both times stopped by an eruption rather than by anyone winning. Sold steel to both sides of the [[The Two-Crown War|Two-Crown War]] and sent no one.
 - **Reputation** Intense, unyielding, and quietly generous to anyone who's earned it
 - **Faith** Patron [[Angradd]], the forge-fire and the god of war fought face-forward, whose trial the Emberlord's own succession imitates. [[Torag]] is honored beside him by the dwarven lineages, and [[Sarenrae]] for fire's cleansing rather than its making

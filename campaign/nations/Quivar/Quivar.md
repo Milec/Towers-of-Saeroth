@@ -3,6 +3,7 @@ title: Quivar
 type: nation
 theme: Culture and espionage
 government: Absolute monarchy supported by an influential royal court
+founded: c. 900 AR, unbroken since
 ---
 
 Courtly etiquette, romance, and artistic expression permeate every level of
@@ -16,7 +17,7 @@ everyone at court knows it.
 - **Economic Specialties** Wine, fashion, perfume, fine art, luxury goods
 - **Military** Elite chevaliers, Royal Guard, musketeer-style skirmishers, intelligence service
 - **Government** Absolute monarchy supported by an influential royal court
-- **Founded** The oldest continuous monarchy on the continent and the only great power never to have been conquered — which Quivar attributes to the quality of its court and everyone else attributes to the quality of its intelligence service.
+- **Founded** c. 900 AR and unbroken since: the oldest continuous monarchy on the continent and the only great power never to have been conquered — which Quivar attributes to the quality of its court and everyone else attributes to the quality of its intelligence service.
 - **History** Declared for Ostravin in the second year of the [[The Two-Crown War|Two-Crown War]] and for Reichsmund in the seventh, and has spent sixty years explaining that this was statecraft. Nobody has forgotten. Quivar's standing difficulty at every Concord Table since is that its word is worth precisely what that suggests, and its service is the reason it does not need its word to be worth more.
 - **Reputation** The cultural heart of the world, but never fully trusted
 - **Faith** Patron [[Shelyn]], goddess of art, beauty and love — the face Quivar presents, and genuinely beloved. [[Calistria]], goddess of intrigue, revenge and exquisite grudges, is the one the court actually prays to, and everyone knows it

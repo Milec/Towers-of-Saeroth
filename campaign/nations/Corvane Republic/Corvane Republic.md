@@ -3,6 +3,7 @@ title: Corvane Republic
 type: nation
 theme: Liberty and self-governance
 government: Elected Assembly of Citizens, led by a term-limited Chancellor
+founded: c. 1820 AR
 ---
 
 Corvane was founded by people who left somewhere else rather than live
@@ -19,7 +20,7 @@ its most exhausting one, depending who's arguing.
 - **Economic Specialties** Printing and publishing, shipbuilding, textiles, civic engineering, legal and diplomatic services
 - **Military** Citizen militia drawn from every trade, volunteer regiments, a coastal defense fleet, city watch companies
 - **Government** Elected Assembly of Citizens, led by a term-limited Chancellor
-- **Founded** By a harbour that refused a duke. The charter that became the Assembly of Citizens was originally a list of things the town would not do for him, and the first Chancellor was the man who read it out to his face.
+- **Founded** c. 1820 AR, by a harbour that refused a duke. The charter that became the Assembly of Citizens was originally a list of things the town would not do for him, and the first Chancellor was the man who read it out to his face.
 - **History** Stood with Reichsmund from the first year of the [[The Two-Crown War|Two-Crown War]] and lost a fifth of its militia; the assembly hall's rear wall is the casualty list, left uncovered on purpose. Corvane signed the [[The Pilgrim's Peace|Pilgrim's Peace]] on the day it was offered and has cited it at every Table sitting since.
 - **Reputation** Idealistic, argumentative, and welcoming to anyone willing to work
 - **Faith** Patron [[Milani]], goddess of hope and uprising, whose worship the Republic's founders brought with them out of the places they fled. [[Cayden Cailean]] is nearly as popular for liberty's sake, and the Assembly itself keeps [[Abadar]] for the civic law

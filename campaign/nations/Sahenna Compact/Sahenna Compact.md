@@ -3,6 +3,7 @@ title: Sahenna Compact
 type: nation
 theme: Clans, caravans, and memory kept without ink
 government: Council of Elders, one per clan, bound by the Storytellers' record
+founded: c. 1010 AR, though the Storytellers dispute it among themselves
 ---
 
 The savanna belt that begins where [[Thurigypt]]'s irrigated delta gives
@@ -32,7 +33,7 @@ memory, by people trained from childhood to hold it there and nowhere else.
   [[Clan Marrowkeep]], [[Clan Farsight]] and [[Clan Salthollow]] — with
   smaller clans seated but rarely deciding anything the five haven't
   already agreed on
-- **Founded** A treaty rather than a country. Clans that had raided each other for generations agreed to stop, and the agreement has been kept ever since by the Storytellers rather than by anything written down. Its exact age is disputed by the only people qualified to settle it.
+- **Founded** c. 1010 AR, and a treaty rather than a country. Clans that had raided each other for generations agreed to stop, and the agreement has been kept ever since by the Storytellers rather than by anything written down. Its exact age is disputed by the only people qualified to settle it.
 - **History** Sahenna has fought no outside power in living memory and does not count its own clan quarrels as wars. The last feud to reach blood was ended by a Storyteller reciting the original terms to both warbands, which took four hours and worked.
 - **Reputation** Feared for customs outsiders have never bothered to
   understand correctly
