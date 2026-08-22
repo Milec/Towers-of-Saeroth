@@ -13,6 +13,9 @@
   --rel-rivalry: #63478c;
   --rel-friction: #b05f26; --rel-territorial: #c04a26; --rel-hostile: #8f1d24;
   --rel-covert: #256b78; --rel-tag-ink: #fff;
+  --tl-b0: #8a7f6b; --tl-b1: #8d8360; --tl-b2: #8a7a4e; --tl-b3: #97794a;
+  --tl-b4: #a06f3e; --tl-b5: #a3572f; --tl-b6: #9c3f2a; --tl-b7: #8a2a22;
+  --tl-live: #7a1f1f;
   /* trade corridors — nine lines that must stay apart from each other AND
      from the eight standings, so these are their own scale */
   --route-a: #1f5f8b; --route-b: #8a5a1f; --route-c: #2f6b46; --route-d: #7a2f5f;
@@ -28,6 +31,9 @@
   --rel-rivalry: #ab92da;
   --rel-friction: #dd8f55; --rel-territorial: #e57c56; --rel-hostile: #d95a63;
   --rel-covert: #5fb4c4; --rel-tag-ink: #17150f;
+  --tl-b0: #6f675a; --tl-b1: #7b7256; --tl-b2: #8a7a52; --tl-b3: #a08356;
+  --tl-b4: #bd8a52; --tl-b5: #d98b6a; --tl-b6: #e5a184; --tl-b7: #efb89e;
+  --tl-live: #e0a186;
   --route-a: #6fb6e0; --route-b: #d9a259; --route-c: #6cc394; --route-d: #d68ab8;
   --route-e: #a99cf0; --route-f: #5fc4c4; --route-g: #e58a70; --route-h: #a8bf62;
   --route-i: #c49b76;
@@ -42,6 +48,9 @@
     --rel-rivalry: #ab92da;
     --rel-friction: #dd8f55; --rel-territorial: #e57c56; --rel-hostile: #d95a63;
     --rel-covert: #5fb4c4; --rel-tag-ink: #17150f;
+    --tl-b0: #6f675a; --tl-b1: #7b7256; --tl-b2: #8a7a52; --tl-b3: #a08356;
+    --tl-b4: #bd8a52; --tl-b5: #d98b6a; --tl-b6: #e5a184; --tl-b7: #efb89e;
+    --tl-live: #e0a186;
     --route-a: #6fb6e0; --route-b: #d9a259; --route-c: #6cc394; --route-d: #d68ab8;
     --route-e: #a99cf0; --route-f: #5fc4c4; --route-g: #e58a70; --route-h: #a8bf62;
     --route-i: #c49b76;
@@ -499,3 +508,46 @@ body {
 .results .snip { display: block; font-size: 12.5px; color: var(--muted); }
 .hint { font-size: 12px; margin: 8px 4px 2px; }
 .pad { padding: 10px; }
+
+/* --------------------------------------------------------------- timeline
+   `view: timeline` on a dated chronicle. The strip is proportional and the
+   rail deliberately is not: the strip exists to show that almost nothing on
+   the rail happened in the first two thousand years. */
+.tl { margin: 0 0 26px; }
+.tl-strip { display: block; width: 100%; height: 52px; overflow: visible; }
+.tl-band { opacity: .85; cursor: pointer; }
+.tl-band:hover { opacity: 1; }
+.tl-band.b0 { fill: var(--tl-b0); } .tl-swatch.b0 { background: var(--tl-b0); }
+.tl-band.b1 { fill: var(--tl-b1); } .tl-swatch.b1 { background: var(--tl-b1); }
+.tl-band.b2 { fill: var(--tl-b2); } .tl-swatch.b2 { background: var(--tl-b2); }
+.tl-band.b3 { fill: var(--tl-b3); } .tl-swatch.b3 { background: var(--tl-b3); }
+.tl-band.b4 { fill: var(--tl-b4); } .tl-swatch.b4 { background: var(--tl-b4); }
+.tl-band.b5 { fill: var(--tl-b5); } .tl-swatch.b5 { background: var(--tl-b5); }
+.tl-band.b6 { fill: var(--tl-b6); } .tl-swatch.b6 { background: var(--tl-b6); }
+.tl-band.b7 { fill: var(--tl-b7); } .tl-swatch.b7 { background: var(--tl-b7); }
+.tl-live { fill: none; stroke: var(--tl-live); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.tl-tick { stroke: var(--muted); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.tl-ticklab { fill: var(--muted); font-size: 11px; }
+.tl-scalenote { color: var(--muted); font-size: 13.5px; margin: 6px 0 22px; }
+
+.tl-era { margin: 0 0 26px; }
+.tl-eraname { font-size: 1.12em; margin: 0 0 10px; display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+.tl-swatch { width: 13px; height: 13px; border-radius: 3px; flex: 0 0 auto; }
+.tl-erarange { color: var(--muted); font-weight: 400; font-size: .8em; }
+.tl-list { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 2px solid var(--rule); }
+.tl-ev { position: relative; display: flex; gap: 14px; padding: 0 0 14px; align-items: baseline; }
+.tl-ev::before {
+  content: ""; position: absolute; left: -28px; top: .5em;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--bg);
+}
+.tl-ev.approx::before { background: var(--bg); border-color: var(--muted); }
+.tl-year { flex: 0 0 5.6em; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 14px; }
+.tl-what { flex: 1 1 auto; min-width: 0; }
+.tl-what p { margin: 0; }
+.tl-note { margin-top: 3px !important; font-size: 13.5px; color: var(--muted); }
+
+@media (max-width: 700px) {
+  .tl-ev { display: block; }
+  .tl-year { display: block; margin-bottom: 2px; }
+}

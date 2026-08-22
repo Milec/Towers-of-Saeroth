@@ -1,7 +1,7 @@
 ---
 title: The Delta War
 type: history
-era: Six years ago — one season, bank to bank
+era: 2370 AR — six years ago, one season, bank to bank
 scale: The last major war fought anywhere in Saeroth, and the shortest on record between two great powers
 known: Public, and painful. Thurigypt's temple records call it the Redeeming of the Delta. Everyone else calls it the Delta War. Lazarian records do not appear to mention it at all
 ---

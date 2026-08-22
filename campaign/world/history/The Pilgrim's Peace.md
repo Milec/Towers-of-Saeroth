@@ -1,7 +1,7 @@
 ---
 title: The Pilgrim's Peace
 type: history
-era: Signed 60 years ago at Concord, and in force ever since
+era: Signed 2316 AR at Concord — 60 years ago — and in force ever since
 signatories: Most of the western continent, plus the island powers; acceded to by letter in the east
 known: Public in every particular. The text is posted in every signatory capital, and children learn the four clauses by rote
 ---

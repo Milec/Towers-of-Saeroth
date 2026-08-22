@@ -121,6 +121,15 @@ nations' real positions on the world map, styled by the row's own **Carried
 by** column — solid road, dashed sea lane, dotted caravan track. It reuses the
 generated pair from `tools/map_backdrop.js`, so it moves when the map does.
 
+`view: timeline` on `campaign/world/history/Ages of Saeroth.md` draws the dated
+chronicle as a rail — one band per `##` era, `| year | what happened | note |`
+rows becoming dots — above a **proportional** strip of the whole 2,376 years.
+The strip is the reason to draw it at all: nearly every event anyone can name
+falls in the last seventy years, which a list cannot show and a proportional
+bar cannot hide. Era colours run oldest-palest to newest-warmest via
+`--tl-b0`…`--tl-b7`, and an era past the eighth keeps the last colour rather
+than wrapping back onto the oldest.
+
 The rule that makes this worth doing: **the markdown stays the single source of
 truth.** The view parses the note's *own table* instead of carrying a second
 copy of the data, so the note still reads correctly in Obsidian and on GitHub,

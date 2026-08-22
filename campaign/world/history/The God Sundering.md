@@ -1,7 +1,7 @@
 ---
 title: The God Sundering
 type: history
-era: Roughly a thousand years ago, during the ritual — before the erasure, not after
+era: Year 0 AR — 2,376 years ago, during the ritual and before the erasure
 visibility: GM only. The world knows the blood fell. Nothing alive knows why, including the gods
 survives: A red layer in the ground everywhere, every culture's incompatible myth about it, ikon-relics, and exemplars
 ---
@@ -151,8 +151,8 @@ and stopped looking.
 
 See [[Exemplars]] for what the world sees. The truth is short: an exemplar is a
 child born carrying a piece of the dead god, out of a world that has been
-soaked in it for a thousand years. It is not inheritance, not selection and not
-a blessing. It is the trace surfacing.
+soaked in it for twenty-four centuries. It is not inheritance, not selection
+and not a blessing. It is the trace surfacing.
 
 The rules already say it plainly — *a spark of divine power that belongs not to
 a deity*. In Saeroth that is literally true, and the reason is that its owner
@@ -176,7 +176,8 @@ is dead and cannot come and claim it.
   already begun. That is [[The Wildlands]]. It is possible that the reason the
   interior is guarded has nothing to do with the empire at all.
 - **Nobody knows what it was the god of.** Whatever domain it held has been
-  unattended for a thousand years. Decide deliberately whether that shows: the
+  unattended for two and a half thousand years. Decide deliberately whether
+  that shows: the
   clean answer is that the others quietly divided it and the world is whole,
   and the interesting one is that something in Saeroth has been subtly
   unattended since before any nation existed, and every explanation the world

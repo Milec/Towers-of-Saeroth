@@ -1,7 +1,7 @@
 ---
 title: The Two-Crown War
 type: history
-era: Began 71 years ago, ended 60 — eleven years
+era: 2305–2316 AR — eleven years, ending 60 years ago
 scale: The worst war in recorded history; every nation on the western continent was in it, under arms or under contract
 known: Ordinary history, and the defining event of the world's grandparents. Everyone knows the outline. Almost nobody agrees on the blame
 ---

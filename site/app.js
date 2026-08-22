@@ -217,23 +217,30 @@ function traitClass(t) {
 
 // inline formatting inside a statblock: bold, italics, action icons, wikilinks
 function inlineSB(s) {
-  let h = escapeHtml(s);
-  h = h.replace(/`\[(one-action|two-actions|three-actions|free-action|reaction)\]`/g,
-    (_, k) => actionSVG(NAMED_ACTIONS[k]));
-  h = h.replace(/`pf2:([0-3r])`/gi, (_, k) => actionSVG(k.toLowerCase() === 'r' ? 'r' : Number(k)));
-  h = h.replace(/\[\[([^\]]+?)\]\]/g, (_, raw) => {
+  /* Wikilinks come out of the RAW text before anything is escaped, and go back
+     in as finished HTML at the very end. Resolving them after escapeHtml turns
+     an apostrophe in a note name into `&#39;`, and then both resolveTarget and
+     the `#`-fragment split read that entity as part of the name — which broke
+     every link to a note like The Pilgrim's Peace. */
+  const links = [];
+  const src = s.replace(/\[\[([^\]\n]+?)\]\]/g, (_, raw) => {
     const [tp, ...al] = raw.split('|');
     const [target] = tp.split('#');
     const p = resolveTarget(target);
     const label = escapeHtml((al.join('|') || target).trim());
-    return p ? `<a class="wl" href="#/${encodeURI(p)}">${label}</a>`
-             : `<span class="wl broken">${label}</span>`;
+    links.push(p ? `<a class="wl" href="#/${encodeURI(p)}">${label}</a>`
+                 : `<span class="wl broken">${label}</span>`);
+    return '\u0000' + (links.length - 1) + '\u0000';
   });
+  let h = escapeHtml(src);
+  h = h.replace(/`\[(one-action|two-actions|three-actions|free-action|reaction)\]`/g,
+    (_, k) => actionSVG(NAMED_ACTIONS[k]));
+  h = h.replace(/`pf2:([0-3r])`/gi, (_, k) => actionSVG(k.toLowerCase() === 'r' ? 'r' : Number(k)));
   h = h.replace(/==([^=]+)==/g, (_, t) => `<span class="trait ${traitClass(t)}">${t}</span>`);
   h = h.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   h = h.replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>');
   h = h.replace(/`([^`]+)`/g, '<code>$1</code>');
-  return h;
+  return h.replace(/\u0000(\d+)\u0000/g, (_, i) => links[Number(i)]);
 }
 
 /* --------------------------------------------------------- marked wiring */
@@ -333,6 +340,9 @@ async function route() {
     }
     if (fmField(fm, 'view') === 'routes') {
       mountRoutes(el, body).catch(() => { /* the table still renders */ });
+    }
+    if (fmField(fm, 'view') === 'timeline') {
+      try { mountTimeline(el, body); } catch (_) { /* the tables still render */ }
     }
     document.title = target.split('/').pop().replace(/\.md$/, '') + ' — Towers of Saeroth';
     renderBacklinks(target);
@@ -2212,6 +2222,162 @@ async function mountRoutes(container, bodyText) {
     r.hit.addEventListener('click', () => show(routes.sel === r ? null : r));
   }
   show(null);
+}
+
+/* ---------------------------------------------------------------- timeline
+   A note carrying `view: timeline` has its dated tables drawn as a rail, one
+   band per `##` era, above a proportional strip of the whole span.
+
+   Same rule as the relations web and the trade routes: the markdown is the
+   single source of truth. An era is an `## <range> — <Name>` heading, a row is
+   `| <year> | <what happened> | <note link> |`, and adding a row to the note
+   adds a dot here with no code change. The note still reads as a plain dated
+   chronicle in Obsidian and on GitHub.
+
+   The strip is the point of drawing this at all. Saeroth's history is 2,376
+   years long and almost every event anybody can name is in the last seventy of
+   them, which a list cannot show and a proportional bar cannot hide. */
+const timeline = { eras: [], now: 0 };
+window.__tl = timeline;   // exposed for automated UI tests, like window.__rel
+
+/* Year cells are `0`, `c. 180`, `c. 1 – c. 95`, `2316`. The first integer is
+   the year; a second one makes it a span. Anything with no integer at all is
+   a header or separator row and is skipped, which keeps the note's own prose
+   tables out of the drawing. */
+function parseYear(cell) {
+  const nums = cell.match(/\d+/g);
+  if (!nums) return null;
+  return {
+    label: cell.replace(/\*+/g, '').trim(),
+    y: Number(nums[0]),
+    y2: nums.length > 1 ? Number(nums[1]) : Number(nums[0]),
+    approx: /c\./i.test(cell),
+  };
+}
+
+function parseTimeline(body) {
+  const eras = [];
+  let era = null;
+  for (const raw of body.split(/\r?\n/)) {
+    const line = raw.trim();
+    const h = /^##\s+(.*)$/.exec(line);
+    if (h) {
+      // "c. 700 – 1496 — The Old Foundations" → the em dash splits range from
+      // name; the en dash inside the range never does
+      const parts = h[1].split('—').map((s) => s.trim());
+      const name = parts.length > 1 ? parts.pop() : h[1].trim();
+      era = { name, range: parts.join(' — '), rows: [] };
+      eras.push(era);
+      continue;
+    }
+    if (!era || line[0] !== '|') continue;
+    const cells = line.replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
+    if (cells.length < 3) continue;
+    const year = parseYear(cells[0]);
+    if (!year) continue;
+    era.rows.push({ year, text: cells[1], note: cells[2] });
+  }
+  return eras.filter((e) => e.rows.length);
+}
+
+function mountTimeline(container, bodyText) {
+  const eras = parseTimeline(bodyText);
+  if (!eras.length) return;
+  timeline.eras = eras;
+  const now = timeline.now = Math.max(...eras.flatMap((e) => e.rows.map((r) => r.year.y2)));
+
+  // an era runs from its first dated row to the next era's, so the strip is
+  // built from the rows rather than from the headings it could disagree with
+  const bounds = eras.map((e, i) => {
+    const start = Math.min(...e.rows.map((r) => r.year.y));
+    const next = eras[i + 1];
+    const end = next ? Math.min(...next.rows.map((r) => r.year.y))
+                     : Math.max(now, ...e.rows.map((r) => r.year.y2));
+    return { start, end: Math.max(end, start + 1) };
+  });
+
+  const fig = document.createElement('figure');
+  fig.className = 'tl';
+  const X = (y) => (y / now) * 1000;
+
+  const bands = eras.map((e, i) => {
+    const b = bounds[i];
+    const w = Math.max(X(b.end) - X(b.start), 1.5);
+    return `<rect class="tl-band b${Math.min(i, 7)}" x="${X(b.start).toFixed(2)}" y="0" `
+         + `width="${w.toFixed(2)}" height="26" data-era="${i}">`
+         + `<title>${escapeHtml(e.name)} — ${escapeHtml(e.range || '')}</title></rect>`;
+  }).join('');
+
+  const ticks = [0, 500, 1000, 1500, 2000, now].map((y) =>
+    `<line class="tl-tick" x1="${X(y).toFixed(2)}" y1="26" x2="${X(y).toFixed(2)}" y2="31"/>`
+    + `<text class="tl-ticklab" x="${Math.min(X(y), 986).toFixed(2)}" y="41" `
+    + `text-anchor="${y === 0 ? 'start' : y === now ? 'end' : 'middle'}">${y}</text>`).join('');
+
+  // the last two eras are the war and the peace: about three per cent of the
+  // span and nearly everything the world talks about
+  const liveFrom = bounds[Math.max(bounds.length - 2, 0)].start;
+  const callout =
+    `<rect class="tl-live" x="${X(liveFrom).toFixed(2)}" y="-4" `
+    + `width="${Math.max(1000 - X(liveFrom), 2).toFixed(2)}" height="34"/>`;
+
+  fig.innerHTML =
+    `<svg class="tl-strip" viewBox="0 0 1000 46" preserveAspectRatio="none" role="img"
+          aria-label="The whole of recorded history, to scale">
+       ${bands}${callout}${ticks}
+     </svg>
+     <p class="tl-scalenote">Everything from the Two-Crown War onward — the war,
+       the Peace, the Delta War and the towers — is the highlighted sliver at the
+       right: seventy-one years out of ${now}.</p>
+     <div class="tl-rail"></div>`;
+
+  const rail = fig.querySelector('.tl-rail');
+  eras.forEach((e, i) => {
+    const sec = document.createElement('section');
+    sec.className = 'tl-era';
+    sec.id = 'tl-era-' + i;
+    sec.innerHTML =
+      `<h3 class="tl-eraname"><span class="tl-swatch b${Math.min(i, 7)}"></span>${escapeHtml(e.name)}`
+      + (e.range ? ` <span class="tl-erarange">${escapeHtml(e.range)}</span>` : '') + `</h3>`;
+    const ol = document.createElement('ol');
+    ol.className = 'tl-list';
+    for (const r of e.rows) {
+      const li = document.createElement('li');
+      li.className = 'tl-ev' + (r.year.approx ? ' approx' : '');
+      const note = /\[\[/.test(r.note) ? `<p class="tl-note">${inlineSB(r.note)}</p>` : '';
+      li.innerHTML = `<span class="tl-year">${escapeHtml(r.year.label)}</span>`
+                   + `<div class="tl-what"><p>${inlineSB(r.text)}</p>${note}</div>`;
+      ol.appendChild(li);
+    }
+    sec.appendChild(ol);
+    rail.appendChild(sec);
+  });
+
+  fig.querySelector('.tl-strip').addEventListener('click', (ev) => {
+    const i = ev.target.getAttribute && ev.target.getAttribute('data-era');
+    if (i === null || i === undefined) return;
+    const sec = document.getElementById('tl-era-' + i);
+    if (sec) sec.scrollIntoView({ block: 'start' });
+  });
+
+  // insert above the first dated table and tuck every source table away, the
+  // same way the relations web and the routes map do
+  const tables = [...container.querySelectorAll('table')]
+    .filter((t) => /^\s*Year\b/.test(t.textContent));
+  if (!tables.length) { container.appendChild(fig); return; }
+  const first = tables[0];
+  const prev = first.previousElementSibling;
+  const anchor = prev && /^H[2-4]$/.test(prev.tagName) ? prev : first;
+  anchor.parentNode.insertBefore(fig, anchor);
+  const det = document.createElement('details');
+  det.className = 'relsource';
+  const n = eras.reduce((a, e) => a + e.rows.length, 0);
+  det.innerHTML = `<summary>The ${n} dated rows this is read from</summary>`;
+  first.parentNode.insertBefore(det, first);
+  for (const t of tables) {
+    const head = t.previousElementSibling;
+    if (head && /^H2$/.test(head.tagName)) det.appendChild(head);
+    det.appendChild(t);
+  }
 }
 
 /* ------------------------------------------------------------------ boot */
