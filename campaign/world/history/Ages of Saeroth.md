@@ -13,7 +13,8 @@ the western continent.
 
 | When | What | Note |
 | --- | --- | --- |
-| Before reckoning | An empire held most of the known world, and was then removed from history so completely that only the hole is left | [[The Nameless Empire]] |
+| ~1000 years ago | Seven days and seven nights of blood rain, remembered everywhere and understood nowhere. There is a red band in the soil under every nation | [[The God Sundering]] |
+| ~1000 years ago | An empire held most of the known world, and was then removed from history so completely that only the hole is left | [[The Nameless Empire]] |
 | ~880 years ago | The Concord founded: one church-state of three orders, holding mercy, the refining fire and the passage together | [[The Sundering of the Concord]] |
 | ~400 years ago | The Concord breaks in a single winter into three nations, two of them subverted | [[The Sundering of the Concord]] |
 | 71–60 years ago | The Two-Crown War. Eleven years, the whole western continent, and nobody who won | [[The Two-Crown War]] |
