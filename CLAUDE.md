@@ -36,8 +36,16 @@ How the app is put together:
   over: bare `:root` (light), `:root[data-theme="dark"]`, and
   `@media (prefers-color-scheme: dark) :root:not([data-theme="light"])`. Add a
   new colour as a token in **all three** blocks, never as a literal in a rule.
-- Bump `VERSION` in `site/sw.js` when the app shell changes, or returning
-  visitors keep serving the cached one.
+- Bump `VERSION` in `site/sw.js` for **any** deploy — notes are precached too,
+  so a content-only change that skips the bump leaves returning visitors on the
+  old text. The bump is necessary and used to be insufficient: installed to a
+  home screen the app is *resumed* rather than navigated to, so nothing
+  triggered the browser's own update check and a phone could serve a
+  months-stale note that looked exactly like a bad edit. `app.js` now calls
+  `registration.update()` on boot and on every resume, and reloads once when
+  the new worker claims the page. The sidebar prints `build vNN` from the
+  worker that is actually serving you — when a note looks wrong, check that
+  first.
 - The graph view draws **on demand**, not on a permanent `requestAnimationFrame`
   loop: `tick()` runs only while the layout is still settling, and everything
   else calls `needsDraw()`. Any new interaction that moves the camera or changes

@@ -551,3 +551,7 @@ body {
   .tl-ev { display: block; }
   .tl-year { display: block; margin-bottom: 2px; }
 }
+
+/* Which cache version this device is actually being served. Only useful when
+   something looks wrong, so it stays out of the way until you look for it. */
+.build { color: var(--muted); font-size: 11.5px; padding: 14px 12px 4px; margin: 0; opacity: .65; }
