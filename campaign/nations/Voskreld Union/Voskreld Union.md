@@ -24,12 +24,12 @@ books. They don't always.
 - **Reputation** Disciplined, ambitious, and one bad harvest away from remembering old grievances
 - **Faith** Patron [[Abadar]] in his aspect as god of roads, law and the standardized measure — deliberately chosen at unification as a god belonging to none of the old duchies. [[Erastil]] remains the provinces' real faith, and [[Gorum]] the Unified Legion's
 - **Tension** A poor harvest in one province has revived the old argument about which duchy feeds which, in almost the original wording
-- **Relations**
-    - [[Thesal Theocracy]] — **Allied**: Voskreld lays the road and Thesal staffs the hospice at the end of it. The Crown gets a network its provinces trust and the Council gets its charity carried to places a theocracy could never have reached on foot
-    - [[Vaelic Principality]] — **Allied**: The two heaviest land powers of the western centre, and neither wants to find out which is heavier. The treaty was written against the steppe and has quietly been re-aimed at what is actually adjacent: Dalstan's writs to the north-west and the Lichdom on Vaelic's own frontier
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
+    - [[Thesal Theocracy]] — **Allied**: Voskreld lays the road and Thesal staffs the hospice at the end of it. …
+    - [[Vaelic Principality]] — **Allied**: The two heaviest land powers of the western centre, and neither wants to find out which is heavier. …
     - [[Silicar]] — **Trade**: Silicar's machinery and Voskreld's grain surplus, moved on Voskreld's canals — the most efficient thing on the continent and the least romantic
     - [[Stoneborn Holds]] — **Trade**: Stoneborn steel into Voskreld's foundries and cannon-works, at a standardized weight Voskreld invented and Stoneborn grudgingly adopted
-    - [[Melisor Magocracy]] — **Rivalry**: Who licenses magic. Voskreld says the Crown does, by the same authority that standardized the coin; Melisor says a state that cannot cast cannot license, and has never once submitted a return
-    - [[Quivar]] — **Rivalry**: The court against the crown, and the tariff schedule against the taste that ignores it. Voskreld standardizes what Quivar sells on the grounds that it is unique
-    - [[Sarrowmere]] — **Friction**: Voskreld's canal works are draining the eastern fen, cant by cant. The Union calls it drainage and improvement; the cantons call it what happens to a nation whose defence is water
+    - [[Melisor Magocracy]] — **Rivalry**: Who licenses magic. …
+    - [[Quivar]] — **Rivalry**: The court against the crown, and the tariff schedule against the taste that ignores it. …
+    - [[Sarrowmere]] — **Friction**: Voskreld's canal works are draining the eastern fen, cant by cant. …
     - [[Undertide Reaches]] — **Covert**: Voskreld buys what it cannot be seen buying: route surveys, provincial correspondence, and the occasional accurate figure about its own duchies

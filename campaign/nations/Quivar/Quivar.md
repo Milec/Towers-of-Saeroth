@@ -22,13 +22,13 @@ everyone at court knows it.
 - **Reputation** The cultural heart of the world, but never fully trusted
 - **Faith** Patron [[Shelyn]], goddess of art, beauty and love — the face Quivar presents, and genuinely beloved. [[Calistria]], goddess of intrigue, revenge and exquisite grudges, is the one the court actually prays to, and everyone knows it
 - **Tension** The monarch has two plausible heirs and has declined to indicate a preference, which has turned every salon in Valmont into a recruiting ground
-- **Relations**
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Aquoniti]] — **Trade**: Pearls and coral to the court that sets what they are worth, and the one cargo Aquoniti insures at full value
     - [[Elven Confederacy]] — **Trade**: Elven silk, wine and rare timber, and Quivar pays court prices for all three without haggling, which the tribes find suspicious and profitable in equal measure
     - [[Sarrowmere]] — **Trade**: Antitoxins to a court that poisons, in the quantities that implies, invoiced quarterly and never discussed
     - [[Tal Ulad]] — **Trade**: Horses, and Quivar is the only buyer that has ever paid what the Ulad say they are worth
-    - [[Vaelic Principality]] — **Trade**: Grain, wool and remounts north out of the Diet's estates; wine, cloth and every luxury a Vaelic noble is not supposed to want, south. It is the last leg of the Uplad horse road and the busiest border either of them keeps — which is also the cover: Quivar's service has been inside the Diet for two generations, largely by way of the wine factors, and Vaelic knows, cannot prove it, and has begun feeding it things on purpose
-    - [[Voskreld Union]] — **Rivalry**: The court against the crown, and the tariff schedule against the taste that ignores it. Voskreld standardizes what Quivar sells on the grounds that it is unique
+    - [[Vaelic Principality]] — **Trade**: Grain, wool and remounts north out of the Diet's estates; wine, cloth and every luxury a Vaelic noble is not supposed to want, south. …
+    - [[Voskreld Union]] — **Rivalry**: The court against the crown, and the tariff schedule against the taste that ignores it. …
     - [[Xian Ti]] — **Rivalry**: Two cultural capitals on opposite oceans, each convinced the other is derivative, both correct
     - [[Lazarian Lichdom]] — **Covert**: The court buys relics for reasons it does not explain, through intermediaries who are never the same twice
     - [[Qeshara Sultanate]] — **Covert**: Two courts that spy on each other constantly and enjoy it enormously, exchanging intelligence, poets and — twice — an entire intelligence service's worth of deliberately false star-charts

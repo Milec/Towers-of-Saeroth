@@ -11,6 +11,12 @@ in advance, and treats a battlefield like a puzzle with exactly one correct
 answer: whoever's left standing. He's for hire, but the price includes not
 asking what the last job was.
 
+He works out of Harrowgate without a charter, which is the whole of his
+position: the Muster Court of the [[Kelvary March]] has no authority over a man
+working alone, so Garrick takes the contracts no chartered company will put its
+seal on. Every paymaster in the town can name him and none of them has ever
+written him down.
+
 **Want:** enough coin to stop taking jobs, which he privately doubts he'll
 ever have.
 **Won't:** fight for a cause — he's watched too many believers die for free

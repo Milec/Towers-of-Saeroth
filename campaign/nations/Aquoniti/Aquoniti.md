@@ -22,7 +22,7 @@ continent outmaneuvers theirs.
 - **Reputation** Masters of naval warfare
 - **Faith** Patron [[Gozreh]], who governs the moods of the sea Aquoniti sailors read like a second language. [[Desna]] is the navigator's goddess, worshipped by star-sight; the salvage crews and privateers keep [[Besmara]] and don't advertise it
 - **Tension** Three deepwater charts have come back wrong in the same season, and the Council of Tide Lords has not explained why it stopped sending survey ships
-- **Relations**
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Thornwild Confederation]] — **Friendly**: Gozreh is the one god both nations name — storm and beast being the same power, seen from a boat or from the canopy
     - [[Corvane Republic]] — **Trade**: Corvane hulls for Aquoniti pearls, and a shared professional interest in what the Merchant Alliance is doing next
     - [[Kesmarch Frontier]] — **Trade**: The island fleet works the frontier's river mouths, which is how a landlocked-feeling frontier turns out to have a coast after all
@@ -31,4 +31,4 @@ continent outmaneuvers theirs.
     - [[Thurigypt]] — **Trade**: Grain and worked gold for pearls, coral and fish, on a run old enough that both sides quote the same customary rates
     - [[Xian Ti]] — **Trade**: Pearls and salvage east, silk and porcelain out to the islands — the shortest crossing in the world and the one Aquoniti sails without insuring
     - [[Nordheim]] — **Rivalry**: Two seafaring peoples who each consider themselves the ones who invented it, separated by enough ocean to keep the argument theoretical
-    - [[Thurion Merchant Alliance]] — **Rivalry**: Two thalassocracies in one sea, and the sea is not large. Nothing has been sunk yet; a great deal has been undercut
+    - [[Thurion Merchant Alliance]] — **Rivalry**: Two thalassocracies in one sea, and the sea is not large. …

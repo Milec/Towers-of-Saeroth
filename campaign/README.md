@@ -5,6 +5,17 @@ setting-wide reference under `world/`. The layout below is the convention
 Claude follows; reorganize freely, the `pf2e-gm` skill doesn't care where things
 live, only the `vault/` and `.claude/` paths at the repo root matter to it.
 
+## Start here
+
+The four indexes and the two notes everything else hangs off:
+
+- [[Nations of the World]] — all 28, oldest founding first
+- [[Political Relations]] — who is allied with, trading with or fighting whom
+- [[Peoples of the World]] — the ancestries
+- [[Gods of the World]] — the pantheon, and who keeps which god
+- [[Ages of Saeroth]] — the dated timeline, and the calendar it is counted in
+- [[The Towers]] — the campaign premise
+
 ## How these notes are read
 
 **Through the website**, not Obsidian: <https://milec.github.io/Towers-of-Saeroth/>
@@ -120,6 +131,11 @@ the notes start lying about each other:
 1. the table in `nations/Political Relations.md` — **the source of truth**,
 2. the **Relations** bullet on each of the 28 `nations/<Nation>/<Nation>.md` notes,
 3. the relations web on the site, drawn from that table.
+
+The nation note gets the **gist** — one line per tie: the standing and the
+row's lead sentence, `…` where there was more, and a link to the full entry.
+So write each table row's first sentence to stand on its own; it is what all
+28 nation notes will show.
 
 Never hand-edit a nation's Relations bullet, and never add a row to the table
 and stop there. From the repo root:

@@ -98,6 +98,28 @@ def validate(rows, standings, folders):
     return problems
 
 
+SENTENCE = re.compile(r'(?<=[.!?])\s+')
+
+
+def gist(desc):
+    """The lead sentence of a tie, and whether anything was left behind.
+
+    The nation notes used to carry every tie's full entry, which came to 40% of
+    all 28 notes and was a second verbatim copy of a 32 KB table. The lead
+    sentence is reliably the summary — the elaboration that follows is what you
+    go to Political Relations for.
+    """
+    desc = (desc or '').strip()
+    if not desc:
+        return '', False
+    first = SENTENCE.split(desc, 1)[0].strip()
+    # Never cut a wikilink in half. A `[[` with no closing `]]` is not a broken
+    # link, it is not a link at all, and nothing downstream would notice.
+    if first.count('[[') != first.count(']]'):
+        return desc, False
+    return first, len(first) < len(desc)
+
+
 def bullet(nation, rows, standings):
     order = {s: i for i, s in enumerate(standings)}
     mine = []
@@ -107,10 +129,14 @@ def bullet(nation, rows, standings):
         elif b == nation:
             mine.append((s, a, d))
     mine.sort(key=lambda x: (order.get(x[0], 99), x[1]))
-    out = ['- **Relations**']
+    out = ['- **Relations** — in brief; every tie in full, and the web, are in'
+           ' [[Political Relations]]']
     for s, other, d in mine:
-        out.append(f'    - [[{other}]] — **{s}**: {d}' if d
-                   else f'    - [[{other}]] — **{s}**')
+        g, cut = gist(d)
+        if g:
+            out.append(f'    - [[{other}]] — **{s}**: {g}' + (' …' if cut else ''))
+        else:
+            out.append(f'    - [[{other}]] — **{s}**')
     return '\n'.join(out)
 
 

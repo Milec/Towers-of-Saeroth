@@ -24,10 +24,10 @@ them. The Emberlord's throne is reforged, not inherited.
 - **Reputation** Intense, unyielding, and quietly generous to anyone who's earned it
 - **Faith** Patron [[Angradd]], the forge-fire and the god of war fought face-forward, whose trial the Emberlord's own succession imitates. [[Torag]] is honored beside him by the dwarven lineages, and [[Sarenrae]] for fire's cleansing rather than its making
 - **Tension** The Emberlord's trial-by-forge is due and two candidates have already survived it once, which the charter does not actually address
-- **Relations**
-    - [[Stoneborn Holds]] — **Friendly**: Two forge cultures that keep Torag in the same corner of the workshop, half a world apart. Fire-forged steel and volcanic glass move by sea, but the correspondence between their smiths predates either state's current government and has never once been about price
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
+    - [[Stoneborn Holds]] — **Friendly**: Two forge cultures that keep Torag in the same corner of the workshop, half a world apart. …
     - [[Qeshara Sultanate]] — **Trade**: Obsidian and volcanic glass into Qeshara's glassworks, which cut and sell it back at eight times the price to buyers who know exactly where it came from
     - [[Sahenna Compact]] — **Trade**: Salt and cattle up to the ash country, worked steel back — the Compact is the only supplier that will cross the Ashlands on credit
     - [[Xian Ti]] — **Trade**: Kiln-fire and fire-forged steel: the imperial porcelain works cannot reach their temperatures without Cindral's engineers, and say so in no document
-    - [[Ashkar Pale]] — **Friction**: Which of them is downwind, argued after every fall. The Pale digs out and the Ashlands send help, and both do it while blaming the other
+    - [[Ashkar Pale]] — **Friction**: Which of them is downwind, argued after every fall. …
     - [[Thornwild Confederation]] — **Friction**: Geothermal works at the range's foot are killing canopy downstream, and the Emberlord's position is that a volcano was doing that before either nation existed

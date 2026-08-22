@@ -25,10 +25,10 @@ what actually lives down here.
 - **Reputation** Secretive, self-sufficient, and unnervingly hard to surprise
 - **Faith** Patron [[Norgorber]], god of secrets — an unsettlingly literal fit for a nation whose currency is information. [[Pharasma]] is kept in the deepest holds, where the dead are numerous and very old
 - **Tension** A deep hold has sealed itself from the inside and the Warden-Conclave has voted twice not to investigate, which tells the other holds everything they need to know
-- **Relations**
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Melisor Magocracy]] — **Trade**: Deep reagents and luminous fungus, sold by the Warden-Conclave at prices the academies resent and pay
-    - [[Nordheim]] — **Trade**: Amber and whale oil down into the deep holds, deep-vein iron back up. Neither nation has ever visited the other's capital
-    - [[Stoneborn Holds]] — **Territorial**: The same mountain claimed from above and below. The Holds hold the peaks and the Reaches hold what is under them, and the seam where the two claims meet has been fought over in the dark for two hundred years
+    - [[Nordheim]] — **Trade**: Amber and whale oil down into the deep holds, deep-vein iron back up. …
+    - [[Stoneborn Holds]] — **Territorial**: The same mountain claimed from above and below. …
     - [[Lazarian Lichdom]] — **Covert**: The Warden-Conclave sells the Lichdom what it knows and sells the Lichdom's enemies what it knows about that, and has never been caught doing either
     - [[Quivar]] — **Covert**: The court is the Warden-Conclave's largest single client, and pays in wine, art and favours rather than anything that leaves a ledger entry
     - [[Thurion Merchant Alliance]] — **Covert**: The Alliance's factors are the Conclave's best-paying customers and its most useful suppliers, and every contract between them is verbal

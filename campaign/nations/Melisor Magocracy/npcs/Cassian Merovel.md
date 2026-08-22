@@ -6,7 +6,8 @@ nation: Melisor Magocracy
 role: adjunct lecturer in transmutation; twice passed over for a chair
 ---
 
-Cassian Merovel has been an adjunct at Thelemar for eleven years. He is a
+Cassian Merovel has been an adjunct at Thelemar, in the
+[[Melisor Magocracy]], for eleven years. He is a
 better theorist than the man who holds the chair he wants, which he knows, and
 which is not the same as being better at getting the chair. He has been passed
 over twice. The second time, the Council of Archmages gave the seat to the

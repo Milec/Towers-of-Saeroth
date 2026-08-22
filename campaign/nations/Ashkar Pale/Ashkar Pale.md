@@ -29,9 +29,9 @@ cart.
 *Volcanic soil, a fixed cycle of catastrophe, and a people organized around
 surviving it — the Pale is where a party goes for a deadline that is
 geological rather than political.*
-- **Relations**
-    - [[Thornwild Confederation]] — **Friendly**: When the mountain goes, the Pale evacuates into Thornwild canopy, and has done for six recorded falls. The Circle asks nothing for it beyond warning, which the Pale's wardens give better than anyone alive
-    - [[Xian Ti]] — **Friendly**: Ward assemblies and examination halls: two administrative cultures that recognise each other on sight. Ashkar's grain feeds the southern prefectures, and Xian Ti's clerks find the Pale the only neighbour whose paperwork arrives in order
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
+    - [[Thornwild Confederation]] — **Friendly**: When the mountain goes, the Pale evacuates into Thornwild canopy, and has done for six recorded falls. …
+    - [[Xian Ti]] — **Friendly**: Ward assemblies and examination halls: two administrative cultures that recognise each other on sight. …
     - [[Kesmarch Frontier]] — **Trade**: Grain and ash-glaze ware to the frontier towns, and the Pale's salvage crews hire out to Kesmarch after a bad season
     - [[Sahenna Compact]] — **Trade**: Glass and vine crops for salt and hides, on the short road around the range's southern arm
-    - [[Cindral Ashlands]] — **Friction**: Which of them is downwind, argued after every fall. The Pale digs out and the Ashlands send help, and both do it while blaming the other
+    - [[Cindral Ashlands]] — **Friction**: Which of them is downwind, argued after every fall. …
