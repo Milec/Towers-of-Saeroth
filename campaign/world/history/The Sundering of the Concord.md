@@ -1,7 +1,7 @@
 ---
 title: The Sundering of the Concord
 type: history
-era: The Concord founded roughly 880 years ago; the Sundering roughly 400
+era: The Concord founded 1496 AR; the Sundering 1976 AR — 880 and 400 years ago
 survives_as: [[Thesal Theocracy]], [[Dalstan]], [[Lazarian Lichdom]]
 known: The schism is ordinary history. Its cause is a theological quarrel nobody can settle, and the truth of it is GM knowledge
 ---
@@ -35,7 +35,7 @@ the only one of the three heirs that still has other voices in the room.
 
 ## The whispering
 
-Somewhere in the Concord's eighth century, high clerics of the second and
+Somewhere in the Concord's fifth century, high clerics of the second and
 third orders began to hear the case for their own doctrine put more
 persuasively than they had ever managed to put it themselves.
 

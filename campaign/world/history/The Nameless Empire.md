@@ -1,7 +1,7 @@
 ---
 title: The Nameless Empire
 type: history
-era: Erased roughly a thousand years ago — every nation's own founding history begins within about a century of that point, and none of them has ever asked why
+era: Year 0 AR — 2,376 years ago. Every nation's earliest recorded history begins within about a century of that point, and none of them has ever asked why
 visibility: GM only. No book, no ruin and no god's own clergy will confirm any of this in-world
 survives: The towers, the southern continent, and what the God Sundering left in the ground — nothing else
 ---
@@ -18,10 +18,12 @@ plausibly be asked.
 Before there were twenty-seven nations there was one empire, and it did not
 share the world with anyone — it *was* the world, both settled continents
 and the archipelago between them, under a single crown. Every nation's own
-history, myth and founding charter begins within about a century of the
-same point, roughly a thousand years ago, and not one of them has ever
+myth, chronicle and earliest recorded history begins within about a
+century of the same point — the year the world now calls 0 AR, two thousand
+three hundred and seventy-six years back — and not one of them has ever
 thought to ask why, because none of them has anything older to compare it
-to.
+to. See [[Ages of Saeroth]] for the count itself, which is stranger than
+the gap.
 
 Its rulers — a handful of sorcerer-kings, never more than a dozen at once —
 did not want to rule the world. They already did. They wanted to stop being
@@ -104,8 +106,8 @@ themselves, on their own terms instead of the ritual's.
 - **The Wildlands' monsters are not native fauna.** They are the empire's
   own soldiers and servants — made things, left standing when their
   masters and every working that maintained them vanished at once. A
-  thousand years with nobody tending them has not killed them; it has only
-  made them stranger. Nothing about their true origin should ever reach a
+  twenty-four centuries with nobody tending them has not killed them; it has
+  only made them stranger. Nothing about their true origin should ever reach a
   player through play — see [[The Wildlands]] for what the world believes
   instead.
 - **Nobody in the world can be the one to explain this, including a god's

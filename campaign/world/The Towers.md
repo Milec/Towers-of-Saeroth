@@ -1,7 +1,7 @@
 ---
 title: The Towers
 type: index
-appeared: Began within the last year, and has not stopped
+appeared: 2375 AR, within the last year, and has not stopped
 known: A few found; others unfound, and more still arriving
 returned: Nobody
 ---
