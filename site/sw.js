@@ -2,7 +2,7 @@
    campaign/ is small (under 1 MB) so it is precached in full and works fully
    offline. vault/ is ~192 MB across 41k files, so it is cached lazily as pages
    are actually opened — anything you have read once stays available offline. */
-const VERSION = 'v29';
+const VERSION = 'v30';
 const SHELL = 'shell-' + VERSION;
 const NOTES = 'notes-' + VERSION;
 
@@ -37,6 +37,17 @@ self.addEventListener('activate', (e) => {
     }
     await self.clients.claim();
   })());
+});
+
+/* The app asks for this on boot and prints it in the sidebar. Without it there
+   is no way to tell a stale device from a stale deploy — an installed
+   home-screen app serving an old note looks exactly like a bad edit. Replies
+   down the caller's MessageChannel port when there is one. */
+self.addEventListener('message', (e) => {
+  if (e.data !== 'version') return;
+  const reply = { version: VERSION };
+  if (e.ports && e.ports[0]) e.ports[0].postMessage(reply);
+  else if (e.source) e.source.postMessage(reply);
 });
 
 self.addEventListener('fetch', (e) => {

@@ -2472,7 +2472,43 @@ async function init() {
   await route();
 
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register(BASE + 'sw.js').catch(() => {});
+    /* Installed to a home screen there is no navigation — the app is resumed
+       from the switcher — so nothing ever triggers the browser's own update
+       check and the phone can serve a months-old cache indefinitely. Bumping
+       VERSION in sw.js is necessary and was never sufficient. Check on boot
+       and on every resume. */
+    const hadWorker = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.register(BASE + 'sw.js').then((reg) => {
+      const check = () => reg.update().catch(() => {});
+      check();
+      addEventListener('visibilitychange', () => { if (!document.hidden) check(); });
+      showVersion();
+    }).catch(() => {});
+
+    /* sw.js calls skipWaiting(), so a new worker claims this page as soon as
+       it installs — but the note already on screen came from the old cache.
+       Reload once so what is displayed is what the new worker just cached.
+       Guarded on hadWorker: on a first ever visit the claim is not an update
+       and reloading for it would be a pointless flash. */
+    let reloading = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadWorker || reloading) return;
+      reloading = true;
+      location.reload();
+    });
   }
+}
+
+/* Prints the serving worker's cache version in the sidebar. This is the only
+   way from inside the app to tell "the note is wrong" from "this device is
+   showing you an old copy of the note". */
+function showVersion() {
+  const el = $('build');
+  if (!el || !navigator.serviceWorker.controller) return;
+  const ch = new MessageChannel();
+  ch.port1.onmessage = (e) => {
+    if (e.data && e.data.version) el.textContent = 'build ' + e.data.version;
+  };
+  navigator.serviceWorker.controller.postMessage('version', [ch.port2]);
 }
 init();
