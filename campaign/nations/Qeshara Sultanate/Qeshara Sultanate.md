@@ -37,12 +37,12 @@ Viziers finds hardest to dispute.
 - **Tension** The current Sultan's reading of the stars named an heir the
   Court of Viziers has quietly declined to confirm. Neither side has made
   the disagreement public, which is the only reason it hasn't become one yet
-- **Relations**
-    - [[Sahenna Compact]] — **Allied**: The Salt Road pact, and the oldest working alliance on either continent: Sahenna clans guarantee the caravans and Qeshara guarantees the wells. Both courts keep the terms by memory as much as by charter, and neither has broken them in living record
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
+    - [[Sahenna Compact]] — **Allied**: The Salt Road pact, and the oldest working alliance on either continent: Sahenna clans guarantee the caravans and Qeshara guarantees the wells. …
     - [[Cindral Ashlands]] — **Trade**: Obsidian and volcanic glass into Qeshara's glassworks, which cut and sell it back at eight times the price to buyers who know exactly where it came from
     - [[Kesmarch Frontier]] — **Trade**: The frontier end of the Salt Road — furs and ore for salt, cloth and the wells' protection
     - [[Tessine]] — **Trade**: Incense, dyed silk and glass into a port that asks nothing about their provenance and charges accordingly
     - [[Thurion Merchant Alliance]] — **Trade**: Where the Salt Road meets the sea: everything the caravans carry out of the eastern deserts goes onto Alliance hulls at Qeshara's coast
     - [[Melisor Magocracy]] — **Rivalry**: Arcane law against star-craft: two traditions that each regard the other as astrology with better funding
-    - [[Thurigypt]] — **Rivalry**: One river system, two claims on the incense road, and a court each that argues its case in verse. It has stayed a rivalry for four hundred years and neither side takes credit for that
+    - [[Thurigypt]] — **Rivalry**: One river system, two claims on the incense road, and a court each that argues its case in verse. …
     - [[Quivar]] — **Covert**: Two courts that spy on each other constantly and enjoy it enormously, exchanging intelligence, poets and — twice — an entire intelligence service's worth of deliberately false star-charts

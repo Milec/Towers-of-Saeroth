@@ -29,10 +29,10 @@ left alone on both.
 
 *Mobile, unconquerable, and holding the overland trade route — the Ulad are
 who a party has to deal with to cross the continent by land at all.*
-- **Relations**
-    - [[Thesal Theocracy]] — **Friendly**: The one settled nation that treats the herd-councils as a nation rather than a trespass. Thesal's charter honours every good and neutral faith, which includes the weather-worship Dalstan writes up as paganism, and the Ulad have not forgotten who said it first
-    - [[Kelvary March]] — **Trade**: Remounts, fifteen thousand head a year, and the single largest movement of horses in the world. The March pays on the hoof at the summer gathering and the herd-councils have never once extended credit
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
+    - [[Thesal Theocracy]] — **Friendly**: The one settled nation that treats the herd-councils as a nation rather than a trespass. …
+    - [[Kelvary March]] — **Trade**: Remounts, fifteen thousand head a year, and the single largest movement of horses in the world. …
     - [[Quivar]] — **Trade**: Horses, and Quivar is the only buyer that has ever paid what the Ulad say they are worth
-    - [[Vaelic Principality]] — **Trade**: Warhorses to the Diet's heavy cavalry, driven down the eastern circuit each autumn. The one Vaelic institution the herd-councils will deal with directly rather than through a factor
+    - [[Vaelic Principality]] — **Trade**: Warhorses to the Diet's heavy cavalry, driven down the eastern circuit each autumn. …
     - [[Dalstan]] — **Friction**: Tolls on herds crossing the Dalstani stretch of the circuit, and inquisitors who describe the herd-councils' weather-worship as paganism in official correspondence
     - [[Silicar]] — **Territorial**: Silicar's irrigation works have put a plough through a stretch of the spring route, and the herd-councils are divided between negotiating, going around, and going through

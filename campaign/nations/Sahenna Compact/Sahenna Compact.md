@@ -47,10 +47,10 @@ memory, by people trained from childhood to hold it there and nowhere else.
   damage, and the silence is being read as confirmation —
   [[Clan Salthollow]], whose own pans and caravans sit closest to
   Thurigypt, is the loudest voice against staying quiet any longer
-- **Relations**
-    - [[Qeshara Sultanate]] — **Allied**: The Salt Road pact, and the oldest working alliance on either continent: Sahenna clans guarantee the caravans and Qeshara guarantees the wells. Both courts keep the terms by memory as much as by charter, and neither has broken them in living record
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
+    - [[Qeshara Sultanate]] — **Allied**: The Salt Road pact, and the oldest working alliance on either continent: Sahenna clans guarantee the caravans and Qeshara guarantees the wells. …
     - [[Ashkar Pale]] — **Trade**: Glass and vine crops for salt and hides, on the short road around the range's southern arm
     - [[Cindral Ashlands]] — **Trade**: Salt and cattle up to the ash country, worked steel back — the Compact is the only supplier that will cross the Ashlands on credit
     - [[Kesmarch Frontier]] — **Trade**: Salt and hides for grain and iron, at the seasonal markets the clans keep on the savanna edge
     - [[Thornwild Confederation]] — **Trade**: Dyed cloth and salt for jungle medicinals and pelts, traded clan to clan without either nation's council involved
-    - [[Thurigypt]] — **Friction**: Salt pans and grazing rights on the desert margin, claimed by a nation that keeps its record in stone and a nation that keeps it in memory. Neither will accept the other's evidence
+    - [[Thurigypt]] — **Friction**: Salt pans and grazing rights on the desert margin, claimed by a nation that keeps its record in stone and a nation that keeps it in memory. …

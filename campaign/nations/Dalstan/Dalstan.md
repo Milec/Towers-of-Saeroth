@@ -31,13 +31,13 @@ grace — and it decides often.
 - **Want** The Cathedral Court wants every neighboring court to convert, gilded shrine by gilded shrine.
 - **Won't** Dalstan will not admit that its faith and its avarice are the same appetite wearing different robes.
 - **Tension** The Cathedral Court has begun licensing inquisitions beyond Dalstan's own borders, and has not yet been told no by anyone with the standing to make it stick
-- **Relations**
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Thurion Merchant Alliance]] — **Trade**: Gilded relics out, tithe-silver in, and the Alliance's factors are the only foreigners the Cathedral Court receives without an inquisitor present
-    - [[Silicar]] — **Friction**: Indulgence brokers working Silicar's farm cantons, selling absolution to people the guilds consider their own. Silicar has banned the trade twice and enforced it never
+    - [[Silicar]] — **Friction**: Indulgence brokers working Silicar's farm cantons, selling absolution to people the guilds consider their own. …
     - [[Tal Ulad]] — **Friction**: Tolls on herds crossing the Dalstani stretch of the circuit, and inquisitors who describe the herd-councils' weather-worship as paganism in official correspondence
     - [[Vaelic Principality]] — **Friction**: The Cathedral Court has begun licensing inquisitions in Vaelic lands across their shared border, and the Imperial judiciary is the only body with standing to refuse the writs once they arrive
     - [[Corvane Republic]] — **Hostile**: The Republic shelters everyone the Cathedral Court wants back, publishes their accounts of what was done to them, and shares a border with the nation it is doing this to
     - [[Elven Confederacy]] — **Hostile**: Inquisitorial companies burning grove-shrines on the Confederacy's southern edge, on the doctrine that a faith without a named god is a faith with something to hide
-    - [[Tessine]] — **Hostile**: Half the Cathedral Court's condemned live on Tessine deposits, and the Signory has never once honoured an extradition writ. Dalstan has stopped sending them and started sending other people
-    - [[Thesal Theocracy]] — **Hostile**: One church, four hundred years ago, and one border now. Zon-Kuthon's court calls Sarenrae's mercy a heresy that makes suffering meaningless; Thesal calls the Cathedral Court a business. Both are claiming the same inheritance and neither will use the other's name for it — see [[The Sundering of the Concord]]
-    - [[Lazarian Lichdom]] — **Covert**: The Cathedral Court condemns undeath from a gilded pulpit and sources its relics from Lazarian grave-fields, through factors who are burned if they are ever named. Every one of those relics was Concord property before it was anybody's, so both schismatics are quietly buying back their own inheritance — around the third of them that would seize the lot
+    - [[Tessine]] — **Hostile**: Half the Cathedral Court's condemned live on Tessine deposits, and the Signory has never once honoured an extradition writ. …
+    - [[Thesal Theocracy]] — **Hostile**: One church, four hundred years ago, and one border now. …
+    - [[Lazarian Lichdom]] — **Covert**: The Cathedral Court condemns undeath from a gilded pulpit and sources its relics from Lazarian grave-fields, through factors who are burned if they are ever named. …

@@ -73,6 +73,9 @@ def main():
     for path in notes():
         by_name.setdefault(os.path.splitext(os.path.basename(path))[0], []).append(path)
 
+    # 5+6 need a second pass, so collect as we go
+    inbound = {os.path.splitext(os.path.basename(p))[0]: 0 for p in notes()}
+
     n_links = 0
     for path in sorted(notes()):
         rel = os.path.relpath(path, REPO)
@@ -114,6 +117,38 @@ def main():
                 n_links += 1
                 if target not in by_name:
                     problems.append(f'{rel}:{i}: [[{target}]] resolves to no note')
+                else:
+                    stem_t = target.split('/')[-1]
+                    if stem_t != stem and stem_t in inbound:
+                        inbound[stem_t] += 1
+
+    # 5. A note nothing links to. It renders, it is in the tree, and it is
+    # unreachable from any other note and isolated in the graph — which is the
+    # whole point of a vault. campaign/README.md is exempt: it is the site's
+    # default route, so it is reachable without a link.
+    for path in sorted(notes()):
+        stem = os.path.splitext(os.path.basename(path))[0]
+        rel = os.path.relpath(path, REPO)
+        if rel == os.path.join('campaign', 'README.md'):
+            continue
+        if inbound.get(stem, 0) == 0:
+            problems.append(f'{rel}: nothing links to this note — it is reachable '
+                            f'only through the file tree and is isolated in the graph')
+
+    # 6. A note filed under a nation that never links that nation. It reads as
+    # the nation's, sits in the nation's folder, and the graph does not join
+    # them — so the nation's own web is missing a piece with nothing to show it.
+    for path in sorted(notes()):
+        rel_c = os.path.relpath(path, CAMPAIGN)
+        parts = rel_c.split(os.sep)
+        if len(parts) != 4 or parts[0] != 'nations':
+            continue
+        nation, sub = parts[1], parts[2]
+        if sub not in ('factions', 'locations', 'npcs'):
+            continue
+        if ('[[' + nation) not in open(path, encoding='utf-8').read():
+            problems.append(f'{os.path.relpath(path, REPO)}: filed under {nation} '
+                            f'but never links [[{nation}]]')
 
     # 4. Territorial ties with no required border on the generated map
     required = set()

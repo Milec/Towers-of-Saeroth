@@ -34,10 +34,10 @@ chartered company will put its seal on.
 
 *A mercenary state gives a GM an army for hire, a rival party, and a reason
 for any two nations to escalate faster than either intended.*
-- **Relations**
-    - [[Sarrowmere]] — **Trade**: Field surgeons, antitoxins and the cultured moulds that stop a camp wound going bad. A war-trading nation buying its medicine from a nation with almost no army is a joke both of them have stopped making
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
+    - [[Sarrowmere]] — **Trade**: Field surgeons, antitoxins and the cultured moulds that stop a camp wound going bad. …
     - [[Silicar]] — **Trade**: Field kit, remount tack and the pumps that keep a camp alive, all built to the March's specification and sold to whoever the March is working for
-    - [[Tal Ulad]] — **Trade**: Remounts, fifteen thousand head a year, and the single largest movement of horses in the world. The March pays on the hoof at the summer gathering and the herd-councils have never once extended credit
+    - [[Tal Ulad]] — **Trade**: Remounts, fifteen thousand head a year, and the single largest movement of horses in the world. …
     - [[Tessine]] — **Trade**: Where the March's contracts are underwritten, insured and — when a company is destroyed on somebody else's ground — paid out
     - [[Corvane Republic]] — **Rivalry**: Two underwriting markets bidding to insure the same cargoes and the same regiments, and each publishing tables proving the other's rates are reckless
     - [[Khazan Khaganate]] — **Rivalry**: The two finest cavalry traditions alive, and the professional question of which is better has never been settled because they have never been hired onto the same field

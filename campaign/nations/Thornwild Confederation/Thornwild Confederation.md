@@ -24,9 +24,9 @@ them.
 - **Reputation** Wild, fiercely loyal to their own, and dangerously easy to underestimate
 - **Faith** The [[Green Faith]] rather than any named patron — the Thornwild reveres the living world directly, and finds the idea of a god who lives elsewhere faintly absurd. [[Gozreh]] is the exception most clans will name, invoked for storm and beast alike
 - **Tension** Two clans want to answer [[Kesmarch Frontier]]'s encroachment with blood and the rest want to wait, and Rootmeet has adjourned twice without deciding
-- **Relations**
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Aquoniti]] — **Friendly**: Gozreh is the one god both nations name — storm and beast being the same power, seen from a boat or from the canopy
-    - [[Ashkar Pale]] — **Friendly**: When the mountain goes, the Pale evacuates into Thornwild canopy, and has done for six recorded falls. The Circle asks nothing for it beyond warning, which the Pale's wardens give better than anyone alive
+    - [[Ashkar Pale]] — **Friendly**: When the mountain goes, the Pale evacuates into Thornwild canopy, and has done for six recorded falls. …
     - [[Sahenna Compact]] — **Trade**: Dyed cloth and salt for jungle medicinals and pelts, traded clan to clan without either nation's council involved
     - [[Thesal Theocracy]] — **Trade**: Jungle medicinals — the Circle sells what the hospices cannot grow, and has never allowed a Thesal expedition to collect it directly
     - [[Thurion Merchant Alliance]] — **Trade**: Venom, pelts and canopy timber, at the two coastal factories the Circle permits and nowhere else

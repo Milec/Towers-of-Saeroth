@@ -7,8 +7,8 @@ holds: The mother-aerie of the [[Drake Rider Order]]
 tenure: Imperial ground — no elector's land, by charter
 ---
 
-The mother-aerie of the [[Drake Rider Order]], cut into the granite above the
-Sallow Gate, high enough that the drakes launch downhill and the supply trains
+The mother-aerie of the [[Drake Rider Order]], cut into the granite of the
+[[Vaelic Principality]]'s eastern range above the Sallow Gate, high enough that the drakes launch downhill and the supply trains
 come up switchbacks in four stages. It is where the Trial is held, where every
 bond is made, and where the Grand Marshal sits when he is not at the Diet.
 

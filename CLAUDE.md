@@ -98,8 +98,11 @@ link at all, and invisible to every other check), an aliased `[[note|alias]]`
 inside a markdown table row (the `|` ends the cell, so the link renders as
 literal bracket text and the row grows a phantom column — use the plain form
 in tables), wikilinks resolving to no note, a filename that has drifted from
-its own title, and a **Territorial** tie between nations
-`tools/mapgen/world.js` never requires a border for. That last
+its own title, a note **nothing links to** (it renders, it is in the tree, and
+it is isolated in the graph — `campaign/README.md` is exempt as the default
+route), a note **filed under a nation that never links that nation**, and a
+**Territorial** tie between nations `tools/mapgen/world.js` never requires a
+border for. That last
 one is how Thurigypt was found sitting on the wrong continent from the nations
 its own notes tie it to.
 
@@ -157,6 +160,14 @@ The table is the source of truth. Its own first line claims the relationships
 are "drawn from the Relations bullet on each nation's own note", which is only
 true if the notes actually agree with it — so never hand-edit a nation's
 Relations bullet, and never add a row to the table and stop there.
+
+**The nation note carries the gist, not the whole entry.** `sync_relations.py`
+writes one line per tie — the standing and the row's *lead sentence*, with a
+trailing `…` where there was more — and links [[Political Relations]] for the
+rest. Carrying every row in full put 50 KB of verbatim duplicate prose across
+the 28 notes, 40% of their total size, and made a nation note something you
+scrolled rather than read. Write the table row so its **first sentence stands
+alone**, because that sentence is what 28 other notes will show.
 
 **The workflow, every time:**
 

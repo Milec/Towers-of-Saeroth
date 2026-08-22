@@ -23,10 +23,10 @@ fearsome warriors who keep their word.
 - **Reputation** Fearsome warriors, surprisingly honorable
 - **Faith** Patron [[Gorum]], who cares only that a fight was fought well — war-bands ride under his sign. [[Desna]] is the other half of Khazan devotion: goddess of stars and the open road, and every nomad navigates by her
 - **Tension** The Great Khagan is old and has named no favorite; the khans are already counting each other's riders
-- **Relations**
-    - [[Nordheim]] — **Friendly**: Two warrior codes that have never had cause to test each other, an ocean apart. Envoys exchange gifts, drink, and a great deal of mutual professional respect, and both sides privately consider the arrangement improved by the distance
-    - [[Thurion Merchant Alliance]] — **Trade**: Mercenary contracts, brokered and insured. A Khazan lance turns up on whichever side of somebody else's war paid more, and the Alliance takes its percentage of both
+- **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
+    - [[Nordheim]] — **Friendly**: Two warrior codes that have never had cause to test each other, an ocean apart. …
+    - [[Thurion Merchant Alliance]] — **Trade**: Mercenary contracts, brokered and insured. …
     - [[Kelvary March]] — **Rivalry**: The two finest cavalry traditions alive, and the professional question of which is better has never been settled because they have never been hired onto the same field
-    - [[Thurigypt]] — **Friction**: Khazan outriders watering their herds at the delta canals in the dry season. The Pharaoh's spearmen escort them out every year and no one has yet been killed doing it
-    - [[Kesmarch Frontier]] — **Territorial**: Homestead charters issued across ground the Khagan's riders have grazed unchallenged for generations. The frontier marshals ride patrols they cannot enforce and the outriders come anyway
-    - [[Xian Ti]] — **Territorial**: The wall, and everything on both sides of it. The oldest continuous military frontier in the world
+    - [[Thurigypt]] — **Friction**: Khazan outriders watering their herds at the delta canals in the dry season. …
+    - [[Kesmarch Frontier]] — **Territorial**: Homestead charters issued across ground the Khagan's riders have grazed unchallenged for generations. …
+    - [[Xian Ti]] — **Territorial**: The wall, and everything on both sides of it. …
