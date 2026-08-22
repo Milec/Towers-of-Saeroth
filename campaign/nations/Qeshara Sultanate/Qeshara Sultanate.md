@@ -3,6 +3,7 @@ title: Qeshara Sultanate
 type: nation
 theme: Trade, star-craft, and a court that argues in verse
 government: Sultan, chosen by the Court of Viziers and confirmed by the reading of the stars
+founded: c. 1120 AR
 ---
 
 A rocky highland desert threaded with oasis valleys and incense groves, ruled
@@ -25,7 +26,7 @@ Viziers finds hardest to dispute.
   bound to guard the great caravanserai rather than the field
 - **Government** A Sultan chosen by the Court of Viziers from among the
   great caravan-houses, and confirmed by the reading of the stars
-- **Founded** On a reading of the stars that said a city belonged here, commissioned by a caravan-master who had every commercial reason to want one. Both accounts are taught, in that order, and the Court of Viziers considers the tension between them instructive.
+- **Founded** c. 1120 AR, on a reading of the stars that said a city belonged here, commissioned by a caravan-master who had every commercial reason to want one. Both accounts are taught, in that order, and the Court of Viziers considers the tension between them instructive.
 - **History** Too far from the [[The Two-Crown War|Two-Crown War]] to be in it and too well-placed not to profit by it. Qeshara acceded to the [[The Pilgrim's Peace|Pilgrim's Peace]] by letter and is one of two signatories never to have had a matter before the Concord Table.
 - **Reputation** Cosmopolitan, mercantile, and famously difficult to
   out-haggle

@@ -3,6 +3,7 @@ title: Sarrowmere
 type: nation
 theme: Physic and poison
 government: Confederation of fen cantons
+founded: c. 1240 AR
 ---
 
 Sarrowmere is a country of standing water and very good doctors. Its cantons
@@ -18,7 +19,7 @@ the suspicion useful and resent it simultaneously.
 - **Economic Specialties** Medicines, antitoxins, surgical work, rare fen reagents, leeches and cultured moulds, punts and shallow-draft boats
 - **Military** Almost none in the open field; the fen is the defence, and canton levies who know the channels have drowned two invasions without a pitched battle
 - **Government** A confederation of eleven cantons, each governed by its physicians' guild, meeting four times a year and agreeing on very little
-- **Founded** Eleven cantons that have never agreed on anything except that no one of them should speak for the others. The Confederation is the minimum arrangement required to sell physic abroad, and it has never been asked to do more.
+- **Founded** c. 1240 AR, by eleven cantons that have never agreed on anything except that no one of them should speak for the others. The Confederation is the minimum arrangement required to sell physic abroad, and it has never been asked to do more.
 - **History** Invaded twice and drowned two invasions, neither time with a pitched battle. The second was an Ostravin column in the [[The Two-Crown War|Two-Crown War]], trying to turn the Reichsmund flank through the fen; the fen took it in nine days. Sarrowmere sold to both sides throughout and treated the survivors of both, which is the fen cantons' entire foreign policy stated once.
 - **Reputation** Skilled, indispensable, and never entirely trusted at dinner
 - **Faith** [[Pharasma]] above all — the goddess of birth and death is the patron of a nation that presides over both professionally. [[Milani]] is kept by the canton physicians who treat whoever arrives, whatever they have done

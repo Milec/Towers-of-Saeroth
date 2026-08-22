@@ -3,6 +3,7 @@ title: Tal Ulad
 type: nation
 theme: Herds and horizons
 government: Herd-councils under a Season-Speaker
+founded: No date. The route is older than the count
 ---
 
 Tal Ulad is a nation that moves. Its people follow the herds across the
@@ -20,7 +21,7 @@ left alone on both.
 - **Economic Specialties** Horses above all, and cattle, wool, felt, hard cheese, leatherwork, and safe passage sold to caravans crossing the uplands
 - **Military** Every adult rides and shoots; no standing army and no need of one, since nothing on the uplands can be caught by anything on foot
 - **Government** Herd-councils of the families sharing a route, with a Season-Speaker elected at the spring gathering to speak for all of them until the next
-- **Founded** There is no founding, and the herd-councils consider the question rude. The route is older than the councils; the councils exist to argue about the route.
+- **Founded** no date, and the herd-councils consider the question rude. The route is older than the councils; the councils exist to argue about the route.
 - **History** Sold remounts to both sides of the [[The Two-Crown War|Two-Crown War]] without joining either, which remains the Ulad position on every settled people's quarrel since. The one modern grievance is a plough across the spring route, and it is at the Concord Table this cycle for the first time.
 - **Reputation** Proud, hospitable, and utterly immovable about the route
 - **Faith** [[Gozreh]] for the weather that decides everything, and [[Desna]] for the road and the stars they navigate it by. [[Erastil]] is kept by the winter camps alone

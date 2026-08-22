@@ -3,6 +3,7 @@ title: Kelvary March
 type: nation
 theme: War as a trade
 government: Chartered companies and a Muster Court
+founded: c. 1560 AR as a march; c. 2116 as a trade
 ---
 
 Kelvary sells soldiers. Not levies raised in an emergency — standing
@@ -25,7 +26,7 @@ chartered company will put its seal on.
 - **Economic Specialties** Contract regiments, officer training, remounts, armour and field kit, and a genuinely sophisticated insurance market covering the whole business
 - **Military** Twenty-odd chartered companies, the best drilled on the continent — and, by charter, never more than four of them at home at once
 - **Government** A Muster Court of company captains and paymasters that regulates contracts, arbitrates disputes, and governs the March almost as an afterthought
-- **Founded** Began as a border march that was never garrisoned properly and started renting the garrison out instead. The Muster Court is the old march-warden's court with the warden removed and the accountants left in.
+- **Founded** c. 1560 AR as a border march that was never garrisoned properly and started renting the garrison out instead. The Muster Court is the old march-warden's court with the warden removed and the accountants left in.
 - **History** Ambry Ford, in the eighth year of the [[The Two-Crown War|Two-Crown War]]: two chartered companies, both Kelvary, both properly sealed, recognised each other across a ford and fought for eleven hours anyway. Harrowgate buried both in one season and has not chartered opposite sides of the same conflict since. It refused every charter offered for [[The Delta War]] on a separate principle — Kelvary does not sell regiments against the Lichdom, because Kelvary's dead do not stay sold.
 - **Reputation** Reliable, expensive, and morally exhausting to deal with
 - **Faith** [[Gorum]] for the fighting and [[Abadar]] for the contract, kept in the same building and argued about constantly. The March has never resolved which of them the oath is actually sworn to

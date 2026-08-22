@@ -3,6 +3,7 @@ title: Stoneborn Holds
 type: nation
 theme: Endurance and craftsmanship
 government: Assembly of High Thanes
+founded: c. 310 AR by the surface reckoning; the Holds say they were never closed
 ---
 
 Honor, family, and craftsmanship define every hold. A Stoneborn dwarf's
@@ -16,7 +17,7 @@ last of its kind; it's meant to be inherited.
 - **Economic Specialties** Steel, gold, gems, engineering, masterwork weapons
 - **Military** Heavy infantry, shield walls, tunnel fighters, engineers
 - **Government** Assembly of High Thanes
-- **Founded** Not founded; excavated. The Assembly of High Thanes is a standing arrangement between holds that were old before the first surface kingdom was chartered, and its capital has never been anything other than whichever hold is deepest.
+- **Founded** c. 310 AR by everyone else's reckoning. Not founded; excavated. The Assembly of High Thanes is a standing arrangement between holds that were old before the first surface kingdom was chartered, and its capital has never been anything other than whichever hold is deepest.
 - **History** Stood with Reichsmund and fought the only unambiguous siege of the [[The Two-Crown War|Two-Crown War]], at a hold that did not fall and has the ram still leaning against the gate as a matter of policy. Its quarrel with the [[Undertide Reaches]] over the same mountain is nine centuries old and has been before the Concord Table eighteen times.
 - **Reputation** Unbreakable and dependable
 - **Faith** Patron [[Torag]], honored in every forge-hall as the maker who never stops working. [[Magrim]] receives the dead and the oaths that outlive them; the human merchant quarters keep [[Abadar]] instead, which the thanes tolerate as a trade concession

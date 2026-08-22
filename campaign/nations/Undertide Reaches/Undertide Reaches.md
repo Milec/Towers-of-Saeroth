@@ -3,6 +3,7 @@ title: Undertide Reaches
 type: nation
 theme: Subterranean survival and secrets
 government: Warden-Conclave of the Deep Holds
+founded: Disputed. Surface records begin c. 860 AR; the Reaches say long before the count
 ---
 
 Nothing survives the Undertide by accident. Every hold is built around a
@@ -19,7 +20,7 @@ what actually lives down here.
 - **Culture** Information is currency, and everyone assumes everyone else is holding out. A Warden's authority rests entirely on knowing things no rival Warden does.
 - **Military** Tunnel ambush corps, construct sentinels, fungal beast handlers, deep scouts
 - **Government** Warden-Conclave of the Deep Holds
-- **Founded** The Warden-Conclave predates every claim made about it, including its own. What the Reaches say is that the deep holds were settled by people going down rather than out, and that the surface's dates for this are wrong.
+- **Founded** c. 860 AR, if you believe the surface. The Warden-Conclave predates every claim made about it, including its own. What the Reaches say is that the deep holds were settled by people going down rather than out, and that the surface's dates for this are wrong.
 - **History** Fought nobody in the [[The Two-Crown War|Two-Crown War]] and sold each side everything it knew about the other. Nearly every covert arrangement the Conclave holds today began as a wartime one that nobody thought to cancel.
 - **Reputation** Secretive, self-sufficient, and unnervingly hard to surprise
 - **Faith** Patron [[Norgorber]], god of secrets — an unsettlingly literal fit for a nation whose currency is information. [[Pharasma]] is kept in the deepest holds, where the dead are numerous and very old

@@ -3,6 +3,7 @@ title: Vaelic Principality
 type: nation
 theme: Law and chivalry
 government: High Prince, elected for life by a Diet of seven Elector Princes
+founded: c. 1440 AR
 ---
 
 Duty, law, and noble obligation define Vaelic society. Knights and judges
@@ -24,7 +25,7 @@ included, lives under local lords' law with no path upward.
 - **Economic Specialties** Grain, wool, steel, fine armor, horses
 - **Military** Longbowmen, heavy cavalry, men-at-arms, castle engineers, and the [[Drake Rider Order]] — an Imperial institution answering to the High Prince directly, outside the conventional chain of command
 - **Government** A **High Prince**, elected for life by seven **Elector Princes** at a Diet convened on the old Prince's death or abdication: five territorial houses ([[House Dravensk]], [[House Kesslin]], [[House Thornwycke]], [[House Hallcrest]], [[House Aldreich]]) plus two non-hereditary seats, the High Judiciar ([[Edmure Voss]]) and Marshal-Elector ([[Petra Halvard]]). Roughly 30 territorial nobles and a dozen self-governing Free Cities fill out the Diet beyond the electors; local rule is otherwise left entirely to the landed nobility.
-- **Founded** When its first High Prince used the newly-created [[Drake Rider Order]] to bring the other electorates under one crown, then bound the Order's oath to the office rather than his bloodline — the concession that makes the Order's throne-eligible Grand Marshal seat, and Vaelic's whole meritocratic side-door, possible.
+- **Founded** c. 1440 AR, when its first High Prince used the newly-created [[Drake Rider Order]] to bring the other electorates under one crown, then bound the Order's oath to the office rather than his bloodline — the concession that makes the Order's throne-eligible Grand Marshal seat, and Vaelic's whole meritocratic side-door, possible.
 - **History** The [[The Two-Crown War|Two-Crown War]] began in Vaelic's own Diet chamber, over a deadlocked election and a snowed-in pass, and ended eleven years later at Concord with a third man elected who nobody had proposed. Vaelic lost a hundred miles of southern frontier to the [[Lazarian Lichdom]] during the nine years the [[Drake Rider Order]] stood down for want of an office to serve, and has never got it back. The Order's present form was written afterwards, by people arguing about those nine years, and [[House Kesslin]] is arguing about them still.
 - **Reputation** Reliable allies, slow to change
 - **Faith** Patron [[Iomedae]], whose code of honorable valor underpins the knightly orders and the Drake Riders' oath alike. [[Abadar]] is the judiciary's god and nearly co-equal in the cities; [[Torag]] is kept by the castle engineers and armorers

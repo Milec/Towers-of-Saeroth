@@ -3,6 +3,7 @@ title: Melisor Magocracy
 type: nation
 theme: Arcane supremacy
 government: Council of Archmages
+founded: c. 2190 AR; the first academy, c. 2010
 ---
 
 Knowledge is the highest virtue in Melisor. Academic achievement determines
@@ -22,7 +23,7 @@ of the working — which has left the discipline to duellists like
 - **Economic Specialties** Spellcasting services, enchanted items, magical education, teleportation networks, alchemy, magical research
 - **Military** Battle mages, arcane artillery, summoners, golems, elite mage hunters
 - **Government** Council of Archmages representing the greatest magical academies
-- **Founded** As a single academy that annexed its own hinterland to stop being taxed by it. The Council of Archmages is the original faculty board and has never entirely stopped behaving like one.
+- **Founded** c. 2190 AR, when a single academy annexed its own hinterland to stop being taxed by it. The academy itself dates to c. 2010. The Council of Archmages is the original faculty board and has never entirely stopped behaving like one.
 - **History** Sold arcane artillery and weather to both sides of the [[The Two-Crown War|Two-Crown War]] through separately incorporated academies, and has never apologised for it. The Council's modern horror of ruling on anything dates precisely from the two decades of recrimination that followed.
 - **Reputation** Arrogant, brilliant, indispensable
 - **Faith** Patron [[Nethys]], god of magic in all its forms, whose temple sits at the centre of every academy campus. [[Irori]] is the scholar's second god here — self-perfection through study is how Melisor justifies its own hierarchy

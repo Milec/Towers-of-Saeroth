@@ -3,6 +3,7 @@ title: Khazan Khaganate
 type: nation
 theme: Martial conquest
 government: Great Khagan elected by the assembled khans
+founded: c. 740 AR
 ---
 
 Strength earns respect, but leadership also requires wisdom. Tribal loyalty
@@ -17,7 +18,7 @@ fearsome warriors who keep their word.
 - **Economic Specialties** Iron, livestock, horses, mercenary companies, leatherworking, mining
 - **Military** Massive cavalry, wolf riders, heavy infantry, siege beasts, monster auxiliaries
 - **Government** Great Khagan elected by the assembled khans
-- **Founded** By the first Khagan to make the khans elect rather than fight for it. The Khaganate is an agreement about succession before it is anything else, and it is the only such agreement on the steppe that has ever held.
+- **Founded** c. 740 AR, by the first Khagan to make the khans elect rather than fight for it. The Khaganate is an agreement about succession before it is anything else, and it is the only such agreement on the steppe that has ever held.
 - **History** Was offered money by both crowns in the [[The Two-Crown War|Two-Crown War]] and took neither. Declined to sign the [[The Pilgrim's Peace|Pilgrim's Peace]] outright, on the grounds that the Khagan does not sign what he does not intend to keep — which the signatories found insulting at the time and have since come to regard as the most honest answer anybody gave.
 - **Reputation** Fearsome warriors, surprisingly honorable
 - **Faith** Patron [[Gorum]], who cares only that a fight was fought well — war-bands ride under his sign. [[Desna]] is the other half of Khazan devotion: goddess of stars and the open road, and every nomad navigates by her

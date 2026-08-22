@@ -22,36 +22,40 @@ with no army and no territory of its own reads as a faction, not a
 sovereign power, so it now lives in `campaign/factions/` instead — see
 [[Ninefold Sanctum]] there for what it actually is.
 
-| Nation | Primary Theme |
-| --- | --- |
-| [[Melisor Magocracy]] | Arcane supremacy |
-| [[Khazan Khaganate]] | Martial conquest |
-| [[Vaelic Principality]] | Law and chivalry |
-| [[Elven Confederacy]] | Ancient traditions |
-| [[Stoneborn Holds]] | Endurance and craftsmanship |
-| [[Silicar]] | Innovation and agriculture |
-| [[Thesal Theocracy]] | Faith and compassion |
-| [[Lazarian Lichdom]] | Undeath and forbidden knowledge |
-| [[Xian Ti]] | Harmony and bureaucracy |
-| [[Aquoniti]] | Mastery of the seas |
-| [[Thurigypt]] | Strength through life |
-| [[Thurion Merchant Alliance]] | Commerce above all |
-| [[Quivar]] | Culture and espionage |
-| [[Nordheim]] | Honor and resilience |
-| [[Dalstan]] | Zealotry and opulence |
-| [[Undertide Reaches]] | Subterranean survival and secrets *(new)* |
-| [[Cindral Ashlands]] | Elemental fire and forging *(new)* |
-| [[Thornwild Confederation]] | Primal instinct and beast-kinship *(new)* |
-| [[Corvane Republic]] | Liberty and self-governance *(new)* |
-| [[Kesmarch Frontier]] | Settlement and self-reliance *(new)* |
-| [[Voskreld Union]] | Unity through integration *(new)* |
-| [[Ashkar Pale]] | Endurance in the ash *(minor)* |
-| [[Sarrowmere]] | Physic and poison *(minor)* |
-| [[Kelvary March]] | War as a trade *(minor)* |
-| [[Tessine]] | Refuge and revenue *(minor)* |
-| [[Tal Ulad]] | Herds and horizons *(minor)* |
-| [[Sahenna Compact]] | Clans, caravans, and memory kept without ink *(new)* |
-| [[Qeshara Sultanate]] | Trade, star-craft, and a court that argues in verse *(new)* |
+Ordered oldest first, and dated in **AR** — the reckoning explained in
+[[Ages of Saeroth]]. The present year is 2376 AR. Two of these dates are
+disputed by the nation itself, which is noted where it happens.
+
+| Nation | Founded | Primary Theme |
+| --- | --- | --- |
+| [[Tal Ulad]] | Older than the count | Herds and horizons *(minor)* |
+| [[Elven Confederacy]] | c. 180 | Ancient traditions |
+| [[Stoneborn Holds]] | c. 310 *(disputed)* | Endurance and craftsmanship |
+| [[Thurigypt]] | c. 420 | Strength through life |
+| [[Xian Ti]] | c. 600 | Harmony and bureaucracy |
+| [[Khazan Khaganate]] | c. 740 | Martial conquest |
+| [[Undertide Reaches]] | c. 860 *(disputed)* | Subterranean survival and secrets *(new)* |
+| [[Quivar]] | c. 900 | Culture and espionage |
+| [[Ashkar Pale]] | c. 940 | Endurance in the ash *(minor)* |
+| [[Sahenna Compact]] | c. 1010 | Clans, caravans, and memory kept without ink *(new)* |
+| [[Thornwild Confederation]] | c. 1090 | Primal instinct and beast-kinship *(new)* |
+| [[Qeshara Sultanate]] | c. 1120 | Trade, star-craft, and a court that argues in verse *(new)* |
+| [[Cindral Ashlands]] | c. 1150 | Elemental fire and forging *(new)* |
+| [[Nordheim]] | c. 1180 | Honor and resilience |
+| [[Sarrowmere]] | c. 1240 | Physic and poison *(minor)* |
+| [[Aquoniti]] | c. 1290 | Mastery of the seas |
+| [[Tessine]] | c. 1330, refounded 2316 | Refuge and revenue *(minor)* |
+| [[Thurion Merchant Alliance]] | c. 1410 | Commerce above all |
+| [[Vaelic Principality]] | c. 1440 | Law and chivalry |
+| [[Kelvary March]] | c. 1560 | War as a trade *(minor)* |
+| [[Voskreld Union]] | c. 1700 | Unity through integration *(new)* |
+| [[Corvane Republic]] | c. 1820 | Liberty and self-governance *(new)* |
+| [[Thesal Theocracy]] | 1976 | Faith and compassion |
+| [[Dalstan]] | 1976 | Zealotry and opulence |
+| [[Lazarian Lichdom]] | 1976 | Undeath and forbidden knowledge |
+| [[Silicar]] | c. 2060 | Innovation and agriculture |
+| [[Melisor Magocracy]] | c. 2190 | Arcane supremacy |
+| [[Kesmarch Frontier]] | 2317 | Settlement and self-reliance *(new)* |
 
 Each nation note carries its own **Relations** bullet pointing at the
 nations it borders, trades with, or resents — follow those links, or open
