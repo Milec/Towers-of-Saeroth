@@ -118,6 +118,12 @@ other than prose. `view: relations` on `nations/Political Relations.md` turns
 that note's own markdown table into an interactive force-directed web of the
 nations — filter by standing, tap a nation for its ledger, drag to untangle.
 
+`view: nation` is on all 28 nation notes: the profile bullets render as one
+uniform two-column table and the ties as a table with coloured standing tags.
+Keep writing them as `- **Field** value` bullets — that is what the view reads,
+and a bullet is the only safe place for a value containing `[[Human|Humans]]`,
+whose pipe would end a real table cell.
+
 The rule that makes this worth doing: **the markdown stays the single source of
 truth.** The view parses the note's *own* table rather than carrying a second
 copy of the data, so the note still reads correctly here and on GitHub, and

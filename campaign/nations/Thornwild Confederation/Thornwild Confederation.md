@@ -4,6 +4,7 @@ type: nation
 theme: Primal instinct and beast-kinship
 government: The Circle of First Packs — one voice per founding clan-lineage
 founded: c. 1090 AR, at the first Rootmeet
+view: nation
 ---
 
 The Thornwild doesn't distinguish between civilization and wilderness the
@@ -12,17 +13,17 @@ rather than clearing it. Clan-kinship extends to totem beasts as readily as
 to blood relatives, and a stranger is judged first by which animals trust
 them.
 
+- **Founded** c. 1090 AR, at the first Rootmeet. The Circle of First Packs is a list of founding lineages, not a constitution. The Confederation is however many clans answer the call to Rootmeet in a given generation, and that number has changed twice in living memory.
 - **Capital** None; the Circle of First Packs meets at Rootmeet, a canopy platform grown rather than built, at the turn of each season
 - **Geography** Dense southern jungle worked in three layers — forest floor, canopy settlement, and the river routes that connect them
-- **Races** [[Catfolk|Catfolk]], [[Gnoll|Gnolls]], [[Ratfolk|Ratfolk]], [[Vanara|Vanara]], [[Kholo|Kholo]], [[Grippli|Grippli]]
-- **Economic Specialties** Jungle medicinals, exotic pelts, beast-tamed livestock, canopy timber, venom and toxin trade
-- **Culture** Instinct is trusted over doctrine. Clan bonds run through shared totem-kinship as much as bloodline, and a Thornwild elder's authority rests on the respect of the beasts as much as the people.
-- **Military** Beast-bonded skirmishers, canopy archers, totem-warriors, venom scouts
 - **Government** The Circle of First Packs — one voice per founding clan-lineage
-- **Founded** c. 1090 AR, at the first Rootmeet. The Circle of First Packs is a list of founding lineages, not a constitution. The Confederation is however many clans answer the call to Rootmeet in a given generation, and that number has changed twice in living memory.
+- **Races** [[Catfolk|Catfolk]], [[Gnoll|Gnolls]], [[Ratfolk|Ratfolk]], [[Vanara|Vanara]], [[Kholo|Kholo]], [[Grippli|Grippli]]
+- **Culture** Instinct is trusted over doctrine. Clan bonds run through shared totem-kinship as much as bloodline, and a Thornwild elder's authority rests on the respect of the beasts as much as the people.
+- **Faith** The [[Green Faith]] rather than any named patron — the Thornwild reveres the living world directly, and finds the idea of a god who lives elsewhere faintly absurd. [[Gozreh]] is the exception most clans will name, invoked for storm and beast alike
+- **Economic Specialties** Jungle medicinals, exotic pelts, beast-tamed livestock, canopy timber, venom and toxin trade
+- **Military** Beast-bonded skirmishers, canopy archers, totem-warriors, venom scouts
 - **History** Has never fought a foreign war and has never stopped fighting on its own northern edge. The Circle was not asked to sign the [[The Pilgrim's Peace|Pilgrim's Peace]] and did not learn the Concord Table existed until a [[Kesmarch Frontier]] surveyor cited it at them, which is a fact the clans that want blood have never had to stop repeating.
 - **Reputation** Wild, fiercely loyal to their own, and dangerously easy to underestimate
-- **Faith** The [[Green Faith]] rather than any named patron — the Thornwild reveres the living world directly, and finds the idea of a god who lives elsewhere faintly absurd. [[Gozreh]] is the exception most clans will name, invoked for storm and beast alike
 - **Tension** Two clans want to answer [[Kesmarch Frontier]]'s encroachment with blood and the rest want to wait, and Rootmeet has adjourned twice without deciding
 - **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Aquoniti]] — **Friendly**: Gozreh is the one god both nations name — storm and beast being the same power, seen from a boat or from the canopy

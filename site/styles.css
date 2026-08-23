@@ -555,3 +555,47 @@ body {
 /* Which cache version this device is actually being served. Only useful when
    something looks wrong, so it stays out of the way until you look for it. */
 .build { color: var(--muted); font-size: 11.5px; padding: 14px 12px 4px; margin: 0; opacity: .65; }
+
+/* ----------------------------------------------------------- nation view
+   `view: nation`. One shape for all 28: a two-column profile above a table of
+   ties. Rules rather than boxes — a bordered grid round paragraph-length
+   values reads as a spreadsheet, which these are not. */
+.content .nat, .content .nat-rel { border-collapse: collapse; width: 100%; margin: 0 0 26px; display: table; }
+.content .nat th, .content .nat td,
+.content .nat-rel th, .content .nat-rel td {
+  border: 0; border-bottom: 1px solid var(--rule);
+  padding: 10px 12px 10px 0; text-align: left; vertical-align: top; background: none;
+}
+.content .nat tr:last-child th, .content .nat tr:last-child td,
+.content .nat-rel tr:last-child td { border-bottom: 0; }
+.content .nat th {
+  width: 9.5em; white-space: nowrap; color: var(--muted);
+  font-weight: 600; font-size: 13px; letter-spacing: .03em;
+  text-transform: uppercase; padding-top: 13px;
+}
+.content .nat td > :first-child { margin-top: 0; }
+.content .nat td > :last-child { margin-bottom: 0; }
+
+.nat-relhead { font-size: 1.35em; margin: 1.6em 0 .5em; }
+.nat-relsub { display: block; font-size: .58em; font-weight: 400; color: var(--muted); letter-spacing: 0; margin-top: 3px; }
+.content .nat-rel thead th {
+  color: var(--muted); font-size: 12px; text-transform: uppercase;
+  letter-spacing: .04em; font-weight: 600; border-bottom: 1px solid var(--rule);
+}
+.content .nat-rel .nat-who { width: 13em; font-weight: 600; }
+.content .nat-rel .nat-how { width: 7.5em; }
+.content .nat-rel .nat-what { color: var(--ink); }
+
+@media (max-width: 720px) {
+  /* a nowrap label column plus a paragraph is unreadable at 390px, so the
+     label goes above its value and the tie header row goes away entirely */
+  .content .nat th, .content .nat td { display: block; width: auto; padding: 0; }
+  .content .nat th { border-bottom: 0; padding-top: 14px; }
+  .content .nat td { padding-bottom: 12px; }
+  .content .nat-rel thead { display: none; }
+  .content .nat-rel tr { display: block; border-bottom: 1px solid var(--rule); padding: 11px 0; }
+  .content .nat-rel tr:last-child { border-bottom: 0; }
+  .content .nat-rel td { display: inline; width: auto; border: 0; padding: 0; }
+  .content .nat-rel .nat-what { display: block; margin-top: 5px; }
+  .content .nat-rel .nat-how { margin-left: 7px; }
+}

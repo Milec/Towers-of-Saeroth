@@ -4,6 +4,7 @@ type: nation
 theme: Law and chivalry
 government: High Prince, elected for life by a Diet of seven Elector Princes
 founded: c. 1440 AR
+view: nation
 ---
 
 Duty, law, and noble obligation define Vaelic society. Knights and judges
@@ -19,16 +20,16 @@ ancestry hierarchy: humans and half-humans are eligible for nobility and
 Imperial service; every other ancestry, [[Halfling|halflings]]
 included, lives under local lords' law with no path upward.
 
+- **Founded** c. 1440 AR, when its first High Prince used the newly-created [[Drake Rider Order]] to bring the other electorates under one crown, then bound the Order's oath to the office rather than his bloodline — the concession that makes the Order's throne-eligible Grand Marshal seat, and Vaelic's whole meritocratic side-door, possible.
 - **Capital** Reichsmund, a fortified river-city that holds the Diet and the High Prince's court
 - **Geography** Rolling grain plains and river valleys, thick with castles and walled market towns — and then, along the whole eastern frontier, mountains. Better than a fifth of the Principality is high ground: a spine of granite and snowfield standing between the grain country and the [[Lazarian Lichdom]], and only **three passes** through the whole length of it — the Marchgate west into the heartland, the Sallow Gate east to the Lichdom, and the Pilgrim's Stair north toward [[Thesal Theocracy]]. Those three are held. The range between them is not, and could not be: it is simply too large, and a country that can garrison three gates cannot garrison four hundred miles of snowfield. The heartland is flat and rich and everyone pictures Vaelic that way. The border is not, and the drake aeries are up in it, [[Drakenstein]] chief among them
+- **Government** A **High Prince**, elected for life by seven **Elector Princes** at a Diet convened on the old Prince's death or abdication: five territorial houses ([[House Dravensk]], [[House Kesslin]], [[House Thornwycke]], [[House Hallcrest]], [[House Aldreich]]) plus two non-hereditary seats, the High Judiciar ([[Edmure Voss]]) and Marshal-Elector ([[Petra Halvard]]). Roughly 30 territorial nobles and a dozen self-governing Free Cities fill out the Diet beyond the electors; local rule is otherwise left entirely to the landed nobility.
 - **Races** [[Human|Humans]] and [[Half-Elf|half-elves]]/[[Half-Orc|half-orcs]] (full legal standing), [[Halfling|Halfling]] minorities (barred from nobility and Imperial service)
+- **Faith** Patron [[Iomedae]], whose code of honorable valor underpins the knightly orders and the Drake Riders' oath alike. [[Abadar]] is the judiciary's god and nearly co-equal in the cities; [[Torag]] is kept by the castle engineers and armorers
 - **Economic Specialties** Grain, wool, steel, fine armor, horses
 - **Military** Longbowmen, heavy cavalry, men-at-arms, castle engineers, and the [[Drake Rider Order]] — an Imperial institution answering to the High Prince directly, outside the conventional chain of command
-- **Government** A **High Prince**, elected for life by seven **Elector Princes** at a Diet convened on the old Prince's death or abdication: five territorial houses ([[House Dravensk]], [[House Kesslin]], [[House Thornwycke]], [[House Hallcrest]], [[House Aldreich]]) plus two non-hereditary seats, the High Judiciar ([[Edmure Voss]]) and Marshal-Elector ([[Petra Halvard]]). Roughly 30 territorial nobles and a dozen self-governing Free Cities fill out the Diet beyond the electors; local rule is otherwise left entirely to the landed nobility.
-- **Founded** c. 1440 AR, when its first High Prince used the newly-created [[Drake Rider Order]] to bring the other electorates under one crown, then bound the Order's oath to the office rather than his bloodline — the concession that makes the Order's throne-eligible Grand Marshal seat, and Vaelic's whole meritocratic side-door, possible.
 - **History** The [[The Two-Crown War|Two-Crown War]] began in Vaelic's own Diet chamber, over a deadlocked election and a snowed-in pass, and ended eleven years later at Concord with a third man elected who nobody had proposed. Vaelic lost a hundred miles of southern frontier to the [[Lazarian Lichdom]] during the nine years the [[Drake Rider Order]] stood down for want of an office to serve, and has never got it back. The Order's present form was written afterwards, by people arguing about those nine years, and [[House Kesslin]] is arguing about them still.
 - **Reputation** Reliable allies, slow to change
-- **Faith** Patron [[Iomedae]], whose code of honorable valor underpins the knightly orders and the Drake Riders' oath alike. [[Abadar]] is the judiciary's god and nearly co-equal in the cities; [[Torag]] is kept by the castle engineers and armorers
 - **Tension** [[House Aldreich]]'s succession is unsettled and [[House Kesslin]] is quietly assembling votes against the [[Drake Rider Order]] — the next Diet will be an ugly one
 - **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Thesal Theocracy]] — **Allied**: Expressed in coin and roadwork rather than troops: the Principality endows hospices and schools in Concord, keeps the Pilgrim's Stair cleared and garrisons nothing, and the Council has twice returned an endowment that arrived with a condition attached. …
