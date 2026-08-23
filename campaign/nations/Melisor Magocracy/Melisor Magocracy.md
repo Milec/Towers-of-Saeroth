@@ -4,6 +4,7 @@ type: nation
 theme: Arcane supremacy
 government: Council of Archmages
 founded: c. 2190 AR; the first academy, c. 2010
+view: nation
 ---
 
 Knowledge is the highest virtue in Melisor. Academic achievement determines
@@ -17,16 +18,16 @@ spellblade theory — mixing the sword into the working is held to be a failure
 of the working — which has left the discipline to duellists like
 [[Ashwin Devaraj (The Drink)]], who are hired constantly and cited never.
 
+- **Founded** c. 2190 AR, when a single academy annexed its own hinterland to stop being taxed by it. The academy itself dates to c. 2010. The Council of Archmages is the original faculty board and has never entirely stopped behaving like one.
 - **Capital** Thelemar, a city of competing spires where each great academy builds upward to overlook its rivals
 - **Geography** A high plateau chosen for the ley-lines beneath it; academy-cities scattered across it, linked by teleportation circles rather than roads
+- **Government** Council of Archmages representing the greatest magical academies
 - **Races** [[Human|Humans]], [[Elf|Elves]], [[Gnome|Gnomes]], [[Tiefling|Tieflings]], [[Fetchling|Fetchlings]], any race with magical aptitude
+- **Faith** Patron [[Nethys]], god of magic in all its forms, whose temple sits at the centre of every academy campus. [[Irori]] is the scholar's second god here — self-perfection through study is how Melisor justifies its own hierarchy
 - **Economic Specialties** Spellcasting services, enchanted items, magical education, teleportation networks, alchemy, magical research
 - **Military** Battle mages, arcane artillery, summoners, golems, elite mage hunters
-- **Government** Council of Archmages representing the greatest magical academies
-- **Founded** c. 2190 AR, when a single academy annexed its own hinterland to stop being taxed by it. The academy itself dates to c. 2010. The Council of Archmages is the original faculty board and has never entirely stopped behaving like one.
 - **History** Sold arcane artillery and weather to both sides of the [[The Two-Crown War|Two-Crown War]] through separately incorporated academies, and has never apologised for it. The Council's modern horror of ruling on anything dates precisely from the two decades of recrimination that followed.
 - **Reputation** Arrogant, brilliant, indispensable
-- **Faith** Patron [[Nethys]], god of magic in all its forms, whose temple sits at the centre of every academy campus. [[Irori]] is the scholar's second god here — self-perfection through study is how Melisor justifies its own hierarchy
 - **Tension** Two academies claim the same discovery, and the Council of Archmages has stalled on ruling for a year rather than hand either one the prestige
 - **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Elven Confederacy]] — **Trade**: Magical plants to the academies. …

@@ -341,6 +341,9 @@ async function route() {
     if (fmField(fm, 'view') === 'routes') {
       mountRoutes(el, body).catch(() => { /* the table still renders */ });
     }
+    if (fmField(fm, 'view') === 'nation') {
+      try { mountNation(el); } catch (_) { /* the bullets still render */ }
+    }
     if (fmField(fm, 'view') === 'timeline') {
       try { mountTimeline(el, body); } catch (_) { /* the tables still render */ }
     }
@@ -2222,6 +2225,147 @@ async function mountRoutes(container, bodyText) {
     r.hit.addEventListener('click', () => show(routes.sel === r ? null : r));
   }
   show(null);
+}
+
+/* ------------------------------------------------------------ nation view
+   A note carrying `view: nation` has its profile bullets rendered as one
+   uniform two-column table, and its Relations sub-list as a table of ties with
+   the standing shown as the same coloured tag the relations web uses.
+
+   This is a view rather than a markdown table on purpose. 51 of the 28 nations'
+   bullet values contain a literal `|`, every one of them from an aliased
+   wikilink like `[[Human|Humans]]` — put those in a table cell and the pipe
+   ends the cell, the link renders as literal bracket text and the row grows a
+   phantom column, which is the exact failure tools/lint_notes.py checks for.
+   The bullets stay bullets in the file, so they still read correctly in
+   Obsidian and on GitHub and stay safe to edit.
+
+   It reuses the already-rendered DOM rather than re-parsing the markdown, so
+   wikilinks, statblock icons and emphasis inside a value are carried across
+   exactly as they were, with nothing resolved twice. */
+
+/* The order the fields are written in; anything unrecognised keeps its place
+   at the end rather than being dropped. */
+const NATION_FIELDS = ['Founded', 'Capital', 'Geography', 'Government', 'Races',
+  'Culture', 'Faith', 'Economic Specialties', 'Military', 'History',
+  'Reputation', 'Want', "Won't", 'Tension'];
+
+/* A cell inherits the text node that followed `</strong>`, which begins with
+   the separating space — and for a relations gist, with ": " as well. */
+function trimCell(el, drop) {
+  const first = el.firstChild;
+  if (first && first.nodeType === 3) {
+    let t = first.nodeValue.replace(/^\s+/, '');
+    if (drop) t = t.replace(/^[:—–-]\s*/, '');
+    first.nodeValue = t;
+  }
+  const last = el.lastChild;
+  if (last && last.nodeType === 3) last.nodeValue = last.nodeValue.replace(/\s+$/, '');
+}
+
+function nationRelRow(li) {
+  const link = li.querySelector('a');
+  const tag = li.querySelector('strong');
+  if (!link || !tag) return null;
+  const standing = tag.textContent.trim();
+  const key = standing.toLowerCase();
+  const tr = document.createElement('tr');
+
+  const who = document.createElement('td');
+  who.className = 'nat-who';
+  who.appendChild(link.cloneNode(true));
+
+  const how = document.createElement('td');
+  how.className = 'nat-how';
+  how.innerHTML = `<span class="rel-tag s-${STANDING_LABEL.has(key) ? key : 'trade'}">`
+                + `${escapeHtml(standing)}</span>`;
+
+  const what = document.createElement('td');
+  what.className = 'nat-what';
+  let n = tag.nextSibling;
+  while (n) { const next = n.nextSibling; what.appendChild(n); n = next; }
+  trimCell(what, true);
+
+  tr.append(who, how, what);
+  return tr;
+}
+
+function mountNation(container) {
+  /* Five of the 28 carry an italic GM line between the profile and Relations,
+     which splits the markdown into two separate lists. That line is real
+     content, so the view adapts to it rather than the notes being flattened:
+     every top-level list is scanned, and each block is replaced where it
+     stands so the note's own order survives. */
+  const rows = [];
+  let profileUl = null, rel = null;
+
+  for (const ul of [...container.querySelectorAll(':scope > ul')]) {
+    for (const li of [...ul.children]) {
+      const label = li.querySelector(':scope > strong');
+      if (!label) continue;
+      const field = label.textContent.trim();
+      const nested = li.querySelector(':scope > ul');
+      if (field === 'Relations') { if (nested) rel = { ul, li, label, nested }; continue; }
+      if (nested) continue;                 // some other nested list: leave it alone
+
+      const tr = document.createElement('tr');
+      const th = document.createElement('th');
+      th.scope = 'row';
+      th.textContent = field;
+      const td = document.createElement('td');
+      label.remove();
+      while (li.firstChild) td.appendChild(li.firstChild);
+      trimCell(td, false);
+      tr.append(th, td);
+      rows.push({ field, tr });
+      if (!profileUl) profileUl = ul;
+    }
+  }
+  if (!rows.length) return;
+
+  const at = (f) => { const i = NATION_FIELDS.indexOf(f); return i < 0 ? NATION_FIELDS.length : i; };
+  rows.sort((a, b) => at(a.field) - at(b.field));
+
+  const table = document.createElement('table');
+  table.className = 'nat';
+  const tbody = document.createElement('tbody');
+  for (const r of rows) tbody.appendChild(r.tr);
+  table.appendChild(tbody);
+
+  let relFrag = null;
+  if (rel) {
+    const ties = [...rel.nested.children].map(nationRelRow).filter(Boolean);
+    if (ties.length) {
+      const head = document.createElement('h2');
+      head.className = 'nat-relhead';
+      head.textContent = 'Relations';
+      const sub = document.createElement('span');
+      sub.className = 'nat-relsub';
+      sub.appendChild(document.createTextNode(ties.length + ' ties — in full at '));
+      const link = rel.li.querySelector(':scope > a');
+      if (link) sub.appendChild(link.cloneNode(true));
+      head.appendChild(sub);
+
+      const rt = document.createElement('table');
+      rt.className = 'nat-rel';
+      rt.innerHTML = '<thead><tr><th>Nation</th><th>Standing</th><th>In brief</th></tr></thead>';
+      const rb = document.createElement('tbody');
+      for (const t of ties) rb.appendChild(t);
+      rt.appendChild(rb);
+
+      relFrag = document.createDocumentFragment();
+      relFrag.append(head, rt);
+    }
+  }
+
+  if (relFrag && rel.ul === profileUl) {
+    const frag = document.createDocumentFragment();
+    frag.append(table, relFrag);
+    profileUl.replaceWith(frag);
+  } else {
+    profileUl.replaceWith(table);
+    if (relFrag) rel.ul.replaceWith(relFrag);
+  }
 }
 
 /* ---------------------------------------------------------------- timeline

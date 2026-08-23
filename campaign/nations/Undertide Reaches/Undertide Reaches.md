@@ -4,6 +4,7 @@ type: nation
 theme: Subterranean survival and secrets
 government: Warden-Conclave of the Deep Holds
 founded: Disputed. Surface records begin c. 860 AR; the Reaches say long before the count
+view: nation
 ---
 
 Nothing survives the Undertide by accident. Every hold is built around a
@@ -13,17 +14,17 @@ notice when a stranger is asking the wrong questions. Trust is not
 withheld out of cruelty; it's withheld because the surface has no idea
 what actually lives down here.
 
+- **Founded** c. 860 AR, if you believe the surface. The Warden-Conclave predates every claim made about it, including its own. What the Reaches say is that the deep holds were settled by people going down rather than out, and that the surface's dates for this are wrong.
 - **Capital** Sunkenhold, a warden-hold built across a chasm, reachable only by bridges that can be cut from either side
 - **Geography** A cavern network running beneath the northern mountains and well past them; the Reaches claim more territory than anyone above ground has confirmed
-- **Races** [[Duskwalker|Duskwalkers]], [[Umbral Gnome|Umbral Gnomes]], [[Kobold|Kobolds]], [[Automaton|Automatons]] (built to survive where flesh struggles)
-- **Economic Specialties** Deep-vein minerals, luminous fungus cultivation, salvaged relics, secret-keeping as a paid service, construct labor
-- **Culture** Information is currency, and everyone assumes everyone else is holding out. A Warden's authority rests entirely on knowing things no rival Warden does.
-- **Military** Tunnel ambush corps, construct sentinels, fungal beast handlers, deep scouts
 - **Government** Warden-Conclave of the Deep Holds
-- **Founded** c. 860 AR, if you believe the surface. The Warden-Conclave predates every claim made about it, including its own. What the Reaches say is that the deep holds were settled by people going down rather than out, and that the surface's dates for this are wrong.
+- **Races** [[Duskwalker|Duskwalkers]], [[Umbral Gnome|Umbral Gnomes]], [[Kobold|Kobolds]], [[Automaton|Automatons]] (built to survive where flesh struggles)
+- **Culture** Information is currency, and everyone assumes everyone else is holding out. A Warden's authority rests entirely on knowing things no rival Warden does.
+- **Faith** Patron [[Norgorber]], god of secrets — an unsettlingly literal fit for a nation whose currency is information. [[Pharasma]] is kept in the deepest holds, where the dead are numerous and very old
+- **Economic Specialties** Deep-vein minerals, luminous fungus cultivation, salvaged relics, secret-keeping as a paid service, construct labor
+- **Military** Tunnel ambush corps, construct sentinels, fungal beast handlers, deep scouts
 - **History** Fought nobody in the [[The Two-Crown War|Two-Crown War]] and sold each side everything it knew about the other. Nearly every covert arrangement the Conclave holds today began as a wartime one that nobody thought to cancel.
 - **Reputation** Secretive, self-sufficient, and unnervingly hard to surprise
-- **Faith** Patron [[Norgorber]], god of secrets — an unsettlingly literal fit for a nation whose currency is information. [[Pharasma]] is kept in the deepest holds, where the dead are numerous and very old
 - **Tension** A deep hold has sealed itself from the inside and the Warden-Conclave has voted twice not to investigate, which tells the other holds everything they need to know
 - **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Melisor Magocracy]] — **Trade**: Deep reagents and luminous fungus, sold by the Warden-Conclave at prices the academies resent and pay

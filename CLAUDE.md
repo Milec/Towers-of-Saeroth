@@ -141,6 +141,21 @@ bar cannot hide. Era colours run oldest-palest to newest-warmest via
 `--tl-b0`…`--tl-b7`, and an era past the eighth keeps the last colour rather
 than wrapping back onto the oldest.
 
+`view: nation` on all 28 `campaign/nations/<Nation>/<Nation>.md` notes renders
+the profile bullets as one uniform two-column table and the Relations sub-list
+as a table of ties, with the standing shown as the same coloured tag the
+relations web uses. **It is a view rather than markdown tables for a hard
+reason:** 51 of the 28 nations' bullet values contain a literal `|`, every one
+from an aliased wikilink like `[[Human|Humans]]`. In a table cell that pipe
+ends the cell — the link renders as literal bracket text and the row grows a
+phantom column, which is exactly what `lint_notes.py` checks for. The bullets
+stay bullets in the file, so they still read correctly in Obsidian and on
+GitHub and stay safe to edit. The view reuses the already-rendered DOM instead
+of re-parsing, so links and emphasis inside a value carry across untouched.
+Field order lives in `NATION_FIELDS`; five nations carry an italic GM line
+between the profile and Relations that splits the markdown into two lists, so
+every top-level list is scanned and each block is replaced where it stands.
+
 The rule that makes this worth doing: **the markdown stays the single source of
 truth.** The view parses the note's *own table* instead of carrying a second
 copy of the data, so the note still reads correctly in Obsidian and on GitHub,

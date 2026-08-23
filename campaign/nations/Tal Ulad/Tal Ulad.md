@@ -4,6 +4,7 @@ type: nation
 theme: Herds and horizons
 government: Herd-councils under a Season-Speaker
 founded: No date. The route is older than the count
+view: nation
 ---
 
 Tal Ulad is a nation that moves. Its people follow the herds across the
@@ -15,16 +16,16 @@ that will not simply have gone somewhere else by spring. Unlike the
 no interest whatever in conquest. They want the grass, the route, and to be
 left alone on both.
 
+- **Founded** no date, and the herd-councils consider the question rude. The route is older than the councils; the councils exist to argue about the route.
 - **Capital** None. The Season-Speaker's camp is the capital, and it is in a different place every quarter; treaties name the season rather than the place
 - **Geography** High open grassland and shallow river valleys, grazed in a four-season circuit; the only permanent structures are winter byres and burial cairns
+- **Government** Herd-councils of the families sharing a route, with a Season-Speaker elected at the spring gathering to speak for all of them until the next
 - **Races** [[Human|Humans]], [[Centaur|Centaurs]], [[Kholo]], [[Catfolk]], [[Half-Orc|Half-Orcs]], [[Gnoll|Gnolls]]
+- **Faith** [[Gozreh]] for the weather that decides everything, and [[Desna]] for the road and the stars they navigate it by. [[Erastil]] is kept by the winter camps alone
 - **Economic Specialties** Horses above all, and cattle, wool, felt, hard cheese, leatherwork, and safe passage sold to caravans crossing the uplands
 - **Military** Every adult rides and shoots; no standing army and no need of one, since nothing on the uplands can be caught by anything on foot
-- **Government** Herd-councils of the families sharing a route, with a Season-Speaker elected at the spring gathering to speak for all of them until the next
-- **Founded** no date, and the herd-councils consider the question rude. The route is older than the councils; the councils exist to argue about the route.
 - **History** Sold remounts to both sides of the [[The Two-Crown War|Two-Crown War]] without joining either, which remains the Ulad position on every settled people's quarrel since. The one modern grievance is a plough across the spring route, and it is at the Concord Table this cycle for the first time.
 - **Reputation** Proud, hospitable, and utterly immovable about the route
-- **Faith** [[Gozreh]] for the weather that decides everything, and [[Desna]] for the road and the stars they navigate it by. [[Erastil]] is kept by the winter camps alone
 - **Tension** [[Silicar]]'s irrigation works have put a plough through a stretch of the spring route, and the herd-councils are divided between negotiating, going around, and going through
 
 *Mobile, unconquerable, and holding the overland trade route — the Ulad are
