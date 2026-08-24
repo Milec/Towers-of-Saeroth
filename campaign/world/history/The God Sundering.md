@@ -160,6 +160,11 @@ child born carrying a piece of the dead god, out of a world that has been
 soaked in it for twenty-four centuries. It is not inheritance, not selection
 and not a blessing. It is the trace surfacing.
 
+**Ten in a generation, across the whole world, and four in five of those never
+focus the spark.** Everything below describes one or two people alive at a
+time. Write it that way at the table: an exemplar is not a rare kind of
+person, they are a person the world gets two or three of.
+
 The rules already say it plainly — *a spark of divine power that belongs not to
 a deity*. In Saeroth that is literally true, and the reason is that its owner
 is dead and cannot come and claim it.
@@ -187,23 +192,25 @@ murder and still cannot say who died.
 
 ### Carrying it
 
+This is the ruling, and it is yours rather than the world's, because the world
+has nowhere near enough exemplars to have worked it out.
+
 Every exemplar gets the same thing at the same weight, and it neither
 escalates nor wears off. What differs is the person underneath it, and nothing
-about the person beforehand predicts which way it goes.
+about the person beforehand predicts which way it goes. Some carry it. They
+sleep four hours, they go somewhere else for a second in the middle of a
+sentence, and they are otherwise themselves for sixty years: harder than they
+would have been, funnier than you would expect, and never once easy in the
+dark. Others come apart inside a decade, and it is less a decline than a slow
+substitution. The god's last hours take up more of the room and the person
+takes up less, until there is not much left that answers to a name.
 
-Some carry it. They sleep four hours, they go somewhere else for a second in
-the middle of a sentence, and they are otherwise themselves for sixty years:
-harder than they would have been, funnier than you would expect, and never
-once easy in the dark. Others come apart inside a decade, and it is less a
-decline than a slow substitution. The god's last hours take up more of the
-room and the person takes up less, until there is not much left that answers
-to a name.
-
-Every faith that has kept exemplars long enough to compare has looked for the
-pattern. It is not the pious ones who cope, or the strong ones, or the ones
-who were told in advance what was coming. Thesal's hospices have written the
-same four words at the end of four separate case files across two centuries —
-*we cannot tell beforehand* — and have published none of them.
+Nobody in Saeroth is in a position to know that. The largest body of evidence
+anywhere is four hospice files in Concord spread across eight hundred years,
+two of which broke and two of which did not, and no faith or academy has ever
+assembled more than one case of its own. A sample of four is not a finding. It
+has been treated as one for six centuries, because the alternative was having
+nothing to say to the next family that turned up at the door.
 
 ### And they cannot pass it on
 
@@ -221,8 +228,9 @@ forms. Nobody aimed this at exemplars. The spark is an accident of the blood
 that fell, the gods did not foresee it, and the working is only doing exactly
 what it was told to do, to anyone, forever.
 
-So it holds. Two thousand three hundred and seventy-six years, an unknown
-number of exemplars, and not one line of it has ever reached a page.
+So it holds. Two thousand three hundred and seventy-six years, a few hundred
+exemplars at the very outside and most of those never awake, and not one line
+of it has ever reached a page.
 
 ### The spells that fail
 
@@ -233,13 +241,14 @@ left holding a spell that ended without saying why.
 
 Everything else about an exemplar reads normally. Their fear, their lie, what
 they ate — a competent diviner gets all of it. The failure is specific to the
-one thing, which is how three separate inquisitors have established that there
-*is* one thing, and none of them has got past that.
+one thing, which is enough to tell a caster that there *is* one thing. Two
+people in the world's history have got that far and written it down, three
+hundred years apart, neither of them knowing about the other.
 
-Exemplars find this out early, usually by having it done to them, and some
-learn to use it. There is a knack to hauling the worst of it up to the front
-of your head and holding it there while somebody reaches for you. See
-[[Exemplars]] for how that plays at a table.
+The exemplar works it out too, usually by having it done to them, and from
+there that the door swings both ways. There is a knack to hauling the worst of
+it up to the front of your head and holding it there while somebody reaches
+for you. See [[Exemplars]] for how that plays at a table.
 
 ### The Wildlands
 
@@ -249,14 +258,17 @@ The ritual happened somewhere. The piece of the god an exemplar carries was
 present at that somewhere, and it did not lose the direction the way it lost
 the name. What comes with the agony is a pull, and the pull is south.
 
-Most never place it, and spend a life with a compass in their chest and no
-map. The ones who follow it end up on the south coast asking after passage
-inland, unable to say what they expect to find and not to be talked out of
-going. Aquoniti's harbour clerks at the enclave log them as pilgrims, which is
-wrong in every particular and has stuck. What is down there is in
-[[The Wildlands]]: a guarded interior, the one capital the gods sealed instead
-of unmaking, and under it the ritual's own text, which had to name what it
-targeted.
+Most never place it and spend a life with a compass in their chest and no map.
+A few have gone. Not many — over the whole resettled history of the world it
+is a dozen people at the outside, one at a time, centuries apart, each of them
+arriving on the south coast to ask after passage inland, unable to say what
+they expected to find and not to be talked out of going. The enclaves at
+[[The Wildlands]] are young enough to have seen exactly one, and Aquoniti's
+harbour clerk logged her as a pilgrim, which was a joke.
+
+What is down there is the guarded interior, the one capital the gods sealed
+instead of unmaking, and under it the ritual's own text, which had to name
+what it targeted.
 
 ### What that looks like from outside
 
@@ -264,13 +276,13 @@ A person who knows something enormous, cannot say it, and keeps trying anyway.
 
 They break off mid-sentence. They start letters and burn them. They ask
 strangers whether it rained the year they were born and cannot explain why
-they asked. Some of them stop trying and go quiet for the rest of their lives.
-Some of them do not stop, and the world has a word for how that looks by the
-end.
+they asked. One will give up trying and go quiet for the rest of a long life;
+the next will still be at it at eighty, and by then the world has a word for
+how that looks.
 
-Every faith that has kept an exemplar long enough has a private view on it,
-and none of them will put it in writing either — though for the ordinary
-reason, which is that it is bad for business.
+Hardly anybody has ever been close enough to one to form a view. The faiths
+that have — and it is two, across the whole of written history — hold their
+view privately, for the ordinary reason, which is that it is bad for business.
 
 ## Threads
 
@@ -288,9 +300,10 @@ reason, which is that it is bad for business.
   the ritual's own text was at the ritual's own origin — the capital the gods
   sealed rather than unmade, because unmaking it risked what the ritual had
   already begun. That is [[The Wildlands]]. It is possible that the reason the
-  interior is guarded has nothing to do with the empire at all. And every
-  exemplar alive is already pointed at it, which none of them can explain and
-  none of them can stop.
+  interior is guarded has nothing to do with the empire at all. And whoever is
+  awake and carrying a spark right now, which is two or three people in the
+  whole world, is already pointed at it and can neither explain that nor put
+  it down.
 - **Nobody knows what it was the god of.** Whatever domain it held has been
   unattended for two and a half thousand years. Decide deliberately whether
   that shows: the
