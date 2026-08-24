@@ -60,11 +60,11 @@ Late medieval, and moving. Printing exists. So do canal locks, blast furnaces,
 plate armour, and roads that are maintained in winter.
 
 **Gunpowder exists and firearms are primitive.** [Silicar](#The%20Nations)'s
-guilds built the first working firelock about fifty years ago and have never
-licensed the trade to anyone, which is most of the reason you do not see many.
-They are loud, slow to load, expensive, and made in ones by people who learned
-it from somebody who learned it in Silicar. They work. They are not what wins
-a battle.
+guilds built the first working firelock about fifty years ago, still make the
+best ones, and have never licensed the trade, so one in private hands is rare
+and costly. Armies are another matter: Silicar drills flintlock companies,
+Quivar fields musketeer skirmishers, and Voskreld casts cannon. They are loud,
+slow to load and expensive. They work. They are not what wins a battle.
 
 **Magitech is the new thing**, and it is new enough that the people doing it
 have not agreed on what to call it. It is the deliberate merging of the two:

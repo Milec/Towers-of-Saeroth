@@ -21,7 +21,7 @@ They don't always.
 - **Races** [[Human|Humans]] (from several once-rival provincial peoples), [[Dwarf|Dwarves]], [[Halfling|Halflings]], [[Goblin|Goblins]], [[Half-Elf|Half-Elves]]
 - **Faith** Patron [[Abadar]] as god of roads, law and the standardized measure, chosen at unification because he belonged to none of the old duchies. [[Erastil]] is still the provinces' real faith. [[Gorum]] is the Legion's
 - **Economic Specialties** Standardized coinage and measures, armaments manufacturing, grain surplus redistribution, road and canal infrastructure
-- **Military** The Unified Legion, an integrated multiethnic conscript army; provincial militia reserves, engineer corps, royal cannon foundries
+- **Military** The Unified Legion, an integrated multiethnic conscript army; provincial militia reserves, engineer corps, royal cannon foundries — the largest gunpowder [[Technology|industry]] anywhere, and the one nobody argues is stolen
 - **History** Stood with Reichsmund from the first month of the [[The Two-Crown War|Two-Crown War]]. A hostile Vaelic on an undefendable border is not something Voskreld survives. The Unified Legion took its present integrated form during those eleven years, built out of provincial levies that could not be trusted to fight beside one another. It was kept that way afterwards for the same reason.
 - **Reputation** Disciplined, ambitious, and one bad harvest away from remembering old grievances
 - **Tension** A poor harvest in one province has revived the old argument about which duchy feeds which, in almost the original wording

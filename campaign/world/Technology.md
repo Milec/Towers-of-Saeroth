@@ -19,21 +19,29 @@ four generations and then built machinery to work it.
 
 ## Firearms
 
-They exist and they are Silicaran. The guilds built the first working
-firelock in the decade after the Peace, designed for a militia that has to be
-raised in a fortnight and can never be large, and they have never licensed the
-trade to anybody.
+They exist, they are Silicaran, and the question worth asking is who has them.
 
-That last decision is why a firelock is a rare thing to see rather than a
-common one. It is loud, slow to load, expensive, and made in ones by people
-who learned it from somebody who learned it in Brightfurrow. A mercenary
-company in [[Kelvary March]] may own a handful and will not stake a contract
-on them. They work. They are not what wins a battle, and the March would tell
-you so at length.
+[[Silicar]]'s guilds built the first working firelock in the decade after the
+Peace, designed for a militia that has to be raised in a fortnight and can
+never be large. They still make the best ones. They have never licensed the
+trade to anybody, which is most of why a firelock in private hands is a rare
+thing and an expensive one.
 
-**Nobody has worked out what happens when the patent stops holding.** Two
-nations have tried to buy the process outright and one has tried something
-else.
+Armies are another matter. Silicar drills flintlock companies in volley and
+reload. [[Quivar]] fields musketeer-style skirmishers as one of its four arms.
+[[Voskreld Union]] runs royal cannon foundries on [[Stoneborn Holds]] steel,
+at a weight standard Voskreld invented and Stoneborn adopted while
+complaining. Where gunpowder exists at all it is a state industry, and
+Silicaran powder is on the [[The Pilgrim's Peace|Peace]]'s embargo list beside
+Ulad remounts and Melisor artillery.
+
+**Silicar has never licensed the trade, and Quivar has musketeers.** Nobody at
+the Concord Table has asked how, out loud. Silicar has never said what it
+thinks happened, which is not at all the same as not knowing.
+
+A firelock is loud, slow to load and expensive whoever is carrying it. They
+work. They are not what wins a battle, and [[Kelvary March]] would tell you so
+at length, having declined to stake a contract on one.
 
 ## The new field
 
