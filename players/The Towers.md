@@ -23,9 +23,8 @@ than the outside of a wall, and nobody can say what they are for. Between them
 are figures. People who have stood in front of them reach for the same word,
 and the word is *cruel*.
 
-![A tower at dusk: pale fluted stone under a heavy sky, gothic ornament
-at every joint, and cold blue light standing in the windows and in the
-crown at its top](towers.jpg)
+![A tower at dusk: pale fluted stone, gothic ornament, cold blue in its
+windows](towers.jpg)
 *What people describe when they have actually stood in front of one.*
 
 ## What is known

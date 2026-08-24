@@ -31,9 +31,8 @@ building, which is the part nobody manages to get comfortable with. Whoever
 put this here spent enormously on it and meant something by it that nobody
 wants to have been meant.
 
-![A tower at dusk: pale fluted stone under a heavy sky, gothic ornament
-at every joint, and cold blue light standing in the windows and in the
-crown at its top](towers.jpg)
+![A tower at dusk: pale fluted stone, gothic ornament, cold blue in its
+windows](towers.jpg)
 *What people describe when they have actually stood in front of one.*
 
 Every tower anyone has found is open. There is a way in, it is not guarded, and

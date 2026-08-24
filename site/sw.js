@@ -2,7 +2,7 @@
    campaign/ is small (under 1 MB) so it is precached in full and works fully
    offline. vault/ is ~192 MB across 41k files, so it is cached lazily as pages
    are actually opened — anything you have read once stays available offline. */
-const VERSION = 'v52';
+const VERSION = 'v53';
 const SHELL = 'shell-' + VERSION;
 const NOTES = 'notes-' + VERSION;
 
@@ -52,7 +52,23 @@ self.addEventListener('message', (e) => {
 
 self.addEventListener('fetch', (e) => {
   const req = e.request;
-  if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
+  const url = new URL(req.url);
+  if (req.method !== 'GET' || url.origin !== location.origin) return;
+
+  /* /players/ is a separate hand-written site that is meant to have no
+     service worker at all. This one's scope covers it regardless, and its
+     documents live under players/content/, which the notes rule below matched
+     on the path alone — so the players' page was being served out of a cache
+     it never asked for. A phone would show a months-old copy of a document
+     and 404 on art added to it since, which is exactly what it looks like
+     when somebody has made a bad edit. Hand the whole subtree back to the
+     browser.
+
+     Matched against the worker's own scope rather than as a substring,
+     because campaign/players/<name>/ is a real folder of notes and those do
+     belong in the cache. */
+  const players = new URL('./players/', self.registration.scope).pathname;
+  if (url.pathname.startsWith(players)) return;
 
   // Notes and the vault index: cache-first, then network, then remember it.
   if (/\/content\/|index-vault\.json$/.test(req.url)) {
