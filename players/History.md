@@ -4,31 +4,33 @@ What follows is what a reasonably well-travelled person knows. The dates use
 the calendar every nation shares, which is a stranger fact than it looks, and
 the end of this page explains why.
 
-## The Two-Crown War
+## The Pilgrim's Peace
 
-There has been no war between great powers for sixty years. That is not
-normal. Everyone alive knows it is not normal, because of what ended sixty
-years ago.
+No great power has marched on another in sixty years. Nothing in any chronicle
+anyone still keeps matches that, and every court on both continents knows it,
+which is most of the reason it has held.
 
-The **Two-Crown War** ran eleven years and touched every country on the
-western continent. It began over a disputed election in the Vaelic
-Principality and stopped being about that within a season. Armies wintered in
-other people's fields. In the fifth year both sides started burning harvests,
-and the famine that came after killed more people than the fighting did, most
-of them in countries that never sent a soldier anywhere. Your grandparents
-remember the Hungry Year. If they do not, their parents told them about it.
+What holds it is a treaty. The **Pilgrim's Peace** was signed in the holy city
+of Concord in 2316, and it ended the war below. It is short enough to recite
+and most of it is not about armies at all — it is about credit, grain, ships
+and hired soldiers, and who will refuse to supply them. A country that wants a
+war can still start one. It cannot get anyone to carry it, feed it, or lend
+against it, and no crown on the board can afford a second season out of its
+own granaries.
 
-Nobody won. No capital fell, no terms were dictated, and the war ended when
-the money and the soldiers ran out within about six weeks of each other. The
-settlement was signed in the holy city of Concord and is called the
-**Pilgrim's Peace**. Ask a Vaelic herald what ended the war and he will tell
-you it was an agreement between princes. Ask a Thurion factor and he will tell
-you the banks stopped lending. Both of them are describing the same month.
+That was the shape of the world until a year ago.
+
+Then the towers began arriving, and nothing in the treaty covers a tower. A
+border argument that has sat harmlessly in front of arbitrators for thirty
+years turns into a race the morning one appears in it. Courts that had nothing
+to say to each other are talking. Two nations are arguing over a stretch of
+jungle neither of them wanted last year. Nobody has broken the Peace. Everyone
+can feel it being leaned on.
 
 ## The small wars
 
-None of that means the world is quiet. It means no great power has marched on
-another in sixty years, and that is the whole of the claim.
+None of that means the world is quiet. Armies is the whole of the claim.
+Everything short of an army has carried on exactly as it always did.
 
 Frontiers still burn in the ordinary way. Homesteads go up on the Kesmarch
 line most summers. Herds get driven off the edge of the steppe and the riders
@@ -41,10 +43,9 @@ hundred years without a break, which neither of them calls a war because
 neither of them ever signed anything saying they wouldn't.
 
 Then there is the quieter half. Every court of any size reads somebody's
-letters, and at least one court is very good at it. Successions go bad.
-Houses feud. A vote gets bought, a canton sells something it shouldn't, a
-priest writes a report about his neighbours that takes two years to stop
-travelling.
+letters, and at least one court is very good at it. Successions go bad. Houses
+feud. A vote gets bought, a canton sells something it shouldn't, a priest
+writes a report about his neighbours that takes two years to stop travelling.
 
 So a soldier finds work, a caravan hires guards, and a person who wants to be
 shot at does not have to wait for a war. What has not happened in sixty years
@@ -67,12 +68,30 @@ starting.
 No other nation came in on either side. Nobody has tested the Lichdom since,
 and nobody in a position to know says the Lich Emperor is gone any more.
 
+## The Two-Crown War
+
+It ran eleven years and touched every country on the western continent. It
+began over a disputed election in the Vaelic Principality and stopped being
+about that within a season. Armies wintered in other people's fields. In the
+fifth year both sides started burning harvests, and the famine that came after
+killed more people than the fighting did, most of them in countries that never
+sent a soldier anywhere. Your grandparents remember the Hungry Year. If they
+do not, their parents told them about it.
+
+Nobody won. No capital fell, no terms were dictated, and the war ended when
+the money and the soldiers ran out within about six weeks of each other. What
+the delegations signed at Concord afterwards is the Peace this page opened
+with. Ask a Vaelic herald what ended the war and he will tell you it was an
+agreement between princes. Ask a Thurion factor and he will tell you the banks
+stopped lending. Both of them are describing the same month.
+
 ## The older wars
 
 There have been wars in every century anyone keeps records for, and most still
 have a name and a grievance attached to them. These two are only the ones
-people mean when they say *the war*. Anyone over sixty was alive for the first
-one, and there are men in every port who were pulled out of the delta marsh.
+people mean when they say *the war*. Anyone over sixty was alive for the Two-
+Crown War, and there are men in every port who were pulled out of the delta
+marsh.
 
 ## The Sundering
 
@@ -92,10 +111,10 @@ Dalstan went first and went loudly, out of the council with a third of the
 clergy, a third of the treasury and most of the relics, to found its own see
 at Ostravin. The third order's high cleric went second and went quietly. He
 denounced nobody, signed everything put in front of him, and left in the night
-for the delta with his followers, and he did not die there. He is still on that
-throne. Thesal kept the city and did not fight either of them, and afterwards
-opened its precinct to every faith that would come, which is why a dozen
-temples share one water supply in Concord now.
+for the delta with his followers, and he did not die there. He is still on
+that throne. Thesal kept the city and did not fight either of them, and
+afterwards opened its precinct to every faith that would come, which is why a
+dozen temples share one water supply in Concord now.
 
 Nobody can tell you what actually started it. Every account you will hear
 comes from one of the three and blames the other two. What you should take
