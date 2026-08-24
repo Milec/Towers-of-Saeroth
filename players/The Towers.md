@@ -5,8 +5,13 @@ more standing this season than there were last.
 
 They do not rise, and nobody has ever watched one arrive. A tower is *there*
 one morning where the evening before there was pasture, or reef, or a road men
-had used for two hundred years. The stone is seamless and nobody recognises it.
-Nothing grows on it. Nothing has weathered.
+had used for two hundred years. The stone is seamless and nobody recognises
+it. Nothing grows on it. Nothing has weathered.
+
+Close up it is worked. Fine lines run across it in tracks and corners, the way
+the inside of a lock is worked rather than the outside of a wall, and nobody
+can say what they are for. Between them are figures. People who have stood in
+front of them reach for the same word, and the word is *cruel*.
 
 ## What is known
 
