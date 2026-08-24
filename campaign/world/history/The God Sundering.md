@@ -58,7 +58,11 @@ and on the southern one, on ocean and on ice, on the empire that had done it
 and on every acre it owned. Nothing that was outdoors during those seven days
 was ever the same colour again.
 
-Then it stopped, and it soaked in, and it has been in the ground ever since.
+It fell hard enough to put the rivers over their banks and hold them there,
+and the flood that followed is the part the world actually remembers. Then
+it stopped, and it soaked in, and it has been in the ground ever since.
+Every people on Saeroth tells an origin story that begins in water. They are
+not wrong about the water. They are only missing what was in it.
 
 ## What the gods did about it
 
@@ -105,9 +109,11 @@ The divinity did not go anywhere. It fell on a world and the world kept it.
 
 ### The red layer
 
-Dig deep enough anywhere on Saeroth — a well, a mine, a canal cut, a grave —
-and somewhere between two and five feet down there is a thin red band in the
-soil. It is on both continents. It is in the Wildlands. It is under the ocean
+Dig deep enough anywhere on Saeroth and you reach it: three to five metres
+down, a thin red band in the soil. Well shafts, mine workings and deep canal
+cuts turn it up. Graves and ploughing do not, which is why it is a thing
+well-diggers have a superstition about rather than a thing everybody has
+seen. It is on both continents. It is in the Wildlands. It is under the ocean
 where anyone has looked.
 
 **Every culture in the world has a story about it, and no two of them agree**,

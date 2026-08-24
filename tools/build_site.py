@@ -36,10 +36,10 @@ def copy_notes(paths):
 
 #: Tab order and tab labels for the players' page. Anything not listed still
 #: ships — it just sorts last under its own filename.
-PLAYER_SORT = {'Welcome to Saeroth': 0, 'The Towers': 1, 'The Nations': 2,
-               'Gods, Peoples and the Roads': 3}
+PLAYER_SORT = {'Welcome to Saeroth': 0, 'The Towers': 1, 'History': 2,
+               'The Nations': 3, 'Gods, Peoples and the Roads': 4}
 PLAYER_ORDER = {'Welcome to Saeroth': 'Welcome', 'The Towers': 'The Towers',
-                'The Nations': 'The Nations',
+                'History': 'History', 'The Nations': 'The Nations',
                 'Gods, Peoples and the Roads': 'Gods & Roads'}
 
 WIKI = re.compile(r'\[\[([^\]|#]+)')

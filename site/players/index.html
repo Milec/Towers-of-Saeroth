@@ -81,6 +81,7 @@
   const tabs = document.getElementById('tabs');
   const doc = document.getElementById('doc');
   let pages = [];
+  let current = -1;
 
   // Wikilinks are stripped rather than resolved: these documents stand alone,
   // and a link into the vault is exactly what this page is for not having.
@@ -100,6 +101,7 @@
   }
 
   async function show(i) {
+    current = i;
     [...tabs.children].forEach((b, n) => b.setAttribute('aria-selected', n === i ? 'true' : 'false'));
     location.hash = '#' + encodeURIComponent(pages[i].file.replace(/\.md$/, ''));
     doc.innerHTML = '<p class="muted">Loading…</p>';
@@ -123,8 +125,19 @@
       b.onclick = () => show(i);
       tabs.appendChild(b);
     });
-    const want = decodeURIComponent(location.hash.replace(/^#/, ''));
-    const at = list.findIndex((p) => p.file.replace(/\.md$/, '') === want);
+    const wanted = () => {
+      const want = decodeURIComponent(location.hash.replace(/^#/, ''));
+      return list.findIndex((p) => p.file.replace(/\.md$/, '') === want);
+    };
+    /* Every tab click writes location.hash, so Back and Forward move it.
+       Without this the address bar changes and the document does not, which
+       is worse than having no history at all — the page ends up claiming to
+       show something it isn't. */
+    addEventListener('hashchange', () => {
+      const at = wanted();
+      if (at >= 0 && at !== current) show(at);
+    });
+    const at = wanted();
     show(at >= 0 ? at : 0);
   }).catch(() => { doc.innerHTML = '<p class="muted">Nothing here yet.</p>'; });
 })();
