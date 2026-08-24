@@ -106,6 +106,14 @@ border for. That last
 one is how Thurigypt was found sitting on the wrong continent from the nations
 its own notes tie it to.
 
+It also prints one **advisory** line measuring the prose voice — the four
+habits above, averaged over `campaign/` and `players/` — and names the note
+furthest outside the bands. It is advisory in the strict sense: it can never
+fail the run or change the exit code, because a note can sit outside every
+band and read beautifully. It skips the copied ancestry and deity flavour and
+`campaign/README.md`, which are not the vault's own voice, and it disappears
+quietly if the skill is missing or broken.
+
 **Test in a real browser before committing.** There is no test suite, and a
 silent JS error just leaves a blank note body:
 

@@ -21,6 +21,9 @@ actually made.
 4. **Territorial ties with no required border.** A land dispute between two
    nations that never share a frontier on the generated map is a claim the map
    contradicts — unless the row says so outright, which several deliberately do.
+
+It also prints one **advisory** line measuring the prose voice, which is not a
+check and can never fail the run — see `prose_advisory` at the bottom.
 """
 import os
 import re
@@ -46,6 +49,71 @@ FENCE = re.compile(r'^\s*```')
 
 def strip_code(line):
     return CODE_SPAN.sub('', line)
+
+
+# ------------------------------------------------------------- prose voice
+# Advisory only. Nothing here can fail the lint or change the exit code, and
+# that is deliberate: a note can sit outside every band and read beautifully,
+# so a gate on prose would be a gate on judgement. It prints because the
+# numbers are worth having in front of you on every run rather than only when
+# somebody remembers to ask for them.
+PROSE_SCRIPTS = os.path.join(REPO, '.claude', 'skills', 'saeroth-prose', 'scripts')
+PLAYERS = os.path.join(REPO, 'players')
+# The ancestry and deity notes are copied verbatim out of the PF2e reference.
+# They are Paizo's sentences rather than the vault's voice, and averaging 81 of
+# them in moves the number without anybody having written a word.
+# campaign/README.md is folder documentation rather than worldbuilding, and the
+# skill says in as many words not to apply itself to it. Measured, it lands top
+# of the list every run and sends whoever reads this line at the wrong file.
+PROSE_SKIP = (os.path.join('world', 'ancestries'), os.path.join('world', 'deities'),
+              os.path.join('campaign', 'README.md'))
+
+
+def prose_advisory():
+    """Return two lines about the voice, or None if the skill is not installed.
+
+    The skill is optional — someone can clone this repo and lint it without
+    ever loading `.claude/` — so a missing or broken prose_check.py has to
+    leave the rest of the lint working.
+    """
+    if PROSE_SCRIPTS not in sys.path:
+        sys.path.insert(0, PROSE_SCRIPTS)
+    try:
+        import prose_check
+    except Exception:
+        return None
+
+    rows = []
+    for root in (CAMPAIGN, PLAYERS):
+        if not os.path.isdir(root):
+            continue
+        for path in prose_check.walk(root):
+            rel = os.path.relpath(path, REPO)
+            if any(skip in rel for skip in PROSE_SKIP):
+                continue
+            try:
+                m = prose_check.measure(open(path, encoding='utf-8').read())
+            except Exception:
+                continue
+            if m:
+                rows.append((rel, m))
+    if not rows:
+        return None
+
+    total = sum(m['words'] for _, m in rows)
+    avg = lambda k: sum(m[k] * m['words'] for _, m in rows) / total
+    mirrors = sum(m['mirrors'] for _, m in rows)
+    flagged = [(rel, m) for rel, m in rows if prose_check.verdict(m)]
+    worst = max(rows, key=lambda r: (len(prose_check.verdict(r[1])), r[1]['em_dash']))
+
+    head = ('prose   dash %.1f/1k, superlatives %.1f, clipped %.1f%%, '
+            'short %.1f%%, %d mirrored pair(s)'
+            % (avg('em_dash'), avg('superlative'), avg('clipped'),
+               avg('short'), mirrors))
+    tail = ('        advisory only — %d of %d notes worth a look%s'
+            % (len(flagged), len(rows),
+               ', worst ' + worst[0] if flagged else ''))
+    return head + '\n' + tail
 
 
 def notes():
@@ -221,6 +289,13 @@ def main():
         print(f'{len(list(notes()))} notes, {n_links} wikilinks, '
               f'{n_terr} territorial ties, {len(required)} required borders, '
               f'{n_legs} route legs')
+        # never allowed to raise or to touch `problems` — see prose_advisory
+        try:
+            advice = prose_advisory()
+        except Exception:
+            advice = None
+        if advice:
+            print(advice)
     if problems:
         print(f'\n{len(problems)} problem(s):', file=sys.stderr)
         for p in problems:
