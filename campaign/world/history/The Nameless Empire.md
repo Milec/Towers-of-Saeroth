@@ -60,7 +60,8 @@ their own terms instead of the ritual's.
 capital, nearly every record, nearly every grave. It was not surgical. Unmaking a civilization at that
   scale missed things, and a handful of fragmentary ruins survive scattered across the mainland and the
 east, rare enough that for two thousand years nobody connected one to
-another. That has changed this year, and see the note below on the etchings. The two settled continents were otherwise left
+another. The towers have made that connectable for the first time, though see
+the note below on how few people are in a position to make it. The two settled continents were otherwise left
   open, unclaimed ground for whoever eventually walked back into them,
   which is exactly what the twenty-seven nations are standing on now.
 - **The southern continent was not erased — it was sealed.** The capital,
@@ -90,7 +91,9 @@ corners, like the inside of a mechanism rather than the outside of a building,
 and a repeated figural iconography that everybody who stands in front of it
 calls cruel without being prompted.
 
-The towers carry both, and this year a great many people have seen both.
+The towers carry both. A great many people have now seen a tower. Almost none
+of them has ever seen a ruin, which is the only reason the resemblance is not
+on every desk on both continents already.
 
 That resemblance is real and it means what it looks like it means. The ruins
 are the empire's. The towers are the empire's ritual, folded up. Same hands,
@@ -106,8 +109,10 @@ erasure took every one of those, and no amount of comparing stonework gets
 them back. Let the connection be findable and correct. It buys a name for the
 thing at the end of it and nothing else.
 
-Melisor will fund the comparison within the year. [[Xian Ti]]'s ministry has
-almost certainly already made it and filed it.
+Melisor's surveyors have seen enough of both to have made the comparison and
+have not published it. [[Xian Ti]]'s ministry has almost certainly made it and
+filed it. Neither is sitting on it out of cunning; a resemblance in stonework
+is not a finding until somebody can say what it means, and nobody can.
 
 ## At the table
 

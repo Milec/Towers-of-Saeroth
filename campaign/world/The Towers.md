@@ -35,16 +35,18 @@ Very little, and the little is all from the outside:
   is now slowly discovering the extent of. New ones appear. Reports come in
   faster than anyone can send someone to confirm them, so the count is always
   a floor rather than a number.
-- **The stone is marked, and the marks are not new.** Every tower carries fine
-  etched lines running in tracks and corners, and a repeated figural
-  iconography that people describe as cruel before they describe it as
-  anything else. Both appear on the scattered ancient ruins nobody can date,
-  which is the first thing in two thousand years to connect those ruins to
-  each other, let alone to anything living. It is common knowledge by now and
-  it is the most-discussed fact on both continents. Nobody has got past
-  noticing it. (GM: the resemblance is real and means exactly what it looks
-  like — see [[The Nameless Empire]] for how far that thread actually goes,
-  which is not as far as a party will assume.)
+- **The stone is marked.** Every tower carries fine etched lines running in
+tracks and corners, and a repeated figural iconography that people describe as
+cruel before they describe it as anything else. Anyone who walks up to a tower
+sees this, so it is public and nobody can explain it. **The same marks are on
+the scattered ancient ruins, and that part is not public at all** — the ruins
+are rare enough that most people live and die without seeing one, and
+connecting the two requires having stood in front of both. Perhaps a few dozen
+people on either continent could. Melisor's surveyors are among them and have
+not published. (GM: the resemblance is real and means what it looks like — see
+[[The Nameless Empire]] for how far the thread actually goes, which is not as
+far as a party will assume. A character with a reason to have seen a ruin can
+make this connection themselves, and it is much better play than being told.)
 - **Nobody has found a pattern.** Not in where they appear, nor how often, nor
   what the ground was doing beforehand. Melisor has three competing models and
   a year of data, which is not enough data to tell three models apart. Whether

@@ -134,21 +134,3 @@ shaft, a mine, a deep canal cut — and you will come to a thin band of red in
 the soil. It is under both continents. It is under the sea floor where anyone
 has looked. Well-diggers hit it often enough that most of them have a
 superstition about it and will tell you the superstition for free.
-
-## The ruins
-
-Ruins turn up on both continents, and they are rare enough that most people go
-their whole lives without seeing one. They are not the remains of anything in
-any history. Nobody can date them and nobody can name who built them.
-
-They have two things in common wherever they are found. The stonework carries
-fine etched lines that run in tracks and corners, like the inside of something
-rather than the outside, and nobody has explained what the tracks are for. And
-they carry figures — a repeated iconography that everyone who has stood in
-front of it describes with the same word, which is *cruel*.
-
-The towers coming up across the world this year carry both.
-
-That resemblance is the single most-discussed thing in every academy on both
-continents, and no one has got further than noticing it. If your character has
-ever seen a ruin, they will recognise a tower the moment they see one.
