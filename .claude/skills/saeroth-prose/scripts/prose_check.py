@@ -43,6 +43,12 @@ INTENSIFIERS = ['genuinely', 'exactly', 'precisely', 'entirely', 'simply',
 
 FENCE = re.compile(r'^\s*```')
 FRONTMATTER = re.compile(r'^---\r?\n.*?\r?\n---\r?\n', re.S)
+# A tie written by sync_relations.py: "    - [[Nation]] — **Standing**: gist".
+# The dash and the colon in these are generated punctuation, one per tie, and
+# counting them buries the rate for the prose a writer can actually change —
+# a nation with twelve ties starts twelve dashes in the hole.
+GENERATED_TIE = re.compile(r'^\s*-\s*\[\[[^\]]+\]\]\s*—\s*\*\*\w+\*\*')
+RELATIONS_LEAD = re.compile(r'^\s*-\s*\*\*Relations\*\*')
 
 
 def prose_of(text):
@@ -60,8 +66,14 @@ def prose_of(text):
         s = line.strip()
         if s.startswith('|') or s.startswith('#') or s.startswith('>'):
             continue
+        if GENERATED_TIE.match(line) or RELATIONS_LEAD.match(line):
+            continue
         s = re.sub(r'^[-*+]\s+', '', s)          # bullet marker
-        s = re.sub(r'^\*\*[^*]+\*\*\s*', '', s)  # a bullet's bold field label
+        # A bullet's bold field label, and the dash that separates it from its
+        # value when there is one. `- **Marked Rider** — one feat` is a glossary
+        # entry, not a sentence with an aside in it, and counting that dash
+        # penalises exactly the notes that are most usefully organised.
+        s = re.sub(r'^\*\*[^*]+\*\*\s*[—–-]?\s*', '', s)
         out.append(s)
     body = '\n'.join(out)
     body = re.sub(r'`[^`]*`', '', body)                       # inline code

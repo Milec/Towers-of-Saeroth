@@ -7,32 +7,32 @@ founded: c. 1010 AR, though the Storytellers dispute it among themselves
 view: nation
 ---
 
-The savanna belt that begins where [[Thurigypt]]'s irrigated delta gives
-out and runs east until it climbs into the ash slopes of
-[[Cindral Ashlands]] — dry season and wet season, salt pan and grass —
-answers to no crown. It answers to a compact between clans old enough that
-nobody alive remembers it being signed, because it never was. It is kept in
-memory, by people trained from childhood to hold it there and nowhere else.
+The savanna belt begins where [[Thurigypt]]'s irrigated delta gives out and
+runs east until it climbs into the ash slopes of [[Cindral Ashlands]]. Salt
+pan and grass, dry season and wet. It answers to no crown. It answers to a
+compact between clans so old that nobody alive remembers it being signed,
+which is the wrong way to put it. It never was signed. It is kept in memory,
+by people trained from childhood to hold it there and nowhere else.
 
 - **Founded** c. 1010 AR, and a treaty rather than a country. Clans that had raided each other for generations agreed to stop, and the agreement has been kept ever since by the Storytellers rather than by anything written down. Its exact age is disputed by the only people qualified to settle it.
 - **Capital** Bonemarket, at the crossing of every caravan road on the
-  savanna — a market city with no walls, because a Storyteller's word is the
-  only defense anyone here has ever needed a treaty to provide
+  savanna. It has no walls. A Storyteller's word is the only defence anyone
+  here has ever needed a treaty to provide
 - **Geography** Open savanna and seasonal rivers between the desert and the
   jungle, dry season and wet season dividing the year in two
 - **Government** A Council of Elders, one matriarch per clan, with law and
   treaty held not on paper but by the Storytellers who are trained from
-  childhood to keep it exactly. Five clans hold the weight of the Council
-  between them — [[Clan Longmarch]], [[Clan Duskherd]],
-  [[Clan Marrowkeep]], [[Clan Farsight]] and [[Clan Salthollow]] — with
-  smaller clans seated but rarely deciding anything the five haven't
-  already agreed on
-- **Races** [[Human|Humans]], [[Kholo|Kholos]], [[Duskwalker|Duskwalkers]] —
-  a kholo majority, in clans a Storyteller and a council of elder matriarchs
-  govern between them
+  childhood to keep it word for word. Five clans hold the weight of the
+  Council between them: [[Clan Longmarch]], [[Clan Duskherd]],
+  [[Clan Marrowkeep]], [[Clan Farsight]] and [[Clan Salthollow]]. Smaller
+  clans are seated, and rarely decide anything the five have not already
+  agreed on
+- **Races** A [[Kholo|Kholo]] majority, with [[Human|Humans]] and
+  [[Duskwalker|Duskwalkers]] in every clan. A Storyteller and a council of
+  elder matriarchs govern each of them between the two of them
 - **Faith** Patron [[Pharasma]], kept as guardian of the ancestors rather
-  than of endings — every Bonekeeper's rite is, at root, a plea to her.
-  [[Gorum]] is kept by the warbands, quietly, the way a trade is kept rather
+  than of endings. Every Bonekeeper's rite is a plea to her at the root of
+  it. [[Gorum]] the warbands keep quietly, the way a trade is kept rather
   than preached
 - **Economic Specialties** Salt, hides, dyed cloth, livestock, ancestor-bone
   craftwork, caravan-guard contracts
@@ -44,10 +44,10 @@ memory, by people trained from childhood to hold it there and nowhere else.
   understand correctly
 - **Tension** A Thurigypt caravan-priest's report calling Sahenna funeral
   rites "cannibal witchcraft" has circulated the trade routes for two years.
-  The Council has not decided whether answering it or ignoring it does less
-  damage, and the silence is being read as confirmation —
-  [[Clan Salthollow]], whose own pans and caravans sit closest to
-  Thurigypt, is the loudest voice against staying quiet any longer
+  The Council cannot decide whether answering it or ignoring it does less
+  damage, and the silence is being read as confirmation.
+  [[Clan Salthollow]]'s pans and caravans sit closest to Thurigypt, and
+  Salthollow is the loudest voice against staying quiet any longer
 - **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Qeshara Sultanate]] — **Allied**: The Salt Road pact, and the oldest working alliance on either continent: Sahenna clans guarantee the caravans and Qeshara guarantees the wells. …
     - [[Ashkar Pale]] — **Trade**: Glass and vine crops for salt and hides, on the short road around the range's southern arm

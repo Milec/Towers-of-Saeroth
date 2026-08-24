@@ -8,10 +8,10 @@ statblock: reskin of Mage For Hire (NPC Core), level 3
 
 Nobody administers the ground where [[Quivar]], the [[Vaelic Principality]]
 and the [[Lazarian Lichdom]] all meet, and Wenzel Grauth has lived there for
-nine years on exactly that basis. He is not of the Lichdom. He learned what he
-knows the way anyone on that frontier learns it — close enough to Grauthaven to
-watch, never close enough to be enrolled — and the distinction matters
-enormously to him and to nobody else.
+nine years on that basis. He is not of the Lichdom. He learned what he knows
+the way anyone on that frontier learns it, close enough to Grauthaven to
+watch and never close enough to be enrolled. The distinction matters a great
+deal to him. It matters to nobody else at all.
 
 He is a careful, unhappy, entirely unromantic man who does small work for
 people who need it done outside a jurisdiction. He raises what the drainage
@@ -19,28 +19,28 @@ cuts give him, he does not keep more than he can put down again, and he has
 never once been paid enough to stop.
 
 This job was different and he knows it. Raising a body to carry a bomb into a
-wagon destroys the body — you get one use and then you have nothing — and no
-one trained anywhere near the Lichdom would think of a raising that way. It is
-the detail that will convict whoever ordered it, and Grauth worked it out
-somewhere around the eleventh corpse.
+wagon destroys the body. One use, and then you have nothing. Nobody trained
+anywhere near the Lichdom would think of a raising that way, which is the
+detail that will convict whoever ordered it. Grauth worked that out somewhere
+around the eleventh corpse.
 
 - **Want** Enough money to leave the frontier before the Lichdom notices him.
-  Practising the art unlicensed within reach of Grauthaven is not illegal — it
-  is worse than that, it is *unclaimed*, and the Lichdom collects
+  Practising the art unlicensed within reach of Grauthaven is not illegal. It
+  is worse than that. It is *unclaimed*, and the Lichdom collects
 - **Won't** Work on anything that would bring a Vaelic Drake Rider across the
   border looking for him. He turned down more money once, for that reason
 - **Told** That the wagons were a Melisor consignment and that nobody aboard
   mattered. He was not told about the insurance and would not have cared
 - **Supplied** A crate of lesser alchemist's fire, twenty-four flasks, delivered
   to him packed in straw. He did not buy it, he cannot make it, and he can
-  describe the crate down to the maker's mark — which is the single most useful
-  thing anyone can get out of him
+  describe the crate down to the maker's mark, which is the most useful thing
+  anyone will get out of him
 - **Left behind** A Melisor reagent flask, because he was told to. It is the
   one instruction he was given that he did not understand, and he has been
   thinking about it since
 - **If confronted** He runs. He is not brave, he is not loyal, and he can
-  identify the intermediary who paid him — though not [[Cassian Merovel]], whom
-  he has never met and could not name
+  identify the intermediary who paid him. Not [[Cassian Merovel]], whom he has
+  never met and could not name
 
 ## Statblock
 
