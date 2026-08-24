@@ -19,7 +19,7 @@ to be brought to one. It has never made anybody talk less.
 - **Races** [[Human|Humans]], [[Half-Elf|Half-Elves]]
 - **Faith** Patron [[Shelyn]], goddess of art, beauty and love. The devotion is real, and it is also the face Quivar shows the world. [[Calistria]] keeps intrigue, revenge and exquisite grudges, and she is the one the court prays to before a difficult evening
 - **Economic Specialties** Wine, fashion, perfume, fine art, luxury goods
-- **Military** Elite chevaliers, the Royal Guard, musketeer-style skirmishers, and the Service, which the Diet of a neighbouring country would tell you counts as the largest of the four
+- **Military** Elite chevaliers, the Royal Guard, musketeer-style skirmishers carrying [[Technology|firelocks]] Silicar has never licensed to anyone, and the Service, which the Diet of a neighbouring country would tell you counts as the largest of the four
 - **History** Declared for Ostravin in the second year of the [[The Two-Crown War|Two-Crown War]], then for Reichsmund in the seventh. Sixty years on it is still explaining that this was statecraft, and nobody has forgotten it. At the Concord Table its word carries about as far as that history suggests. It has never needed to go further than that, because the Service reaches places a promise does not.
 - **Reputation** Everyone borrows its fashions and nobody leaves a letter unattended in its houses
 - **Tension** The monarch has two plausible heirs and will not indicate a preference. Every salon in Valmont is a recruiting ground now
