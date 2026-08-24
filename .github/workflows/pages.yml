@@ -9,7 +9,6 @@ on:
       - 'vault/**'
       - 'site/**'
       - 'tools/build_site.py'
-      - 'tools/make_icons.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
     inputs:
@@ -39,8 +38,13 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Generate PWA icons
-        run: python3 tools/make_icons.py
+      # The icons are committed artifacts under site/icons/ and change about
+      # once a year, so this used to regenerate them on every deploy for no
+      # reason. It stopped being free when the icon became a font glyph:
+      # tools/make_icons.py now needs fontTools and a browser to rasterize,
+      # neither of which is on this runner, and the whole deploy failed on the
+      # import. Run that script by hand when the icon changes and commit what
+      # it produces.
 
       - name: Build site
         run: |
