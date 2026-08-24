@@ -28,7 +28,7 @@ of the working — which has left the discipline to duellists like
 - **Military** Battle mages, arcane artillery, summoners, golems, elite mage hunters
 - **History** Sold arcane artillery and weather to both sides of the [[The Two-Crown War|Two-Crown War]] through separately incorporated academies, and has never apologised for it. The Council's modern horror of ruling on anything dates precisely from the two decades of recrimination that followed.
 - **Reputation** Arrogant, brilliant, indispensable
-- **Tension** Two academies claim the same discovery, and the Council of Archmages has stalled on ruling for a year rather than hand either one the prestige
+- **Tension** Two academies claim the same [[Magitech]] process, and the Council of Archmages has stalled on ruling for a year rather than hand either one the prestige
 - **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Elven Confederacy]] — **Trade**: Magical plants to the academies. …
     - [[Stoneborn Holds]] — **Trade**: Gems and masterwork settings for enchantment — the academies cannot make a focus that holds, and the Holds cannot make one that does anything
