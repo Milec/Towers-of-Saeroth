@@ -10,8 +10,9 @@ lineages, debts, borders, the exact wording of oaths sworn four centuries ago
 by nations that have since changed their names. Nine abbeys in nine mountain
 valleys along the [[Stoneborn Holds]] spine hold nine copies of everything,
 and the order's single rule is that it takes no side, ever, about anything.
-This makes it the only institution every nation on the continent will accept
-as a witness, and the only one every nation is quietly frightened of.
+Every nation on the continent will accept a Sanctum scribe as a witness. Every
+one of them is also quietly frightened of what nine abbeys full of other
+people's oaths adds up to.
 
 - **Holdings** Nine abbeys in nine mountain valleys, foremost Vault Abbey —
   cut into a valley head where the only road in is overlooked for its

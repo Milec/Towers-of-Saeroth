@@ -13,7 +13,7 @@ who wins cruelly is remembered badly no matter how much ground he took.
 Outsiders arrive expecting savagery. What they find is stranger, and harder
 to plan around: fearsome warriors who keep their word.
 
-- **Founded** c. 740 AR, by the first Khagan to make the khans elect rather than fight for it. The Khaganate is an agreement about succession before it is anything else. It is the only such agreement the steppe has ever kept.
+- **Founded** c. 740 AR, by the first Khagan to make the khans elect rather than fight for it. The Khaganate is an agreement about succession before it is anything else. Other steppe confederations have written the same agreement and broken it inside a generation; this one has held for sixteen hundred years.
 - **Capital** Ordu-Khazan, a tent-city of forty thousand that strikes camp and moves with the Great Khagan
 - **Geography** Open steppe from horizon to horizon, broken by iron-rich hill country in the south and the horse-pastures the whole economy rests on
 - **Government** Great Khagan elected by the assembled khans

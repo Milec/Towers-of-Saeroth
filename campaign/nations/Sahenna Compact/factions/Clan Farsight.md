@@ -6,8 +6,8 @@ matriarch: Oba Farsight
 
 Farsight trains more Storytellers than every other clan in the
 [[Sahenna Compact]] combined, which means Farsight's memory of a treaty is,
-in practice, the Compact's memory of it. Oba Farsight has never once had to
-argue that point. Nobody has ever tried to argue it with her.
+in practice, the Compact's memory of it. Oba Farsight has never had to
+make that case out loud. Nobody has ever tried to argue it with her.
 
 - **Matriarch** **Oba Farsight** — measured, unreadable, and the only
   matriarch who can recite every other clan's own treaties back to them

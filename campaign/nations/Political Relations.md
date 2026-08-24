@@ -10,10 +10,10 @@ years. See [[The Delta War]] for the last one, and
 keeps ending them early. Peace is not the same thing as friendship. Nobody
 involved confuses the two.
 
-What holds instead is a set of standing arrangements. Alliances written down.
-Friendships nobody ever wrote down at all. Trade that no one would call
-friendship, and a great deal of quiet loathing between neighbours who cannot
-afford to act on it. Most of these are felt differently at each end, so read
+What holds instead is a set of standing arrangements. Some are alliances with
+a signed text and a date on them. Others nobody has ever written down and
+nobody needs to. There is trade that no one would call friendship, and a good
+deal of quiet loathing between neighbours who cannot afford to act on it. Most of these are felt differently at each end, so read
 a row as mutual unless the detail says otherwise.
 
 **Standing** is shorthand for how a relationship behaves when it comes up at
@@ -32,7 +32,7 @@ nations that cannot stand each other.
 | **Hostile** | Active enmity, ideological or otherwise |
 | **Covert** | Deniable dealings both sides publicly disown |
 
-An ally is expected to march. A friend is expected to be glad to see you. The
+An ally is expected to march. A friend is under no such obligation and will usually be glad to see you anyway. The
 difference is obligation, not warmth, and several of the friendships here are
 older and steadier than any of the alliances — the [[Ashkar Pale]] has
 evacuated into [[Thornwild Confederation]] canopy through six recorded falls

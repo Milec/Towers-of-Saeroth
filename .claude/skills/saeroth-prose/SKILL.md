@@ -41,6 +41,68 @@ NPCs, history, read-aloud) needs a pass.
 
 ## 1. Sounding like a person
 
+### The three that give the game away
+
+These are louder than any punctuation habit, and a note can be clean on every
+other measure and still be obviously machine-written because of them. All
+three come from the same root: the writer optimising the *shape* of the prose
+instead of reporting what is true.
+
+**1. Rhetorical symmetry.** Two consecutive sentences built to the same
+pattern, usually a matched pair with the same verb.
+
+> Quivar credits the court. Everyone else credits the service.
+
+That is enormously satisfying to write, and real speech almost never balances
+that neatly twice running. The fix is not to un-balance the words — it is to
+add a third beat that is a different *kind* of sentence, so the pattern never
+closes:
+
+> Quivar says that is the work of the court. Most people know better. They
+> thank the Service.
+
+Three beats, and the third is an action rather than another opinion. Whenever
+a pair falls out symmetrical, add one and break the rhythm.
+
+**Repetition for emphasis is a different thing and is fine.** *It faces east.
+Everything about it faces east.* escalates — the second sentence goes further
+than the first instead of answering it. What to hunt is the closed pair, where
+the second sentence completes a pattern the first set up and the reader can
+feel the click. The checker cannot tell these apart, so read what it flags
+rather than deleting it.
+
+**2. Stacked superlatives.** A ranking claim standing in for the thing that
+actually happened.
+
+> The oldest continuous monarchy on the continent, and the only great power
+> never conquered.
+
+Two superlatives in one breath, and neither tells you a single event. Replace
+each with what a person could have witnessed:
+
+> The crown has changed hands only within the same house since then, and no
+> foreign army has ever held its capital.
+
+Same facts. Now they are history rather than a league table, and a GM can play
+either half of it. *The oldest, the only, the largest, the finest, the single
+most* — every one is a shortcut past a detail you have not invented yet.
+
+**3. Clipped fragments.** Short verbless sentences used as a rhythm device.
+One is a beat. Four on a page is a writer chopping prose to sound weighty:
+
+> c. 900 AR, unbroken since.
+
+versus a sentence that simply does its job:
+
+> Founded around 900 AR.
+
+Register matters here too. `c.` is a catalogue entry; *around* is a person
+talking. Prefer the word a GM would actually say aloud at the table.
+
+`scripts/prose_check.py` measures all three — `sup` for superlatives per 1k,
+`clip` for the verbless share, `mirror` for symmetrical pairs. The mirror
+count is the one to take most seriously; anything above zero is worth reading.
+
 ### The vault's own tics, measured
 
 This voice already exists and is already lopsided. Measured by
@@ -188,23 +250,37 @@ Draft freely; the draft is not the deliverable. Then:
 
 ### One worked example
 
-The fact: *Quivar's spies operate inside the Vaelic Diet.*
+The fact: *Quivar is old and has never been conquered, and its spies are the
+reason.*
 
-**Generated-sounding.** Balanced, hedged, everything explained, one rhythm:
+**Still obviously machine-written**, even with the em dashes already gone:
 
-> Quivar maintains an extensive intelligence apparatus that has successfully
-> infiltrated the Vaelic Diet — an achievement that reflects both the
-> sophistication of its methods and the complacency of its target. It is not
-> merely espionage; it is statecraft of the highest order.
+> c. 900 AR, unbroken since. The oldest continuous monarchy on the continent,
+> and the only great power never conquered. Quivar credits the court. Everyone
+> else credits the service.
 
-**Revised.** The claim gets an owner, the fact gets a price, and the rhythm
-varies:
+Four sentences and every one of the three tells is in it: a fragment opener, a
+stacked pair of superlatives that describe no event, and a mirrored couplet.
 
-> Quivar's service has been inside the Diet for two generations, mostly by way
-> of the wine factors. Vaelic knows. It cannot prove it, and it has started
-> feeding the wine factors things on purpose.
+**Human:**
 
-Three sentences, 9/4/16 words. Nobody explains that this is clever.
+> Founded around 900 AR. The crown has changed hands only within the same
+> house since then, and no foreign army has ever held its capital. Quivar says
+> that is the work of the court. Most people know better. They thank the
+> Service.
+
+Every change is worth naming, because they generalise:
+
+- *the oldest / the only* became **two things that happened** — a crown staying
+  in one house, a capital never taken.
+- the matched pair became **three unequal beats**, ending on what people
+  *do* rather than on a second opinion.
+- *c. 900 AR, unbroken since* became **a sentence**.
+- *the service* became **the Service** — an institution with a name people at
+  court use, which is a whole character's worth of implication for one capital
+  letter.
+- *Most people know better* is a **judgement**, and somebody is making it.
+  Prose with no attitude in it reads as prose with no author.
 
 ---
 

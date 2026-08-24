@@ -12,7 +12,8 @@ in every calculation the state makes. A Lazarian bureaucrat sees nothing
 strange in a skeleton clerk who has held the same post for three centuries.
 Competence doesn't expire just because the body did.
 
-- **Founded** 1976 AR. The third order of the **Concord**, whose high cleric denounced nobody, signed every resolution put in front of him, took the doctrine of death-as-a-door to its end in private, and left in the night for the delta with his followers. He did not die. He is still on the throne. Of the two who broke the Concord he is the one nobody saw coming, and the one who has done the most harm — see [[The Sundering of the Concord]] and [[Lazarus]]
+- **Founded** 1976 AR. The third order of the **Concord**, whose high cleric denounced nobody, signed every resolution put in front of him, took the doctrine of death-as-a-door to its end in private, and left in the night for the delta with his followers. He did not die. He is still on the throne. Nobody saw him coming, and four centuries on, the reckoning of what he has
+cost the world runs well past anything Dalstan managed — see [[The Sundering of the Concord]] and [[Lazarus]]
 - **Capital** Grauthaven, a city of black basalt where the living quarter is the smallest district
 - **Geography** Fog-drowned marshland and old battlefields. The ground was chosen for what is buried in it rather than for what grows on it
 - **Government** Immortal Lich Emperor
