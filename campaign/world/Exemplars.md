@@ -48,13 +48,49 @@ few who have tried to say could not: they stop mid-sentence, or they write a
 page and hand you a blank one, and they cannot account for either. Ask one
 directly and you will usually get a long silence and a change of subject.
 
-What the world sees, then, is a rare and powerful person who is plainly
-carrying something and plainly unable to set it down. Some of them make their
-peace with it early and are only a little strange. Some spend forty years
-trying to get it out and are, by the end, difficult to distinguish from
-anybody else the world has decided is mad. Hospices in Concord have taken in
-four exemplars and have never once written down what any of them was trying
-to say, because there was never anything on the page.
+What everybody who has sat up with one agrees on is the weight. Whatever
+arrives is not a message and it is not a comfort. People describe watching
+somebody go through a thing at a scale that does not fit inside a person, and
+then get up in the morning and eat breakfast.
+
+It does not break all of them, which the world gets wrong, because the ones
+the world hears about are the ones it hears screaming. Plenty of exemplars
+carry it for a lifetime and are only a little strange: bad sleep, an absent
+second in the middle of a conversation, a hard streak nobody can source.
+Others are gone inside ten years, and by the end are difficult to distinguish
+from anybody else the world has decided is mad. Nothing anyone has measured
+says in advance which one you have. The Sahenna Storytellers keep both kinds
+in the same list and decline to sort it, and they are once again closer to
+right than anybody else.
+
+Hospices in Concord have taken in four exemplars and have never once written
+down what any of them was trying to say, because there was never anything on
+the page.
+
+## Reading one
+
+Divination works on an exemplar the way it works on anybody, right up until it
+reaches the thing they cannot say. Then the spell ends. **A magical effect
+that attempts to read these specific thoughts or memories fails automatically**
+— no save, no counteract check, nothing to resist. The caster is left knowing
+their own working quit on them and not knowing why. Melisor has three sealed
+papers on the subject and no theory.
+
+Exemplars learn this early, usually by having it done to them, and some learn
+to use it. There is a knack to hauling the worst of it to the front of your
+head and holding it there while somebody reaches in.
+
+**Show Them the Red** `pf2:r` (divine, exemplar, mental)
+
+**Trigger** You attempt a saving throw against a mental effect.
+
+**Effect** You bring the visions forward and let whatever is reaching for you
+arrive in the middle of them. You gain a +2 circumstance bonus to that save.
+
+Any exemplar can do this once their spark has been focused. It is not a feat,
+it does not need selecting, and it costs nothing but the reaction. It is also
+plainly visible to anyone watching, and you do not get to pick which part of
+it comes up.
 
 ## How the world takes it
 
@@ -87,6 +123,9 @@ level. Some consequences worth agreeing on in session zero:
   and the recognition is *what is that* rather than *whose is that*.
 - **You are worth more than a title to at least four nations**, and only one of
   them would ask first.
+- **Something in you points south** and will not explain itself. You can
+  ignore it for years. You will not be able to argue with it. See
+  [[The Wildlands]].
 - **You will know something you cannot tell the rest of the party.** Not a
   secret you are choosing to keep. The words do not arrive and the ink does
   not stay, and neither is under your control. Settle with the GM early how
@@ -114,9 +153,15 @@ anybody in the world by any means. Nothing above is a lie; it is simply the
 whole of what can be known from inside.
 
 The dreams are the murdered god's own memory, arriving through the fragment
-the exemplar carries. **Tell an exemplar player the truth early** — it is a
-better hand to play than a mystery, and the silence is only interesting if
-they know precisely what it is they cannot say. The name is not in the
+the exemplar carries, from inside the killing rather than from any vantage on
+it. **Tell an exemplar player the truth early.** It is a better hand to play
+than a mystery, and the silence is only interesting if they know what it is
+they cannot say. Whether their character is one of the ones who copes is worth
+settling with them at the same time, because the visions do not vary and the
+person does.
+
+The pull south is real, and it points at [[The Wildlands]] because that is
+where the ritual was worked. The name is not in the
 visions and never will be; it was unmade before the killing and there is
 nothing left to remember it with. See [[The God Sundering]] for why no
 attempt to record it has ever survived contact with a page.
