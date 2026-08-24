@@ -13,7 +13,7 @@ from it, and that has to stay true at the table too. Use this to write
 towers, [[The Wildlands]], and the ignorance of every NPC who might
 plausibly be asked.
 
-## What happened
+## The ritual
 
 Before there were twenty-seven nations there was one empire, and it did not
 share the world with anybody. It *was* the world: both settled continents
@@ -49,7 +49,7 @@ by their own account that has otherwise never happened before or since.
 They had a reason nothing in the world remembers. They had just buried one
 of their own, and could not say whose funeral it was.
 
-## What the gods did
+## The erasure
 
 They stopped it in time to keep the sorcerer-kings mortal, and no further.
 The ritual was too far along to unwind. An empire cannot be handed back its
@@ -83,7 +83,7 @@ which is the entire point. A
   working like this cannot be attempted twice if nobody left alive knows it
   was attempted once.
 
-## The etchings, and why they match
+## The etchings
 
 The surviving ruins carry two things: fine etched lines running in tracks and
 corners, like the inside of a mechanism rather than the outside of a building,
@@ -109,7 +109,7 @@ thing at the end of it and nothing else.
 Melisor will fund the comparison within the year. [[Xian Ti]]'s ministry has
 almost certainly already made it and filed it.
 
-## What that means for the table
+## At the table
 
 - **A conquered tower's "master" is real, and it is one of them.** The rumor that reaching the top makes you rich and titled is not a lie. It
 is the ritual's original terms, still in force, now running for whoever

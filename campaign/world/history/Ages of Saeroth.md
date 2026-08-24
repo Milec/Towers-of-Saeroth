@@ -10,7 +10,7 @@ known: Ordinary history except where a linked note says otherwise
 The world's shared past in order, dated. Each row links the note that covers
 it, and everything below the tables is how the dating works.
 
-## How the years are counted
+## Counting the years
 
 Saeroth counts in **AR** — *After the Red* — and the present year is
 **2376 AR**. To convert anything the notes say in plain speech, subtract:
@@ -128,7 +128,7 @@ see [[The God Sundering]].
 | 2375 | The first tower. There is no second event — they simply keep arriving | [[The Towers]] |
 | 2376 | Now | — |
 
-## What "no major war in sixty years" excludes
+## The small wars
 
 The [[The Pilgrim's Peace|Pilgrim's Peace]] defines a war as a declared
 campaign between signatory states, and there has not been one since 2316. That
@@ -150,7 +150,7 @@ it comforting. It is simply true that a caravan has crossed this continent
 without an escort for sixty years, and that no adult alive has organised their
 life around anything else.
 
-## What is ending it
+## The towers
 
 [[The Towers]], and nothing else on the board. Not because a tower is an army —
 because the Peace is a machine for making war unaffordable, and a conquered

@@ -15,7 +15,7 @@ It was called the **Concord**, and it was seated at the city of Concord, which
 is the same city [[Thesal Theocracy]] rules from today. That is not a
 coincidence and it is not luck. Two orders left; the first one held.
 
-## What the Concord was
+## The Concord
 
 A church-state built to hold three things at once, on the doctrine that no one
 of them is true without the other two:
@@ -132,7 +132,7 @@ condition attached.
 It is the largest religious city in the world, and none of the three heirs
 disputes that. They dispute what it means that Thesal holds it.
 
-## What it explains
+## The consequences
 
 - **Why Thesal sits between them.** Thesal borders both. [[Dalstan]] and the
   [[Lazarian Lichdom]] do not border each other at all — the first order is

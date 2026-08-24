@@ -16,7 +16,7 @@ years — all of it is the Two-Crown War, either as consequence or as
 overcorrection. Anyone over seventy remembers it. Everyone else was raised by
 someone who did.
 
-## How it started
+## The deadlocked Diet
 
 The High Prince of the [[Vaelic Principality]] died in autumn without an heir
 of his own body, which was ordinary — Vaelic's crown is elective and has never
@@ -44,7 +44,7 @@ Two crowned High Princes, six weeks apart, each legitimate by an argument the
 other could not refute. Vaelic's official regnal list still skips the second
 name entirely.
 
-## Why it did not stay a Vaelic problem
+## The sides
 
 Because half the continent had decided which crown it preferred before either
 head was under one.
@@ -131,7 +131,7 @@ the same valleys. Harrowgate buried both companies in one season and has not
 chartered opposite sides of the same conflict since — a rule that appears in no
 statute and has never once been broken.
 
-## How it ended
+## A bank and a muster court
 
 Not with a battle. With a bank and a muster court.
 
@@ -154,7 +154,7 @@ he had no faction to reward.
 
 What they signed is the [[The Pilgrim's Peace|Pilgrim's Peace]].
 
-## What it left behind
+## The inheritance
 
 - **A continent that believes wars are stopped by ledgers.** This is not
   cynicism. It is the one thing that demonstrably worked, and it is the weight

@@ -33,7 +33,7 @@ A few nations have ancestry hierarchies written into their law. Most do not.
 Find out which sort you are walking into before you walk into it expecting to
 be served.
 
-## How anything gets anywhere
+## The roads
 
 Four corridors carry most of the world's goods, and if your character has
 travelled for a living they have been on at least one.

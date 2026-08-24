@@ -13,7 +13,7 @@ and that difference is the whole of it.
 During the sorcerer-kings' ritual — see [[The Nameless Empire]] — the empire
 killed a god.
 
-## Why that was possible at all
+## Unmaking a name
 
 **A known god cannot be truly killed.** You can wound one, bind one, drive one
 out of a world; you cannot end it, because a god that is named, remembered and
@@ -64,7 +64,7 @@ it stopped, and it soaked in, and it has been in the ground ever since.
 Every people on Saeroth tells an origin story that begins in water. They are
 not wrong about the water. They are only missing what was in it.
 
-## What the gods did about it
+## The gods' answer
 
 Everything in [[The Nameless Empire]] happens *after this*, and reads
 differently once you know it.
@@ -89,7 +89,7 @@ The empire is called nameless because the gods took its name. They learned how
 from the people who murdered one of them, and they did it back, and they were
 better at it.
 
-## What the gods lost, and cannot get back
+## The hole in the pantheon
 
 **They do not remember who died.**
 
@@ -103,7 +103,7 @@ it to any mortal, because there is nothing to say.
 This is why a cleric who prays about the empire gets silence rather than a
 refusal. It is not discretion. The silence is the shape of the hole.
 
-## What is still here
+## The trace
 
 The divinity did not go anywhere. It fell on a world and the world kept it.
 
