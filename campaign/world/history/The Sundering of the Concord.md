@@ -43,8 +43,8 @@ It came gradually, to individuals, in private, over years. What it said was
 never *abandon the church* — that would have been refused. What it said was
 that their order's truth had been diluted by the other two; that mercy without
 the fire is indulgence; that a door you refuse to walk through is a wall you
-built yourself. Each of them believed they had reasoned their way there. Each
-of them could show their working.
+built yourself. Every one of them believed they had reasoned their way there, and could show
+you the working if you asked.
 
 **GM: it was neither reasoning nor coincidence.** [[Zon-Kuthon]] and
 [[Urgathoa]] worked the same institution from two directions over the better

@@ -12,7 +12,7 @@ seamless. Nothing grows on it. Nothing has weathered.
 
 Very little, and all of it from the outside.
 
-- **They are new.** The oldest confirmed sighting is inside the last year. No
+- **They are new.** No confirmed sighting goes back more than a year. No
   chronicle, no saga, no imperial ministry record and no elven tribal memory
   describes anything like them before that — and between them those archives
   cover a great deal of time.
@@ -24,13 +24,13 @@ Very little, and all of it from the outside.
   what the ground was doing beforehand.
 - **Every one of them is open.** There is a way in. It is not guarded and it
   does not close. People have walked into all of them.
-- **The door stays open behind you.** It simply will not let you back through.
+- **The door stays open behind you.** It will not let you back through it.
 
 ## The three that are confirmed
 
 - **The Charter Tower**, in the unsurveyed jungle on the eastern continent's
-  southern frontier — the most accessible one anyone has found, standing on
-  ground two nations both consider theirs.
+  southern frontier. Easier to reach than the other two, and standing on
+  ground that two nations both consider theirs.
 - **The Drowned Spire**, in deep water in the island seas. Reaching the door
   is its own problem.
 - **The Sealed Ascent**, somewhere below the mountains of the deep holds. The

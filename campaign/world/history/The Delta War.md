@@ -57,7 +57,7 @@ Delta War. It priced it, and the price was the whole thing.
 
 ## What happened
 
-The landing worked. The first three weeks worked. Thurigypt is very good at
+The landing worked, and so did the three weeks after it. Thurigypt is very good at
 this and the delta's living population is small.
 
 Then the ground fought back, in the sense that the ground is what the Lichdom

@@ -261,9 +261,36 @@ worldbuilding notes.
 
 ## Writing worldbuilding notes
 
-Whenever you create or edit a note under `campaign/`, write it as
-Obsidian-flavoured markdown, matching the convention already used throughout
-`vault/`. **The site is what actually reads these notes** — it renders the raw
+**Invoke the `saeroth-prose` skill before writing or revising any prose under
+`campaign/` or `players/`.** Not only when asked to improve the writing —
+every note added here is prose somebody reads at a table, and the whole vault
+is dictated to Claude, so without the skill the house voice drifts back toward
+a recognisably generated one within a few notes. The user's players notice,
+and have said so.
+
+The four habits it exists to stop, in the order they give the game away:
+
+1. **Rhetorical symmetry.** *"Quivar credits the court. Everyone else credits
+   the service."* A matched pair with the same verb. Add a third beat of a
+   different kind so the pattern never closes.
+2. **Stacked superlatives.** *"The oldest continuous monarchy on the
+   continent, and the only great power never conquered."* Two ranking claims
+   describing no event. Say what happened instead: the crown stayed in one
+   house, no foreign army ever held the capital.
+3. **Clipped fragments.** *"c. 900 AR, unbroken since."* Verbless sentences
+   as a rhythm device, in catalogue register. *Founded around 900 AR.* is a
+   person talking.
+4. **The em-dash hinge.** State a fact, pause, deliver the twist. Fine once.
+   It was running at four times a normal rate and was the only move in the
+   vault.
+
+`python3 .claude/skills/saeroth-prose/scripts/prose_check.py <path>` measures
+all four and ranks a whole directory with `--top`. Read what it flags rather
+than deleting it — it cannot tell a closed pair from anaphora, and
+*"Nothing grows on it. Nothing has weathered."* is worth keeping.
+
+Beyond the voice, write it as Obsidian-flavoured markdown, matching the
+convention already used throughout `vault/`. **The site is what actually reads these notes** — it renders the raw
 markdown, so what you write is what it shows — and the format stays
 Obsidian-flavoured because that is what `vault/` uses and what still opens
 correctly on GitHub:

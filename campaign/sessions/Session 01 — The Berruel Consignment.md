@@ -9,7 +9,7 @@ ambush: the Quivar–Vaelic border, within sight of [[Lazarian Lichdom]]
 
 A [[Thurion Merchant Alliance]] caravan carrying supplies for an expedition to
 a rumoured fourth tower. The party can be hired guards, factors travelling with
-their own goods, passengers who paid for the escort, or stowaways — all four
+their own goods, passengers who paid for the escort, or stowaways. All four
 fit a wagon train and none of them need to know each other first.
 
 The caravan is going to be destroyed. That is not a failure state; it is the
@@ -23,16 +23,18 @@ premise. What the party does about *why* is the campaign.
   confirmed exists, because three competing models of where towers appear all
   predict this valley and the Magocracy cannot tell three models apart without
   a fourth data point.
-- The Magocracy cannot move a season's supply by teleport circle — there is
-  nothing at the far end to receive it — so it has to hire hulls and wagons from
+- The Magocracy cannot move a season's supply by teleport circle, because
+there is nothing at the far end to receive it, so it has to hire hulls and
+wagons from
   [[Thurion Merchant Alliance]], the shipping league its own network is slowly
   making obsolete. It pays late and it pays badly, and everyone involved knows
   it.
 - [[Casa Berruel]], the Thurion house that took the contract, is four months
   from insolvency. It has underwritten more insurance than it can cover and
   needs cash before the next claim lands on it.
-- So Casa Berruel insures the consignment with the **[[Tessine]]** Signory —
-  its own league's rival — and arranges for the consignment not to arrive.
+- So Casa Berruel insures the consignment with the **[[Tessine]]** Signory,
+which is its own league's rival, and then arranges for the consignment not to
+arrive.
 - [[Cassian Merovel]] of Melisor supplies the means and takes half the
   settlement. He wants the expedition to fail for a second reason of his own,
   which is that the archmage sponsoring it holds the chair he has been passed
@@ -54,7 +56,7 @@ road, the country empties out: this is the tri-point where Quivar, the
 three patrols it, because patrolling it means explaining what you were doing
 there. Vaelic castles are visible on the northern ridge and are not coming.
 
-**The ambush.** Zombies come out of a drainage cut on the flank — and they do
+**The ambush.** Zombies come out of a drainage cut on the flank, and they do
 not come for the guards. They walk past anyone who lets them, straight at the
 wagons, because each of them has a case of lesser alchemist's fire strapped
 under the ribs and a length of slow cord where its guts used to be.
@@ -62,15 +64,16 @@ under the ribs and a length of slow cord where its guts used to be.
 They are a delivery mechanism. The corpses are packaging.
 
 **The trap in the encounter, and the reason to run it this way:** killing a
-kindled shambler is what sets the wagon alight. The party's correct instinct —
-put down the thing walking at the cargo — is precisely what destroys the cargo,
+kindled shambler is what sets the wagon alight. The party's correct instinct is to put down the thing walking at the cargo,
+and that is what destroys the cargo,
 and they will work that out one wagon too late. Everything that saves a wagon
 is something other than a killing blow at close range:
 
 - drop them at distance, before they close
 - Shove, Trip or grapple them away from the wagons (they are slowed 1 and
   cannot recover well)
-- open the water barrels — the caravan is carrying an expedition's supply,
+- open the water barrels, since the caravan is carrying an expedition's
+supply,
   which includes water, and a doused shambler burns badly or not at all
 - cut the traces and run the wagons out from under them
 
@@ -81,19 +84,20 @@ anyone who looks at the problem for one round instead of swinging at it.
 
 - **The Lichdom does not do this.** This is the strongest tell in the session
   and a Religion check gets it: Lazarian doctrine holds undeath to be
-  ascension, and a raising is *labour* — you do not strap a bomb to one and
+  ascension, and a raising is *labour*. You do not strap a bomb to one and
   throw it away. To a Lazarian necromancer this is not merely wasteful, it is
   obscene. Whoever did it was not raised in the tradition they are being
   blamed for.
 - **Somebody equipped them.** Harness, buckles, waxed cord, a shaped case under
   the ribcage. Grave-raisings do not come with kit.
-- The dead are *fresh* — weeks, not centuries — and came out of a drainage cut
+- The dead are *fresh*, weeks rather than centuries, and came out of a
+drainage cut
   with mud in their teeth and nothing on them older than this season.
 - One of them is wearing a Kelvary-pattern boot. Somebody bought bodies.
 - The cut they came from was dug. Recently, and by tools.
 - **Unburnt flasks.** Not every case goes off. One or two survive intact in the
   wreck, and lesser alchemist's fire is a *manufactured, purchased, recorded*
-  thing — a maker's mark, a lot number, and somewhere a ledger line for
+  thing: a maker's mark, a lot number, and somewhere a ledger line for
   twenty-odd flasks at three gold apiece. In a campaign whose villain's real
   weapon is paperwork, this is the thread.
 - A Melisor reagent flask, empty, thrown into the brush upslope — the kind an

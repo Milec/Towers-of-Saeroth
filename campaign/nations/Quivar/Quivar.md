@@ -32,6 +32,6 @@ to be brought to one. It has never made anybody talk less.
     - [[Voskreld Union]] — **Rivalry**: The court against the crown, and the tariff schedule against the taste that ignores it. …
     - [[Xian Ti]] — **Rivalry**: Two cultural capitals on opposite oceans, each convinced the other is derivative, both correct
     - [[Lazarian Lichdom]] — **Covert**: The court buys relics for reasons it does not explain, through intermediaries who are never the same twice
-    - [[Qeshara Sultanate]] — **Covert**: Two courts that spy on each other constantly and enjoy it enormously, exchanging intelligence, poets and — twice — an entire intelligence service's worth of deliberately false star-charts
-    - [[Tessine]] — **Covert**: Quivar's intelligence service runs on Tessine paper — forged and genuine, sold across the same counter — and the Signory's discretion is the actual product
+    - [[Qeshara Sultanate]] — **Covert**: Two courts that spy on each other constantly and enjoy it enormously, exchanging intelligence, poets, and on two occasions an entire intelligence service's worth of deliberately false star-charts
+    - [[Tessine]] — **Covert**: Quivar's Service runs on Tessine paper, forged and genuine, sold across the same counter, and on the Signory's discretion is the actual product
     - [[Undertide Reaches]] — **Covert**: The court is the Warden-Conclave's largest single client, and pays in wine, art and favours rather than anything that leaves a ledger entry

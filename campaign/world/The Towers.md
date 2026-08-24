@@ -72,14 +72,14 @@ the same in every tower, and that is the whole of the problem.
 - **Difficulty is a relation, not a quantity.** No tower is hard in the
   abstract. It is hard, or fair, or merciful *for you* — measured against
   whoever crossed the threshold, and adjusted to them.
-- **The relation is fixed per tower.** One will always come in above whoever
-  enters it. Another will always sit a shade below. A veteran company and four
+- **The relation is fixed per tower.** One of them comes in above whoever
+enters it, every time, and will do the same to the next party. Another sits a
+shade below and always has. A veteran company and four
   half-trained nobodies walking into the same tower do not get the same tower,
   but they get it pitched at the same angle relative to themselves.
-- **Nothing outside tells you which kind you have.** The stone is the same. The
-  door is the same. There is no mark, no sign, no reading anyone has found that
-  distinguishes a merciful tower from a lethal one, and the only test is to
-  walk in.
+- **Nothing outside tells you which kind you have.** Same stone, same door, no
+mark and no sign, and no reading anyone has found that tells a merciful tower
+from a lethal one. The only test is to walk in.
 - **Survival inside is possible.** It is simply unlikely — and it has never yet
   been followed by getting out.
 
@@ -93,8 +93,8 @@ opposite, because no Diet in the world votes to send four unknowns at the prize
 of the age.
 
 The second is that somewhere out there stands a merciful tower that nobody has
-found. When the first tower in history is finally conquered, the most likely
-explanation is that someone walked into that one. And within a month the world
+found. When the first tower in history is finally conquered, the likeliest
+explanation will be that somebody walked into that one. And within a month the world
 will have drawn precisely the wrong lesson from it.
 
 ## The rumour

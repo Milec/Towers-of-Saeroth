@@ -46,4 +46,4 @@ finds hardest to argue with.
     - [[Thurion Merchant Alliance]] — **Trade**: Where the Salt Road meets the sea: everything the caravans carry out of the eastern deserts goes onto Alliance hulls at Qeshara's coast
     - [[Melisor Magocracy]] — **Rivalry**: Arcane law against star-craft: two traditions that each regard the other as astrology with better funding
     - [[Thurigypt]] — **Rivalry**: One river system, two claims on the incense road, and a court each that argues its case in verse. …
-    - [[Quivar]] — **Covert**: Two courts that spy on each other constantly and enjoy it enormously, exchanging intelligence, poets and — twice — an entire intelligence service's worth of deliberately false star-charts
+    - [[Quivar]] — **Covert**: Two courts that spy on each other constantly and enjoy it enormously, exchanging intelligence, poets, and on two occasions an entire intelligence service's worth of deliberately false star-charts

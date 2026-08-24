@@ -21,16 +21,17 @@ elsewhere faintly absurd.
 
 ## The peoples
 
-Humans are the most numerous and the most scattered. Beyond them the world is
-genuinely various: dwarves in the high holds, several distinct elven peoples —
-woodland, arctic, desert, aquatic and the dark-elven kin under the mountains —
-gnomes and halflings thick in the inventive lowlands, centaurs and kholo and
-catfolk out on the grasslands, leshys where the forests are oldest, and
-orc and half-kin populations nearly everywhere.
+There are humans on every road and in every port, which is not true of anyone
+else. Past them the world is a crowded place. Dwarves in the high holds. Five
+or six distinct elven peoples, woodland and arctic and desert and aquatic, and
+the dark-elven kin who live under the mountains and are not often seen above
+them. Gnomes and halflings thick on the ground in the inventive lowlands,
+centaurs and kholo and catfolk out on the grass, leshys in the old forests,
+and orc and half-kin families more or less everywhere.
 
-A few nations have ancestry hierarchies written into law. Most do not. It is
-worth knowing which is which before you arrive somewhere expecting to be
-served.
+A few nations have ancestry hierarchies written into their law. Most do not.
+Find out which sort you are walking into before you walk into it expecting to
+be served.
 
 ## How anything gets anywhere
 
@@ -42,8 +43,10 @@ travelled for a living they have been on at least one.
 - **The Salt Road.** Caravans and wells across the eastern deserts, from the
   great river to the frontier markets and out to the coast.
 - **The Uplad circuit.** The overland road across the western south, where a
-  nomad confederacy sells safe passage and the finest horses in the world.
+  nomad confederacy sells safe passage and horses that other nations breed
+  for and never quite match.
 - **The Voskreld roads and canals.** Grain, steel and machinery across the
-  western centre, on the best-maintained roadbed anywhere.
+  western centre. The roadbed is kept up in winter, which is rarer than it
+  sounds and is why the freight goes this way.
 
-Where they cross is where the money is, and where the trouble is.
+Where two of them cross, you will find the money. You will generally find the trouble about a street away from it.

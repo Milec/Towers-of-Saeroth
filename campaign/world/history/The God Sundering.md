@@ -65,8 +65,8 @@ Then it stopped, and it soaked in, and it has been in the ground ever since.
 Everything in [[The Nameless Empire]] happens *after this*, and reads
 differently once you know it.
 
-[[Pharasma]] noticed the ritual first. What the rest of them noticed was the
-sky. The one act in all of recorded divine history where the whole pantheon
+[[Pharasma]] noticed the ritual. The rest of them looked up because the sky
+had turned. The one act in all of recorded divine history where the whole pantheon
 moved together was not a response to an overreaching mortal working — it was a
 funeral, conducted by killers.
 
@@ -92,7 +92,7 @@ better at it.
 The erasure of the name was complete before the killing — that was the point of
 it — and a name unmade that thoroughly is unmade for gods as well. Every
 surviving deity knows, with total certainty, that the pantheon is one short.
-Not one of them can say of whom. They cannot say what it was the god of. They
+Not one of them can say of whom, or what the god had held. They
 have no rite for it, because a rite needs a name, and they have never spoken of
 it to any mortal, because there is nothing to say.
 

@@ -1,9 +1,10 @@
 # Welcome to Saeroth
 
-Everything on this site is **what your character could plausibly know** — the
-sort of thing you pick up from a season of travel, a good tavern, or a
-schoolroom. It is a traveller's picture of the world, not a true one. Some of
-it is out of date. Some of it is what people say rather than what is so.
+Everything here is **what your character could plausibly know**: the sort of
+thing you pick up from a season on the road, a good tavern, or a schoolroom.
+Treat it as a traveller's picture of the world rather than a true one. Some of
+it is years out of date, and a fair amount of it is what people say instead of
+what happened.
 
 Start with **The Towers** if you read nothing else. It is the reason the
 campaign is happening.
@@ -16,9 +17,11 @@ that nobody has finished taking.
 - **The west** is old kingdoms packed close: princes, republics, theocracies
   and a magocracy, most of them within a few weeks' ride of somebody they have
   fought before.
-- **The east** is larger and stranger to western eyes — an empire that keeps
-  records going back further than anyone else's, a khaganate on the steppe, two
-  desert powers, jungle confederacies and a nation living under a volcano.
+- **The east** is larger, and strange to western eyes. An empire whose
+  ministries have been writing everything down for eighteen centuries, a
+  khaganate on the steppe, two desert powers, jungle confederacies, and a
+  nation that farms the slopes of a live volcano and evacuates when it has
+  to.
 - **The sea between them** is run by two powers who between them move nearly
   everything: the Thurion Merchant Alliance and the island fleets of Aquoniti.
 - **The Wildlands**, in the south, are mostly unclaimed. Three nations hold a
@@ -27,10 +30,12 @@ that nobody has finished taking.
 
 ## What is going on right now
 
-A year ago there were no towers. Now there are, and more keep arriving. That
-is the only genuinely new thing in the world, and every court on both
-continents is trying to work out what it means before somebody else does.
+A year ago there were no towers. There are now, and more keep turning up.
+Nothing else in the world is new — this is the one thing — and every court on
+both continents is trying to work out what it means before its neighbours
+do.
 
-Everything else is ordinary: grain moves, wars are threatened and not fought,
-the Alliance takes its percentage, and a great many people are getting on with
-their lives in a world that has just acquired a mystery nobody can explain.
+The rest of it is ordinary. Grain moves. Wars get threatened and don't happen.
+The Alliance takes its percentage. And a great many people are getting on with
+their lives in a world that has lately acquired a mystery nobody can
+explain.
