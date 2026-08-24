@@ -8,10 +8,23 @@ one morning where the evening before there was pasture, or reef, or a road men
 had used for two hundred years. The stone is seamless and nobody recognises
 it. Nothing grows on it. Nothing has weathered.
 
-Close up it is worked. Fine lines run across it in tracks and corners, the way
-the inside of a lock is worked rather than the outside of a wall, and nobody
-can say what they are for. Between them are figures. People who have stood in
-front of them reach for the same word, and the word is *cruel*.
+Nobody who has seen one leads with the height. They lead with the fact that it
+is beautiful. Pale stone, close to white, fluted all the way up, and worked at
+every joint with more ornament than any cathedral you have been inside could
+raise the money for. It is lit from within. A cold blue stands in the windows
+and in the crown at the top of it, in no wind, and never goes out, and on a
+clear night you can see one from a day's ride away.
+
+Closer in, the ornament is stranger than it looked. Fine lines run across the
+stone in tracks and corners, the way the inside of a lock is worked rather
+than the outside of a wall, and nobody can say what they are for. Between them
+are figures. People who have stood in front of them reach for the same word,
+and the word is *cruel*.
+
+![A tower at dusk: pale fluted stone under a heavy sky, gothic ornament
+at every joint, and cold blue light standing in the windows and in the
+crown at its top](towers.jpg)
+*What people describe when they have actually stood in front of one.*
 
 ## What is known
 

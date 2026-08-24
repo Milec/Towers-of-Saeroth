@@ -16,6 +16,24 @@ one morning where the evening before there was pasture, or reef, or a road men
 had used for two hundred years. The stone is seamless and nobody recognises it.
 Nothing grows on it. Nothing has weathered.
 
+Nobody who has seen one leads with the height. They lead with the fact that it
+is beautiful. The stone is pale to the point of white, fluted the whole way up
+the shaft, and carried at every joint and lintel by more ornament than any
+cathedral on either continent could raise the money for. It is lit from
+inside: a cold blue standing in the windows and in the crown at the top, in no
+wind, never guttering, visible from a day's ride on a clear night.
+
+Then you get close enough to read the figures cut between the lines, and the
+word people reach for is *cruel*. Both of those are true about the same
+building, which is the part nobody manages to get comfortable with. Whoever
+put this here spent enormously on it and meant something by it that nobody
+wants to have been meant.
+
+![A tower at dusk: pale fluted stone under a heavy sky, gothic ornament
+at every joint, and cold blue light standing in the windows and in the
+crown at its top](towers.jpg)
+*What people describe when they have actually stood in front of one.*
+
 Every tower anyone has found is open. There is a way in, it is not guarded, and
 it does not close. People have walked into all of them.
 

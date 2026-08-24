@@ -151,7 +151,15 @@ body {
 .content h2 { font-size: 1.4em; margin: 1.5em 0 .4em; }
 .content h3 { font-size: 1.15em; margin: 1.2em 0 .3em; }
 .content a { color: var(--link); }
-.content img { max-width: 100%; }
+/* Portrait art at full column width is 860px tall on a desktop and pushes
+   the note off the screen, so cap the height and let the width follow. */
+.content img {
+  display: block; max-width: 100%; width: auto; max-height: 72vh; height: auto;
+  border: 1px solid var(--rule); border-radius: 12px;
+}
+/* A caption is the italic line written straight under the image in the
+   markdown, so it stays a caption in Obsidian and on GitHub too. */
+.content img + em { display: block; margin-top: 7px; color: var(--muted); font-size: 13px; }
 .content ul, .content ol { padding-left: 1.35em; }
 .content li { margin: .25em 0; }
 .content code { background: var(--code); padding: .12em .35em; border-radius: 5px; font-size: .9em;
