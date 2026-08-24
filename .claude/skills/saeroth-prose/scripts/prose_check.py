@@ -68,10 +68,17 @@ begins begin began ends end sees see saw thinks think thought calls call
 """.split())
 INFLECTED = re.compile(r"\b\w{3,}(ed|es)\b")
 WORD = re.compile(r"[A-Za-z'-]+")
-# Words too common to signal that two sentences were built to the same pattern.
+# Function words only. A mirrored pair is betrayed by a repeated *content*
+# word — "Quivar credits the court / Everyone else credits the service" — so
+# anything that turns up in every third sentence anyway is noise. Leaving
+# "there", "you" and "so" in flagged three false pairs in The Towers alone.
 MIRROR_STOP = set("""the a an and or but of to in on at for with by from as
 that this it its their his her they he she is was are were not no than then
-have has had been being one two all any some more most""".split())
+have has had been being one two all any some more most there here you your
+we our us so if when what who which will can could would may might only also
+still just now out up into over about after before because while without own
+do does did what where how such other same very too each every"""
+.split())
 
 FENCE = re.compile(r'^\s*```')
 FRONTMATTER = re.compile(r'^---\r?\n.*?\r?\n---\r?\n', re.S)

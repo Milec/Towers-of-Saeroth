@@ -1,12 +1,12 @@
 # The Towers
 
-A year ago there were none. Then there was one, and then there were several,
-and there are more now than there were last season.
+A year ago there were none. Then there was one. Then several, and there are
+more standing this season than there were last.
 
-They do not rise, and nobody has ever watched one arrive. A tower is simply
-*there* one morning where the evening before there was pasture, or reef, or a
-road people had used for two hundred years. The stone is unfamiliar and
-seamless. Nothing grows on it. Nothing has weathered.
+They do not rise, and nobody has ever watched one arrive. A tower is *there*
+one morning where the evening before there was pasture, or reef, or a road men
+had used for two hundred years. The stone is seamless and nobody recognises it.
+Nothing grows on it. Nothing has weathered.
 
 ## What is actually known
 
@@ -14,17 +14,33 @@ Very little, and all of it from the outside.
 
 - **They are new.** No confirmed sighting goes back more than a year. No
   chronicle, no saga, no imperial ministry record and no elven tribal memory
-  describes anything like them before that — and between them those archives
+  describes anything like them before that, and between them those archives
   cover a great deal of time.
-- **They are still arriving.** This is the part that matters and the part
-  least often said plainly. The towers were not one event the world is slowly
-  discovering the size of. New ones appear. Reports come in faster than anyone
-  can send someone to confirm them.
-- **Nobody has found a pattern.** Not in where they appear, nor how often, nor
-  what the ground was doing beforehand.
+- **They are still arriving.** Say that part plainly, because most people
+  won't. This was not one event that the world is slowly finding the edges of.
+  New ones appear. Word of them comes in faster than anyone can send a rider
+  to go and look.
+- **Nobody has found a pattern.** Not in where they appear, not in how often,
+  not in what the ground was doing beforehand.
 - **Every one of them is open.** There is a way in. It is not guarded and it
   does not close. People have walked into all of them.
-- **The door stays open behind you.** It will not let you back through it.
+- **The door stays open behind you.** It will not let you back through. This
+  has been tested in front of witnesses more times than anyone cares to count,
+  usually with a rope and a volunteer. The rope comes back.
+
+## What people say is up there
+
+That whoever reaches the top of a tower comes out its master, and comes out
+richer than any crown.
+
+Nobody knows who said it first. It turned up in every port and every market in
+the same season, out of the mouths of people who could not have heard it from
+each other, and it has been repeated so often since that arguing with it marks
+you out as a bore. No one who could actually know has come back to say it.
+
+Believe it or don't. It is why the expeditions are being funded, why two
+nations are arguing over a stretch of jungle neither wanted last year, and why
+the queue outside a door nobody returns from has not got any shorter.
 
 ## The three that are confirmed
 
@@ -40,9 +56,10 @@ There are rumours of others. Rumours are cheap this year.
 
 ## Who is looking
 
-Everyone, in the way that everyone is always looking at something profitable.
-The Melisor Magocracy is the only power funding proper expeditions, and has
-three competing theories and not enough data to tell them apart. Several
-crowns are quietly hoping the whole thing stops on its own.
+Everyone is looking, in the way people always look at something that might be
+worth money. The Melisor Magocracy is the only power paying for proper
+expeditions, and it has three theories and nowhere near enough evidence to
+choose between them. Several crowns are quietly hoping the whole business
+stops on its own.
 
 Nobody who has gone in has come out.

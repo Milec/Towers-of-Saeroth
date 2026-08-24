@@ -6,20 +6,21 @@ known: A few found; others unfound, and more still arriving
 returned: Nobody
 ---
 
-A year ago there were no towers. Then there was one, and then there were
-several, and there are more now than there were last season. Nobody can say how
-many, and — this is the part the crowns have been slow to say out loud — nobody
-can say how many there will be.
+A year ago there were no towers. Then there was one. Then several, and there
+are more standing this season than there were last. No crown will put a number
+on them, and none of them cares to be asked the other question, which is how
+many are still to come.
 
-They do not rise, and nobody has ever watched one arrive. A tower is simply
-*there* one morning where the previous evening there was pasture, or reef, or a
-road that people had used for two hundred years. The stone is unfamiliar and
-seamless. Nothing grows on it. Nothing has weathered.
+They do not rise, and nobody has ever watched one arrive. A tower is *there*
+one morning where the evening before there was pasture, or reef, or a road men
+had used for two hundred years. The stone is seamless and nobody recognises it.
+Nothing grows on it. Nothing has weathered.
 
-Every tower that anyone has found is open. There is a way in, and it is not
-guarded, and it does not close. People have walked into all of them.
+Every tower anyone has found is open. There is a way in, it is not guarded, and
+it does not close. People have walked into all of them.
 
-The door stays open behind you. It simply will not let you back through it.
+The door stays open behind you the whole time. It will not let you back
+through.
 
 ## What is actually known
 
@@ -51,18 +52,19 @@ Very little, and the little is all from the outside:
   power anyone has found that returns them. This is why the towers are
   understood as death sentences rather than as dangerous places.
 - **Nobody has returned.** Not one person, from any tower, ever. Not wounded,
-  not raving, not changed. But that follows from the threshold rather than from
-  the killing — nobody has come out to give an account because nobody *can*,
-  which is not the same as nobody being alive in there. The world stopped
-  drawing that distinction within about a month, and has grieved accordingly.
+  not raving, not changed. That follows from the threshold rather than from
+  any killing: nobody has come out to give an account because nobody *can*,
+  which is a different thing from nobody being alive in there. The world
+  stopped drawing that distinction within about a month and has grieved
+  accordingly.
 - **Nothing gets a message out.** Sending, scrying, dream, familiar, bonded
   item, a rope tied to a companion's waist: everything that should carry word
   from inside to outside fails at the threshold, and fails silently. The
-  outside end simply receives nothing at all. Word passed *in* appears to work,
-  which is worse, because it means the people inside may have heard the shouting.
+  outside end receives nothing at all. Word passed *in* appears to work, which
+  is worse, because it means the people inside may have heard the shouting.
 
-That is the entire body of confirmed fact. Everything else — the wealth, the
-power, the idea that a tower can be *conquered* at all — is rumour.
+That is the entire body of confirmed fact. The wealth, the power, the idea
+that a tower can be *conquered* at all: every bit of that is rumour.
 
 ## How dangerous a tower is
 
@@ -73,14 +75,14 @@ the same in every tower, and that is the whole of the problem.
   abstract. It is hard, or fair, or merciful *for you* — measured against
   whoever crossed the threshold, and adjusted to them.
 - **The relation is fixed per tower.** One of them comes in above whoever
-enters it, every time, and will do the same to the next party. Another sits a
-shade below and always has. A veteran company and four
-  half-trained nobodies walking into the same tower do not get the same tower,
-  but they get it pitched at the same angle relative to themselves.
+  enters it, every time, and will do the same to the next party. Another sits
+  a shade below and always has. A veteran company and four half-trained
+  nobodies walking into the same tower do not get the same tower. They get it
+  pitched at the same angle relative to themselves.
 - **Nothing outside tells you which kind you have.** Same stone, same door, no
-mark and no sign, and no reading anyone has found that tells a merciful tower
-from a lethal one. The only test is to walk in.
-- **Survival inside is possible.** It is simply unlikely — and it has never yet
+  mark and no sign, and no reading anyone has found that tells a merciful
+  tower from a lethal one. The only test is to walk in.
+- **Survival inside is possible.** It is unlikely, and so far it has never once
   been followed by getting out.
 
 Two things follow from this that the world has not worked out, because working
@@ -92,30 +94,30 @@ a thing that kills people, and every crown has lost them. Nobody has tried the
 opposite, because no Diet in the world votes to send four unknowns at the prize
 of the age.
 
-The second is that somewhere out there stands a merciful tower that nobody has
+The second is that somewhere out there stands a merciful tower nobody has
 found. When the first tower in history is finally conquered, the likeliest
-explanation will be that somebody walked into that one. And within a month the world
-will have drawn precisely the wrong lesson from it.
+explanation will be that somebody walked into that one. The world will have a
+month to draw the wrong lesson from it, and will need less.
 
 ## The rumour
 
 The claim is that whoever reaches the top of a tower comes out its master, and
 comes out rich beyond any crown's reckoning.
 
-It is worth being precise about the standing of this claim: **no one who could
-possibly know it has ever come back to say it.** It arrived alongside the
-towers, everywhere, at roughly the same time, in the mouths of people who could
-not have heard it from each other. Nobody can name the first person to say it.
+Be clear about where this claim comes from. **No one who could possibly know
+it has ever come back to say it.** It arrived alongside the towers, everywhere,
+at roughly the same time, out of the mouths of people who could not have heard
+it from each other. Nobody can name the first person who said it.
 
 The rumour is believed almost universally anyway, and it is already reshaping
 the map. Where a crown finds that inconvenient it has usually chosen to believe
 the rumour and dispute only the ownership.
 
-There is a crueller turn in it. Because the only way out is through, the rumour
-does not need to be true to be obeyed. Anyone standing inside a tower — sceptic,
-conscript, someone who was pushed — has exactly one course of action available
-to them, and it is the one the rumour describes. Inside, the rumour stops being
-a claim about the world and becomes the only plan anybody has.
+There is a crueller turn in it. Because the only way out is through, the
+rumour does not need to be true to be obeyed. A sceptic, a conscript, somebody
+who was pushed: whoever they are, once they are inside they have one course of
+action available and it is the one the rumour describes. Inside, the rumour
+stops being a claim about the world and becomes the only plan anybody has.
 
 ## What this is doing to the world
 
@@ -143,19 +145,19 @@ response so far is improvised, and mostly by whoever was standing nearest.
   tower stops being answerable to a ledger. The Concord Table has sat twice
   since the towers began and adjourned twice without a finding.
 
-And the thing that no court has yet put in writing: nothing anyone has learned
+And the thing no court has yet put in writing: nothing anyone has learned
 rules out a tower appearing somewhere that is already occupied. Every one found
-so far has stood on open ground, water or stone. Whether that is a rule or a
-coincidence of a single year's sample is exactly the question Melisor cannot
-answer, and exactly the question the [[Thurion Merchant Alliance]]'s insurers
-have started to ask about their harbour cities.
+so far has stood on open ground, water or stone. Is that a rule, or is it what
+a single year's sample looks like? Melisor cannot answer it. The
+[[Thurion Merchant Alliance]]'s insurers have started asking it about their
+harbour cities, which is how a question becomes a premium.
 
 ## Who is inside
 
-A consequence the outside has not followed through, because following it
-through is unbearable: **everyone who has ever survived a tower is still in
-one.** Nobody who lived got out, because getting out is not available. The
-Aquoniti survey crews, the chartered companies, the ventures nobody claimed —
+Here is a consequence the outside has not followed through, because following
+it through is unbearable. **Everyone who has ever survived a tower is still in
+one.** Nobody who lived got out, because getting out is not on offer. The
+Aquoniti survey crews, the chartered companies, the ventures nobody claimed:
 whatever fraction of them are alive are alive *in there*, and have been for
 months.
 
@@ -169,10 +171,10 @@ expeditions all went and none of them left.
 
 ## The known towers
 
-Three are documented here, in the order they were found. There are certainly
-others, at least two crowns are believed to be sitting on a sighting rather
-than reporting it, and this table has needed a new row roughly every season so
-far.
+Three are documented here, in the order they were found. There are others.
+At least two crowns are believed to be sitting on a sighting rather than
+reporting it, and this table has needed a new row about every season since it
+was started.
 
 | Tower | Found | Where | Standing claim | Pitch (GM) |
 | --- | --- | --- | --- | --- |
@@ -183,8 +185,8 @@ far.
 **Pitch** is the fixed relation that tower holds to whoever walks in, and it is
 GM information only. Nobody in the world knows it, no examination reveals it,
 and no character should ever be able to find it out from outside. None of the
-three found so far is merciful, which is a fact about which towers get *found* —
-the ones near shipping lanes and disputed borders — rather than about towers.
+three found so far is merciful. That is a fact about which towers get *found* —
+the ones near shipping lanes and disputed borders — and not a fact about towers.
 
 Unconfirmed reports run well ahead of that. There is a standing sighting in the
 Khazan steppe that three separate riders describe consistently and no envoy has
