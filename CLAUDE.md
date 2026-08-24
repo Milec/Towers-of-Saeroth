@@ -71,6 +71,17 @@ own small reader page in `site/players/`, and it is **not** part of the vault:
 no tree, no search, no graph, no service worker, nothing links to it and it
 links to nothing.
 
+**"No service worker" is a thing `sw.js` has to actively honour**, because the
+main worker's scope is the whole site and covers `/players/` whether that page
+registers anything or not. Its notes rule matched any path containing
+`/content/`, which is where the players' documents live, so a phone that had
+ever opened the main site served the players' page out of a cache it never
+asked for: a months-old copy of a document, and a 404 on any art added to that
+document since. `sw.js` now returns without responding for anything under
+`<scope>/players/`. Match it against the worker's own scope rather than as a
+substring — `campaign/players/<name>/` is a real folder of notes and those do
+belong in the cache.
+
 That separation is the feature. These documents are *written*, not derived, so
 the vault can say anything it likes — a nation's Military bullet, an NPC's
 real motive, who actually burned the caravan — without any of it turning up in

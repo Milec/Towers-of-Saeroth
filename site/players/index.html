@@ -160,6 +160,27 @@
     localStorage.setItem('theme', next);
   };
 
+  /* This page registers no service worker of its own, and is controlled by
+     the main site's one anyway, because that worker's scope is the whole
+     site. That worker used to cache these documents, so ask its registration
+     to check for an update on every load: a phone that only ever opens
+     /players/ would otherwise keep the old worker, and keep being served the
+     old copy, with nothing to make it look. Reload once when a new worker
+     takes over, and only when one was already in charge, so a first visit
+     does not flash. */
+  if (navigator.serviceWorker) {
+    navigator.serviceWorker.getRegistration()
+      .then((reg) => reg && reg.update())
+      .catch(() => {});
+    const had = !!navigator.serviceWorker.controller;
+    let reloading = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!had || reloading) return;
+      reloading = true;
+      location.reload();
+    });
+  }
+
   const tabs = document.getElementById('tabs');
   const doc = document.getElementById('doc');
   let pages = [];
