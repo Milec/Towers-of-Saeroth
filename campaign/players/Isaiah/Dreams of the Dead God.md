@@ -117,25 +117,34 @@ does not always go away.
 
 ### 5&#8209;6 Twelve ways
 
-Twelve of them take hold at once and no two pull the same direction, which you
-understand straight away is the design rather than a failure of coordination.
+Twelve hooks go in and no two of them pull the same direction.
 
-Something your size has no limbs to tear off. What it has is aspects, and they
-come apart along seams you never knew were seams. The part of you that hears
-prayer goes one way and the part that answers goes another, and both keep
-working for a while afterwards, separately, each of them casting about for
-where the other has got to. Your sense of what a year is becomes twelve
-smaller senses of what a year is, and they do not agree, and you are obliged
-to hold all twelve disagreements at once because there is no longer anything
-in you that arbitrates.
+They are hooks. Iron, or whatever iron is when it has been made for this, and
+they go in under the ribs, through both shoulders, into the joints of the
+hands, into the hinge of the jaw. Then they pull, steadily and without any
+particular hurry, because a body your size does not come apart quickly and
+everybody involved knows it. Skin goes first. It goes the way wet canvas goes,
+in a seam that opens a foot and stops and opens another foot, and you can hear
+it happening from inside. Then the muscle, which does not tear so much as
+fray, one cord after another, each of them a separate event with its own
+arrival. Then the joints. A hip the size of a hill leaves its socket over the
+better part of an afternoon and there is a sound at the end of that which you
+will still be hearing in the last of the twelve places you end up.
 
-Every piece stays awake. Every piece can feel the other eleven being worked on
-and cannot reach any of them. Every piece is certain that it is the real one,
-and every piece is right.
+You do not die of any of it. That is what the three generations of paperwork
+were for. You are awake for the first arm. You are awake for the second arm.
+You are awake when they open the chest along the breastbone and it gives like
+a barred door being forced, and awake for what is behind it, and awake while
+they take that out as well and it goes on working in the hands of a man
+standing on your sternum to get the leverage.
 
-It does not finish when you are apart. It goes on for as long as the work
-takes, and you are present in twelve places for all of it, and in one of those
-places you are still trying to be polite about it.
+Near the end your own weight starts doing the work for them. What is left is
+hanging off itself, tearing under its own load in twelve directions at once,
+and every one of those tears is slow enough to be attended to individually.
+You cannot fall. There is nothing left to fall with.
+
+The exemplar wakes up intact. They lie still for a while in the dark, going
+over themselves with both hands, checking.
 
 ### 7&#8209;8 The bleeding
 
