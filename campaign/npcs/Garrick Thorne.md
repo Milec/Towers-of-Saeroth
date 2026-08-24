@@ -5,11 +5,11 @@ level: 6
 role: mercenary swordsman
 ---
 
-A sellsword who's outlived three companies and every captain who ever gave him
-an order he didn't like. Garrick fights two-handed, favors ground he's chosen
-in advance, and treats a battlefield like a puzzle with exactly one correct
-answer: whoever's left standing. He's for hire, but the price includes not
-asking what the last job was.
+A sellsword who has outlived three companies and every captain who ever gave
+him an order he didn't like. He fights two-handed. He favours ground he chose
+that morning, and he treats a battlefield as a puzzle with one correct answer,
+which is whoever is left standing at the end of it. He is for hire. The price
+includes not asking what the last job was.
 
 He works out of Harrowgate without a charter, which is the whole of his
 position: the Muster Court of the [[Kelvary March]] has no authority over a man
@@ -19,8 +19,8 @@ written him down.
 
 **Want:** enough coin to stop taking jobs, which he privately doubts he'll
 ever have.
-**Won't:** fight for a cause — he's watched too many believers die for free
-what he charges good silver for.
+**Won't:** fight for a cause. He has watched too many believers die for free
+doing what he charges good silver for.
 
 Stat block is a homebrew build from the level 6 creature-building tables
 (soldier tier line), not a reskin of a published creature — no printed block

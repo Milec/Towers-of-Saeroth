@@ -7,17 +7,17 @@ founded: c. 1180 AR as the Great Thing; the High Kingship, c. 1520
 view: nation
 ---
 
-Honor, hospitality, and perseverance define Nordheimers. Great deeds are
-remembered through songs and oral tradition, and every person strives to
-leave behind a worthy saga — a Nordheimer fears a forgotten life more than
-a hard death.
+Honour, hospitality, and perseverance. Great deeds are kept in song and in
+telling rather than in writing, and every Nordheimer works to leave behind a
+saga worth the keeping. A hard death is not the thing they are afraid of. A
+forgotten life is.
 
 - **Founded** c. 1180 AR, when the Great Thing was first recorded. It is older than the kingship by three centuries. Jarls met at the same fjord to settle blood-debt for centuries before they agreed to elect anybody, and the High King's authority still stops exactly where the assembly says it does.
 - **Capital** Hravnfjord, a deepwater harbor town that swells fourfold whenever the Great Thing is called
 - **Geography** Fjords, taiga, and whale coasts; the interior is mountain and the sea is the road
 - **Government** The High King is elected by the assembly of Jarls at the Great Thing
 - **Races** [[Human|Humans]], [[Dwarf|Dwarves]], [[Jotunborn|Goliaths]]
-- **Faith** Patron [[Cayden Cailean]], god of bravery, freedom and the guest-cup — the closest thing Nordheim has to a national creed. [[Gorum]] is kept for war and [[Desna]] for the long voyages; the oldest sagas still invoke [[Trudd]]
+- **Faith** Patron [[Cayden Cailean]], god of bravery, freedom and the guest-cup, which is the closest thing Nordheim has to a national creed. [[Gorum]] is kept for war and [[Desna]] for the long voyages; the oldest sagas still invoke [[Trudd]]
 - **Economic Specialties** Timber, furs, amber, iron, shipbuilding, whaling
 - **Military** Shield walls, berserkers, longship fleets, elite axemen, mountain scouts
 - **History** Joined neither crown in the [[The Two-Crown War|Two-Crown War]] and raided both coasts for nine years, which made Nordheim rich and is remembered along those coasts in more detail than Nordheim expects. It signed the [[The Pilgrim's Peace|Pilgrim's Peace]] four years late, after an argument at the Thing, and has kept it without a single complaint filed against it.

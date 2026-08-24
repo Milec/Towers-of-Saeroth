@@ -9,20 +9,20 @@ view: nation
 
 Voskreld was several rival duchies within living memory, and the Union
 treats national unity as an ongoing project rather than a finished one.
-Shared holidays, a common tongue enforced in schoolrooms, and a standing
-army that deliberately mixes conscripts from every old province are all
-policy, not accident — the old grudges are supposed to stay in the history
-books. They don't always.
+Shared holidays, a common tongue enforced in schoolrooms, an army that mixes
+conscripts from every old province on purpose. All of it is policy rather
+than accident. The old grudges are supposed to stay in the history books.
+They don't always.
 
-- **Founded** c. 1700 AR, out of fear of open ground. Seven duchies with no defensible line between them and the steppe unified on terms that gave none of them the capital — Voskgrad was chosen precisely because it belonged to nobody — and the Provincial Council is the old ducal court, kept on as a place to complain.
+- **Founded** c. 1700 AR, out of fear of open ground. Seven duchies with nothing but farmland between themselves and the steppe, unifying on terms that handed none of them the capital. Voskgrad was chosen because it belonged to nobody. The Provincial Council is the old ducal court, kept on as a place to complain.
 - **Capital** Voskgrad, chosen as capital precisely because it belonged to none of the old duchies
-- **Geography** River plains between the mountains and the steppe — good farmland with no natural defensive line, which is the whole reason the duchies unified
+- **Geography** River plains between the mountains and the steppe. Good farmland, and not one ridge worth holding. That is why the duchies unified
 - **Government** The Voskreld Crown, advised by a Provincial Council of the old duchies
 - **Races** [[Human|Humans]] (from several once-rival provincial peoples), [[Dwarf|Dwarves]], [[Halfling|Halflings]], [[Goblin|Goblins]], [[Half-Elf|Half-Elves]]
-- **Faith** Patron [[Abadar]] in his aspect as god of roads, law and the standardized measure — deliberately chosen at unification as a god belonging to none of the old duchies. [[Erastil]] remains the provinces' real faith, and [[Gorum]] the Unified Legion's
+- **Faith** Patron [[Abadar]] as god of roads, law and the standardized measure, chosen at unification because he belonged to none of the old duchies. [[Erastil]] is still the provinces' real faith. [[Gorum]] is the Legion's
 - **Economic Specialties** Standardized coinage and measures, armaments manufacturing, grain surplus redistribution, road and canal infrastructure
-- **Military** The Unified Legion — an integrated multiethnic conscript army — provincial militia reserves, engineer corps, royal cannon foundries
-- **History** Stood with Reichsmund from the first month of the [[The Two-Crown War|Two-Crown War]], because a hostile Vaelic on an undefendable border is not something Voskreld survives. The Unified Legion in its present integrated form was built during those eleven years, out of provincial levies that could not be trusted to fight beside each other, and was kept afterwards for exactly that reason.
+- **Military** The Unified Legion, an integrated multiethnic conscript army; provincial militia reserves, engineer corps, royal cannon foundries
+- **History** Stood with Reichsmund from the first month of the [[The Two-Crown War|Two-Crown War]]. A hostile Vaelic on an undefendable border is not something Voskreld survives. The Unified Legion took its present integrated form during those eleven years, built out of provincial levies that could not be trusted to fight beside one another. It was kept that way afterwards for the same reason.
 - **Reputation** Disciplined, ambitious, and one bad harvest away from remembering old grievances
 - **Tension** A poor harvest in one province has revived the old argument about which duchy feeds which, in almost the original wording
 - **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]

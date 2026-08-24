@@ -5,28 +5,28 @@ view: relations
 ---
 
 No war is being fought in Saeroth this season, and none has been for six
-years — see [[The Delta War]] for the last one, and
+years. See [[The Delta War]] for the last one, and
 [[The Pilgrim's Peace|the Pilgrim's Peace]] for the sixty-year machinery that
-keeps ending them early. That is not the same as friendship, and nobody
+keeps ending them early. Peace is not the same thing as friendship. Nobody
 involved confuses the two.
 
-What holds instead is a set of standing arrangements — alliances written down,
-friendships that were never written down at all, trade nobody would call
-friendship, and a good deal of quiet loathing between neighbours who cannot
-afford to act on it. Most of these are felt differently from each end. Read a
-row as mutual unless the detail says otherwise.
+What holds instead is a set of standing arrangements. Alliances written down.
+Friendships nobody ever wrote down at all. Trade that no one would call
+friendship, and a great deal of quiet loathing between neighbours who cannot
+afford to act on it. Most of these are felt differently at each end, so read
+a row as mutual unless the detail says otherwise.
 
 **Standing** is shorthand for how a relationship behaves when it comes up at
 the table. It runs warm to hostile, with **Trade** off to one side, because
-commerce is not affection: some of the busiest routes on the map run between
+commerce is not affection. Some of the busiest routes on the map run between
 nations that cannot stand each other.
 
 | Label | Means |
 | --- | --- |
 | **Allied** | Formal alliance; mutual obligation is assumed |
-| **Friendly** | Real goodwill — kinship, shared faith, long habit — but nothing anyone signed |
+| **Friendly** | Real goodwill from kinship, shared faith or long habit, but nothing anyone signed |
 | **Trade** | Commercial dependency, cordial by default and no deeper than the ledger |
-| **Rivalry** | Competitive, not violent — prestige, markets, influence |
+| **Rivalry** | Competitive rather than violent: prestige, markets, influence |
 | **Friction** | Real grievance, no open conflict yet |
 | **Territorial** | Land, borders or raiding; the ones most likely to turn into war |
 | **Hostile** | Active enmity, ideological or otherwise |

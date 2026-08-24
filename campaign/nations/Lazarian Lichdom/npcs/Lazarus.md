@@ -6,28 +6,30 @@ visibility: GM only below the first section — what Lazarus found is the secret
 ---
 
 Lazarus has ruled [[Lazarian Lichdom]] for longer than any living record
-agrees on — the Cathedral Court stopped arguing about his age decades ago
-and only argues about how much longer the current silence will last. The
-answer, which Thesal knows and cannot prove, is four hundred years: he is not
-a successor to the schismatic who founded the Lichdom, he *is* that man, the
-Concord's own third-order high cleric, still on the throne he made by leaving
-it. See [[The Sundering of the Concord]]. By any
-measure his own scholars can construct, he is the single most powerful
-individual walking Saeroth: centuries of unbroken practice across every
-school of forbidden art the Lichdom has spent that same span perfecting,
-with no living rival who has had remotely as long to accumulate it.
+agrees on. The Cathedral Court gave up arguing about his age decades ago and
+argues instead about how much longer the silence will last. The answer, which
+Thesal knows and cannot prove, is four hundred years. He is not a successor
+to the schismatic who founded the Lichdom. He *is* that man, the Concord's
+own third-order high cleric, still on the throne he made by leaving it — see
+[[The Sundering of the Concord]].
 
-Eleven years ago a relic passed through the Lichdom's own grave-trade —
-brokered through [[Undertide Reaches]] or through [[Dalstan]], nobody
-outside the Cathedral Court knows which — and Lazarus took an unusual,
-personal interest in identifying it himself rather than leaving it to a
-court archivist. What he found is why the edicts stopped. He confirmed,
-past any doubt a scholar of his standing can raise, that an empire existed
-before any nation now on the board, and that it commanded power beyond
-anything currently alive has ever touched — his own centuries included. He
-has confirmed that it existed and that it had power. He has confirmed
-nothing else: not what it was, not what became of it, not where the rest of
-it went. *(GM: he never will — see [[The Nameless Empire]].)*
+By any measure his own scholars can construct he is the most powerful
+individual walking Saeroth. Four centuries of unbroken practice, across every
+school of forbidden art the Lichdom has spent the same span perfecting, and
+no living rival who has had anything like as long to accumulate it.
+
+Eleven years ago a relic came up through the Lichdom's own grave-trade,
+brokered through [[Undertide Reaches]] or through [[Dalstan]]. Nobody outside
+the Cathedral Court knows which. Lazarus took an unusual personal interest in
+identifying it himself rather than handing it to a court archivist, and what
+he found is why the edicts stopped.
+
+He confirmed, past any doubt a scholar of his standing can raise, that an
+empire existed before any nation now on the board, and that it commanded
+power beyond anything currently alive has ever touched. His own centuries
+included. That is all he confirmed. Not what it was, not what became of it,
+not where the rest of it went. *(GM: he never will — see
+[[The Nameless Empire]].)*
 
 An unanswered question of that size, to a mind with centuries free to spend
 on it, is not a mystery he has set aside. It is the only research he is

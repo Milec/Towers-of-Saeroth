@@ -7,14 +7,14 @@ founded: 1976 AR
 view: nation
 ---
 
-Death is merely another stage of existence here, and efficiency outweighs
-morality in every calculation the state makes. A Lazarian bureaucrat sees
-nothing strange in a skeleton clerk who has held the same post for three
-centuries — competence doesn't expire just because the body did.
+Death is another stage of existence here, and efficiency outweighs morality
+in every calculation the state makes. A Lazarian bureaucrat sees nothing
+strange in a skeleton clerk who has held the same post for three centuries.
+Competence doesn't expire just because the body did.
 
-- **Founded** 1976 AR. The third order of the **Concord**, whose high cleric denounced nobody, signed every resolution put in front of him, took the doctrine of death-as-a-door to its end in private, and left in the night for the delta four centuries ago with his followers. He did not die. He is still on the throne — of the two who broke the Concord he is the one nobody saw coming, and the one who has done the most harm — see [[The Sundering of the Concord]] and [[Lazarus]]
+- **Founded** 1976 AR. The third order of the **Concord**, whose high cleric denounced nobody, signed every resolution put in front of him, took the doctrine of death-as-a-door to its end in private, and left in the night for the delta with his followers. He did not die. He is still on the throne. Of the two who broke the Concord he is the one nobody saw coming, and the one who has done the most harm — see [[The Sundering of the Concord]] and [[Lazarus]]
 - **Capital** Grauthaven, a city of black basalt where the living quarter is the smallest district
-- **Geography** Fog-drowned marshland and old battlefields — terrain chosen for what's buried in it rather than what grows on it
+- **Geography** Fog-drowned marshland and old battlefields. The ground was chosen for what is buried in it rather than for what grows on it
 - **Government** Immortal Lich Emperor
 - **Races** [[Skeleton|Intelligent undead]], [[Dhampir|Dhampirs]], necromancers, [[Vampire|vampires]], living servants
 - **Faith** Patron [[Urgathoa]], whose doctrine of undeath as ascension runs through Lazarian state philosophy. [[Norgorber]] is kept quietly by the alchemists and relic-brokers. [[Pharasma]]'s faith is outlawed outright — she judges the dead, which makes her the one god the state cannot bargain with

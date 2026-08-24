@@ -7,19 +7,19 @@ founded: c. 1820 AR
 view: nation
 ---
 
-Corvane was founded by people who left somewhere else rather than live
-under someone else's rule any longer, and it has never quite stopped
-thinking of itself that way. Public debate is treated as a civic duty
-bordering on a sport — a Corvane street corner argument about tariffs can
-run for hours and draw a genuine crowd. A citizen's voice is expected to
-outweigh their birth, which is either the Republic's proudest principle or
-its most exhausting one, depending who's arguing.
+Corvane was founded by people who left somewhere else rather than live under
+another man's rule, and it has never quite stopped thinking of itself that
+way. Public debate here is a civic duty bordering on a sport. A street-corner
+argument about tariffs can run three hours and draw a crowd that stays for
+all of it. A citizen's voice is meant to outweigh their birth. Whether that
+is the Republic's proudest principle or its most exhausting one depends
+entirely on who you ask, and when.
 
 - **Founded** c. 1820 AR, by a harbour that refused a duke. The charter that became the Assembly of Citizens was originally a list of things the town would not do for him, and the first Chancellor was the man who read it out to his face.
 - **Capital** Vantry, a harbor city whose assembly hall was deliberately built with public galleries larger than the floor
 - **Geography** Coastal lowlands and working harbors; little defensible terrain, which is why the militia matters
 - **Government** Elected Assembly of Citizens, led by a term-limited Chancellor
-- **Races** [[Human|Humans]], [[Elf|Elves]], [[Dwarf|Dwarves]], [[Halfling|Halflings]], [[Half-Elf|Half-Elves]], [[Half-Orc|Half-Orcs]], [[Tiefling|Tieflings]] — refugees and dissidents of every kind
+- **Races** [[Human|Humans]], [[Elf|Elves]], [[Dwarf|Dwarves]], [[Halfling|Halflings]], [[Half-Elf|Half-Elves]], [[Half-Orc|Half-Orcs]], [[Tiefling|Tieflings]]; refugees and dissidents of every kind
 - **Faith** Patron [[Milani]], goddess of hope and uprising, whose worship the Republic's founders brought with them out of the places they fled. [[Cayden Cailean]] is nearly as popular for liberty's sake, and the Assembly itself keeps [[Abadar]] for the civic law
 - **Economic Specialties** Printing and publishing, shipbuilding, textiles, civic engineering, legal and diplomatic services
 - **Military** Citizen militia drawn from every trade, volunteer regiments, a coastal defense fleet, city watch companies

@@ -4,19 +4,18 @@ type: faction
 government: Grand Marshal, elected from within the Order
 ---
 
-An Imperial institution, not any elector's household troops — the same
-relationship the Teutonic Knights or Hospitallers had to the Holy Roman
-Empire. That distinction is the whole reason a commoner and a duke's son
-compete at the Trial on equal footing: both are entering Imperial service,
-not a lord's retinue.
+The Order answers to the High Prince, not to any elector. A commoner and a
+duke's third son ride to the Trial on the same terms, because both are
+entering Imperial service rather than a lord's retinue. It is the only door
+in [[Vaelic Principality]] that opens that way. (For a GM: roughly the
+Teutonic Knights' standing in the Holy Roman Empire.)
 
-Membership is restricted to [[Human|humans]] and
-half-humans ([[Half-Elf|half-elves]], [[Half-Orc|half-orcs]]),
-in keeping with [[Vaelic Principality]]'s broader ancestry hierarchy. The
-restriction bites hardest at the very first rung, not just at the top —
-every other ancestry is barred not only from the Order's higher ranks but
-from the immediate legal uplift of being taken into Imperial service at
-all.
+Only [[Human|humans]] and half-humans may take the oath.
+[[Half-Elf|Half-elves]] and [[Half-Orc|half-orcs]] are counted in; everyone
+else is counted out. The bar sits at the first rung, and that is where it
+does its damage. A [[Gnome|gnome]] armourer's daughter is not being kept
+from a marshal's seat. She is being kept from the rank a stablehand is
+given on the morning he is sworn.
 
 ## Founding
 
@@ -24,29 +23,29 @@ The first High Prince was already a prince of a renowned house before he
 built the Order; he used it as the instrument that brought the other
 electorates under one crown. Rather than ruling by conquest alone, he
 converted that dominance into a lasting peace: the electorates were
-granted, in perpetuity, the right to elect every future High Prince, while
-the Order's oath was bound permanently to the office of High Prince —
+granted, in perpetuity, the right to elect every future High Prince. In the
+same stroke the Order's oath was bound to the office rather than to the man:
 not to his bloodline, and not to riders specifically. In exchange, the
 founding charter guarantees the Order's highest-ranking member is always a
 legitimate candidate for High Prince, should the electors choose to name
 one.
 
-For a few generations, the founder's own descendants — [[House Dravensk]]
-— held the Grand Marshal seat, elected each time from within the Order
-under the same charter rules everyone else answers to.
+For a few generations the founder's own descendants, [[House Dravensk]],
+held the Grand Marshal's seat. They were elected to it each time from within
+the Order, under the same charter rules everyone else answers to.
 
 **The Break, four High Princes ago:** no scion of House Dravensk cleared
 the Order's standard for Grand Marshal that generation, while a
 commoner-born rider did, cleanly, under the founder's own charter-bound
 succession rules. The Order had no legal room to bend around its own law,
-so the commoner took the seat — elevated to comital rank as the office
-demands, granted land carved from the Crown's own holdings rather than any
-elector's territory, and founding what's now [[House Varnick]]. It's the
-single most-cited precedent in Vaelic politics: proof the Order's
-meritocracy isn't theoretical, and — depending who's arguing — either the
-thing keeping the whole system honest or the crack an elector bloc has
-since pointed to when arguing the High Prince's throne shouldn't stay
-locked to one family either. What became of House Dravensk's original
+so the commoner took the seat. He was raised to comital rank as the office
+demands, granted land carved out of the Crown's own holdings rather than any
+elector's, and founded what is now [[House Varnick]]. It is the most-cited
+precedent in Vaelic politics, and it proves the meritocracy is not
+theoretical. What it proves after that depends who is arguing. To some it is
+the thing keeping the system honest. To an elector bloc it is the crack they
+point at when they say the throne itself should not stay locked to one
+family. What became of House Dravensk's original
 claim since, and whether that argument has gone anywhere, are open
 threads.
 
@@ -78,10 +77,10 @@ Diet's books, patrol.
 *(splits into Command or Merit)* **→** converges again only at the single
 Grand Marshal seat.
 
-Every number below flows from one input: roughly 15 new bonds a year (the
-midpoint of 30–50 candidates per 3-year Trial cycle). Each rank's
-population is that rate times how long a rider typically spends there —
-the Command and Merit tracks are drawn *out of* the standing pool, not
+Every number below comes from one input. Roughly 15 new bonds a year, the
+midpoint of 30–50 candidates per 3-year Trial cycle. Each rank's population
+is that rate times how long a rider typically spends in it. Note that the
+Command and Merit tracks are drawn *out of* the standing pool rather than
 stacked on top of it.
 
 ### Entry ranks
@@ -116,9 +115,9 @@ Each rank is a standard met, not a seat waited for:
 - **Storied Rider** — a reputation that's spread beyond the Order; commoners and nobles alike know the name. (Esquire, ~13–17)
 - **Knight-Rider** — sustained record, storied reputation, and the Order's formal recognition. (Knighted, ~8–12)
 
-Command and Merit are mutually exclusive — commanding a Fireteam or Squad
-takes the sustained attention that individual glory-hunting doesn't allow
-for. Neither track outranks the other socially: a Wing Marshal and a
+Command and Merit are mutually exclusive. Commanding a Fireteam or a Squad
+takes sustained attention, and individual glory-hunting does not leave room
+for it. Neither track outranks the other socially. A Wing Marshal and a
 Knight-Rider are peers at court. The Grand Marshal's seat is customarily
 filled from either track's senior ranks, though a Wing Marshal's
 administrative record usually beats a Knight-Rider's combat record in the
@@ -136,12 +135,11 @@ eyes of the electors who have to live with the choice.
 
 ## Recurring political friction
 
-Chapter houses (aeries) are frequently built on an elector's or
-territorial prince's own land — [[Drakenstein]] itself never was — but the
-riders stationed there answer up the Order's chain of command, not to the
-local lord. Electors resent
-housing an armed, dragon-mounted institution they don't control, and
-periodically push at the Diet to bring aeries under local authority —
+Chapter houses, the aeries, are often built on an elector's or territorial
+prince's own land. [[Drakenstein]] never was. The riders stationed at any of
+them answer up the Order's chain of command and not to the local lord, and
+electors resent housing an armed, dragon-mounted institution they do not
+control. They push at the Diet about it every few years.
 [[House Kesslin]]'s campaign to reclaim its aerie is the sharpest current
 example. The Grand Marshal holds a standing, non-voting Diet seat partly
 to represent the Order's interests against exactly this pressure.

@@ -7,16 +7,16 @@ founded: 1976 AR
 view: nation
 ---
 
-Dalstan's nobility measures devotion the way other nations measure gold —
-which, in Dalstan, amounts to the same thing. Cathedrals here are gilded
-rather than austere, penance is a public performance staged in silk, and
-suffering is treated as a currency the pious are expected to spend
-lavishly. A Dalstani lord who hasn't commissioned a martyr's shrine in his
-own likeness is considered spiritually behind on his dues.
+Dalstan's nobility measures devotion the way other nations measure gold. In
+Dalstan those are the same measurement. Cathedrals here are gilded rather
+than austere, penance is a public performance staged in silk, and suffering
+is a currency the pious are expected to spend lavishly. A lord who has not
+commissioned a martyr's shrine in his own likeness is reckoned spiritually
+behind on his dues.
 
-Not everyone in Dalstan gets to participate in the opulence. The zealotry
-falls hardest on whoever the Cathedral Court decides looks least like
-grace — and it decides often.
+Not everyone gets to take part in the opulence. The zealotry falls hardest on
+whoever the Cathedral Court decides looks least like grace. It decides
+often.
 
 - **Founded** 1976 AR. The second order of the **Concord**, which demanded the council condemn mercy itself as heresy and, refused, walked out in fury four centuries ago with a third of the clergy, a third of the treasury and most of the relics, to found its own see at Ostravin. Four centuries later the wrath has found it profitable. It considers itself the Concord's true heir and [[Thesal Theocracy]] the remnant that lost its nerve — see [[The Sundering of the Concord]]
 - **Capital** Ostravin, the Gilded See, where the cathedral's roof is worth more than the district beneath it
@@ -24,7 +24,7 @@ grace — and it decides often.
 - **Government** Grand Inquisitor-King, anointed for life by the Cathedral Court
 - **Races** [[Human|Humans]] (clergy and nobility), [[Aasimar|Aasimar]] (revered as living proof of favor), [[Tiefling|Tieflings]] (a persecuted underclass, blamed on principle)
 - **Culture** Faith is inseparable from status; the richer the display of devotion, the more genuine it's assumed to be. Suffering is sanctified only when it's someone else's.
-- **Faith** Patron [[Zon-Kuthon]], whose doctrine that suffering refines the soul has been reinterpreted, gradually and self-servingly, into an excuse for splendor. [[Asmodeus]] supplies the rest of the theology — hierarchy, binding contract, and the indulgence trade that funds the cathedrals
+- **Faith** Patron [[Zon-Kuthon]], whose doctrine that suffering refines the soul has been reinterpreted, slowly and to Dalstan's own advantage, into a licence for splendour. [[Asmodeus]] supplies the rest of the theology — hierarchy, binding contract, and the indulgence trade that funds the cathedrals
 - **Economic Specialties** Gilded relics, penitent's silk, ceremonial armaments, tithe-banking, indulgence brokerage
 - **Military** Inquisitorial knights, flagellant shock troops, cathedral guard, relic-bound zealots
 - **History** Backed the Ostravin crown through all eleven years of the [[The Two-Crown War|Two-Crown War]] and came out of it with the thing it actually wanted: the precedent that the Cathedral Court's rite is a valid one. It has never retracted that claim, which is why licensing inquisitions abroad feels to Dalstan like an old right and to everyone else like the same move again.

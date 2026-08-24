@@ -3,24 +3,22 @@ title: Nations of the World
 type: index
 ---
 
-The sovereign powers of the setting, one file per nation. The original
-fifteen came from early worldbuilding notes; eight are marked *(new)*,
-added in two later passes. Six cover ground the first pass left untouched —
-the deep places under the world, elemental fire, the primal jungle, and
-three grounded, multiethnic archetypes (a citizen republic, a frontier
-settler nation, and a unification state) that replaced an earlier, more
-fantastical first attempt at those last three. Two more,
-[[Sahenna Compact]] and [[Qeshara Sultanate]], filled a gap the setting had
-left in its real-world inspirations. The five marked *(minor)* are smaller
-states on the eastern continent, added because a world of nothing but great
-powers reads as a small one — a mercenary republic, a free port, a fen of
-physicians, a nation of herders, and the farmers who live downwind of a
-volcano.
+Twenty-eight sovereign powers, one file each.
 
-[[Ninefold Sanctum]] once stood here too, and no longer does: an archive
-with no army and no territory of its own reads as a faction, not a
-sovereign power, so it now lives in `campaign/factions/` instead — see
-[[Ninefold Sanctum]] there for what it actually is.
+Not all of them are great powers, and the ones marked *(minor)* are the
+point of the list rather than the filler in it. A mercenary republic, a free
+port, a fen of physicians, a nation of herders, and the farmers who live
+downwind of a volcano. A world made only of empires reads as a small world,
+and a party spends most of its time in places that are nobody's capital.
+
+The tags *(new)* and *(minor)* are shelving marks for the GM, not anything
+anyone in Saeroth would recognise. No nation on this list thinks of itself
+as minor.
+
+[[Ninefold Sanctum]] used to sit here and no longer does. An archive with no
+army and no ground of its own is a faction rather than a power, so it lives
+in `campaign/factions/` now — see [[Ninefold Sanctum]] for what it actually
+is.
 
 Ordered oldest first, and dated in **AR** — the reckoning explained in
 [[Ages of Saeroth]]. The present year is 2376 AR. Two of these dates are
