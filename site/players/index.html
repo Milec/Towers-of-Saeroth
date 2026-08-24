@@ -30,6 +30,80 @@
   .pdoc td:first-child { white-space: nowrap; }
   .pdoc blockquote { margin: 1em 0; padding: .1em 1em; border-left: 3px solid var(--rule); color: var(--muted); }
 
+  /* The world map, on the Nations page only. The image and the nation
+     positions are both generated out of campaign/Saeroth.map, so this stays
+     correct when the map is rebuilt and needs no copy of its own.
+
+     Pins are decorative and take no pointer events. Every tap lands on the
+     wrapper instead and resolves to the nearest capital, which is the only
+     hit test that works here: two nations can sit 13 screen pixels apart at
+     fit-width, and a 44px target would cover four of them. */
+  .pmap { margin: 18px 0 22px; }
+  .pmapbox {
+    position: relative; overflow: auto; overscroll-behavior: contain;
+    border: 1px solid var(--rule); border-radius: 12px; background: var(--panel);
+    max-height: min(64vh, 560px); -webkit-overflow-scrolling: touch;
+  }
+  .pmapinner { position: relative; width: calc(100% * var(--z, 1)); min-width: 100%; cursor: crosshair; }
+  .pmapinner img { display: block; width: 100%; height: auto; }
+  .ppin {
+    position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px;
+    border-radius: 50%; background: var(--panel); border: 2px solid var(--muted);
+    pointer-events: none; box-shadow: 0 0 0 1px rgba(0,0,0,.18);
+  }
+  .ppin.sel {
+    width: 16px; height: 16px; margin: -8px 0 0 -8px;
+    background: var(--accent); border-color: #fff;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  .ppinlbl {
+    position: absolute; transform: translate(-50%, -170%); white-space: nowrap;
+    padding: 2px 7px; border-radius: 999px; font-size: 12px; font-weight: 600;
+    background: var(--accent); color: #fff; pointer-events: none;
+    box-shadow: 0 1px 4px rgba(0,0,0,.3);
+  }
+  .pmapbar { display: flex; align-items: center; gap: 7px; margin-top: 9px; }
+  .pmapbar .muted { font-size: 12.5px; }
+  .pzoom {
+    min-width: 34px; height: 30px; padding: 0 9px; border: 1px solid var(--rule);
+    border-radius: 8px; background: var(--panel); color: var(--ink);
+    font: inherit; font-size: 14px; cursor: pointer;
+  }
+  .pzoom:hover { border-color: var(--muted); }
+  .pcard {
+    margin-top: 12px; border: 1px solid var(--rule); border-radius: 12px;
+    padding: 12px 14px; background: var(--panel);
+  }
+  .pcard h3 { margin: 0 0 6px; font-size: 1.15em; }
+  .pcard dt {
+    font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--muted); margin-top: 8px;
+  }
+  .pcard dd { margin: 1px 0 0; }
+  .pcard dl { margin: 0; }
+  /* The nation name in the table doubles as a way onto the map. */
+  .pnamebtn {
+    border: 0; background: none; padding: 0; margin: 0; font: inherit;
+    color: inherit; font-weight: inherit; cursor: pointer;
+    text-decoration: underline; text-decoration-style: dotted;
+    text-underline-offset: 3px; text-align: left;
+  }
+  .pnamebtn:hover { color: var(--accent); }
+
+  /* The prose column is about 512px, which is right for prose and wrong for
+     a four-column table of it — 125px a column is the same ribbon the phone
+     layout exists to avoid. On a wide screen the table and the map break out
+     of the column and centre on the page instead. `.pmain` is centred, so
+     half of this block equals the middle of the window. The breakpoint is
+     701px because that is exactly where the phone card layout below stops —
+     leave a gap between the two and a tablet gets the ribbon. */
+  @media (min-width: 701px) {
+    .pdoc table, .pmap {
+      width: min(94vw, 1120px);
+      margin-left: calc(50% - min(47vw, 560px));
+    }
+  }
+
   /* Three columns of prose inside 390px of phone is a ribbon nobody reads —
      about 110px a column, and one nation fills most of a screen. Narrow
      screens get a card per row instead, with each cell carrying the column
@@ -100,6 +174,164 @@
     }
   }
 
+  /* ---- The world map, on the Nations page only -------------------------
+
+     Both halves of this are generated out of campaign/Saeroth.map by
+     tools/map_backdrop.js, so a rebuilt map moves the pins with no edit
+     here. The nation data is read out of the page's own rendered tables
+     rather than duplicated, which is the same rule the vault's other views
+     follow: adding a row to the markdown adds a pin.
+
+     Missing pieces are not an error. If the positions file or the image is
+     absent the page is exactly what it was before, a table of nations. */
+
+  const MAP_PAGE = 'The Nations.md';
+  let mapData = null;      // the parsed positions file, fetched once
+  let mapDataTried = false;
+
+  async function positions() {
+    if (mapDataTried) return mapData;
+    mapDataTried = true;
+    try {
+      const r = await fetch('../nation-positions.json');
+      if (r.ok) mapData = await r.json();
+    } catch (e) { /* no map, no panel */ }
+    return mapData;
+  }
+
+  async function mountMap(root) {
+    const data = await positions();
+    if (!data || !data.nations || !data.width) return;
+
+    /* Index the rendered rows by nation name. The first cell is the name and
+       the rest are whatever columns the markdown happens to carry, so adding
+       a column to the table adds a line to the card. */
+    const rows = new Map();
+    for (const tr of root.querySelectorAll('tbody tr')) {
+      const cells = [...tr.cells];
+      if (cells.length < 2) continue;
+      const name = cells[0].textContent.trim();
+      if (data.nations[name]) rows.set(name, tr);
+    }
+    if (!rows.size) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'pmap';
+    wrap.innerHTML =
+      '<div class="pmapbox"><div class="pmapinner">' +
+      '<img alt="Political map of Saeroth" src="../' + data.image + '">' +
+      '</div></div>' +
+      '<div class="pmapbar">' +
+      '<button class="pzoom" type="button" data-z="out" aria-label="Zoom out">&minus;</button>' +
+      '<button class="pzoom" type="button" data-z="in" aria-label="Zoom in">+</button>' +
+      '<button class="pzoom" type="button" data-z="fit">Fit</button>' +
+      '<span class="muted">Tap the map for the nearest country.</span>' +
+      '</div><div class="pcard" hidden></div>';
+
+    const box = wrap.querySelector('.pmapbox');
+    const inner = wrap.querySelector('.pmapinner');
+    const card = wrap.querySelector('.pcard');
+    const pins = new Map();
+
+    for (const [name, xy] of Object.entries(data.nations)) {
+      if (!rows.has(name)) continue;
+      const pin = document.createElement('span');
+      pin.className = 'ppin';
+      pin.style.left = (xy[0] / data.width * 100) + '%';
+      pin.style.top = (xy[1] / data.height * 100) + '%';
+      inner.appendChild(pin);
+      pins.set(name, pin);
+    }
+
+    let label = null;
+    function select(name, scroll) {
+      for (const [n, pin] of pins) pin.classList.toggle('sel', n === name);
+      if (label) label.remove();
+      const pin = pins.get(name);
+      if (!pin) return;
+      label = document.createElement('span');
+      label.className = 'ppinlbl';
+      label.textContent = name;
+      label.style.left = pin.style.left;
+      label.style.top = pin.style.top;
+      inner.appendChild(label);
+
+      const tr = rows.get(name);
+      const dl = document.createElement('dl');
+      for (const cell of [...tr.cells].slice(1)) {
+        const dt = document.createElement('dt');
+        dt.textContent = cell.dataset.label || '';
+        const dd = document.createElement('dd');
+        dd.innerHTML = cell.innerHTML;
+        dl.append(dt, dd);
+      }
+      card.innerHTML = '';
+      const h = document.createElement('h3');
+      h.textContent = name;
+      card.append(h, dl);
+      card.hidden = false;
+      if (scroll) {
+        box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        pin.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    }
+
+    /* Nearest capital wins. Distance is measured in the image's own pixels
+       rather than in fractions, so a wide map does not bias the choice
+       toward vertical neighbours. */
+    inner.addEventListener('click', (e) => {
+      const r = inner.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width * data.width;
+      const y = (e.clientY - r.top) / r.height * data.height;
+      let best = null, bestD = Infinity;
+      for (const name of pins.keys()) {
+        const [px, py] = data.nations[name];
+        const d = (px - x) * (px - x) + (py - y) * (py - y);
+        if (d < bestD) { bestD = d; best = name; }
+      }
+      if (best) select(best, false);
+    });
+
+    /* Zoom keeps whatever was in the middle of the box in the middle of the
+       box, which is the difference between a usable map and one that throws
+       you into the ocean every time you press +. */
+    let z = 1;
+    function setZoom(next) {
+      next = Math.min(4, Math.max(1, next));
+      const cx = (box.scrollLeft + box.clientWidth / 2) / inner.offsetWidth;
+      const cy = (box.scrollTop + box.clientHeight / 2) / inner.offsetHeight;
+      z = next;
+      inner.style.setProperty('--z', z);
+      requestAnimationFrame(() => {
+        box.scrollLeft = cx * inner.offsetWidth - box.clientWidth / 2;
+        box.scrollTop = cy * inner.offsetHeight - box.clientHeight / 2;
+      });
+    }
+    for (const b of wrap.querySelectorAll('.pzoom')) {
+      b.onclick = () => {
+        if (b.dataset.z === 'fit') { z = 1; inner.style.setProperty('--z', 1); box.scrollTo(0, 0); }
+        else setZoom(z * (b.dataset.z === 'in' ? 1.6 : 1 / 1.6));
+      };
+    }
+
+    // Every nation name in the table becomes a way onto the map.
+    for (const [name, tr] of rows) {
+      const cell = tr.cells[0];
+      const strong = cell.querySelector('strong') || cell;
+      const btn = document.createElement('button');
+      btn.className = 'pnamebtn';
+      btn.type = 'button';
+      btn.innerHTML = strong.innerHTML;
+      btn.onclick = () => select(name, true);
+      strong.innerHTML = '';
+      strong.appendChild(btn);
+    }
+
+    const first = root.querySelector('h2') || root.querySelector('table');
+    if (first) first.parentNode.insertBefore(wrap, first);
+    else root.appendChild(wrap);
+  }
+
   async function show(i) {
     current = i;
     [...tabs.children].forEach((b, n) => b.setAttribute('aria-selected', n === i ? 'true' : 'false'));
@@ -111,6 +343,7 @@
       doc.innerHTML = marked.parse(clean(await res.text()));
       labelCells(doc);
       scrollTo(0, 0);
+      if (pages[i].file === MAP_PAGE) await mountMap(doc);
     } catch (e) {
       doc.innerHTML = '<p class="muted">Could not load that page.</p>';
     }
