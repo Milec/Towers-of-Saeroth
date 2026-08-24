@@ -181,6 +181,28 @@ copy of the data, so the note still reads correctly in Obsidian and on GitHub,
 and adding a row to the table adds an edge to the web with no code change.
 Follow that pattern for any new view — never duplicate campaign data into JS.
 
+## The exemplar player's handout
+
+`tools/make_handout.py` builds `campaign/players/Isaiah/Exemplar handout.pdf`
+out of the two notes in that folder, cutting the GM-only parts and rendering
+what is left through the site's own vendored `marked.js`, so a table in the
+handout looks like the same table on the site. The PDF is committed and is
+**not** copied into `_site/` — `build_site.py` only takes `.md` and images, and
+this one is for one player rather than for the public site.
+
+The cutting is the point, so it is loud in both directions. Every removal is
+named in `DOCS` — whole `##` sections, the preamble above the first heading,
+single paragraphs matched on their opening words, and phrases rewritten
+because they only make sense inside the vault — and a name that no longer
+matches anything **exits non-zero** rather than passing quietly. Then the
+rendered text is scanned against `FORBIDDEN`, and a single hit deletes the
+output and refuses to ship. So renaming a heading in either note breaks the
+handout build; it cannot silently leak the floor of the setting into a
+player's hands.
+
+Rerun it after editing either note. It needs nothing but the Playwright
+Chromium the browser tests already use.
+
 ## Changing the political relations
 
 The diplomacy exists in three places at once, and **all three move together or
