@@ -1,0 +1,24 @@
+{
+  "skill_name": "saeroth-prose",
+  "note": "Prose voice is a subjective output, so these carry no pass/fail assertions — a rewrite can satisfy every rule and still read badly. Judge them by reading, and use scripts/prose_check.py on the before and after for the one thing that is measurable: whether the note still runs a single rhythm.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a note for a river port in the Voskreld Union — somewhere a party would resupply between the capital and the steppe frontier. Nothing has happened there yet.",
+      "expected_output": "A location note with a physical fact that implies the rest, at least one price or count, somebody whose interest bends how the place is described, one inherited thing nobody explains, and varied sentence lengths. Should not read as a gazetteer entry.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "The Kesmarch Frontier note feels flat and generic to me. Can you make it better without changing any of the facts?",
+      "expected_output": "A revision, not an expansion. Facts preserved; flat assertions given owners who would dispute them; the em-dash rate and sentence-length uniformity both down (it starts at 31 dashes per 1k and 0% short sentences). Should not add lore to paper over the prose problem.",
+      "files": ["campaign/nations/Kesmarch Frontier/Kesmarch Frontier.md"]
+    },
+    {
+      "id": 3,
+      "prompt": "I need something to read out to the players when they first come over the Sallow Gate and see Drakenstein. Two or three sentences, should give them chills.",
+      "expected_output": "Read-aloud text: sensory and walked rather than described from above, plain words at the emotional peak rather than grand ones, no summarising kicker telling the players how to feel. Short enough to actually say at a table.",
+      "files": []
+    }
+  ]
+}
