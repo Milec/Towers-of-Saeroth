@@ -19,7 +19,7 @@ them.
 - **Government** Celestial Emperor supported by scholar officials
 - **Races** [[Human|Humans]], [[Tengu|Tengu]], [[Kitsune|Kitsune]], [[Samsaran|Samsarans]], [[Wayang|Wayang]], [[Nagaji|Nagaji]], [[Tanuki|Tanuki]]
 - **Faith** Patron [[Irori]], god of self-perfection — the philosophical justification for the entire examination system. [[Shizuru]] is the imperial house's own goddess of sun and honorable ancestry, [[Daikitsu]] the peasantry's harvest goddess, and [[Abadar]] the ministries'
-- **Economic Specialties** Silk, tea, porcelain, paper, scholarship
+- **Economic Specialties** Silk, tea, porcelain, paper, scholarship, and the Bureau of Concordant Working, the national [[Magic|practitioners' guild]], which is a ministry like any other and examines like one
 - **Military** Professional armies, monastic warriors, horse archers, battle mages
 - **History** Sent observers to the [[The Two-Crown War|Two-Crown War]] and wrote it up; the ministry's account of the Hungry Year is still the best that exists, and the western signatories quietly worked from it while drafting the [[The Pilgrim's Peace|Pilgrim's Peace]], to which Xian Ti acceded by letter. Its own frontier with the [[Khazan Khaganate]] has never been at peace and has never been at war.
 - **Reputation** Sophisticated and powerful

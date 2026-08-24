@@ -44,8 +44,10 @@ Neither of them finds this funny. Everybody else does.
 
 **GM:** the towers are the obvious question and nobody in the world has asked
 it out loud yet. [[The Towers]] are worked stone with fine lines running in
-tracks and corners, the way the inside of a lock is worked, and there is a
-nation two months' sail away currently building machinery that holds a
-working. Somebody in Brightfurrow or Thelemar is going to notice the
-resemblance, and what they do about it is a campaign. The resemblance is real.
-See [[The Nameless Empire]].
+tracks and corners, the way the inside of a lock is worked, and on the same
+continent there are two nations currently building machinery that holds a
+working. The [[The Sealed Ascent|Sealed Ascent]] is under the
+[[Undertide Reaches]], which is a fortnight's hard travel from Brightfurrow
+and rather less from Thelemar. Somebody is going to notice the resemblance,
+and what they do about it is a campaign. The resemblance is real. See
+[[The Nameless Empire]].
