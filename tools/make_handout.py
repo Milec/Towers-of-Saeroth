@@ -48,10 +48,11 @@ DOCS = [
         'drop_lead': False,
         'drop_paras': [],
         'subs': [
-            # Points at the second half of this handout, by a name the player
-            # has no reason to have heard.
+            # Cross-reference to the second half of this handout, by a name
+            # the player has no reason to have heard. The sentence before it
+            # says everything the pointer was adding.
             ('[[Dreams of the Dead God]] is the table for rolling them at a table.',
-             'What arrives is overleaf.'),
+             ''),
         ],
         'lead': None,
     },
@@ -209,8 +210,13 @@ p, li { orphans: 2; widows: 2; }
 p { margin: 0 0 7pt; }
 ul { margin: 0 0 7pt; padding-left: 16pt; }
 li { margin-bottom: 3pt; }
+/* A table that may not break has to jump whole to the next page, and the
+   nine-row one left 40% of a page empty behind it. Let the table break and
+   keep the rows intact instead, and repeat the header on the continuation. */
 table { border-collapse: collapse; width: 100%; margin: 8pt 0 10pt;
-        font-size: 9.6pt; page-break-inside: avoid; }
+        font-size: 9.6pt; page-break-inside: auto; }
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
 th, td { border: .6pt solid #cbbfa8; padding: 4pt 6pt; text-align: left;
          vertical-align: top; }
 th { background: #f0e8d6; }
