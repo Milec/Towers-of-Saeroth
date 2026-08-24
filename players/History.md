@@ -4,7 +4,7 @@ What follows is what a reasonably well-travelled person knows. The dates use
 the calendar every nation shares, which is a stranger fact than it looks, and
 the end of this page explains why.
 
-## The Peace, and the war that bought it
+## The Two-Crown War
 
 There has been no war between great powers for sixty years. That is not
 normal. Everyone alive knows it is not normal, because of what ended sixty
@@ -25,7 +25,32 @@ settlement was signed in the holy city of Concord and is called the
 you it was an agreement between princes. Ask a Thurion factor and he will tell
 you the banks stopped lending. Both of them are describing the same month.
 
-## Six years ago: the Delta War
+## The small wars
+
+None of that means the world is quiet. It means no great power has marched on
+another in sixty years, and that is the whole of the claim.
+
+Frontiers still burn in the ordinary way. Homesteads go up on the Kesmarch
+line most summers. Herds get driven off the edge of the steppe and the riders
+who took them are somebody's cousins. Logging camps in the northern pine wake
+up surrounded by people who have marked that ground for eleven centuries.
+Marshals and militia shoot at each other across borders nobody ever surveyed,
+and both sides write it up afterwards as police work. Between the Khaganate
+and Xian Ti there is a wall that has been garrisoned and shot at for six
+hundred years without a break, which neither of them calls a war because
+neither of them ever signed anything saying they wouldn't.
+
+Then there is the quieter half. Every court of any size reads somebody's
+letters, and at least one court is very good at it. Successions go bad.
+Houses feud. A vote gets bought, a canton sells something it shouldn't, a
+priest writes a report about his neighbours that takes two years to stop
+travelling.
+
+So a soldier finds work, a caravan hires guards, and a person who wants to be
+shot at does not have to wait for a war. What has not happened in sixty years
+is armies.
+
+## The Delta War
 
 The Lich Emperor of the Lazarian Lichdom had not issued an edict in five
 years. Thurigypt's priest-kings read that silence as weakness, and the Pharaoh
@@ -42,14 +67,44 @@ starting.
 No other nation came in on either side. Nobody has tested the Lichdom since,
 and nobody in a position to know says the Lich Emperor is gone any more.
 
-## Older than that
+## The older wars
 
 There have been wars in every century anyone keeps records for, and most still
 have a name and a grievance attached to them. These two are only the ones
 people mean when they say *the war*. Anyone over sixty was alive for the first
 one, and there are men in every port who were pulled out of the delta marsh.
 
-## Before all of it: the Red
+## The Sundering
+
+Four hundred years ago the Thesal Theocracy, Dalstan and the Lazarian Lichdom
+were one country. Not allies. One state, one church, one law, and they had
+been that for five centuries.
+
+It was called the Concord and it was run from the city of Concord, which is
+the city Thesal rules from today. The church held three truths together: that
+suffering should be relieved, that suffering means something, and that death
+is a door rather than a wall. Three orders of one clergy argued about it in
+council, and the arguing was supposed to be the point.
+
+It came apart in a single winter, and it came apart into three.
+
+Dalstan went first and went loudly, out of the council with a third of the
+clergy, a third of the treasury and most of the relics, to found its own see
+at Ostravin. The third order's high cleric went second and went quietly. He
+denounced nobody, signed everything put in front of him, and left in the night
+for the delta with his followers, and he did not die there. He is still on that
+throne. Thesal kept the city and did not fight either of them, and afterwards
+opened its precinct to every faith that would come, which is why a dozen
+temples share one water supply in Concord now.
+
+Nobody can tell you what actually started it. Every account you will hear
+comes from one of the three and blames the other two. What you should take
+from it is why Dalstan and the Lichdom hate Thesal and each other the way they
+do: none of them wants the others' ground. They each want to be the Concord's
+true heir, and only one of them can be. Four hundred years on, all three still
+keep a liturgy the other two would recognise if they could stand to attend it.
+
+## The Red
 
 Go back far enough and every history in the world stops in the same place.
 
@@ -80,7 +135,7 @@ the soil. It is under both continents. It is under the sea floor where anyone
 has looked. Well-diggers hit it often enough that most of them have a
 superstition about it and will tell you the superstition for free.
 
-## The ruins, and what is cut into them
+## The ruins
 
 Ruins turn up on both continents, and they are rare enough that most people go
 their whole lives without seeing one. They are not the remains of anything in

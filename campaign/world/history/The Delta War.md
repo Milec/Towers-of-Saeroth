@@ -16,7 +16,7 @@ household regiments, a Pharaoh in the field. It simply did not last, and it
 did not spread one inch beyond the two nations fighting it. Everything
 interesting about it is in that second fact.
 
-## Why the Pharaoh went
+## The Pharaoh's reasons
 
 Because [[Lazarus]] had not spoken in five years.
 
@@ -32,7 +32,7 @@ holds the graves of every expedition Thurigypt has sent against it for four
 centuries. This was not a war of conquest. It was framed, sincerely, as a
 recovery of the dead.
 
-## Why nobody joined
+## Nobody joined
 
 Not one nation came in on either side, and it was not squeamishness.
 
@@ -55,7 +55,7 @@ to be fought: out of his own granaries, in his own ships, with his own people,
 and with no second season available at any price. The Peace did not forbid the
 Delta War. It priced it, and the price was the whole thing.
 
-## What happened
+## The campaign
 
 The landing worked, and so did the three weeks after it. Thurigypt is very good at
 this and the delta's living population is small.
@@ -72,7 +72,7 @@ He withdrew what he could — perhaps a third — and it is to his credit that h
 went last and got that third home, which is the only thing about the Delta War
 that Thurigypt's court can say out loud without an argument starting.
 
-## What it proved, and what it cost
+## The reckoning
 
 - **Lazarus's absence changes nothing.** The Lichdom defended itself without an
   edict, without a mobilisation, and apparently without hurry. Whatever the

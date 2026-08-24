@@ -34,6 +34,7 @@ BANDS = {
     'median':    (0.0, 30.0, 'median sentence length'),
     'superlative': (0.0, 8.0, 'superlatives / 1k words'),
     'clipped':   (0.0, 12.0, '% clipped verbless sentences'),
+    'hdr':       (0.0, 40.0, '% headers naming no subject'),
 }
 
 # Below this a single dash swamps the rate and the number means nothing. Short
@@ -67,6 +68,20 @@ counts count sends send sent brings bring brought leaves leave left
 begins begin began ends end sees see saw thinks think thought calls call
 """.split())
 INFLECTED = re.compile(r"\b\w{3,}(ed|es)\b")
+
+# A header that does not name its subject. A reader scans these before they
+# read a word of the body, so a page can be clean prose under headings that
+# announce a machine wrote it.
+HEADER = re.compile(r'^#{2,4}\s+(.+?)\s*$', re.M)
+HEADER_TELL = (
+    re.compile(r',\s+and\b'),                              # X, and Y
+    re.compile(r'\S:\s'),                                   # X: Y
+    re.compile(r'^(What|Why|Who|How|Where|When)\b', re.I),   # question as label
+    # "Running this" and "At the table" are standard GM-book furniture and a
+    # human writer reaches for them constantly. Only the headings that name
+    # nothing AND are not conventional count against a note.
+    re.compile(r'^(Before|After|Older|Beyond)\b', re.I),
+)
 WORD = re.compile(r"[A-Za-z'-]+")
 # Function words only. A mirrored pair is betrayed by a repeated *content*
 # word — "Quivar credits the court / Everyone else credits the service" — so
@@ -123,6 +138,7 @@ def prose_of(text):
 
 
 def measure(text):
+    raw_text = text
     body = prose_of(text)
     words = re.findall(r"\b[\w'-]+\b", body)
     n = len(words)
@@ -147,7 +163,18 @@ def measure(text):
         'stacked': sum(1 for s in sents if len(SUPERLATIVE.findall(s)) > 1),
         'clipped': 100.0 * sum(1 for s in sents if clipped(s)) / max(len(sents), 1),
         'mirrors': mirrored_pairs(sents),
+        'hdr': header_tells(raw_text),
     }
+
+
+def header_tells(text):
+    """Share of headers that name no subject. Measured on the raw note, since
+    prose_of strips headings out before anything else runs."""
+    heads = HEADER.findall(FRONTMATTER.sub('', text))
+    if not heads:
+        return 0.0
+    bad = sum(1 for h in heads if any(p.search(h) for p in HEADER_TELL))
+    return 100.0 * bad / len(heads)
 
 
 def clipped(sent):
@@ -222,9 +249,9 @@ def verdict(m):
 def report(path, m, verbose):
     flags = verdict(m)
     mark = 'ok  ' if not flags else 'look'
-    print('%s %-52s %5dw  dash %4.1f  sup %4.1f  clip %4.1f%%  mirror %d  med %2d'
-          % (mark, path[-52:], m['words'], m['em_dash'], m['superlative'],
-             m['clipped'], m['mirrors'], m['median']))
+    print('%s %-48s %5dw  dash %4.1f  sup %4.1f  clip %4.1f%%  hdr %3.0f%%  mirror %d  med %2d'
+          % (mark, path[-48:], m['words'], m['em_dash'], m['superlative'],
+             m['clipped'], m['hdr'], m['mirrors'], m['median']))
     if flags and verbose:
         for f in flags:
             print('       · ' + f)

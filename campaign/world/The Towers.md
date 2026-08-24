@@ -76,7 +76,7 @@ Very little, and the little is all from the outside:
 That is the entire body of confirmed fact. The wealth, the power, the idea
 that a tower can be *conquered* at all: every bit of that is rumour.
 
-## How dangerous a tower is
+## Pitch
 
 Every tower answers the party that walks into it. What it answers *with* is not
 the same in every tower, and that is the whole of the problem.
@@ -129,7 +129,7 @@ who was pushed: whoever they are, once they are inside they have one course of
 action available and it is the one the rumour describes. Inside, the rumour
 stops being a claim about the world and becomes the only plan anybody has.
 
-## What this is doing to the world
+## The scramble
 
 The towers are a year old, so no nation has an institution for them yet. Every
 response so far is improvised, and mostly by whoever was standing nearest.
@@ -203,7 +203,7 @@ Khazan steppe that three separate riders describe consistently and no envoy has
 been permitted to visit, and something the Cindral wardens have twice declined
 to discuss.
 
-## The question nobody has answered
+## Where they come from
 
 The towers are assumed to be new because they were not there a year ago, and
 because more of them keep turning up. But a thing that keeps arriving is a

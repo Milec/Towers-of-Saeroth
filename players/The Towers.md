@@ -8,7 +8,7 @@ one morning where the evening before there was pasture, or reef, or a road men
 had used for two hundred years. The stone is seamless and nobody recognises it.
 Nothing grows on it. Nothing has weathered.
 
-## What is actually known
+## What is known
 
 Very little, and all of it from the outside.
 
@@ -28,7 +28,7 @@ Very little, and all of it from the outside.
   has been tested in front of witnesses more times than anyone cares to count,
   usually with a rope and a volunteer. The rope comes back.
 
-## What people say is up there
+## The rumour
 
 That whoever reaches the top of a tower comes out its master, and comes out
 richer than any crown.
@@ -54,7 +54,7 @@ the queue outside a door nobody returns from has not got any shorter.
 
 There are rumours of others. Rumours are cheap this year.
 
-## Who is looking
+## The scramble
 
 Everyone is looking, in the way people always look at something that might be
 worth money. The Melisor Magocracy is the only power paying for proper

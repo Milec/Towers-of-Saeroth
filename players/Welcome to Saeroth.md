@@ -28,7 +28,7 @@ that nobody has finished taking.
   coastal enclave apiece. The interior belongs to whatever is still standing
   in it.
 
-## What is going on right now
+## This year
 
 A year ago there were no towers. There are now, and more keep turning up.
 Nothing else in the world is new — this is the one thing — and every court on

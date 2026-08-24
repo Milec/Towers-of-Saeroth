@@ -103,6 +103,36 @@ talking. Prefer the word a GM would actually say aloud at the table.
 `clip` for the verbless share, `mirror` for symmetrical pairs. The mirror
 count is the one to take most seriously; anything above zero is worth reading.
 
+### Headers give it away as fast as sentences
+
+A reader scans headers before they read a word of the body, so a page can be
+clean prose under headings that announce a machine wrote it. Four shapes to
+avoid, all of which the vault produced in quantity:
+
+| Shape | Example | Why it reads wrong |
+| --- | --- | --- |
+| `X, and Y` | *The ruins, and what is cut into them* | The same balanced pair as the mirrored sentence, in a heading |
+| `X: Y` | *Six years ago: the Delta War* | Label, pause, reveal — the em-dash hinge wearing a colon |
+| `What/Why/Who …` | *What is actually known*, *Who is looking* | A question standing in for the subject's name |
+| Transition as heading | *Older than that*, *Before all of it* | Names nothing; a reader scanning the page learns no fact from it |
+
+**Name the subject.** *The Two-Crown War. The Delta War. The Red. The ruins.*
+A player scanning for when the war was wants to see the war's name, not a
+clause about it. Put the date and the twist in the first line of the section,
+where somebody is already reading.
+
+The question form is not banned. *What is actually known* earns its place on a
+note whose whole point is how little that is, and *Who is inside* is the best
+heading on the towers note. The problem was the ratio: 37 question-headers
+against 63 plain nouns is not a series of choices, it is a habit. After a pass
+it sits at 10% across the vault.
+
+`prose_check.py` reports the share as `hdr`, and it is blunt on purpose —
+*Where they come from* is flagged for its first word while naming its subject
+perfectly well. Conventional GM-book furniture like *Running this* and *At the
+table* is not counted at all, because a human writer reaches for those
+constantly.
+
 ### The vault's own tics, measured
 
 This voice already exists and is already lopsided. Measured by

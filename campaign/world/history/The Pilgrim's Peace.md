@@ -34,7 +34,7 @@ Short enough to be recited, which was deliberate.
    [[Vaelic Principality]] pays to keep that pass cleared to this day, and why
    the crossroads of [[Thesal Theocracy]] have no fortifications on them.
 
-## Why it works
+## The clause with teeth
 
 Nobody became better. What changed is who put their name to clause 2.
 
@@ -74,7 +74,7 @@ Undertide claims on the same mountain from above and below, the logging in the
 northern pine, and — new this cycle — Silicar's canal across the Ulad spring
 route.
 
-## What it does not cover
+## The gaps
 
 The gaps are as important as the clauses, and every one of them is somebody's
 current problem.
