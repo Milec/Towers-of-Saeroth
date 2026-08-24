@@ -171,13 +171,39 @@ a little too lucky and they will die that way. It starts when the spark is
 first *focused* — the day they put it into an ikon and it answers — and after
 that it does not stop.
 
-What arrives is not a scholar's account. It comes in dreams and in waking
-pieces: seven days of red falling, water rising over a country nobody can
-place, a killing seen from inside the thing being killed. They are receiving
-it from the piece of the god they are carrying, which is the only witness left
-anywhere that was actually present. **The name is not in it.** The name was
-unmade before the killing and there is nothing left to remember it with, so an
-exemplar sees the whole of it and still cannot say who died.
+What arrives is not a scholar's account, and it is not a vision *of* the
+killing. The exemplar is inside the thing being killed. They get the census
+closing in one province at a time across three generations, felt from within,
+with no part of it survivable and no name left to call for help with. They get
+seven days from above the weather. They get the water going over a country
+nobody can place. The piece of the god they carry is the only witness anywhere
+that was present, and it is not narrating. It is dying, and it hands them the
+dying whole, at the scale a god felt it, in a head built to hold one human
+life.
+
+**The name is not in it.** The name was unmade before the killing and there is
+nothing left to remember it with, so an exemplar carries the entirety of a
+murder and still cannot say who died.
+
+### Carrying it
+
+Every exemplar gets the same thing at the same weight, and it neither
+escalates nor wears off. What differs is the person underneath it, and nothing
+about the person beforehand predicts which way it goes.
+
+Some carry it. They sleep four hours, they go somewhere else for a second in
+the middle of a sentence, and they are otherwise themselves for sixty years:
+harder than they would have been, funnier than you would expect, and never
+once easy in the dark. Others come apart inside a decade, and it is less a
+decline than a slow substitution. The god's last hours take up more of the
+room and the person takes up less, until there is not much left that answers
+to a name.
+
+Every faith that has kept exemplars long enough to compare has looked for the
+pattern. It is not the pious ones who cope, or the strong ones, or the ones
+who were told in advance what was coming. Thesal's hospices have written the
+same four words at the end of four separate case files across two centuries —
+*we cannot tell beforehand* — and have published none of them.
 
 ### And they cannot pass it on
 
@@ -197,6 +223,40 @@ what it was told to do, to anyone, forever.
 
 So it holds. Two thousand three hundred and seventy-six years, an unknown
 number of exemplars, and not one line of it has ever reached a page.
+
+### The spells that fail
+
+Nor can it be taken out of them. A spell that reaches into an exemplar's mind
+for these particular thoughts does not get a resisted save or a blank or a
+planted lie. The working stops the moment it touches them, and the caster is
+left holding a spell that ended without saying why.
+
+Everything else about an exemplar reads normally. Their fear, their lie, what
+they ate — a competent diviner gets all of it. The failure is specific to the
+one thing, which is how three separate inquisitors have established that there
+*is* one thing, and none of them has got past that.
+
+Exemplars find this out early, usually by having it done to them, and some
+learn to use it. There is a knack to hauling the worst of it up to the front
+of your head and holding it there while somebody reaches for you. See
+[[Exemplars]] for how that plays at a table.
+
+### The Wildlands
+
+There is a bearing in it.
+
+The ritual happened somewhere. The piece of the god an exemplar carries was
+present at that somewhere, and it did not lose the direction the way it lost
+the name. What comes with the agony is a pull, and the pull is south.
+
+Most never place it, and spend a life with a compass in their chest and no
+map. The ones who follow it end up on the south coast asking after passage
+inland, unable to say what they expect to find and not to be talked out of
+going. Aquoniti's harbour clerks at the enclave log them as pilgrims, which is
+wrong in every particular and has stuck. What is down there is in
+[[The Wildlands]]: a guarded interior, the one capital the gods sealed instead
+of unmaking, and under it the ritual's own text, which had to name what it
+targeted.
 
 ### What that looks like from outside
 
@@ -228,7 +288,9 @@ reason, which is that it is bad for business.
   the ritual's own text was at the ritual's own origin — the capital the gods
   sealed rather than unmade, because unmaking it risked what the ritual had
   already begun. That is [[The Wildlands]]. It is possible that the reason the
-  interior is guarded has nothing to do with the empire at all.
+  interior is guarded has nothing to do with the empire at all. And every
+  exemplar alive is already pointed at it, which none of them can explain and
+  none of them can stop.
 - **Nobody knows what it was the god of.** Whatever domain it held has been
   unattended for two and a half thousand years. Decide deliberately whether
   that shows: the
@@ -251,6 +313,12 @@ reason, which is that it is bad for business.
   real, and a party that connects it to an exemplar's spark by measurement
   rather than by revelation has done something nobody in the world has done.
   That is a whole campaign's worth of ground and should take that long.
+- **Decide early which kind of exemplar is at your table.** The visions are
+  identical for everyone and the difference is entirely in the person, which
+  makes it a character question rather than a dice question. One who is
+  handling it is a different game from one who is losing, both are worth
+  running, and sliding between them because a scene wanted it is how the whole
+  thread stops meaning anything.
 - **A god's name is the most dangerous object in the setting.** If the
   Wildlands thread is ever pulled, be certain about what the table wants,
   because there is no version where recovering it is a small decision — the
