@@ -239,12 +239,16 @@
     /* Index the rendered rows by nation name. The first cell is the name and
        the rest are whatever columns the markdown happens to carry, so adding
        a column to the table adds a line to the card. */
+    /* First mention wins. A page can carry a nation's name in more than one
+       table — the profile rows and the naming rows both do — and the card
+       should be built from the profile, which comes first. Last-wins turned
+       every card into two lines about what the names sound like. */
     const rows = new Map();
     for (const tr of root.querySelectorAll('tbody tr')) {
       const cells = [...tr.cells];
       if (cells.length < 2) continue;
       const name = cells[0].textContent.trim();
-      if (data.nations[name]) rows.set(name, tr);
+      if (data.nations[name] && !rows.has(name)) rows.set(name, tr);
     }
     if (!rows.size) return;
 
