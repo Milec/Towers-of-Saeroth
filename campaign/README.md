@@ -173,6 +173,10 @@ and Sanderson, and a script that measures a note against all four:
 python3 .claude/skills/saeroth-prose/scripts/prose_check.py campaign/ --top 10
 ```
 
+`tools/lint_notes.py` prints the same numbers as one advisory line on every
+run, so there is nothing to remember. That line can never fail the lint — the
+bands are a mirror, and plenty of good notes sit outside them.
+
 ## Note format
 
 See the repo's `CLAUDE.md` for the note format — frontmatter, one subject per
