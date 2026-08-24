@@ -29,6 +29,26 @@
   .pdoc th { background: var(--panel); }
   .pdoc td:first-child { white-space: nowrap; }
   .pdoc blockquote { margin: 1em 0; padding: .1em 1em; border-left: 3px solid var(--rule); color: var(--muted); }
+
+  /* Three columns of prose inside 390px of phone is a ribbon nobody reads —
+     about 110px a column, and one nation fills most of a screen. Narrow
+     screens get a card per row instead, with each cell carrying the column
+     name it lost. labelCells() below copies those names onto the cells. */
+  @media (max-width: 700px) {
+    .pdoc table, .pdoc tbody, .pdoc tr, .pdoc td { display: block; width: auto; }
+    .pdoc thead { display: none; }
+    .pdoc tr {
+      border: 1px solid var(--rule); border-radius: 10px;
+      padding: 11px 13px; margin: 0 0 10px;
+    }
+    .pdoc td { border: 0; padding: 3px 0; white-space: normal; }
+    .pdoc td:first-child { font-weight: 700; font-size: 1.06em; padding-bottom: 6px; }
+    .pdoc td[data-label]::before {
+      content: attr(data-label); display: block;
+      font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em;
+      color: var(--muted); margin-bottom: 1px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -66,6 +86,19 @@
   // and a link into the vault is exactly what this page is for not having.
   const clean = (md) => md.replace(/\[\[([^\]|#]+)(\|([^\]]+))?\]\]/g, (_, t, __, alt) => alt || t);
 
+  /* Stamp each body cell with its column heading so the narrow layout can
+     print it. A header cell that is blank — the nation-name column — stamps
+     nothing, and that cell just reads as the card's title. */
+  function labelCells(root) {
+    for (const t of root.querySelectorAll('table')) {
+      const heads = [...t.querySelectorAll('thead th')].map((h) => h.textContent.trim());
+      if (!heads.length) continue;
+      for (const r of t.querySelectorAll('tbody tr')) {
+        [...r.cells].forEach((c, i) => { if (heads[i]) c.dataset.label = heads[i]; });
+      }
+    }
+  }
+
   async function show(i) {
     [...tabs.children].forEach((b, n) => b.setAttribute('aria-selected', n === i ? 'true' : 'false'));
     location.hash = '#' + encodeURIComponent(pages[i].file.replace(/\.md$/, ''));
@@ -74,6 +107,7 @@
       const res = await fetch('content/' + encodeURIComponent(pages[i].file));
       if (!res.ok) throw new Error(res.status);
       doc.innerHTML = marked.parse(clean(await res.text()));
+      labelCells(doc);
       scrollTo(0, 0);
     } catch (e) {
       doc.innerHTML = '<p class="muted">Could not load that page.</p>';
