@@ -34,6 +34,28 @@ curiosity. An ikon is a holy object with no church behind it, and there are
 half a dozen faiths in Saeroth whose entire authority rests on being the ones
 who decide what is holy.
 
+## Coming into it
+
+A spark that is never focused does nothing and the person carrying it dies
+ordinary. The ones the world hears about are those who worked out — usually
+young, usually alone — that the power will go into an object and stay there.
+
+That is also when the dreams start, and there is no record of an exemplar to
+whom they did not.
+
+Nobody outside can tell you what is in them. Exemplars will not say, and the
+few who have tried to say could not: they stop mid-sentence, or they write a
+page and hand you a blank one, and they cannot account for either. Ask one
+directly and you will usually get a long silence and a change of subject.
+
+What the world sees, then, is a rare and powerful person who is plainly
+carrying something and plainly unable to set it down. Some of them make their
+peace with it early and are only a little strange. Some spend forty years
+trying to get it out and are, by the end, difficult to distinguish from
+anybody else the world has decided is mad. Hospices in Concord have taken in
+four exemplars and have never once written down what any of them was trying
+to say, because there was never anything on the page.
+
 ## How the world takes it
 
 Nobody has a satisfactory doctrine and everybody has a position.
@@ -65,6 +87,14 @@ level. Some consequences worth agreeing on in session zero:
   and the recognition is *what is that* rather than *whose is that*.
 - **You are worth more than a title to at least four nations**, and only one of
   them would ask first.
+- **You will know something you cannot tell the rest of the party.** Not a
+  secret you are choosing to keep. The words do not arrive and the ink does
+  not stay, and neither is under your control. Settle with the GM early how
+  that gets handled at the table. Handled well it is what the class is for
+  here; handled badly it shuts the other players out of a scene, and the
+  whole difference is in the playing: a character visibly failing to get
+  something out is compelling for an evening, and a character who knows and
+  smirks is tiresome inside ten minutes.
 
 ## Divine artifacts
 
@@ -82,3 +112,11 @@ nothing about the object.
 **GM:** the explanation is [[The God Sundering]], and it is not available to
 anybody in the world by any means. Nothing above is a lie; it is simply the
 whole of what can be known from inside.
+
+The dreams are the murdered god's own memory, arriving through the fragment
+the exemplar carries. **Tell an exemplar player the truth early** — it is a
+better hand to play than a mystery, and the silence is only interesting if
+they know precisely what it is they cannot say. The name is not in the
+visions and never will be; it was unmade before the killing and there is
+nothing left to remember it with. See [[The God Sundering]] for why no
+attempt to record it has ever survived contact with a page.

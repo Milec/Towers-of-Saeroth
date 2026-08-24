@@ -164,6 +164,54 @@ The rules already say it plainly — *a spark of divine power that belongs not t
 a deity*. In Saeroth that is literally true, and the reason is that its owner
 is dead and cannot come and claim it.
 
+## The visions
+
+An exemplar whose spark is only latent gets nothing. They are a person who is
+a little too lucky and they will die that way. It starts when the spark is
+first *focused* — the day they put it into an ikon and it answers — and after
+that it does not stop.
+
+What arrives is not a scholar's account. It comes in dreams and in waking
+pieces: seven days of red falling, water rising over a country nobody can
+place, a killing seen from inside the thing being killed. They are receiving
+it from the piece of the god they are carrying, which is the only witness left
+anywhere that was actually present. **The name is not in it.** The name was
+unmade before the killing and there is nothing left to remember it with, so an
+exemplar sees the whole of it and still cannot say who died.
+
+### And they cannot pass it on
+
+This is the part that matters at the table. An exemplar who tries to tell
+somebody finds that the words are not there. Not forbidden, not forgotten —
+the sentence does not assemble, and what comes out is a person opening their
+mouth and stopping. Ink goes onto parchment and is not on it a moment later.
+A chisel cuts stone and the stone is unmarked. Paint, knotted cord, a shape
+drawn in spilled ale with a finger: all of it goes.
+
+The erasure was never a past event. The gods finished it *on their own terms*,
+and what they made was a standing condition — the thing is kept out of the
+record, and a new record is still a record. It eats the attempt as the attempt
+forms. Nobody aimed this at exemplars. The spark is an accident of the blood
+that fell, the gods did not foresee it, and the working is only doing exactly
+what it was told to do, to anyone, forever.
+
+So it holds. Two thousand three hundred and seventy-six years, an unknown
+number of exemplars, and not one line of it has ever reached a page.
+
+### What that looks like from outside
+
+A person who knows something enormous, cannot say it, and keeps trying anyway.
+
+They break off mid-sentence. They start letters and burn them. They ask
+strangers whether it rained the year they were born and cannot explain why
+they asked. Some of them stop trying and go quiet for the rest of their lives.
+Some of them do not stop, and the world has a word for how that looks by the
+end.
+
+Every faith that has kept an exemplar long enough has a private view on it,
+and none of them will put it in writing either — though for the ordinary
+reason, which is that it is bad for business.
+
 ## Threads
 
 - **Pharasma's ledger does not balance on an exemplar.** Her clergy can tell
