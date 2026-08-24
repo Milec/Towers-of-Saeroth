@@ -91,6 +91,8 @@ campaign/
 │                                    mercenary companies, cults, trade leagues
 ├── npcs/                            unaffiliated or wandering NPCs
 ├── locations/                       places outside any nation's borders
+├── players/                         one folder per player, holding the notes
+│   └── <Player>/                    their character actually needs at hand
 ├── pcs/                             player character summaries
 ├── sessions/                        session logs and prep, one per session
 ├── quests/                          plot threads and hooks
@@ -105,6 +107,14 @@ built from `.md` files alone, so **an empty folder simply doesn't appear there**
 nation's folder. If it spans several, it goes in the matching top-level folder.
 A faction operating in three nations belongs in `factions/`, not in whichever
 one it happens to be headquartered in.
+
+**A `players/<Player>/` folder is the exception to all of that.** It is filed
+by who needs the note rather than by what the note is about, so setting-wide
+reference can live there when it belongs to one character in practice —
+`players/Isaiah/` holds `Exemplars.md` and `Dreams of the Dead God.md` because
+Isaiah is the only person at the table who will ever open them. Wikilinks
+resolve by filename, so moving a note in or out of one breaks nothing. Keep
+`pcs/` for the one-page character summaries.
 
 **Towers** follow the same rule and are marked `tower: true` in their
 frontmatter so they can be found regardless of where they sit. One inside a
