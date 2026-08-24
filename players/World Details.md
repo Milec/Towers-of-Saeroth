@@ -37,9 +37,15 @@ game starts requires you to have been born near it.
 
 ## Magic
 
-Magic is ordinary and it is public. People hire wizards the way they hire
-lawyers, a market town of any size has somebody who can mend a bone, and no
-crowd anywhere gathers to watch a cantrip.
+Magic is public and nobody hides it. Working in the open draws no crowd and no
+constable, and in most of the world it is a licensed trade with posted rates.
+
+**Being accepted is not the same as being common.** Aptitude is rare. A
+village of two hundred has no practitioner and does not expect one — it has a
+midwife with three charms that mostly do not work, and it sends to the market
+town. Someone who can actually do the work is a person other people plan
+around. A party with two real casters in it is not an ordinary group of
+travellers.
 
 **The exceptions are worth knowing before you walk into one.** [Dalstan](#The%20Nations)
 recognises divine magic and nothing else, and treats the rest as a matter for
@@ -53,10 +59,12 @@ problem.
 Late medieval, and moving. Printing exists. So do canal locks, blast furnaces,
 plate armour, and roads that are maintained in winter.
 
-**Gunpowder exists and firearms are primitive.** They are loud, slow, and
-expensive, they are made in ones rather than in batches, and an arquebus is a
-thing a mercenary company owns eight of rather than something a militia is
-issued. They work. They are not what wins a battle.
+**Gunpowder exists and firearms are primitive.** [Silicar](#The%20Nations)'s
+guilds built the first working firelock about fifty years ago and have never
+licensed the trade to anyone, which is most of the reason you do not see many.
+They are loud, slow to load, expensive, and made in ones by people who learned
+it from somebody who learned it in Silicar. They work. They are not what wins
+a battle.
 
 **Magitech is the new thing**, and it is new enough that the people doing it
 have not agreed on what to call it. It is the deliberate merging of the two:

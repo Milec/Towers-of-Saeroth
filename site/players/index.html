@@ -239,16 +239,20 @@
     /* Index the rendered rows by nation name. The first cell is the name and
        the rest are whatever columns the markdown happens to carry, so adding
        a column to the table adds a line to the card. */
-    /* First mention wins. A page can carry a nation's name in more than one
-       table — the profile rows and the naming rows both do — and the card
-       should be built from the profile, which comes first. Last-wins turned
-       every card into two lines about what the names sound like. */
+    /* A page can name the same nation in more than one table — the profile
+       rows and the naming rows both do — and the card wants all of it. Keep
+       every row in document order and let the card merge them, so the profile
+       comes first and the naming follows it. Storing one row instead of a
+       list is how the card briefly turned into two lines about what the names
+       sound like: the last table on the page had won. */
     const rows = new Map();
     for (const tr of root.querySelectorAll('tbody tr')) {
       const cells = [...tr.cells];
       if (cells.length < 2) continue;
       const name = cells[0].textContent.trim();
-      if (data.nations[name] && !rows.has(name)) rows.set(name, tr);
+      if (!data.nations[name]) continue;
+      if (!rows.has(name)) rows.set(name, []);
+      rows.get(name).push(tr);
     }
     if (!rows.size) return;
 
@@ -293,14 +297,19 @@
       label.style.top = pin.style.top;
       inner.appendChild(label);
 
-      const tr = rows.get(name);
       const dl = document.createElement('dl');
-      for (const cell of [...tr.cells].slice(1)) {
-        const dt = document.createElement('dt');
-        dt.textContent = cell.dataset.label || '';
-        const dd = document.createElement('dd');
-        dd.innerHTML = cell.innerHTML;
-        dl.append(dt, dd);
+      const seen = new Set();
+      for (const tr of rows.get(name)) {
+        for (const cell of [...tr.cells].slice(1)) {
+          const label = cell.dataset.label || '';
+          if (seen.has(label)) continue;   // two tables sharing a column name
+          seen.add(label);
+          const dt = document.createElement('dt');
+          dt.textContent = label;
+          const dd = document.createElement('dd');
+          dd.innerHTML = cell.innerHTML;
+          dl.append(dt, dd);
+        }
       }
       card.innerHTML = '';
       const h = document.createElement('h3');
@@ -351,9 +360,9 @@
       };
     }
 
-    // Every nation name in the table becomes a way onto the map.
-    for (const [name, tr] of rows) {
-      const cell = tr.cells[0];
+    // The first table to name a nation gets the button; the rest stay plain.
+    for (const [name, trs] of rows) {
+      const cell = trs[0].cells[0];
       const strong = cell.querySelector('strong') || cell;
       const btn = document.createElement('button');
       btn.className = 'pnamebtn';

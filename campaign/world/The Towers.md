@@ -66,6 +66,11 @@ not published. (GM: the resemblance is real and means what it looks like — see
 [[The Nameless Empire]] for how far the thread actually goes, which is not as
 far as a party will assume. A character with a reason to have seen a ruin can
 make this connection themselves, and it is much better play than being told.)
+- **No tradition can classify them.** Arcane, divine, occult and primal
+  practitioners have all had a look, and the interesting part is that they
+  agree: it is none of theirs. A world as comfortable with [[Magic]] as this
+  one is not used to that. See also [[Languages]] — the marks are not a script
+  either.
 - **Nobody has found a pattern.** Not in where they appear, nor how often, nor
   what the ground was doing beforehand. Melisor has three competing models and
   a year of data, which is not enough data to tell three models apart. Whether
