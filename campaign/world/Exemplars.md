@@ -50,7 +50,8 @@ alone and generally by accident, that the power will go into an object and
 stay there.
 
 That is also when the dreams start, and there is no record of an exemplar to
-whom they did not.
+whom they did not. [[Dreams of the Dead God]] is the table for rolling them at
+a table.
 
 Nobody outside can tell you what is in them. Exemplars will not say, and the
 few who have tried to say could not: they stop mid-sentence, or they write a
