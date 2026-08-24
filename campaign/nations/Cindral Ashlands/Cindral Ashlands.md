@@ -14,7 +14,9 @@ reputations alike are expected to have survived fire before anyone trusts
 them. The Emberlord's throne is reforged, not inherited.
 
 - **Founded** c. 1150 AR, at the first trial-by-forge — but the forges came first. Smiths worked the obsidian flats seasonally for centuries before anyone wintered there, and the Emberlord's trial-by-forge is the old master-smith's proof, kept long after the office stopped being about smithing.
-- **Capital** Emberthrone, built into the flank of the largest live volcano in the chain, which the Cindral consider the safest possible address
+- **Capital** Emberthrone, cut into the flank of the biggest live volcano in the chain. The
+Cindral will tell you it is the safest address on the Ashlands, and they are
+not joking
 - **Geography** A chain of active volcanoes and the obsidian flats between them; the land is fertile, lethal, and reshapes itself every few decades
 - **Government** The Emberlord, chosen by trial-by-forge
 - **Races** [[Ifrit|Ifrits]], [[Oread|Oreads]], [[Dwarf|Dwarves]] (volcanic-forge lineages, distinct from the northern holds), [[Human|Humans]]

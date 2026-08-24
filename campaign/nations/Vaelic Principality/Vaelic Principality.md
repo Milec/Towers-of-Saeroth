@@ -17,8 +17,8 @@ Nobility is hereditary by default. But the [[Drake Rider Order]] and the
 Imperial judiciary will both take a commoner on merit and let him climb,
 provided he is human or half-human, and those two doors are the whole of
 Vaelic's meritocracy. Everyone else lives under a local lord's law with no
-path upward at all. A [[Halfling|halfling]] may hold land here. She may not
-hold rank.
+path upward at all. A [[Halfling|halfling]] can hold land here, and plenty do. What she cannot do
+is be promoted.
 
 - **Founded** c. 1440 AR, when its first High Prince used the newly-created [[Drake Rider Order]] to bring the other electorates under one crown. He then bound the Order's oath to the office rather than to his own blood. That concession is what makes the Grand Marshal's seat throne-eligible, and it is the hinge the whole meritocratic side-door swings on.
 - **Capital** Reichsmund, a fortified river-city that holds the Diet and the High Prince's court

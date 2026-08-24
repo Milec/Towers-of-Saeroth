@@ -10,8 +10,9 @@ Nobody administers the ground where [[Quivar]], the [[Vaelic Principality]]
 and the [[Lazarian Lichdom]] all meet, and Wenzel Grauth has lived there for
 nine years on that basis. He is not of the Lichdom. He learned what he knows
 the way anyone on that frontier learns it, close enough to Grauthaven to
-watch and never close enough to be enrolled. The distinction matters a great
-deal to him. It matters to nobody else at all.
+watch and never close enough to be enrolled. He will correct you on that
+distinction if you get it wrong. Nobody else on the frontier has ever cared
+enough to get it wrong in the first place.
 
 He is a careful, unhappy, entirely unromantic man who does small work for
 people who need it done outside a jurisdiction. He raises what the drainage

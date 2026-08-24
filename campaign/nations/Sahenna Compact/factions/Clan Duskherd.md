@@ -4,8 +4,9 @@ type: faction
 matriarch: Ren Duskherd
 ---
 
-The wealthiest clan in the [[Sahenna Compact]], and the newest to matter at
-Council. Duskherd cattle graze the southern range toward
+Duskherd holds more cattle and more standing salt than any other clan in the
+[[Sahenna Compact]], and it has only had a real voice at Council for two
+generations. Duskherd cattle graze the southern range toward
 [[Cindral Ashlands]] and [[Qeshara Sultanate]], and it's Duskherd salt and
 livestock that actually fill both caravan roads the Compact's newer trade
 runs on — a fact Ren Duskherd is careful to mention exactly as often as it's

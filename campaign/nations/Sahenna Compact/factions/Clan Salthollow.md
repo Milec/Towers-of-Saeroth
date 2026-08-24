@@ -4,9 +4,9 @@ type: faction
 matriarch: Ket Salthollow
 ---
 
-Salthollow works the salt pans nearest [[Thurigypt]], which made it the
-richest clan in the [[Sahenna Compact]] for three generations and has made
-it the most exposed one for the last two years. The witchcraft accusation
+Salthollow works the salt pans nearest [[Thurigypt]]. For three generations
+that paid better than anything else in the [[Sahenna Compact]]. For the last
+two it has meant standing closest to the trouble. The witchcraft accusation
 circulating Thurigypt's trade routes started on Salthollow's own doorstep,
 and Ket Salthollow has watched her clan's caravans get searched at
 crossings that never used to bother.

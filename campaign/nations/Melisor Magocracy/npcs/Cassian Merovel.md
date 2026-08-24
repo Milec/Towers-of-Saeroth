@@ -13,10 +13,10 @@ which is not the same as being better at getting the chair. He has been passed
 over twice. The second time, the Council of Archmages gave the seat to the
 archmage now sponsoring the fourth-tower expedition.
 
-He is unfailingly pleasant about it. He is the first to congratulate, the first
-to volunteer for committee work, and the first to notice that an expedition
-which fails expensively in its first season takes its sponsor's standing down
-with it.
+He is unfailingly pleasant about it. He congratulates people early and means
+it perhaps half the time, he volunteers for the committee work nobody else
+wants, and he was the one who worked out that an expedition failing
+expensively in its first season takes its sponsor's standing down with it.
 
 - **Want** The chair, and the discipline reorganised under him once he has it
 - **Won't** Do any of it himself, or be anywhere it happens. He has never met
