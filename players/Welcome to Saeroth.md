@@ -9,43 +9,43 @@ what happened.
 ## Introduction
 
 Nobody under sixty has seen a war between great powers. The **Pilgrim's
-Peace** was signed at Concord in 2316 and has held every year since, which
-nothing in any chronicle anyone still keeps can match. It works by starving a
-war rather than by forbidding one. A country can declare whatever it likes,
-and then discovers that no bank will lend against it, no league will carry it,
-and no chartered company will march for it.
+Peace** was signed at Concord in 2316 and has held for the sixty years since,
+which is longer than any peace anybody has a record of. It holds because it
+starves a war rather than forbidding one. A country may declare whatever it
+likes, and will then find that no bank will lend against the season, no league
+will carry its grain, and no chartered company will march for its coin.
 
-Two generations have grown up inside that. The roads are safe enough that
-merchants argue about insurance rates instead of bandits, the granaries are
-full, and the men who own the granaries have never eaten better. Militias
+Two generations have grown up inside that and it shows on them. Merchants on
+the north roads argue about insurance rates instead of about bandits. Militias
 drill on feast days for the look of the thing, and half the swords in a border
-garrison have never been drawn outside a yard. The last people who fought in a
-real war are in their eighties and have stopped being asked about it. Ask
-anyone at a good table what the Peace has cost them and they will tell you
-nothing.
+garrison have never been out of the scabbard anywhere but a yard. The
+granaries are full, and the men who own the granaries have never eaten better.
+The few who fought in the last war are in their eighties now and nobody asks
+them about it. Ask anyone at a good table what the Peace has cost them and
+they will tell you nothing, and as far as they know it they will be telling
+the truth.
 
-A year ago there were no towers.
+Then, a year ago, there was a tower standing where the evening before there
+had been pasture.
 
-They do not rise, and nobody has ever watched one arrive. A tower is simply
-*there* one morning, where the evening before there was pasture, or reef, or a
-road people had used for two hundred years. The stone is seamless and nobody
-recognises it. Nothing grows on it. Nothing has weathered. Close up it is
-worked all over with fine lines and with figures, and the people who have
-stood in front of them keep reaching for the same word, which is *cruel*.
+Nobody watched it happen and nobody has watched one since. The stone is pale
+and seamless, nothing grows on it, nothing has weathered, and it is worked
+from the footings to the crown with an extravagance no cathedral on either
+continent could pay for. Up close there are figures cut into it, and the
+people who have stood in front of those keep reaching for the same word, which
+is *cruel*. More of them turn up every season and nobody can say where the
+next one will stand.
 
-Every one of them stands open. The door is not guarded, it does not close, and
-it will not let you back out — that has been tested in front of witnesses more
-times than anyone cares to count, usually with a rope and a volunteer, and the
-rope comes back on its own. More towers keep turning up. Nobody has found a
-pattern in where or how often.
-
-What everybody has heard is that whoever reaches the top of one comes out its
-master, and comes out richer than any crown. Nobody can say who started that,
-and no one who would actually know has come back to say anything. It has been
-enough. Expeditions are being funded out of treasuries that were meant for
-roads, two nations are arguing over a stretch of jungle neither of them wanted
-last year, and the queue outside a door nobody returns from is not getting
-shorter. Nothing in the treaty covers a tower.
+Every tower anyone has found is open. The door is not guarded, it does not
+close, and it will not let you back out, which has been tested with a rope and
+a volunteer in front of witnesses more times than anyone cares to count. What
+everybody has heard is that whoever reaches the top comes out its master, and
+comes out richer than any crown. Nobody can say who started that, and no one
+who would know has come back to say anything, and it has been enough.
+Expeditions are being funded out of treasuries meant for roads. Two nations
+are arguing over a stretch of jungle neither of them wanted last year. The
+queue outside a door nobody returns from is not getting shorter, and nothing
+in the treaty covers a tower.
 
 ## Character hook
 

@@ -20,8 +20,10 @@ Nobody who has seen one leads with the height. They lead with the fact that it
 is beautiful. The stone is pale to the point of white, fluted the whole way up
 the shaft, and carried at every joint and lintel by more ornament than any
 cathedral on either continent could raise the money for. It is lit from
-inside: a cold blue standing in the windows and in the crown at the top, in no
-wind, never guttering, visible from a day's ride on a clear night.
+inside, faintly. A cold blue sits in the windows and in the crown at the top,
+steady in any weather, and in daylight you would ride past it without noticing
+there was a light there at all. After dark it is enough to put your hand on
+the wall by, and no more than that. It does not go out.
 
 Then you get close enough to read the figures cut between the lines, and the
 word people reach for is *cruel*. Both of those are true about the same
