@@ -15,6 +15,24 @@ OUT = os.path.join(ROOT, '_site')
 FM = re.compile(r'^---\r?\n.*?\r?\n---\r?\n?', re.S)
 
 
+#: Images referenced from a note live beside it in the repo, so `![](x.jpg)`
+#: is correct in Obsidian and on GitHub, and get copied beside it into
+#: content/ so the site can resolve the same path from the note's directory.
+ASSETS = ('.jpg', '.jpeg', '.png', '.webp', '.svg', '.gif')
+
+
+def collect_assets(rel_root):
+    out = []
+    base = os.path.join(ROOT, rel_root)
+    for dirpath, dirnames, files in os.walk(base):
+        dirnames[:] = sorted(d for d in dirnames if not d.startswith('.'))
+        for f in sorted(files):
+            if f.lower().endswith(ASSETS):
+                full = os.path.join(dirpath, f)
+                out.append(os.path.relpath(full, ROOT).replace(os.sep, '/'))
+    return out
+
+
 def collect(rel_root):
     out = []
     base = os.path.join(ROOT, rel_root)
@@ -115,6 +133,10 @@ def main():
         os.makedirs(pdir, exist_ok=True)
         for f in players:
             shutil.copyfile(os.path.join(ROOT, 'players', f), os.path.join(pdir, f))
+        # and whatever art those documents embed, alongside them
+        for f in sorted(os.listdir(os.path.join(ROOT, 'players'))):
+            if f.lower().endswith(ASSETS):
+                shutil.copyfile(os.path.join(ROOT, 'players', f), os.path.join(pdir, f))
         json.dump([{'file': f, 'title': PLAYER_ORDER.get(f[:-3], f[:-3])} for f in
                    sorted(players, key=lambda f: PLAYER_SORT.get(f[:-3], 99))],
                   open(os.path.join(OUT, 'players', 'pages.json'), 'w', encoding='utf-8'),
@@ -123,7 +145,9 @@ def main():
     campaign = collect('campaign')
     vault = [] if args.no_vault else collect('vault')
 
+    assets = collect_assets('campaign')
     copy_notes(campaign)
+    copy_notes(assets)
     copy_notes(vault)
 
     notes = []
@@ -154,7 +178,9 @@ def main():
     json.dump({'names': order, 'links': edges},
               open(os.path.join(OUT, 'index-vault-links.json'), 'w', encoding='utf-8'),
               separators=(',', ':'))
-    json.dump(campaign, open(os.path.join(OUT, 'precache.json'), 'w', encoding='utf-8'),
+    # Art embedded in a campaign note is precached with it, or the note goes
+    # offline complete except for the picture in the middle of it.
+    json.dump(campaign + assets, open(os.path.join(OUT, 'precache.json'), 'w', encoding='utf-8'),
               separators=(',', ':'))
 
     # Pages would otherwise hand the tree to Jekyll, which skips _underscore dirs
@@ -162,7 +188,8 @@ def main():
 
     total = sum(os.path.getsize(os.path.join(dp, f))
                 for dp, _, fs in os.walk(OUT) for f in fs)
-    print(f'campaign notes : {len(campaign):,}')
+    print(f'campaign notes : {len(campaign):,}' +
+          (f'  (+{len(assets)} image{"s" if len(assets) != 1 else ""})' if assets else ''))
     print(f'vault notes    : {len(vault):,}' + ('  (skipped)' if args.no_vault else ''))
     print(f'players page   : {len(players)} documents at /players/')
     print(f'site size      : {total / 1e6:.1f} MB')

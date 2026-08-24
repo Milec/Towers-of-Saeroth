@@ -310,6 +310,22 @@ function frontmatterTable(fm) {
     `</dl></details>`;
 }
 
+/* Art referenced from a note sits beside it in the repo and is copied beside
+   it into content/, so `![](towers.jpg)` is right in Obsidian and on GitHub.
+   The browser would resolve that against the page URL, which is the site root
+   rather than the note, so point each one back at its own note's directory. */
+function resolveImages(el, notePath) {
+  const dir = notePath.replace(/[^/]*$/, '');
+  const seg = (s) => { try { return encodeURIComponent(decodeURIComponent(s)); }
+                       catch (_) { return encodeURIComponent(s); } };
+  for (const img of el.querySelectorAll('img')) {
+    const src = img.getAttribute('src') || '';
+    if (!src || /^(?:[a-z]+:|\/\/|\/)/i.test(src)) continue;
+    img.src = BASE + 'content/' + (dir + src).split('/').map(seg).join('/');
+    img.loading = 'lazy';
+  }
+}
+
 async function route() {
   const hash = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   const [path, frag] = hash.split('#');
@@ -335,6 +351,7 @@ async function route() {
       `<nav class="crumbs">${crumbs(target)}</nav>` +
       frontmatterTable(fm) +
       marked.parse(body);
+    resolveImages(el, target);
     if (fmField(fm, 'view') === 'relations') {
       try { mountRelations(el, body); } catch (_) { /* the table still renders */ }
     }

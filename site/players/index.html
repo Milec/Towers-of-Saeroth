@@ -28,6 +28,14 @@
   .pdoc th, .pdoc td { border: 1px solid var(--rule); padding: 7px 10px; text-align: left; vertical-align: top; }
   .pdoc th { background: var(--panel); }
   .pdoc td:first-child { white-space: nowrap; }
+  .pdoc figure { margin: 1.4em 0; }
+  .pdoc img {
+    display: block; max-width: 100%; width: auto; max-height: 72vh; height: auto;
+    border-radius: 12px; border: 1px solid var(--rule);
+  }
+  .pdoc img + em, .pdoc figcaption {
+    display: block; margin-top: 7px; color: var(--muted); font-size: 13px;
+  }
   .pdoc blockquote { margin: 1em 0; padding: .1em 1em; border-left: 3px solid var(--rule); color: var(--muted); }
 
   /* The world map, on the Nations page only. The image and the nation
@@ -332,6 +340,18 @@
     else root.appendChild(wrap);
   }
 
+  /* Art embedded in a document sits beside it in players/ and is copied
+     beside it into content/, so `![](towers.jpg)` is right in the file and
+     needs pointing at content/ once rendered. */
+  function resolveImages(root) {
+    for (const img of root.querySelectorAll('img')) {
+      const src = img.getAttribute('src') || '';
+      if (!src || /^(?:[a-z]+:|\/\/|\/)/i.test(src)) continue;
+      img.src = 'content/' + src.split('/').map(encodeURIComponent).join('/');
+      img.loading = 'lazy';
+    }
+  }
+
   async function show(i) {
     current = i;
     [...tabs.children].forEach((b, n) => b.setAttribute('aria-selected', n === i ? 'true' : 'false'));
@@ -342,6 +362,7 @@
       if (!res.ok) throw new Error(res.status);
       doc.innerHTML = marked.parse(clean(await res.text()));
       labelCells(doc);
+      resolveImages(doc);
       scrollTo(0, 0);
       if (pages[i].file === MAP_PAGE) await mountMap(doc);
     } catch (e) {
