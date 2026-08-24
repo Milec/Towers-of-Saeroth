@@ -58,9 +58,9 @@ their own terms instead of the ritual's.
 
 - **The empire is gone, almost entirely.** The erasure across both settled continents was total in effect. Every
 capital, nearly every record, nearly every grave. It was not surgical. Unmaking a civilization at that
-  scale missed things, and a handful of fragmentary ruins survive scattered
-  across the mainland and the east, rare enough that nobody has ever
-  connected one to another. The two settled continents were otherwise left
+  scale missed things, and a handful of fragmentary ruins survive scattered across the mainland and the
+east, rare enough that for two thousand years nobody connected one to
+another. That has changed this year, and see the note below on the etchings. The two settled continents were otherwise left
   open, unclaimed ground for whoever eventually walked back into them,
   which is exactly what the twenty-seven nations are standing on now.
 - **The southern continent was not erased — it was sealed.** The capital,
@@ -82,6 +82,32 @@ who resettled the world afterward inherited so much as a rumor to work from,
 which is the entire point. A
   working like this cannot be attempted twice if nobody left alive knows it
   was attempted once.
+
+## The etchings, and why they match
+
+The surviving ruins carry two things: fine etched lines running in tracks and
+corners, like the inside of a mechanism rather than the outside of a building,
+and a repeated figural iconography that everybody who stands in front of it
+calls cruel without being prompted.
+
+The towers carry both, and this year a great many people have seen both.
+
+That resemblance is real and it means what it looks like it means. The ruins
+are the empire's. The towers are the empire's ritual, folded up. Same hands,
+same working, and the tracks are the working itself written into the stone —
+the only piece of the ritual the gods left legible, because they sealed the
+seeds rather than unmaking them.
+
+**It is the one honest thread anybody has, and it still terminates.** A party
+that connects a ruin to a tower has got further than two thousand years of
+scholarship. What they have proved is that something built both. Not who, not
+when, not why, and above all not that it already tried this and lost — the
+erasure took every one of those, and no amount of comparing stonework gets
+them back. Let the connection be findable and correct. It buys a name for the
+thing at the end of it and nothing else.
+
+Melisor will fund the comparison within the year. [[Xian Ti]]'s ministry has
+almost certainly already made it and filed it.
 
 ## What that means for the table
 
