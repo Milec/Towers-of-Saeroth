@@ -2,7 +2,8 @@
 title: Exemplars
 type: reference
 rarity: Rare — the class is Rare in the rules and rarer than that in Saeroth
-count: Fewer than a dozen alive in the world at any time, and most of those are never identified as anything
+count: About ten born in a generation, worldwide. Four in five never focus the spark and die ordinary
+awakened: Two or three awake in the world at a time, and there have been decades with none
 known: That they exist, that no god claims them, and that nobody can explain either fact
 ---
 
@@ -15,11 +16,18 @@ The spark is simply present, from birth, in a child otherwise indistinguishable
 from any other, and it belongs to no deity in the pantheon — a fact every
 faith has confirmed independently and none of them enjoys.
 
-Most never find out. A spark that is never focused does nothing obvious; it
-makes for a child who is a little too lucky, a little too whole, and grows old
-being unremarkable in a way that is very slightly wrong. The ones the world
-hears about are those who worked out — usually young, usually alone, usually
-by accident — that the power will move into an object and stay there.
+Ten in a generation, across the whole world. That is the number as near as
+anyone could get it if anyone were in a position to count, and four in five of
+those never find out. A spark that is never focused does nothing obvious. It
+makes for a child who is a little too lucky, a little too whole, and who grows
+old being unremarkable in a way that is very slightly wrong.
+
+What is left after that subtraction is two or three people alive at a time who
+have actually come into it, and there have been decades with none.
+**So most of what follows is doctrine about somebody nobody in the room has
+met.** Every faith and every government in Saeroth has a settled position on
+exemplars. Between them they are working from perhaps two dozen names in two
+thousand years, and most of them are working from one.
 
 ## Ikons
 
@@ -37,8 +45,9 @@ who decide what is holy.
 ## Coming into it
 
 A spark that is never focused does nothing and the person carrying it dies
-ordinary. The ones the world hears about are those who worked out — usually
-young, usually alone — that the power will go into an object and stay there.
+ordinary. The few the world hears about are the ones who worked out, young and
+alone and generally by accident, that the power will go into an object and
+stay there.
 
 That is also when the dreams start, and there is no record of an exemplar to
 whom they did not.
@@ -48,23 +57,23 @@ few who have tried to say could not: they stop mid-sentence, or they write a
 page and hand you a blank one, and they cannot account for either. Ask one
 directly and you will usually get a long silence and a change of subject.
 
-What everybody who has sat up with one agrees on is the weight. Whatever
-arrives is not a message and it is not a comfort. People describe watching
-somebody go through a thing at a scale that does not fit inside a person, and
-then get up in the morning and eat breakfast.
+Almost nobody has watched one closely enough to say what it is like from the
+next chair. The best account anywhere is Thesal's, and Thesal's account is
+four people over eight hundred years: hospice sisters writing at four
+bedsides in four different centuries, none of whom had read the others,
+all four describing somebody going through a thing at a scale that does not
+fit inside a person and then getting up in the morning and eating breakfast.
 
-It does not break all of them, which the world gets wrong, because the ones
-the world hears about are the ones it hears screaming. Plenty of exemplars
-carry it for a lifetime and are only a little strange: bad sleep, an absent
-second in the middle of a conversation, a hard streak nobody can source.
-Others are gone inside ten years, and by the end are difficult to distinguish
-from anybody else the world has decided is mad. Nothing anyone has measured
-says in advance which one you have. The Sahenna Storytellers keep both kinds
-in the same list and decline to sort it, and they are once again closer to
-right than anybody else.
+Two of those four came apart and two did not. That is the whole of the
+comparison available to anybody in the world, and Thesal has drawn
+conclusions from it anyway, because four is what there is. One of the four
+kept a garden and an argumentative disposition for sixty years. One was gone
+inside a decade — not dead, but by the end difficult to distinguish from
+anybody else the world has decided is mad. The sisters went looking in both
+histories for what made the difference and could not find it in either.
 
-Hospices in Concord have taken in four exemplars and have never once written
-down what any of them was trying to say, because there was never anything on
+None of the four is on record as having said what was in the dreams. The
+hospices never wrote a word of it down, because there was never anything on
 the page.
 
 ## Reading one
@@ -73,12 +82,19 @@ Divination works on an exemplar the way it works on anybody, right up until it
 reaches the thing they cannot say. Then the spell ends. **A magical effect
 that attempts to read these specific thoughts or memories fails automatically**
 — no save, no counteract check, nothing to resist. The caster is left knowing
-their own working quit on them and not knowing why. Melisor has three sealed
-papers on the subject and no theory.
+their own working quit on them and not knowing why.
 
-Exemplars learn this early, usually by having it done to them, and some learn
-to use it. There is a knack to hauling the worst of it to the front of your
-head and holding it there while somebody reaches in.
+This has been written down twice. A Dalstan inquisitor three hundred years ago
+filed it as a demonic ward and acted on the filing. A Melisor magister a
+hundred and forty years later recorded what happened accurately, had nobody
+to attempt it on a second time, and sealed the paper. Neither knew of the
+other. That is the literature.
+
+An exemplar finds it out for themselves, usually by having it done to them,
+and works out from there that the door swings both ways. There is a knack to
+hauling the worst of it up to the front of your head and holding it there
+while somebody reaches in. Nobody teaches it. There has never been anybody to
+teach it.
 
 **Show Them the Red** `pf2:r` (divine, exemplar, mental)
 
@@ -94,23 +110,25 @@ it comes up.
 
 ## How the world takes it
 
-Nobody has a satisfactory doctrine and everybody has a position.
+Nobody has a satisfactory doctrine and everybody has a position, which is
+what happens when a court has to rule on a thing it will see once.
 
 | Nation | Position |
 | --- | --- |
-| [[Thesal Theocracy]] | Takes them in, asks nothing, charges nothing, and has quietly noted that [[Sarenrae]] declines to comment. Four exemplars have died of old age in Concord's hospices |
-| [[Dalstan]] | Holds two rulings at once. The Cathedral Court has declared exemplars living proof of grace, and has separately declared unowned divinity a heresy. Which applies has correlated closely with how wealthy the exemplar's family is |
-| [[Lazarian Lichdom]] | A resource, catalogued as one. The Lichdom has never held one. It has tried three times that anyone can document |
-| [[Melisor Magocracy]] | Three academies want one badly enough to have made offers that were, on review, not entirely voluntary. The Council of Archmages has ruled on this twice and both rulings are sealed |
+| [[Thesal Theocracy]] | Takes them in, asks nothing, charges nothing, and has quietly noted that [[Sarenrae]] declines to comment. Four have died of old age in Concord's hospices across eight hundred years, which is more firsthand knowledge of exemplars than the rest of the world holds put together |
+| [[Dalstan]] | Holds two rulings at once. The Cathedral Court has declared exemplars living proof of grace, and has separately declared unowned divinity a heresy. It has had two cases in four hundred years. The wealthy one was grace |
+| [[Lazarian Lichdom]] | A resource, catalogued as one. The Lichdom has never held one. It has tried three times that anyone can document, and the oldest attempt is in a chronicle rather than a file |
+| [[Melisor Magocracy]] | Three academies once bid for the same exemplar, and one of the three bids was not, on review, entirely voluntary. The Council of Archmages sealed its ruling and has never had occasion to write another |
 | [[Thurigypt]] | Pharasma's priest-kings find them acutely difficult — an exemplar's soul carries something that is not the person's and not any god's, and no rite in the faith says where that part goes. They are kind to exemplars and they do not like to be near one |
-| [[Quivar]] | Has a file. Has always had a file |
-| [[Nordheim]] | Would follow one. Has, twice, and both sagas end badly in the same way |
-| [[Khazan Khaganate]] | A sign, read as favourable, which is why the Khagan's court has twice been embarrassed by an exemplar who did not want the job |
-| [[Sahenna Compact]] | The Storytellers record them precisely and interpret them not at all, which is closer to correct than anyone else has managed |
+| [[Quivar]] | Has a file. It is thin, it is three centuries old, and it has never been closed |
+| [[Nordheim]] | Would follow one. Has, twice in all the sagas, and both end badly in the same way |
+| [[Khazan Khaganate]] | A sign, read as favourable, which is why the Khagan's court has twice been embarrassed by an exemplar who did not want the job. The two occasions are six hundred years apart and the second court had forgotten the first |
+| [[Sahenna Compact]] | The Storytellers hold six names, recorded precisely and interpreted not at all. Four of the six are Thesal's. That register is the closest thing the world has to a complete one |
 
 ## Playing one
 
-An exemplar PC is a genuinely singular thing in this setting — not one of a
+An exemplar PC is a singular thing in this setting, and the word is meant
+literally: there is probably nobody else awake in the world. Not one of a
 tradition, not one of an order, and not one of a dozen at the table's own
 level. Some consequences worth agreeing on in session zero:
 
@@ -122,7 +140,9 @@ level. Some consequences worth agreeing on in session zero:
 - **Your ikons will be recognised** by anyone with real theological training,
   and the recognition is *what is that* rather than *whose is that*.
 - **You are worth more than a title to at least four nations**, and only one of
-  them would ask first.
+  them would ask first. None of the four has had the chance in living memory,
+  which is not the reassurance it sounds like — it means nobody's policy has
+  ever been tested and everybody's is theoretical.
 - **Something in you points south** and will not explain itself. You can
   ignore it for years. You will not be able to argue with it. See
   [[The Wildlands]].

@@ -23,13 +23,15 @@ past it the maps just stop being maps and start being guesses.
   trying.** Every enclave has sent parties inland. Most come back short a
   few people and a firm opinion that going further was a mistake. Some do
   not come back at all.
-- **A few people a decade turn up wanting to go inland and will not say
-  why.** Aquoniti's harbour clerks at the enclave log them as pilgrims, which
-  is nobody's idea of accurate and has stuck anyway. They arrive one at a
-  time, out of no particular nation, and the ones turned back at one enclave
-  turn up at another within the year. Kesmarch stopped selling them supplies
-  two winters ago and it made no difference; they buy from the Alliance now,
-  at Alliance prices.
+- **One of them walked in.** Eleven years ago a woman came off an Alliance
+  boat at the Aquoniti enclave, bought what she could carry, and asked three
+  separate people for the shortest way inland. She would not say what she was
+  after and did not appear to know. The harbour clerk's log calls her a
+  pilgrim, which was a joke at the time and is the only word anyone has for
+  it. She did not come back, which is not remarkable there. Kesmarch's rangers
+  have a story about a man forty years ago that may be the same thing, and may
+  be two men and a bad memory, and nobody has put the two accounts beside each
+  other because they sit in different colonies' books.
 - **What's out there does not have one name**, because no two colonies
   describe the same thing. Kesmarch's rangers call it "the wrong game" —
   tracks that belong to nothing, carcasses opened by nothing with teeth.
