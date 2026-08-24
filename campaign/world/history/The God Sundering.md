@@ -186,6 +186,11 @@ that was present, and it is not narrating. It is dying, and it hands them the
 dying whole, at the scale a god felt it, in a head built to hold one human
 life.
 
+Not all of it is the killing. Perhaps half of what arrives is the ordinary
+work of being a god, from before anyone had thought of ending one, which is
+its own kind of injury to wake up from. [[Dreams of the Dead God]] rolls for
+which night an exemplar gets.
+
 **The name is not in it.** The name was unmade before the killing and there is
 nothing left to remember it with, so an exemplar carries the entirety of a
 murder and still cannot say who died.
