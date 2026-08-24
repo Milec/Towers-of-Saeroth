@@ -52,3 +52,41 @@ show you where it is.
 | --- | --- | --- | --- | --- |
 | **Thurion Merchant Alliance** | Every ancestry, weighted toward whoever crews the ships | Abadar. Also Desna, Norgorber | Merchant Senate elected by the great trade houses | Commerce above all. Rich, influential, and politically neutral when profitable. Almost nothing crosses the sea without touching them |
 | **Aquoniti** | Merfolk, tritons, azarketi, sea elves, athamaru and tripkee | Gozreh. Also Desna, Besmara | Council of Tide Lords | Mastery of the seas. Island fleets, pearls, and the shortest crossings in the world |
+
+## Naming
+
+Every nation draws on a real language for the way its names sound, which is
+the fastest way to make a character sound like they come from somewhere. Pick
+the row, borrow the register, and invent freely inside it. The place named in
+the last column is the capital.
+
+| | Names sound like | For example |
+| --- | --- | --- |
+| **Vaelic Principality** | Germanic, in the Holy Roman register: hard consonants and compound surnames | Konrad Vosseler, Adelheid von Marck. The capital is **Reichsmund** |
+| **Voskreld Union** | Slavic | Miroslav Petrek, Danika Vetrova. **Voskgrad** |
+| **Thesal Theocracy** | Latin and ecclesiastical, often a title in place of a surname | Serapha of the Third Hospice, Brother Ottavian. **Concord** |
+| **Corvane Republic** | Plain Anglo-Dutch, mercantile, short | Wilhelmina Croft, Ansel Deeb. **Vantry** |
+| **Dalstan** | Slavic given names under gilded titles | Yevka Doranin, Inquisitor Vasil Krume. **Ostravin**, called the Gilded See |
+| **Quivar** | French | Amélie Bonnard, Gaspard Villiers. **Valmont** |
+| **Elven Confederacy** | Elvish: long vowels, soft endings, no hurry | Sylandriel, Thaeloth Anuvar. The council grove is **Sylanthir** |
+| **Nordheim** | Old Norse, with patronymics rather than surnames | Sigrún Ketilsdóttir, Hravn Bjarnsson. **Hravnfjord** |
+| **Stoneborn Holds** | Compounds that describe a trade or a deed | Durgan Ironmark, Halla Stonewright. **Highforge** |
+| **Undertide Reaches** | The same compounds gone quiet and downward | Vell Downkeep, Ashen Marrow. **Sunkenhold** |
+| **Melisor Magocracy** | Latinate and invented for effect, because half of them chose it | Thessaly Orne, Magister Calvane. **Thelemar** |
+| **Silicar** | English compounds out of a working countryside | Pim Applewhite, Tilda Locke. **Brightfurrow** |
+| **Kelvary March** | Blunt northern English, one syllable where two would do | Rook Harrow, Beatrix Vane. **Harrowgate** |
+| **Tal Ulad** | Berber and Maghrebi Arabic, with the clan in the name | Idir ag Ulad, Tanit oult Meskan. No capital; the Speaker's camp moves |
+| **Sarrowmere** | English fenland, damp and old | Wren Ilmen, Cobb Marrish. **Ilmen Wharf** |
+| **Lazarian Lichdom** | Germanic gone gothic, and the dead keep the name they died with | Isolde Vane, Ehrhardt Mool. **Grauthaven** |
+| **Tessine** | Italian, with the house name doing the work | Lucrezia Sarni, Matteo Falier. The city is the nation: **Tessine** |
+| **Xian Ti** | Chinese, family name first, and a rank if they have one | Lin Renshu, Minister Zhao Wei. **Renshan**, the Celestial City |
+| **Khazan Khaganate** | Mongol and Turkic | Batu, Altani of the Iron Hills. **Ordu-Khazan**, which strikes camp and moves |
+| **Thurigypt** | Egyptian | Nefret, Setha-Ankh. **Setharu** |
+| **Qeshara Sultanate** | Persian and Arabic, and the court prefers the longer form | Roshanak, Vizier Tahir al-Myrrh. **Myrrhkand** |
+| **Sahenna Compact** | West African given names; clan names are plain compounds | Ashira of Clan Longmarch, Bem of Clan Salthollow. **Bonemarket** |
+| **Kesmarch Frontier** | Colonial English, scriptural first names, hard surnames | Josiah Pike, Nell Awber. **Charterhold** |
+| **Thornwild Confederation** | Descriptions rather than names, and no surnames at all | Bramble, Fennec Nine-Rivers. The Circle meets at **Rootmeet** |
+| **Cindral Ashlands** | Fire compounds, and ifrit names that predate the language | Zafira Cinderlock, Bhast. **Emberthrone** |
+| **Ashkar Pale** | Clipped and practical, often after the ground itself | Hesper Vetch, Orin Dalk. **Vetch Landing** |
+| **Thurion Merchant Alliance** | Italian maritime, the house before the person | Renzo of Casa Ilvano, Serafina Doro. **Vessene** |
+| **Aquoniti** | Greek, and the sea words are theirs | Nerissa, Kallias of the Reef. **Thalassar** |

@@ -55,10 +55,11 @@ def copy_notes(paths):
 #: Tab order and tab labels for the players' page. Anything not listed still
 #: ships — it just sorts last under its own filename.
 PLAYER_SORT = {'Welcome to Saeroth': 0, 'Character Creation': 1,
-               'The Towers': 2, 'History': 3, 'The Nations': 4,
-               'Gods, Peoples and the Roads': 5}
+               'World Details': 2, 'The Towers': 3, 'History': 4,
+               'The Nations': 5, 'Gods, Peoples and the Roads': 6}
 PLAYER_ORDER = {'Welcome to Saeroth': 'Welcome',
                 'Character Creation': 'Character Creation',
+                'World Details': 'World Details',
                 'The Towers': 'The Towers', 'History': 'History',
                 'The Nations': 'The Nations',
                 'Gods, Peoples and the Roads': 'Gods & Roads'}
