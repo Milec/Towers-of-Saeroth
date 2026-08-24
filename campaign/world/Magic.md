@@ -5,9 +5,16 @@ status: Ordinary, public, and licensed like any other trade in most of the world
 exception: Dalstan, which recognises divine working and nothing else
 ---
 
-Nobody hides it. Working in the open draws no crowd and no constable, the
-fees are posted where there is anyone to post them, and the trade has guilds
-and rates and a complaints procedure like any other.
+Nobody hides it. Working in the open draws no crowd and no constable, and a
+practitioner has a tradesman's problems rather than a fugitive's: where the
+next commission is coming from, and who is undercutting them.
+
+Three things hold the trade between them. [[Melisor Magocracy]]'s academies
+are the schools every other school is measured against. Every great power
+keeps a **national guild** of its own, chartered to a crown or a ministry
+rather than to any academy, which registers who may practise and quietly
+notices who does not. Everyone left over is independent, and the independents
+are most of the ones a party will actually meet.
 
 **Acceptance is universal. Aptitude is not**, and running the two together is
 the easy mistake. Very few people can do anything at all. A village of two
@@ -23,17 +30,23 @@ them, and a fair number will want to know what they charge.
 
 ## The exceptions
 
-- **[[Dalstan]]** recognises divine working and nothing else. Arcane, occult
-  and primal practice is a matter for the Cathedral Court rather than for a
-  guild, and the Court's rite has been a valid one by precedent since the
-  [[The Two-Crown War]]. A hedge-wizard in a Dalstani valley is not
-  illegal so much as unrepresented.
-- **A few smaller nations take their lead from Dalstan on it**, usually
-  because they take their lead from Dalstan on everything, and usually with
-  less machinery to enforce it and more enthusiasm.
-- **[[Lazarian Lichdom]]** has the opposite problem. Necromancy is a
-  profession there and a capital matter almost everywhere else, so a Lazarian
-  credential is worth a great deal at home and is worth hiding at the border.
+- **[[Dalstan]]** recognises divine working and nothing else. There is no
+  guild there and no register, only the Cathedral Court, whose rite has been a
+  valid one by precedent since [[The Two-Crown War]]. **Nobody follows
+  Dalstan's line on this and several countries are hosting it anyway**: the
+  Court has begun licensing inquisitions beyond its own borders and has not
+  been told no by anybody with the standing to make it stick, so the writ
+  arrives in places that never agreed to it and the local guild finds it has
+  no standing to refuse. A hedge-wizard in a Dalstani valley is not illegal so
+  much as unrepresented. A hedge-wizard in a valley Dalstan has licensed an
+  inquisition into is worse off than that.
+- **Necromancy is a hanging matter nearly everywhere.** The statutes are
+  older than most of the nations that carry them and none of them has ever
+  been repealed. [[Lazarian Lichdom]] is the exception and is the reason the
+  statutes read the way they do, so a Lazarian credential is worth a great
+  deal at home and is worth burning before a border. That is also why the
+  courts that deal with the Lichdom do it covertly and pay in things that
+  leave no ledger entry.
 - **[[Melisor Magocracy]]** is where the practice is governed rather than
   merely permitted, and the difference shows in the paperwork.
 

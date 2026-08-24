@@ -38,7 +38,10 @@ game starts requires you to have been born near it.
 ## Magic
 
 Magic is public and nobody hides it. Working in the open draws no crowd and no
-constable, and in most of the world it is a licensed trade with posted rates.
+constable. Melisor's academies are the schools everyone else is measured
+against, every great power keeps a national guild that registers who may
+practise, and everyone outside both is independent — which is most
+practitioners, and nearly all the ones you will meet on a road.
 
 **Being accepted is not the same as being common.** Aptitude is rare. A
 village of two hundred has no practitioner and does not expect one — it has a
@@ -47,12 +50,19 @@ town. Someone who can actually do the work is a person other people plan
 around. A party with two real casters in it is not an ordinary group of
 travellers.
 
-**The exceptions are worth knowing before you walk into one.** [Dalstan](#The%20Nations)
-recognises divine magic and nothing else, and treats the rest as a matter for
-the Cathedral Court rather than for the guilds. A few smaller nations take
-their lead from Dalstan on it. If you are playing an arcane, occult or primal
-caster, know which borders make you a professional and which make you a
-problem.
+**Two exceptions are worth knowing before you walk into one.**
+
+[Dalstan](#The%20Nations) recognises divine magic and nothing else. No guild,
+no register, just the Cathedral Court — and the Court has lately been
+licensing inquisitions past its own borders without anyone managing to refuse,
+so the problem is not confined to Dalstani ground. If you are playing an
+arcane, occult or primal caster, know which borders make you a professional
+and which make you a problem.
+
+**Necromancy is a hanging matter nearly everywhere.** Lazarian is the
+exception and is the reason the statutes exist. Play one by all means, and
+understand that the character is committing a capital crime in most of the
+places the road goes.
 
 ## Technology
 
