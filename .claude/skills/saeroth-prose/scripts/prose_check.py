@@ -46,10 +46,13 @@ INTENSIFIERS = ['genuinely', 'exactly', 'precisely', 'entirely', 'simply',
 # A ranking claim standing in for the thing that happened. "The oldest
 # continuous monarchy on the continent" tells a reader where to file the fact;
 # "the crown has changed hands only within the same house" tells them the fact.
+# "first" and "last" are left out on purpose: "the first Pharaoh", "the first
+# examination", "the first time in sixty years" are ordinals and dates, not
+# claims about rank, and including them buried the real signal in names.
 SUPERLATIVE = re.compile(
     r"\bthe (only|single|oldest|newest|largest|smallest|finest|best|worst|"
     r"richest|poorest|busiest|highest|deepest|longest|shortest|strongest|"
-    r"closest|first|last|most \w+|\w+est)\b", re.I)
+    r"closest|most \w+|\w+est)\b", re.I)
 
 # Finite verbs, for spotting the clipped fragment. Not a parser — it only has
 # to be right often enough to show a note that is chopping rather than writing.

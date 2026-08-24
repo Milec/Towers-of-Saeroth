@@ -64,7 +64,8 @@ head was under one.
 - **[[Melisor Magocracy]]** sold arcane artillery and weather to both sides
   through separately incorporated academies, and has never once apologised.
 - **[[Kelvary March]]** chartered regiments to both sides, as it always had.
-- **[[Thurion Merchant Alliance]]** lent to both sides, as it always had.
+- **[[Thurion Merchant Alliance]]** lent to both sides, which was its usual
+practice and had never yet cost it anything.
 - **[[Nordheim]]** joined nobody and raided both coasts for nine years.
 - **[[Tal Ulad]]** sold remounts to whoever came to the spring camps with
   silver, and regards the whole question of who was right as a settled
@@ -104,7 +105,8 @@ in the decade after the Peace by people arguing about those nine years.
 
 ## The Hungry Year
 
-The fifth year is what makes this the worst war rather than merely the largest.
+The fifth year is why this is remembered as the worst war and not merely the
+biggest one.
 
 Both crowns, stalemated, went for each other's harvests: granaries fired, mills
 broken, seed grain seized as contraband, canal works cut. It worked. It worked

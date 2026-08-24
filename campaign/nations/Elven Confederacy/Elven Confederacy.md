@@ -25,7 +25,7 @@ dispute season for a decade before ruling on it.
 - **Tension** The tribes cannot agree whether encroachment on the old forests warrants a council at all, and the delay is itself becoming the answer
 - **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
     - [[Corvane Republic]] — **Friendly**: The only neighbour that ever wrote it down: the Republic's charter recognises tribal timber title, which cost Corvane its cheapest lumber and bought it the one border in the north it has never had to garrison
-    - [[Thesal Theocracy]] — **Friendly**: Sarenrae's hospices treat the tribes at the forest edge and ask nothing for it, which the Council of chiefs has decided — after two centuries of watching for the catch — to take at face value
+    - [[Thesal Theocracy]] — **Friendly**: Sarenrae's hospices treat the tribes at the forest edge and ask nothing for it, which the Council of chiefs watched for two centuries before deciding to take at face value
     - [[Melisor Magocracy]] — **Trade**: Magical plants to the academies. …
     - [[Quivar]] — **Trade**: Elven silk, wine and rare timber, and Quivar pays court prices for all three without haggling, which the tribes find suspicious and profitable in equal measure
     - [[Stoneborn Holds]] — **Trade**: Rare timber and herbs down, steel and tools up — the trade that keeps the northern mountains supplied and the one relationship the tribes conduct entirely by weight and measure

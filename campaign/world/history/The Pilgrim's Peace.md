@@ -36,7 +36,7 @@ Short enough to be recited, which was deliberate.
 
 ## Why it works
 
-Not because anyone became better. Because of who signed clause 2.
+Nobody became better. What changed is who put their name to clause 2.
 
 A war between great powers is not fought out of a treasury. It is fought on
 [[Thurion Merchant Alliance]] credit, with [[Kelvary March]] regiments,

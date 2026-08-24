@@ -39,7 +39,7 @@ for any two nations to escalate faster than either intended.*
     - [[Sarrowmere]] — **Trade**: Field surgeons, antitoxins and the cultured moulds that stop a camp wound going bad. …
     - [[Silicar]] — **Trade**: Field kit, remount tack and the pumps that keep a camp alive, all built to the March's specification and sold to whoever the March is working for
     - [[Tal Ulad]] — **Trade**: Remounts, fifteen thousand head a year, and the single largest movement of horses in the world. …
-    - [[Tessine]] — **Trade**: Where the March's contracts are underwritten, insured and — when a company is destroyed on somebody else's ground — paid out
+    - [[Tessine]] — **Trade**: Where the March's contracts are underwritten and insured, and where they are paid out when a company is destroyed on somebody else's ground
     - [[Corvane Republic]] — **Rivalry**: Two underwriting markets bidding to insure the same cargoes and the same regiments, and each publishing tables proving the other's rates are reckless
     - [[Khazan Khaganate]] — **Rivalry**: The two finest cavalry traditions alive, and the professional question of which is better has never been settled because they have never been hired onto the same field
     - [[Vaelic Principality]] — **Friction**: The Drake Rider Order will not take the field beside paid companies, and the March's charters sell to whoever pays — including, twice in the last century, to somebody fighting Vaelic

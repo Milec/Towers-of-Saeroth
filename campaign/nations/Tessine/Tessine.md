@@ -30,10 +30,10 @@ is currently living in it.
 *Somewhere for the party to fence anything, hide anyone, and hire a ship with
 no questions. The one nation on the map that is a single city.*
 - **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
-    - [[Corvane Republic]] — **Friendly**: Two harbours that take anyone, for opposite reasons — one out of principle and one out of profit — and both of them full of people Dalstan wants back
+    - [[Corvane Republic]] — **Friendly**: Two harbours that take anyone. …
     - [[Aquoniti]] — **Trade**: The island fleet and the harbour that asks no questions of it — Tessine clears Aquoniti's salvage, and neither side inquires closely into where salvage ends
-    - [[Kelvary March]] — **Trade**: Where the March's contracts are underwritten, insured and — when a company is destroyed on somebody else's ground — paid out
+    - [[Kelvary March]] — **Trade**: Where the March's contracts are underwritten and insured, and where they are paid out when a company is destroyed on somebody else's ground
     - [[Qeshara Sultanate]] — **Trade**: Incense, dyed silk and glass into a port that asks nothing about their provenance and charges accordingly
     - [[Thurion Merchant Alliance]] — **Rivalry**: Two money markets in one sea. …
     - [[Dalstan]] — **Hostile**: Half the Cathedral Court's condemned live on Tessine deposits, and the Signory has never once honoured an extradition writ. …
-    - [[Quivar]] — **Covert**: Quivar's intelligence service runs on Tessine paper — forged and genuine, sold across the same counter — and the Signory's discretion is the actual product
+    - [[Quivar]] — **Covert**: Quivar's Service runs on Tessine paper, forged and genuine, sold across the same counter, and on the Signory's discretion is the actual product

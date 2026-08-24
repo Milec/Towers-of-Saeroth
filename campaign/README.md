@@ -160,6 +160,19 @@ duplicate pair, a nation with no folder, a nation related to itself. The
 unknown-standing check matters most: the view skips rows whose standing it
 doesn't recognise, so the tie would quietly vanish from the web with no error.
 
+## How the prose is meant to sound
+
+There is a skill for it: `.claude/skills/saeroth-prose`. Claude is told to
+invoke it before writing anything here, because the whole vault is dictated
+and the voice drifts toward a generated one otherwise. It carries the four
+habits to avoid — mirrored sentence pairs, stacked superlatives, clipped
+fragments, and the em-dash hinge — with craft borrowed from Martin, Tolkien
+and Sanderson, and a script that measures a note against all four:
+
+```sh
+python3 .claude/skills/saeroth-prose/scripts/prose_check.py campaign/ --top 10
+```
+
 ## Note format
 
 See the repo's `CLAUDE.md` for the note format — frontmatter, one subject per
