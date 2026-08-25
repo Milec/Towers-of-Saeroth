@@ -3,7 +3,7 @@
 ## The gods
 
 Worship is ordinary and public. Most people keep one god closely and nod to
-several others, and almost every nation has a patron whose priorities you can
+several others, and [almost every nation has a patron](#The%20Nations) whose priorities you can
 read off its laws.
 
 The ones you will meet most often: **Abadar** of contracts and honest wealth,
@@ -29,7 +29,7 @@ them. Gnomes and halflings thick on the ground in the inventive lowlands,
 centaurs and kholo and catfolk out on the grass, leshys in the old forests,
 and orc and half-kin families more or less everywhere.
 
-A few nations have ancestry hierarchies written into their law. Most do not.
+[A few nations](#The%20Nations) have ancestry hierarchies written into their law. Most do not.
 Find out which sort you are walking into before you walk into it expecting to
 be served.
 
@@ -38,14 +38,15 @@ be served.
 Four corridors carry most of the world's goods, and if your character has
 travelled for a living they have been on at least one.
 
-- **The Middle Sea run.** The Thurion Merchant Alliance and Aquoniti, between
+- **The Middle Sea run.** The [Thurion Merchant Alliance](#The%20Nations/Thurion%20Merchant%20Alliance) and [Aquoniti](#The%20Nations/Aquoniti), between
   the continents. Silk and porcelain west, grain and armour and timber east.
-- **The Salt Road.** Caravans and wells across the eastern deserts, from the
-  great river to the frontier markets and out to the coast.
+- **[The Salt Road](#History/The%20Salt%20Road).** Caravans and wells across the eastern deserts, from the
+  great river to the frontier markets and out to the coast. Sworn twelve
+  hundred years ago and never once broken.
 - **The Uplad circuit.** The overland road across the western south, where a
-  nomad confederacy sells safe passage and horses that other nations breed
-  for and never quite match.
-- **The Voskreld roads and canals.** Grain, steel and machinery across the
+  [nomad confederacy](#The%20Nations/Tal%20Ulad) sells safe passage and horses that other nations breed for
+  and never quite match.
+- **The [Voskreld](#The%20Nations/Voskreld%20Union) roads and canals.** Grain, steel and machinery across the
   western centre. The roadbed is kept up in winter, which is rarer than it
   sounds and is why the freight goes this way.
 

@@ -58,7 +58,7 @@ each other, and it has been repeated so often since that arguing with it marks
 you out as a bore. No one who could actually know has come back to say it.
 
 Believe it or don't. It is why the expeditions are being funded, why two
-nations are arguing over a stretch of jungle neither wanted last year, and why
+[nations](#The%20Nations) are arguing over a stretch of jungle neither wanted last year, and why
 the queue outside a door nobody returns from has not got any shorter.
 
 ## The three that are confirmed
@@ -76,7 +76,7 @@ There are rumours of others. Rumours are cheap this year.
 ## The scramble
 
 Everyone is looking, in the way people always look at something that might be
-worth money. The Melisor Magocracy is the only power paying for proper
+worth money. The [Melisor Magocracy](#The%20Nations/Melisor%20Magocracy) is the only power paying for proper
 expeditions, and it has three theories and nowhere near enough evidence to
 choose between them. Several crowns are quietly hoping the whole business
 stops on its own.

@@ -1,6 +1,6 @@
 # Character Creation
 
-Everyone starts at 1st level, on a wagon train leaving Tessine. All three
+Everyone starts at 1st level, on a wagon train leaving [Tessine](#The%20Nations/Tessine). All three
 variant rules in play hand you more to work with rather than less, so build
 the character you actually want to play and assume the numbers will keep up.
 
@@ -43,6 +43,7 @@ somewhere would plausibly produce your character.
 - **1st level.**
 - **15 gp to spend**, the standard 150 silver, on common equipment. Buy the
   kit, and remember food and travelling gear.
+  [What the coin is and where it is refused](#World%20Details/Money) is on the World Details page.
 - **Something special?** If there is an item, a heirloom or a piece of gear
   your character's backstory needs, bring it to me rather than working out
   whether you can afford it. Most of the time the answer is yes and it costs

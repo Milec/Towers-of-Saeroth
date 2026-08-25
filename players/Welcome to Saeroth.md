@@ -10,12 +10,13 @@ what happened.
 
 ## Introduction
 
-Nobody under sixty has seen a war between great powers. The **Pilgrim's
-Peace** was signed at Concord in 2316 and has held for the sixty years since,
-which is longer than any peace anybody has a record of. It holds because it
-starves a war rather than forbidding one. A country may declare whatever it
-likes, and will then find that no bank will lend against the season, no league
-will carry its grain, and no chartered company will march for its coin.
+Nobody under sixty has seen a war between great powers. The
+[**Pilgrim's Peace**](#History/The%20Pilgrim%27s%20Peace) was signed at Concord in 2316 and has held for the sixty
+years since, which is longer than any peace anybody has a record of. It holds
+because it starves a war rather than forbidding one. A country may declare
+whatever it likes, and will then find that no bank will lend against the
+season, no league will carry its grain, and no chartered company will march
+for its coin.
 
 Two generations have grown up inside that and it shows on them. Merchants on
 the north roads argue about insurance rates instead of about bandits. Militias
@@ -27,7 +28,7 @@ them about it. Ask anyone at a good table what the Peace has cost them and
 they will tell you nothing, and as far as they know it they will be telling
 the truth.
 
-Then, a year ago, there was a tower standing where the evening before there
+Then, a year ago, there was [a tower](#The%20Towers) standing where the evening before there
 had been pasture.
 
 Nobody watched it happen and nobody has watched one since. The stone is pale
@@ -51,12 +52,11 @@ in the treaty covers a tower.
 
 ## Character hook
 
-You are travelling with a **Thurion Merchant Alliance** wagon train, out of
-**Tessine** and bound west through **Quivar** for the **Vaelic
-Principality**. The cargo is a season's supplies for an expedition the
-**Melisor Magocracy** is paying for: a fourth tower that nobody has confirmed
-exists, in a valley that three of the Magocracy's competing theories all
-happen to point at.
+You are travelling with a [**Thurion Merchant Alliance**](#The%20Nations/Thurion%20Merchant%20Alliance) wagon train, out of
+[**Tessine**](#The%20Nations/Tessine) and bound west through [**Quivar**](#The%20Nations/Quivar) for the [**Vaelic Principality**](#The%20Nations/Vaelic%20Principality).
+The cargo is a season's supplies for an expedition the [**Melisor Magocracy**](#The%20Nations/Melisor%20Magocracy)
+is paying for: a fourth tower that nobody has confirmed exists, in a valley
+that three of the Magocracy's competing theories all happen to point at.
 
 How you came to be on it is yours to choose.
 
@@ -70,9 +70,9 @@ How you came to be on it is yours to choose.
 
 None of you need to have met before. A wagon train is how strangers end up
 sharing a fire for a fortnight, and the last leg of this one runs four days
-through empty country where Quivar, the Principality and the **Lazarian
-Lichdom** all meet, and where none of the three keeps a patrol, because
-patrolling it would mean explaining what you were doing out there.
+through empty country where Quivar, the Principality and the
+[**Lazarian Lichdom**](#The%20Nations/Lazarian%20Lichdom) all meet, and where none of the three keeps a patrol,
+because patrolling it would mean explaining what you were doing out there.
 
 ## The shape of the world
 
@@ -85,10 +85,9 @@ that nobody has finished taking.
 - **The east** is larger, and strange to western eyes. An empire whose
   ministries have been writing everything down for eighteen centuries, a
   khaganate on the steppe, two desert powers, jungle confederacies, and a
-  nation that farms the slopes of a live volcano and evacuates when it has
-  to.
+  nation that farms the slopes of a live volcano and evacuates when it has to.
 - **The sea between them** is run by two powers who between them move nearly
-  everything: the Thurion Merchant Alliance and the island fleets of Aquoniti.
+  everything: the Thurion Merchant Alliance and the island fleets of [Aquoniti](#The%20Nations/Aquoniti).
 - **The Wildlands**, in the south, are mostly unclaimed. Three nations hold a
   coastal enclave apiece. The interior belongs to whatever is still standing
   in it.

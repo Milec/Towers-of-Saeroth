@@ -133,7 +133,7 @@
   .prail::after { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
   .prail.can-left::before, .prail.can-right::after { opacity: 1; }
   .prailstop {
-    flex: 0 0 auto; position: relative; min-width: 116px; max-width: 190px;
+    flex: 0 0 auto; position: relative; min-width: 104px; max-width: 158px;
     padding: 16px 12px 0 0; border: 0; background: none; cursor: pointer;
     text-align: left; font: inherit; color: var(--muted);
   }
@@ -155,7 +155,7 @@
   .prailstop:focus-visible { outline: 2px solid var(--p-gold); outline-offset: 2px; border-radius: 6px; }
   .prailnote { color: var(--muted); font-size: 12.5px; margin: 0; }
   /* The section the rail just jumped to, so the eye lands somewhere. */
-  .pdoc h2.plit { animation: plit 1.6s ease-out 1; }
+  .pdoc h2.plit, .pdoc h3.plit { animation: plit 1.6s ease-out 1; }
   @keyframes plit { from { background: color-mix(in srgb, var(--p-gold) 34%, transparent); } to { background: transparent; } }
 
   /* The sigil, first thing on the welcome page. */
@@ -184,7 +184,10 @@
     content: ''; display: inline-block; width: 12px; height: 1px;
     margin: 0 .5em .3em 0; background: var(--p-gold); vertical-align: middle;
   }
-  .pdoc h3 { color: var(--p-gold); margin: 1.3em 0 .3em; }
+  .pdoc h3 {
+    color: var(--p-gold); margin: 1.3em 0 .3em;
+    scroll-margin-top: calc(var(--topbar-h, 55px) + 72px);
+  }
   .pdoc a { color: var(--p-crimson-ink); text-decoration-color: var(--p-gold); }
   .pdoc table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; margin: 1em 0; }
   .pdoc th, .pdoc td {
@@ -495,7 +498,7 @@
       for (const [n, pin] of pins) pin.classList.toggle('sel', n === name);
       if (label) label.remove();
       const pin = pins.get(name);
-      if (!pin) return;
+      if (!pin) return false;
       label = document.createElement('span');
       label.className = 'ppinlbl';
       label.textContent = name;
@@ -526,6 +529,7 @@
         box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         pin.scrollIntoView({ block: 'nearest', inline: 'nearest' });
       }
+      return true;
     }
 
     /* Nearest capital wins. Distance is measured in the image's own pixels
@@ -616,6 +620,27 @@
      added to the markdown is a stop added here with no code change. */
   const RAIL_PAGE = 'History.md';
 
+  /* Scroll a heading into view and flash it. The flash is the whole point:
+     a page that simply jumps leaves the reader working out what moved. */
+  function jumpTo(root, h) {
+    h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    for (const lit of root.querySelectorAll('.plit')) lit.classList.remove('plit');
+    // restart the highlight even when the same target is asked for twice
+    void h.offsetWidth;
+    h.classList.add('plit');
+  }
+
+  /* A link may name a section rather than a page: #History/The%20Delta%20War.
+     Headings are matched by their own text, so the target of a link is what
+     the heading says and nothing has to be kept in step by hand. */
+  function focusSection(root, name) {
+    const want = name.trim().toLowerCase();
+    for (const h of root.querySelectorAll('h2, h3')) {
+      if (h.textContent.trim().toLowerCase() === want) { jumpTo(root, h); return true; }
+    }
+    return false;
+  }
+
   function mountRail(root) {
     const stops = [];
     for (const h of root.querySelectorAll('h2')) {
@@ -623,7 +648,10 @@
       const date = first && first.tagName === 'P' && first.children.length === 1
         && first.firstElementChild.tagName === 'EM' && !first.textContent.replace(first.textContent.trim(), '').length
         ? first.textContent.trim() : '';
-      stops.push({ h, name: h.textContent.trim(), date });
+      // The rail wants the year, not the whole line. A date line is written
+      // `2316 AR — signed sixty years ago`, so the hinge is where it ends;
+      // a line with no hinge is short enough already.
+      stops.push({ h, name: h.textContent.trim(), date: date.split(' — ')[0] });
     }
     if (stops.length < 2) return;
 
@@ -639,13 +667,7 @@
       b.innerHTML = '<b></b><span></span>';
       b.querySelector('b').textContent = s.name;
       b.querySelector('span').textContent = s.date;
-      b.onclick = () => {
-        s.h.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        for (const lit of root.querySelectorAll('h2.plit')) lit.classList.remove('plit');
-        // restart the highlight even when the same stop is pressed twice
-        void s.h.offsetWidth;
-        s.h.classList.add('plit');
-      };
+      b.onclick = () => jumpTo(root, s.h);
       wrap.appendChild(b);
     }
     const note = document.createElement('p');
@@ -687,13 +709,16 @@
       markSigil(doc);
       if (pages[i].file === RAIL_PAGE) mountRail(doc);
       scrollTo(0, 0);
+      let placed = false;
       if (pages[i].file === MAP_PAGE) {
         const select = await mountMap(doc);
         // A link may name a nation: #The%20Nations/Dalstan opens the tab with
         // that country already picked on the map, which is the only reason
         // somebody following a link about Dalstan wanted this page.
-        if (select && focus) select(focus, true);
+        if (select && focus) placed = select(focus, true);
       }
+      // Anything else a link names is a section heading, on any page.
+      if (focus && !placed) focusSection(doc, focus);
     } catch (e) {
       doc.innerHTML = '<p class="muted">Could not load that page.</p>';
     }
@@ -709,9 +734,9 @@
       tabs.appendChild(b);
     });
     updateTabHints();
-    /* The hash is a page name, optionally followed by /<nation>. Page names
-       and nation names both contain no slash, so the first one separates
-       them. */
+    /* The hash is a page name, optionally followed by /<focus> — a nation on
+       the map page, or a section heading anywhere. Page names, nation names
+       and headings all contain no slash, so the first one separates them. */
     const wanted = () => {
       const raw = location.hash.replace(/^#/, '');
       const cut = raw.indexOf('/');
