@@ -113,6 +113,19 @@ HANDOUTS = [
                 'subs': [],
                 'lead': None,
             },
+            {
+                'file': 'Thaumodynamics.md',
+                'title': 'Thaumodynamics',
+                'drop_sections': [],
+                # The GM aside is fenced off by a rule at the end, and is the
+                # only part of this note that reaches past what its in-world
+                # author could actually know.
+                'drop_from': '**GM:** this is the first unified account',
+                'drop_lead': False,
+                'drop_paras': [],
+                'subs': [],
+                'lead': None,
+            },
         ],
     },
 ]

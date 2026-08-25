@@ -155,11 +155,11 @@ burning through the stone in a third the uses a well-carved circuit
 would — it refines the effect badly too, which is the difference between a
 warded clasp that holds a clean half-shield and one that flickers.
 
-That chalked-up version is a simplification, and it earns its keep at a
-bench where nobody has time for better. It treats one activation as a
-single lump of charge spent all at once, which is not what actually
-happens inside the housing. What happens is a stone bleeding charge over
-the fraction of a second the working takes, and a rate is not a lump:
+The trade treats that chalked-up version as a rough thing that earns its keep
+at a bench where nobody has time for better. It takes one activation as a
+single lump of charge spent all at once, which is not what happens inside the
+housing. What happens is a stone bleeding charge over the fraction of a second
+the working takes, and a rate is not a lump:
 
 **w(t) = −(dQ/dt) · P(t) ÷ Z(t)**
 
@@ -185,6 +185,9 @@ between a wayfinder and a toy. [[Melisor Magocracy]] has never had a reason
 to chase the third one. A warded clasp cut at Thelemar runs dry in a
 fraction of the uses a Silicar lamp gets from the same grade of stone, and
 nobody on the Council has ever once complained about it.
+
+Neither academy has ever set any of this out as a body of law, which is not
+the same as nobody having done it. See [[Thaumodynamics]].
 
 ## Prestige pieces
 
