@@ -37,7 +37,9 @@ Ulad remounts and Melisor artillery.
 
 **Silicar has never licensed the trade, and Quivar has musketeers.** Nobody at
 the Concord Table has asked how, out loud. Silicar has never said what it
-thinks happened, which is not at all the same as not knowing.
+thinks happened, which is not at all the same as not knowing — and three years
+ago it stopped selling Quivar anything at all, still without saying why. See
+[[Economy]].
 
 A firelock is loud, slow to load and expensive whoever is carrying it. They
 work. They are not what wins a battle, and [[Kelvary March]] would tell you so

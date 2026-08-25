@@ -51,6 +51,40 @@ So a soldier finds work, a caravan hires guards, and a person who wants to be
 shot at does not have to wait for a war. What has not happened in sixty years
 is armies.
 
+## The trade wars
+
+The other half of that is fought with schedules of goods, and it is where the
+continent puts its temper now.
+
+The Peace says what may be sold to a war. It says nothing whatever about what
+a country may decline to sell in peacetime, and everybody worked that out
+inside a decade. So a grievance that would once have raised a levy now closes
+a border to one class of cargo, and stays closed for years, and nobody has
+broken any clause of anything.
+
+They are slow and they are deniable and they land hardest on somebody who was
+not in the argument. Cut a nation's steel and you have cut every workshop
+downstream of it in two countries that were not quarrelling with anyone. Ask a
+Harrowgate paymaster what he thinks of principle.
+
+**The current one is three years old and nobody has stated its cause.**
+Silicar stopped selling machinery, clockwork, pumps, powder and field kit into
+Quivar, in that order, over about a season. Quivar has asked formally three
+times and been answered each time with a revised schedule of goods and no
+reason attached.
+
+Everybody can name the reason and nobody will write it down. Quivar's
+musketeer skirmishers carry firelocks Silicar invented and has never licensed
+to anyone, and Silicar has accused nobody of anything — which is exactly why
+it cannot be arbitrated. There is no charge for Quivar to answer, and no
+finding for the Concord Table to make on a case that has not been brought.
+
+If you have travelled the western roads in the last three years you will have
+seen the edges of it: Quivari pumps going for four times what they cost,
+Kelvary factors buying Silicaran kit in quantities no company needs, and
+nobody in either capital willing to say the word *theft* where it could be
+repeated.
+
 ## The Delta War
 
 The Lich Emperor of the Lazarian Lichdom had not issued an edict in five
