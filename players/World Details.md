@@ -93,3 +93,34 @@ price of rope.
 
 At 1st level you have **15 gp**, which is a real amount of money to most
 people and about a season of an ordinary wage.
+
+### Two coinages
+
+**The continents mint separately.** A western coin is struck to Voskreld's
+weight and an eastern one to Xian Ti's, and they are worth exactly the same
+thing — the same metal, the same weight, the same purchasing power. That has
+never once persuaded a shopkeeper.
+
+West of the ocean nobody takes eastern coin, and the reverse holds just as
+hard. Not out of hostility; they simply do not recognise it, will not weigh
+it, and have somebody down the street who will. **Changing money is a thing you do at
+a harbour**, through an Alliance factor or a Tessine counting-house, at a
+commission that is perfectly reasonable and gets charged every single time.
+
+Carry the coin of wherever you are going, and change it before you need it.
+A purse of good silver in the wrong striking will not buy you a bed.
+
+### Lichdom coin
+
+[Lazarian](#The%20Nations) mints its own, and it is good in exactly three
+places: the Lichdom, [Tessine](#The%20Nations), and a black market.
+
+Everywhere else it is a lump of metal somebody will not touch. In the markets
+that will touch it, the changer keeps ninety-five in the hundred — you hand
+over a hundred marks and walk away with five coins' worth, and that is the
+going rate rather than a swindle. Nobody will explain why the price is that
+and not some other number.
+
+So the Lichdom's trade runs on goods and favours rather than on money, and if
+your character has been paid in Lichdom coin, they have been paid a fraction
+of what the number says. Somebody may not have mentioned that.
