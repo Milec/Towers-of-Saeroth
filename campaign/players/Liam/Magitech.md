@@ -39,30 +39,46 @@ working's shape badly, and every workshop guards its own blend like a
 vintner guards a cellar.
 
 Power is the harder problem, and neither academy solved it from nothing. An
-aeon stone in this trade is not a separate battery wired to a separate
-gem — it is the gem, a low-level stone cut with a rune that decides what it
-does and does the work at once, ruby for fire, diamond for a ward, whatever
-the trade calls for. Twenty years ago nobody in either academy knew how to
-cut one. What they had were low-level stones pulled whole out of old ruins,
-enough of them, studied long enough, to work the cutting back out from the
-finished article. The same ruins gave up broken housings alongside the
-stones: scraps of alloy still holding the pattern of inlaid metal that once
-joined a stone to whatever it powered, which is where the trade got its
-wiring without inventing that twice either. Nobody has yet cut a stone
-stronger than low-level. Whether that is a limit of the recovered method or
-simply because nothing stronger has ever turned up to copy, Melisor and
-Silicar give two different answers in public and privately admit to the
-same one: they don't know.
+aeon stone in this trade is one gem carrying two separate cuts, not a
+battery wired to a separate working. The **charge rune** comes first and
+pulls raw magical energy through the gem — the gem itself is a catalyst and
+nothing more, and any stone hard enough to hold a clean cut will do the
+pulling. The **property rune** comes second, into the same stone, and
+shapes whatever the charge rune drew: ruby for fire, diamond for a ward,
+whatever the trade calls for. Twenty years ago nobody in either academy
+could cut either one. What they had were whole low-level stones pulled out
+of old ruins, enough of them, studied long enough, to work both cuts back
+out from the finished article.
+
+The same ruins gave up broken housings too: alloy and wood still carrying a
+third cut, **circuitry**, carved into the material itself rather than the
+stone, that once carried a stone's shaped power the rest of the way into
+whatever the housing was built to do. That is where the trade got its
+wiring without inventing it a third time.
+
+Property runes keep turning up in new varieties, and the trade keeps
+copying or inventing past them — fire, earth, air, a ward, a solvent, a
+season, with no sign the list is finished. The charge rune never has. Every
+stone anyone has ever pulled from a ruin carries the same basic cut, and in
+twenty years nobody has managed to design, or find, a more advanced one.
+That is the actual ceiling on the whole trade: not the gem, not the alloy,
+one specific cut that nobody has learned to improve. Whether that is a
+limit of what survived the ruins or a limit neither academy has cracked on
+its own, Melisor and Silicar give two different answers in public and
+privately admit to the same one: they don't know.
 
 Not everything that ships is a find. A few pieces are close reconstructions
 of something pulled half-whole out of a ruin and finished in a workshop; the
-rest are new work, designed from scratch around the recovered stone and the
-recovered wiring, that happened to solve a problem the empire had already
-solved once. Nobody building either kind knows which one they're holding,
-because nobody building either kind knows there is a difference to ask
-about.
+rest are new work, designed from scratch around the recovered runework and
+the recovered circuitry, that happened to solve a problem the empire had
+already solved once. Nobody building either kind knows which one they're
+holding, because nobody building either kind knows there is a difference to
+ask about.
 
-Twenty years in, [[Silicar]]'s workshops have shipped a handful of things:
+The list below names each device by its property rune only — the charge
+rune riding under it goes unmentioned the way nobody points out the nails
+in a chair. Twenty years in, [[Silicar]]'s workshops have shipped a
+handful of things:
 
 - **The wayfinder** — a disc small enough to wear on a cord, pointing
   toward whatever its stone was keyed to find. The one every court now
@@ -98,23 +114,31 @@ enough to it:
 
 **W = Q · P ÷ Z**
 
-**Charge (Q)** is the stone's own capacity, and it is the one number nobody
-in the trade can move. A low-level stone holds a low-level charge, and the
-ceiling on the whole trade is a ceiling on this and nothing else.
+**Charge (Q)** comes from the charge rune, not the gem underneath it. The
+gem is a catalyst — the rune pulls raw magical energy through it, and any
+stone hard enough to hold a clean cut will do the pulling. What limits Q is
+the rune, not the ruby or the diamond it's cut into. Every charge rune
+anybody has ever recovered from a ruin is the same basic cut, and in twenty
+years nobody has managed to design a more advanced one. The ceiling on the
+whole trade is a ceiling on this one rune and nothing else.
 
-**Pattern (P)** is the rune, and it doesn't add to the charge — it tells the
-charge what to become. The same charge cut for fire behaves nothing like the
-same charge cut for a ward, and because the cut is made once, when the stone
-itself is made, there is no reworking it after. Nobody reprograms an aeon
-stone. They requisition a new one.
+**Pattern (P)** is the property rune, cut second into the same stone. It
+doesn't add to what the charge rune drew — it tells that draw what to
+become. The same draw cut for fire behaves nothing like the same draw cut
+for a ward, and because the cut is made once, when the stone itself is
+made, there is no reworking it after. Nobody reprograms an aeon stone. They
+requisition a new one and cut it again.
 
-**Impedance (Z)** is everything between the stone and the work that isn't
-the stone: the inlaid metal, the alloy, the joinery. It is also the only one
-of the three a workshop can actually improve, which is the real reason
-every guild in Brightfurrow guards its alloy blend rather than publishing
-it. Bad impedance doesn't stop a device from working. It bleeds the charge
-off as heat and backlash, and burns through the stone in a third the uses a
-well-made one would.
+**Impedance (Z)** is the circuitry — a third cut, carved not into the stone
+but into the alloy or the wood that houses it, carrying the shaped power
+the rest of the way out and refining it again on the way. It is also the
+only one of the three a workshop can actually improve, which is the real
+reason every guild in Brightfurrow guards its own circuitry patterns and
+alloy blends rather than publishing either. Bad impedance doesn't just
+waste charge as heat and backlash, burning through the stone in a third the
+uses a well-carved circuit would — it refines the effect badly too, which
+is the difference between a warded clasp that holds a clean half-shield and
+one that flickers.
 
 That chalked-up version is a simplification, and it earns its keep at a
 bench where nobody has time for better. It treats one activation as a
@@ -204,14 +228,19 @@ Neither academy will say so, because neither can prove it and both suspect
 it: nothing either of them has ever cracked open, out of a ruin or off a
 tower's doorstep or out of the odd fused fragment the Wildlands occasionally
 returns, is younger than any archive either keeps. What came out of the
-ground first were whole low-level aeon stones and enough broken housings
-beside them to work out how the cutting and the wiring were done — twenty
-years of study bought back a *method*, not an inventory. Most of what ships
-today was never dug up at all; it was built fresh from that recovered
-method, by people solving an ordinary problem who have no idea they are
+ground first were whole low-level aeon stones — gems already carrying a
+charge rune and a property rune both — and enough broken housings beside
+them, still carrying their circuitry, to work out how all three cuts were
+done. Property runes turned up in enough variety that twenty years of study
+bought back a real vocabulary, one an academy could extend on its own once
+it understood the grammar. The charge rune turned up one way and only one
+way, every time, and neither academy has ever managed a second. Most of what ships
+today was never dug up at all; it was built fresh from the recovered
+runework, by people solving an ordinary problem who have no idea they are
 solving one the empire already solved once. That is precisely why the study
 is equal parts archaeology, theory, engineering and raw working, and why
-neither Melisor nor Silicar will say in public where the method came from.
+neither Melisor nor Silicar will say in public where the charge rune came
+from.
 
 At its height the empire ran all of this as furniture, not as a wonder two
 academies would spend a generation racing to re-derive: railguns, high-speed
@@ -219,15 +248,15 @@ rail between its own cities, a portal network wide enough to reach
 [[Luaris]], Saeroth's own moon, and exosuits for any labor a body alone
 couldn't do. Trade tools nobody in it would have called magic, because
 getting the work done was the point and not the marvel of it. The erasure
-took nearly all of that the same way it took the empire's name, the method
-included. A wayfinder, a lamp, a lighter, a slate, a diving mask, a warded
-clasp, a presser and a seasoning dish, none of it running on anything
-stronger than a low-level stone because nothing stronger has ever turned up
-to copy — a few of that list are a fragment rebuilt whole, and most of it is
-new work raised on a rediscovered method, which looks the same from outside
-the workshop either way. That double handful of pocket-sized objects is what
-twenty years of digging and building has bought two academies back. Neither
-has any idea it is working from the same civilization the other one is.
-Silicar built what the salvage was suited for. Melisor built what would
-impress a Council chamber, and neither choice was ever really about the
-stone.
+took nearly all of that the same way it took the empire's name, the charge
+rune's own advanced cuts included. A wayfinder, a lamp, a lighter, a slate,
+a diving mask, a warded clasp, a presser and a seasoning dish, none of it
+running on anything stronger than the one basic charge rune anybody has
+ever recovered — a few of that list are a fragment rebuilt whole, and most
+of it is new work raised on the recovered runework, which looks the same
+from outside the workshop either way. That double handful of pocket-sized
+objects is what twenty years of digging and building has bought two
+academies back. Neither has any idea it is working from the same
+civilization the other one is. Silicar built what the salvage was suited
+for. Melisor built what would impress a Council chamber, and neither choice
+was ever really about the stone.
