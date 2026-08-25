@@ -8,24 +8,26 @@ one morning where the evening before there was pasture, or reef, or a road men
 had used for two hundred years. The stone is seamless and nobody recognises
 it. Nothing grows on it. Nothing has weathered.
 
-Nobody who has seen one leads with the height. They lead with the fact that it
-is beautiful. Pale stone, close to white, fluted all the way up, and worked at
-every joint with more ornament than any cathedral you have been inside could
-raise the money for. It is lit from within, faintly. A cold blue sits in
-the windows and in the crown at the top, steady in any weather, and by day you
-could walk past and not notice there was a light in it. After dark it is
-enough to put your hand on the wall by, and no more than that. It does not go
-out.
+Nobody who has seen one leads with the height. They lead with the fact that no
+two of them look alike. The Charter Tower is pale stone, close to white,
+fluted all the way up, and worked at every joint with more ornament than any
+cathedral you have been inside could raise the money for, lit from within by
+a cold blue that never goes out. The Drowned Spire is black, bare of any of
+that, and after nine months underwater has not grown so much as a strand of
+weed where everything else down there grows on everything. Whatever the next
+one turns out to be built from, it will not match either.
 
-Closer in, the ornament is stranger than it looked. Fine lines run across the
+Closer in, on any of them, the same marks turn up. Fine lines run across the
 stone in tracks and corners, the way the inside of a lock is worked rather
-than the outside of a wall, and nobody can say what they are for. Between them
-are figures. People who have stood in front of them reach for the same word,
-and the word is *cruel*.
+than the outside of a wall, and nobody can say what they are for. Between
+them are figures. People who have stood in front of them reach for the same
+word, and the word is *cruel*. It is the one thing every tower anyone has
+found has in common with every other.
 
-![A tower at dusk: pale fluted stone, gothic ornament, cold blue in its
-windows](towers.jpg)
-*What people describe when they have actually stood in front of one.*
+![The Charter Tower at dusk: pale fluted stone, gothic ornament, cold blue in
+its windows](towers.jpg)
+*What one tower looks like. No other tower found so far looks anything like
+it.*
 
 ## What is known
 
