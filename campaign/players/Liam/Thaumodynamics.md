@@ -1,17 +1,31 @@
 ---
 title: Thaumodynamics
 type: reference
-status: A working treatise. No academy has seen it and neither would like it
+author: A player character's own work — unpublished, unreviewed, and not the world's settled account of anything
+status: Working notes. The early laws are well tested; the last of it is one man's reasoning
 covers: Four laws, and what the bench equation turns out to be shorthand for
 ---
 
 Twenty years of [[Magitech]] and nobody has written down what the trade is
-actually doing. [[Melisor Magocracy]] has theorists who will not go near a
-bench and [[Silicar]] has benchwrights who will not go near a theory, and
-between the two of them the field has accumulated a great deal of practice
-and no account of itself. What follows is an attempt at one. It is not
-published, it would embarrass both academies if it were, and the name for
-the study is the author's own coinage.
+actually doing, for two reasons that have nothing to do with the work being
+hard.
+
+The first is that most of the world holds the whole field to be a waste of
+effort. Anything a magitech device does, a competent practitioner can just
+*do* — faster, without a gem, and without waiting a season on a guild order.
+Set beside a working, a device that takes four craftsmen and a rare stone to
+light a room looks like an elaborate way of avoiding a cantrip, and that is
+roughly what a chair at Thelemar will tell you if you raise it at dinner. The
+second is that the two bodies who took it up anyway split it down the middle:
+[[Melisor Magocracy]] has theorists who will not go near a bench,
+[[Silicar]] has benchwrights who will not go near a theory, and between them
+the field has accumulated a great deal of practice and no account of itself.
+
+What follows is an attempt at one. It is not published, it has never been
+read by anyone qualified to argue with it, and the name for the study is the
+author's own coinage. The first three laws rest on work that can be repeated
+by anyone with a bench. The last of it rests on one measurement, taken once,
+which is said plainly where it arises.
 
 ## The fundamental bench equation
 
@@ -99,7 +113,7 @@ from, so that a third quantity arrives which the stone never supplied:
 | --- | --- | --- |
 | **w(t)** | Working rate | Arriving, at that instant, as the effect the device was built for |
 | **ℓ(t)** | Loss | Spent at that instant and arriving as anything else |
-| **a(t)** | Ambient draw | Field the circuit couples in on its own account, which the stone never held |
+| **a(t)** | Ambient draw | Field the circuit couples in on its own account, which the stone never held. *Inferred, never measured — see below* |
 | **η(t)** | Transfer | The net of all three, as a multiple of what the stone gave up |
 
 Net it out and the ratio of Pattern to Impedance is what has been measuring
@@ -112,6 +126,15 @@ circuit anybody currently makes. **η > 1** is a circuit that gives back more
 than the stone handed it, and it is not getting that from nowhere — it is
 getting it from the field, along the channel the property rune opened, and it
 cannot open that channel without the stone's flow to hold it open.
+
+**The ambient term is the weakest thing in these pages, and it should be said
+here rather than buried.** Nobody has measured a(t). No instrument the author
+owns will show ambient field at all, and it may be that none can. It is in
+the equation because on one occasion a circuit returned more than its stone
+could account for, and something has to balance that page. Ambient coupling
+is the least strange explanation available. Least strange is not the same as
+correct, and if a(t) turns out to be something else entirely, everything
+below the First Law will need rewriting and nothing above it will.
 
 Waste leaves as heat, light, vibration, backlash, degradation of the stone
 itself, or an effect nobody asked for. A badly made lighter that draws ten
@@ -153,6 +176,19 @@ broken and is not: the surplus is ambient field, and the stone is still
 emptying at exactly the rate the First Law allows. Charge is conserved.
 Working never was, and anyone who assumes otherwise will conclude that gain
 is impossible and stop looking for it.
+
+**This rests on one bench, one afternoon.** A silver-lead circuit of the
+author's own carving, seated with a middling ruby, delivered a burn that no
+honest accounting of that stone could pay for, and did it four times before
+the carving split. It has not been repeated. Two later circuits cut to the
+same pattern in the same alloy sat obediently below unity and are sitting
+there yet. Nothing rules out a fouled measurement, a better stone than it was
+graded, or an error in the notes taken that day.
+
+So: gain is what the laws permit and what one afternoon appeared to show.
+That is a good deal less than a demonstrated fact, and it is why these pages
+have not been shown to anyone. A claim of this size wants a second circuit
+behind it.
 
 **But every circuit has a floor it cannot be driven under.** Call it **Zmin**,
 and understand it as a breaking point rather than a limit approached:
@@ -217,30 +253,80 @@ nearly break-even, which is real work and is not the same as gain. The road
 past Qmax was never closed. Nobody has walked it, because nobody has written
 down that it is there.
 
----
+## What is settled and what is not
 
-**GM:** this is the first unified account of magitech anybody in the world has
-written, and its author is a player character. Nothing in it is wrong.
+These pages are not of one weight throughout, and it would be dishonest to
+bind them as though they were.
 
-**The gain claim is the live one.** Everybody in the trade believes the
-recovered charge rune is the whole ceiling. This treatise says it is one of
-two ceilings and the other has never been tested, which is either the most
-valuable page in the world or a good way to be robbed. Melisor's instinct
-would be to bury the page and hire the man. Silicar would want to build it by
-Thursday. Neither reaction is safe for whoever is holding the paper.
+| | Standing |
+| --- | --- |
+| **Zeroth Law**, affinity | Settled. Cut one rune into six gems and five of them will tell you so before the week is out |
+| **First Law**, conservation of charge | Settled. Every stone anyone has ever run dry says it |
+| **The bench equation as an estimate** | Settled by use. The whole trade runs on it and the whole trade is not wrong |
+| **The bench equation as exact** | A derivation, not an observation. Sound if the Second Law is sound |
+| **Third Law**, that M, C and τ govern impedance | Settled, and Silicar's tables are better evidence for it than anything here |
+| **The ambient term a(t)** | Inferred. Never measured, possibly not measurable |
+| **Gain, η > 1** | One circuit, one afternoon, unrepeated |
+| **Zmin as a breaking point** | Extrapolated from circuits that failed under load. The floor itself has never been approached on purpose |
 
-**Gain is a dial you control, and it has a failure mode rather than a cap.**
-Anything the party builds above unity should cost something concrete: a
-circuit that cracks after a fight, a stone that empties in one evening instead
-of a season, a working that arrives somewhere nobody aimed it. Never rule that
-a gain device simply doesn't work. Let it work, spectacularly, and then let
-the housing pay. That is the interesting version and it is also what the
-Third Law actually says.
+The author's position is that the top half is not seriously in doubt, that
+the bottom half is worth a career, and that anyone who reads the bottom half
+first and the top half not at all will get himself hurt.
+
+**GM:** this is a player character's private theory, not the world's account
+of anything. It is the most complete magitech theory in existence, which says
+more about how little competition it has than about the man who wrote it.
+
+**Why nobody beat him to it.** The field is held in contempt. A practitioner
+can do most of what a device does by simply doing it, so magitech reads to
+the world as an expensive way to avoid learning a cantrip — which means the
+people with the most reason to build one are the people who cannot cast, and
+those are the people no academy is listening to. Add that Melisor and
+Silicar each hold half the picture and neither will sit at the other's bench,
+and twenty years of nobody writing this down stops being surprising. He is
+not the cleverest person who could have done this. He is the one who was
+standing in the right place and did not know it was beneath him.
+
+**How correct it is, is yours to decide.** The note grades its own claims and
+the grading is honest, so use it as the dial. The three settled laws should
+hold. Below that line every claim is a lever:
+
+- **The ambient term.** If a(t) is real, gain works as written. If it is
+  something else — a property of that one ruby, a thinness in the world since
+  the towers came, something the empire left in the ground — then the theory
+  is right about the arithmetic and wrong about the cause, which is the most
+  interesting failure available and does not cost him his competence.
+- **The one afternoon.** That result can be genuine, a fouled measurement, or
+  genuine for a reason he has not guessed. All three are playable and none of
+  them need deciding until somebody tries to repeat it on screen.
+- **Zmin.** Nobody has approached the floor deliberately. What happens there
+  is entirely open.
+
+**When gain is on the table, let it work and make the housing pay.** A circuit
+that cracks after a fight, a stone emptied in one evening instead of a season,
+a working that arrives somewhere nobody aimed it. Never rule that a gain
+device fails to function — that is the boring version and it is not
+what the Third Law says.
+
+**What it is worth.** The trade believes the charge rune is the whole ceiling.
+These pages say it is one of two and the other has never been tested. Melisor's
+instinct would be to bury the page and hire the man; Silicar would want to
+build it by Thursday. Neither reaction is safe for whoever is holding the
+paper, and neither academy would credit where it came from.
 
 Ruin-recovered circuits are where the real numbers live. The empire ran rail
 and railguns on this and did not do it at η just under one, so a fragment
 pulled intact out of the ground is the party's first sight of what the floor
 really is — and the author of this treatise is the one person alive equipped
 to recognise what he is looking at. See [[The Nameless Empire]].
+
+**Backstory hooks, for the player rather than the GM.** The theory needs its
+author to have had three things the world does not hand out together: time at
+a Silicar bench or its equivalent, enough rune theory to read a property cut,
+and a reason to care about intensity rather than endurance — which a
+gunslinger has and a lamp-maker does not. Any story that supplies those three
+earns the document. Whether he was thrown out of somewhere, apprenticed to
+somebody who died, or too stubborn to be told the field was worthless
+is his to say.
 
 *See [[Magitech]] for the trade this describes.*

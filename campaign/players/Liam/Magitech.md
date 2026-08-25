@@ -11,6 +11,23 @@ deliberately is not, and the people doing it have not agreed on what to call
 it. **Magitech** is the word that has stuck outside the trade, mostly because
 it is short.
 
+## Why hardly anyone bothers
+
+Most of the world thinks the whole business is a waste of a good workshop, and
+the argument against it is a strong one. A device that takes four craftsmen, a
+rare gem and a season's wait to light a room is competing against a
+practitioner who can light the room now, for nothing, and light a different
+one tomorrow. Set the two side by side and magitech looks like an elaborate
+way of avoiding a cantrip.
+
+What that argument skips is who is holding it. [[Magic]] is accepted
+everywhere and possessed by almost nobody — a village of two hundred has a
+midwife with three charms that mostly fail and sends to the market town for
+anything real. To that village a lamp that needs no practitioner at all is
+not an expensive cantrip; it is the only cantrip they are ever going to get.
+Nobody at Thelemar has found this argument interesting, which is most of why
+the field belongs to two bodies rather than twenty.
+
 ## Two ends of the same problem
 
 [[Melisor Magocracy]] came at it from the magic. An academy that can already
