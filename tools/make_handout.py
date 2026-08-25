@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""Build the exemplar player's handout PDF from the notes themselves.
+"""Build player handout PDFs from the notes themselves.
 
-    python3 tools/make_handout.py
+    python3 tools/make_handout.py            # build every handout below
+    python3 tools/make_handout.py Liam       # build only Liam's
 
-The two notes it reads are GM notes that happen to contain a lot of material
-the player should have. Rather than keeping a second, player-safe copy of that
-prose — which would go stale the first time a note is edited — this cuts the
-GM-only sections out of the real notes and renders what is left.
+Every handout reads from notes filed under that player's own folder — GM
+prep, or a setting-wide reference note moved there because that player is
+the one who needs it (see `campaign/README.md` on why a `players/<Player>/`
+note can be about anything, not just that character). Rather than keeping a
+second, player-safe copy of that prose — which would go stale the first time
+a note is edited — this cuts the GM-only sections out of the real notes and
+renders what is left.
 
 **The cutting is the whole point of this script, so it is loud.** Sections are
 named explicitly, a named section that has gone missing is an error rather
@@ -25,66 +29,91 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, 'campaign', 'players', 'Isaiah')
-OUT = os.path.join(SRC, 'Exemplar handout.pdf')
+PLAYERS = os.path.join(ROOT, 'campaign', 'players')
 
-#: What to keep, per note. Every cut is named, and every name must still match
-#: something in the note, so a heading that gets renamed breaks this script
-#: rather than quietly shipping the section it was meant to remove.
+#: One entry per handout, all its docs read from `campaign/players/<player>/`
+#: and its PDF written there too.
 #:
+#: Each doc's cuts, all named so a rename in the note breaks this script
+#: rather than quietly shipping the section it was meant to remove:
 #:   drop_sections  ## headings to remove entirely
 #:   drop_from      remove everything from this marker to the end
 #:   drop_lead      remove the note's preamble, the part above the first ##
 #:   drop_paras     remove single paragraphs, matched on their opening words
 #:   subs           rewrite a phrase that only makes sense inside the vault
-#:   lead           the handout's own opening, where the note's addresses the GM
-DOCS = [
+#:   lead           the handout's own opening, where the note addresses the GM
+HANDOUTS = [
     {
-        'file': 'Exemplars.md',
-        'title': 'Exemplars',
-        'drop_sections': [],
-        # The GM footer is the last thing in the note, fenced off by a rule.
-        'drop_from': '**GM:** the explanation is',
-        'drop_lead': False,
-        'drop_paras': [],
-        'subs': [
-            # Cross-reference to the second half of this handout, by a name
-            # the player has no reason to have heard. The sentence before it
-            # says everything the pointer was adding.
-            ('[[Dreams of the Dead God]] is the table for rolling them at a table.',
-             ''),
+        'player': 'Isaiah',
+        'out': 'Exemplar handout.pdf',
+        'docs': [
+            {
+                'file': 'Exemplars.md',
+                'title': 'Exemplars',
+                'drop_sections': [],
+                # The GM footer is the last thing in the note, fenced off by a rule.
+                'drop_from': '**GM:** the explanation is',
+                'drop_lead': False,
+                'drop_paras': [],
+                'subs': [
+                    # Cross-reference to the second half of this handout, by a
+                    # name the player has no reason to have heard. The
+                    # sentence before it says everything the pointer was adding.
+                    ('[[Dreams of the Dead God]] is the table for rolling them at a table.',
+                     ''),
+                ],
+                'lead': None,
+            },
+            {
+                'file': 'Dreams of the Dead God.md',
+                'title': 'The dreams',
+                # "When to roll" is the GM's trigger list and names where the
+                # pull comes from; "Running it" carries two of the setting's
+                # answers.
+                'drop_sections': ['When to roll', 'Running it'],
+                'drop_from': None,
+                # The note opens by telling the GM what the dreams are.
+                'drop_lead': True,
+                'drop_paras': [
+                    'Read to the player alone',
+                    'The five below the line',
+                ],
+                'subs': [
+                    # Its two paragraphs were GM instructions and are gone,
+                    # which leaves a heading sitting directly on top of the
+                    # ten it labels, under a page already titled the same thing.
+                    ('## The dreams', ''),
+                ],
+                # This is the only prose in the handout that is not in a note.
+                'lead': (
+                    "Once your spark is focused the dreams start, and there is no "
+                    "record of an exemplar to whom they did not. You do not choose "
+                    "which one arrives. On a night one comes, roll, and then save "
+                    "against it: a good dream is something you are trying to hold on "
+                    "to, and a bad one is something you are trying to get clear of."
+                    "\n\nNothing in any of them can be repeated. You already know "
+                    "that part.\n"
+                ),
+            },
         ],
-        'lead': None,
     },
     {
-        'file': 'Dreams of the Dead God.md',
-        'title': 'The dreams',
-        # "When to roll" is the GM's trigger list and names where the pull
-        # comes from; "Running it" carries two of the setting's answers.
-        'drop_sections': ['When to roll', 'Running it'],
-        'drop_from': None,
-        # The note opens by telling the GM what the dreams are.
-        'drop_lead': True,
-        'drop_paras': [
-            'Read to the player alone',
-            'The five below the line',
+        'player': 'Liam',
+        'out': 'Magitech handout.pdf',
+        'docs': [
+            {
+                'file': 'Magitech.md',
+                'title': 'Magitech',
+                'drop_sections': [],
+                # The GM aside is the last thing in the note, fenced off by a
+                # rule, and is where every Nameless Empire tie-in lives.
+                'drop_from': '**GM:** the towers are the obvious question',
+                'drop_lead': False,
+                'drop_paras': [],
+                'subs': [],
+                'lead': None,
+            },
         ],
-        'subs': [
-            # Its two paragraphs were GM instructions and are gone, which
-            # leaves a heading sitting directly on top of the ten it labels,
-            # under a page already titled the same thing.
-            ('## The dreams', ''),
-        ],
-        # This is the only prose in the handout that is not in a note.
-        'lead': (
-            "Once your spark is focused the dreams start, and there is no "
-            "record of an exemplar to whom they did not. You do not choose "
-            "which one arrives. On a night one comes, roll, and then save "
-            "against it: a good dream is something you are trying to hold on "
-            "to, and a bad one is something you are trying to get clear of."
-            "\n\nNothing in any of them can be repeated. You already know "
-            "that part.\n"
-        ),
     },
 ]
 
@@ -145,8 +174,8 @@ def sections(body):
     return out
 
 
-def prepare(doc):
-    raw = open(os.path.join(SRC, doc['file']), encoding='utf-8').read()
+def prepare(src, doc):
+    raw = open(os.path.join(src, doc['file']), encoding='utf-8').read()
     body = FM.sub('', raw, count=1)
 
     if doc['drop_from']:
@@ -229,10 +258,11 @@ svg.pf2 { height: .95em; width: auto; vertical-align: -.11em; fill: currentColor
 """
 
 
-def main():
-    parts = []
-    for doc in DOCS:
-        parts.append({'title': doc['title'], 'md': prepare(doc)})
+def build(handout):
+    src = os.path.join(PLAYERS, handout['player'])
+    out = os.path.join(src, handout['out'])
+
+    parts = [{'title': doc['title'], 'md': prepare(src, doc)} for doc in handout['docs']]
 
     payload = ''.join(
         f'<section class="doc" data-title="{html.escape(p["title"])}">'
@@ -256,7 +286,7 @@ def main():
     page = page.replace('MARKED', 'site/marked.min.js')
     open(tmp, 'w', encoding='utf-8').write(page)
     try:
-        subprocess.run(['node', os.path.join(ROOT, 'tools', 'topdf.js'), tmp, OUT],
+        subprocess.run(['node', os.path.join(ROOT, 'tools', 'topdf.js'), tmp, out],
                        check=True, cwd=ROOT)
         text = subprocess.run(
             ['node', os.path.join(ROOT, 'tools', 'topdf.js'), tmp, '--text'],
@@ -266,12 +296,21 @@ def main():
 
     hits = sorted({w for w in FORBIDDEN if w in text})
     if hits:
-        os.path.exists(OUT) and os.remove(OUT)
+        os.path.exists(out) and os.remove(out)
         sys.exit('REFUSING TO SHIP. The rendered handout contains: '
                  + ', '.join(repr(h) for h in hits))
 
-    print(f'{os.path.relpath(OUT, ROOT)}  ({os.path.getsize(OUT) / 1024:.0f} KB)')
+    print(f'{os.path.relpath(out, ROOT)}  ({os.path.getsize(out) / 1024:.0f} KB)')
     print(f'redaction check: clean against {len(FORBIDDEN)} forbidden phrases')
+
+
+def main():
+    only = sys.argv[1] if len(sys.argv) > 1 else None
+    handouts = [h for h in HANDOUTS if only is None or h['player'] == only]
+    if only and not handouts:
+        sys.exit(f'No handout is configured for player {only!r}.')
+    for handout in handouts:
+        build(handout)
 
 
 if __name__ == '__main__':
