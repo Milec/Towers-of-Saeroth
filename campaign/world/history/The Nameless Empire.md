@@ -114,6 +114,22 @@ have not published it. [[Xian Ti]]'s ministry has almost certainly made it and
 filed it. Neither is sitting on it out of cunning; a resemblance in stonework
 is not a finding until somebody can say what it means, and nobody can.
 
+## What it built
+
+At its height the empire ran magic and machinery together as ordinary
+infrastructure, the way a road or a well is ordinary: railguns, high-speed
+rail linking its own cities, a portal network wide enough to reach
+[[Luaris]], and exosuits for whatever labor a body alone couldn't manage.
+None of it was built to impress anyone. It was built to work, by people who
+had stopped finding it remarkable generations before the Ritual.
+
+The erasure took nearly all of it, the same way it took the empire's name.
+What survives is buried in the same handful of ruins as the etchings above —
+a stone housing here, a fused gear there, never a whole device — and for
+twenty years [[Melisor Magocracy]] and [[Silicar]] have been quietly digging
+it back out of the ground and calling it their own invention. See
+[[Magitech]]. Neither academy knows whose hands built what they're holding.
+
 ## At the table
 
 - **A conquered tower's "master" is real, and it is one of them.** The rumor that reaching the top makes you rich and titled is not a lie. It
