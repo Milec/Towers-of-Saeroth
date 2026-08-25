@@ -198,6 +198,30 @@ Silicaran specification and whose pumps keep a camp alive, and which sells to
 both of them. Harrowgate has begun quietly buying Quivar's share and reselling
 it at no margin, and calls this commercial.
 
+## The coin
+
+The two continents mint separately, to the same value. A western coin is
+struck to [[Voskreld Union]]'s weight standard, an eastern one to
+[[Xian Ti]]'s ministry weight, and the metal, the mass and the purchasing
+power are the same in both. Neither continent's shopkeepers will take the
+other's.
+
+There is no quarrel behind that and never was. There is a commission. Changing
+money happens at a harbour, through an Alliance factor or a
+[[Tessine]] counting-house, and it happens on every cargo, every passage and
+every traveller, in both directions, forever. Two coinages of identical value
+is worth a great deal to precisely two parties, and those two parties are the
+ones who would have to agree to end it.
+
+**[[Lazarian Lichdom]] mints its own and nobody else honours it.** Lichdom
+coin spends in the Lichdom, in Tessine, and in a black market. Everywhere else
+it is metal that a merchant will not weigh. Where it does change hands the
+changer keeps ninety-five in the hundred, which is not a swindle but a posted
+rate, and which is most of why the Lichdom's foreign trade runs on relics,
+alchemy and favours rather than on money at all — the courts that buy from it
+pay in wine, art and things that leave no ledger entry, and everyone has
+always assumed discretion was the reason.
+
 ## The six a war needs
 
 A war between great powers is not fought out of a treasury. It is fought on
