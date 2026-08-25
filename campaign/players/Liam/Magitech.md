@@ -41,14 +41,21 @@ vintner guards a cellar.
 Power is the harder problem, and neither academy solved it from nothing. An
 aeon stone in this trade is one gem carrying two separate cuts, not a
 battery wired to a separate working. The **charge rune** comes first and
-pulls raw magical energy through the gem — the gem itself is a catalyst and
-nothing more, and any stone hard enough to hold a clean cut will do the
-pulling. The **property rune** comes second, into the same stone, and
-shapes whatever the charge rune drew: ruby for fire, diamond for a ward,
-whatever the trade calls for. Twenty years ago nobody in either academy
-could cut either one. What they had were whole low-level stones pulled out
-of old ruins, enough of them, studied long enough, to work both cuts back
-out from the finished article.
+pulls raw magical energy through the gem, and the gem is not an
+interchangeable vessel for that: some stones catalyse the draw cleanly and
+some waste half of what the rune is trying to pull through them, which is
+why a workshop pays for a good ruby and not merely a red one. The
+**property rune** comes second, into the same stone, and shapes whatever
+the charge rune drew — and it doesn't take to every gem the same way
+either. Fire cuts cleanly into ruby and badly into almost anything else; a
+ward or open air takes to diamond; earth wants peridot. Cut the right rune
+into the wrong stone and the device is weak or doesn't hold at all, which
+is most of why the trade's pairings look fixed rather than arbitrary.
+Twenty years ago nobody in either academy could cut either rune, let alone
+say which stone suited which. What they had were whole low-level stones
+pulled out of old ruins, enough of them, studied long enough, to work both
+cuts back out from the finished article — and to notice, eventually, that
+the ruins had never once wasted a ruby on anything but fire.
 
 The same ruins gave up broken housings too: alloy and wood still carrying a
 third cut, **circuitry**, carved into the material itself rather than the
@@ -61,8 +68,9 @@ copying or inventing past them — fire, earth, air, a ward, a solvent, a
 season, with no sign the list is finished. The charge rune never has. Every
 stone anyone has ever pulled from a ruin carries the same basic cut, and in
 twenty years nobody has managed to design, or find, a more advanced one.
-That is the actual ceiling on the whole trade: not the gem, not the alloy,
-one specific cut that nobody has learned to improve. Whether that is a
+A better stone or a cleaner alloy can close the gap between a device and
+its theoretical best, but neither can raise the ceiling itself. That
+ceiling is one specific cut that nobody has learned to improve. Whether that is a
 limit of what survived the ruins or a limit neither academy has cracked on
 its own, Melisor and Silicar give two different answers in public and
 privately admit to the same one: they don't know.
@@ -114,31 +122,38 @@ enough to it:
 
 **W = Q · P ÷ Z**
 
-**Charge (Q)** comes from the charge rune, not the gem underneath it. The
-gem is a catalyst — the rune pulls raw magical energy through it, and any
-stone hard enough to hold a clean cut will do the pulling. What limits Q is
-the rune, not the ruby or the diamond it's cut into. Every charge rune
-anybody has ever recovered from a ruin is the same basic cut, and in twenty
-years nobody has managed to design a more advanced one. The ceiling on the
-whole trade is a ceiling on this one rune and nothing else.
+**Charge (Q)** comes from the charge rune, but the gem it's cut into still
+matters. The rune sets a firm ceiling — no cut anyone has recovered pulls
+more than a low-level draw — and the gem decides how close to that ceiling
+a given stone actually gets. Some stones catalyse cleanly and some waste
+half of what the rune is trying to pull through them, which is why a clean
+ruby costs more than a merely red one even cut with the identical rune.
+Every charge rune anybody has ever recovered from a ruin is the same basic
+cut, and in twenty years nobody has managed to design a more advanced one.
+The ceiling on the whole trade is this one rune. What a good stone buys is
+getting near it.
 
-**Pattern (P)** is the property rune, cut second into the same stone. It
-doesn't add to what the charge rune drew — it tells that draw what to
-become. The same draw cut for fire behaves nothing like the same draw cut
-for a ward, and because the cut is made once, when the stone itself is
-made, there is no reworking it after. Nobody reprograms an aeon stone. They
-requisition a new one and cut it again.
+**Pattern (P)** is the property rune, cut second into the same stone, and
+it has a ceiling of its own: how well it takes to the gem underneath it.
+Fire cuts cleanly into ruby and badly into almost anything else; a ward or
+open air takes to diamond; earth wants peridot. Cut a rune into a stone
+with no affinity for it and the device is weak or doesn't hold at all,
+which is most of why the trade's pairings look fixed rather than
+arbitrary. Because the cut is made once, when the stone itself is made,
+there is no reworking it after. Nobody reprograms an aeon stone. They
+requisition a new one, in the right gem this time, and cut it again.
 
 **Impedance (Z)** is the circuitry — a third cut, carved not into the stone
 but into the alloy or the wood that houses it, carrying the shaped power
-the rest of the way out and refining it again on the way. It is also the
-only one of the three a workshop can actually improve, which is the real
-reason every guild in Brightfurrow guards its own circuitry patterns and
-alloy blends rather than publishing either. Bad impedance doesn't just
-waste charge as heat and backlash, burning through the stone in a third the
-uses a well-carved circuit would — it refines the effect badly too, which
-is the difference between a warded clasp that holds a clean half-shield and
-one that flickers.
+the rest of the way out and refining it again on the way. Charge and
+Pattern both have a ceiling a good stone can approach but never clear.
+Impedance has none. Nobody has ever worked out a limit to how good a
+circuit can get, which is the real reason every guild in Brightfurrow
+guards its own circuitry patterns and alloy blends rather than publishing
+either. Bad impedance doesn't just waste charge as heat and backlash,
+burning through the stone in a third the uses a well-carved circuit
+would — it refines the effect badly too, which is the difference between a
+warded clasp that holds a clean half-shield and one that flickers.
 
 That chalked-up version is a simplification, and it earns its keep at a
 bench where nobody has time for better. It treats one activation as a
