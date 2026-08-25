@@ -6,6 +6,8 @@ the end of this page explains why.
 
 ## The Pilgrim's Peace
 
+*2316 AR — signed sixty years ago, and holding*
+
 No great power has marched on another in sixty years. Nothing in any chronicle
 anyone still keeps matches that, and every court on both continents knows it,
 which is most of the reason it has held.
@@ -28,6 +30,8 @@ jungle neither of them wanted last year. Nobody has broken the Peace. Everyone
 can feel it being leaned on.
 
 ## The small wars
+
+*Every year there has ever been*
 
 None of that means the world is quiet. Armies is the whole of the claim.
 Everything short of an army has carried on exactly as it always did.
@@ -53,6 +57,8 @@ is armies.
 
 ## The trade wars
 
+*The current one is three years old*
+
 The other half of that is fought with schedules of goods, and it is where the
 continent puts its temper now.
 
@@ -75,8 +81,8 @@ reason attached.
 
 Everybody can name the reason and nobody will write it down. Quivar's
 musketeer skirmishers carry firelocks Silicar invented and has never licensed
-to anyone, and Silicar has accused nobody of anything — which is exactly why
-it cannot be arbitrated. There is no charge for Quivar to answer, and no
+to anyone, and Silicar has accused nobody of anything, which is why it cannot
+be arbitrated. There is no charge for Quivar to answer, and no
 finding for the Concord Table to make on a case that has not been brought.
 
 If you have travelled the western roads in the last three years you will have
@@ -85,7 +91,35 @@ Kelvary factors buying Silicaran kit in quantities no company needs, and
 nobody in either capital willing to say the word *theft* where it could be
 repeated.
 
+## The Long Frontier
+
+*1776 AR — six hundred years, and it has not stopped once*
+
+The eastern continent has its own war and it never ended.
+
+In 1776 the Khazan Khaganate and Xian Ti fortified the same line, from
+opposite sides, four years apart. Neither has taken it and neither has left.
+It has been garrisoned and shot at every year since, and the imperial ministry
+that files the casualty rolls has not missed a season in six centuries.
+
+Westerners hear that and assume a frozen war or a sham one. Ask anyone who has
+served there. People die on that line every spring and their families know
+exactly which spring.
+
+What it is, is useful to both of them. The Great Khagan is elected by the
+assembled khans, and an election needs candidates with reputations, and there
+is one place in the world to earn one. Xian Ti runs on examination, and a
+frontier command is the posting that makes or ends a career in the imperial
+service. Nobody says this out loud on either side of the wall, and nobody
+needs to.
+
+Somebody tried to end it once. In 2041 a Khagan went for the whole line, and
+failed, and the line went back to where it had been. Both countries remember
+him as a fool, for entirely different reasons.
+
 ## The Delta War
+
+*2370 AR — six years ago, and it lasted one season*
 
 The Lich Emperor of the Lazarian Lichdom had not issued an edict in five
 years. Thurigypt's priest-kings read that silence as weakness, and the Pharaoh
@@ -104,6 +138,8 @@ and nobody in a position to know says the Lich Emperor is gone any more.
 
 ## The Two-Crown War
 
+*2305–2316 AR — eleven years*
+
 It ran eleven years and touched every country on the western continent. It
 began over a disputed election in the Vaelic Principality and stopped being
 about that within a season. Armies wintered in other people's fields. In the
@@ -119,7 +155,28 @@ with. Ask a Vaelic herald what ended the war and he will tell you it was an
 agreement between princes. Ask a Thurion factor and he will tell you the banks
 stopped lending. Both of them are describing the same month.
 
+## The Salt Road
+
+*c. 1165 AR — twelve hundred years, and never once broken*
+
+Older than any treaty in the west, and the reason the east has never had a
+Hungry Year.
+
+The Sahenna Compact guarantees the road and the Qeshara Sultanate guarantees
+the wells, and salt, hides and dyed cloth go one way while grain, iron and
+worked goods go the other. That is the whole of it. It was sworn twelve
+hundred years ago, it has been kept without interruption since, and neither
+side has ever needed to be reminded why: both halves would starve inside two
+seasons without the other.
+
+The clans keep the terms by memory rather than by ink, which western factors
+find alarming and which has never yet failed. If you want to know what an
+agreement looks like when nobody involved has ever considered breaking it, it
+runs from the delta to the frontier markets and you can walk it.
+
 ## The older wars
+
+*Every century anyone keeps records for*
 
 There have been wars in every century anyone keeps records for, and most still
 have a name and a grievance attached to them. These two are only the ones
@@ -128,6 +185,8 @@ Crown War, and there are men in every port who were pulled out of the delta
 marsh.
 
 ## The Sundering
+
+*1976 AR — four hundred years ago*
 
 Four hundred years ago the Thesal Theocracy, Dalstan and the Lazarian Lichdom
 were one country. Not allies. One state, one church, one law, and they had
@@ -158,6 +217,8 @@ true heir, and only one of them can be. Four hundred years on, all three still
 keep a liturgy the other two would recognise if they could stand to attend it.
 
 ## The Red
+
+*Year 0 — the year every calendar counts from*
 
 Go back far enough and every history in the world stops in the same place.
 

@@ -112,6 +112,52 @@
   }
   .ptab:focus-visible { outline: 2px solid var(--p-gold); outline-offset: 2px; }
 
+  /* ---- the history rail --------------------------------------------
+     Built from the page's own headings and the italic date line under each
+     one, so the note stays the only copy of what happened and adding a
+     section adds a stop. */
+  .prail { margin: 20px 0 26px; }
+  .prailwrap {
+    display: flex; gap: 0; overflow-x: auto; padding: 4px 2px 12px;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .prailwrap::-webkit-scrollbar { display: none; }
+  /* Same rule as the tab strip: fade an edge only where there is more past
+     it, so the hint never lies about a rail that already fits. */
+  .prail { position: relative; }
+  .prail::before, .prail::after {
+    content: ''; position: absolute; top: 0; bottom: 22px; width: 34px;
+    pointer-events: none; opacity: 0; transition: opacity .15s;
+  }
+  .prail::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+  .prail::after { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+  .prail.can-left::before, .prail.can-right::after { opacity: 1; }
+  .prailstop {
+    flex: 0 0 auto; position: relative; min-width: 116px; max-width: 190px;
+    padding: 16px 12px 0 0; border: 0; background: none; cursor: pointer;
+    text-align: left; font: inherit; color: var(--muted);
+  }
+  .prailstop::before {                       /* the rail itself */
+    content: ''; position: absolute; left: 0; right: 0; top: 5px;
+    height: 1px; background: var(--p-gold); opacity: .55;
+  }
+  .prailstop:first-child::before { left: 6px; }
+  .prailstop:last-child::before { right: calc(100% - 7px); }
+  .prailstop::after {                        /* the dot */
+    content: ''; position: absolute; left: 1px; top: 0; width: 11px; height: 11px;
+    border-radius: 50%; background: var(--panel);
+    border: 2px solid var(--p-gold); box-sizing: border-box;
+  }
+  .prailstop:hover::after, .prailstop:focus-visible::after { background: var(--p-crimson); border-color: var(--p-crimson); }
+  .prailstop b { display: block; color: var(--p-crimson-ink); font-size: 14px; line-height: 1.25; }
+  .prailstop:hover b { text-decoration: underline; }
+  .prailstop span { display: block; font-size: 11.5px; margin-top: 2px; }
+  .prailstop:focus-visible { outline: 2px solid var(--p-gold); outline-offset: 2px; border-radius: 6px; }
+  .prailnote { color: var(--muted); font-size: 12.5px; margin: 0; }
+  /* The section the rail just jumped to, so the eye lands somewhere. */
+  .pdoc h2.plit { animation: plit 1.6s ease-out 1; }
+  @keyframes plit { from { background: color-mix(in srgb, var(--p-gold) 34%, transparent); } to { background: transparent; } }
+
   /* The sigil, first thing on the welcome page. */
   .pdoc p.psigil { margin: 26px 0 6px; text-align: center; }
   .pdoc p.psigil img {
@@ -130,6 +176,9 @@
   }
   .pdoc h2 {
     font-size: 1.35em; margin: 1.6em 0 .4em; color: var(--p-crimson);
+    /* The topbar and the tab strip are both sticky, so a heading scrolled to
+       the top of the viewport lands underneath them. */
+    scroll-margin-top: calc(var(--topbar-h, 55px) + 72px);
   }
   .pdoc h2::before {
     content: ''; display: inline-block; width: 12px; height: 1px;
@@ -391,7 +440,7 @@
 
   async function mountMap(root) {
     const data = await positions();
-    if (!data || !data.nations || !data.width) return;
+    if (!data || !data.nations || !data.width) return null;
 
     /* Index the rendered rows by nation name. The first cell is the name and
        the rest are whatever columns the markdown happens to carry, so adding
@@ -411,7 +460,7 @@
       if (!rows.has(name)) rows.set(name, []);
       rows.get(name).push(tr);
     }
-    if (!rows.size) return;
+    if (!rows.size) return null;
 
     const wrap = document.createElement('div');
     wrap.className = 'pmap';
@@ -533,6 +582,8 @@
     const first = root.querySelector('h2') || root.querySelector('table');
     if (first) first.parentNode.insertBefore(wrap, first);
     else root.appendChild(wrap);
+
+    return select;
   }
 
   /* Art embedded in a document sits beside it in players/ and is copied
@@ -559,7 +610,64 @@
     }
   }
 
-  async function show(i) {
+  /* The history page gets a rail across the top: one stop per section, in the
+     order the page already tells them, labelled with the heading and the
+     italic date line beneath it. Both come out of the note, so a section
+     added to the markdown is a stop added here with no code change. */
+  const RAIL_PAGE = 'History.md';
+
+  function mountRail(root) {
+    const stops = [];
+    for (const h of root.querySelectorAll('h2')) {
+      const first = h.nextElementSibling;
+      const date = first && first.tagName === 'P' && first.children.length === 1
+        && first.firstElementChild.tagName === 'EM' && !first.textContent.replace(first.textContent.trim(), '').length
+        ? first.textContent.trim() : '';
+      stops.push({ h, name: h.textContent.trim(), date });
+    }
+    if (stops.length < 2) return;
+
+    const rail = document.createElement('nav');
+    rail.className = 'prail';
+    rail.setAttribute('aria-label', 'Jump to an event');
+    const wrap = document.createElement('div');
+    wrap.className = 'prailwrap';
+    for (const s of stops) {
+      const b = document.createElement('button');
+      b.className = 'prailstop';
+      b.type = 'button';
+      b.innerHTML = '<b></b><span></span>';
+      b.querySelector('b').textContent = s.name;
+      b.querySelector('span').textContent = s.date;
+      b.onclick = () => {
+        s.h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        for (const lit of root.querySelectorAll('h2.plit')) lit.classList.remove('plit');
+        // restart the highlight even when the same stop is pressed twice
+        void s.h.offsetWidth;
+        s.h.classList.add('plit');
+      };
+      wrap.appendChild(b);
+    }
+    const note = document.createElement('p');
+    note.className = 'prailnote';
+    note.textContent = 'Newest first. Tap an event to read it.';
+    rail.append(wrap, note);
+
+    const hints = () => {
+      const max = wrap.scrollWidth - wrap.clientWidth;
+      rail.classList.toggle('can-left', wrap.scrollLeft > 2);
+      rail.classList.toggle('can-right', wrap.scrollLeft < max - 2);
+    };
+    wrap.addEventListener('scroll', hints, { passive: true });
+    addEventListener('resize', hints);
+    requestAnimationFrame(hints);
+
+    const h1 = root.querySelector('h1');
+    (h1 ? h1.nextElementSibling || h1 : root.firstElementChild)
+      .insertAdjacentElement(h1 ? 'afterend' : 'beforebegin', rail);
+  }
+
+  async function show(i, focus) {
     current = i;
     [...tabs.children].forEach((b, n) => {
       const on = n === i;
@@ -567,7 +675,8 @@
       if (on) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     });
     updateTabHints();
-    location.hash = '#' + encodeURIComponent(pages[i].file.replace(/\.md$/, ''));
+    location.hash = '#' + encodeURIComponent(pages[i].file.replace(/\.md$/, ''))
+      + (focus ? '/' + encodeURIComponent(focus) : '');
     doc.innerHTML = '<p class="muted">Loading…</p>';
     try {
       const res = await fetch('content/' + encodeURIComponent(pages[i].file));
@@ -576,8 +685,15 @@
       labelCells(doc);
       resolveImages(doc);
       markSigil(doc);
+      if (pages[i].file === RAIL_PAGE) mountRail(doc);
       scrollTo(0, 0);
-      if (pages[i].file === MAP_PAGE) await mountMap(doc);
+      if (pages[i].file === MAP_PAGE) {
+        const select = await mountMap(doc);
+        // A link may name a nation: #The%20Nations/Dalstan opens the tab with
+        // that country already picked on the map, which is the only reason
+        // somebody following a link about Dalstan wanted this page.
+        if (select && focus) select(focus, true);
+      }
     } catch (e) {
       doc.innerHTML = '<p class="muted">Could not load that page.</p>';
     }
@@ -593,20 +709,27 @@
       tabs.appendChild(b);
     });
     updateTabHints();
+    /* The hash is a page name, optionally followed by /<nation>. Page names
+       and nation names both contain no slash, so the first one separates
+       them. */
     const wanted = () => {
-      const want = decodeURIComponent(location.hash.replace(/^#/, ''));
-      return list.findIndex((p) => p.file.replace(/\.md$/, '') === want);
+      const raw = location.hash.replace(/^#/, '');
+      const cut = raw.indexOf('/');
+      const want = decodeURIComponent(cut < 0 ? raw : raw.slice(0, cut));
+      const focus = cut < 0 ? '' : decodeURIComponent(raw.slice(cut + 1));
+      return { at: list.findIndex((p) => p.file.replace(/\.md$/, '') === want), focus };
     };
     /* Every tab click writes location.hash, so Back and Forward move it.
        Without this the address bar changes and the document does not, which
        is worse than having no history at all — the page ends up claiming to
        show something it isn't. */
     addEventListener('hashchange', () => {
-      const at = wanted();
-      if (at >= 0 && at !== current) show(at);
+      const { at, focus } = wanted();
+      // A focus is a fresh instruction even when the page is already open.
+      if (at >= 0 && (at !== current || focus)) show(at, focus);
     });
-    const at = wanted();
-    show(at >= 0 ? at : 0);
+    const { at, focus } = wanted();
+    show(at >= 0 ? at : 0, focus);
   }).catch(() => { doc.innerHTML = '<p class="muted">Nothing here yet.</p>'; });
 })();
 </script>

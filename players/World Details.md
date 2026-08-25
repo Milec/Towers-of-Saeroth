@@ -52,7 +52,7 @@ travellers.
 
 **Two exceptions are worth knowing before you walk into one.**
 
-[Dalstan](#The%20Nations) recognises divine magic and nothing else. No guild,
+[Dalstan](#The%20Nations/Dalstan) recognises divine magic and nothing else. No guild,
 no register, just the Cathedral Court — and the Court has lately been
 licensing inquisitions past its own borders without anyone managing to refuse,
 so the problem is not confined to Dalstani ground. If you are playing an
@@ -69,7 +69,7 @@ places the road goes.
 Late medieval, and moving. Printing exists. So do canal locks, blast furnaces,
 plate armour, and roads that are maintained in winter.
 
-**Gunpowder exists and firearms are primitive.** [Silicar](#The%20Nations)'s
+**Gunpowder exists and firearms are primitive.** [Silicar](#The%20Nations/Silicar)'s
 guilds built the first working firelock about fifty years ago, still make the
 best ones, and have never licensed the trade, so one in private hands is rare
 and costly. Armies are another matter: Silicar drills flintlock companies,
@@ -112,8 +112,8 @@ A purse of good silver in the wrong striking will not buy you a bed.
 
 ### Lichdom coin
 
-[Lazarian](#The%20Nations) mints its own, and it is good in exactly three
-places: the Lichdom, [Tessine](#The%20Nations), and a black market.
+[Lazarian](#The%20Nations/Lazarian%20Lichdom) mints its own, and it is good in exactly three
+places: the Lichdom, [Tessine](#The%20Nations/Tessine), and a black market.
 
 In those three it changes at **ninety-five in the hundred**. The changer takes
 five and asks nothing, which is a fair rate and a telling one — a coin only
