@@ -7,9 +7,9 @@ so you are not hunting for them.
 
 It is **2376 AR**, and **AR** stands for *After the Red*. Every nation on both
 continents counts from the same year, which is a much stranger fact than it
-looks and is the one thing the History page really wants you to notice.
+looks and is the one thing [the History page](#History/The%20Red) really wants you to notice.
 
-A character of twenty-five was born in 2351. The last great war ended sixty
+A character of twenty-five was born in 2351. [The last great war](#History/The%20Two-Crown%20War) ended sixty
 years ago, in 2316.
 
 ## Language
@@ -24,21 +24,21 @@ would have grown up with it.
 
 **Draconic is the language of scholarship.** Not because anyone here has much
 to do with dragons, but because it was already the language every serious
-treatise was written in by the time anyone thought to ask why. Melisor
-examines in it, Xian Ti's ministries cite it, and a physician in Sarrowmere
+treatise was written in by the time anyone thought to ask why. [Melisor](#The%20Nations/Melisor%20Magocracy)
+examines in it, [Xian Ti](#The%20Nations/Xian%20Ti)'s ministries cite it, and a physician in [Sarrowmere](#The%20Nations/Sarrowmere)
 will write a diagnosis in Common and the dose in Draconic. If your character
 has been educated, they read it.
 
 ## Where you can be from
 
-**Anywhere.** All twenty-eight nations are on the table, both continents, the
+**Anywhere.** All [twenty-eight nations](#The%20Nations) are on the table, both continents, the
 sea powers, and the enclaves on the Wildlands coast. Nothing about the way the
 game starts requires you to have been born near it.
 
 ## Magic
 
 Magic is public and nobody hides it. Working in the open draws no crowd and no
-constable. Melisor's academies are the schools everyone else is measured
+constable. [Melisor](#The%20Nations/Melisor%20Magocracy)'s academies are the schools everyone else is measured
 against, every great power keeps a national guild that registers who may
 practise, and everyone outside both is independent — which is most
 practitioners, and nearly all the ones you will meet on a road.
@@ -59,7 +59,7 @@ so the problem is not confined to Dalstani ground. If you are playing an
 arcane, occult or primal caster, know which borders make you a professional
 and which make you a problem.
 
-**Necromancy is a hanging matter nearly everywhere.** Lazarian is the
+**Necromancy is a hanging matter nearly everywhere.** [Lazarian](#The%20Nations/Lazarian%20Lichdom) is the
 exception and is the reason the statutes exist. Play one by all means, and
 understand that the character is committing a capital crime in most of the
 places the road goes.
@@ -69,12 +69,12 @@ places the road goes.
 Late medieval, and moving. Printing exists. So do canal locks, blast furnaces,
 plate armour, and roads that are maintained in winter.
 
-**Gunpowder exists and firearms are primitive.** [Silicar](#The%20Nations/Silicar)'s
-guilds built the first working firelock about fifty years ago, still make the
-best ones, and have never licensed the trade, so one in private hands is rare
-and costly. Armies are another matter: Silicar drills flintlock companies,
-Quivar fields musketeer skirmishers, and Voskreld casts cannon. They are loud,
-slow to load and expensive. They work. They are not what wins a battle.
+**Gunpowder exists and firearms are primitive.** [Silicar](#The%20Nations/Silicar)'s guilds built the
+first working firelock about fifty years ago, still make the best ones, and
+have [never licensed the trade](#History/The%20trade%20wars), so one in private hands is rare and costly.
+Armies are another matter: Silicar drills flintlock companies, [Quivar](#The%20Nations/Quivar) fields
+musketeer skirmishers, and [Voskreld](#The%20Nations/Voskreld%20Union) casts cannon. They are loud, slow to load
+and expensive. They work. They are not what wins a battle.
 
 **Magitech is the new thing**, and it is new enough that the people doing it
 have not agreed on what to call it. It is the deliberate merging of the two:
@@ -96,16 +96,17 @@ people and about a season of an ordinary wage.
 
 ### Two coinages
 
-**The continents mint separately.** A western coin is struck to Voskreld's
-weight and an eastern one to Xian Ti's, and they are worth exactly the same
+**The continents mint separately.** A western coin is struck to [Voskreld](#The%20Nations/Voskreld%20Union)'s
+weight and an eastern one to [Xian Ti](#The%20Nations/Xian%20Ti)'s, and they are worth exactly the same
 thing — the same metal, the same weight, the same purchasing power. That has
 never once persuaded a shopkeeper.
 
 West of the ocean nobody takes eastern coin, and the reverse holds just as
 hard. Not out of hostility; they simply do not recognise it, will not weigh
-it, and have somebody down the street who will. **Changing money is a thing you do at
-a harbour**, through an Alliance factor or a Tessine counting-house, at a
-commission that is perfectly reasonable and gets charged every single time.
+it, and have somebody down the street who will. **Changing money is a thing
+you do at a harbour**, through an [Alliance](#The%20Nations/Thurion%20Merchant%20Alliance) factor or a Tessine counting-house,
+at a commission that is perfectly reasonable and gets charged every single
+time.
 
 Carry the coin of wherever you are going, and change it before you need it.
 A purse of good silver in the wrong striking will not buy you a bed.

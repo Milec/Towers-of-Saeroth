@@ -2,7 +2,7 @@
 
 What follows is what a reasonably well-travelled person knows. The dates use
 the calendar every nation shares, which is a stranger fact than it looks, and
-the end of this page explains why.
+the [end of this page](#History/The%20Red) explains why.
 
 ## The Pilgrim's Peace
 
@@ -20,6 +20,10 @@ war can still start one. It cannot get anyone to carry it, feed it, or lend
 against it, and no crown on the board can afford a second season out of its
 own granaries.
 
+One country exists because of it. The [Kesmarch Frontier](#The%20Nations/Kesmarch%20Frontier) was chartered the year
+after the signing, and half its first homesteads went to families shipped out
+of the Hungry Year with nothing to go back to.
+
 That was the shape of the world until a year ago.
 
 Then the towers began arriving, and nothing in the treaty covers a tower. A
@@ -31,7 +35,7 @@ can feel it being leaned on.
 
 ## The small wars
 
-*Every year there has ever been*
+*Every year — everything the Peace does not cover*
 
 None of that means the world is quiet. Armies is the whole of the claim.
 Everything short of an army has carried on exactly as it always did.
@@ -41,8 +45,8 @@ line most summers. Herds get driven off the edge of the steppe and the riders
 who took them are somebody's cousins. Logging camps in the northern pine wake
 up surrounded by people who have marked that ground for eleven centuries.
 Marshals and militia shoot at each other across borders nobody ever surveyed,
-and both sides write it up afterwards as police work. Between the Khaganate
-and Xian Ti there is a wall that has been garrisoned and shot at for six
+and both sides write it up afterwards as police work. Between the [Khaganate](#The%20Nations/Khazan%20Khaganate)
+and [Xian Ti](#The%20Nations/Xian%20Ti) there is a [wall](#History/The%20Long%20Frontier) that has been garrisoned and shot at for six
 hundred years without a break, which neither of them calls a war because
 neither of them ever signed anything saying they wouldn't.
 
@@ -57,7 +61,7 @@ is armies.
 
 ## The trade wars
 
-*The current one is three years old*
+*2373 AR — the current one, and nobody has stated its cause*
 
 The other half of that is fought with schedules of goods, and it is where the
 continent puts its temper now.
@@ -74,8 +78,8 @@ downstream of it in two countries that were not quarrelling with anyone. Ask a
 Harrowgate paymaster what he thinks of principle.
 
 **The current one is three years old and nobody has stated its cause.**
-Silicar stopped selling machinery, clockwork, pumps, powder and field kit into
-Quivar, in that order, over about a season. Quivar has asked formally three
+[Silicar](#The%20Nations/Silicar) stopped selling machinery, clockwork, pumps, powder and field kit into
+[Quivar](#The%20Nations/Quivar), in that order, over about a season. Quivar has asked formally three
 times and been answered each time with a revised schedule of goods and no
 reason attached.
 
@@ -87,7 +91,7 @@ finding for the Concord Table to make on a case that has not been brought.
 
 If you have travelled the western roads in the last three years you will have
 seen the edges of it: Quivari pumps going for four times what they cost,
-Kelvary factors buying Silicaran kit in quantities no company needs, and
+[Kelvary](#The%20Nations/Kelvary%20March) factors buying Silicaran kit in quantities no company needs, and
 nobody in either capital willing to say the word *theft* where it could be
 repeated.
 
@@ -97,7 +101,7 @@ repeated.
 
 The eastern continent has its own war and it never ended.
 
-In 1776 the Khazan Khaganate and Xian Ti fortified the same line, from
+In 1776 the [Khazan Khaganate](#The%20Nations/Khazan%20Khaganate) and [Xian Ti](#The%20Nations/Xian%20Ti) fortified the same line, from
 opposite sides, four years apart. Neither has taken it and neither has left.
 It has been garrisoned and shot at every year since, and the imperial ministry
 that files the casualty rolls has not missed a season in six centuries.
@@ -121,8 +125,8 @@ him as a fool, for entirely different reasons.
 
 *2370 AR — six years ago, and it lasted one season*
 
-The Lich Emperor of the Lazarian Lichdom had not issued an edict in five
-years. Thurigypt's priest-kings read that silence as weakness, and the Pharaoh
+The Lich Emperor of the [Lazarian Lichdom](#The%20Nations/Lazarian%20Lichdom) had not issued an edict in five
+years. [Thurigypt](#The%20Nations/Thurigypt)'s priest-kings read that silence as weakness, and the Pharaoh
 put an army across the ocean into the delta to take back four centuries of
 graves.
 
@@ -141,7 +145,7 @@ and nobody in a position to know says the Lich Emperor is gone any more.
 *2305–2316 AR — eleven years*
 
 It ran eleven years and touched every country on the western continent. It
-began over a disputed election in the Vaelic Principality and stopped being
+began over a disputed election in the [Vaelic Principality](#The%20Nations/Vaelic%20Principality) and stopped being
 about that within a season. Armies wintered in other people's fields. In the
 fifth year both sides started burning harvests, and the famine that came after
 killed more people than the fighting did, most of them in countries that never
@@ -150,10 +154,11 @@ do not, their parents told them about it.
 
 Nobody won. No capital fell, no terms were dictated, and the war ended when
 the money and the soldiers ran out within about six weeks of each other. What
-the delegations signed at Concord afterwards is the Peace this page opened
-with. Ask a Vaelic herald what ended the war and he will tell you it was an
-agreement between princes. Ask a Thurion factor and he will tell you the banks
-stopped lending. Both of them are describing the same month.
+the delegations signed at Concord afterwards is [the Peace this page opened
+with](#History/The%20Pilgrim%27s%20Peace). Ask a Vaelic herald what ended the
+war and he will tell you it was an agreement between princes. Ask a [Thurion](#The%20Nations/Thurion%20Merchant%20Alliance)
+factor and he will tell you the banks stopped lending. Both of them are
+describing the same month.
 
 ## The Salt Road
 
@@ -162,7 +167,7 @@ stopped lending. Both of them are describing the same month.
 Older than any treaty in the west, and the reason the east has never had a
 Hungry Year.
 
-The Sahenna Compact guarantees the road and the Qeshara Sultanate guarantees
+The [Sahenna Compact](#The%20Nations/Sahenna%20Compact) guarantees the road and the [Qeshara Sultanate](#The%20Nations/Qeshara%20Sultanate) guarantees
 the wells, and salt, hides and dyed cloth go one way while grain, iron and
 worked goods go the other. That is the whole of it. It was sworn twelve
 hundred years ago, it has been kept without interruption since, and neither
@@ -176,19 +181,19 @@ runs from the delta to the frontier markets and you can walk it.
 
 ## The older wars
 
-*Every century anyone keeps records for*
+*Every century — and only two of them get called the war*
 
 There have been wars in every century anyone keeps records for, and most still
 have a name and a grievance attached to them. These two are only the ones
-people mean when they say *the war*. Anyone over sixty was alive for the Two-
-Crown War, and there are men in every port who were pulled out of the delta
-marsh.
+people mean when they say *the war*. Anyone over sixty was alive for the
+[Two-Crown War](#History/The%20Two-Crown%20War), and there are men in every port who were pulled out of
+[the delta marsh](#History/The%20Delta%20War).
 
 ## The Sundering
 
 *1976 AR — four hundred years ago*
 
-Four hundred years ago the Thesal Theocracy, Dalstan and the Lazarian Lichdom
+Four hundred years ago the [Thesal Theocracy](#The%20Nations/Thesal%20Theocracy), [Dalstan](#The%20Nations/Dalstan) and the [Lazarian Lichdom](#The%20Nations/Lazarian%20Lichdom)
 were one country. Not allies. One state, one church, one law, and they had
 been that for five centuries.
 
@@ -216,6 +221,91 @@ do: none of them wants the others' ground. They each want to be the Concord's
 true heir, and only one of them can be. Four hundred years on, all three still
 keep a liturgy the other two would recognise if they could stand to attend it.
 
+## The last foundings
+
+*c. 1496 – 1976 AR — the last age before this one*
+
+Most of the map was drawn before any of this. Only one country standing today
+was made in these five centuries, which is why a Stoneborn thane will call the
+Voskreld Union new and expect no argument about it.
+
+The Concord was founded in 1496: one church-state over the ground three
+nations hold today, and [the section above](#History/The%20Sundering) is how it ended. Around 1700, seven
+duchies with nothing but open grass between themselves and the steppe agreed
+to be one country, and wrote the terms so that none of them got the capital.
+That is the [Voskreld Union](#The%20Nations/Voskreld%20Union), and it is why a Voskreld road gets cleared in
+winter while everyone else waits for spring. Then in 1776 the Khaganate and
+[Xian Ti](#The%20Nations/Xian%20Ti) fortified the same line, which is [the frontier above](#History/The%20Long%20Frontier).
+
+## The old foundations
+
+*c. 700 – 1496 AR — when most of the map was made*
+
+Eight centuries, and most of the countries you can name got their shape in
+them. Nearly all of them got it the same way. Somebody worked out a rule for
+choosing whoever comes next, everybody involved was tired enough to agree to
+it, and the rule outlived every person in the room.
+
+- **Around 740** the khans elected a Great Khagan instead of acclaiming one.
+  The [Khazan Khaganate](#The%20Nations/Khazan%20Khaganate) is that agreement before it is anything else.
+- **Around 900**, the crown of [Quivar](#The%20Nations/Quivar). It has changed hands inside one house
+  ever since, and no foreign army has held the capital.
+- **Around 940** [Ashkar Pale](#The%20Nations/Ashkar%20Pale) was first settled under the mountain. It has been
+  resettled three times since, on the same footings, which tells you something
+  about both the mountain and the people.
+- **Around 1010** [Sahenna](#The%20Nations/Sahenna%20Compact)'s clans swore the Compact and handed it to the
+  Storytellers rather than to ink.
+- **Around 1090**, the first Rootmeet: one voice each for the founding
+  lineages of the [Thornwild Confederation](#The%20Nations/Thornwild%20Confederation), and the Circle has met on that
+  footing every year since.
+- **Around 1120** [Qeshara](#The%20Nations/Qeshara%20Sultanate)'s caravan-houses put a Sultan over themselves and
+  kept the right to choose the next one.
+- **Around 1150**, the first trial-by-forge in the [Cindral Ashlands](#The%20Nations/Cindral%20Ashlands). Every
+  Emberlord since has been picked at a furnace.
+- **Around 1180** [Nordheim](#The%20Nations/Nordheim)'s jarls recorded a Great Thing at Hravnfjord. The
+  assembly is centuries older than the kingship it got round to electing.
+- **Around 1410** the [Thurion](#The%20Nations/Thurion%20Merchant%20Alliance) harbour cities adopted one commercial code, so
+  that a contract sealed in any of them is enforced in all of them. Everything
+  the Alliance is now grew out of that.
+- **Around 1440** [Vaelic](#The%20Nations/Vaelic%20Principality)'s first High Prince brought the electorates under one
+  crown, raised the Drake Rider Order, and then swore the Order to the office
+  instead of to his own blood. His descendants have had cause to be grateful.
+
+## The Resettlement
+
+*c. 100 – c. 700 AR — the first people who left anything behind*
+
+Before this there is nothing to dig up. From about 100 AR there is: post
+holes, hearths, a wall somebody bothered to face with stone. Every nation's
+own myth-history starts within a century either side of that line, and none of
+them has anything older to measure it against.
+
+The [elves](#The%20Nations/Elven%20Confederacy) went into the great forest belts around 180 and their memory runs
+unbroken from there, which makes it the longest record anybody keeps. The
+[Stoneborn](#The%20Nations/Stoneborn%20Holds) reopened Highforge around 310 — the Holds maintain it was never
+closed, and cannot prove it, and will still correct you. Around 420 the first
+Pharaoh organised the granaries of the delta, and [Thurigypt](#The%20Nations/Thurigypt) has dated itself
+from the flood ever since. Around 600 [Xian Ti](#The%20Nations/Xian%20Ti) sat its first examination, which
+is the year Xian Ti counts from in preference to any emperor who ever lived.
+
+## The Silent Years
+
+*c. 1 – c. 95 AR — a hundred years nobody wrote down*
+
+Two continents stood empty and nothing was written on either of them.
+
+That is not a figure of speech about poor records. Every archive in the world
+bottoms out in the same place: the ministry series, the elven memory, the
+Storytellers' recitation, the carved dates in the holds. All of them begin
+after the gap. Not one of them accounts for it, and the ones with the most to
+lose by admitting a hole in their history are the ones that admit it most
+readily.
+
+What people did do in those years is count. Scattered survivors started
+tallying from the sky, separately, all over both continents, and those tallies
+are every calendar in use today. It is the reason the dates agree. It is also
+the reason nobody can tell you what year one was.
+
 ## The Red
 
 *Year 0 — the year every calendar counts from*
@@ -230,8 +320,8 @@ your ancestry. All of it, everywhere, whoever you are.
 
 Nobody knows what caused it. Scholars have theories and have had them for
 centuries: a mountain that came apart, a sickness in the upper air, a war
-among things that do not live on the ground. Melisor's academies have three
-they will not choose between. Xian Ti's ministry filed the whole question
+among things that do not live on the ground. [Melisor](#The%20Nations/Melisor%20Magocracy)'s academies have three
+they will not choose between. [Xian Ti](#The%20Nations/Xian%20Ti)'s ministry filed the whole question
 under mineralogy four hundred years ago and a clerk wrote a question in the
 margin that nobody has answered since.
 

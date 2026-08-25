@@ -2,7 +2,7 @@
 
 Twenty-eight of them, as a traveller would rank them: by what they are known
 for, not by what they can field. The second column is who you can expect to
-see on the street there, the third is whose name gets said over dinner (the
+see on the street there, the third is [whose name gets said over dinner](#Gods%2C%20Peoples%20and%20the%20Roads/The%20gods) (the
 patron first, then whoever else keeps a temple worth finding), and the fourth
 is who is actually in charge. Two of these nations have ancestry written into
 their law, and both say so below.
