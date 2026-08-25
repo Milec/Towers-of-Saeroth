@@ -1,3 +1,5 @@
+![The sign of Saeroth](sigil.webp)
+
 # Welcome to Saeroth
 
 Everything here is **what your character could plausibly know**: the sort of
