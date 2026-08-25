@@ -49,7 +49,7 @@ nothing stronger has turned up to try, Melisor and Silicar give two
 different answers in public and privately admit to the same one: they
 don't know.
 
-Twenty years in, a handful of things have actually shipped:
+Twenty years in, [[Silicar]]'s workshops have shipped a handful of things:
 
 - **The wayfinder** — a disc small enough to wear on a cord, pointing
   toward whatever its stone was keyed to find. The one every court now
@@ -74,6 +74,33 @@ Twenty years in, a handful of things have actually shipped:
 
 Every one of them is rare, every one is expensive, and every one works
 exactly as many times as its stones allow, and not once more.
+
+## Prestige pieces
+
+[[Melisor Magocracy]] never needed magitech to solve anything. An academy
+that can put three teleportation circles under one campus has never once
+lacked a practical answer, so its half of the trade was never aimed at a
+problem. It was aimed at whoever already has every option and wants to be
+envied for the one they picked.
+
+- **The warded clasp** — a diamond cut with an abjuration rune, pinned at
+  the collar. It raises the same half-shield a first-year apprentice learns
+  to cast, and holds it just as well, which has made it wildly popular
+  with nobles who want to duel without earning the privilege the ordinary
+  way. [[Ashwin Devaraj (The Drink)|Ashwin Devaraj]], who has spent a
+  career being paid for that privilege and cited for none of it, has
+  opinions about the clasp and states them loudly, usually in a tavern.
+- **The presser** — a topaz cut with a cleansing rune, set into a flat
+  iron. A launderer does the same work for a fraction of the price and
+  cannot be shown off at a dinner party, which is rather the point of
+  owning one instead.
+- **The seasoning dish** — a citrine cut with a transmutation rune, laid
+  under the centrepiece at a Council banquet. No two academies season a
+  dish the same way, and a Thelemar dinner argues its politics through the
+  courses as much as through anyone's conversation.
+
+None of it is cheaper than paying somebody to do the job. That was never
+the offer.
 
 ## The stakes
 
@@ -118,8 +145,11 @@ rail between its own cities, a portal network wide enough to reach
 couldn't do. Trade tools nobody in it would have called magic, because
 getting the work done was the point and not the marvel of it. The erasure
 took nearly all of that the same way it took the empire's name. A
-wayfinder, a lamp, a lighter, a slate and a diving mask, none of it running
-on anything stronger than a low-level stone because nothing stronger has
-ever turned up in the wreckage — that handful of pocket-sized objects is
-what twenty years of digging has bought two academies back, and they are
-calling it their own invention.
+wayfinder, a lamp, a lighter, a slate, a diving mask, a warded clasp, a
+presser and a seasoning dish, none of it running on anything stronger than
+a low-level stone because nothing stronger has ever turned up in the
+wreckage — that double handful of pocket-sized objects is what twenty years
+of digging has bought two academies back. Neither has any idea it dug up
+the same civilization the other one did. Silicar built what each fragment
+was already shaped to do. Melisor built what would impress a Council
+chamber, and neither choice was ever really about the stone.
