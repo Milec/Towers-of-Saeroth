@@ -148,11 +148,41 @@ never had to care. Nobody on the Council has ever once complained.
 ## How it is reckoned
 
 Every bench in Brightfurrow has a shorthand chalked over it, three quantities
-to be weighed against each other — what the stone draws, how well its rune
-fits the gem, what the circuit costs on the way out — and most of the people
-who use it daily could not derive it. Neither academy has ever set any of
-this out as a body of law. That is not the same as nobody having done it. See
-[[Thaumodynamics]].
+weighed against each other — what the stone draws, how well its rune suits
+the gem, what the circuit does to it on the way out — and most of the people
+who use it daily could not derive it. Neither academy can. Between them they
+hold most of the pieces and neither holds a theory, because each has spent
+twenty years building out the half it was already good at.
+
+**Silicar has the numbers.** Four generations of guild practice, written down
+the way a guild writes things down: tables. Which alloy carries a fire
+working and which sulks at it. How deep to cut a track before the gain stops
+paying for the brittleness. What a peridot costs to seat badly. The
+Brightfurrow guilds can hand an apprentice a book that will let him build a
+better lamp than anyone in Thelemar, and not one line of that book explains
+why any of it is true. Ask a guildmaster what impedance *is* and you will get
+an alloy recipe, correctly, and a look. Their weakness is their strength worn the
+other way round. They cannot predict a pairing they have not already tried, so
+every new working costs them a season of ruined stones to find the material
+for.
+
+**Melisor has the grammar.** Runes are arcane theory and arcane theory is
+Thelemar's own ground, so the academies can do the thing Silicar cannot: read
+a property rune, classify it, and cut a new one on purpose. That is where the
+widening list of workings comes from — fire, earth, air, a ward, a solvent, a
+season — and Melisor can usually say in advance which gem a new rune will
+want, which no guild table can. What no academy has is any account of the
+housing whatsoever. Circuitry is craft, craft is a trade for people who work
+with their hands, and a chair who took an interest would be asked about it at
+dinner. So Thelemar cuts superb stones and seats them in circuits a
+Brightfurrow journeyman would be ashamed of, and never connects that to why
+its clasps run dry.
+
+What neither of them has is the part that only appears when the two halves are
+set down together — that the stone, the cut and the housing are three terms of
+one relation, and that the relation has laws. Getting there needs somebody who
+has stood at both benches, which neither academy will permit and both would
+regard as a waste of a career. See [[Thaumodynamics]].
 
 ## The stakes
 
