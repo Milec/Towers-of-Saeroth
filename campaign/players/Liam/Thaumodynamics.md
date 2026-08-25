@@ -78,8 +78,9 @@ many times as its stone allows and not once more.
 
 **Read what this law does not say.** It bounds the charge a stone can
 surrender. It says nothing about the Working that charge produces, and those
-are not the same quantity. Conflating them is the mistake that cost the
-author two seasons and is corrected under the Third Law below.
+are not the same quantity. Most of the trade runs the two together and gets
+away with it, because on a circuit that loses — which is nearly all of
+them — the difference never shows. It shows under the Third Law.
 
 ## Second Law: Thaumic Transfer
 
@@ -150,8 +151,8 @@ the device will not stay in.
 more Working than the stone gave up, which sounds like the First Law being
 broken and is not: the surplus is ambient field, and the stone is still
 emptying at exactly the rate the First Law allows. Charge is conserved.
-Working was never the conserved quantity, and taking it for one is an error
-this treatise made for two seasons and has had to unpick.
+Working never was, and anyone who assumes otherwise will conclude that gain
+is impossible and stop looking for it.
 
 **But every circuit has a floor it cannot be driven under.** Call it **Zmin**,
 and understand it as a breaking point rather than a limit approached:
@@ -189,18 +190,18 @@ which means the shorthand is least reliable exactly where impedance is
 already worst. A workshop that trusts the chalk is trusting it hardest on the
 devices it should trust it least on.
 
-**An earlier draft of this treatise put the floor at Zmin = 1**, on the
-reasoning that a circuit returning more than it was handed would be an
-apparatus outrunning its own stone, which conservation forbids. The reasoning
-was wrong and the error is worth naming, because it is the error the whole
-trade makes. Conservation binds *charge*. A circuit at gain does not refill
-the stone, does not slow its emptying, and does not violate anything: it
-opens a wider channel onto the field and the stone pays for holding it open.
-Two seasons went into a bound that was never there.
+**The floor is not where the trade assumes it is.** Ask any guildmaster how
+good a circuit could get and the answer, if you can get one, stops at
+break-even: a circuit that wastes nothing, on the reasoning that a device
+returning more than it was handed would be outrunning its own stone. That
+reasoning takes Working for the conserved quantity, and it is not.
+Conservation binds charge. A circuit at gain does not refill the stone, does
+not slow its emptying, and does not violate anything — it opens a wider
+channel onto the field, and the stone pays for holding it open.
 
-What is there instead is **Zmin(M, C)**, a breaking point rather than a
-ceiling, different for every material and carving, and unmapped. That is a
-worse answer and a truer one.
+The real floor is **Zmin(M, C)**, a breaking point rather than a ceiling,
+different for every material and carving, and unmapped. That is a worse
+answer and a truer one.
 
 **Which leaves two roads rather than one.** Everything a device finally
 delivers comes out of what the stone was handed, **Qmax**, multiplied by what
