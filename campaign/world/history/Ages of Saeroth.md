@@ -54,12 +54,16 @@ see [[The God Sundering]].
 
 ## c. 1 – c. 95 — The Silent Years
 
+*The whole era: [[The Silent Years]].*
+
 | Year | What happened | Note |
 | --- | --- | --- |
 | c. 1 | Scattered survivors begin counting years from the sky, independently and everywhere. Every calendar in Saeroth descends from those counts | [[The God Sundering]] |
 | c. 1 – c. 95 | Two continents stand empty and nobody writes anything down. Every archive in the world bottoms out at this gap, and not one of them says why | [[The Nameless Empire]] |
 
 ## c. 100 – c. 700 — The Resettlement
+
+*The whole era: [[The Resettlement]].*
 
 | Year | What happened | Note |
 | --- | --- | --- |
@@ -70,6 +74,8 @@ see [[The God Sundering]].
 | c. 600 | Xian Ti holds its first examination — the year Xian Ti counts from, in preference to any emperor | [[Xian Ti]] |
 
 ## c. 700 – 1496 — The Old Foundations
+
+*The whole era: [[The Old Foundations]].*
 
 | Year | What happened | Note |
 | --- | --- | --- |
@@ -88,6 +94,8 @@ see [[The God Sundering]].
 | 1476 | Vaelic castle engineers begin training in the Stoneborn holds and have in every generation since. The Holds and the Reaches first dispute the seam between the peaks and what lies under them in the same decade | [[Undertide Reaches]] |
 
 ## 1496 – 1976 — The Concord
+
+*The whole era: [[The Sundering of the Concord]].*
 
 | Year | What happened | Note |
 | --- | --- | --- |

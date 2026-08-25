@@ -221,9 +221,9 @@ do: none of them wants the others' ground. They each want to be the Concord's
 true heir, and only one of them can be. Four hundred years on, all three still
 keep a liturgy the other two would recognise if they could stand to attend it.
 
-## The last foundings
+## The Concord centuries
 
-*c. 1496 – 1976 AR — the last age before this one*
+*c. 1496 – 1976 AR — the five hundred years before the Sundering*
 
 Most of the map was drawn before any of this. Only one country standing today
 was made in these five centuries, which is why a Stoneborn thane will call the
