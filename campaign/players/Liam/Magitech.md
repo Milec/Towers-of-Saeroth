@@ -92,33 +92,60 @@ exactly as many times as its stones allow, and not once more.
 
 Every apprentice guesses the same thing in their first week at a bench: that
 the stone, the cut and the metal all multiply together, and more of any one
-makes a better device. Three things do matter. It isn't the word *times*.
+makes a better device. Three things do matter. It isn't the word *times* —
+though the shorthand chalked over every bench in Brightfurrow looks close
+enough to it:
 
-**Charge** is the stone's own capacity, and it is the one number nobody in
-the trade can move. A low-level stone holds a low-level charge, and the
+**W = Q · P ÷ Z**
+
+**Charge (Q)** is the stone's own capacity, and it is the one number nobody
+in the trade can move. A low-level stone holds a low-level charge, and the
 ceiling on the whole trade is a ceiling on this and nothing else.
 
-**Pattern** is the rune, and it doesn't add to the charge — it tells the
+**Pattern (P)** is the rune, and it doesn't add to the charge — it tells the
 charge what to become. The same charge cut for fire behaves nothing like the
 same charge cut for a ward, and because the cut is made once, when the stone
 itself is made, there is no reworking it after. Nobody reprograms an aeon
 stone. They requisition a new one.
 
-**Impedance** is everything between the stone and the work that isn't the
-stone: the inlaid metal, the alloy, the joinery. It is also the only one of
-the three a workshop can actually improve, which is the real reason every
-guild in Brightfurrow guards its alloy blend rather than publishing it. Bad
-impedance doesn't stop a device from working. It bleeds the charge off as
-heat and backlash, and burns through the stone in a third the uses a
+**Impedance (Z)** is everything between the stone and the work that isn't
+the stone: the inlaid metal, the alloy, the joinery. It is also the only one
+of the three a workshop can actually improve, which is the real reason
+every guild in Brightfurrow guards its alloy blend rather than publishing
+it. Bad impedance doesn't stop a device from working. It bleeds the charge
+off as heat and backlash, and burns through the stone in a third the uses a
 well-made one would.
 
-Put the three together and the trade's whole twenty years comes down to one
-number nobody can move, one number nobody can invent past, and one number
-that is the entire difference between a wayfinder and a toy.
-[[Melisor Magocracy]] has never had a reason to chase the third one. A warded
-clasp cut at Thelemar runs dry in a fraction of the uses a Silicar lamp gets
-from the same grade of stone, and nobody on the Council has ever once
-complained about it.
+That chalked-up version is a simplification, and it earns its keep at a
+bench where nobody has time for better. It treats one activation as a
+single lump of charge spent all at once, which is not what actually
+happens inside the housing. What happens is a stone bleeding charge over
+the fraction of a second the working takes, and a rate is not a lump:
+
+**w(t) = (dQ/dt) · P(t) ÷ Z(t)**
+
+The device's output at any instant is however fast the stone is losing
+charge right then, shaped by the pattern and cut down by whatever is in the
+way. None of that changes what a stone can afford across its whole working
+life, because a rate integrates back into a total the same way it always
+has:
+
+**∫₀ᵀ w(t) dt ≤ Q(0)**
+
+Spend it fast in one dramatic burst, or slow across a hundred small pulls,
+and the total is bounded the same either way. That is the actual shape of
+"works exactly as many times as its stone allows, and not once more" — not
+a count of uses at all, but an area under a curve that happens, for a
+well-made device with a steady draw, to look enough like a count that
+nobody in the trade has ever bothered to say it differently.
+
+Put the three variables together, chalked or worked in full, and the trade's
+whole twenty years comes down to one number nobody can move, one number
+nobody can invent past, and one number that is the entire difference
+between a wayfinder and a toy. [[Melisor Magocracy]] has never had a reason
+to chase the third one. A warded clasp cut at Thelemar runs dry in a
+fraction of the uses a Silicar lamp gets from the same grade of stone, and
+nobody on the Council has ever once complained about it.
 
 ## Prestige pieces
 
@@ -182,7 +209,7 @@ beside them to work out how the cutting and the wiring were done — twenty
 years of study bought back a *method*, not an inventory. Most of what ships
 today was never dug up at all; it was built fresh from that recovered
 method, by people solving an ordinary problem who have no idea they are
-solving one the empire already solved once. That is exactly why the study
+solving one the empire already solved once. That is precisely why the study
 is equal parts archaeology, theory, engineering and raw working, and why
 neither Melisor nor Silicar will say in public where the method came from.
 
