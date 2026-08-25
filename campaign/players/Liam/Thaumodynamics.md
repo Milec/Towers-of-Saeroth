@@ -42,7 +42,7 @@ survives the cutting.
 
 **Impedance** depends on the housing rather than the stone:
 **Z = f(M, C, τ)**, for material, circuit geometry, and the kind of Working
-being carried.
+being carried. The three are set out under the Third Law below.
 
 ## Zeroth Law: Thaumic Affinity
 
@@ -94,6 +94,12 @@ ratio of Pattern to Impedance has been measuring all along:
 
 **w(t) = η(t) · (−dQ/dt)**  and  **ℓ(t) = (1 − η(t)) · (−dQ/dt)**
 
+| Term | Name | What it is |
+| --- | --- | --- |
+| **w(t)** | Working rate | Charge arriving, at that instant, as the effect the device was built for |
+| **ℓ(t)** | Loss | Charge spent at that instant that arrives as anything else |
+| **η(t)** | Efficiency | The share of what is drawn that survives the trip as Working |
+
 Waste leaves as heat, light, vibration, backlash, degradation of the stone
 itself, or an effect nobody asked for. A badly made lighter that draws ten
 units of charge to deliver six has not lost the other four. It has put them
@@ -115,12 +121,23 @@ never exceeding one.
 
 **Z > 0**, always, and **Z = f(M, C, τ)**.
 
+| Term | Name | What it is |
+| --- | --- | --- |
+| **M** | Material | What the housing is made of: the alloy blend or the wood, its purity, its grain |
+| **C** | Circuit | The geometry of the carving — its path, corners, depth and workmanship |
+| **τ** | Working type | Which kind of Working is being carried, a circuit fit for one being no guarantee for another |
+
 Impedance is not a property of a substance the way hardness is. Two devices
 cut from identical steel can differ wildly because one engineer carved a far
 better circuit, and a superb circuit carved into the wrong material still
 performs badly. The τ term matters as much: the same circuit that carries a
 ward cleanly may be poor at carrying fire, so impedance has to be quoted
 against the working it is meant to carry or it means nothing.
+
+None of the three is fixed while a device runs, either. Heat changes what a
+material will carry, and a circuit that cracks is a circuit recut by
+accident, so a Z measured on a cold bench is a Z measured under conditions
+the device will not stay in.
 
 Scholars know impedance can be improved. Nobody has said how far.
 
