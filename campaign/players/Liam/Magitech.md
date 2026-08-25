@@ -161,7 +161,7 @@ single lump of charge spent all at once, which is not what actually
 happens inside the housing. What happens is a stone bleeding charge over
 the fraction of a second the working takes, and a rate is not a lump:
 
-**w(t) = (dQ/dt) · P(t) ÷ Z(t)**
+**w(t) = −(dQ/dt) · P(t) ÷ Z(t)**
 
 The device's output at any instant is however fast the stone is losing
 charge right then, shaped by the pattern and cut down by whatever is in the
