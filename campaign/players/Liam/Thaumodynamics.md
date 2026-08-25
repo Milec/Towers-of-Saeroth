@@ -63,42 +63,54 @@ why that association is not a convention anybody chose.
 
 ## First Law: Conservation of Charge
 
-> No apparatus performs more total Working than the charge its stone made
-> available. How fast charge is spent can be changed. The total cannot.
+> A stone gives up no more charge than it was given. How fast it is spent can
+> be changed. The total cannot.
 
-**∫₀ᵀ w(t) dt ≤ Q(0)**
+**∫₀ᵀ (−dQ/dt) dt ≤ Q(0)**
 
-where **w(t)** is the instantaneous rate of useful Working, **T** the moment
-the working ends, and **Q(0)** the charge in the stone when it began.
+where **t** is time, **T** the moment the working ends, and **Q(0)** the charge
+in the stone when it began.
 
-A firelock discharges enormously over a fraction of a second. A lamp gives
-almost nothing for a very long time. Both are bounded by the same integral,
-and this is the formal statement of what the trade already says in plainer
-words: a device works as many times as its stone allows and not once more.
+A firelock empties a stone over a fraction of a second. A lamp takes months
+about it. Both are bounded by the same integral, and this is the formal
+statement of what the trade already says in plainer words: a device works as
+many times as its stone allows and not once more.
 
-## Second Law: Thaumic Loss
+**Read what this law does not say.** It bounds the charge a stone can
+surrender. It says nothing about the Working that charge produces, and those
+are not the same quantity. Conflating them is the mistake that cost the
+author two seasons and is corrected under the Third Law below.
 
-> Nothing is transmitted without loss. Imperfect affinity and circuit
-> impedance both cut down the share of spent charge that arrives as useful
-> Working.
+## Second Law: Thaumic Transfer
 
-Charge leaves the stone at a rate **−(dQ/dt)**. Some arrives as Working and
-some is wasted, and the two account for all of it:
+> What arrives as Working is what the pattern shaped and the circuit carried,
+> less everything spilled on the way and plus whatever the circuit was good
+> enough to draw in alongside it.
 
-**−(dQ/dt) = w(t) + ℓ(t)**
+Charge leaves the stone at a rate **−(dQ/dt)**. Some of it arrives as the
+effect the device was built for. Some is spilled. And a circuit carved well
+enough couples the channel to the same ambient field the charge rune pulls
+from, so that a third quantity arrives which the stone never supplied:
 
-The share that arrives is the **conversion efficiency**, which is what the
-ratio of Pattern to Impedance has been measuring all along:
-
-**η(t) = P(t) ÷ Z(t)**, with **0 ≤ η ≤ 1**
-
-**w(t) = η(t) · (−dQ/dt)**  and  **ℓ(t) = (1 − η(t)) · (−dQ/dt)**
+**−(dQ/dt) + a(t) = w(t) + ℓ(t)**
 
 | Term | Name | What it is |
 | --- | --- | --- |
-| **w(t)** | Working rate | Charge arriving, at that instant, as the effect the device was built for |
-| **ℓ(t)** | Loss | Charge spent at that instant that arrives as anything else |
-| **η(t)** | Efficiency | The share of what is drawn that survives the trip as Working |
+| **w(t)** | Working rate | Arriving, at that instant, as the effect the device was built for |
+| **ℓ(t)** | Loss | Spent at that instant and arriving as anything else |
+| **a(t)** | Ambient draw | Field the circuit couples in on its own account, which the stone never held |
+| **η(t)** | Transfer | The net of all three, as a multiple of what the stone gave up |
+
+Net it out and the ratio of Pattern to Impedance is what has been measuring
+the whole business all along:
+
+**η(t) = P(t) ÷ Z(t)**, and **w(t) = η(t) · (−dQ/dt)**
+
+**η < 1** is a circuit losing more than it couples, which is nearly every
+circuit anybody currently makes. **η > 1** is a circuit that gives back more
+than the stone handed it, and it is not getting that from nowhere — it is
+getting it from the field, along the channel the property rune opened, and it
+cannot open that channel without the stone's flow to hold it open.
 
 Waste leaves as heat, light, vibration, backlash, degradation of the stone
 itself, or an effect nobody asked for. A badly made lighter that draws ten
@@ -107,17 +119,12 @@ somewhere, and a workshop that cannot say where has a fire hazard rather than
 a device. This is the whole reason good circuitry makes a stone last: not
 because it draws less, but because less of what it draws goes astray.
 
-**The First Law is a consequence of this one.** Integrate the rate:
-
-**∫₀ᵀ w dt = ∫₀ᵀ η · (−dQ/dt) dt ≤ ∫₀ᵀ (−dQ/dt) dt = Q(0) − Q(T) ≤ Q(0)**
-
-Conservation does not need asserting separately. It falls out of efficiency
-never exceeding one.
-
 ## Third Law: Impedance
 
-> Every material circuit both opposes and modifies what passes through it, so
-> the quality of a Working depends on the material and the geometry together.
+> Every material circuit opposes, modifies, and — carved well enough —
+> amplifies what passes through it. The quality of a Working therefore depends
+> on the material and the geometry together, and no circuit can be driven past
+> what its own material will bear.
 
 **Z > 0**, always, and **Z = f(M, C, τ)**.
 
@@ -139,7 +146,29 @@ material will carry, and a circuit that cracks is a circuit recut by
 accident, so a Z measured on a cold bench is a Z measured under conditions
 the device will not stay in.
 
-Scholars know impedance can be improved. Nobody has said how far.
+**Impedance below Pattern is gain.** Drive Z under P and the device returns
+more Working than the stone gave up, which sounds like the First Law being
+broken and is not: the surplus is ambient field, and the stone is still
+emptying at exactly the rate the First Law allows. Charge is conserved.
+Working was never the conserved quantity, and taking it for one is an error
+this treatise made for two seasons and has had to unpick.
+
+**But every circuit has a floor it cannot be driven under.** Call it **Zmin**,
+and understand it as a breaking point rather than a limit approached:
+
+**Z > Zmin(M, C)**
+
+Below that value the circuit is holding a coupling wider than its own
+material can carry, and it does not quietly stop improving. It fails. The
+carving cracks along its own tracks, or the stone goes at once instead of
+over months, or the working arrives somewhere nobody aimed it. A device built
+at gain is a device built nearer its own destruction, and the better the
+material the nearer you may safely go.
+
+Zmin is not one number. It belongs to the material and the carving together,
+it moves with heat and with damage, and nobody has mapped it for so much as a
+single alloy. It is the open question of the field, and the reason the answer
+matters is that every unit of gain is worth more than a better gem.
 
 ## What the laws already answer
 
@@ -160,48 +189,57 @@ which means the shorthand is least reliable exactly where impedance is
 already worst. A workshop that trusts the chalk is trusting it hardest on the
 devices it should trust it least on.
 
-**The unknown lower bound is not unknown.** Measure P as a fraction of Pmax
-and Z as a multiple of an ideal circuit, and the Second Law's requirement that
-η ≤ 1 fixes the floor outright:
+**An earlier draft of this treatise put the floor at Zmin = 1**, on the
+reasoning that a circuit returning more than it was handed would be an
+apparatus outrunning its own stone, which conservation forbids. The reasoning
+was wrong and the error is worth naming, because it is the error the whole
+trade makes. Conservation binds *charge*. A circuit at gain does not refill
+the stone, does not slow its emptying, and does not violate anything: it
+opens a wider channel onto the field and the stone pays for holding it open.
+Two seasons went into a bound that was never there.
 
-**Zmin = 1**
+What is there instead is **Zmin(M, C)**, a breaking point rather than a
+ceiling, different for every material and carving, and unmapped. That is a
+worse answer and a truer one.
 
-A perfect circuit loses nothing. It does not give back more than it was
-handed. Anything below that floor would mean an apparatus delivering more
-Working than its stone ever held, which the First Law forbids — so either
-conservation is wrong or the Third Law's open question was answered the
-moment the Second Law was written down. Scholars chasing lower impedance are
-chasing a real gain and an entirely bounded one, and none of them have
-noticed the bound is already in their own arithmetic.
+**Which leaves two roads rather than one.** Everything a device finally
+delivers comes out of what the stone was handed, **Qmax**, multiplied by what
+the circuit does with it. A better gem closes the gap to Qmax. A better
+circuit multiplies whatever crosses it, and there is no reason in any of the
+four laws why that multiplier stops at one.
 
-**Which leaves one direction.** If efficiency caps at one, no circuit and no
-gem can raise what a device ultimately delivers past what the stone was
-handed, and the stone is handed **Qmax** by the charge rune. A better gem
-closes the gap to Qmax. A better circuit closes a different gap entirely, the
-one between what the stone gave up and what the device did with it. Neither
-of them touches Qmax. Every route to a more powerful device short of a better
-charge rune is a route to the same ceiling approached more tidily — which is,
-without either academy having framed it that way, an explanation of why
-twenty years of extraordinary craftsmanship has produced no device more
-powerful than the first ones out of the ground.
+Twenty years of craft has produced no device more powerful than the first ones
+out of the ground, and the trade reads that as proof it is stuck behind the
+charge rune. It is not proof of anything of the kind. Present circuits sit a
+little under unity — twenty years has carried the field from badly lossy to
+nearly break-even, which is real work and is not the same as gain. The road
+past Qmax was never closed. Nobody has walked it, because nobody has written
+down that it is there.
 
 ---
 
 **GM:** this is the first unified account of magitech anybody in the world has
 written, and its author is a player character. Nothing in it is wrong.
 
-Two things it does that are worth playing. It states plainly that Qmax is the
-only real ceiling, which the trade has felt for twenty years and never
-formalised — an academy that read this would understand at once that the
-recovered charge rune is the whole game, and would want to know where the
-author thinks a better one might come from. See [[The Nameless Empire]] for
-the answer nobody is in a position to give.
+**The gain claim is the live one.** Everybody in the trade believes the
+recovered charge rune is the whole ceiling. This treatise says it is one of
+two ceilings and the other has never been tested, which is either the most
+valuable page in the world or a good way to be robbed. Melisor's instinct
+would be to bury the page and hire the man. Silicar would want to build it by
+Thursday. Neither reaction is safe for whoever is holding the paper.
 
-And it establishes **Zmin = 1** as a hard floor on ordinary magitech. That is
-correct for everything the world can currently build, which makes it a good
-measuring stick: a device that appears to clear it is not a better circuit but
-evidence of something the theory does not cover. Nothing the party can build
-should ever break it. Something recovered intact from a ruin might, and the
-author of this treatise is the one person alive equipped to notice.
+**Gain is a dial you control, and it has a failure mode rather than a cap.**
+Anything the party builds above unity should cost something concrete: a
+circuit that cracks after a fight, a stone that empties in one evening instead
+of a season, a working that arrives somewhere nobody aimed it. Never rule that
+a gain device simply doesn't work. Let it work, spectacularly, and then let
+the housing pay. That is the interesting version and it is also what the
+Third Law actually says.
+
+Ruin-recovered circuits are where the real numbers live. The empire ran rail
+and railguns on this and did not do it at η just under one, so a fragment
+pulled intact out of the ground is the party's first sight of what the floor
+really is — and the author of this treatise is the one person alive equipped
+to recognise what he is looking at. See [[The Nameless Empire]].
 
 *See [[Magitech]] for the trade this describes.*
