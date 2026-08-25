@@ -34,8 +34,8 @@ on a high plateau chosen for its ley-lines rather than its soil.
 [[Kelvary March]] is horse pasture and drill ground, poor for grain on purpose.
 [[Tessine]] is a bay and a day's walk of terraces behind it. [[Dalstan]]'s hill
 country of cathedral-towns is prosperous in the valleys and has never fed
-itself. [[Thesal Theocracy]] trades physicians for grain from another continent
-entirely.
+itself. [[Thesal Theocracy]] has no farmland worth the name and eats on two lines at
+once, which is deliberate.
 
 What they send back is the interesting part, because it interlocks:
 
@@ -156,11 +156,47 @@ Three doors, and both fleets.
 Everything then clears through Tessine, which produces almost nothing, asks
 almost nothing, and takes a percentage of all of it.
 
-**One food link crosses the ocean**, and it is the exception that shows the
-rule: Thesal sends hospice medicine and trained physicians to Thurigypt and
-takes grain back, arranged temple to temple rather than through any factor.
-It is how the one western nation with no harvest and no export but mercy
-feeds a holy city.
+**One food link crosses the ocean**, and Thesal keeps it on purpose. Concord
+is fed by [[Vaelic Principality]] — grain out of the Diet's estates, over the
+Pilgrim's Stair, alongside the coin that endows the hospices. That is the
+staple and it comes from one neighbour, so Thesal also sends hospice medicine
+and trained physicians to [[Thurigypt]] and takes delta grain back, temple to
+temple rather than through any factor.
+
+A holy city that one neighbour can starve is a holy city with a price, and
+Thesal's entire usefulness is that it has no price. Both crowns denounced it
+in the same season of the Two-Crown War and neither could make that mean
+anything, because the second line was still running. In the Hungry Year it was
+the ocean line that held.
+
+## Trade wars
+
+Nobody on the western continent will fight a war. Everybody on it will cut a
+supply, and the [[The Pilgrim's Peace]] does not cover that at all — its
+clauses bind what may be sold *to a war*, and say nothing about what may be
+refused in peacetime. The result is that the continent's quarrels are now
+conducted in schedules of goods.
+
+They are slow, they are deniable, and they hurt the third party worst. Cut a
+nation's steel and you have also cut every workshop downstream of it in two
+countries that were not arguing with anybody.
+
+**The newest one has been running three years, and nobody has stated its
+cause.** [[Silicar]] stopped selling machinery, clockwork, pumps, powder and
+field kit into [[Quivar]], in that order, over about a season. Quivar has
+asked formally three times and been answered with a revised schedule of goods
+and no reason attached.
+
+Everyone can name the reason and nobody has put it in a document. Quivar
+fields musketeer skirmishers carrying firelocks Silicar invented and has never
+licensed to anybody, and Silicar has accused no one of anything — which is
+what makes it unarbitrable. There is no charge for Quivar to answer, and the
+Concord Table cannot make a finding on a case that has not been brought.
+
+Who is actually paying for it: [[Kelvary March]], whose field kit is built to
+Silicaran specification and whose pumps keep a camp alive, and which sells to
+both of them. Harrowgate has begun quietly buying Quivar's share and reselling
+it at no margin, and calls this commercial.
 
 ## The six a war needs
 
