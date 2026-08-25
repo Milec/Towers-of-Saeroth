@@ -17,6 +17,7 @@ counts as a battlefield achievement. Men are asked about both.
 - **Geography** A great river delta with hard desert past the irrigated belt; almost the entire population lives within a day's walk of the water
 - **Government** Warrior Pharaoh advised by priest-kings
 - **Races** [[Lizardfolk|Lizardfolk]], [[Nagaji|Nagaji]], [[Kobold|Kobolds]]
+- **Naming** Egyptian. Nefret, Setha-Ankh
 - **Faith** Patron [[Pharasma]], who governs birth as well as death. In Thurigypt she is the goddess of the bloodline continuing, and the endings are somebody else's business. [[Sarenrae]] is the sun that makes the delta live. [[Erastil]] is kept by the farming and the soldiering families both
 - **Economic Specialties** Grain, spices, glass, gold, stoneworking
 - **Military** Spear formations, chariot cavalry, temple guards, beast tamers

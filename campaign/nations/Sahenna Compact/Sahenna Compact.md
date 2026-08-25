@@ -28,6 +28,7 @@ by people trained from childhood to hold it there and nowhere else.
   clans are seated, and rarely decide anything the five have not already
   agreed on
 - **Races** A [[Kholo|Kholo]] majority, with [[Human|Humans]] and
+- **Naming** West African given names; clan names are plain compounds. Ashira of Clan Longmarch, Bem of Clan Salthollow
   [[Duskwalker|Duskwalkers]] in every clan. A Storyteller and a council of
   elder matriarchs govern each of them between the two of them
 - **Faith** Patron [[Pharasma]], kept as guardian of the ancestors rather

@@ -17,6 +17,7 @@ its irrigation canals and clockwork feed half the continent.
 - **Geography** A fertile lowland basin threaded by an irrigation network that took four generations to dig and is maintained obsessively
 - **Government** Council of guildmasters and elected engineers
 - **Races** [[Gnome|Gnomes]], [[Halfling|Halflings]], [[Leshy|Leshies]]
+- **Naming** English compounds out of a working countryside. Pim Applewhite, Tilda Locke
 - **Faith** Patron [[Brigh]], goddess of invention and clockwork, whose shrines are workshops with an altar in the corner. [[Erastil]] is the older faith of the farming villages, and the two clergies argue amiably about which one actually feeds the nation
 - **Economic Specialties** Agriculture, irrigation, machinery, clockwork, food exports, and the flintlock trade the guilds invented and have never licensed to anyone
 - **Military** Engineers, flintlock companies drilled in volley and reload, field artillery, defensive fortifications, construct support — Silicar's guilds built the first working firelock and still make the best ones, which is why a nation this small is left alone

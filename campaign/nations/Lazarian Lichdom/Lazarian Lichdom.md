@@ -18,6 +18,7 @@ cost the world runs well past anything Dalstan managed — see [[The Sundering o
 - **Geography** Fog-drowned marshland and old battlefields. The ground was chosen for what is buried in it rather than for what grows on it
 - **Government** Immortal Lich Emperor
 - **Races** [[Skeleton|Intelligent undead]], [[Dhampir|Dhampirs]], necromancers, [[Vampire|vampires]], living servants
+- **Naming** Germanic gone gothic, and the dead keep the name they died with. Isolde Vane, Ehrhardt Mool
 - **Faith** Patron [[Urgathoa]], whose doctrine of undeath as ascension runs through Lazarian state philosophy. [[Norgorber]] is kept quietly by the alchemists and relic-brokers. [[Pharasma]]'s faith is outlawed outright — she judges the dead, which makes her the one god the state cannot bargain with
 - **Economic Specialties** Alchemy, necromancy, ancient relics, undead labor, magical artifacts
 - **Military** Skeleton legions, Death Knights, vampire nobles, necromancers, bone constructs

@@ -19,6 +19,7 @@ what actually lives down here.
 - **Geography** A cavern network running beneath the northern mountains and well past them; the Reaches claim more territory than anyone above ground has confirmed
 - **Government** Warden-Conclave of the Deep Holds
 - **Races** [[Duskwalker|Duskwalkers]], [[Umbral Gnome|Umbral Gnomes]], [[Kobold|Kobolds]], [[Automaton|Automatons]] (built to survive where flesh struggles)
+- **Naming** The same compounds gone quiet and downward. Vell Downkeep, Ashen Marrow
 - **Culture** Information is currency, and everyone assumes everyone else is holding out. A Warden's authority rests entirely on knowing things no rival Warden does.
 - **Faith** Patron [[Norgorber]], god of secrets — an unsettlingly literal fit for a nation whose currency is information. [[Pharasma]] is kept in the deepest holds, where the dead are numerous and very old
 - **Economic Specialties** Deep-vein minerals, luminous fungus cultivation, salvaged relics, secret-keeping as a paid service, construct labor

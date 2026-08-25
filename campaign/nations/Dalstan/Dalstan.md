@@ -23,6 +23,7 @@ often.
 - **Geography** Hill country of cathedral-towns and pilgrim shrines, prosperous in the valleys and conspicuously poor on the slopes
 - **Government** Grand Inquisitor-King, anointed for life by the Cathedral Court
 - **Races** [[Human|Humans]] (clergy and nobility), [[Aasimar|Aasimar]] (revered as living proof of favor), [[Tiefling|Tieflings]] (a persecuted underclass, blamed on principle)
+- **Naming** Slavic given names under gilded titles. Yevka Doranin, Inquisitor Vasil Krume
 - **Culture** Faith is inseparable from status; the richer the display of devotion, the more genuine it's assumed to be. Suffering is sanctified only when it's someone else's.
 - **Faith** Patron [[Zon-Kuthon]], whose doctrine that suffering refines the soul has been reinterpreted, slowly and to Dalstan's own advantage, into a licence for splendour. [[Asmodeus]] supplies the rest of the theology — hierarchy, binding contract, and the indulgence trade that funds the cathedrals
 - **Economic Specialties** Gilded relics, penitent's silk, ceremonial armaments, tithe-banking, indulgence brokerage

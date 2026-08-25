@@ -17,6 +17,7 @@ neutral whenever neutrality pays.
 - **Geography** A chain of harbor city-states rather than one contiguous territory, held together by shipping routes and shared law
 - **Government** Merchant Senate elected by the great trade houses
 - **Races** Every ancestry
+- **Naming** Italian maritime, the house before the person. Renzo of Casa Ilvano, Serafina Doro
 - **Faith** Patron [[Abadar]] as god of contracts and honest wealth, which is close enough to the Alliance's founding charter. [[Desna]] is the sailors' luck. [[Norgorber]] is the one nobody admits to, and every great house keeps a shrine to him somewhere unlit
 - **Economic Specialties** Banking, shipping, insurance, mercenary contracts, luxury imports
 - **Military** Professional navy, privateers, mercenary companies, marines

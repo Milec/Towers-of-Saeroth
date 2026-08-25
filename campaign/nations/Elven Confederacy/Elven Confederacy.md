@@ -17,6 +17,7 @@ dispute season for a decade before ruling on it.
 - **Geography** Ancient forest belts spanning several climates — temperate heartwood, northern pine, desert oasis-groves, and drowned coastal woods
 - **Government** Council of tribal chiefs
 - **Races** [[Woodland Elf|Forest Elves]], [[Arctic Elf|Winter Elves]], [[Desert Elf|Desert Elves]], [[Aquatic Elf|Sea Elves]], other elven ancestries
+- **Naming** Elvish: long vowels, soft endings, no hurry. Sylandriel, Thaeloth Anuvar
 - **Faith** Patron [[Ketephys]], the elven hunter, honored by every tribe regardless of what else they disagree on. [[Yuelral]] holds the magical traditions and [[Findeladlara]] the artistic ones; several forest tribes keep the [[Green Faith]] instead of any named god
 - **Economic Specialties** Rare timber, herbs, wines, silk, magical plants
 - **Military** Elite archers, druids, rangers, beast riders

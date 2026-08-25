@@ -18,6 +18,7 @@ to plan around: fearsome warriors who keep their word.
 - **Geography** Open steppe from horizon to horizon, broken by iron-rich hill country in the south and the horse-pastures the whole economy rests on. Its northern edge is [[The Long Frontier]], which is where khans are made
 - **Government** Great Khagan elected by the assembled khans
 - **Races** [[Orc|Orcs]], [[Hobgoblin|Hobgoblins]], [[Goblin|Goblins]], [[Bugbear|Bugbears]], [[Ogre|Ogres]], [[Kobold|Kobolds]], [[Centaur|Centaurs]], [[Minotaur|Minotaurs]], other monstrous peoples
+- **Naming** Mongol and Turkic. Batu, Altani of the Iron Hills
 - **Faith** Patron [[Gorum]], who cares only that the fight was fought well, and whose sign the war-bands ride under. [[Desna]] is the other half of Khazan devotion. Goddess of stars and the open road, and every nomad on the steppe navigates by her
 - **Economic Specialties** Iron, livestock, horses, mercenary companies, leatherworking, mining
 - **Military** Massive cavalry, wolf riders, heavy infantry, siege beasts, monster auxiliaries

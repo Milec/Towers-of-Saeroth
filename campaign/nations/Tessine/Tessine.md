@@ -20,6 +20,7 @@ is currently living in it.
 - **Geography** A deepwater bay behind a headland, backed by steep terraces of vines and lemons and no route inland worth marching an army along
 - **Government** A Signory of resident factors — anyone who has paid the fee for twelve years may stand — chaired by a Harbourmaster with a one-year term and no re-election
 - **Races** Every ancestry on the continent, in numbers nobody has successfully counted — [[Human|Humans]], [[Tiefling|Tieflings]], [[Fetchling|Fetchlings]], [[Half-Elf|Half-Elves]], [[Tengu]], [[Dhampir|Dhampirs]], [[Aasimar]]
+- **Naming** Italian, with the house name doing the work. Lucrezia Sarni, Matteo Falier
 - **Faith** [[Abadar]] for the ledger and [[Cayden Cailean]] for the rest of it; [[Desna]] has a shrine at the harbour mouth that every arriving exile touches, whatever else they believe
 - **Economic Specialties** Entrepôt trade, banking and deposit, insurance, forged and genuine papers sold across the same counter, discreet shipping
 - **Military** A harbour chain, three batteries, and the certain knowledge that half the continent's exiled nobility keeps its money here

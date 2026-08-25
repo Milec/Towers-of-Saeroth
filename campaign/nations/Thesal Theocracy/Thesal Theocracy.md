@@ -18,6 +18,7 @@ refuse, they send for Thesal.
 - **Geography** Central crossroads country, crossed by pilgrim roads kept deliberately open and unfortified
 - **Government** Council of High Clerics representing every recognized faith
 - **Races** Every ancestry
+- **Naming** Latin and ecclesiastical, often a title in place of a surname. Serapha of the Third Hospice, Brother Ottavian
 - **Faith** Patron [[Sarenrae]], goddess of healing and redemption, whose hospices are the nation's most visible export. By charter every good or neutral faith holds a temple in Concord. After hers, the largest belong to [[Shelyn]], [[Desna]] and [[Pharasma]]
 - **Economic Specialties** Healing, religious pilgrimage, education, charity, medicine
 - **Military** Paladins, clerics, defensive militias, hospital corps

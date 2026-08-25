@@ -2264,7 +2264,7 @@ async function mountRoutes(container, bodyText) {
 /* The order the fields are written in; anything unrecognised keeps its place
    at the end rather than being dropped. */
 const NATION_FIELDS = ['Founded', 'Capital', 'Geography', 'Government', 'Races',
-  'Culture', 'Faith', 'Economic Specialties', 'Military', 'History',
+  'Naming', 'Culture', 'Faith', 'Economic Specialties', 'Military', 'History',
   'Reputation', 'Want', "Won't", 'Tension'];
 
 /* A cell inherits the text node that followed `</strong>`, which begins with
