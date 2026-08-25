@@ -26,6 +26,7 @@ It also prints one **advisory** line measuring the prose voice, which is not a
 check and can never fail the run — see `prose_advisory` at the bottom.
 """
 import os
+import glob
 import re
 import sys
 
@@ -35,6 +36,11 @@ CAMPAIGN = os.path.join(REPO, 'campaign')
 WORLD_JS = os.path.join(HERE, 'mapgen', 'world.js')
 TABLE = os.path.join(CAMPAIGN, 'nations', 'Political Relations.md')
 ROUTES = os.path.join(CAMPAIGN, 'world', 'Trade Routes.md')
+AGES = os.path.join(CAMPAIGN, 'world', 'history', 'Ages of Saeroth.md')
+# Tal Ulad has no founding date on purpose — the herd councils consider the
+# question rude — so it is named in prose in The Old Foundations instead.
+UNDATED = {'Tal Ulad'}
+PLAYER_HISTORY = os.path.join(REPO, 'players', 'History.md')
 
 WIKILINK = re.compile(r'\[\[([^\]\n|#]+)')
 # a line that opens [[ after its last ]] and never closes it
@@ -284,6 +290,48 @@ def main():
                     problems.append(
                         f'Trade Routes.md: {name} runs {a} -> {b}, but Political '
                         f'Relations.md has no relationship between them at all')
+
+    # The players' history page is drawn as a rail, one stop per section,
+    # labelled with the year on the italic line under the heading. The rail
+    # says "newest first" and cannot sort — it takes the sections in the order
+    # the markdown puts them — so a section filed in the wrong place is a
+    # timeline that silently lies, which is how the page ran with 1776 sitting
+    # between 2373 and 2370. Sections with no year in their date line (the
+    # ongoing ones) are skipped rather than placed.
+    if os.path.exists(PLAYER_HISTORY):
+        lines = open(PLAYER_HISTORY, encoding='utf-8').read().split('\n')
+        prev_year, prev_name = None, None
+        for i, line in enumerate(lines):
+            if not line.startswith('## '):
+                continue
+            name = line[3:].strip()
+            date = next((l for l in lines[i + 1:i + 4] if l.startswith('*')), '')
+            year = re.search(r'\d+', date)
+            if not year:
+                continue
+            year = int(year.group(0))
+            if prev_year is not None and year > prev_year:
+                problems.append(
+                    f'players/History.md: "{name}" ({year}) comes after '
+                    f'"{prev_name}" ({prev_year}) — the rail runs newest first '
+                    f'and takes the page\'s own order')
+            prev_year, prev_name = year, name
+
+    # A nation with no row in the chronology. Ages of Saeroth is the vault's
+    # dated spine and the site draws it as a timeline, so a country missing
+    # from it fails in the quietest way there is: the note renders, the rail
+    # draws, every band is the right width, and one country simply has no past.
+    # Seven were missing when this check was written, including two great
+    # powers, and nothing anywhere had said so.
+    if os.path.exists(AGES):
+        ages = open(AGES, encoding='utf-8').read()
+        for path in sorted(glob.glob(os.path.join(CAMPAIGN, 'nations', '*', ''))):
+            nation = os.path.basename(path.rstrip(os.sep))
+            if nation in UNDATED or f'[[{nation}]]' in ages:
+                continue
+            problems.append(
+                f'Ages of Saeroth.md: nothing in the chronology links '
+                f'[[{nation}]] — the nation has no dated history at all')
 
     if not quiet:
         print(f'{len(list(notes()))} notes, {n_links} wikilinks, '

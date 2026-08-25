@@ -80,6 +80,7 @@ see [[The God Sundering]].
 | Year | What happened | Note |
 | --- | --- | --- |
 | c. 740 | The first Great Khagan is elected rather than acclaimed. The Khaganate is that agreement before it is anything else | [[Khazan Khaganate]] |
+| c. 860 | The deep holds are settled by people going down rather than out. The surface dates the Reaches from here and the Warden-Conclave says the surface is wrong | [[Undertide Reaches]] |
 | c. 900 | The crown of Quivar, unbroken from here: the oldest continuous monarchy on the continent and the only great power never conquered | [[Quivar]] |
 | c. 940 | Ashkar Pale is settled under the mountain for the first time. It has been resettled three times since, on the same footings | [[Ashkar Pale]] |
 | c. 1010 | Sahenna's clans swear the Compact and give it to the Storytellers instead of to ink | [[Sahenna Compact]] |
@@ -88,20 +89,26 @@ see [[The God Sundering]].
 | c. 1150 | The first trial-by-forge. Every Emberlord since has been chosen at a furnace | [[Cindral Ashlands]] |
 | c. 1165 | Sahenna guarantees the road and Qeshara guarantees the wells. The Salt Road pact has been kept without interruption from here | [[Sahenna Compact]] |
 | c. 1180 | Nordheim's jarls record a Great Thing at Hravnfjord. The assembly is centuries older than the kingship it eventually elected | [[Nordheim]] |
+| c. 1240 | Eleven cantons agree that none of them will ever speak for the others. That is the whole of Sarrowmere's constitution and enough to sell physic abroad | [[Sarrowmere]] |
 | 1276 | The elven tribes mark the northern pine. Nordheim's logging camps stand inside that line today | [[Elven Confederacy]] |
+| c. 1290 | A bad century of piracy makes one fleet cheaper than twelve, and the reef-cities federate around the cartel that paid for it | [[Aquoniti]] |
+| c. 1330 | Tessine founded the first time, as a fishing bay nobody wanted | [[Tessine]] |
 | c. 1410 | Thurion's harbour cities adopt one commercial code, so that a contract sealed in any of them is enforced in the rest | [[Thurion Merchant Alliance]] |
 | c. 1440 | Vaelic's first High Prince brings the electorates under one crown with the newly-created Drake Rider Order, then binds the Order's oath to the office rather than to his blood | [[Vaelic Principality]] |
 | 1476 | Vaelic castle engineers begin training in the Stoneborn holds and have in every generation since. The Holds and the Reaches first dispute the seam between the peaks and what lies under them in the same decade | [[Undertide Reaches]] |
 
 ## 1496 – 1976 — The Concord
 
-*The whole era: [[The Sundering of the Concord]].*
+*The whole era: [[The Concord Centuries]], and [[The Sundering of the Concord]]
+for the church at the middle of it.*
 
 | Year | What happened | Note |
 | --- | --- | --- |
 | 1496 | The Concord founded: one church-state of three orders, holding mercy, the refining fire and the passage together | [[The Sundering of the Concord]] |
+| c. 1560 | A border march that was never garrisoned properly starts renting the garrison out instead. The Muster Court is that march-warden's court with the warden removed | [[Kelvary March]] |
 | c. 1700 | Seven duchies with no defensible line between themselves and the steppe unify as the Voskreld Union, on terms that give none of them the capital | [[Voskreld Union]] |
 | 1776 | Khazan and Xian Ti fortify the same line. It has been garrisoned and shot at continuously ever since | [[The Long Frontier]] |
+| c. 1820 | A harbour refuses a duke. The list of things the town would not do for him becomes the charter of the Assembly of Citizens | [[Corvane Republic]] |
 | c. 1940 | Zon-Kuthon and Urgathoa begin working the second and third orders, one high cleric at a time, over the better part of a generation | [[The Sundering of the Concord]] |
 
 ## 1976 – 2305 — The Three Heirs
@@ -110,8 +117,10 @@ see [[The God Sundering]].
 | --- | --- | --- |
 | 1976 | The Sundering, in a single winter. Dalstan walks out in fury with a third of the clergy and founds Ostravin; the third order's high cleric leaves quietly for the delta; Thesal keeps the city and refuses the war it could have won | [[The Sundering of the Concord]] |
 | 1976 | Lazarus takes the throne he made by leaving, and has not left it since | [[Lazarus]] |
+| 1976 | Thesal keeps the city, refuses the war it could have won, and opens its precinct to every faith that will come. A dozen temples share one water supply in Concord now | [[Thesal Theocracy]] |
 | c. 2000 | The relic trade opens between Ostravin and the Lazarian grave-fields, and has been deniable at both ends for four centuries | [[Dalstan]] |
 | 2041 | The last attempt to take the whole frontier. It fails, the line goes back to where it was, and both countries remember the man who ordered it as a fool for opposite reasons | [[The Long Frontier]] |
+| c. 2060 | Four generations of digging finish the irrigation network, and the guildmasters who had been coordinating the work are the state that maintains it | [[Silicar]] |
 | c. 2116 | The Muster Court at Harrowgate charters its first standing companies. Kelvary has had regiments on both sides of most wars since | [[Kelvary March]] |
 | c. 2190 | A Melisor academy annexes its own hinterland to stop being taxed by it. The Council of Archmages is that faculty board, still meeting | [[Melisor Magocracy]] |
 | c. 2240 | Cindral and Ashkar Pale fight the second and last of their wars over the terraces between them. An eruption ends it; neither side does | [[Cindral Ashlands]] |
@@ -133,6 +142,7 @@ see [[The God Sundering]].
 | Year | What happened | Note |
 | --- | --- | --- |
 | 2316 | The Pilgrim's Peace signed at Concord: four clauses, and the Concord Table every third spring | [[The Pilgrim's Peace]] |
+| 2316 | Tessine founded the second time: both sides' fortunes and both sides' exiles arrive in the same decade, and the Harbour Signory keeps them | [[Tessine]] |
 | 2317 | Kesmarch's founding charter, half its first homesteads taken by families shipped out of the Hungry Year with nothing to go back to | [[Kesmarch Frontier]] |
 | c. 2322 | Vaelic rewrites the Drake Rider Order into its present form, by people arguing about those nine years | [[Drake Rider Order]] |
 | c. 2325 | Silicar's guilds build the first working firelock — a weapon for a militia that must be raised in a fortnight and can never be large | [[Silicar]] |

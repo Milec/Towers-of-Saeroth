@@ -50,10 +50,19 @@ INTENSIFIERS = ['genuinely', 'exactly', 'precisely', 'entirely', 'simply',
 # "first" and "last" are left out on purpose: "the first Pharaoh", "the first
 # examination", "the first time in sixty years" are ordinals and dates, not
 # claims about rank, and including them buried the real signal in names.
+# The open `\w+est` arm is what catches a superlative nobody listed — "the
+# canniest", "the driest" — and it also catches every ordinary noun that
+# happens to end in -est. "The west" alone put a false superlative in most of
+# the nation notes, since half the vault is about a continent.
+NOT_SUPERLATIVE = (
+    "west|rest|forest|priest|harvest|interest|guest|honest|request|contest|"
+    "conquest|protest|quest|tempest|manifest|arrest|invest|nest|chest|crest|"
+    "test|bequest|inquest|jest|zest|behest|midwest|earnest"
+)
 SUPERLATIVE = re.compile(
     r"\bthe (only|single|oldest|newest|largest|smallest|finest|best|worst|"
     r"richest|poorest|busiest|highest|deepest|longest|shortest|strongest|"
-    r"closest|most \w+|\w+est)\b", re.I)
+    r"closest|most \w+|(?!(?:" + NOT_SUPERLATIVE + r")\b)\w+est)\b", re.I)
 
 # Finite verbs, for spotting the clipped fragment. Not a parser — it only has
 # to be right often enough to show a note that is chopping rather than writing.
