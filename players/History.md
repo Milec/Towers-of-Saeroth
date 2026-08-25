@@ -4,41 +4,13 @@ What follows is what a reasonably well-travelled person knows. The dates use
 the calendar every nation shares, which is a stranger fact than it looks, and
 the [end of this page](#History/The%20Red) explains why.
 
-## The Pilgrim's Peace
-
-*2316 AR — signed sixty years ago, and holding*
-
-No great power has marched on another in sixty years. Nothing in any chronicle
-anyone still keeps matches that, and every court on both continents knows it,
-which is most of the reason it has held.
-
-What holds it is a treaty. The **Pilgrim's Peace** was signed in the holy city
-of Concord in 2316, and it ended the war below. It is short enough to recite
-and most of it is not about armies at all — it is about credit, grain, ships
-and hired soldiers, and who will refuse to supply them. A country that wants a
-war can still start one. It cannot get anyone to carry it, feed it, or lend
-against it, and no crown on the board can afford a second season out of its
-own granaries.
-
-One country exists because of it. The [Kesmarch Frontier](#The%20Nations/Kesmarch%20Frontier) was chartered the year
-after the signing, and half its first homesteads went to families shipped out
-of the Hungry Year with nothing to go back to.
-
-That was the shape of the world until a year ago.
-
-Then the towers began arriving, and nothing in the treaty covers a tower. A
-border argument that has sat harmlessly in front of arbitrators for thirty
-years turns into a race the morning one appears in it. Courts that had nothing
-to say to each other are talking. Two nations are arguing over a stretch of
-jungle neither of them wanted last year. Nobody has broken the Peace. Everyone
-can feel it being leaned on.
-
 ## The small wars
 
 *Every year — everything the Peace does not cover*
 
-None of that means the world is quiet. Armies is the whole of the claim.
-Everything short of an army has carried on exactly as it always did.
+No great power has marched on another in sixty years, for reasons the treaty
+below covers. Armies is the whole of that claim. Everything short of an army
+has carried on exactly as it always did.
 
 Frontiers still burn in the ordinary way. Homesteads go up on the Kesmarch
 line most summers. Herds get driven off the edge of the steppe and the riders
@@ -95,32 +67,6 @@ seen the edges of it: Quivari pumps going for four times what they cost,
 nobody in either capital willing to say the word *theft* where it could be
 repeated.
 
-## The Long Frontier
-
-*1776 AR — six hundred years, and it has not stopped once*
-
-The eastern continent has its own war and it never ended.
-
-In 1776 the [Khazan Khaganate](#The%20Nations/Khazan%20Khaganate) and [Xian Ti](#The%20Nations/Xian%20Ti) fortified the same line, from
-opposite sides, four years apart. Neither has taken it and neither has left.
-It has been garrisoned and shot at every year since, and the imperial ministry
-that files the casualty rolls has not missed a season in six centuries.
-
-Westerners hear that and assume a frozen war or a sham one. Ask anyone who has
-served there. People die on that line every spring and their families know
-exactly which spring.
-
-What it is, is useful to both of them. The Great Khagan is elected by the
-assembled khans, and an election needs candidates with reputations, and there
-is one place in the world to earn one. Xian Ti runs on examination, and a
-frontier command is the posting that makes or ends a career in the imperial
-service. Nobody says this out loud on either side of the wall, and nobody
-needs to.
-
-Somebody tried to end it once. In 2041 a Khagan went for the whole line, and
-failed, and the line went back to where it had been. Both countries remember
-him as a fool, for entirely different reasons.
-
 ## The Delta War
 
 *2370 AR — six years ago, and it lasted one season*
@@ -139,6 +85,35 @@ starting.
 
 No other nation came in on either side. Nobody has tested the Lichdom since,
 and nobody in a position to know says the Lich Emperor is gone any more.
+
+## The Pilgrim's Peace
+
+*2316 AR — signed sixty years ago, and holding*
+
+The sixty years are a treaty rather than luck. The **Pilgrim's Peace** was
+signed in the holy city of Concord in 2316 and it ended the war below. Nothing
+in any chronicle anyone still keeps matches the stretch since, and every court
+on both continents knows what is in the document, which is most of the reason
+it has held.
+
+It is short enough to recite and most of it is not about armies at all — it is about credit, grain, ships
+and hired soldiers, and who will refuse to supply them. A country that wants a
+war can still start one. It cannot get anyone to carry it, feed it, or lend
+against it, and no crown on the board can afford a second season out of its
+own granaries.
+
+One country exists because of it. The [Kesmarch Frontier](#The%20Nations/Kesmarch%20Frontier) was chartered the year
+after the signing, and half its first homesteads went to families shipped out
+of the Hungry Year with nothing to go back to.
+
+That was the shape of the world until a year ago.
+
+Then the towers began arriving, and nothing in the treaty covers a tower. A
+border argument that has sat harmlessly in front of arbitrators for thirty
+years turns into a race the morning one appears in it. Courts that had nothing
+to say to each other are talking. Two nations are arguing over a stretch of
+jungle neither of them wanted last year. Nobody has broken the Peace. Everyone
+can feel it being leaned on.
 
 ## The Two-Crown War
 
@@ -160,25 +135,6 @@ war and he will tell you it was an agreement between princes. Ask a [Thurion](#T
 factor and he will tell you the banks stopped lending. Both of them are
 describing the same month.
 
-## The Salt Road
-
-*c. 1165 AR — twelve hundred years, and never once broken*
-
-Older than any treaty in the west, and the reason the east has never had a
-Hungry Year.
-
-The [Sahenna Compact](#The%20Nations/Sahenna%20Compact) guarantees the road and the [Qeshara Sultanate](#The%20Nations/Qeshara%20Sultanate) guarantees
-the wells, and salt, hides and dyed cloth go one way while grain, iron and
-worked goods go the other. That is the whole of it. It was sworn twelve
-hundred years ago, it has been kept without interruption since, and neither
-side has ever needed to be reminded why: both halves would starve inside two
-seasons without the other.
-
-The clans keep the terms by memory rather than by ink, which western factors
-find alarming and which has never yet failed. If you want to know what an
-agreement looks like when nobody involved has ever considered breaking it, it
-runs from the delta to the frontier markets and you can walk it.
-
 ## The older wars
 
 *Every century — and only two of them get called the war*
@@ -188,6 +144,29 @@ have a name and a grievance attached to them. These two are only the ones
 people mean when they say *the war*. Anyone over sixty was alive for the
 [Two-Crown War](#History/The%20Two-Crown%20War), and there are men in every port who were pulled out of
 [the delta marsh](#History/The%20Delta%20War).
+
+## The newest countries
+
+*2060 and 2190 AR — the two youngest powers on the board*
+
+Two of the countries a traveller thinks of as fixtures are younger than the
+buildings they govern from.
+
+[Silicar](#The%20Nations/Silicar) was dug rather than founded. Four
+generations put in the irrigation network before there was any state to
+maintain it, and the Council of guildmasters is simply the body that had been
+coordinating the digging. That is why a nation of that size is run by
+engineers and takes a canal more seriously than a border.
+
+The [Melisor Magocracy](#The%20Nations/Melisor%20Magocracy) is younger still.
+Around 2190 a single academy annexed its own hinterland, largely to stop being
+taxed by it, and the Council of Archmages that now speaks for the arcane world
+is that faculty board, still meeting. The oldest inn in half the towns on the
+western continent predates it.
+
+Newer than either: [Tessine](#The%20Nations/Tessine)'s second founding in 2316
+and the [Kesmarch Frontier](#The%20Nations/Kesmarch%20Frontier)'s charter the
+year after, both of which came out of the war above.
 
 ## The Sundering
 
@@ -221,33 +200,91 @@ do: none of them wants the others' ground. They each want to be the Concord's
 true heir, and only one of them can be. Four hundred years on, all three still
 keep a liturgy the other two would recognise if they could stand to attend it.
 
-## The last foundings
+## The Long Frontier
 
-*c. 1496 – 1976 AR — the last age before this one*
+*1776 AR — six hundred years, and it has not stopped once*
 
-Most of the map was drawn before any of this. Only one country standing today
-was made in these five centuries, which is why a Stoneborn thane will call the
-Voskreld Union new and expect no argument about it.
+The eastern continent has its own war and it never ended.
+
+In 1776 the [Khazan Khaganate](#The%20Nations/Khazan%20Khaganate) and [Xian Ti](#The%20Nations/Xian%20Ti) fortified the same line, from
+opposite sides, four years apart. Neither has taken it and neither has left.
+It has been garrisoned and shot at every year since, and the imperial ministry
+that files the casualty rolls has not missed a season in six centuries.
+
+Westerners hear that and assume a frozen war or a sham one. Ask anyone who has
+served there. People die on that line every spring and their families know
+exactly which spring.
+
+What it is, is useful to both of them. The Great Khagan is elected by the
+assembled khans, and an election needs candidates with reputations, and there
+is one place in the world to earn one. Xian Ti runs on examination, and a
+frontier command is the posting that makes or ends a career in the imperial
+service. Nobody says this out loud on either side of the wall, and nobody
+needs to.
+
+Somebody tried to end it once. In 2041 a Khagan went for the whole line, and
+failed, and the line went back to where it had been. Both countries remember
+him as a fool, for entirely different reasons.
+
+## The Concord centuries
+
+*c. 1496 – 1976 AR — the five hundred years before the Sundering*
+
+Most of the map was drawn before any of this. Three countries standing today
+were made in these five centuries, and all three are ones a Stoneborn thane
+will still call new.
 
 The Concord was founded in 1496: one church-state over the ground three
-nations hold today, and [the section above](#History/The%20Sundering) is how it ended. Around 1700, seven
-duchies with nothing but open grass between themselves and the steppe agreed
-to be one country, and wrote the terms so that none of them got the capital.
-That is the [Voskreld Union](#The%20Nations/Voskreld%20Union), and it is why a Voskreld road gets cleared in
-winter while everyone else waits for spring. Then in 1776 the Khaganate and
-[Xian Ti](#The%20Nations/Xian%20Ti) fortified the same line, which is [the frontier above](#History/The%20Long%20Frontier).
+nations hold today, and [the Sundering](#History/The%20Sundering) is how it ended. What went up around it:
+
+- **Around 1560**, a border march that nobody garrisoned properly started
+  renting the garrison out instead, and found that paid better than holding a
+  border ever had. That is the [Kelvary March](#The%20Nations/Kelvary%20March), and its Muster Court is the old
+  march-warden's court with the accountants left in it.
+- **Around 1700**, seven duchies with nothing but open grass between
+  themselves and the steppe agreed to be one country, and wrote the terms so
+  that none of them got the capital. That is the [Voskreld Union](#The%20Nations/Voskreld%20Union), and it is why
+  a Voskreld road gets cleared in winter while everyone else waits for spring.
+- **Around 1820**, a harbour refused a duke. The list of things the town would
+  not do for him was read out to his face, and it is now the
+  [Corvane Republic](#The%20Nations/Corvane%20Republic)'s charter, which still opens with a refusal.
+
+None of the three was a conquest, which is the age in miniature. The quarrels
+went to Concord instead, and mostly came back settled.
+
+## The Salt Road
+
+*c. 1165 AR — twelve hundred years, and never once broken*
+
+Older than any treaty in the west, and the reason the east has never had a
+Hungry Year.
+
+The [Sahenna Compact](#The%20Nations/Sahenna%20Compact) guarantees the road and the [Qeshara Sultanate](#The%20Nations/Qeshara%20Sultanate) guarantees
+the wells, and salt, hides and dyed cloth go one way while grain, iron and
+worked goods go the other. That is the whole of it. It was sworn twelve
+hundred years ago, it has been kept without interruption since, and neither
+side has ever needed to be reminded why: both halves would starve inside two
+seasons without the other.
+
+The clans keep the terms by memory rather than by ink, which western factors
+find alarming and which has never yet failed. If you want to know what an
+agreement looks like when nobody involved has ever considered breaking it, it
+runs from the delta to the frontier markets and you can walk it.
 
 ## The old foundations
 
 *c. 700 – 1496 AR — when most of the map was made*
 
-Eight centuries, and most of the countries you can name got their shape in
-them. Nearly all of them got it the same way. Somebody worked out a rule for
-choosing whoever comes next, everybody involved was tired enough to agree to
+Fourteen of the twenty-eight countries on the map were founded in these eight
+centuries — half the board — and most of them the same way. Somebody worked
+out a rule for who comes next, everybody involved was tired enough to agree to
 it, and the rule outlived every person in the room.
 
 - **Around 740** the khans elected a Great Khagan instead of acclaiming one.
   The [Khazan Khaganate](#The%20Nations/Khazan%20Khaganate) is that agreement before it is anything else.
+- **Around 860** the deep holds were settled by people going down rather than
+  out, at least by the surface's reckoning. The [Undertide Reaches](#The%20Nations/Undertide%20Reaches) say the
+  surface's dating is wrong and decline to give a better one.
 - **Around 900**, the crown of [Quivar](#The%20Nations/Quivar). It has changed hands inside one house
   ever since, and no foreign army has held the capital.
 - **Around 940** [Ashkar Pale](#The%20Nations/Ashkar%20Pale) was first settled under the mountain. It has been
@@ -264,12 +301,25 @@ it, and the rule outlived every person in the room.
   Emberlord since has been picked at a furnace.
 - **Around 1180** [Nordheim](#The%20Nations/Nordheim)'s jarls recorded a Great Thing at Hravnfjord. The
   assembly is centuries older than the kingship it got round to electing.
+- **Around 1240** eleven cantons agreed that no one of them would ever speak
+  for the others. That is the whole of [Sarrowmere](#The%20Nations/Sarrowmere)'s constitution and it has
+  never been asked for more.
+- **Around 1290** a bad century of piracy made one fleet cheaper than twelve,
+  and the reef-cities federated around the cartel that paid for it. The
+  [Aquoniti](#The%20Nations/Aquoniti) Council of Tide Lords has never formally become anything else.
+- **Around 1330** [Tessine](#The%20Nations/Tessine) was founded the first time, as a fishing bay nobody
+  wanted. The second founding is the one that matters and it is only sixty
+  years old.
 - **Around 1410** the [Thurion](#The%20Nations/Thurion%20Merchant%20Alliance) harbour cities adopted one commercial code, so
   that a contract sealed in any of them is enforced in all of them. Everything
   the Alliance is now grew out of that.
 - **Around 1440** [Vaelic](#The%20Nations/Vaelic%20Principality)'s first High Prince brought the electorates under one
   crown, raised the Drake Rider Order, and then swore the Order to the office
   instead of to his own blood. His descendants have had cause to be grateful.
+
+[Tal Ulad](#The%20Nations/Tal%20Ulad) belongs in this age and will not be dated in it. Ask a herd council
+when the confederacy was founded and you are being rude; the route is older
+than the councils, and the councils exist to argue about the route.
 
 ## The Resettlement
 
