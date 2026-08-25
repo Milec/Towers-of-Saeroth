@@ -8,9 +8,11 @@ ambush: the Quivar–Vaelic border, within sight of [[Lazarian Lichdom]]
 ---
 
 A [[Thurion Merchant Alliance]] caravan carrying supplies for an expedition to
-a rumoured fourth tower. The party can be hired guards, factors travelling with
-their own goods, passengers who paid for the escort, or stowaways. All four
-fit a wagon train and none of them need to know each other first.
+a rumoured fourth tower, run by [[Milo Calvetti]], who has never lost a wagon
+train in eleven years for [[Casa Berruel]]. The party can be hired guards,
+factors travelling with their own goods, passengers who paid for the escort,
+or stowaways. All four fit a wagon train and none of them need to know each
+other first.
 
 The caravan is going to be destroyed. That is not a failure state; it is the
 premise. What the party does about *why* is the campaign.
@@ -188,10 +190,11 @@ the campaign is about:
    ruling: they save whatever they work out how to save. See the ambush section
    — the wagons burn because killing a bomber next to one burns it, and every
    way of avoiding that is available to a party that thinks for a round.
-3. **Does the caravan master know?** Knowing makes them the first villain and a
-   loose end Casa Berruel must tidy. Not knowing makes them the first ally, and
-   a witness the house now needs discredited. Not knowing is the stronger
-   session two.
+3. ~~Does the caravan master know?~~ **Settled: [[Milo Calvetti]] doesn't.**
+   Knowing would make him the first villain and a loose end Casa Berruel must
+   tidy. Not knowing makes him the first ally, and a witness the house now
+   needs discredited — the stronger session two, and why the factor checked
+   the seals himself and never once checked the water.
 4. **Does the rumoured tower exist?** Nothing in the vault answers this yet. It
    is more useful unanswered for several sessions — and if it does exist, the
    people who most want to know are [[Lazarus]] and the Magocracy, in that
