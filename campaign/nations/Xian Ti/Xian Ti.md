@@ -15,7 +15,7 @@ them.
 
 - **Founded** c. 600 AR, from the first examination. The ministries are older than the dynasty and have outlasted three of them. Xian Ti dates itself from the first examination rather than from the first emperor, which is a claim about who actually runs the country and is meant to be read as one.
 - **Capital** Renshan, the Celestial City, laid out on a strict grid where a household's address states its rank
-- **Geography** Eastern river valleys and terraced highlands, with a long fortified frontier facing the steppe
+- **Geography** Eastern river valleys and terraced highlands, with a long fortified frontier facing the steppe — [[The Long Frontier]], garrisoned without a break since 1776
 - **Government** Celestial Emperor supported by scholar officials
 - **Races** [[Human|Humans]], [[Tengu|Tengu]], [[Kitsune|Kitsune]], [[Samsaran|Samsarans]], [[Wayang|Wayang]], [[Nagaji|Nagaji]], [[Tanuki|Tanuki]]
 - **Faith** Patron [[Irori]], god of self-perfection — the philosophical justification for the entire examination system. [[Shizuru]] is the imperial house's own goddess of sun and honorable ancestry, [[Daikitsu]] the peasantry's harvest goddess, and [[Abadar]] the ministries'

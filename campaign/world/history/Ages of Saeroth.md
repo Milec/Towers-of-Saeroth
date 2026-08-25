@@ -75,7 +75,12 @@ see [[The God Sundering]].
 | --- | --- | --- |
 | c. 740 | The first Great Khagan is elected rather than acclaimed. The Khaganate is that agreement before it is anything else | [[Khazan Khaganate]] |
 | c. 900 | The crown of Quivar, unbroken from here: the oldest continuous monarchy on the continent and the only great power never conquered | [[Quivar]] |
+| c. 940 | Ashkar Pale is settled under the mountain for the first time. It has been resettled three times since, on the same footings | [[Ashkar Pale]] |
 | c. 1010 | Sahenna's clans swear the Compact and give it to the Storytellers instead of to ink | [[Sahenna Compact]] |
+| c. 1090 | The first Rootmeet. The founding lineages agree one voice each and the Circle has met on that footing ever since | [[Thornwild Confederation]] |
+| c. 1120 | Qeshara's caravan-houses put a Sultan over themselves and keep the right to choose the next one | [[Qeshara Sultanate]] |
+| c. 1150 | The first trial-by-forge. Every Emberlord since has been chosen at a furnace | [[Cindral Ashlands]] |
+| c. 1165 | Sahenna guarantees the road and Qeshara guarantees the wells. The Salt Road pact has been kept without interruption from here | [[Sahenna Compact]] |
 | c. 1180 | Nordheim's jarls record a Great Thing at Hravnfjord. The assembly is centuries older than the kingship it eventually elected | [[Nordheim]] |
 | 1276 | The elven tribes mark the northern pine. Nordheim's logging camps stand inside that line today | [[Elven Confederacy]] |
 | c. 1410 | Thurion's harbour cities adopt one commercial code, so that a contract sealed in any of them is enforced in the rest | [[Thurion Merchant Alliance]] |
@@ -88,7 +93,7 @@ see [[The God Sundering]].
 | --- | --- | --- |
 | 1496 | The Concord founded: one church-state of three orders, holding mercy, the refining fire and the passage together | [[The Sundering of the Concord]] |
 | c. 1700 | Seven duchies with no defensible line between themselves and the steppe unify as the Voskreld Union, on terms that give none of them the capital | [[Voskreld Union]] |
-| 1776 | Khazan and Xian Ti fortify the same line. It has been garrisoned and shot at continuously ever since | [[Khazan Khaganate]] |
+| 1776 | Khazan and Xian Ti fortify the same line. It has been garrisoned and shot at continuously ever since | [[The Long Frontier]] |
 | c. 1940 | Zon-Kuthon and Urgathoa begin working the second and third orders, one high cleric at a time, over the better part of a generation | [[The Sundering of the Concord]] |
 
 ## 1976 – 2305 — The Three Heirs
@@ -98,6 +103,7 @@ see [[The God Sundering]].
 | 1976 | The Sundering, in a single winter. Dalstan walks out in fury with a third of the clergy and founds Ostravin; the third order's high cleric leaves quietly for the delta; Thesal keeps the city and refuses the war it could have won | [[The Sundering of the Concord]] |
 | 1976 | Lazarus takes the throne he made by leaving, and has not left it since | [[Lazarus]] |
 | c. 2000 | The relic trade opens between Ostravin and the Lazarian grave-fields, and has been deniable at both ends for four centuries | [[Dalstan]] |
+| 2041 | The last attempt to take the whole frontier. It fails, the line goes back to where it was, and both countries remember the man who ordered it as a fool for opposite reasons | [[The Long Frontier]] |
 | c. 2116 | The Muster Court at Harrowgate charters its first standing companies. Kelvary has had regiments on both sides of most wars since | [[Kelvary March]] |
 | c. 2190 | A Melisor academy annexes its own hinterland to stop being taxed by it. The Council of Archmages is that faculty board, still meeting | [[Melisor Magocracy]] |
 | c. 2240 | Cindral and Ashkar Pale fight the second and last of their wars over the terraces between them. An eruption ends it; neither side does | [[Cindral Ashlands]] |
