@@ -52,7 +52,7 @@ in the treaty covers a tower.
 ## Character hook
 
 You are travelling with a **Thurion Merchant Alliance** wagon train, out of
-**Tessine** and bound north through **Quivar** for the **Vaelic
+**Tessine** and bound west through **Quivar** for the **Vaelic
 Principality**. The cargo is a season's supplies for an expedition the
 **Melisor Magocracy** is paying for: a fourth tower that nobody has confirmed
 exists, in a valley that three of the Magocracy's competing theories all
