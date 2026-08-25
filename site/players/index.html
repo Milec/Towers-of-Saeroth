@@ -15,22 +15,109 @@
   /* This page is deliberately its own small thing: no tree, no search, no
      graph, no service worker, and no link to the vault in either direction.
      It borrows the parchment palette from styles.css and nothing else. */
-  .pmain { max-width: 74ch; margin: 0 auto; padding: 26px clamp(14px, 4vw, 40px) 90px; }
-  .ptabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 22px; }
-  .ptab {
-    padding: 7px 13px; border: 1px solid var(--rule); border-radius: 999px;
-    background: var(--panel); color: var(--ink); font: inherit; font-size: 14.5px;
-    cursor: pointer;
+  /* styles.css pins html and body to 100dvh because the vault app scrolls an
+     inner element. This page scrolls the document instead, so a body that
+     tall is a box the content overflows — and a sticky child can only stick
+     inside its own containing block, which is why the topbar scrolled away
+     the moment anything below it was made sticky. Let the body grow. */
+  html, body { height: auto; min-height: 100%; }
+
+  /* ---- palette -------------------------------------------------------
+     Taken off the sigil: near-black ground, antique gold line-work, blood
+     crimson. Declared three times over the way styles.css does it — bare
+     :root for light, [data-theme] for an explicit choice, and the media
+     query for the default "system" setting, which stamps no attribute. */
+  :root {
+    --p-gold: #9c7a41; --p-gold-soft: #c2a878; --p-gold-wash: #f0e6cf;
+    --p-crimson: #8e1524; --p-crimson-ink: #7a1120;
   }
-  .ptab:hover { border-color: var(--muted); }
-  .ptab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .pfoot { margin-top: 44px; padding-top: 14px; border-top: 1px solid var(--rule);
+  :root[data-theme="dark"] {
+    --bg: #131211; --panel: #1c1a17; --rule: #38312a;
+    --p-gold: #c29a58; --p-gold-soft: #8b7142; --p-gold-wash: #241f18;
+    --p-crimson: #c2334a; --p-crimson-ink: #d9576b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131211; --panel: #1c1a17; --rule: #38312a;
+      --p-gold: #c29a58; --p-gold-soft: #8b7142; --p-gold-wash: #241f18;
+      --p-crimson: #c2334a; --p-crimson-ink: #d9576b;
+    }
+  }
+
+  .pmain { max-width: 74ch; margin: 0 auto; padding: 18px clamp(14px, 4vw, 40px) 90px; }
+
+  /* ---- navigation ----------------------------------------------------
+     Seven tabs wrapped onto three rows of chips and pushed the page down
+     with furniture. One row that scrolls sideways holds any number of them,
+     stays put while you read, and keeps the current one visible because
+     show() scrolls it into view. */
+  .ptabnav {
+    position: sticky; top: var(--topbar-h, 55px); z-index: 20;
+    padding: 9px clamp(14px, 4vw, 40px) 10px;
+    background: var(--bg); border-bottom: 1px solid var(--rule);
+  }
+  .ptabnav::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--p-gold), transparent);
+    opacity: .5;
+  }
+  .ptabs {
+    max-width: min(1120px, 100%); margin: 0 auto;
+    display: flex; flex-wrap: nowrap; gap: 6px; overflow-x: auto;
+    scrollbar-width: none; -ms-overflow-style: none;
+    scroll-snap-type: x proximity; scroll-padding-inline: 8px;
+    -webkit-overflow-scrolling: touch;
+    mask-image: linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+  }
+  .ptabs::-webkit-scrollbar { display: none; }
+  .ptab {
+    flex: 0 0 auto; scroll-snap-align: start; white-space: nowrap;
+    padding: 7px 14px; border: 1px solid var(--rule); border-radius: 999px;
+    background: var(--panel); color: var(--ink); font: inherit; font-size: 14.5px;
+    cursor: pointer; transition: border-color .12s, color .12s;
+  }
+  .ptab:hover { border-color: var(--p-gold); color: var(--p-crimson-ink); }
+  .ptab[aria-selected="true"] {
+    background: var(--p-crimson); border-color: var(--p-crimson); color: #fff;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--p-gold) 65%, transparent);
+  }
+  .ptab:focus-visible { outline: 2px solid var(--p-gold); outline-offset: 2px; }
+
+  /* The sigil, first thing on the welcome page. */
+  .pdoc p.psigil { margin: 26px 0 6px; text-align: center; }
+  .pdoc p.psigil img {
+    display: inline-block; width: min(280px, 62%); max-width: 280px;
+    height: auto; border: 0; border-radius: 50%;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--p-gold) 45%, transparent),
+                0 10px 34px rgba(0,0,0,.42);
+  }
+
+  .pfoot { margin-top: 44px; padding-top: 14px; border-top: 1px solid var(--p-gold-soft);
            color: var(--muted); font-size: 13px; }
-  .pdoc h1 { font-size: 1.95em; margin: .1em 0 .5em; border-bottom: 2px solid var(--rule); padding-bottom: .2em; }
-  .pdoc h2 { font-size: 1.35em; margin: 1.5em 0 .4em; }
+  .pdoc h1 {
+    font-size: 1.95em; margin: .55em 0 .45em; padding-bottom: .22em;
+    color: var(--p-crimson); letter-spacing: .005em;
+    border-bottom: 2px solid var(--p-gold);
+  }
+  .pdoc h2 {
+    font-size: 1.35em; margin: 1.6em 0 .4em; color: var(--p-crimson);
+  }
+  .pdoc h2::before {
+    content: ''; display: inline-block; width: 12px; height: 1px;
+    margin: 0 .5em .3em 0; background: var(--p-gold); vertical-align: middle;
+  }
+  .pdoc h3 { color: var(--p-gold); margin: 1.3em 0 .3em; }
+  .pdoc a { color: var(--p-crimson-ink); text-decoration-color: var(--p-gold); }
   .pdoc table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; margin: 1em 0; }
-  .pdoc th, .pdoc td { border: 1px solid var(--rule); padding: 7px 10px; text-align: left; vertical-align: top; }
-  .pdoc th { background: var(--panel); }
+  .pdoc th, .pdoc td {
+    border: 1px solid color-mix(in srgb, var(--p-gold) 34%, transparent);
+    padding: 7px 10px; text-align: left; vertical-align: top;
+  }
+  .pdoc th {
+    background: var(--p-gold-wash); color: var(--p-crimson-ink);
+    border-bottom-color: var(--p-gold); font-size: .92em;
+    text-transform: uppercase; letter-spacing: .05em;
+  }
   .pdoc td:first-child { white-space: nowrap; }
   .pdoc figure { margin: 1.4em 0; }
   .pdoc img {
@@ -40,7 +127,9 @@
   .pdoc img + em, .pdoc figcaption {
     display: block; margin-top: 7px; color: var(--muted); font-size: 13px;
   }
-  .pdoc blockquote { margin: 1em 0; padding: .1em 1em; border-left: 3px solid var(--rule); color: var(--muted); }
+  .pdoc blockquote { margin: 1em 0; padding: .1em 1em; border-left: 3px solid var(--p-gold); color: var(--muted); }
+  .pdoc hr { border: 0; border-top: 1px solid var(--p-gold-soft); margin: 1.8em 0; }
+  .pdoc strong { color: color-mix(in srgb, var(--ink) 84%, var(--p-crimson)); }
 
   /* The world map, on the Nations page only. The image and the nation
      positions are both generated out of campaign/Saeroth.map, so this stays
@@ -53,7 +142,8 @@
   .pmap { margin: 18px 0 22px; }
   .pmapbox {
     position: relative; overflow: auto; overscroll-behavior: contain;
-    border: 1px solid var(--rule); border-radius: 12px; background: var(--panel);
+    border: 1px solid color-mix(in srgb, var(--p-gold) 40%, transparent);
+    border-radius: 12px; background: var(--panel);
     max-height: min(64vh, 560px); -webkit-overflow-scrolling: touch;
   }
   .pmapinner { position: relative; width: calc(100% * var(--z, 1)); min-width: 100%; cursor: crosshair; }
@@ -65,14 +155,14 @@
   }
   .ppin.sel {
     width: 16px; height: 16px; margin: -8px 0 0 -8px;
-    background: var(--accent); border-color: #fff;
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 40%, transparent);
+    background: var(--p-crimson); border-color: var(--p-gold-soft);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--p-crimson) 38%, transparent);
   }
   .ppinlbl {
     position: absolute; transform: translate(-50%, -170%); white-space: nowrap;
     padding: 2px 7px; border-radius: 999px; font-size: 12px; font-weight: 600;
-    background: var(--accent); color: #fff; pointer-events: none;
-    box-shadow: 0 1px 4px rgba(0,0,0,.3);
+    background: var(--p-crimson); color: #fff; pointer-events: none;
+    box-shadow: 0 0 0 1px var(--p-gold-soft), 0 1px 4px rgba(0,0,0,.4);
   }
   .pmapbar { display: flex; align-items: center; gap: 7px; margin-top: 9px; }
   .pmapbar .muted { font-size: 12.5px; }
@@ -83,10 +173,11 @@
   }
   .pzoom:hover { border-color: var(--muted); }
   .pcard {
-    margin-top: 12px; border: 1px solid var(--rule); border-radius: 12px;
-    padding: 12px 14px; background: var(--panel);
+    margin-top: 12px; border-radius: 12px; padding: 12px 14px;
+    background: var(--panel);
+    border: 1px solid color-mix(in srgb, var(--p-gold) 40%, transparent);
   }
-  .pcard h3 { margin: 0 0 6px; font-size: 1.15em; }
+  .pcard h3 { margin: 0 0 6px; font-size: 1.15em; color: var(--p-crimson); }
   .pcard dt {
     font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em;
     color: var(--muted); margin-top: 8px;
@@ -100,7 +191,7 @@
     text-decoration: underline; text-decoration-style: dotted;
     text-underline-offset: 3px; text-align: left;
   }
-  .pnamebtn:hover { color: var(--accent); }
+  .pnamebtn:hover { color: var(--p-crimson-ink); }
 
   /* The prose column is about 512px, which is right for prose and wrong for
      a four-column table of it — 125px a column is the same ribbon the phone
@@ -124,9 +215,11 @@
     .pdoc table, .pdoc tbody, .pdoc tr, .pdoc td { display: block; width: auto; }
     .pdoc thead { display: none; }
     .pdoc tr {
-      border: 1px solid var(--rule); border-radius: 10px;
-      padding: 11px 13px; margin: 0 0 10px;
+      border: 1px solid color-mix(in srgb, var(--p-gold) 30%, transparent);
+      border-radius: 10px; padding: 11px 13px; margin: 0 0 10px;
+      background: color-mix(in srgb, var(--panel) 55%, transparent);
     }
+    .pdoc td:first-child { color: var(--p-crimson-ink); }
     .pdoc td { border: 0; padding: 3px 0; white-space: normal; }
     .pdoc td:first-child { font-weight: 700; font-size: 1.06em; padding-bottom: 6px; }
     .pdoc td[data-label]::before {
@@ -146,8 +239,9 @@
   </button>
 </header>
 
+<nav class="ptabnav"><div class="ptabs" id="tabs" role="tablist"></div></nav>
+
 <main class="pmain">
-  <div class="ptabs" id="tabs" role="tablist"></div>
   <article class="pdoc" id="doc">Loading…</article>
   <p class="pfoot">A traveller's picture of the world — what people say, not
     necessarily what is so.</p>
@@ -183,6 +277,23 @@
       reloading = true;
       location.reload();
     });
+  }
+
+  /* The tab strip is sticky beneath the topbar, and the topbar is not a
+     fixed height: installed to an iOS home screen it grows by the safe-area
+     inset. styles.css ships --topbar-h as a 55px starting guess and app.js
+     remeasures it, but app.js does not run here, so this page has to do it
+     itself or the strip sits over the bar or under a gap. */
+  function syncTopbarHeight() {
+    const bar = document.querySelector('.topbar');
+    if (!bar) return;
+    document.documentElement.style.setProperty(
+      '--topbar-h', Math.round(bar.getBoundingClientRect().height) + 'px');
+  }
+  syncTopbarHeight();
+  addEventListener('resize', syncTopbarHeight);
+  if (window.ResizeObserver) {
+    new ResizeObserver(syncTopbarHeight).observe(document.querySelector('.topbar'));
   }
 
   const tabs = document.getElementById('tabs');
@@ -390,9 +501,25 @@
     }
   }
 
+  /* A document whose first block is nothing but an image is a sigil rather
+     than an illustration, and gets centred and rounded instead of running
+     the width of the column. */
+  function markSigil(root) {
+    const first = root.firstElementChild;
+    if (first && first.tagName === 'P' && first.children.length === 1
+        && first.firstElementChild.tagName === 'IMG'
+        && !first.textContent.trim()) {
+      first.classList.add('psigil');
+    }
+  }
+
   async function show(i) {
     current = i;
-    [...tabs.children].forEach((b, n) => b.setAttribute('aria-selected', n === i ? 'true' : 'false'));
+    [...tabs.children].forEach((b, n) => {
+      const on = n === i;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      if (on) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    });
     location.hash = '#' + encodeURIComponent(pages[i].file.replace(/\.md$/, ''));
     doc.innerHTML = '<p class="muted">Loading…</p>';
     try {
@@ -401,6 +528,7 @@
       doc.innerHTML = marked.parse(clean(await res.text()));
       labelCells(doc);
       resolveImages(doc);
+      markSigil(doc);
       scrollTo(0, 0);
       if (pages[i].file === MAP_PAGE) await mountMap(doc);
     } catch (e) {
