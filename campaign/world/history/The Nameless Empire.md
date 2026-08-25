@@ -125,10 +125,13 @@ had stopped finding it remarkable generations before the Ritual.
 
 The erasure took nearly all of it, the same way it took the empire's name.
 What survives is buried in the same handful of ruins as the etchings above —
-a stone housing here, a fused gear there, never a whole device — and for
-twenty years [[Melisor Magocracy]] and [[Silicar]] have been quietly digging
-it back out of the ground and calling it their own invention. See
-[[Magitech]]. Neither academy knows whose hands built what they're holding.
+a whole aeon stone here, a fused gear or a scrap of housing there, never a
+whole device — and for twenty years [[Melisor Magocracy]] and [[Silicar]]
+have been quietly working the cutting and the wiring back out of what they
+found. Most of what either academy ships now was never dug up at all; it
+was built fresh on the recovered method, and both call the result their own
+invention. See [[Magitech]]. Neither academy knows whose method it's
+actually using.
 
 ## At the table
 
