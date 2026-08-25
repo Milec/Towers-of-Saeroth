@@ -114,6 +114,10 @@ on both sides at once, on a continent that fed itself, and the winter that
 followed killed more people in five months than nine years of fighting had
 managed — most of them in nations that never raised a soldier.
 
+Why it reached that far is in [[Economy]]: three nations grow the west's bread,
+both crowns were Vaelic, and the war was fought inside the grain belt rather
+than along its edge.
+
 The Hungry Year is why the [[The Pilgrim's Peace|Pilgrim's Peace]] reads as it does. Every clause
 in it with teeth is about credit, supply and food rather than about armies.
 
