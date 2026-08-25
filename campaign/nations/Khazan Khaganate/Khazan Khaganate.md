@@ -15,7 +15,7 @@ to plan around: fearsome warriors who keep their word.
 
 - **Founded** c. 740 AR, by the first Khagan to make the khans elect rather than fight for it. The Khaganate is an agreement about succession before it is anything else. Other steppe confederations have written the same agreement and broken it inside a generation; this one has held for sixteen hundred years.
 - **Capital** Ordu-Khazan, a tent-city of forty thousand that strikes camp and moves with the Great Khagan
-- **Geography** Open steppe from horizon to horizon, broken by iron-rich hill country in the south and the horse-pastures the whole economy rests on
+- **Geography** Open steppe from horizon to horizon, broken by iron-rich hill country in the south and the horse-pastures the whole economy rests on. Its northern edge is [[The Long Frontier]], which is where khans are made
 - **Government** Great Khagan elected by the assembled khans
 - **Races** [[Orc|Orcs]], [[Hobgoblin|Hobgoblins]], [[Goblin|Goblins]], [[Bugbear|Bugbears]], [[Ogre|Ogres]], [[Kobold|Kobolds]], [[Centaur|Centaurs]], [[Minotaur|Minotaurs]], other monstrous peoples
 - **Faith** Patron [[Gorum]], who cares only that the fight was fought well, and whose sign the war-bands ride under. [[Desna]] is the other half of Khazan devotion. Goddess of stars and the open road, and every nomad on the steppe navigates by her
