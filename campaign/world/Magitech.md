@@ -22,7 +22,9 @@ theorists, the ley-lines and the funding to ask.
 generations on locks, gearing and irrigation wants to know which of its
 mechanisms get better with a working inside them, and Silicar has the
 workshops, the clockwork trade and a habit of building the thing before
-arguing about it.
+arguing about it. It is also the guild that invented the firelock, by
+accident, and has never once let that trade and this one share a bench. See
+[[Technology]].
 
 Neither of them finds this funny. Everybody else does.
 
