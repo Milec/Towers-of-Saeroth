@@ -20,6 +20,7 @@ entirely on who you ask, and when.
 - **Geography** Coastal lowlands and working harbors; little defensible terrain, which is why the militia matters
 - **Government** Elected Assembly of Citizens, led by a term-limited Chancellor
 - **Races** [[Human|Humans]], [[Elf|Elves]], [[Dwarf|Dwarves]], [[Halfling|Halflings]], [[Half-Elf|Half-Elves]], [[Half-Orc|Half-Orcs]], [[Tiefling|Tieflings]]; refugees and dissidents of every kind
+- **Naming** Plain Anglo-Dutch, mercantile, short. Wilhelmina Croft, Ansel Deeb
 - **Faith** Patron [[Milani]], goddess of hope and uprising, whose worship the Republic's founders brought with them out of the places they fled. [[Cayden Cailean]] is nearly as popular for liberty's sake, and the Assembly itself keeps [[Abadar]] for the civic law
 - **Economic Specialties** Printing and publishing, shipbuilding, textiles, civic engineering, legal and diplomatic services
 - **Military** Citizen militia drawn from every trade, volunteer regiments, a coastal defense fleet, city watch companies

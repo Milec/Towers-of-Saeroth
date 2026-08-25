@@ -20,6 +20,7 @@ not joking
 - **Geography** A chain of active volcanoes and the obsidian flats between them; the land is fertile, lethal, and reshapes itself every few decades
 - **Government** The Emberlord, chosen by trial-by-forge
 - **Races** [[Ifrit|Ifrits]], [[Oread|Oreads]], [[Dwarf|Dwarves]] (volcanic-forge lineages, distinct from the northern holds), [[Human|Humans]]
+- **Naming** Fire compounds, and ifrit names that predate the language. Zafira Cinderlock, Bhast
 - **Culture** Trial by fire is not a metaphor in Cindral — it's a literal rite of passage for rulers, smiths, and soldiers alike. What survives the forge is trusted; what doesn't wasn't worth keeping.
 - **Faith** Patron [[Angradd]], the forge-fire and the god of war fought face-forward, whose trial the Emberlord's own succession imitates. [[Torag]] is honored beside him by the dwarven lineages, and [[Sarenrae]] for fire's cleansing rather than its making
 - **Economic Specialties** Volcanic glass, fire-forged steel, obsidian craftsmanship, geothermal engineering, rare pyroclastic minerals

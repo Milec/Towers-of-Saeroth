@@ -17,6 +17,7 @@ to be brought to one. It has never made anybody talk less.
 - **Geography** Temperate wine country of river valleys and chateaux, with a soft coastline that has never needed serious fortification
 - **Government** Absolute monarchy supported by an influential royal court
 - **Races** [[Human|Humans]], [[Half-Elf|Half-Elves]]
+- **Naming** French. Amélie Bonnard, Gaspard Villiers
 - **Faith** Patron [[Shelyn]], goddess of art, beauty and love. The devotion is real, and it is also the face Quivar shows the world. [[Calistria]] keeps intrigue, revenge and exquisite grudges, and she is the one the court prays to before a difficult evening
 - **Economic Specialties** Wine, fashion, perfume, fine art, luxury goods
 - **Military** Elite chevaliers, the Royal Guard, musketeer-style skirmishers carrying [[Technology|firelocks]] Silicar has never licensed to anyone, and the Service, which the Diet of a neighbouring country would tell you counts as the largest of the four

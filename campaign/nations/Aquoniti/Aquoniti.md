@@ -17,6 +17,7 @@ continent outmaneuvers theirs.
 - **Geography** A wide archipelago and the reef-cities beneath it; the Tide Lords' authority is measured in sea lanes rather than land borders
 - **Government** Council of Tide Lords
 - **Races** [[Merfolk|Merfolk]], [[Triton|Tritons]], [[Azarketi|Azarketi]], [[Aquatic Elf|Sea Elves]], [[Athamaru|Athamaru]], [[Tripkee|Tripkee]]
+- **Naming** Greek, and the sea words are theirs. Nerissa, Kallias of the Reef
 - **Faith** Patron [[Gozreh]], who governs the moods of the sea Aquoniti sailors read like a second language. [[Desna]] is the navigator's goddess, worshipped by star-sight; the salvage crews and privateers keep [[Besmara]] and don't advertise it
 - **Economic Specialties** Pearls, coral, fisheries, maritime trade, salvage
 - **Military** Naval fleets, marine infantry, sea beast cavalry, water magic

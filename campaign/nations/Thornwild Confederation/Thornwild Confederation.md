@@ -18,6 +18,7 @@ them.
 - **Geography** Dense southern jungle worked in three layers — forest floor, canopy settlement, and the river routes that connect them
 - **Government** The Circle of First Packs — one voice per founding clan-lineage
 - **Races** [[Catfolk|Catfolk]], [[Gnoll|Gnolls]], [[Ratfolk|Ratfolk]], [[Vanara|Vanara]], [[Kholo|Kholo]], [[Grippli|Grippli]]
+- **Naming** Descriptions rather than names, and no surnames at all. Bramble, Fennec Nine-Rivers
 - **Culture** Instinct is trusted over doctrine. Clan bonds run through shared totem-kinship as much as bloodline, and a Thornwild elder's authority rests on the respect of the beasts as much as the people.
 - **Faith** The [[Green Faith]] rather than any named patron — the Thornwild reveres the living world directly, and finds the idea of a god who lives elsewhere faintly absurd. [[Gozreh]] is the exception most clans will name, invoked for storm and beast alike
 - **Economic Specialties** Jungle medicinals, exotic pelts, beast-tamed livestock, canopy timber, venom and toxin trade

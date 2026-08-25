@@ -19,6 +19,7 @@ They don't always.
 - **Geography** River plains between the mountains and the steppe. Good farmland, and not one ridge worth holding. That is why the duchies unified
 - **Government** The Voskreld Crown, advised by a Provincial Council of the old duchies
 - **Races** [[Human|Humans]] (from several once-rival provincial peoples), [[Dwarf|Dwarves]], [[Halfling|Halflings]], [[Goblin|Goblins]], [[Half-Elf|Half-Elves]]
+- **Naming** Slavic. Miroslav Petrek, Danika Vetrova
 - **Faith** Patron [[Abadar]] as god of roads, law and the standardized measure, chosen at unification because he belonged to none of the old duchies. [[Erastil]] is still the provinces' real faith. [[Gorum]] is the Legion's
 - **Economic Specialties** Standardized coinage and measures, armaments manufacturing, grain surplus redistribution, road and canal infrastructure, and the Register — the national [[Magic|practitioners' guild]], which standardised what a working is worth the same way it standardised the ell
 - **Military** The Unified Legion, an integrated multiethnic conscript army; provincial militia reserves, engineer corps, royal cannon foundries — the largest gunpowder [[Technology|industry]] anywhere, and the one nobody argues is stolen

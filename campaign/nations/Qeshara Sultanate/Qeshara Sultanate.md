@@ -22,6 +22,7 @@ finds hardest to argue with.
 - **Government** A Sultan chosen by the Court of Viziers from among the
   great caravan-houses, and confirmed by the reading of the stars
 - **Races** [[Human|Humans]] and a substantial [[Ifrit|Ifrit]] minority,
+- **Naming** Persian and Arabic, and the court prefers the longer form. Roshanak, Vizier Tahir al-Myrrh
   prominent among the glassworkers and the star-tower keepers, where the heat
   nobody else will stand in is only home
 - **Faith** Patron [[Abadar]], for a court built on trade and contract law;

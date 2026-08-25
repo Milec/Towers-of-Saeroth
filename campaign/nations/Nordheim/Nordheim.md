@@ -17,6 +17,7 @@ forgotten life is.
 - **Geography** Fjords, taiga, and whale coasts; the interior is mountain and the sea is the road
 - **Government** The High King is elected by the assembly of Jarls at the Great Thing
 - **Races** [[Human|Humans]], [[Dwarf|Dwarves]], [[Jotunborn|Goliaths]]
+- **Naming** Old Norse, with patronymics rather than surnames. Sigrún Ketilsdóttir, Hravn Bjarnsson
 - **Faith** Patron [[Cayden Cailean]], god of bravery, freedom and the guest-cup, which is the closest thing Nordheim has to a national creed. [[Gorum]] is kept for war and [[Desna]] for the long voyages; the oldest sagas still invoke [[Trudd]]
 - **Economic Specialties** Timber, furs, amber, iron, shipbuilding, whaling
 - **Military** Shield walls, berserkers, longship fleets, elite axemen, mountain scouts

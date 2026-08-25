@@ -23,6 +23,7 @@ of the working — which has left the discipline to duellists like
 - **Geography** A high plateau chosen for the ley-lines beneath it; academy-cities scattered across it, linked by teleportation circles rather than roads
 - **Government** Council of Archmages representing the greatest magical academies
 - **Races** [[Human|Humans]], [[Elf|Elves]], [[Gnome|Gnomes]], [[Tiefling|Tieflings]], [[Fetchling|Fetchlings]], any race with magical aptitude
+- **Naming** Latinate and invented for effect, because half of them chose it. Thessaly Orne, Magister Calvane
 - **Faith** Patron [[Nethys]], god of magic in all its forms, whose temple sits at the centre of every academy campus. [[Irori]] is the scholar's second god here — self-perfection through study is how Melisor justifies its own hierarchy
 - **Economic Specialties** Spellcasting services, enchanted items, magical education, teleportation networks, alchemy, magical research
 - **Military** Battle mages, arcane artillery, summoners, golems, elite mage hunters

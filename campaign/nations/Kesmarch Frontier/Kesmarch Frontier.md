@@ -19,6 +19,7 @@ land has to be held.
 - **Geography** Open plains giving way to jungle edge in the south; the border is wherever the newest homestead stands this year
 - **Government** Elected Territorial Council, ratified under a founding charter
 - **Races** [[Human|Humans]], [[Halfling|Halflings]], [[Dwarf|Dwarves]], [[Half-Orc|Half-Orcs]], [[Gnome|Gnomes]]; settlers out of every neighbouring nation's overflow
+- **Naming** Colonial English, scriptural first names, hard surnames. Josiah Pike, Nell Awber
 - **Faith** Patron [[Erastil]], god of the homestead, the hunt, and the family that holds both. [[Desna]] is kept by anyone still travelling. [[Cayden Cailean]] by everyone who left somewhere else to get here
 - **Economic Specialties** Furs, timber, ranching, homestead grain, prospecting, wagon-trade
 - **Military** Militia rangers, homestead defense companies, scout cavalry, frontier marshals

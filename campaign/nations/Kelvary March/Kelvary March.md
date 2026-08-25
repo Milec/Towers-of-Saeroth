@@ -26,6 +26,7 @@ chartered company will put its seal on.
 - **Geography** Rolling hill country and horse pasture, poor for grain and excellent for training; every ridge has an old earthwork on it from a company practising
 - **Government** A Muster Court of company captains and paymasters that regulates contracts, arbitrates disputes, and governs the March almost as an afterthought
 - **Races** [[Human|Humans]], [[Half-Orc|Half-Orcs]], [[Hobgoblin|Hobgoblins]], [[Dwarf|Dwarves]], [[Orc|Orcs]], [[Centaur|Centaurs]]
+- **Naming** Blunt northern English, one syllable where two would do. Rook Harrow, Beatrix Vane
 - **Faith** [[Gorum]] for the fighting and [[Abadar]] for the contract, kept in the same building and argued about constantly. The March has never resolved which of them the oath is actually sworn to
 - **Economic Specialties** Contract regiments, officer training, remounts, armour and field kit, and a genuinely sophisticated insurance market covering the whole business
 - **Military** Twenty-odd chartered companies, the best drilled on the continent — and, by charter, never more than four of them at home at once

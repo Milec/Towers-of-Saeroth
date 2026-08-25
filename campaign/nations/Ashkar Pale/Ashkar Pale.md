@@ -20,6 +20,7 @@ a cart.
 - **Geography** Broad ash plains and terraced river valleys under the volcanic highland; every settlement sits within a day of a marked evacuation road
 - **Government** A Warden elected for seven years, who may order an evacuation without consulting anyone and answers for it afterwards
 - **Races** [[Human|Humans]], [[Oread|Oreads]], [[Dwarf|Dwarves]], [[Ifrit|Ifrits]], [[Halfling|Halflings]]
+- **Naming** Clipped and practical, often after the ground itself. Hesper Vetch, Orin Dalk
 - **Faith** [[Erastil]] for the harvest and the household, kept plainly; [[Pharasma]] for the counting of the dead after a fall, since the Pale has never pretended those years do not come
 - **Economic Specialties** Grain and vine crops of exceptional quality, sulphur, pumice, glass, ash-glaze pottery, salvage work after a fall
 - **Military** A militia of every able adult, organized by ward; drilled for evacuation as much as for war, and unnervingly good at both

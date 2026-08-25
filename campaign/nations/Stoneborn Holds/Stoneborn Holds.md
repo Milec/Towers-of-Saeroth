@@ -17,6 +17,7 @@ last of its kind; it's meant to be inherited.
 - **Geography** A northern mountain range, with most of the nation's living space cut downward into it rather than built on top
 - **Government** Assembly of High Thanes
 - **Races** [[Dwarf|Dwarves]], small [[Human|human]] merchant communities
+- **Naming** Compounds that describe a trade or a deed. Durgan Ironmark, Halla Stonewright
 - **Faith** Patron [[Torag]], honored in every forge-hall as the maker who never stops working. [[Magrim]] receives the dead and the oaths that outlive them; the human merchant quarters keep [[Abadar]] instead, which the thanes tolerate as a trade concession
 - **Economic Specialties** Steel, gold, gems, engineering, masterwork weapons
 - **Military** Heavy infantry, shield walls, tunnel fighters, engineers

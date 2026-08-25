@@ -21,6 +21,7 @@ left alone on both.
 - **Geography** High open grassland and shallow river valleys, grazed in a four-season circuit; the only permanent structures are winter byres and burial cairns
 - **Government** Herd-councils of the families sharing a route, with a Season-Speaker elected at the spring gathering to speak for all of them until the next
 - **Races** [[Human|Humans]], [[Centaur|Centaurs]], [[Kholo]], [[Catfolk]], [[Half-Orc|Half-Orcs]], [[Gnoll|Gnolls]]
+- **Naming** Berber and Maghrebi Arabic, with the clan in the name. Idir ag Ulad, Tanit oult Meskan
 - **Faith** [[Gozreh]] for the weather that decides everything, and [[Desna]] for the road and the stars they navigate it by. [[Erastil]] is kept by the winter camps alone
 - **Economic Specialties** Horses above all, and cattle, wool, felt, hard cheese, leatherwork, and safe passage sold to caravans crossing the uplands
 - **Military** Every adult rides and shoots; no standing army and no need of one, since nothing on the uplands can be caught by anything on foot

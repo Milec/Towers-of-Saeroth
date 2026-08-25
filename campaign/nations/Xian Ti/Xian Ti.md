@@ -18,6 +18,7 @@ them.
 - **Geography** Eastern river valleys and terraced highlands, with a long fortified frontier facing the steppe — [[The Long Frontier]], garrisoned without a break since 1776
 - **Government** Celestial Emperor supported by scholar officials
 - **Races** [[Human|Humans]], [[Tengu|Tengu]], [[Kitsune|Kitsune]], [[Samsaran|Samsarans]], [[Wayang|Wayang]], [[Nagaji|Nagaji]], [[Tanuki|Tanuki]]
+- **Naming** Chinese, family name first, and a rank if they have one. Lin Renshu, Minister Zhao Wei
 - **Faith** Patron [[Irori]], god of self-perfection — the philosophical justification for the entire examination system. [[Shizuru]] is the imperial house's own goddess of sun and honorable ancestry, [[Daikitsu]] the peasantry's harvest goddess, and [[Abadar]] the ministries'
 - **Economic Specialties** Silk, tea, porcelain, paper, scholarship, and the Bureau of Concordant Working, the national [[Magic|practitioners' guild]], which is a ministry like any other and examines like one
 - **Military** Professional armies, monastic warriors, horse archers, battle mages

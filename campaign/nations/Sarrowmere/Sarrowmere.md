@@ -19,6 +19,7 @@ They resent it at the same time, and see no contradiction in that.
 - **Geography** A vast freshwater fen of channels, reed islands and drowned forest; nothing is more than a mile from navigable water and nothing at all is more than ten feet above it
 - **Government** A confederation of eleven cantons, each governed by its physicians' guild, meeting four times a year and agreeing on very little
 - **Races** [[Human|Humans]], [[Grippli|Grippli]], [[Lizardfolk]], [[Halfling|Halflings]], [[Leshy|Leshys]], [[Ratfolk]]
+- **Naming** English fenland, damp and old. Wren Ilmen, Cobb Marrish
 - **Faith** [[Pharasma]] above all. The goddess of birth and death is a fitting patron for a nation that presides over both professionally. [[Milani]] is kept by the canton physicians who treat whoever arrives, whatever they have done
 - **Economic Specialties** Medicines, antitoxins, surgical work, rare fen reagents, leeches and cultured moulds, punts and shallow-draft boats
 - **Military** Almost none in the open field; the fen is the defence, and canton levies who know the channels have drowned two invasions without a pitched battle
