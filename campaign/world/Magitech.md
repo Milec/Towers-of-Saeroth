@@ -38,16 +38,29 @@ than not. The metal itself is usually an alloy — a single pure metal holds a
 working's shape badly, and every workshop guards its own blend like a
 vintner guards a cellar.
 
-Power is the harder problem, and both academies solved it the same way
-without comparing notes: a low-level aeon stone, seated where the load
-actually sits, does the work; a second gem, cut with a rune to give that
-work its shape, decides what the work actually does; and a pattern of
-inlaid metal joins the two, standing in for anything a smith would call a
-wire. Nobody has yet built a device around an aeon stone stronger than
-low-level. Whether that is a limit of the technique or simply because
-nothing stronger has turned up to try, Melisor and Silicar give two
-different answers in public and privately admit to the same one: they
-don't know.
+Power is the harder problem, and neither academy solved it from nothing. An
+aeon stone in this trade is not a separate battery wired to a separate
+gem — it is the gem, a low-level stone cut with a rune that decides what it
+does and does the work at once, ruby for fire, diamond for a ward, whatever
+the trade calls for. Twenty years ago nobody in either academy knew how to
+cut one. What they had were low-level stones pulled whole out of old ruins,
+enough of them, studied long enough, to work the cutting back out from the
+finished article. The same ruins gave up broken housings alongside the
+stones: scraps of alloy still holding the pattern of inlaid metal that once
+joined a stone to whatever it powered, which is where the trade got its
+wiring without inventing that twice either. Nobody has yet cut a stone
+stronger than low-level. Whether that is a limit of the recovered method or
+simply because nothing stronger has ever turned up to copy, Melisor and
+Silicar give two different answers in public and privately admit to the
+same one: they don't know.
+
+Not everything that ships is a find. A few pieces are close reconstructions
+of something pulled half-whole out of a ruin and finished in a workshop; the
+rest are new work, designed from scratch around the recovered stone and the
+recovered wiring, that happened to solve a problem the empire had already
+solved once. Nobody building either kind knows which one they're holding,
+because nobody building either kind knows there is a difference to ask
+about.
 
 Twenty years in, [[Silicar]]'s workshops have shipped a handful of things:
 
@@ -131,12 +144,15 @@ and what they do about it is a campaign. The resemblance is real. See
 Neither academy will say so, because neither can prove it and both suspect
 it: nothing either of them has ever cracked open, out of a ruin or off a
 tower's doorstep or out of the odd fused fragment the Wildlands occasionally
-returns, is younger than any archive either keeps. Magitech is not being
-invented twice. It is being remembered, one recovered stone or gear or
-housing at a time, by people who have no idea whose memory it is — which is
-exactly why the study is equal parts archaeology, theory, engineering and
-raw working, and why neither Melisor nor Silicar will say in public where
-the first fragments came from.
+returns, is younger than any archive either keeps. What came out of the
+ground first were whole low-level aeon stones and enough broken housings
+beside them to work out how the cutting and the wiring were done — twenty
+years of study bought back a *method*, not an inventory. Most of what ships
+today was never dug up at all; it was built fresh from that recovered
+method, by people solving an ordinary problem who have no idea they are
+solving one the empire already solved once. That is exactly why the study
+is equal parts archaeology, theory, engineering and raw working, and why
+neither Melisor nor Silicar will say in public where the method came from.
 
 At its height the empire ran all of this as furniture, not as a wonder two
 academies would spend a generation racing to re-derive: railguns, high-speed
@@ -144,12 +160,15 @@ rail between its own cities, a portal network wide enough to reach
 [[Luaris]], Saeroth's own moon, and exosuits for any labor a body alone
 couldn't do. Trade tools nobody in it would have called magic, because
 getting the work done was the point and not the marvel of it. The erasure
-took nearly all of that the same way it took the empire's name. A
-wayfinder, a lamp, a lighter, a slate, a diving mask, a warded clasp, a
-presser and a seasoning dish, none of it running on anything stronger than
-a low-level stone because nothing stronger has ever turned up in the
-wreckage — that double handful of pocket-sized objects is what twenty years
-of digging has bought two academies back. Neither has any idea it dug up
-the same civilization the other one did. Silicar built what each fragment
-was already shaped to do. Melisor built what would impress a Council
-chamber, and neither choice was ever really about the stone.
+took nearly all of that the same way it took the empire's name, the method
+included. A wayfinder, a lamp, a lighter, a slate, a diving mask, a warded
+clasp, a presser and a seasoning dish, none of it running on anything
+stronger than a low-level stone because nothing stronger has ever turned up
+to copy — a few of that list are a fragment rebuilt whole, and most of it is
+new work raised on a rediscovered method, which looks the same from outside
+the workshop either way. That double handful of pocket-sized objects is what
+twenty years of digging and building has bought two academies back. Neither
+has any idea it is working from the same civilization the other one is.
+Silicar built what the salvage was suited for. Melisor built what would
+impress a Council chamber, and neither choice was ever really about the
+stone.
