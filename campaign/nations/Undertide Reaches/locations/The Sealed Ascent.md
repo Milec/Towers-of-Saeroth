@@ -17,6 +17,13 @@ What the neighbouring holds have worked out for themselves is that the sealing
 happened within a month of the first towers being sighted on the surface, and
 that whatever is behind it goes *up*.
 
+Nobody who will talk has seen its stone. The one account that leaked out of the
+Reaches, from a warden who has since recanted it, describes something squared
+where every other tower anyone has found is fluted or spired — hard right
+angles cut the way a foundation is cut, not a shaft raised the way a tower is
+raised. Nobody outside the Reaches can say whether that is true or the shape a
+rumour takes when it has nothing to check itself against.
+
 - **Where** Below the deep frontier, past a hold that shut its own doors
 - **Access** None sanctioned. The hold sealed from within and has not answered
 - **Entered by** Unknown. Whoever was already inside when it closed
