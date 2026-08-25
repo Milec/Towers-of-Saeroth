@@ -85,10 +85,11 @@ why that association is not a convention anybody chose.
 where **t** is time, **T** the moment the working ends, and **Q(0)** the charge
 in the stone when it began.
 
-A firelock empties a stone over a fraction of a second. A lamp takes months
-about it. Both are bounded by the same integral, and this is the formal
-statement of what the trade already says in plainer words: a device works as
-many times as its stone allows and not once more.
+A strike-stone spends its whole draw in the instant it takes to catch a wick.
+A lamp takes months about the same total. Both are bounded by the same
+integral, and this is the formal statement of what the trade already says in
+plainer words: a device works as many times as its stone allows and not once
+more.
 
 **Read what this law does not say.** It bounds the charge a stone can
 surrender. It says nothing about the Working that charge produces, and those
