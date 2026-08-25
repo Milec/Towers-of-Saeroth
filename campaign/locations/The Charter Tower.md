@@ -25,6 +25,15 @@ scouting party crossed that exact ground eleven days before it was found there,
 and says so — the clan has no reason to lie about it and every reason to wish
 it were otherwise.
 
+It is pale stone fluted the whole way up the shaft, carried at every joint and
+lintel by more ornament than any cathedral on either continent could raise the
+money for, lit from inside by a cold blue that never goes out. It is also the
+tower most people picture when told to picture one at all —
+[[The Towers|the same building]] used to show what a tower looks like — not
+because it is typical, nothing about a tower is typical, but because it is
+the one somebody could actually walk up to and sketch. [[The Drowned Spire]]
+was found five months earlier and nobody has painted it yet.
+
 - **Where** Jungle edge, eight days from Charterhold and six from Rootmeet
 - **Approach** Open ground on the Kesmarch side, canopy on the Thornwild side
 - **Entrance** At the base, facing no particular direction, standing open

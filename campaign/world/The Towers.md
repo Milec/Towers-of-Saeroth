@@ -16,24 +16,28 @@ one morning where the evening before there was pasture, or reef, or a road men
 had used for two hundred years. The stone is seamless and nobody recognises it.
 Nothing grows on it. Nothing has weathered.
 
-Nobody who has seen one leads with the height. They lead with the fact that it
-is beautiful. The stone is pale to the point of white, fluted the whole way up
-the shaft, and carried at every joint and lintel by more ornament than any
-cathedral on either continent could raise the money for. It is lit from
-inside, faintly. A cold blue sits in the windows and in the crown at the top,
-steady in any weather, and in daylight you would ride past it without noticing
-there was a light there at all. After dark it is enough to put your hand on
-the wall by, and no more than that. It does not go out.
+Nobody who has seen one leads with the height. They lead with the fact that no
+two of them look alike. [[The Charter Tower]] is pale stone fluted the whole
+way up the shaft, carried at every joint and lintel by more ornament than any
+cathedral on either continent could raise the money for, lit from inside by a
+cold blue that sits in the windows and the crown and never goes out.
+[[The Drowned Spire]] is black and unfluted and carries no ornament at all, and
+has not grown so much as a strand of weed in nine months on a seabed where
+everything grows on everything within a season. Whatever the next one turns
+out to be built from, it will not match either.
 
-Then you get close enough to read the figures cut between the lines, and the
-word people reach for is *cruel*. Both of those are true about the same
-building, which is the part nobody manages to get comfortable with. Whoever
-put this here spent enormously on it and meant something by it that nobody
-wants to have been meant.
+Then you get close enough to read the fine lines cut into the stone — running
+in tracks and corners, the way the inside of a lock is worked — and the
+figures cut between them, and the word people reach for is *cruel*. That part
+never changes. It is the one thing every tower anyone has found shares with
+every other, across a year of them looking like nothing so much as different
+buildings each time. Whoever put these here spent enormously on every one and
+meant something by the marks that nobody wants to have been meant.
 
-![A tower at dusk: pale fluted stone, gothic ornament, cold blue in its
-windows](towers.jpg)
-*What people describe when they have actually stood in front of one.*
+![The Charter Tower at dusk: pale fluted stone, gothic ornament, cold blue in
+its windows](towers.jpg)
+*What one tower looks like. No other tower found so far looks anything like
+it.*
 
 Every tower anyone has found is open. There is a way in, it is not guarded, and
 it does not close. People have walked into all of them.
@@ -115,9 +119,10 @@ the same in every tower, and that is the whole of the problem.
   a shade below and always has. A veteran company and four half-trained
   nobodies walking into the same tower do not get the same tower. They get it
   pitched at the same angle relative to themselves.
-- **Nothing outside tells you which kind you have.** Same stone, same door, no
-  mark and no sign, and no reading anyone has found that tells a merciful
-  tower from a lethal one. The only test is to walk in.
+- **Nothing outside tells you which kind you have.** However different two
+  towers look, and by now no two look alike, neither the stone nor the etched
+  marks common to both carry a rating. No reading anyone has found tells a
+  merciful tower from a lethal one. The only test is to walk in.
 - **Survival inside is possible.** It is unlikely, and so far it has never once
   been followed by getting out.
 

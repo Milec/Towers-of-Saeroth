@@ -20,6 +20,13 @@ if it had been there. Its entrance is below the waterline and stands open, and
 the water does not enter it. There is a face of held-back sea, and dry stone
 beyond.
 
+The stone itself is black and takes no ornament at all — nothing like
+[[The Charter Tower|the tower]] every chart-house on either continent now uses
+to picture one. Nine months on a seabed and not one thing has grown on it:
+no weed, no barnacle, nothing that has colonised every wreck and reef for a
+mile in every direction. The reef-cities have started calling that the real
+proof it isn't decoration to whoever built it.
+
 - **Where** Outer survey lanes, a day and a half from the nearest reef-city
 - **Depth** Crown to within forty feet of the surface; base unmeasured
 - **Entrance** Below the waterline, open, and dry past the threshold
