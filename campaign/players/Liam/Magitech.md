@@ -88,6 +88,38 @@ Twenty years in, [[Silicar]]'s workshops have shipped a handful of things:
 Every one of them is rare, every one is expensive, and every one works
 exactly as many times as its stones allow, and not once more.
 
+## Charge, pattern, impedance
+
+Every apprentice guesses the same thing in their first week at a bench: that
+the stone, the cut and the metal all multiply together, and more of any one
+makes a better device. Three things do matter. It isn't the word *times*.
+
+**Charge** is the stone's own capacity, and it is the one number nobody in
+the trade can move. A low-level stone holds a low-level charge, and the
+ceiling on the whole trade is a ceiling on this and nothing else.
+
+**Pattern** is the rune, and it doesn't add to the charge — it tells the
+charge what to become. The same charge cut for fire behaves nothing like the
+same charge cut for a ward, and because the cut is made once, when the stone
+itself is made, there is no reworking it after. Nobody reprograms an aeon
+stone. They requisition a new one.
+
+**Impedance** is everything between the stone and the work that isn't the
+stone: the inlaid metal, the alloy, the joinery. It is also the only one of
+the three a workshop can actually improve, which is the real reason every
+guild in Brightfurrow guards its alloy blend rather than publishing it. Bad
+impedance doesn't stop a device from working. It bleeds the charge off as
+heat and backlash, and burns through the stone in a third the uses a
+well-made one would.
+
+Put the three together and the trade's whole twenty years comes down to one
+number nobody can move, one number nobody can invent past, and one number
+that is the entire difference between a wayfinder and a toy.
+[[Melisor Magocracy]] has never had a reason to chase the third one. A warded
+clasp cut at Thelemar runs dry in a fraction of the uses a Silicar lamp gets
+from the same grade of stone, and nobody on the Council has ever once
+complained about it.
+
 ## Prestige pieces
 
 [[Melisor Magocracy]] never needed magitech to solve anything. An academy
