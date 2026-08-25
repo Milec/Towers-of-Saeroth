@@ -44,6 +44,10 @@
     }
   }
 
+  .brand { display: inline-flex; align-items: center; gap: 9px; }
+  .pmark { width: 26px; height: 26px; flex: 0 0 auto;
+           filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); }
+
   .pmain { max-width: 74ch; margin: 0 auto; padding: 18px clamp(14px, 4vw, 40px) 90px; }
 
   /* ---- navigation ----------------------------------------------------
@@ -56,6 +60,32 @@
     padding: 9px clamp(14px, 4vw, 40px) 10px;
     background: var(--bg); border-bottom: 1px solid var(--rule);
   }
+  /* A row that scrolls sideways and does not say so is a row with tabs
+     nobody finds. An arrow appears on whichever side has more, over a fade
+     that leaves the next tab half-visible, and pressing it scrolls. */
+  .pscroll {
+    position: absolute; top: 0; bottom: 0; width: 52px; z-index: 2;
+    display: none; align-items: center; padding: 0 10px;
+    border: 0; background: none; cursor: pointer;
+  }
+  .ptabnav.can-left .pscroll-l, .ptabnav.can-right .pscroll-r { display: flex; }
+  .pscroll::before {                       /* the fade, under the chip */
+    content: ''; position: absolute; inset: 0; z-index: 0;
+  }
+  .pscroll-l { left: 0; justify-content: flex-start; }
+  .pscroll-r { right: 0; justify-content: flex-end; }
+  .pscroll-l::before { background: linear-gradient(90deg, var(--bg) 42%, transparent); }
+  .pscroll-r::before { background: linear-gradient(270deg, var(--bg) 42%, transparent); }
+  .pscroll span {                          /* and the chip, so it reads pressable */
+    position: relative; z-index: 1;
+    display: grid; place-items: center; width: 29px; height: 29px;
+    border-radius: 50%; background: var(--panel);
+    border: 1px solid var(--p-gold); color: var(--p-crimson);
+    font: 700 19px/1 ui-sans-serif, system-ui, sans-serif;
+    padding-bottom: 2px; box-shadow: 0 1px 5px rgba(0,0,0,.3);
+  }
+  .pscroll:hover span { background: var(--p-crimson); border-color: var(--p-crimson); color: #fff; }
+  .pscroll:focus-visible span { outline: 2px solid var(--p-gold); outline-offset: 2px; }
   .ptabnav::after {
     content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px;
     background: linear-gradient(90deg, transparent, var(--p-gold), transparent);
@@ -65,9 +95,8 @@
     max-width: min(1120px, 100%); margin: 0 auto;
     display: flex; flex-wrap: nowrap; gap: 6px; overflow-x: auto;
     scrollbar-width: none; -ms-overflow-style: none;
-    scroll-snap-type: x proximity; scroll-padding-inline: 8px;
+    scroll-snap-type: x proximity; scroll-padding-inline: 34px;
     -webkit-overflow-scrolling: touch;
-    mask-image: linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
   }
   .ptabs::-webkit-scrollbar { display: none; }
   .ptab {
@@ -232,14 +261,18 @@
 </head>
 <body>
 <header class="topbar">
-  <span class="brand">Saeroth <span class="muted" style="font-weight:400">· for players</span></span>
+  <span class="brand"><img class="pmark" src="mark.svg" alt="" width="26" height="26">Saeroth <span class="muted" style="font-weight:400">· for players</span></span>
   <div class="spacer"></div>
   <button id="themeBtn" class="iconbtn" aria-label="Toggle theme">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
   </button>
 </header>
 
-<nav class="ptabnav"><div class="ptabs" id="tabs" role="tablist"></div></nav>
+<nav class="ptabnav" id="tabnav">
+  <button class="pscroll pscroll-l" type="button" aria-label="Scroll tabs left"><span>&lsaquo;</span></button>
+  <div class="ptabs" id="tabs" role="tablist"></div>
+  <button class="pscroll pscroll-r" type="button" aria-label="Scroll tabs right"><span>&rsaquo;</span></button>
+</nav>
 
 <main class="pmain">
   <article class="pdoc" id="doc">Loading…</article>
@@ -297,6 +330,19 @@
   }
 
   const tabs = document.getElementById('tabs');
+  const tabnav = document.getElementById('tabnav');
+
+  function updateTabHints() {
+    const max = tabs.scrollWidth - tabs.clientWidth;
+    tabnav.classList.toggle('can-left', tabs.scrollLeft > 2);
+    tabnav.classList.toggle('can-right', tabs.scrollLeft < max - 2);
+  }
+  tabs.addEventListener('scroll', updateTabHints, { passive: true });
+  addEventListener('resize', updateTabHints);
+  for (const [sel, dir] of [['.pscroll-l', -1], ['.pscroll-r', 1]]) {
+    tabnav.querySelector(sel).onclick = () =>
+      tabs.scrollBy({ left: dir * tabs.clientWidth * 0.62, behavior: 'smooth' });
+  }
   const doc = document.getElementById('doc');
   let pages = [];
   let current = -1;
@@ -520,6 +566,7 @@
       b.setAttribute('aria-selected', on ? 'true' : 'false');
       if (on) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     });
+    updateTabHints();
     location.hash = '#' + encodeURIComponent(pages[i].file.replace(/\.md$/, ''));
     doc.innerHTML = '<p class="muted">Loading…</p>';
     try {
@@ -545,6 +592,7 @@
       b.onclick = () => show(i);
       tabs.appendChild(b);
     });
+    updateTabHints();
     const wanted = () => {
       const want = decodeURIComponent(location.hash.replace(/^#/, ''));
       return list.findIndex((p) => p.file.replace(/\.md$/, '') === want);
