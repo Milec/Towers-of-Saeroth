@@ -9,7 +9,8 @@ an ocean nobody crosses casually, the eastern deserts have exactly as many
 wells as they have caravans, and the fastest road across the western south
 belongs to a nation that does not build roads. All of it runs on one shared
 tongue, which is stranger than it looks and is covered in [[Languages]]. What
-follows is where the goods actually go, and who takes a cut on the way.
+follows is where the goods actually go, and who takes a cut on the way; for
+who depends on whom at the far end of each line, see [[Economy]].
 
 Nine corridors carry most of it, and twenty-two of the twenty-eight nations
 sit on at least one. A nation can sit on several — [[Tessine]] is on three and
