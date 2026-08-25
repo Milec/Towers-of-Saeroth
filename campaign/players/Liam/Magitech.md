@@ -50,7 +50,10 @@ the charge rune drew — and it doesn't take to every gem the same way
 either. Fire cuts cleanly into ruby and badly into almost anything else; a
 ward or open air takes to diamond; earth wants peridot. Cut the right rune
 into the wrong stone and the device is weak or doesn't hold at all, which
-is most of why the trade's pairings look fixed rather than arbitrary.
+is most of why the trade's pairings look fixed rather than arbitrary. Both
+cuts are made when the stone is made and neither can be reworked after.
+Nobody reprograms an aeon stone; they requisition another, in the right gem
+this time, and cut it again.
 Twenty years ago nobody in either academy could cut either rune, let alone
 say which stone suited which. What they had were whole low-level stones
 pulled out of old ruins, enough of them, studied long enough, to work both
@@ -112,83 +115,6 @@ handful of things:
 Every one of them is rare, every one is expensive, and every one works
 exactly as many times as its stones allow, and not once more.
 
-## Charge, pattern, impedance
-
-Every apprentice guesses the same thing in their first week at a bench: that
-the stone, the cut and the metal all multiply together, and more of any one
-makes a better device. Three things do matter. It isn't the word *times* —
-though the shorthand chalked over every bench in Brightfurrow looks close
-enough to it:
-
-**W = Q · P ÷ Z**
-
-**Charge (Q)** comes from the charge rune, but the gem it's cut into still
-matters. The rune sets a firm ceiling — no cut anyone has recovered pulls
-more than a low-level draw — and the gem decides how close to that ceiling
-a given stone actually gets. Some stones catalyse cleanly and some waste
-half of what the rune is trying to pull through them, which is why a clean
-ruby costs more than a merely red one even cut with the identical rune.
-Every charge rune anybody has ever recovered from a ruin is the same basic
-cut, and in twenty years nobody has managed to design a more advanced one.
-The ceiling on the whole trade is this one rune. What a good stone buys is
-getting near it.
-
-**Pattern (P)** is the property rune, cut second into the same stone, and
-it has a ceiling of its own: how well it takes to the gem underneath it.
-Fire cuts cleanly into ruby and badly into almost anything else; a ward or
-open air takes to diamond; earth wants peridot. Cut a rune into a stone
-with no affinity for it and the device is weak or doesn't hold at all,
-which is most of why the trade's pairings look fixed rather than
-arbitrary. Because the cut is made once, when the stone itself is made,
-there is no reworking it after. Nobody reprograms an aeon stone. They
-requisition a new one, in the right gem this time, and cut it again.
-
-**Impedance (Z)** is the circuitry — a third cut, carved not into the stone
-but into the alloy or the wood that houses it, carrying the shaped power
-the rest of the way out and refining it again on the way. Charge and
-Pattern both have a ceiling a good stone can approach but never clear.
-Impedance has none. Nobody has ever worked out a limit to how good a
-circuit can get, which is the real reason every guild in Brightfurrow
-guards its own circuitry patterns and alloy blends rather than publishing
-either. Bad impedance doesn't just waste charge as heat and backlash,
-burning through the stone in a third the uses a well-carved circuit
-would — it refines the effect badly too, which is the difference between a
-warded clasp that holds a clean half-shield and one that flickers.
-
-The trade treats that chalked-up version as a rough thing that earns its keep
-at a bench where nobody has time for better. It takes one activation as a
-single lump of charge spent all at once, which is not what happens inside the
-housing. What happens is a stone bleeding charge over the fraction of a second
-the working takes, and a rate is not a lump:
-
-**w(t) = −(dQ/dt) · P(t) ÷ Z(t)**
-
-The device's output at any instant is however fast the stone is losing
-charge right then, shaped by the pattern and cut down by whatever is in the
-way. None of that changes what a stone can afford across its whole working
-life, because a rate integrates back into a total the same way it always
-has:
-
-**∫₀ᵀ w(t) dt ≤ Q(0)**
-
-Spend it fast in one dramatic burst, or slow across a hundred small pulls,
-and the total is bounded the same either way. That is the actual shape of
-"works exactly as many times as its stone allows, and not once more" — not
-a count of uses at all, but an area under a curve that happens, for a
-well-made device with a steady draw, to look enough like a count that
-nobody in the trade has ever bothered to say it differently.
-
-Put the three variables together, chalked or worked in full, and the trade's
-whole twenty years comes down to one number nobody can move, one number
-nobody can invent past, and one number that is the entire difference
-between a wayfinder and a toy. [[Melisor Magocracy]] has never had a reason
-to chase the third one. A warded clasp cut at Thelemar runs dry in a
-fraction of the uses a Silicar lamp gets from the same grade of stone, and
-nobody on the Council has ever once complained about it.
-
-Neither academy has ever set any of this out as a body of law, which is not
-the same as nobody having done it. See [[Thaumodynamics]].
-
 ## Prestige pieces
 
 [[Melisor Magocracy]] never needed magitech to solve anything. An academy
@@ -214,7 +140,19 @@ envied for the one they picked.
   courses as much as through anyone's conversation.
 
 None of it is cheaper than paying somebody to do the job. That was never
-the offer.
+the offer, and neither was making it last: a warded clasp cut at Thelemar
+runs dry in a fraction of the uses a Silicar lamp gets out of the same grade
+of stone, because the circuitry under it was carved by somebody who has
+never had to care. Nobody on the Council has ever once complained.
+
+## How it is reckoned
+
+Every bench in Brightfurrow has a shorthand chalked over it, three quantities
+to be weighed against each other — what the stone draws, how well its rune
+fits the gem, what the circuit costs on the way out — and most of the people
+who use it daily could not derive it. Neither academy has ever set any of
+this out as a body of law. That is not the same as nobody having done it. See
+[[Thaumodynamics]].
 
 ## The stakes
 
