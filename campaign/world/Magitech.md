@@ -38,21 +38,40 @@ vintner guards a cellar.
 
 Power is the harder problem, and both academies solved it the same way
 without comparing notes: a low-level aeon stone, seated where the load
-actually sits, wired to the rest of the device by a pattern of inlaid metal
-rather than by anything a smith would call a wire. Nobody has yet built a
-working device around anything stronger. Whether that is a limit of the
-technique or simply because nothing stronger has turned up to try, Melisor
-and Silicar give two different answers in public and privately admit to the
-same one: they don't know.
+actually sits, does the work; a second gem, cut with a rune to give that
+work its shape, decides what the work actually does; and a pattern of
+inlaid metal joins the two, standing in for anything a smith would call a
+wire. Nobody has yet built a device around an aeon stone stronger than
+low-level. Whether that is a limit of the technique or simply because
+nothing stronger has turned up to try, Melisor and Silicar give two
+different answers in public and privately admit to the same one: they
+don't know.
 
-Twenty years in, two things have actually shipped. The **wayfinder** — a
-disc small enough to wear on a cord, pointing toward whatever its stone was
-keyed to find — is the one every court now wants and almost none can buy;
-Silicar's guild fills perhaps thirty orders a year. And a lamp: no flame, no
-oil, no working laid on fresh each evening, just a low-level stone behind
-hammered glass, burning level and cold until the stone runs dry. Both are
-rare, and both are expensive. Each works exactly as many times as its stone
-allows, and not once more.
+Twenty years in, a handful of things have actually shipped:
+
+- **The wayfinder** — a disc small enough to wear on a cord, pointing
+  toward whatever its stone was keyed to find. The one every court now
+  wants and almost none can buy; Silicar's guild fills perhaps thirty
+  orders a year.
+- **The cold lamp** — no flame, no oil, no working laid on fresh each
+  evening. A stone behind hammered glass, burning level and cold until it
+  runs dry.
+- **The strike-stone** — a ruby cut with a fire rune, set into a case of
+  alloy the size of a thumb. Click it and it lights. No oil, no flint, no
+  wick, which makes it the one magitech item an ordinary household might
+  actually own, on the rare year it can find one to buy.
+- **The slate** — a peridot cut with an earth rune, bedded into a tablet
+  of worked stone. Write on it, press the rune, and the mark is gone — a
+  scribe's whole complaint against parchment, solved.
+  [[Thurion Merchant Alliance]]'s counting-houses are already trying to buy
+  the patent out from under Silicar before a rival house does.
+- **The diving mask** — a diamond cut with an air rune, set into the
+  glass. A salvage crew wearing one can work a wreck for the better part
+  of an hour on a single charge, which has already changed what a
+  reef-city considers worth the dive.
+
+Every one of them is rare, every one is expensive, and every one works
+exactly as many times as its stones allow, and not once more.
 
 ## The stakes
 
@@ -96,7 +115,9 @@ rail between its own cities, a portal network wide enough to reach
 [[Luaris]], Saeroth's own moon, and exosuits for any labor a body alone
 couldn't do. Trade tools nobody in it would have called magic, because
 getting the work done was the point and not the marvel of it. The erasure
-took nearly all of that the same way it took the empire's name. A wayfinder
-and a cold lamp, wired to a low-level stone because nothing stronger has
-ever turned up in the wreckage, is what twenty years of digging has bought
-two academies back — and they are calling it their own invention.
+took nearly all of that the same way it took the empire's name. A
+wayfinder, a lamp, a lighter, a slate and a diving mask, none of it running
+on anything stronger than a low-level stone because nothing stronger has
+ever turned up in the wreckage — that handful of pocket-sized objects is
+what twenty years of digging has bought two academies back, and they are
+calling it their own invention.
