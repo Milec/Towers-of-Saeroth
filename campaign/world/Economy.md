@@ -214,13 +214,22 @@ is worth a great deal to precisely two parties, and those two parties are the
 ones who would have to agree to end it.
 
 **[[Lazarian Lichdom]] mints its own and nobody else honours it.** Lichdom
-coin spends in the Lichdom, in Tessine, and in a black market. Everywhere else
-it is metal that a merchant will not weigh. Where it does change hands the
-changer keeps ninety-five in the hundred, which is not a swindle but a posted
-rate, and which is most of why the Lichdom's foreign trade runs on relics,
-alchemy and favours rather than on money at all — the courts that buy from it
-pay in wine, art and things that leave no ledger entry, and everyone has
-always assumed discretion was the reason.
+coin spends in the Lichdom, in Tessine, and in a black market. In those three
+it changes at ninety-five in the hundred, a posted rate and a modest one; a
+coin does not trade that cleanly unless somebody is moving a great deal of it,
+which is worth knowing about a nation everybody claims not to deal with.
+
+Everywhere else it is not discounted, it is refused. A factor in Vantry will
+not weigh Lichdom silver at any price. The metal is sound and the Lichdom has
+never debased it, and none of that matters: what a coin is worth and what a
+coin can buy are different questions, and outside those three places the
+second answer is nothing.
+
+That makes Lichdom money a problem of carriage rather than of value, and it is
+why a caravan out of Grauthaven moves relics and alchemy rather than a
+strongbox. The courts that buy still pay in wine, art and favours instead of
+coin, and that remains a matter of discretion: a payment settled at Tessine
+leaves a counting-house record, and a crate of Quivari wine leaves a carter.
 
 ## The six a war needs
 

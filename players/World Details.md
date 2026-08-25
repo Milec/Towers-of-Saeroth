@@ -115,12 +115,15 @@ A purse of good silver in the wrong striking will not buy you a bed.
 [Lazarian](#The%20Nations) mints its own, and it is good in exactly three
 places: the Lichdom, [Tessine](#The%20Nations), and a black market.
 
-Everywhere else it is a lump of metal somebody will not touch. In the markets
-that will touch it, the changer keeps ninety-five in the hundred — you hand
-over a hundred marks and walk away with five coins' worth, and that is the
-going rate rather than a swindle. Nobody will explain why the price is that
-and not some other number.
+In those three it changes at **ninety-five in the hundred**. The changer takes
+five and asks nothing, which is a fair rate and a telling one — a coin only
+trades that cleanly where somebody is moving a great deal of it.
 
-So the Lichdom's trade runs on goods and favours rather than on money, and if
-your character has been paid in Lichdom coin, they have been paid a fraction
-of what the number says. Somebody may not have mentioned that.
+Everywhere else it is not discounted. It is refused. A merchant in Vantry or
+Reichsmund will not weigh Lichdom silver at any price, and will be polite
+about it, and will not change his mind.
+
+So the trouble with a purse of Lichdom marks is not what it is worth. It is
+that you cannot spend a coin of it until you reach somewhere that will change
+it, and those places are a long way apart. Being paid in Lichdom coin is being
+paid in something you have to carry.
