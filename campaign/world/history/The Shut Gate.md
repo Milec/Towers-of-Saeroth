@@ -98,15 +98,25 @@ The government came out of the same seam. Jotun clans had no chiefs. They kept
 key roles — chroniclers, keepers, scouts — and when a decision was needed the
 seniors of those roles met and voted, and a senior who was outmatched by a
 younger hand stepped down to apprentice without anyone thinking it strange.
-The incomers had the opposite inheritance: fixed rank, sworn obligation, and a
-clear notion of who answers to whom.
+The incomers had the opposite inheritance: heritable rank, sworn obligation,
+and a clear notion of who answers to whom, all of it passing from a father to
+whoever he had got.
 
 The Great Thing at Hravnfjord in c. 1180 is those two things bolted together
-and it still shows the join. Jarls hold rank and hold it for life, which came
-up the road with the incomers. The assembly can overrule any jarl including
-the High King, which came out of the clans, and it is why the High King's
-authority stops exactly where the Thing says it does and has never once been
-allowed to creep.
+and it still shows the join. Rank is heritable and held for life — chief,
+jarl and king alike — which came up the road with the incomers. The assembly
+can overrule any jarl including the High King, which came out of the clans,
+and it is why the High King's authority stops exactly where the Thing says it
+does and has never once been allowed to creep.
+
+The seam runs right through the crown. Every seat in Nordheim passes from a
+father to his heir except the one at the top, which is filled by a vote and
+was never anybody's to leave. A dead High King's son inherits his father's
+jarldom and not one inch more, and stands at the next Thing on the same
+footing as every other jarl in the hall. Houses have held the crown three
+reigns together on the strength of being worth electing. None has ever held
+it by right, and the clans who made that rule had spent their whole history
+watching seniors step down when a younger hand outmatched them.
 
 Even the word for the lowest rung is borrowed. Nordheim's chiefs hold towns,
 and the clans that had never had a chief in their lives took the title for a
@@ -114,8 +124,8 @@ job they had never needed until they were living in towns worth holding.
 
 **What did not survive the welding was any notion of whose seat is whose.**
 Nordheim has one government and it has never had two. A jarl is a jarl,
-elected or inherited on the same terms in every jarldom, and eleven of the
-twenty-six High Kings crowned since c. 1520 have been Jotun. Nobody in the
+inherited on the same terms in every jarldom, and eleven of the twenty-six
+High Kings crowned since c. 1520 have been Jotun. Nobody in the
 fjords keeps that count. It was worked out by a Corvane pamphleteer who found
 it remarkable, and the Thing's own rolls do not record ancestry at all,
 because no procedure has ever needed to ask.
