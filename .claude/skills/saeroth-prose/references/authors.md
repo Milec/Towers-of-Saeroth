@@ -1,5 +1,11 @@
 # Three writers, and what to actually steal
 
+**Secondary reference.** The default register is terse and plain — see
+`SKILL.md`. Reach for a technique here only for a note that genuinely needs a
+scene set (a read-aloud, a key NPC introduction), and apply it in as few
+words as the technique allows. This is not the default for a nation profile,
+a faction, or a history entry.
+
 Read the section you need; there is no reason to read all three at once.
 
 - [Martin](#martin) — point of view, the concrete detail, institutions

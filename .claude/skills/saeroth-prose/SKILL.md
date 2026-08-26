@@ -3,8 +3,9 @@ name: saeroth-prose
 description: >-
   House writing voice for the Towers of Saeroth campaign vault — how to make
   worldbuilding prose read as written by a person rather than generated, and as
-  fantasy rather than as an encyclopedia entry, using craft borrowed from George
-  R. R. Martin, Tolkien and Brandon Sanderson. Use this whenever writing or
+  fantasy rather than as an encyclopedia entry. Terse over evocative: short
+  sentences, plain words, no decorative metaphor. Closer to a study guide than
+  a short story. Use this whenever writing or
   revising any prose under `campaign/` or `players/` — a nation, NPC, faction,
   location, deity, session prep, history note, hook or read-aloud — and whenever
   the user asks for something to sound better, less generic, less AI, more
@@ -21,21 +22,31 @@ Every note in this vault is read by a person at a table, usually on a phone,
 usually mid-sentence while three players wait. That is the whole design
 constraint. Prose that is *pleasant* and says nothing costs the GM the round.
 
-Two things go wrong, and they are different problems with different fixes:
+**The target register is a study guide, not a short story.** Short sentences.
+Plain words. A fact stated once, not decorated. Reach for a metaphor or a
+simile only when a plain sentence genuinely cannot carry the fact — that is
+rare, and most drafts reach for one anyway. If a sentence can lose a clause
+and keep every fact, cut the clause. If a paragraph can lose a sentence and
+keep every fact, cut the sentence.
+
+Three things go wrong, and they are different problems with different fixes:
 
 1. **It reads as generated.** Balanced, complete, hedged, tidy, and no human
    would have bothered to write it that way.
 2. **It reads as an encyclopedia.** Accurate, organised, and with no smell,
    no weather, no money, and nobody in it who wants anything.
+3. **It reads as decorated rather than dense.** A fact wrapped in an image it
+   didn't need. Cut the image and check the fact is still there.
 
-Sections 1 and 2 below deal with each. Section 3 is the revision pass, and it
-is the part that actually does the work — first drafts are allowed to be bad.
+Sections 1 and 2 below deal with the first two. Section 3 is the revision
+pass, and it is the part that actually does the work — first drafts are
+allowed to be bad, and allowed to be long.
 
-Read `references/authors.md` for the craft in depth: what Martin, Tolkien and
-Sanderson each actually do, and how each move translates to a GM note rather
-than to a novel. Consult it when a note needs a specific technique, when you
-are stuck on how to open something, or when a whole class of note (nations,
-NPCs, history, read-aloud) needs a pass.
+`references/authors.md` covers the same craft in more depth — what Martin,
+Tolkien and Sanderson each actually do, and how each move translates to a GM
+note. Treat it as a technique to reach for once in a while, on a note that
+genuinely needs a scene set, not as the default register. Most notes need
+fewer words, not more craft.
 
 ---
 
@@ -137,13 +148,18 @@ constantly.
 
 This voice already exists and is already lopsided. Measured by
 `scripts/prose_check.py` across the ~59,000 words of actual prose in
-`campaign/` (tables, statblocks and generated rows excluded):
+`campaign/` (tables, statblocks and generated rows excluded), against the
+target this skill now writes to:
 
-| Move | Whole vault | Nation notes | Typical prose |
+| Move | Whole vault | Nation notes | Target |
 | --- | --- | --- | --- |
 | Em dash | **13.9 per 1k words** | **23.9** | 2–4 |
-| Sentences under 8 words | **7.6%** | ~0% | 15–25% |
-| Median sentence | **23 words** | 31–35 | 14–18 |
+| Sentences under 8 words | **7.6%** | ~0% | 25–35% |
+| Median sentence | **23 words** | 31–35 | 10–14 |
+
+The vault numbers are the old average, from before this pass — most existing
+notes still read that way and are not being rewritten wholesale. New prose,
+and any note you revise, should land in the target column instead.
 
 One tic, showing up twice. The em dash is doing a specific job — state a fact,
 pause, deliver the twist — and because every twist arrives on the same hinge,
@@ -199,6 +215,10 @@ paragraph above it.
   it.*
 - **Adjective stacks.** "Ancient, weathered stone" is one adjective wearing a
   disguise. Pick the better one, or replace both with what the stone *does*.
+- **Metaphor as decoration.** "Fear moved through the hall like a tide" tells
+  the reader nothing "everyone was afraid" doesn't. A metaphor earns its place
+  only when it's shorter than the literal fact *and* a GM can use it — a name,
+  an image the party will repeat back. If neither, cut it and state the fact.
 - **The summarising kicker.** Ending every section by restating it in a
   weightier cadence. Sometimes the last concrete detail is the ending.
 
@@ -277,6 +297,9 @@ Draft freely; the draft is not the deliverable. Then:
 7. **Count what a GM can *use*.** Names, numbers, prices, hooks, people who
    want something. If a paragraph yields none, it is atmosphere — keep at most
    one of those per note.
+8. **Find every metaphor and simile and ask what fact it's standing in for.**
+   State that fact instead, in fewer words, and see if anything was lost. It
+   usually wasn't.
 
 ### One worked example
 
@@ -311,6 +334,16 @@ Every change is worth naming, because they generalise:
   letter.
 - *Most people know better* is a **judgement**, and somebody is making it.
   Prose with no attitude in it reads as prose with no author.
+
+**Terser still, and this is the target now:**
+
+> Founded around 900 AR. The crown has stayed in one house since, and no
+> foreign army has taken the capital. Quivar credits the court. The city
+> credits the Service.
+
+Same facts, fewer words, nothing decorative — full sentences throughout, not
+fragments standing in for pace. This is what most notes should land on: the
+"Human" version above is the floor, not the goal.
 
 ---
 
