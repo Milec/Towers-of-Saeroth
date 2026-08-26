@@ -2,7 +2,7 @@
 title: Nordheim
 type: nation
 theme: Honor and resilience
-government: Chief, jarl, king, High King — the High King elected at the Great Thing from among the jarls and kings
+government: Chief, jarl, king all hereditary; the High King alone elected, at the Great Thing, from among the sitting jarls and kings
 founded: c. 1180 AR as the Great Thing; the High Kingship, c. 1520
 view: nation
 ---
@@ -15,7 +15,7 @@ forgotten life is.
 - **Founded** c. 1180 AR, when the Great Thing was first recorded. It is older than the kingship by three centuries. Jarls met at the same fjord to settle blood-debt for centuries before they agreed to elect anybody, and the High King's authority still stops exactly where the assembly says it does.
 - **Capital** Hravnfjord, a deepwater harbor town that swells fourfold whenever the Great Thing is called
 - **Geography** Fjords, taiga, and whale coasts; the interior is mountain and the sea is the road
-- **Government** Four ranks, and a ladder that does not always have every rung in it. A **chief** holds a town. A **jarl** stands over several chiefs and keeps a larger town behind a fortified hall, and holds the seat for life. Above them a **king** may stand over many jarls, ruling from a hall no grander than theirs — the rank is real, it is frequently empty, and a great many jarls answer to nobody at all between themselves and the crown. The **High King** is elected at the Great Thing from among the jarls and kings both, without regard to which of Nordheim's two peoples he comes from, and his authority stops exactly where the assembly says it does
+- **Government** Four ranks, and a ladder that does not always have every rung in it. A **chief** holds a town. A **jarl** stands over several chiefs and keeps a larger town behind a fortified hall. Above them a **king** may stand over many jarls, ruling from a hall no grander than theirs — the rank is real, it is frequently empty, and a great many jarls answer to nobody at all between themselves and the crown. All three pass to heirs. The **High King** does not. He is elected at the Great Thing from among the sitting jarls and kings, without regard to which of Nordheim's two peoples he comes from, and his authority stops exactly where the assembly says it does. His own jarldom passes to his heir like anybody else's, so the son of a dead High King is a jarl by morning and stands for election on the same footing as the rest — which is how one house can hold the crown three reigns running and never once hold it by right. A seat left vacant with no heir to take it is filled by the Thing
 - **Races** [[Human|Humans]], [[Dwarf|Dwarves]], [[Jotunborn|Jotun]] — the far northern jarldoms are mostly Jotun and the southern ones mostly human, which is a fact about where the cold is and nothing else. Rank is open to either. A jarl is a jarl on the same terms everywhere, and eleven of the twenty-six High Kings since c. 1520 have been Jotun
 - **Naming** Old Norse and Gaelic mixed freely, with patronymics rather than surnames — the Norse half is the [[Jotunborn|Jotun]] inheritance and the Gaelic half came north with the human founders, and nobody sorts them. Sigrún Ketilsdóttir, Hravn Bjarnsson, Ronan Hravnsson, Aífe Ketilsdóttir
 - **Faith** Patron [[Cayden Cailean]], god of bravery, freedom and the guest-cup, which is the closest thing Nordheim has to a national creed. [[Gorum]] is kept for war and [[Desna]] for the long voyages; the oldest sagas still invoke [[Trudd]]
