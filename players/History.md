@@ -297,6 +297,16 @@ it, and the rule outlived every person in the room.
   footing every year since.
 - **Around 1120** [Qeshara](#The%20Nations/Qeshara%20Sultanate)'s caravan-houses put a Sultan over themselves and
   kept the right to choose the next one.
+- **Around 1124** the gates of Highforge stayed shut for eleven weeks against
+  the farmers who fed it. The [Stoneborn Holds](#The%20Nations/Stoneborn%20Holds) had worked those northern
+  valleys through surface tenants for centuries; the winter came early, the
+  oats had already failed, and the Assembly voted not to open. The survivors
+  went north as raiders and are the reason [Nordheim](#The%20Nations/Nordheim) exists. Both countries
+  agree on every fact in that sentence and on nothing about it.
+- **Around 1150** the Jotun clans of the far north took those people in and
+  taught them the sea. They got metallurgy, rank and a taste for raiding back.
+  Four generations later you could not tell the two apart by anything but
+  height, and Nordheim has been both ever since.
 - **Around 1150**, the first trial-by-forge in the [Cindral Ashlands](#The%20Nations/Cindral%20Ashlands). Every
   Emberlord since has been picked at a furnace.
 - **Around 1180** [Nordheim](#The%20Nations/Nordheim)'s jarls recorded a Great Thing at Hravnfjord. The

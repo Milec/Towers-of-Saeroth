@@ -16,16 +16,16 @@ forgotten life is.
 - **Capital** Hravnfjord, a deepwater harbor town that swells fourfold whenever the Great Thing is called
 - **Geography** Fjords, taiga, and whale coasts; the interior is mountain and the sea is the road
 - **Government** The High King is elected by the assembly of Jarls at the Great Thing
-- **Races** [[Human|Humans]], [[Dwarf|Dwarves]], [[Jotunborn|Goliaths]]
-- **Naming** Old Norse, with patronymics rather than surnames. Sigrún Ketilsdóttir, Hravn Bjarnsson
+- **Races** [[Human|Humans]], [[Dwarf|Dwarves]], [[Jotunborn|Jotun]] — the far northern jarldoms are mostly Jotun and the southern ones mostly human, and the two have crewed, married and voted together for nine centuries
+- **Naming** Old Norse and Gaelic mixed freely, with patronymics rather than surnames — the Norse half is the [[Jotunborn|Jotun]] inheritance and the Gaelic half came north with the human founders, and nobody sorts them. Sigrún Ketilsdóttir, Hravn Bjarnsson, Ronan Hravnsson, Aífe Ketilsdóttir
 - **Faith** Patron [[Cayden Cailean]], god of bravery, freedom and the guest-cup, which is the closest thing Nordheim has to a national creed. [[Gorum]] is kept for war and [[Desna]] for the long voyages; the oldest sagas still invoke [[Trudd]]
 - **Economic Specialties** Timber, furs, amber, iron, shipbuilding, whaling
 - **Military** Shield walls, berserkers, longship fleets, elite axemen, mountain scouts
-- **History** Joined neither crown in the [[The Two-Crown War|Two-Crown War]] and raided both coasts for nine years, which made Nordheim rich and is remembered along those coasts in more detail than Nordheim expects. It signed the [[The Pilgrim's Peace|Pilgrim's Peace]] four years late, after an argument at the Thing, and has kept it without a single complaint filed against it.
+- **History** Founded twice over. The human half arrived as refugees out of the [[Stoneborn Holds]]' northern field-holdings after the winter of c. 1124, when the gates stayed shut for eleven weeks and a third of them died on the road — see [[The Shut Gate]]; the [[Jotunborn|Jotun]] clans of the far north took in what was left and taught it the sea, and got metallurgy, rank and the raid in return. Joined neither crown in the [[The Two-Crown War|Two-Crown War]] and raided both coasts for nine years, which made Nordheim rich and is remembered along those coasts in more detail than Nordheim expects. It signed the [[The Pilgrim's Peace|Pilgrim's Peace]] four years late, after an argument at the Thing, and has kept it without a single complaint filed against it.
 - **Reputation** Stoic explorers, fierce warriors, and steadfast allies
 - **Tension** The High King is dying and the Great Thing must be called before the ice closes the fjords, which means the jarls who arrive late will have no say at all
 - **Relations** — in brief; every tie in full, and the web, are in [[Political Relations]]
-    - [[Stoneborn Holds]] — **Allied**: Northern kinship and the iron road both — Nordheim timber and amber up the coast, Stoneborn steel back down. …
+    - [[Stoneborn Holds]] — **Allied**: An alliance built over a grave, and worth a great deal to both anyway: Nordheim's founders were the Holds' field-hands until a winter the gates stayed shut against them. …
     - [[Kesmarch Frontier]] — **Friendly**: Half the frontier's charters are held by second sons out of the fjords, and the Territorial Council still runs its founding assembly on Nordheim's Thing procedure
     - [[Khazan Khaganate]] — **Friendly**: Two warrior codes that have never had cause to test each other, an ocean apart. …
     - [[Corvane Republic]] — **Trade**: Nordheim timber and amber into the Vantry yards, Corvane hulls back north. …
