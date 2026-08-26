@@ -108,6 +108,10 @@ the High King, which came out of the clans, and it is why the High King's
 authority stops exactly where the Thing says it does and has never once been
 allowed to creep.
 
+Even the word for the lowest rung is borrowed. Nordheim's chiefs hold towns,
+and the clans that had never had a chief in their lives took the title for a
+job they had never needed until they were living in towns worth holding.
+
 **What did not survive the welding was any notion of whose seat is whose.**
 Nordheim has one government and it has never had two. A jarl is a jarl,
 elected or inherited on the same terms in every jarldom, and eleven of the
