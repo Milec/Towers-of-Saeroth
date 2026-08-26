@@ -69,7 +69,7 @@ the last column is the capital.
 | **Dalstan** | Slavic given names under gilded titles | Yevka Doranin, Inquisitor Vasil Krume. **Ostravin**, called the Gilded See |
 | **Quivar** | French | Amélie Bonnard, Gaspard Villiers. **Valmont** |
 | **Elven Confederacy** | Elvish: long vowels, soft endings, no hurry | Sylandriel, Thaeloth Anuvar. The council grove is **Sylanthir** |
-| **Nordheim** | Old Norse, with patronymics rather than surnames | Sigrún Ketilsdóttir, Hravn Bjarnsson. **Hravnfjord** |
+| **Nordheim** | Old Norse and Gaelic mixed freely, with patronymics rather than surnames. Either kind of given name sits on either kind of patronymic | Sigrún Ketilsdóttir, Hravn Bjarnsson, Ronan Hravnsson, Aífe Ketilsdóttir. **Hravnfjord** |
 | **Stoneborn Holds** | Compounds that describe a trade or a deed | Durgan Ironmark, Halla Stonewright. **Highforge** |
 | **Undertide Reaches** | The same compounds gone quiet and downward | Vell Downkeep, Ashen Marrow. **Sunkenhold** |
 | **Melisor Magocracy** | Latinate and invented for effect, because half of them chose it | Thessaly Orne, Magister Calvane. **Thelemar** |

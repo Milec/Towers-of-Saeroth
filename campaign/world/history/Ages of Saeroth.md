@@ -86,7 +86,9 @@ see [[The God Sundering]].
 | c. 1010 | Sahenna's clans swear the Compact and give it to the Storytellers instead of to ink | [[Sahenna Compact]] |
 | c. 1090 | The first Rootmeet. The founding lineages agree one voice each and the Circle has met on that footing ever since | [[Thornwild Confederation]] |
 | c. 1120 | Qeshara's caravan-houses put a Sultan over themselves and keep the right to choose the next one | [[Qeshara Sultanate]] |
+| c. 1124 | Highforge's gates stay shut for eleven weeks against its own field-holdings, and the survivors go north as raiders. Nordheim begins on that road | [[The Shut Gate]] |
 | c. 1150 | The first trial-by-forge. Every Emberlord since has been chosen at a furnace | [[Cindral Ashlands]] |
+| c. 1150 | The Jotun clans of the far north take in the column off the mountain. Each people teaches the other what it has, and neither is recognisable in four generations | [[The Shut Gate]] |
 | c. 1165 | Sahenna guarantees the road and Qeshara guarantees the wells. The Salt Road pact has been kept without interruption from here | [[Sahenna Compact]] |
 | c. 1180 | Nordheim's jarls record a Great Thing at Hravnfjord. The assembly is centuries older than the kingship it eventually elected | [[Nordheim]] |
 | c. 1240 | Eleven cantons agree that none of them will ever speak for the others. That is the whole of Sarrowmere's constitution and enough to sell physic abroad | [[Sarrowmere]] |
