@@ -83,13 +83,23 @@ why that association is not a convention anybody chose.
 **∫₀ᵀ (−dQ/dt) dt ≤ Q(0)**
 
 where **t** is time, **T** the moment the working ends, and **Q(0)** the charge
-in the stone when it began.
+in the stone when it began. **T** is the end of the *stone*, not of one use:
+almost nothing is spent in a single working.
 
-A strike-stone spends its whole draw in the instant it takes to catch a wick.
-A lamp takes months about the same total. Both are bounded by the same
-integral, and this is the formal statement of what the trade already says in
-plainer words: a device works as many times as its stone allows and not once
-more.
+A strike-stone gives up a little at each click and will go on clicking for
+years. A lamp bleeds steadily and is done in a season or two of evenings.
+Between them they cover the whole range the trade currently builds for, and
+both are bounded by the same integral. This is the formal statement of what
+the trade already says in plainer words: a device works as many times as its
+stone allows and not once more.
+
+**Nothing is built to empty a stone at one stroke, and the reason is price
+rather than physics.** The law permits it. A stone costs more than any single
+working is worth, so every device in the trade is designed to spread its draw
+across as many uses as the housing will survive, and a workshop that proposed
+otherwise would be asked who was expected to pay for it. Worth remembering
+before assuming the shape of present devices is telling you something about
+what devices can be.
 
 **Read what this law does not say.** It bounds the charge a stone can
 surrender. It says nothing about the Working that charge produces, and those
@@ -205,8 +215,12 @@ material the nearer you may safely go.
 
 Zmin is not one number. It belongs to the material and the carving together,
 it moves with heat and with damage, and nobody has mapped it for so much as a
-single alloy. It is the open question of the field, and the reason the answer
-matters is that every unit of gain is worth more than a better gem.
+single alloy. It is the open question of the field, and the answer matters for
+a reason that has nothing to do with power. The stone is the expensive part of
+every device ever sold. A circuit at gain takes more Working out of the same
+stone, so gain is not merely the road to a stronger device — it is the only
+road anyone has to a cheaper one, and cheap is what the field would need
+before the rest of the world stopped calling it a waste of a workshop.
 
 ## What the laws already answer
 
