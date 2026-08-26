@@ -102,17 +102,28 @@ The incomers had the opposite inheritance: fixed rank, sworn obligation, and a
 clear notion of who answers to whom.
 
 The Great Thing at Hravnfjord in c. 1180 is those two things bolted together
-and it still shows the join. Jarls hold rank and hold it for life, which is
-the human half. The assembly can overrule any jarl including the High King,
-which is the Jotun half, and it is why the High King's authority stops exactly
-where the Thing says it does and has never once been allowed to creep.
+and it still shows the join. Jarls hold rank and hold it for life, which came
+up the road with the incomers. The assembly can overrule any jarl including
+the High King, which came out of the clans, and it is why the High King's
+authority stops exactly where the Thing says it does and has never once been
+allowed to creep.
+
+**What did not survive the welding was any notion of whose seat is whose.**
+Nordheim has one government and it has never had two. A jarl is a jarl,
+elected or inherited on the same terms in every jarldom, and eleven of the
+twenty-six High Kings crowned since c. 1520 have been Jotun. Nobody in the
+fjords keeps that count. It was worked out by a Corvane pamphleteer who found
+it remarkable, and the Thing's own rolls do not record ancestry at all,
+because no procedure has ever needed to ask.
 
 ## What is remembered
 
 The far northern jarldoms are mostly Jotun and the southern ones mostly human,
-and they have been marrying, crewing and voting together for nine centuries.
-Neither half regards the other as incomers. Ask which, and you will be told
-the question is stupid.
+which is a fact about where the cold is and about nothing else. They have been
+marrying, crewing and voting together for nine centuries, a northern jarl
+speaks for the humans in his jarldom and a southern one for the Jotun in his,
+and neither half regards the other as incomers. Ask which, and you will be
+told the question is stupid.
 
 Two things in Nordheim make no sense without this and are never explained with
 it. The first is [[Cayden Cailean]], god of bravery, freedom, and the

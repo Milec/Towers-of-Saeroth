@@ -15,8 +15,8 @@ forgotten life is.
 - **Founded** c. 1180 AR, when the Great Thing was first recorded. It is older than the kingship by three centuries. Jarls met at the same fjord to settle blood-debt for centuries before they agreed to elect anybody, and the High King's authority still stops exactly where the assembly says it does.
 - **Capital** Hravnfjord, a deepwater harbor town that swells fourfold whenever the Great Thing is called
 - **Geography** Fjords, taiga, and whale coasts; the interior is mountain and the sea is the road
-- **Government** The High King is elected by the assembly of Jarls at the Great Thing
-- **Races** [[Human|Humans]], [[Dwarf|Dwarves]], [[Jotunborn|Jotun]] — the far northern jarldoms are mostly Jotun and the southern ones mostly human, and the two have crewed, married and voted together for nine centuries
+- **Government** The High King is elected by the assembly of Jarls at the Great Thing, from among the jarls and without regard to which of Nordheim's two peoples he comes from
+- **Races** [[Human|Humans]], [[Dwarf|Dwarves]], [[Jotunborn|Jotun]] — the far northern jarldoms are mostly Jotun and the southern ones mostly human, which is a fact about where the cold is and nothing else. Rank is open to either. A jarl is a jarl on the same terms everywhere, and eleven of the twenty-six High Kings since c. 1520 have been Jotun
 - **Naming** Old Norse and Gaelic mixed freely, with patronymics rather than surnames — the Norse half is the [[Jotunborn|Jotun]] inheritance and the Gaelic half came north with the human founders, and nobody sorts them. Sigrún Ketilsdóttir, Hravn Bjarnsson, Ronan Hravnsson, Aífe Ketilsdóttir
 - **Faith** Patron [[Cayden Cailean]], god of bravery, freedom and the guest-cup, which is the closest thing Nordheim has to a national creed. [[Gorum]] is kept for war and [[Desna]] for the long voyages; the oldest sagas still invoke [[Trudd]]
 - **Economic Specialties** Timber, furs, amber, iron, shipbuilding, whaling
