@@ -300,6 +300,25 @@ on anyway — a direct merge right after opening achieves the same "it just
 landed" result. This applies to every PR going forward, not just ones for
 worldbuilding notes.
 
+## Working style
+
+Scale verification to the size of the edit. A wording-only fix (a typo, a
+sentence swap, a name change) needs `lint_notes.py` + `prose_check.py` and a
+plain-text read of the changed lines — not a fresh Playwright browser pass,
+not a PDF rebuild, not a light/dark/mobile sweep. Save the full browser
+check (both themes, phone viewport, screenshot) for changes that touch
+layout, a new view, a new section structure, or anything that could actually
+render wrong. Don't spin up a new `http.server` per edit — reuse one across a
+batch of related checks in the same task, and kill it when the task is done.
+
+Keep commit messages and PR bodies sized to the change. A one-line fix gets a
+one-line commit message, not a multi-paragraph one. Save the full test-plan
+table and multi-section PR body for changes that actually need explaining.
+
+Keep chat replies and explanations short and direct. Say what changed and
+why in plain sentences. Skip metaphor and scene-setting outside of actual
+vault prose — that register belongs in the notes, not in a status update.
+
 ## Writing worldbuilding notes
 
 **Invoke the `saeroth-prose` skill before writing or revising any prose under

@@ -21,21 +21,28 @@ import os
 import re
 import sys
 
-# Bands are advisory. Low end of "comfortable" for published prose, widened a
-# little because GM notes are denser than novels.
-# Set against the vault's own distribution rather than against a style guide,
-# so the flags mean "unusual even for here". At these thresholds about a third
-# of notes get looked at; tighter and everything flags, which is the same as
-# nothing flagging.
+# Bands are advisory. Retargeted toward a terser, low-metaphor house voice —
+# a study-guide register rather than a literary one. The old vault average
+# (median ~23, short-sentence share ~7.6%) is no longer the target; new prose
+# and revisions should land inside these, not at the old average.
+# Set against the target register rather than the vault's own past output, so
+# the flags mean "too long/ornamented even for the terser voice".
 BANDS = {
-    'em_dash':   (0.0, 18.0, 'em dashes / 1k words'),
-    'colon':     (0.0, 8.0,  'colon-then-explanation / 1k words'),
-    'short':     (5.0, 100.0, '% sentences under 8 words'),
-    'median':    (0.0, 30.0, 'median sentence length'),
+    'em_dash':   (0.0, 8.0,  'em dashes / 1k words'),
+    'colon':     (0.0, 6.0,  'colon-then-explanation / 1k words'),
+    'short':     (20.0, 100.0, '% sentences under 8 words'),
+    'median':    (0.0, 18.0, 'median sentence length'),
     'superlative': (0.0, 8.0, 'superlatives / 1k words'),
     'clipped':   (0.0, 12.0, '% clipped verbless sentences'),
     'hdr':       (0.0, 40.0, '% headers naming no subject'),
+    'simile':    (0.0, 3.0,  'simile markers ("like a/an/the", "as if/though") / 1k words'),
 }
+
+# A cheap, reliable tell for reached-for figurative comparison. It cannot
+# catch a bare metaphor with no marker ("fear moved through the hall"), but
+# it catches the most common decorative move and has almost no false
+# positives — "like" and "as if" are rare outside a simile.
+SIMILE = re.compile(r'\b(like a|like an|like the|as if|as though)\b', re.I)
 
 # Below this a single dash swamps the rate and the number means nothing. Short
 # flavour notes are not badly written, they are just short.
@@ -169,6 +176,7 @@ def measure(text):
         'intensifiers': {w: len(re.findall(r'\b%s\b' % w, body, re.I)) for w in INTENSIFIERS},
         'hinge_runs': longest_hinge_run(sents),
         'superlative': per1k(len(SUPERLATIVE.findall(body))),
+        'simile': per1k(len(SIMILE.findall(body))),
         'stacked': sum(1 for s in sents if len(SUPERLATIVE.findall(s)) > 1),
         'clipped': 100.0 * sum(1 for s in sents if clipped(s)) / max(len(sents), 1),
         'mirrors': mirrored_pairs(sents),
