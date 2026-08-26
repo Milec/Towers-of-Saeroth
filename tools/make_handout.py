@@ -36,6 +36,11 @@ PLAYERS = os.path.join(ROOT, 'campaign', 'players')
 #:
 #: Each doc's cuts, all named so a rename in the note breaks this script
 #: rather than quietly shipping the section it was meant to remove:
+#:   src            note's directory, relative to repo root; defaults to
+#:                  this handout's own campaign/players/<player>/ folder.
+#:                  Set it when the source is a shared vault note (a nation,
+#:                  a world/history entry) that has to stay where the rest
+#:                  of the vault links it rather than being moved.
 #:   drop_sections  ## headings to remove entirely
 #:   drop_from      remove everything from this marker to the end
 #:   drop_lead      remove the note's preamble, the part above the first ##
@@ -128,6 +133,34 @@ HANDOUTS = [
             },
         ],
     },
+    {
+        'player': 'Ellie',
+        'out': 'Nordheim handout.pdf',
+        'docs': [
+            {
+                'file': 'Nordheim.md',
+                'src': 'campaign/nations/Nordheim',
+                'title': 'Nordheim',
+                'drop_sections': [],
+                'drop_from': None,
+                'drop_lead': False,
+                'drop_paras': [],
+                'subs': [],
+                'lead': None,
+            },
+            {
+                'file': 'The Shut Gate.md',
+                'src': 'campaign/world/history',
+                'title': 'The Shut Gate',
+                'drop_sections': [],
+                'drop_from': None,
+                'drop_lead': False,
+                'drop_paras': [],
+                'subs': [],
+                'lead': None,
+            },
+        ],
+    },
 ]
 
 #: Nothing on this list may appear in the rendered handout. These are the
@@ -187,7 +220,8 @@ def sections(body):
     return out
 
 
-def prepare(src, doc):
+def prepare(default_src, doc):
+    src = os.path.join(ROOT, doc['src']) if 'src' in doc else default_src
     raw = open(os.path.join(src, doc['file']), encoding='utf-8').read()
     body = FM.sub('', raw, count=1)
 
