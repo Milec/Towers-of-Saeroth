@@ -33,12 +33,14 @@ Everything after that followed from two decisions that were each, on their own,
 perfectly defensible:
 
 - The faction holding Reichsmund found a Thesal celebrant who had wintered on
-  the wrong side of the pass, and crowned **Gerhard Dravensk** with him.
+  the wrong side of the pass, and crowned **Gerhard Dravensk**, of
+  [[House Dravensk]], with him. No theocracy stood behind the rite. Thesal
+  never claimed the celebrant as its own.
 - The faction that had walked out took its candidate east to Ostravin, where
-  the Cathedral Court of [[Dalstan]] anointed **Aleksander Kesslin** with the
-  Concord's own four-hundred-year-old rite — performed correctly, by a church
-  with every historical claim to perform it and no standing whatsoever to crown
-  a Vaelic prince.
+  the Cathedral Court of [[Dalstan]] anointed **Aleksander Kesslin**, of
+  [[House Kesslin]], with the Concord's own four-hundred-year-old rite —
+  performed correctly, by a church with every historical claim to perform it
+  and no standing whatsoever to crown a Vaelic prince.
 
 Two crowned High Princes, six weeks apart, each legitimate by an argument the
 other could not refute. Vaelic's official regnal list still skips the second
