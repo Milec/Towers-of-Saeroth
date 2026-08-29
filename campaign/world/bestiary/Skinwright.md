@@ -10,6 +10,12 @@ whatever last serviced one did not mean for what it does now. Somewhere in
 the working it went wrong, and what climbs out of a cave mouth or a
 tree-line wants what it was never given.
 
+![A skinwright standing in dark, wet ruins: a stolen face and stitched skin
+stretched over a riveted metal frame, joints and gearwork showing through
+the tears](Skinwright.jpg)
+*Its third skin, or its thirtieth. Nobody has ever gotten close enough to
+count the stitches.*
+
 - **Found** Caves, root-hollows, and the dark under old growth, on the wrong side of any road that runs alone
 - **Hunts** By ambush, and it is patient about it. A fed one is the dangerous kind. Dressed in a stolen face it can close the last thirty feet in the open, and most people don't feel the wrongness until a hand is already on their wrist
 - **Wants** A face that fits. It is not particular about whose
