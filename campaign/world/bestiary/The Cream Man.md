@@ -9,6 +9,11 @@ happening: a spilled churn left too long in a warm cellar, and something with
 a shape climbs out of it. It does not want to hurt anyone. It wants to feed
 them, the only way it knows how, and it does not stop when they ask it to.
 
+![The Cream Man reaching out with a dripping, bulbous hand: a hollow-eyed
+face and a body of curdled cream sagging off an unseen frame, dark against
+black](CreamMan.jpg)
+*It doesn't so much walk as slump toward you.*
+
 - **Found** Cellars, dairies, and taverns' cold stores, wherever milk or cream has stood too long
 - **Wants** To feed you. It does not understand refusal, and it does not understand full
 - **Kills** Rarely on purpose. Suffocation isn't the plan, just the part it hasn't worked out
