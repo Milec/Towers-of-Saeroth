@@ -13,6 +13,7 @@ The four indexes and the two notes everything else hangs off:
 - [[Political Relations]] — who is allied with, trading with or fighting whom
 - [[Peoples of the World]] — the ancestries
 - [[Gods of the World]] — the pantheon, and who keeps which god
+- [[Creatures of the World]] — monsters that belong to no single nation
 - [[Ages of Saeroth]] — the dated timeline, and the calendar it is counted in
 - [[The Towers]] — the campaign premise
 
@@ -83,6 +84,7 @@ campaign/
 │   ├── The Towers.md                the campaign premise; indexes known towers
 │   ├── Trade Routes.md              the nine corridors, drawn on the world map
 │   ├── ancestries/                  the peoples: culture and flavour, no rules
+│   ├── bestiary/                    monsters tied to no single nation
 │   ├── deities/                     gods actually worshipped here
 │   ├── history/                     world timeline, ages, cataclysms
 │   ├── languages/
