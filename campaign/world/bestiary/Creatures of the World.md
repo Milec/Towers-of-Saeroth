@@ -9,3 +9,4 @@ one location's folder. Add to this table whenever a new one joins the vault.
 | Creature | Found |
 | --- | --- |
 | [[Skinwright]] | Caves and old-growth forest, wherever a road runs alone |
+| [[The Cream Man]] | Cellars, dairies, and cold stores, wherever milk or cream has stood too long |
