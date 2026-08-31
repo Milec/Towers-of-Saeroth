@@ -320,6 +320,8 @@ view privately, for the ordinary reason, which is that it is bad for business.
   one of the twelve, restored to something like their old power, with no memory
   of ever having been a king. That being is a participant in the murder of a
   god and does not know it. Nothing in the world can tell them. Nothing should.
+  What conquering one might actually hand the party is unsettled — see
+  [[The Deathless Reward]], an idea rather than a decision.
 
 ## At the table
 
