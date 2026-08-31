@@ -69,6 +69,11 @@ ward or open air takes to diamond; earth wants peridot. Cut the right rune
 into the wrong stone and the device is weak or doesn't hold at all, which
 is most of why the trade's pairings look fixed rather than arbitrary. Both
 cuts are made when the stone is made and neither can be reworked after.
+
+That's magitech's own use of the word. [[Runesmithing]] cuts a rune
+straight into the object it changes, no gem and no circuit between them,
+and neither trade has ever confirmed whether the grammar underneath is the
+same one.
 Nobody reprograms an aeon stone; they requisition another, in the right gem
 this time, and cut it again.
 Twenty years ago nobody in either academy could cut either rune, let alone
