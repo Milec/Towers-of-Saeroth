@@ -20,7 +20,7 @@
 //
 // Nothing is left to a lucky seed.
 
-const { SIZE, LAND, CLAIM, BORDERS, GROUP, GROUP_SHARE, ANCHOR, WILD, ISLE_LANES } = require('./world.js');
+const { SIZE, LAND, CLAIM, BORDERS, RIDGE_BORDERS, GROUP, GROUP_SHARE, ANCHOR, WILD, ISLE_LANES } = require('./world.js');
 
 // The map covers this latitude range, north edge to south edge. Most of the
 // world is northern hemisphere: the settled continent runs from the ice down to
@@ -30,6 +30,7 @@ const LAT_TOP = 66, LAT_BOT = -30;
 async function forgeWorld(page, opts) {
   return page.evaluate(async (O) => {
     const { SIZE, LAND, CLAIM, BORDERS, GROUP, GROUP_SHARE, ANCHOR, WILD, ISLE_LANES, LAT_TOP, LAT_BOT } = O;
+    const RIDGE_BORDERS = O.RIDGE_BORDERS || [];
     const NAMES = Object.keys(SIZE);
     const idxOf = {}; NAMES.forEach((n, k) => { idxOf[n] = k; });
     const log = [];
@@ -1032,8 +1033,8 @@ async function forgeWorld(page, opts) {
         c *= 1 + (O.ridgeBar || 5.0) * climb * climb * (L.ridged ? 0.12 : 1);
         // preferences, same multiplicative footing as the terrain
         if (L.coastal) {
-          const over = Math.max(0, seaDist[b2] - (O.coastWant || 4));
-          c *= 1 + (O.coastBar || 0.55) * over;
+          const want = L.coastWant === undefined ? (O.coastWant || 4) : L.coastWant;
+          c *= 1 + (O.coastBar || 0.55) * Math.max(0, seaDist[b2] - want);
         }
         if (L.ridged) c *= 1 + (O.ridgeWantBar || 1.6) * Math.max(0, 1 - upN[b2] / (O.ridgeWant || 0.35));
         const dl = Math.max(0, Math.abs(latOf(GP[b2][1]) - L.tlat) - (O.latFree || 9)) / 10;
@@ -1120,7 +1121,7 @@ async function forgeWorld(page, opts) {
             const cx = sum[n][0] / sum[n][2], cy = sum[n][1] / sum[n][2];
             let bc = seedCell[n], bd = Infinity;
             for (const c of cells) {
-              if ((LAND[n].coastal || LAND[n].seaward) && seaDist[c] > (O.coastWant || 4)) continue;
+              if ((LAND[n].coastal || LAND[n].seaward) && seaDist[c] > (LAND[n].coastWant === undefined ? (O.coastWant || 4) : LAND[n].coastWant)) continue;
               if (drain[c]) continue;              // do not sit a capital in a riverbed
               const dx = GP[c][0] - cx, dy = GP[c][1] - cy;
               const d = dx * dx + dy * dy;
@@ -1187,7 +1188,7 @@ async function forgeWorld(page, opts) {
         const tx = pt[0] + (push[n][0] / k) * 0.22, ty = pt[1] + (push[n][1] / k) * 0.22;
         let bc = seedCell[n], bd = Infinity;
         for (const c of cells) {
-          if ((LAND[n].coastal || LAND[n].seaward) && seaDist[c] > (O.coastWant || 4)) continue;
+          if ((LAND[n].coastal || LAND[n].seaward) && seaDist[c] > (LAND[n].coastWant === undefined ? (O.coastWant || 4) : LAND[n].coastWant)) continue;
           const dx = GP[c][0] - tx, dy = GP[c][1] - ty;
           const d = dx * dx + dy * dy;
           if (d < bd) { bd = d; bc = c; }
@@ -1196,6 +1197,142 @@ async function forgeWorld(page, opts) {
       }
     }
     if (best) { owner.set(best.owner); Object.assign(seedCell, best.seeds); missing = best.missing; }
+
+    // ---------- 5b. trade the excess along the frontiers a nation has -----
+    // The cost multiplier in the carve cannot shrink a runaway, and the reason
+    // is structural: growth runs until every cell is claimed, so cost decides
+    // only where two nations MEET. A nation alone beside an empty lobe takes
+    // the whole lobe at any price — which is how Tal Ulad came out at four
+    // times its share while Voskreld and Sahenna sat at a fifth of theirs.
+    //
+    // What works is trading. Peel the cells furthest from a swollen nation's
+    // own seat and hand each one to whichever neighbour is furthest under its
+    // own quota. It runs ONCE, here, on the finished territory, and not inside
+    // the carve: the first version ran on every border-fix attempt, severed a
+    // frontier the vault requires, and the attempt loop then spent the rest of
+    // its budget re-seeding to win that border back — scoring a hundred points
+    // for the border against thirteen for the country it crushed getting
+    // there. A required frontier is guarded here for the same reason.
+    if (O.trimRounds !== 0) {
+      const rounds = O.trimRounds === undefined ? 12 : O.trimRounds;
+      const over  = O.trimOver  === undefined ? 1.30 : O.trimOver;
+      const under = O.trimUnder === undefined ? 0.90 : O.trimUnder;
+      const ckey = (a2, b2) => (a2 < b2 ? a2 + ':' + b2 : b2 + ':' + a2);
+      const req = new Set();
+      for (const [a2, b2] of BORDERS) {
+        if (idxOf[a2] === undefined || idxOf[b2] === undefined) continue;
+        req.add(ckey(idxOf[a2], idxOf[b2]));
+      }
+      const contact = new Map();
+      for (const i of settledCells) {
+        const a2 = owner[i];
+        if (a2 < 0) continue;
+        for (const c of nbrs(i)) {
+          const o = owner[c];
+          if (o < 0 || o === a2) continue;
+          const k2 = ckey(a2, o);
+          contact.set(k2, (contact.get(k2) || 0) + 1);
+        }
+      }
+      const got = new Int32Array(NAMES.length);
+      for (const i of settledCells) if (owner[i] >= 0) got[owner[i]]++;
+      const target = new Float64Array(NAMES.length);
+      for (const g of groupIds) {
+        const mem = NAMES.filter(n => GROUP[n] === g);
+        let have = 0;
+        for (const i of settledCells) if (owner[i] >= 0 && GROUP[NAMES[owner[i]]] === g) have++;
+        const tw2 = mem.reduce((a2, n) => a2 + SIZE[n], 0);
+        for (const n of mem) target[idxOf[n]] = Math.max(8, have * SIZE[n] / tw2);
+      }
+      const ratio = k => got[k] / target[k];
+      // A frontier the vault requires must survive the trade.
+      const ckey2 = ckey;
+      // outermost first, measured from the nation's own seat
+      const far = new Float64Array(gn);
+      for (const i of settledCells) {
+        const o = owner[i];
+        if (o < 0) continue;
+        const s2 = GP[seedCell[NAMES[o]]];
+        far[i] = Math.hypot(GP[i][0] - s2[0], GP[i][1] - s2[1]);
+      }
+      let total = 0;
+      // Three passes, each looser than the last:
+      //   1. the runaways feed the starved
+      //   2. the starved are fed by anyone barely over quota — a nation at a
+      //      third of its share is a failure whoever is next to it
+      //
+      // A third, looser pass was tried — a serious runaway shedding onto
+      // whoever it touches, however healthy — and it is a trap: it fixed the
+      // size flag and cost two required frontiers and two trade legs, because
+      // the cells a runaway has to give up in that case are exactly the ones
+      // holding it against its neighbours. Size is not worth a border.
+      const stages = O.trimStages || [[over, under], [1.02, 0.55]];
+      for (const [hi, lo] of stages) {
+        for (let round = 0; round < rounds; round++) {
+          const givers = [], takers = new Set();
+          for (let k = 0; k < NAMES.length; k++) {
+            if (!target[k]) continue;
+            if (ratio(k) > hi) givers.push(k);
+            else if (ratio(k) < lo) takers.add(k);
+          }
+          if (!givers.length || !takers.size) break;
+          givers.sort((a2, b2) => ratio(b2) - ratio(a2));
+          let moved = 0;
+          for (const gi of givers) {
+            const own = [];
+            for (const i of settledCells) if (owner[i] === gi) own.push(i);
+            own.sort((a2, b2) => far[b2] - far[a2]);
+            for (const c of own) {
+              if (ratio(gi) <= hi) break;
+              let take2 = -1, bestR = Infinity;
+              for (const b2 of nbrs(c)) {
+                const o = owner[b2];
+                if (o < 0 || o === gi || !takers.has(o)) continue;
+                if (GROUP[NAMES[o]] !== GROUP[NAMES[gi]]) continue;
+                const r2 = ratio(o);
+                if (r2 < bestR) { bestR = r2; take2 = o; }
+              }
+              if (take2 < 0) continue;
+              const delta = new Map();
+              for (const b2 of nbrs(c)) {
+                const o = owner[b2];
+                if (o < 0) continue;
+                if (o !== gi) { const k2 = ckey2(gi, o); delta.set(k2, (delta.get(k2) || 0) - 1); }
+                if (o !== take2) { const k2 = ckey2(take2, o); delta.set(k2, (delta.get(k2) || 0) + 1); }
+              }
+              let severs = false;
+              for (const [k2, d] of delta) {
+                if (req.has(k2) && (contact.get(k2) || 0) + d <= 0) { severs = true; break; }
+              }
+              if (severs) continue;
+              for (const [k2, d] of delta) contact.set(k2, (contact.get(k2) || 0) + d);
+              owner[c] = take2; got[gi]--; got[take2]++; moved++; total++;
+              if (ratio(take2) >= lo) takers.delete(take2);
+            }
+          }
+          if (!moved) break;
+        }
+      }
+      if (total) {
+        const rank = NAMES.map((n, k) => [n, ratio(k)]).filter(x => target[idxOf[x[0]]])
+                          .sort((a2, b2) => b2[1] - a2[1]);
+        log.push(`territory traded: ${total} cells from the swollen to the starved; ` +
+                 `worst now ${rank[0][0]} ${rank[0][1].toFixed(1)}x and ` +
+                 `${rank[rank.length - 1][0]} ${rank[rank.length - 1][1].toFixed(1)}x`);
+      }
+    }
+
+
+    // The trade above moves cells, so the list of frontiers the vault requires
+    // has to be taken again before the bridging below tries to repair it —
+    // otherwise the repair is working from a map that no longer exists.
+    {
+      const adj = adjacentNow();
+      missing = BORDERS.filter(([a2, b2]) => GROUP[a2] === GROUP[b2] &&
+        !adj.has(idxOf[a2] < idxOf[b2] ? idxOf[a2] + ':' + idxOf[b2]
+                                       : idxOf[b2] + ':' + idxOf[a2]));
+    }
+
 
     if (missing.length) {
       const maxGap = O.microCorridor || 6;
@@ -1233,44 +1370,162 @@ async function forgeWorld(page, opts) {
     if (missing.length) log.push('borders unreached: ' + missing.map(x => x.join(' <-> ')).join('; '));
 
     // ---------- 6. relief, then let the borders fall onto it ---------------
+    // ONE range system for the whole world, and nations placed on it.
+    //
+    // Relief used to be painted per nation out of its own `elev` band, with
+    // `elev[0]` as a floor. That gives a mountain nation whose every cell is
+    // at mountain height: a solid blob of hatching in the shape of a country,
+    // stopping dead at the frontier, with a flat plain on the other side.
+    // Real ranges do not know where the borders are. The Alps run through six
+    // countries, the Andes are one chain for seven thousand kilometres, and
+    // either side of a crest there are foothills, spurs and passes rather than
+    // a step down to a plain.
+    //
+    // So height is built in two parts. First the OROGEN, which is global: the
+    // collision uplift a cell actually sits on, folded into ridges running
+    // along the front and dying away from it, plus rolling background. That
+    // field crosses every border, because plates do. Then a REGIONAL BIAS —
+    // one number per nation, the gap between the ground it was given and the
+    // band its note claims — which is smoothed across the whole map before it
+    // is added, so a mountain kingdom rides high and its neighbour comes down
+    // off the range gradually instead of falling off a cliff at the border.
+    const RANGE = O.rangeH === undefined ? 66 : O.rangeH;
+    const PLAINH = O.plainH === undefined ? 15 : O.plainH;
+    const BIAS = O.nationBias === undefined ? 1 : O.nationBias;
+    const BIASBLUR = O.biasBlur === undefined ? 7 : O.biasBlur;
+
+    const h0 = new Float32Array(gn);
+    for (let i = 0; i < gn; i++) {
+      if (!isLand[i]) { h0[i] = G.h[i]; continue; }
+      const [x, y] = GP[i];
+      const shore = Math.min(1, (seaDist[i] - 1) / 3);
+      // parallel folds along the collision front, dying away from it
+      const phase = bWarp[i] * (O.foldFreq || 0.55) + (fbm(x, y, 2, 0.018) - 0.5) * 3.0;
+      const fold = 1 - Math.abs(Math.sin(phase));
+      const spine = Math.min(1, upN[i] / (O.spineAt || 0.42));
+      // A range with no gaps in it is a wall, and a wall is not somewhere a
+      // campaign happens. Modulate the crest along its own length so it drops
+      // into saddles — the passes that roads, armies and trade all have to
+      // use, and that every border on this map is drawn to run through.
+      const gap = 0.62 + 0.38 * fbm(x + 3300, y + 8800, 2, O.passFreq || 0.0042);
+      const belt = Math.pow(fold, O.foldSharp || 1.6) * spine * spine * gap;
+      // a range does not politely subside before it reaches the sea, but a
+      // plain does fade to the shore
+      const plain = fbm(x, y, 5, 0.010) * (0.35 + 0.65 * shore);
+      h0[i] = 21 + PLAINH * plain + RANGE * belt * (0.55 + 0.45 * shore);
+      // volcanic country is a field of isolated cones, not a folded range
+      const n0 = owner[i] >= 0 ? NAMES[owner[i]] : null;
+      if (n0 && LAND[n0].volcanic) {
+        const cone = ridge(x + 1900, y + 4400, 3, 0.014);
+        h0[i] += RANGE * 0.75 * Math.pow(Math.max(0, (cone - 0.45) / 0.55), 2.2);
+      }
+    }
+
+    // what each nation was given against what its note claims
+    const bAcc = new Float64Array(NAMES.length), bCnt = new Int32Array(NAMES.length);
+    for (let i = 0; i < gn; i++) {
+      const o = isLand[i] ? owner[i] : -1;
+      if (o < 0) continue;
+      bAcc[o] += h0[i]; bCnt[o]++;
+    }
+    const off = new Float32Array(gn);
+    for (let i = 0; i < gn; i++) {
+      const o = isLand[i] ? owner[i] : -1;
+      if (o < 0 || !bCnt[o]) continue;
+      const L = LAND[NAMES[o]];
+      const want = (L.elev[0] + L.elev[1]) / 2;
+      off[i] = (want - bAcc[o] / bCnt[o]) * BIAS;
+    }
+    // Smoothing the bias is what turns a political step into a slope: without
+    // it every frontier between a highland and a lowland is a wall.
+    {
+      const tmp = new Float32Array(gn);
+      for (let k = 0; k < BIASBLUR; k++) {
+        for (let i = 0; i < gn; i++) {
+          let s2 = off[i], c2 = 1;
+          for (const c of nbrs(i)) { s2 += off[c]; c2++; }
+          tmp[i] = s2 / c2;
+        }
+        off.set(tmp);
+      }
+    }
+
+    // A frontier the vault describes as mountain country is a fact about the
+    // ground, not an accident of where two nations stopped growing. Find the
+    // cells where the pair actually meet and raise a ridge along them, falling
+    // away over a few cells either side — so Thesal and Vaelic meet across a
+    // pass instead of across a field, which is what makes their alliance a
+    // road between two capitals rather than a march.
+    if (RIDGE_BORDERS.length) {
+      const lift = O.borderRidge === undefined ? 46 : O.borderRidge;
+      const reach = O.borderRidgeReach === undefined ? 5 : O.borderRidgeReach;
+      let raised = 0;
+      for (const [a2, b2] of RIDGE_BORDERS) {
+        const A = idxOf[a2], B = idxOf[b2];
+        if (A === undefined || B === undefined) continue;
+        const seam = [];
+        for (let i = 0; i < gn; i++) {
+          if (!isLand[i] || (owner[i] !== A && owner[i] !== B)) continue;
+          const want = owner[i] === A ? B : A;
+          for (const c of nbrs(i)) if (isLand[c] && owner[c] === want) { seam.push(i); break; }
+        }
+        if (!seam.length) continue;
+        const d = new Int32Array(gn).fill(-1);
+        let ring = seam.slice();
+        for (const i of ring) d[i] = 0;
+        for (let r = 1; r <= reach && ring.length; r++) {
+          const next = [];
+          for (const c of ring) for (const q of nbrs(c)) {
+            if (!isLand[q] || d[q] !== -1) continue;
+            d[q] = r; next.push(q);
+          }
+          ring = next;
+        }
+        for (let i = 0; i < gn; i++) {
+          if (d[i] < 0) continue;
+          const t2 = 1 - d[i] / (reach + 1);
+          off[i] += lift * t2 * t2;
+        }
+        raised += seam.length;
+      }
+      if (raised) log.push(`raised ${raised} cells of frontier the vault calls mountains`);
+    }
+
+    // Blurring the bias is what makes the range cross the border, and it also
+    // smears a small nation's own correction away into its neighbours:
+    // Melisor, 178 cells of claimed highland, came out at grassland height.
+    // So measure the gap again on the blurred field and close part of it
+    // unblurred — enough to hold the claim, not enough to rebuild the wall.
+    {
+      const pin = O.nationPin === undefined ? 0.55 : O.nationPin;
+      if (pin > 0) {
+        const acc2 = new Float64Array(NAMES.length), cnt2 = new Int32Array(NAMES.length);
+        for (let i = 0; i < gn; i++) {
+          const o = isLand[i] ? owner[i] : -1;
+          if (o < 0) continue;
+          acc2[o] += h0[i] + off[i]; cnt2[o]++;
+        }
+        for (let i = 0; i < gn; i++) {
+          const o = isLand[i] ? owner[i] : -1;
+          if (o < 0 || !cnt2[o]) continue;
+          const L = LAND[NAMES[o]];
+          const want = (L.elev[0] + L.elev[1]) / 2;
+          off[i] += (want - acc2[o] / cnt2[o]) * pin;
+        }
+      }
+    }
+
     const tgtH = new Float32Array(gn);
     for (let i = 0; i < gn; i++) {
       if (!isLand[i]) { tgtH[i] = G.h[i]; continue; }
-      const [x, y] = GP[i];
-      const shore = Math.min(1, (seaDist[i] - 1) / 3);
-      const n = owner[i] >= 0 ? NAMES[owner[i]] : null;
-      if (!n) {
+      if (owner[i] < 0) {
         // wilderness keeps whatever the plates built, with its own grain
-        const wild = 22 + fbm(x, y, 5, 0.010) * 34 + ridge(x + 5100, y + 700, 4, 0.013) * 22;
-        tgtH[i] = Math.max(20, wild * 0.55 + G.h[i] * 0.45 + uplift[i] * (O.orogenLift || 26) * shore);
+        const [x, y] = GP[i];
+        const wild = ridge(x + 5100, y + 700, 4, 0.013) * 20;
+        tgtH[i] = Math.max(20, h0[i] * 0.72 + G.h[i] * 0.28 + wild * 0.5 + off[i]);
         continue;
       }
-      const L = LAND[n];
-      let t;
-      if (L.volcanic) {
-        // isolated cones rather than a ridge: a volcanic field, not an orogen
-        const p = ridge(x + 1900, y + 4400, 3, 0.014);
-        t = Math.pow(Math.max(0, (p - 0.45) / 0.55), 2.2) * 0.85 + fbm(x, y, 3, 0.009) * 0.15;
-      } else if (L.ridged) {
-        // Parallel folded ridges running along the collision front, and — the
-        // part that was missing — DYING AWAY from it. Folding the whole of a
-        // nation's territory at full amplitude is what made its mountains read
-        // as one solid blob of hatching: a real range has a spine where the
-        // plates actually meet, foothills either side, and plain beyond.
-        const phase = bWarp[i] * (O.foldFreq || 0.55) + (fbm(x, y, 2, 0.018) - 0.5) * 3.0;
-        const fold = 1 - Math.abs(Math.sin(phase));
-        const spine = Math.min(1, upN[i] / (O.spineAt || 0.42));
-        const amp = (O.foldFloor || 0.20) + (0.80 - (O.foldFloor || 0.20)) * spine * spine;
-        t = Math.pow(fold, O.foldSharp || 1.6) * amp + fbm(x, y, 3, 0.007) * 0.22;
-      } else t = fbm(x, y, 5, 0.010);
-      // lowlands fade to the shore; a mountain range does not politely subside
-      // before it reaches the sea, so uplifted country keeps most of its height
-      const rSpine = L.ridged ? Math.min(1, upN[i] / (O.spineAt || 0.42)) : 0;
-      const damp = L.ridged ? (0.40 + 0.32 * rSpine + 0.28 * shore) : (0.35 + 0.65 * shore);
-      const own = L.elev[0] + (L.elev[1] - L.elev[0]) * t * damp;
-      const take = (L.takeMul === undefined ? 1 : L.takeMul) *
-                   (L.ridged ? 1.0 : (L.elev[1] <= 32 ? 0.30 : 0.60));
-      tgtH[i] = own + uplift[i] * (O.orogenLift || 26) * shore * take;
+      tgtH[i] = Math.max(20, h0[i] + off[i]);
     }
 
     const relax = (rounds, tol) => {
@@ -1742,6 +1997,54 @@ async function forgeWorld(page, opts) {
         log.push('climate repainted on the redrawn borders');
       }
 
+      // Trading territory and then regrowing it over the real drainage can
+      // pull apart two nations the vault requires to touch — Tal Ulad lost
+      // both the March and Silicar that way, and the corridor repair on the
+      // grid cannot see it, because it runs before either. Repair it here,
+      // where the final borders actually are: walk the shortest land path
+      // between the two and hand its cells to them, half each. A frontier a
+      // few cells wide is a pass or a river crossing, which is what a border
+      // between two countries that barely meet looks like anyway.
+      {
+        const maxGap = O.packCorridor === undefined ? 10 : O.packCorridor;
+        let fixed = 0;
+        for (const [a2, b2] of BORDERS) {
+          const A = idxOf[a2], B = idxOf[b2];
+          if (A === undefined || B === undefined || GROUP[a2] !== GROUP[b2]) continue;
+          let touch = false;
+          for (let i = 0; i < pn && !touch; i++) {
+            if (nationOf[i] !== A) continue;
+            for (const c of (pc.c[i] || [])) if (nationOf[c] === B) { touch = true; break; }
+          }
+          if (touch) continue;
+          const dq = new Int32Array(pn).fill(-1), prev = new Int32Array(pn).fill(-1);
+          let ring = [];
+          for (let i = 0; i < pn; i++) if (nationOf[i] === A) { dq[i] = 0; ring.push(i); }
+          let hit = -1;
+          for (let d = 1; d <= maxGap + 1 && ring.length && hit === -1; d++) {
+            const next = [];
+            for (const c of ring) {
+              for (const q of (pc.c[c] || [])) {
+                if (dq[q] !== -1 || pc.h[q] < 20) continue;
+                dq[q] = d; prev[q] = c;
+                if (nationOf[q] === B) { hit = q; break; }
+                next.push(q);
+              }
+              if (hit !== -1) break;
+            }
+            if (hit !== -1) break;
+            ring = next;
+          }
+          if (hit === -1) continue;
+          const path = [];
+          for (let c = prev[hit]; c !== -1 && nationOf[c] !== A; c = prev[c]) path.push(c);
+          if (!path.length || path.length > maxGap) continue;
+          path.forEach((c, k) => { nationOf[c] = k < path.length / 2 ? B : A; });
+          fixed++;
+        }
+        if (fixed) log.push(`required borders repaired on the pack: ${fixed}`);
+      }
+
       // the required borders have to be checked HERE, after the redraw: the
       // grid carve's count describes a map that no longer exists
       {
@@ -1918,4 +2221,4 @@ async function forgeWorld(page, opts) {
   }, opts);
 }
 
-module.exports = { forgeWorld, SIZE, LAND, CLAIM, BORDERS, GROUP, GROUP_SHARE, ANCHOR, WILD, ISLE_LANES, LAT_TOP, LAT_BOT };
+module.exports = { forgeWorld, SIZE, LAND, CLAIM, BORDERS, RIDGE_BORDERS, GROUP, GROUP_SHARE, ANCHOR, WILD, ISLE_LANES, LAT_TOP, LAT_BOT };
