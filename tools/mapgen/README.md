@@ -257,18 +257,47 @@ Two rules make it work:
   along and that the carve steers a mountain nation onto. Only ground well above
   the template's plains counts: taken as absolute height it reads as uplift
   everywhere there is land at all.
+- **The land is the RAW heightmap, not the saturated one.** The saturated field
+  is built for nudging a coastline — it clips a few units above the donor's sea
+  level so the shore gets the whole amplitude. Used as the land itself that
+  clipping is fatal: every land cell sits in the same flat band, so a waterline
+  drawn anywhere inside it falls on flat ground and whatever noise is left
+  underneath draws the coast. Unclipped, the waterline is a contour of Azgaar's
+  own heightmap, which is the point of borrowing it.
 
-| region | nations | required borders | trade |
-| --- | --- | --- | --- |
-| west | 17 | 9 | 5 corridors, 13 legs |
-| middle | 2 | — | — |
-| east | 9 | 7 | 3 corridors, 6 legs |
+### The middle sea keeps the plates, and why
 
-The committed `.map` files are the plate-shaped builds (west seed 10, middle
-seed 6, east seed 1: 16/16 borders, 27/28 terrain majorities and two inspector
-problems between them). The template-shaped land landed after them and needs its
-own seed sweep, because a seed chosen against one geometry says nothing about
-another.
+The archipelago came out as a sponge — land and sea alternating every three
+cells across half the map — through five rounds of fixes that each changed
+nothing: blurring the donor (up to 160 passes), magnifying it, feeding it raw
+instead of saturated, three different templates, and zeroing the coastal noise.
+
+None of them mattered because none of them was the cause. `fv` for group 2 is
+not modulated by anything upstream — it is **overwritten** by the island-arc
+field, four octaves of fbm at `arcFreq`. On the world map that group was twelve
+hundred cells and 0.026 read as a nice scatter of islands. Given its own canvas
+the same frequency is a base wavelength of three cells, and four octaves go
+finer still.
+
+So the middle region sets `arcFreq: 0.006, arcOct: 2` — islands about thirteen
+cells across — and keeps `landFrom: 'plates'`. Azgaar's Archipelago template is
+ten wandering troughs and two straits cut through a low plateau, which at fifty
+thousand cells is lace however it is sampled. The plate model with hotspot
+chains and the deliberate island lanes in `world.js` is better at island chains
+than any template is. Templates win on continents; they lose here. 48
+landmasses, 34% shore, both nations within three degrees of their target
+latitude.
+
+| region | seed | nations | borders | terrain | trade | problems |
+| --- | --- | --- | --- | --- | --- | --- |
+| west | 16 | 17 | **9/9** | 15/17 | 5 corridors, 13/13 legs | **0** |
+| middle | 6 | 2 | — | 2/2 | — | **0** |
+| east | 1 | 9 | **7/7** | 8/9 | 3 corridors, 6/6 legs | **0** |
+
+All three report *nothing a reader would flag*, all 16 required borders stand,
+and every trade leg the split leaves on a map is pathfound. Terrain majorities
+come to 25 of 28, against 27 under the plate-shaped land — that is what the
+borrowed coastlines cost, and it is the whole of what they cost.
 
 All **16 required borders survive the split** — every one of them is between
 nations on the same continent, so no region build can be short one the world

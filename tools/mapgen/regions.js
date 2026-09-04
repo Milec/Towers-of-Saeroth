@@ -68,8 +68,26 @@ const REGIONS = {
     // of them a few cells across, which is confetti rather than islands.
     landFraction: 0.28, settledFraction: 1,
     donorAmp: [1, 1, 1.05, 1],
-    // many landmasses is the whole point here
-    oneContinent: false,
+    // many landmasses is the whole point here, and an island still has to be
+    // big enough to be one
+    oneContinent: false, minIsle: 34,
+    // THE ONE REGION THAT KEEPS THE PLATES. Azgaar's Archipelago template is
+    // ten wandering troughs and two straits cut through a low plateau, which
+    // at this grid's fifty thousand cells is not an island chain — it is a
+    // sponge, land and sea alternating every three cells across half the map.
+    // Blurring the donor, magnifying it, and feeding it raw instead of
+    // saturated all left it unchanged, because the lace is the template's own
+    // coastline at this resolution.
+    //
+    // The plate model is better at this than any template is, and always was:
+    // hotspot chains and the deliberate island lanes in world.js make distinct
+    // islands with real water between them. Templates win on continents. They
+    // lose here.
+    landFrom: 'plates',
+    // and the arc noise has to be coarsened for a canvas this size: at the
+    // world map's 0.026 over four octaves its base wavelength is three cells,
+    // which is the sponge above by another route
+    arcFreq: 0.006, arcOct: 2,
     why: 'the middle sea: an archipelago and the two powers that work it',
   },
   east: {
@@ -135,6 +153,8 @@ function regionWorld(W, name) {
     LAT_TOP: R.latTop, LAT_BOT: R.latBot,
     landFraction: R.landFraction, settledFraction: R.settledFraction,
     donorAmp: R.donorAmp, oneContinent: !!R.oneContinent,
+    minIsle: R.minIsle, donorSmooth: R.donorSmooth, landFrom: R.landFrom || 'template',
+    arcFreq: R.arcFreq, arcOct: R.arcOct,
     // the world build makes the polar cap deliberately; only the west has one
     ice: R.ice,
     inRegion,
