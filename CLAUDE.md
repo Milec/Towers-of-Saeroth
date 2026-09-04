@@ -441,7 +441,9 @@ stop to that table moves the line in both places with no code change.
 
 **A corridor leg the map cannot carry fails `inspect.py`.** If two nations the
 notes have trading have no road and no sea lane between them, the map is
-wrong, not the note — so that check is part of choosing a seed.
+wrong, not the note — so that check is part of choosing a seed. A leg its own
+carrier cannot make but the other one can is reported rather than failed: the
+barges go round by wagon and the build says so.
 
 **And when the map changes, the site's map view does not follow on its own
 either.** The relations web can be laid over the world map, with each nation

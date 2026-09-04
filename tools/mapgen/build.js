@@ -31,7 +31,13 @@ const OPTS = Object.assign({
   latCost: 14000, latFree: 4, latBar: 2.4, ruins: 26, keepC: 0.72, varT: 0.5, varP: 0.38,
   borderFix: 45, minCells: 60, microCorridor: 8,
   relaxRounds: 14, sizeTol: 0.18, blur: 2, plateYield: 0.85,
-  orogenLift: 58, lakes: 6, lakeR: 4.0, arcFreq: 0.009, arcLand: 0.46, arcNeed: 1.15,
+  orogenLift: 58, lakes: 6, lakeR: 4.0, // arcFreq is the wavelength of the archipelago's own noise, and it is what
+  // decides whether the middle sea holds islands or two more small continents.
+  // At 0.009 the group-2 plates came out as one 693-cell blob and three
+  // scraps; at 0.026 the same land is 16 landmasses — 509, 327, 125, 62, 55,
+  // 31 and a tail of skerries — which is what an archipelago is, and gives
+  // Aquoniti the nine islands its note claims instead of three.
+  arcFreq: 0.026, arcLand: 0.46, arcNeed: 1.15,
   orogenyMinor: 0.30, foldFloor: 0.26, flatPush: 120000, flatFree: 0.20, flatCeil: 50, foldSharp: 1.7, spineAt: 0.38, orogeny: 2.9, beltWidth: 2.7, frontWarp: 14, frontFreq: 0.0060, rift: 1.6, riftWidth: 4.0, straitMin: 160, hotspots: 14, moat: 4.0, moatW: 3.4, iceY: 0.040,
   contBase: 0.62, marginTop: 0.055, wildRelief: 2.0, wildFreq: 0.0050, reliefAmp: 0.98, minPond: 22,
   warpAmp: 165, warpFreq: 0.0016, coastNoise: 0.19, coastBand: 0.12, coastFreq: 0.007, fjordFreq: 0.022, weather: 1,
@@ -447,7 +453,7 @@ async function baseGen(p, c) {
     // which is also the check that the corridor is possible on this map at
     // all: a leg with no route means two nations the vault has trading are
     // not actually connected.
-    const trade = { laid: [], partial: [], legs: 0, skipped: [], detour: [] };
+    const trade = { laid: [], partial: [], legs: 0, skipped: [], detour: [], rerouted: [] };
     try {
       const tlist = Transports.getDefaults();
       let tid = Math.max.apply(null, tlist.map(t => t.i)) + 1;
@@ -561,11 +567,35 @@ async function baseGen(p, c) {
             }
             if (r) break;
           }
+          // A leg its own carrier cannot make is not automatically a hole in
+          // the world: if the barges cannot float between two fens because
+          // they sit on different drainages, the cargo goes overland, which is
+          // what a smuggling run does anyway. Try the other domain before
+          // calling the corridor broken — and say which legs did it, because a
+          // river route carried on wheels is worth knowing about.
+          let usedTr = tr;
+          if (!r) {
+            const alt = car.domain === 'water' ? 'land' : 'water';
+            const altTr = Transports.get(alt === 'land' ? a.CARRIER.road.name
+                                                        : a.CARRIER.sea.name);
+            const AS2 = endpointsOf(ia, alt), BS2 = endpointsOf(ib, alt);
+            for (const x of AS2) {
+              for (const y of BS2) {
+                if (alt === 'land' && cc.f[x.cell] !== cc.f[y.cell]) continue;
+                const t3 = Journeys.findPath(x.cell, y.cell, alt);
+                if (t3.errorCode || t3.points.length < 2) continue;
+                A = x; B = y; r = t3; usedTr = altTr; break;
+              }
+              if (r) break;
+            }
+            if (r) trade.rerouted.push(`${cor.name}: ${na} \u2192 ${nb} goes by ` +
+                                       `${usedTr.name.toLowerCase()} (${why})`);
+          }
           if (!r) { trade.skipped.push(`${cor.name}: ${na} \u2192 ${nb} (${why})`); continue; }
           if (!firstEnd) firstEnd = A;
           lastEnd = B;
           segments.push({ i: segments.length, name: `${A.name} \u2192 ${B.name}`,
-                          from: A.cell, to: B.cell, transport: tr.name, speed: tr.speed,
+                          from: A.cell, to: B.cell, transport: usedTr.name, speed: usedTr.speed,
                           distance: r.distance, points: r.points });
         }
         const carried = segments.length;
@@ -699,6 +729,7 @@ async function baseGen(p, c) {
       console.log(`    wander ${mean.toFixed(2)}x straight on average; ` +
                   'worst ' + det.slice(0, 3).map(d => `${d[1]} ${d[2].toFixed(1)}x`).join(', '));
     }
+    for (const w of res.trade.rerouted || []) console.log('    REROUTED ' + w);
     for (const w of res.trade.partial) console.log('    PARTIAL ' + w);
     for (const w of res.trade.skipped) console.log('    no route: ' + w);
   }

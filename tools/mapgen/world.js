@@ -21,14 +21,19 @@ const SIZE = {
   // Kesmarch is a frontier — chartered homesteads at the edge of the jungle,
   // not a power. It was carrying almost as much weight as Nordheim and coming
   // out the largest country on its continent.
-  'Nordheim': 0.9, 'Quivar': 0.55, 'Kesmarch Frontier': 0.55,
+  // Quivar is deciduous valleys and a soft coast with a real hinterland behind
+  // it; Sarrowmere is a fen. The fen kept coming out at twice its share and
+  // the kingdom at its bare quota, which is the wrong way round for both.
+  'Nordheim': 0.9, 'Quivar': 0.8, 'Kesmarch Frontier': 0.55,
   'Thornwild Confederation': 0.8, 'Aquoniti': 0.8, 'Lazarian Lichdom': 0.35,
   'Dalstan': 0.7, 'Corvane Republic': 0.55, 'Silicar': 0.6,
   'Stoneborn Holds': 0.6, 'Cindral Ashlands': 0.5, 'Thesal Theocracy': 0.5,
   'Melisor Magocracy': 0.55, 'Thurion Merchant Alliance': 0.34,
   'Undertide Reaches': 0.3,
   // the six minor states of the eastern continent
-  'Kelvary March': 0.45, 'Tal Ulad': 0.28, 'Sarrowmere': 0.4,
+  // Sarrowmere is a fen, and a fen is not a kingdom's worth of ground. It kept
+  // coming out at twice its share while Quivar sat at its bare quota.
+  'Kelvary March': 0.45, 'Tal Ulad': 0.28, 'Sarrowmere': 0.33,
   // Tessine is a city that is also a country — "the nation is the city", and
   // its capital shares its name. At 0.15 it came out the size of a small
   // kingdom, which is the wrong shape for a signory that grows, mines and
