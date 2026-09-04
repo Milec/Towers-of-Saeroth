@@ -92,6 +92,28 @@ one.** If the Salt Road has no road between two of its nations, or the Incense
 Coast has no sea lane, then two countries the vault has trading are not
 actually connected, and the seed is wrong.
 
+**A corridor ends at a capital, not at a wharf.** The capital wins the endpoint
+whenever the transport can reach it at all — a delta or river capital is a
+valid water endpoint and the router will run a hull up the river to it — and
+where it cannot, the corridor picks up a short road leg from the quay to the
+city at each end. Left to pick ports, a sea corridor visited five countries
+without entering any of them.
+
+**The build reports how far each leg wanders from a straight line**, because
+nothing else was measuring the thing that made the corridors look wrong:
+
+```
+wander 1.70x straight on average; worst Grauthaven -> Ilmen Wharf 4.0x
+```
+
+Roads and caravan tracks come out at 1.1-1.4x, sea lanes at 1.2-2.4x — a hull
+has to go round a peninsula. Anything at 3x or more is a route that is creeping
+rather than travelling. The one that does here is the Delta Run, and it is
+honest: Grauthaven and Ilmen Wharf sit on different drainages, so the only way
+between them is out to sea and round. The router refuses any land cell that is
+not a recorded navigable river edge, so no amount of re-pricing invents a
+river that is not there.
+
 ## Correcting a map without regenerating it
 
 `touchup.js` edits a saved `.map` in place. It loads the file through the app's

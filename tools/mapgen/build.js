@@ -447,7 +447,7 @@ async function baseGen(p, c) {
     // which is also the check that the corridor is possible on this map at
     // all: a leg with no route means two nations the vault has trading are
     // not actually connected.
-    const trade = { laid: [], partial: [], legs: 0, skipped: [] };
+    const trade = { laid: [], partial: [], legs: 0, skipped: [], detour: [] };
     try {
       const tlist = Transports.getDefaults();
       let tid = Math.max.apply(null, tlist.map(t => t.i)) + 1;
@@ -472,31 +472,60 @@ async function baseGen(p, c) {
       // The hard rules are untouched: leaving through a cell's own haven,
       // staying on a navigable river and not sailing into ice all come back
       // from the original as Infinity and are passed straight through.
-      const SEA_MOD = { '-1': 1.5, '-2': 1.0, '-3': 1.3, '-4': 1.8 };
-      const seaDeep = a.seaDetour === undefined ? 2.2 : a.seaDetour;
+      // The schedule runs the other way from Azgaar's: the shore is the
+      // expensive water and the open ocean the cheap one, so a corridor
+      // crosses instead of creeping. Making `sea` the cheapest tier was not
+      // enough — a route still traced the coast one cell out, which looks
+      // exactly as much like an outline of the continent as tracing the beach
+      // does. There is still a gradient, and it still points somewhere: flat
+      // water leaves the search nothing to follow, so it fans out across the
+      // whole ocean hunting one port's haven and the build takes ten minutes.
+      // Two schedules, because a barge and a merchantman want opposite things.
+      // `sea` makes the open ocean the cheap water so a hull crosses instead of
+      // creeping; `river` inverts it, so a barge takes a river where one goes
+      // its way.
+      //
+      // It does not make one where there is none. The router refuses any land
+      // cell that is not a recorded navigable river edge, so re-pricing can
+      // only choose between paths that already exist — the Delta Run still
+      // runs four times its straight line, because Grauthaven and Ilmen Wharf
+      // are on different drainages and the only way between them is out to sea
+      // and round. That is the map telling the truth, not the router failing.
+      const WATER_MOD = {
+        sea:   { land: 1.0, '-1': 1.9, '-2': 1.35, '-3': 1.05, '-4': 1.0, deep: 1.0 },
+        river: { land: 0.7, '-1': 1.1, '-2': 1.8, '-3': 2.6, '-4': 3.2, deep: 3.6 },
+      };
+      let mod = WATER_MOD.sea;
       const seaCost = Routes.getWaterPathCost.bind(Routes);
       Routes.getWaterPathCost = function (from, to) {
         const c = seaCost(from, to);
         if (!isFinite(c)) return c;
         const d2 = dist2(pack.cells.p[from], pack.cells.p[to]);
         if (!(d2 > 0)) return c;
-        return d2 * (SEA_MOD[pack.cells.t[to]] || seaDeep);
+        const t2 = pack.cells.t[to];
+        return d2 * (t2 >= 0 ? mod.land : (mod[t2] === undefined ? mod.deep : mod[t2]));
       };
 
       const burgsOf = id => pack.burgs.filter(b => b && b.i && !b.removed && b.state === id);
-      // Where a corridor touches a nation. A road corridor leaves from the
-      // capital; a sea corridor leaves from the harbour, because a landlocked
-      // capital has no other way to put cargo on a hull. Ranked rather than
-      // picked, because a valid endpoint is not the same as a reachable one —
-      // the sea router insists on leaving through a cell's own haven — so the
-      // leg tries the next candidate instead of giving up on the first refusal.
-      const endpointsOf = (id, domain) => {
+      const capitalOf = id => {
         const st = pack.states[id];
-        const cap = st && st.capital && pack.burgs[st.capital];
+        return (st && st.capital && pack.burgs[st.capital]) || null;
+      };
+      // Where a corridor touches a nation. The capital wins whenever it CAN —
+      // a delta or river capital is a valid water endpoint and the sea router
+      // will run a hull up the river to reach it, which is the difference
+      // between a corridor that visits a country and one that skims past its
+      // beach. Only a capital the water cannot reach hands the leg to a port.
+      //
+      // Ranked rather than picked, because a valid endpoint is not the same as
+      // a reachable one — the sea router insists on leaving through a cell's
+      // own haven — so the leg tries the next candidate instead of giving up.
+      const endpointsOf = (id, domain) => {
+        const cap = capitalOf(id);
         const score = b => {
           let v = 1 + (b.population || 0);
-          if (domain === 'water' && b.port) v *= 6;
-          if (b === cap) v *= 3;
+          if (domain === 'water' && b.port) v *= 4;
+          if (b === cap) v *= 40;
           return v;
         };
         return burgsOf(id)
@@ -509,7 +538,9 @@ async function baseGen(p, c) {
       a.corridors.forEach((cor, ci) => {
         const car = a.CARRIER[cor.carry];
         const tr = Transports.get(car.name);
+        mod = WATER_MOD[cor.carry] || WATER_MOD.sea;
         const segments = [];
+        let firstEnd = null, lastEnd = null;
         for (let k = 0; k + 1 < cor.stops.length; k++) {
           const na = cor.stops[k], nb = cor.stops[k + 1];
           const ia = byName[na], ib = byName[nb];
@@ -531,16 +562,51 @@ async function baseGen(p, c) {
             if (r) break;
           }
           if (!r) { trade.skipped.push(`${cor.name}: ${na} \u2192 ${nb} (${why})`); continue; }
+          if (!firstEnd) firstEnd = A;
+          lastEnd = B;
           segments.push({ i: segments.length, name: `${A.name} \u2192 ${B.name}`,
                           from: A.cell, to: B.cell, transport: tr.name, speed: tr.speed,
                           distance: r.distance, points: r.points });
         }
-        if (segments.length === cor.stops.length - 1) trade.laid.push(cor.name);
-        else trade.partial.push(`${cor.name} ${segments.length}/${cor.stops.length - 1} legs`);
+        const carried = segments.length;
+        // A sea corridor that begins and ends at a wharf never enters the
+        // country it is named for — it skims the beach and leaves, which is
+        // what made the lines look like an outline of the coast rather than a
+        // trade route. Where the capital could not take the hull itself, walk
+        // the last stretch: the road from the quay up to the city is part of
+        // the run, and mixed transport is what the Journeys layer is for.
+        if (car.domain === 'water' && segments.length) {
+          const road = Transports.get(a.CARRIER.road.name);
+          const spur = (fromB, toB) => {
+            if (!fromB || !toB || fromB === toB) return null;
+            if (cc.f[fromB.cell] !== cc.f[toB.cell]) return null;
+            const r2 = Journeys.findPath(fromB.cell, toB.cell, 'land');
+            if (r2.errorCode || r2.points.length < 2) return null;
+            return { name: `${fromB.name} \u2192 ${toB.name}`, from: fromB.cell, to: toB.cell,
+                     transport: road.name, speed: road.speed,
+                     distance: r2.distance, points: r2.points };
+          };
+          const head = spur(capitalOf(byName[cor.stops[0]]), firstEnd);
+          const tail = spur(lastEnd, capitalOf(byName[cor.stops[cor.stops.length - 1]]));
+          if (head) segments.unshift(head);
+          if (tail) segments.push(tail);
+          segments.forEach((sg, k2) => { sg.i = k2; });
+        }
+        // How far a leg wanders against the straight line between its ends.
+        // A sea lane that creeps round every bay instead of crossing scores 3
+        // or 4 here and reads on the map as an outline of the coast, which is
+        // not something any number in the build was measuring.
+        for (const sg of segments) {
+          const A2 = cc.p[sg.from], B2 = cc.p[sg.to];
+          const straight = Math.hypot(A2[0] - B2[0], A2[1] - B2[1]);
+          if (straight > 1) trade.detour.push([cor.name, sg.name, sg.distance / straight]);
+        }
+        if (carried === cor.stops.length - 1) trade.laid.push(cor.name);
+        else trade.partial.push(`${cor.name} ${carried}/${cor.stops.length - 1} legs`);
         if (!segments.length) return;
         journeys.push({ i: journeys.length, name: cor.name, type: 'Trade route',
                         color: a.ROUTE_COLORS[ci % a.ROUTE_COLORS.length], segments, lock: true });
-        trade.legs += segments.length;
+        trade.legs += carried;
       });
       Routes.getWaterPathCost = seaCost;   // the app's own routes keep coasting
       // replaces the one journey the generator seeds every map with
@@ -627,6 +693,12 @@ async function baseGen(p, c) {
     const wantLegs = corridors.reduce((n, c) => n + c.stops.length - 1, 0);
     console.log(`  trade: ${res.trade.laid.length}/${corridors.length} corridors whole, ` +
                 `${res.trade.legs}/${wantLegs} legs pathfound`);
+    const det = (res.trade.detour || []).slice().sort((x, y) => y[2] - x[2]);
+    if (det.length) {
+      const mean = det.reduce((n, d) => n + d[2], 0) / det.length;
+      console.log(`    wander ${mean.toFixed(2)}x straight on average; ` +
+                  'worst ' + det.slice(0, 3).map(d => `${d[1]} ${d[2].toFixed(1)}x`).join(', '));
+    }
     for (const w of res.trade.partial) console.log('    PARTIAL ' + w);
     for (const w of res.trade.skipped) console.log('    no route: ' + w);
   }
