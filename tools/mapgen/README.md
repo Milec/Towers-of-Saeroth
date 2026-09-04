@@ -127,13 +127,23 @@ you know the save round-tripped rather than quietly dropping something.
 The diagnostics matter more than the map looking nice at a glance:
 
 ```
-group 0: 7852 cells across 1 landmass(es)     ← continent coherence. >2 is bad.
-required borders after the redraw: 17/17      ← the vault's adjacencies, measured
+group 0: 7904 cells across 1 landmass(es) (7904)   ← continent coherence, with the
+group 1: 7868 cells across 3 landmass(es) (7862, 5, 1)   sizes: this one is whole,
+                                                  the other two are stray cells
+required borders after the redraw: 15/16      ← the vault's adjacencies, measured
                                                 AFTER the last pass that moves a cell
-terrain majority 27/27                        ← each nation has the terrain its note claims
-worst oversize: Thornwild 2076 (2.1x)         ← size against WEIGHT, not raw cells
-worst undersize: Melisor 170 (0.2x)
+terrain majority 28/28                        ← each nation has the terrain its note claims
+frontiers: 56 in all, 12 of them between      ← how much of the political map is
+  nations the vault says nothing about (21%)    geography rather than diplomacy
+trade: 9/9 corridors whole, 24/24 legs        ← the world can carry its own trade
+worst oversize: Tal Ulad 795 (4.0x)           ← size against WEIGHT, not raw cells
+worst undersize: Voskreld Union 144 (0.2x)
 ```
+
+**Print the landmass sizes, not just the count.** A continent of 7,862 cells
+plus six cells on two skerries reports "3 landmasses" and reads as fractured,
+which had the sweep ranking whole continents below broken ones for an
+afternoon.
 
 **Sweep, don't tune.** Most defects left are seed-dependent, not systematic.
 Run a dozen seeds, rank them on coherence first, and pick — a seed that scores
@@ -161,13 +171,32 @@ seven times its share sitting fifty degrees out of its climate band.
 
 ## The current map
 
-`campaign/Saeroth.map` is **seed 7**: 28 nations, **15/15 required borders**,
-26/28 terrain majorities, both inhabited continents a single landmass each, and
-`inspect.py` reports **2** problems.
+`campaign/Saeroth.map` is **seed 7**, built on Azgaar **1.151.1**: 28 nations
+on a 3,600 x 2,150 canvas at 5 km to the pixel, **15/16 required borders**,
+**28/28 terrain majorities**, both inhabited continents a single landmass each,
+**all nine trade corridors whole** at 24 of 24 legs, and `inspect.py` reports
+**1** problem.
 
-It is still chosen on the inspector rather than on borders or terrain — the
-map before it scored 15/15 and 27/28 while putting Stoneborn Holds twelve
-degrees inside the arctic.
+It carries 1,240 settlements — 27 of the capitals named by the vault, the
+twenty-eighth generated because Tal Ulad's note says its seat moves with the
+season — 333 provinces, 102 regiments, 67 markets, 748 rivers, and all 119
+diplomatic ties from `Political Relations.md`.
+
+Of its 56 frontiers, **12 are between nations the vault says nothing about**.
+That number is the point of the layout change that produced this map: at the
+old spacing it was 7 of 50, and a continent whose every border was one the
+notes had a reason for read as a diagram of the diplomacy rather than as a
+place.
+
+It is still chosen on the inspector rather than on borders or terrain — a map
+before it scored 15/15 and 27/28 while putting Stoneborn Holds twelve degrees
+inside the arctic.
+
+The scale is derived rather than rolled: the canvas spans 96 degrees of
+latitude over 2,150 pixels, and a degree is 111 km, so 5 km per pixel is the
+only value consistent with the world's own climate model. Azgaar picks that
+number at random otherwise, which put every distance and every journey time on
+the previous map out by up to a factor of five.
 
 **The European band was widened from 26 deg to 35 deg (21N-56N)** to make this
 possible. Seventeen nations in a 26-degree strip is more land than the band can
@@ -176,10 +205,43 @@ the ice at 64N, Corvane twenty-one degrees south. Widening the band cut the best
 seed's inspector score from 7 problems to 3. If nations start drifting again,
 widen the band before touching `GROUP_SHARE`.
 
-Known-imperfect, and both are in the inspector output rather than hidden:
-Quivar sits 13 deg south of its band, and Tessine holds 81 cells — under the
-inspector's floor, though at 0.8x its own weight and 8 burgs it is a
-proportionate city-state rather than a failure.
+Known-imperfect, and in the output rather than hidden:
+
+- **Tal Ulad holds 795 cells, four times its share.** It is the one thing
+  `inspect.py` fails on. The plateau it is given is real terrain rather than a
+  lobe it wandered into, and the fix would be to raise a SIZE weight to match
+  the map instead of the note, which is the wrong direction.
+- **Corvane Republic and Dalstan do not touch**, so 15 of the 16 required
+  borders are met rather than all 16.
+- **Voskreld and Sahenna come out at a fifth of their share** (144 and 119
+  cells). The growth controller cannot equalise a nation boxed in by
+  mountains and coast, and every seed tried has two or three like this.
+
+Retuning the growth controller was tried against this seed and made all of it
+worse: `growIters` 70 dropped the required borders to 13 and left Tal Ulad with
+one cell; `growGain` 0.45 put Tal Ulad at 5.8x. Leave it alone.
+
+### How far apart unrelated nations stand
+
+`separate` is how far two nations with no relationship push each other apart in
+the layout, and `knit` is how hard they are pulled back together once they have
+drifted past `knitAt`. Together they are the strongest single lever on how the
+political map reads, and the one to reach for before the seed.
+
+At the old `separate: 1.12` with no knit at all, the only thing holding a
+continent together was the diplomacy graph: nations the vault had paired
+clustered, everyone else stood off, and the carve filled the gaps between them.
+Seven of fifty frontiers on the finished world were between countries the notes
+say nothing about. Real countries mostly border someone they have no opinion
+of.
+
+At **1.02 / 0.008** the same seed gives 12 of 56 quiet frontiers, and every
+other number improves with it — 11 inspector problems to 1, 27 terrain
+majorities to 28, 22 of 24 trade legs to all of them, and every seed in a
+24-seed sweep comes out with both continents whole. The knit value itself
+barely matters between 0.004 and 0.012; `separate` is the dial. Above 1.06 the
+knit never engages at all, because the repulsion holds nations closer than
+`knitAt` and the attractive term never fires.
 
 ### Why Vaelic Principality is a southern realm
 

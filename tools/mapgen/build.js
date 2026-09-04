@@ -132,9 +132,17 @@ function readCorridors() {
 const openApp = b => APP.openApp(b, { width: MAP_W, height: MAP_H, cells: CELLS });
 async function baseGen(p, c) {
   return p.evaluate(async (c) => {
+    // The world's own latitude model fixes the map scale, so there is no reason
+    // to let the dice pick it: the canvas spans LAT_TOP..LAT_BOT degrees over
+    // its own height, and a degree of latitude is 111 km. Left random it came
+    // out anywhere from 1 to 5 km per pixel, which makes every distance and
+    // every journey time on the map wrong by up to a factor of five — and the
+    // trade corridors are measured in exactly those units.
+    const kmPerPx = Math.round(1110 * c.latSpan / graphHeight) / 10;
     const L = { template: c.tmpl, statesNumber: '24', cultures: '12', religionsNumber: '6',
                 temperatureEquator: String(c.eq), temperatureNorthPole: String(c.np),
-                temperatureSouthPole: String(c.sp), prec: String(c.prec), provincesRatio: '30' };
+                temperatureSouthPole: String(c.sp), prec: String(c.prec), provincesRatio: '30',
+                distanceScale: String(kmPerPx) };
     for (const [k, v] of Object.entries(L)) localStorage.setItem(k, v);
     applyOption(document.getElementById('templateInput'), c.tmpl, c.tmpl);
     options.temperatureEquator = c.eq; options.temperatureNorthPole = c.np;
@@ -143,6 +151,10 @@ async function baseGen(p, c) {
     const set = (id, v) => { const e = document.getElementById(id); if (e) e.value = v; };
     set('statesNumber', '24'); set('precInput', String(c.prec));
     set('mapSizeInput', '100'); set('latitudeInput', '50');
+    // the stored key alone is not enough: it stops randomizeOptions rerolling
+    // the value, but nothing reads it back into the live input mid-session
+    set('distanceScaleInput', String(kmPerPx));
+    window.distanceScale = kmPerPx;
     // cell density is read from pointsInput.dataset.cells, NOT from the url —
     // the ?cells= parameter is silently ignored once a value has been stored
     const pts = document.getElementById('pointsInput');
@@ -160,7 +172,11 @@ async function baseGen(p, c) {
     const t0 = Date.now();
     while (window.mapId === before && Date.now() - t0 < 240000) await new Promise(r => setTimeout(r, 300));
     await new Promise(r => setTimeout(r, 500));
-    return { w: graphWidth, h: graphHeight, grid: grid.cells.i.length, pack: pack.cells.i.length };
+    // regenerateMap runs randomizeOptions, which re-reads the input: put the
+    // value back on the global as well, since that is what the save writes
+    window.distanceScale = kmPerPx;
+    return { w: graphWidth, h: graphHeight, grid: grid.cells.i.length,
+             pack: pack.cells.i.length, kmPerPx };
   }, c);
 }
 
@@ -171,8 +187,9 @@ async function baseGen(p, c) {
   const b = await APP.launch();
   const p = await openApp(b);
   p.on('pageerror', e => console.log('  [pageerror] ' + e.message.slice(0, 200)));
-  const base = await baseGen(p, Object.assign({ cells: CELLS }, CFG));
-  console.log(`canvas ${base.w}x${base.h}, grid ${base.grid} cells, pack ${base.pack}`);
+  const base = await baseGen(p, Object.assign({ cells: CELLS, latSpan: W.LAT_TOP - W.LAT_BOT }, CFG));
+  console.log(`canvas ${base.w}x${base.h}, grid ${base.grid} cells, pack ${base.pack}, ` +
+              `${base.kmPerPx} km per pixel`);
   console.log(`forging world seed ${OPTS.seed}`);
 
   const t0 = Date.now();
@@ -497,6 +514,19 @@ async function baseGen(p, c) {
       });
       // replaces the one journey the generator seeds every map with
       pack.journeys = journeys;
+      // Azgaar's default styles are sized for a canvas about a thousand pixels
+      // across. This one is 3,600, so a 1.8px corridor is a hairline you
+      // cannot see at fit-width — which rather defeats putting the trade on
+      // the map. Widen the journey stroke to match the canvas.
+      // The style record is the source of truth since 1.150, but writing to it
+      // does not touch the drawing: `Styles.apply` is what pushes the attrs
+      // onto the layer group. Set one and not the other and the saved map is
+      // right while every render out of this build is a hairline.
+      if (window.styles && styles.journeys) {
+        styles.journeys.attrs['stroke-width'] = a.journeyStroke || 5;
+        styles.journeys.attrs.opacity = 0.85;
+        try { Styles.apply('journeys'); } catch (e) { /* older build */ }
+      }
     } catch (e) { trade.skipped.push('trade: ' + e.message); }
 
     // Every renderer used to be a bare global that could be called by name.
@@ -508,6 +538,7 @@ async function baseGen(p, c) {
     const data = a.skip ? null : await window.Services.Save.prepareMapData();
     return { data, applied, unmatched, trade, rebuilt, renamed: Object.keys(byName).length, renamedBurgs, addedBurgs, goodsFixed, seeded, res, capNames, goodNames: (pack.goods||[]).map(g=>[g.i,g.name]), stateNames: pack.states.filter(x=>x.i&&!x.removed).map(x=>[x.i,x.fullName]), cultures: cultures.length - 1 };
   }, { names: r.names, ties, DIPLO, FORMS, SHORT, corridors, CARRIER, EXTRA_TRANSPORTS, ROUTE_COLORS,
+       journeyStroke: OPTS.journeyStroke,
        NAME_BASE: WORLD.NAME_BASE, CULTURE_TYPE: WORLD.CULTURE_TYPE, CAPITAL: WORLD.CAPITAL,
        SPECIALTY: WORLD.SPECIALTY, skip: !!process.env.SKIP_SAVE });
 
