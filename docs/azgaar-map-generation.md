@@ -519,6 +519,18 @@ or you will ship a map with a country sliced off the top edge.
 meaningless; "1.8× its share" is actionable. The nation four times its due size
 is invisible in the first framing.
 
+**`HeightmapGenerator.fromTemplate` is reusable, and it is worth reusing.** It
+takes a graph and a template id and hands back a `Uint8Array` of heights on
+*that* grid, so a script that builds its own terrain can still borrow a stock
+template's shape — the Old World template's coastlines are better than anything
+a plate model produces on its own. Three things to know before calling it:
+`setGraph` seeds itself from `graph.cells.h`, so zero that first or the template
+lands on top of whatever is already there; the walk uses bare `Math.random`, so
+swap in a seeded PRNG and put the original back; and the return value is a
+fresh array each call, because `modify` and `smooth` reassign `this.heights`
+rather than writing in place. Save and restore `cells.h` around the call and
+nothing downstream can tell it ran.
+
 **Watch the dev server.** A Vite server backgrounded from a shell gets reaped
 when that shell exits, and every subsequent run fails at page load with an
 unhelpful error. `setsid nohup … &` survives. A sweep that prints nothing looks

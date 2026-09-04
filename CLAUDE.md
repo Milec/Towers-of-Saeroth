@@ -492,10 +492,22 @@ Two things worth knowing before changing anything there:
 - **Mountains come from the plates, not from the nations.** Relief is one
   global orogenic field — collision uplift, folded into ridges along the front
   and modulated along it so the crest drops into passes — with a *smoothed*
-  per-nation bias on top. Painting each nation's own `elev` band gave every
-  mountain country a solid blob of hatching in the shape of a country, ending
-  at the frontier. `RIDGE_BORDERS` is the one place politics sets the ground,
-  and only because a note leans on it.
+  per-nation bias on top, and then a handful of **chains walked along the
+  crest** of that field, Azgaar's own `Range` operator applied to real uplift
+  instead of to random points. The folds are the foothills a terrain claim
+  stands on; the chains are what makes a range look like a range rather than a
+  wide patch of hatching. Painting each nation's own `elev` band instead gave
+  every mountain country a solid blob in the shape of a country, ending at the
+  frontier. `RIDGE_BORDERS` is the one place politics sets the ground, and only
+  because a note leans on it.
+- **The coastlines are borrowed, one Old World heightmap per continent.** A
+  plate is a Voronoi cell and a warped Voronoi cell is still a blob, so the
+  forge runs Azgaar's Old World template through its own `HeightmapGenerator`
+  — once per continent, each slid onto the continent it shapes — and adds it to
+  the potential field before sea level is taken. Running it *twice and
+  averaging* cancels the structure that made it worth borrowing; so does
+  normalising the donor min-to-max instead of pivoting at its own sea level.
+  Both were tried.
 
 ## Formatting statblocks
 
