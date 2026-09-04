@@ -27,9 +27,22 @@ const p = await b.newPage();
 // labels are culled to the viewport, so the window must be the map size
 // BEFORE anything is drawn or most of them never appear
 await p.setViewportSize({ width: MAP_W, height: MAP_H });
+// the "the Generator is updated" dialog fires six seconds after boot and lands
+// on top of the canvas, inside every screenshot. It only shows when the stored
+// version is older than the app's, so claim to have seen a newer one
+await p.addInitScript(() => localStorage.setItem('version', '9.999.999'));
 await p.goto(`http://127.0.0.1:5199/Fantasy-Map-Generator/` +
              `?seed=1&width=${MAP_W}&height=${MAP_H}&cells=${CELLS}`);
 ```
+
+**Since 1.110 the app needs a build step** — it is TypeScript on Vite, and
+cannot be opened from the filesystem. `npm install && npx vite --port 5199` is
+the whole setup, but there is no unbuilt copy to fall back on.
+
+`tools/mapgen/app.js` holds the boot sequence for all four scripts here. It is
+worth having in one place: four copies of it broke separately at the Vite
+migration, and one of them — the backdrop render — broke *silently*, because a
+missing layer toggle only shows up as a picture with the wrong things in it.
 
 Useful facts:
 
@@ -43,6 +56,47 @@ Useful facts:
 - Save with `await window.Services.Save.prepareMapData()` and write the
   returned bytes to `.map`. Round-trip it before believing anything: load the
   file back and count states, burgs and diplomacy entries.
+- **`window.mapId` changes on every generation and on every load**, and a
+  `map:generated` event is dispatched with it, so both are better than sleeping
+  for a fixed twenty-five seconds and hoping.
+
+### What is a global and what is not
+
+Most of the app is modules now, and the migration is uneven: a module registers
+itself on `window` where classic code still calls it, and the entry disappears
+when the last caller does. So `Names`, `Burgs`, `States`, `Routes`, `Goods`,
+`Production`, `Markets`, `Journeys`, `Transports`, `Layers`, `Pack`, `Grid` and
+`GenerationPipeline` are all `window.X`, and **the renderers are not**:
+`drawStates`, `drawBorders`, `drawRivers` and the rest were globals and are
+gone. Anything that used to call them by name has to go through the layer
+registry instead (below).
+
+`main.js` is still a classic script, so its top-level `const`s — `regenerateMap`,
+`generate`, `undraw`, `setSeed`, `randomizeOptions` — are reachable as bare
+identifiers inside `page.evaluate` but are **not** properties of `window`.
+`typeof window.regenerateMap` is `undefined` while `typeof regenerateMap` is
+`function`, which is a confusing five minutes if you test it the first way.
+
+---
+
+## 1a. Layers are a registry, not buttons
+
+Layers used to be toggled by clicking a button (`toggleStates`) and read with
+`layerIsOn(id)`. Since 1.144 there is one registry, `window.Layers`, that owns
+the list, the z-order, the draw functions and the on/off state — and the state
+is saved with the map.
+
+```js
+Layers.set(['texture', 'lakes', 'rivers', 'relief', 'states', 'borders',
+            'routes', 'burgIcons', 'labels', 'journeys']);  // these on, all others off
+Layers.show('journeys'); Layers.hide('biomes'); Layers.isOn('states');
+Layers.drawAll();                                  // redraw everything, in order
+```
+
+Ids are the registry's own — `states`, `borders`, `relief`, `heightmap`,
+`biomes`, `routes`, `journeys`, `markets`, `goods`, `trade`, `burgIcons`,
+`labels`, `military`, `provinces` — and are not the ids of the SVG groups they
+draw into (`states` draws into `#regions`, `relief` into `#terrain`).
 
 ---
 
@@ -53,18 +107,50 @@ one before, so anything you rewrite must go in at the right point or a later
 stage silently overwrites it — or worse, keeps stale data that no longer
 matches.
 
+**Since 1.149 the app declares it, so do not copy it.** `GenerationPipeline` is
+a list of `{id, run}` steps (`src/generators/generation-pipeline.ts`) and it is
+on `window`:
+
 ```
-heightmap  →  Features.markupGrid  →  OceanLayers
-           →  calculateTemperatures / generatePrecipitation      ← climate (GRID)
-           →  reGraph                                            ← builds PACK from GRID
-           →  Features.markupPack
-           →  Rivers.generate                                    ← rivers exist from here
-           →  Biomes.define                                      ← reads climate + height
-           →  Goods.generate → rankCells
-           →  Cultures.generate / expand
-           →  Burgs.generate → States.generate
-           →  Routes / Religions / Provinces / Military
+grid → heightmap → markupGrid → depressionLakes → nearSeaLakes
+     → mapSize → mapCoordinates → temperatures → precipitation
+     → clearPack → regraph → markupPack → defaultRuler
+     → rivers → biomes → featureGroups → ice → goods → rankCells
+     → cultures → culturesExpand → burgs → states → routes → religions
+     → burgsSpecify → stateStatistics → stateForms → provinces → provincePoles
+     → riversSpecify → lakeNames → markets → production → taxes
+     → military → markers → zones → addedLabels → mapName → journeys
 ```
+
+**Run that and substitute the steps you own**, rather than writing the call
+list out. A hand-copied list goes stale silently: this project's copy was
+missing provinces, lake names, taxes and the map name long before the Vite
+migration deleted half the names in it outright.
+
+```js
+const keep = { h: HeightmapGenerator.generate, t: Temperature.generate };
+HeightmapGenerator.generate = async graph => {   // our own tectonics
+  Math.random = aleaPRNG(seed);                  // the real one reseeds here
+  (graph || grid).cells.h = Uint8Array.from(forged);
+  return (graph || grid).cells.h;
+};
+Temperature.generate = function () { keep.t.apply(Temperature, arguments);
+                                     grid.cells.temp.set(ourTemps); };
+try { await GenerationPipeline.run({}); } finally { /* put them back */ }
+```
+
+**Substitute, do not pre-write.** The pipeline's first step is `Grid.prepare`,
+which blanks `grid.cells.h` before anything reads it, so a heightmap written to
+the grid before the run is thrown away. Passing no `seed` is deliberate:
+`Grid.prepare(undefined)` keeps the existing point set and only resets the
+heights, which is what you want when your heightmap was computed against those
+points.
+
+Old names, for reading older code: `OceanLayers` is gone (it was a renderer),
+`calculateTemperatures` → `Temperature.generate`, `generatePrecipitation` →
+`Precipitation.generate`, `reGraph` → `Pack.clear` + `Pack.generate`,
+`rankCells` → `Population.rankCells` (and `Population` is *not* on `window`,
+which is one more reason to run the pipeline rather than the steps).
 
 Consequences worth internalising:
 
@@ -97,6 +183,12 @@ enough to parse directly:
 | 14 | **states** |
 | 15 | **burgs** |
 | 32 | rivers |
+| last | **journeys** |
+
+The tail has grown — goods, markets, deals, styles, relief, the layer state and
+the journeys are all appended after the historical block — so index from the
+front for anything old and from the back for anything new. Custom transports
+are **not** on their own line: they are inside the `options` JSON on line 2.
 
 Enough to audit a saved map without opening the app:
 
@@ -252,6 +344,58 @@ mine.slice(0, mine.length * 0.55).forEach((c, k) => cells.good[c] = want[k % wan
 5 Trop.season.  6 Temp.decid.  7 Trop.rainf.   8 Temp.rainf. 9 Taiga
 10 Tundra      11 Glacier     12 Wetland
 ```
+
+---
+
+## 6a. Journeys: named routes, and where trade goes
+
+Since 1.150 a **journey** is a first-class object: a named, coloured, multi-leg
+route saved with the map (`pack.journeys`, the last line of the `.map`), drawn
+on its own layer, with an editor and an overview screen. Each leg carries its
+own transport, and the transport's *domain* decides how the leg is routed:
+
+| domain | routing | endpoints must be |
+| --- | --- | --- |
+| `land` | the road network where one exists, else A\* over the cell graph | on land, same landmass |
+| `water` | the same sea pathfinding searoutes use, navigable rivers included | water, a haven, or a navigable river |
+| `air` | a straight line | anything |
+| `stay` | no movement; time only | anything |
+
+That makes journeys the right home for a setting's trade corridors, which is
+what this project uses them for: each of the nine corridors named in the vault
+becomes one journey, each hop between two nations one leg, transport chosen by
+what the note says carries it.
+
+```js
+Transports.set(Transports.getDefaults().concat([
+  { i: 21, name: 'Camel caravan', speed: 4, domain: 'land', hoursPerDay: 10 },
+]));
+const t = Transports.get('Camel caravan');
+const r = Journeys.findPath(fromCell, toCell, 'land');   // {points, distance, errorCode}
+journey.segments.push({ i: 0, name: 'Setharu → Myrrhkand', from: fromCell, to: toCell,
+                        transport: t.name, speed: t.speed, distance: r.distance, points: r.points });
+```
+
+Three things that are not obvious:
+
+- **The transports live in `options`, not in the pack**, so they ride in the
+  settings blob rather than on the journeys line. A corridor can round-trip its
+  legs and lose the camels that walk them; check both after a save.
+- **A valid endpoint is not a reachable one.** `isValidEndpoint` only asks
+  whether the cell is the right kind of place. The sea router additionally
+  insists on leaving and arriving through each coastal cell's own `haven`, so a
+  coastal burg with no haven fails with `no-water-path` after passing the first
+  check. Rank several candidate burgs per nation and try the next one rather
+  than trusting the first.
+- **A refusal is information about the map, not about the code.** `no-land-path`
+  between two nations the notes have trading means they are on different
+  landmasses; `no-water-path` means the sea between them is not connected.
+  Both are worth failing a build over — the map has to be able to carry the
+  trade the setting describes.
+
+Every new map is also generated with one random journey on it (the pipeline's
+last step). Replace `pack.journeys` outright rather than appending, or it ships
+with a stray line across the ocean.
 
 ---
 

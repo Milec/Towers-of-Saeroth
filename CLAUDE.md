@@ -431,6 +431,18 @@ and trade specialties from its Economic Specialties bullet).
 `world.js` to match, rebuild, and check the diagnostics — the same way
 `sync_relations.py` keeps the diplomacy from drifting.
 
+Two notes are read straight off disk at build time and need no mirror in
+`world.js`: `campaign/nations/Political Relations.md` supplies the diplomacy,
+and `campaign/world/Trade Routes.md` supplies the **nine trade corridors**,
+which go onto the map as Azgaar *journeys* — named multi-leg routes, one leg
+per hop between two nations, each pathfound over the real roads or the real sea
+lanes, in the same nine colours the site's own `view: routes` uses. Adding a
+stop to that table moves the line in both places with no code change.
+
+**A corridor leg the map cannot carry fails `inspect.py`.** If two nations the
+notes have trading have no road and no sea lane between them, the map is
+wrong, not the note — so that check is part of choosing a seed.
+
 **And when the map changes, the site's map view does not follow on its own
 either.** The relations web can be laid over the world map, with each nation
 pinned to its own territory; both halves of that are generated out of the
@@ -451,12 +463,21 @@ touching `forge.js` — several of its rules look arbitrary and are not, and the
 doc records which plausible-sounding fixes have already been tried and failed.
 `tools/mapgen/README.md` covers running it and reading the output.
 
+Azgaar itself is a moving target — it is TypeScript on Vite now, its renderers
+are no longer global functions, and it declares its own generation pipeline. So
+`forge.js` runs **the app's pipeline** and substitutes only the heightmap and
+the two climate fields, and `tools/mapgen/app.js` owns the browser boot for
+every script here. Do not hand-copy the app's call list back in; that copy went
+stale silently once already.
+
 Two things worth knowing before changing anything there:
 
 - **Sweep seeds, don't tune parameters.** Most remaining defects are
-  seed-dependent. Rank a dozen seeds on continent coherence first — every other
-  metric is per-nation, and a country stranded alone on an island scores
-  perfectly on all of them.
+  seed-dependent, and the spread between seeds is far wider than the spread
+  between parameter values. `node tools/mapgen/sweep.js --seeds 1-24` builds
+  and ranks them three at a time; rank on continent coherence first, because
+  every other metric is per-nation and a country stranded alone on an island
+  scores perfectly on all of them.
 - **Run `tools/mapgen/inspect.py`, then actually open the PNG.** The build's
   own counts can all pass while a nation sits in the polar ice or twenty
   degrees out of its climate band; the inspector fails on exactly those, and

@@ -17,7 +17,7 @@
 // land in the sea; the pole cannot.
 //
 // Needs Azgaar served on 5199, the same as build.js.
-const { chromium } = require('/opt/node22/lib/node_modules/playwright');
+const APP = require('./mapgen/app.js');
 const fs = require('fs');
 const path = require('path');
 
@@ -26,45 +26,25 @@ const PNG = process.env.PNG || 'site/map/saeroth-political.png';
 const JSON_OUT = process.env.JSON_OUT || 'site/nation-positions.json';
 
 (async () => {
-  const b = await chromium.launch({ args: ['--no-sandbox'] });
+  const b = await APP.launch();
   // the app must be told the saved map's own canvas size or it loads it zoomed
-  const p = await b.newPage({ viewport: { width: 3600, height: 2150 } });
-  await p.goto('http://127.0.0.1:5199/Fantasy-Map-Generator/?seed=1&width=3600&height=2150&cells=1000',
-    { waitUntil: 'domcontentloaded', timeout: 150000 });
-  await p.waitForFunction(() => window.pack && window.pack.states && window.pack.states.length > 1, { timeout: 200000 });
-  await p.setInputFiles('#mapToLoad', path.resolve(MAP));
-  await p.waitForTimeout(25000);
+  const p = await APP.openApp(b, { width: 3600, height: 2150, cells: 1000,
+                                   viewport: { width: 3600, height: 2150 } });
+  await APP.loadMap(p, MAP);
 
   // states filled, relief for texture, and NOTHING that writes text: the
-  // overlay puts a name under every node and two sets of labels is a mess
-  await p.evaluate(async () => {
-    if (typeof resetZoom === 'function') resetZoom(0);
-    // tolerant of ids this build does not have — layerIsOn() throws on a
-    // missing element rather than returning false
-    const want = (id, on) => {
-      const e = document.getElementById(id);
-      if (!e) return;
-      if (!!layerIsOn(id) !== !!on) e.click();
-    };
-    want('toggleStates', 1); want('toggleRelief', 1);
-    want('toggleBiomes', 0); want('toggleHeight', 0);
-    want('toggleLabels', 0); want('toggleBurgIcons', 0); want('toggleIcons', 0);
-    want('toggleScaleBar', 0); want('toggleRulers', 0);
-    document.querySelectorAll('.dialog, #alert').forEach((d) => { d.style.display = 'none'; });
-    // the app's own chrome sits over the corners of the canvas — the options
-    // handle top-left and the menu handle bottom-right both land in the
-    // screenshot as little arrow buttons floating in the ocean. Hide every
-    // top-level element that is not the map rather than naming them: the ids
-    // differ between builds, and layerIsOn() throws on one that is missing.
-    for (const el of document.body.children) {
-      if (el.id !== 'map') el.style.display = 'none';
-    }
-    await new Promise((r) => setTimeout(r, 2000));
-  });
+  // overlay puts a name under every node and two sets of labels is a mess.
+  // The trade journeys are off for the same reason — the overlay draws the
+  // corridors itself, from the note.
+  await APP.setLayers(p, ['texture', 'lakes', 'rivers', 'relief', 'states', 'borders', 'ice']);
+  // the app's own chrome sits over the corners of the canvas: the options
+  // handle top-left and the menu handle bottom-right both land in the
+  // screenshot as little arrow buttons floating in the ocean
+  await APP.hideChrome(p);
+  await p.waitForTimeout(2500);
 
   fs.mkdirSync(path.dirname(PNG), { recursive: true });
-  const el = await p.$('#map');
-  await (el ? el.screenshot({ path: PNG }) : p.screenshot({ path: PNG }));
+  await APP.shoot(p, PNG);
   console.log('wrote ' + PNG);
 
   const data = await p.evaluate(() => ({

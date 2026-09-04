@@ -16,7 +16,7 @@
 //   MAP=... TARGETS='{"Silicar":28}' node tools/mapgen/touchup.js
 //
 // Needs Azgaar served on 5199, the same as build.js.
-const { chromium } = require('/opt/node22/lib/node_modules/playwright');
+const APP = require('./app.js');
 const fs = require('fs');
 
 const MAP = process.env.MAP || 'campaign/Saeroth.map';
@@ -30,15 +30,10 @@ const TARGETS = JSON.parse(process.env.TARGETS || JSON.stringify({
 const GAP = Number(process.env.GAP || 26);   // px between any two burgs
 
 (async () => {
-  const b = await chromium.launch({ args: ['--no-sandbox'] });
-  const p = await b.newPage({ viewport: { width: 1500, height: 850 } });
+  const b = await APP.launch();
+  const p = await APP.openApp(b);
   const errs = []; p.on('pageerror', e => errs.push(e.message.slice(0, 140)));
-  await p.goto('http://127.0.0.1:5199/Fantasy-Map-Generator/?seed=1&width=1200&height=700&cells=1000',
-    { waitUntil: 'domcontentloaded', timeout: 150000 });
-  await p.waitForFunction(() => window.pack && window.pack.states && window.pack.states.length > 1, { timeout: 200000 });
-
-  await p.setInputFiles('#mapToLoad', require('path').resolve(MAP));
-  await p.waitForTimeout(25000);
+  await APP.loadMap(p, MAP);
 
   const res = await p.evaluate(({ TARGETS, GAP }) => {
     const cc = pack.cells;

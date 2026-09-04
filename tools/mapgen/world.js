@@ -37,7 +37,11 @@ const SIZE = {
 //       (moisture = 4 + prec, and >=25 moisture with the right height is marsh)
 // elev  height band; >=60 reads as mountain, 40-59 as hills
 // ridged   sits on a fold belt: gets the collision uplift and parallel ridges
-// coastal  seeded on an OCEAN shore rather than the edge of an inland sea
+// coastal  seeded on an OCEAN shore rather than the edge of an inland sea, and
+//          every cell priced by how far inland it is: a nation that LIVES on
+//          the water
+// seaward  seeded and capitalled on an ocean shore, and then free to grow
+//          inland however it likes: a nation that REACHES the water
 // latW     how hard the latitude band binds this nation, 1 by default. Below
 //          about 0.6 a nation stops respecting its band at all and relocates
 //          into whatever empty lobe is nearest — the response is a cliff, not
@@ -69,7 +73,17 @@ const LAND = {
 
   // ---- everywhere else: the wall, the desert bloc, the jungles ----------
   'Xian Ti':                    { tlat: 33, temp: 15, prec: 8,  elev: [24, 42], why: 'settled deciduous river country' },
-  'Qeshara Sultanate':          { ridged: 1, tlat: 27, temp: 22, prec: -2, elev: [34, 56], why: 'a highland desert of oasis valleys, on the northern arm of the range' },
+  // `seaward`, not `coastal`, and the difference is the whole point. The
+  // Incense Coast puts Qeshara's cargo "onto Alliance hulls at the Qeshara
+  // coast", so the sultanate has to reach open water or that sea leg has
+  // nowhere to leave from — it had none on almost every seed. But its own note
+  // is a rocky highland of oasis valleys and salt flats, and `coastal` prices
+  // every cell by its distance from the water: it pulled Qeshara off its
+  // plateau, twenty-eight degrees south of its band, down to 175 cells, and
+  // took two required borders with it. `seaward` only puts the capital on the
+  // shore and lets the country climb inland from there, which is what
+  // Myrrhkand and the incense road actually are.
+  'Qeshara Sultanate':          { ridged: 1, seaward: 1, tlat: 27, temp: 22, prec: -2, elev: [34, 56], why: 'a highland desert of oasis valleys behind an incense coast, on the northern arm of the range' },
   'Thurigypt':                  { tlat: 24, temp: 25, prec: -3, elev: [26, 40], why: 'hot desert; the river makes its own green belt, and the range breaks around it' },
   'Cindral Ashlands':           { ridged: 1, tlat: 20, temp: 24, prec: 1, elev: [58, 92], volcanic: 1, why: 'volcanic highland, hot and bare' },
   'Ashkar Pale':                { ridged: 1, tlat: 17, temp: 23, prec: 4, varMul: 0.55, elev: [25, 44], why: 'ash plains and terraced valleys under the volcano, on the range\'s southern arm' },

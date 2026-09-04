@@ -12,9 +12,13 @@ are easy to repeat.
 | --- | --- |
 | `world.js` | **the vault, as data.** Every nation's target latitude, temperature, rainfall and elevation; which continent it belongs to; its size weight; the borders the world requires; capital names and trade specialties read from the notes; name bases per culture. This is the file you edit when the campaign changes. |
 | `forge.js` | the generator: plates, heightmap, climate, territory, the border redraw, colonies. No campaign facts live here. |
-| `build.js` | drives Azgaar in a headless browser, runs the forge inside the page, renames states, rebuilds cultures, regenerates goods, and saves. |
+| `build.js` | drives Azgaar in a headless browser, runs the forge inside the page, renames states, rebuilds cultures, rebuilds roads and provinces on the new borders, regenerates goods, lays the trade corridors as journeys, and saves. |
+| `app.js` | booting the app: the URL, the waits, the update dialog, the layer registry, loading a `.map`. Shared by the four scripts that drive a browser. |
+| `sweep.js` | scores a batch of seeds or parameter values and ranks them. |
+| `inspect.py` | fails a build on what a reader would notice. |
 | `report.js` | writes `Saeroth-map-notes.md` from the last build. |
-| `verify.js` | loads a saved `.map` back and checks states, burgs and diplomacy survived. |
+| `verify.js` | loads a saved `.map` back and checks states, burgs, diplomacy and the trade corridors survived. |
+| `touchup.js` | adds settlements to a nation on a saved map without regenerating it. |
 
 ## Running it
 
@@ -22,13 +26,16 @@ Needs a local copy of Azgaar's Fantasy Map Generator served on port 5199, and
 Playwright:
 
 ```sh
-# serve the app (setsid so it survives the shell — see the docs, §8)
-cd /path/to/Fantasy-Map-Generator && setsid nohup npx vite --port 5199 --strictPort &
+# the app is TypeScript on Vite since 1.110 and cannot be opened from disk
+cd /path/to/Fantasy-Map-Generator && npm install
+# serve it (setsid so it survives the shell — see the docs, §8)
+setsid nohup npx vite --port 5199 --strictPort &
 
-# a scoring run: no save, no screenshots, prints the diagnostics
+# a scoring run: no save, no screenshots, prints the diagnostics and writes
+# the profile inspect.py reads
 SKIP_SAVE=1 NO_SHOT=1 OPTS='{"seed":818}' node tools/mapgen/build.js
 
-# the real thing: writes Saeroth.map plus three renders
+# the real thing: writes Saeroth.map plus four renders
 PFX=saeroth OUT=campaign/Saeroth.map OPTS='{"seed":818}' node tools/mapgen/build.js
 node tools/mapgen/report.js
 node tools/mapgen/verify.js
@@ -54,7 +61,9 @@ It flags a nation centred above 60°N (in the polar cap), more than 12° from it
 target latitude (wrong climate band — desert beside taiga), under 100 cells (too
 small to put a settlement in), over 3× its share of its own continent (it has
 eaten a lobe), or scattered over more than two landmasses unless its CLAIM is
-`islands`.
+`islands`. It also fails on a **trade corridor the map cannot carry** — a leg
+of one of the nine routes with no road and no sea lane between its two nations
+(see below).
 
 **Then still open the PNG.** The build writes `saeroth-world.png`; look at it
 before shipping. The inspector catches what is measurable, not whether the
@@ -63,6 +72,25 @@ had been fine.
 
 A sweep should rank on this before terrain and borders — a map with perfect
 counts and a country in the ice is worse than one a degree off everywhere.
+
+## The trade corridors
+
+`campaign/world/Trade Routes.md` names nine corridors and they are on the map,
+as **journeys** — Azgaar's own named multi-leg routes, one leg per hop between
+two nations, each leg pathfound over the real roads or the real sea lanes.
+The table is the source of truth in both places: `build.js` reads the same
+`| **Name** | Carried by | [[A]] -> [[B]] | cargo |` rows the site's own
+`view: routes` reads, in the same order, with the same nine colours, so a stop
+added to the note moves the line on the map and in the web view together.
+
+The "Carried by" column picks the transport, and three of the four are added to
+Azgaar's default list because it ships no freight: a **Camel caravan** and a
+**Freight wagon** on land, a **River barge** on the water.
+
+**A leg that will not route is a map failure, and `inspect.py` treats it as
+one.** If the Salt Road has no road between two of its nations, or the Incense
+Coast has no sea lane, then two countries the vault has trading are not
+actually connected, and the seed is wrong.
 
 ## Correcting a map without regenerating it
 
@@ -112,6 +140,24 @@ Run a dozen seeds, rank them on coherence first, and pick — a seed that scores
 well everywhere beats another round of parameter fiddling. Continent coherence
 has to be one of the criteria: every other metric is per-nation, and a country
 stranded alone on an island scores perfectly on all of them.
+
+`sweep.js` does exactly that, three runs at a time:
+
+```sh
+node tools/mapgen/sweep.js --seeds 1-24            # rank two dozen worlds
+node tools/mapgen/sweep.js --seeds 4,7,9 --vary '{"knit":[0,0.008,0.018]}'
+```
+
+It writes no `.map`; it builds each world, scores it with `inspect.py --json`,
+and prints the table ranked on continent coherence, then inspector problems,
+then required borders, then trade legs, then terrain. **Vary one thing at a
+time and keep the seeds fixed**, or a parameter that seemed to help will turn
+out to have been a seed that happened to be good.
+
+The spread between seeds is far wider than the spread between parameter
+values, which is the whole argument for sweeping: the same settings give one
+seed 28/28 terrain with two whole continents, and the next one a country at
+seven times its share sitting fifty degrees out of its climate band.
 
 ## The current map
 
