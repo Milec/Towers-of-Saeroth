@@ -392,7 +392,18 @@ constant, so a genuinely good site stays a good site and a mountain-top desert
 cell goes back to being one, then recomputes the affected burgs with Azgaar's
 own rule minus its gaussian jitter — this has to be reproducible.
 
-**A capital in a place its note says it is not.** Two were reseated:
+**Settlements the overflow stranded.** Repairing the suitability was not enough
+on its own. Azgaar picks burg sites *by* suitability, so those five towns existed
+only because the broken number told it this was the best ground in the country —
+and recomputing them in place turned them into named villages of ten and forty-five
+people. The world's tenth-percentile settlement holds 1,254. So any burg under
+`STRAND_FLOOR` (250) is reseated onto the best cell its own realm has within
+`STRAND_REACH` (220px, near enough that the roads already drawn to it still make
+sense) and takes what that ground supports: the five came out at 3,400 to 4,800,
+against a world median of 5,335. If nothing nearby is better, nothing moves and it
+stays a hamlet — which is then the truth rather than an artefact.
+
+**A capital in a place its note says it is not.** Three were reseated:
 
 - **Reichsmund** is "a fortified river-city that holds the Diet and the High
   Prince's court", and was sitting on a three-way corner with foreign territory
@@ -404,9 +415,23 @@ own rule minus its gaussian jitter — this has to be reproducible.
   sultanate will ever hand its capital the size the note describes — hence the
   `first` flag, which raises a reseated capital past its largest rival when the
   terrain model cannot see why it is rich.
+- **Hravnfjord** is "a deepwater harbor town that swells fourfold whenever the
+  Great Thing is called", in a realm whose note says *the sea is the road* — and
+  it was **not a port at all**. Nordheim holds 121 coastal cells and 91 havens
+  and had one port among its thirteen settlements. The `port` flag requires a
+  cell that opens onto water through its own haven and is graded sheltered
+  (`cells.harbor`), and places the burg on the water's edge the way the
+  generator does, setting `burg.port` to the haven's water feature.
 
-A capital keeps **the larger of** what it was and what its new ground supports.
-A city does not shrink because the map was corrected about where it stands.
+A capital keeps **the larger of** what it was and what its new ground supports —
+a city does not shrink because the map was corrected about where it stands. A
+stranded village keeps nothing: it only existed because of the overflow, so it
+takes whatever its new ground gives it.
+
+**Moving a burg moves a trade route's endpoint**, so rerun `modernize.js` after
+a `FIX=1` that reseats anything. It re-lays the corridors from scratch and is
+idempotent. Running `census.js` again after that should find nothing to do; if it
+does, something is not converging.
 
 Two capitals were deliberately **left alone**, and the audit still flags them so
 the decision stays visible. Sunkenhold is "a warden-hold built across a chasm,
