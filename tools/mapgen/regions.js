@@ -53,7 +53,7 @@ const REGIONS = {
     latTop: 64, latBot: 14,
     ice: true,
     // nothing unsettled on this map, so all of its land is somebody's
-    landFraction: 0.34, settledFraction: 1, oneContinent: true,
+    landFraction: 0.46, settledFraction: 1, oneContinent: true,
     why: 'the settled west: seventeen nations from the ice down to the dry south',
   },
   middle: {
@@ -102,10 +102,23 @@ const REGIONS = {
     // 0.34, which on a canvas holding nine nations came out as more unexplored
     // continent than settled one. Some blank is the point — a world map with
     // none of it reads as a diagram — but not half the map.
-    landFraction: 0.32, settledFraction: 0.70, oneContinent: true,
+    landFraction: 0.46, settledFraction: 0.72, oneContinent: true,
     why: 'the settled east and the Wildlands below it',
   },
 };
+
+// A template-shaped region asks for roughly as much land as the template
+// itself makes, and drowns much less of its rim than the world map does.
+//
+// Both were wrong for a long time, and wrong for the same reason. Old World
+// puts about 46% of this canvas above its own sea level; asking for 34% draws
+// the waterline as a contour well INSIDE its coastline, where the heightmap is
+// a smooth interior — so what came out was a rounded blob with none of the
+// template's bays, capes or inland seas, which is the shape the plate model was
+// abandoned for in the first place. And `edgeDrop` exists to keep an ocean
+// around a whole world; on a region it just shaves the continent's own coast
+// off, and Azgaar runs land to the map edge as a matter of course.
+const TEMPLATE_FRAME = { edgeDrop: 0.8, marginX: 0.03, marginTop: 0.02, marginBot: 0.02 };
 
 const pick = (obj, keep) =>
   Object.fromEntries(Object.entries(obj).filter(([k]) => keep(k)));
@@ -154,6 +167,7 @@ function regionWorld(W, name) {
     landFraction: R.landFraction, settledFraction: R.settledFraction,
     donorAmp: R.donorAmp, oneContinent: !!R.oneContinent,
     minIsle: R.minIsle, donorSmooth: R.donorSmooth, landFrom: R.landFrom || 'template',
+    frame: (R.landFrom || 'template') === 'template' ? TEMPLATE_FRAME : null,
     arcFreq: R.arcFreq, arcOct: R.arcOct,
     // the world build makes the polar cap deliberately; only the west has one
     ice: R.ice,
