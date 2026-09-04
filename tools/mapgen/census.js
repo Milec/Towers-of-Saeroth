@@ -35,6 +35,13 @@ const FIX = !!process.env.FIX;
 // Above this a suitability is not a high score, it is a broken number: the 99th
 // percentile of this map is 38.
 const S_CEILING = Number(process.env.S_CEILING || 200);
+// A named settlement below this many people is not a hamlet, it is a burg the
+// broken suitability talked the generator into placing. The world's
+// tenth-percentile settlement holds 1,254.
+const STRAND_FLOOR = Number(process.env.STRAND_FLOOR || 250);
+// How far one may be moved, in pixels. Far enough to find real ground, near
+// enough that the roads and trade legs already drawn to it still make sense.
+const STRAND_REACH = Number(process.env.STRAND_REACH || 220);
 // Capitals to reseat, and what the vault says they are. A capital is only moved
 // when its note describes a place it is demonstrably not sitting in.
 // Two, and only two. Sunkenhold is "a warden-hold built across a chasm,
@@ -46,6 +53,11 @@ const S_CEILING = Number(process.env.S_CEILING || 200);
 const RESEAT = JSON.parse(process.env.RESEAT || JSON.stringify({
   // "a fortified river-city that holds the Diet and the High Prince's court"
   'Reichsmund': { river: true, offBorder: 2 },
+  // "a deepwater harbor town that swells fourfold whenever the Great Thing is
+  // called", in a realm whose note says the sea is the road — and it was not a
+  // port at all, in a country holding 121 coastal cells and 91 havens with one
+  // port among its thirteen settlements
+  'Hravnfjord': { port: true, offBorder: 1, wFlux: 0.3, wSuit: 1.6, wDist: 1.0 },
   // "a walled city of spice-souks and star-towers" — which the map had as the
   // fifth settlement of its own realm, on a desert peak. `first` because
   // Azgaar's suitability is an agricultural score and Qeshara is desert: the
@@ -71,7 +83,7 @@ const RESEAT = JSON.parse(process.env.RESEAT || JSON.stringify({
     const K = v => Math.round(v * rate * urb);
     const conn = c => { try { return Routes.getConnectivityRate(c) || 1; } catch (e) { return 1; } };
 
-    const report = { fixedCells: [], repopulated: [], moved: [], notes: [] };
+    const report = { fixedCells: [], repopulated: [], moved: [], stranded: [], notes: [] };
 
     // ---- 1. the overflowed suitability -----------------------------------
     // Replaced with the median of the cell's own land neighbours rather than a
@@ -117,73 +129,123 @@ const RESEAT = JSON.parse(process.env.RESEAT || JSON.stringify({
       return cap + 1;
     };
 
-    for (const [bname, want] of Object.entries(a.RESEAT)) {
-      const bg = pack.burgs.find(x => x && x.name === bname && !x.removed);
-      if (!bg) { report.notes.push(`${bname}: not on this map`); continue; }
+    // One reseater, two callers. A capital in the wrong place and a village
+    // stranded on a broken cell are the same operation with different
+    // constraints: find the best ground this settlement's own realm has within
+    // reach, and put it there.
+    const reseat = (bg, want) => {
       const st = bg.state;
       const own = land.filter(i => cc.state[i] === st);
-      if (!own.length) { report.notes.push(`${bname}: its state holds no land`); continue; }
-      let cx = 0, cy = 0;
-      for (const i of own) { cx += cc.p[i][0]; cy += cc.p[i][1]; }
-      cx /= own.length; cy /= own.length;
+      if (!own.length) return { note: `${bg.name}: its state holds no land` };
 
-      const fluxes = own.map(i => cc.fl[i] || 0);
-      const maxFlux = Math.max.apply(null, fluxes) || 1;
+      // What the search is measured from: a capital wants to sit near the
+      // middle of its realm, a stranded village wants to stay near where the
+      // map has already drawn it and its roads.
+      let ax, ay;
+      if (want.anchor === 'here') { ax = cc.p[bg.cell][0]; ay = cc.p[bg.cell][1]; }
+      else {
+        ax = 0; ay = 0;
+        for (const i of own) { ax += cc.p[i][0]; ay += cc.p[i][1]; }
+        ax /= own.length; ay /= own.length;
+      }
+
+      const maxFlux = Math.max.apply(null, own.map(i => cc.fl[i] || 0)) || 1;
       const maxS = Math.max.apply(null, own.map(i => cc.s[i])) || 1;
       const maxD = Math.max.apply(null, own.map(i =>
-        Math.hypot(cc.p[i][0] - cx, cc.p[i][1] - cy))) || 1;
+        Math.hypot(cc.p[i][0] - ax, cc.p[i][1] - ay))) || 1;
+      const reach = want.reach || Infinity;
 
-      let best = null, bestScore = -Infinity;
+      let best = null, bestScore = -Infinity, bestHaven = null;
       for (const i of own) {
-        if (cc.burg[i] && cc.burg[i] !== bg.i) continue;      // somewhere else already stands
-        if (cc.h[i] >= 70) continue;                          // not on a peak
+        if (cc.burg[i] && cc.burg[i] !== bg.i) continue;
+        if (cc.h[i] >= (want.maxH || 70)) continue;
+        const dist = Math.hypot(cc.p[i][0] - ax, cc.p[i][1] - ay);
+        if (dist > reach) continue;
         if (want.river && !(cc.fl[i] > 0) && !cc.r[i]) continue;
-        const d = borderDist(i, st, want.offBorder || 2);
-        if (d <= (want.offBorder || 2)) continue;             // still on the frontier
-        const dist = Math.hypot(cc.p[i][0] - cx, cc.p[i][1] - cy);
-        const score = 2.2 * ((cc.fl[i] || 0) / maxFlux)
-                    + 1.0 * (cc.s[i] / maxS)
-                    - 1.4 * (dist / maxD);
-        if (score > bestScore) { bestScore = score; best = i; }
+        let haven = null;
+        if (want.port) {
+          // a deepwater harbour, not a beach: the cell must open onto water
+          // through its own haven and be graded as sheltered
+          if (!cc.haven[i]) continue;
+          if (cc.harbor && cc.harbor[i] > (want.harbor || 1)) continue;
+          haven = cc.haven[i];
+        }
+        if (want.offBorder && borderDist(i, st, want.offBorder) <= want.offBorder) continue;
+        const score = (want.wFlux === undefined ? 2.2 : want.wFlux) * ((cc.fl[i] || 0) / maxFlux)
+                    + (want.wSuit === undefined ? 1.0 : want.wSuit) * (cc.s[i] / maxS)
+                    - (want.wDist === undefined ? 1.4 : want.wDist) * (dist / maxD);
+        if (score > bestScore) { bestScore = score; best = i; bestHaven = haven; }
       }
-      if (best === null || best === bg.cell) {
-        report.notes.push(`${bname}: nothing inside ${nameOf[st]} scores better`);
-        continue;
-      }
-      const from = { cell: bg.cell, x: bg.x, y: bg.y, fl: Math.round(cc.fl[bg.cell] || 0),
-                     border: borderDist(bg.cell, st, 3) };
+      if (best === null || best === bg.cell)
+        return { note: `${bg.name}: nothing inside ${nameOf[st]} scores better` };
+
+      const from = { cell: bg.cell, x: bg.x, y: bg.y, s: cc.s[bg.cell],
+                     fl: Math.round(cc.fl[bg.cell] || 0), port: !!bg.port,
+                     border: borderDist(bg.cell, st, 3), pop: K(bg.population) };
       if (cc.burg[bg.cell] === bg.i) cc.burg[bg.cell] = 0;
       bg.cell = best;
-      bg.x = Math.round(cc.p[best][0] * 100) / 100;
-      bg.y = Math.round(cc.p[best][1] * 100) / 100;
       cc.burg[best] = bg.i;
-      bg.port = 0;                       // a river seat inland is not a port
-      // The larger of what it was and what the new ground supports. A city does
-      // not shrink because the map was corrected about where it stands — but a
-      // capital the map had as a hamlet on a peak can grow into the seat its
-      // note describes.
+      if (bestHaven !== null) {
+        // sit on the water's edge, the way the generator places a port
+        bg.port = cc.f[bestHaven];
+        bg.x = Math.round((cc.p[best][0] + cc.p[bestHaven][0]) / 2 * 100) / 100;
+        bg.y = Math.round((cc.p[best][1] + cc.p[bestHaven][1]) / 2 * 100) / 100;
+      } else {
+        bg.port = 0;
+        bg.x = Math.round(cc.p[best][0] * 100) / 100;
+        bg.y = Math.round(cc.p[best][1] * 100) / 100;
+      }
+      try { bg.type = Burgs.getType ? Burgs.getType(best, bg.port) : bg.type; } catch (e) { /* keep */ }
+
       let v = cc.s[best] / 5;
       if (bg.capital) v *= 1.5;
       v *= conn(best);
-      const wasPop = bg.population;
-      let pop = Math.max(v, wasPop, 0.01);
+      // A city does not shrink because the map was corrected about where it
+      // stands — but a settlement that only existed because of the overflow has
+      // no size worth keeping, so it takes what its new ground supports.
+      let pop = want.keepSize ? Math.max(v, bg.population, 0.01) : Math.max(v, 0.01);
       if (want.first) {
         const rivals = pack.burgs
           .filter(x => x && x.i && !x.removed && x.state === st && x.i !== bg.i)
           .map(x => x.population);
         const top = rivals.length ? Math.max.apply(null, rivals) : 0;
-        if (pop <= top) { pop = top * 1.05; report.notes.push(
-          `${bname}: raised to ${Math.round(pop * rate * urb).toLocaleString()} to be ` +
-          `the first city of ${nameOf[st]}, which is what its note calls it`); }
+        if (pop <= top) pop = top * 1.05;
       }
       bg.population = Math.round(pop * 1000) / 1000;
-      report.moved.push({
-        name: bname, state: nameOf[st], from, to: { cell: best, x: bg.x, y: bg.y,
-          fl: Math.round(cc.fl[best] || 0), border: borderDist(best, st, 3), s: cc.s[best] },
+      return { moved: {
+        name: bg.name, state: nameOf[st], from,
+        to: { cell: best, x: bg.x, y: bg.y, s: cc.s[best], fl: Math.round(cc.fl[best] || 0),
+              port: !!bg.port, border: borderDist(best, st, 3) },
         pop: K(bg.population),
         movedPx: Math.round(Math.hypot(bg.x - from.x, bg.y - from.y)),
-      });
+      } };
+    };
+
+    for (const [bname, want] of Object.entries(a.RESEAT)) {
+      const bg = pack.burgs.find(x => x && x.name === bname && !x.removed);
+      if (!bg) { report.notes.push(`${bname}: not on this map`); continue; }
+      const r = reseat(bg, Object.assign({ keepSize: true }, want));
+      if (r.note) report.notes.push(r.note); else report.moved.push(r.moved);
     }
+
+    // ---- 4. settlements the overflow stranded ------------------------------
+    // A named town of ten people is not a town. The world's tenth-percentile
+    // settlement holds 1,254, so anything under a few hundred here is not a
+    // hamlet — it is a burg the generator only placed because the broken
+    // suitability told it this was the best ground in the country. Put each one
+    // on the best cell its own realm actually has within reach, and let the
+    // ordinary rule decide how big that makes it. If nothing nearby is better,
+    // nothing moves and it stays a hamlet, which is then the truth.
+    for (const bg of pack.burgs) {
+      if (!bg || !bg.i || bg.removed || bg.capital) continue;
+      if (K(bg.population) >= a.STRAND_FLOOR) continue;
+      const r = reseat(bg, { anchor: 'here', reach: a.STRAND_REACH,
+                             wFlux: 0.8, wSuit: 2.4, wDist: 0.9, keepSize: false });
+      if (r.moved) report.stranded.push(r.moved);
+      else report.notes.push(`${bg.name}: ${K(bg.population).toLocaleString()} people and ` +
+                             `nothing better within reach — left as it is`);
+    }
+
 
     // measured AFTER the repairs, so the table is the map as it now stands
     const audit = live.map(s => {
@@ -215,7 +277,7 @@ const RESEAT = JSON.parse(process.env.RESEAT || JSON.stringify({
                const v = land.map(i => cc.s[i]).sort((x, y) => y - x);
                return { max: v[0], p99: v[Math.floor(v.length * 0.01)], median: v[Math.floor(v.length / 2)] };
              })() };
-  }, { S_CEILING, RESEAT, FIX });
+  }, { S_CEILING, RESEAT, FIX, STRAND_FLOOR, STRAND_REACH });
 
   const R = out.report;
   console.log(`suitability now: max ${out.sStats.max}, 99th ${out.sStats.p99}, median ${out.sStats.median}`);
@@ -228,10 +290,15 @@ const RESEAT = JSON.parse(process.env.RESEAT || JSON.stringify({
   for (const [n, st, was, now] of R.repopulated)
     console.log(`  ${n} (${st}) ${was.toLocaleString()} -> ${now.toLocaleString()}`);
   for (const m of R.moved)
-    console.log(`  moved ${m.name} (${m.state}) ${m.movedPx}px: ` +
+    console.log(`  reseated ${m.name} (${m.state}) ${m.movedPx}px: ` +
                 `river flux ${m.from.fl} -> ${m.to.fl}, ` +
+                `port ${m.from.port} -> ${m.to.port}, ` +
                 `${m.from.border} cell(s) from a foreign border -> ${m.to.border}, ` +
                 `population ${m.pop.toLocaleString()}`);
+  for (const m of (R.stranded || []))
+    console.log(`  reseated ${m.name} (${m.state}) ${m.movedPx}px onto better ground: ` +
+                `suitability ${m.from.s} -> ${m.to.s}, ` +
+                `${m.from.pop.toLocaleString()} -> ${m.pop.toLocaleString()} people`);
   for (const n of R.notes) console.log('  ' + n);
 
   const A = out.audit.slice().sort((x, y) => (y.urban + y.rural) - (x.urban + x.rural));
@@ -254,7 +321,7 @@ const RESEAT = JSON.parse(process.env.RESEAT || JSON.stringify({
   }
 
   if (FIX) {
-    if (!R.fixedCells.length && !R.moved.length) {
+    if (!R.fixedCells.length && !R.moved.length && !(R.stranded || []).length) {
       console.log('\nnothing to repair — not rewriting the map');
     } else {
       const data = await p.evaluate(() => window.Services.Save.prepareMapData());
