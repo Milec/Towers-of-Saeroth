@@ -1,5 +1,5 @@
-// Build Saeroth.map from world2.js/forge2.js on a big canvas.
-const { chromium } = require('/opt/node22/lib/node_modules/playwright');
+// Build Saeroth.map from world.js/forge.js on a big canvas.
+const APP = require('./app.js');
 const W = require('./forge.js');
 const WORLD = require('./world.js');
 const fs = require('fs');
@@ -17,7 +17,16 @@ const OPTS = Object.assign({
   // continents shove each other apart. They trade against one another: with
   // the old 0.030/1.9 the shoving won, and moving ONE nation ten degrees
   // dragged the whole eastern continent south out of its climate bands
-  separate: 1.12, repel: 0.05, cohesion: 0.012, latPull: 0.08, groupGap: 1.6,
+  // `separate` is how far apart two nations with no relationship stand off,
+  // and `knit` is how hard they are pulled back together once they drift past
+  // `knitAt`. It is the single strongest lever on how the political map reads:
+  // at the old 1.12, with no knit at all, only 7 of 50 frontiers on the
+  // finished world were between nations the vault says nothing about, and the
+  // continent was a chain of related states. At 1.02/0.008 it is 12 of 56 —
+  // and the same seed goes from 11 inspector problems to 1, 27 terrain
+  // majorities to 28, and 22 of 24 trade legs to all of them.
+  separate: 1.02, repel: 0.06, knitAt: 1.45, knit: 0.008,
+  cohesion: 0.012, latPull: 0.08, groupGap: 1.6,
   capIters: 50, growIters: 45, growGain: 0.30, snapIters: 26, coastPull: 1200, coastWant: 4, ridgePull: 6000, ridgeWant: 0.35,
   latCost: 14000, latFree: 4, latBar: 2.4, ruins: 26, keepC: 0.72, varT: 0.5, varP: 0.38,
   borderFix: 45, minCells: 60, microCorridor: 8,
@@ -34,6 +43,27 @@ const DIPLO = {
   Allied: 'Ally', Friendly: 'Friendly', Trade: 'Friendly', Rivalry: 'Rival',
   Friction: 'Suspicion', Territorial: 'Rival', Hostile: 'Enemy', Covert: 'Neutral',
 };
+// What a corridor's "Carried by" column means on the ground. Azgaar ships
+// twenty transport types and none of them is a freight caravan, so three are
+// added: a corridor that moves salt on camels should say camels rather than
+// borrow a stagecoach. The domain is what actually matters — it decides
+// whether a leg is routed over the roads or over the sea.
+const CARRIER = {
+  sea:     { name: 'Sailing Ship', domain: 'water' },
+  river:   { name: 'River barge',  domain: 'water' },
+  road:    { name: 'Freight wagon', domain: 'land' },
+  caravan: { name: 'Camel caravan', domain: 'land' },
+};
+const EXTRA_TRANSPORTS = [
+  { name: 'Freight wagon', speed: 4, domain: 'land',  hoursPerDay: 10 },
+  { name: 'Camel caravan', speed: 4, domain: 'land',  hoursPerDay: 10 },
+  { name: 'River barge',   speed: 5, domain: 'water', hoursPerDay: 10 },
+];
+// The nine corridor colours the site already uses, in the note's own row
+// order, so a corridor is the same colour on the map as in the web view.
+const ROUTE_COLORS = ['#1f5f8b', '#8a5a1f', '#2f6b46', '#7a2f5f', '#5a4a9a',
+                      '#146b6b', '#9a3b26', '#4a5f22', '#6b4a2f'];
+
 const FORMS = {
   'Aquoniti': ['Republic', 'Thalassocracy'], 'Thurion Merchant Alliance': ['Union', 'Alliance'],
   'Nordheim': ['Monarchy', 'Kingdom'], 'Stoneborn Holds': ['Republic', 'Holds'],
@@ -75,18 +105,44 @@ function readTies() {
   return out;
 }
 
-async function openApp(b) {
-  const p = await b.newPage({ viewport: { width: 1500, height: 850 } });
-  await p.goto(`http://127.0.0.1:5199/Fantasy-Map-Generator/?seed=1&width=${MAP_W}&height=${MAP_H}&cells=${CELLS}`,
-               { waitUntil: 'domcontentloaded', timeout: 240000 });
-  await p.waitForFunction(() => window.pack && window.pack.states && window.pack.states.length > 1, { timeout: 300000 });
-  return p;
+// The nine trade corridors, read out of the note that already describes them.
+// Same rule as the diplomacy: the markdown table is the source of truth and
+// nothing here restates it. A row is
+//   | **Name** | Road | [[A]] -> [[B]] -> [[C]] | what it carries |
+// and the run is an ordered list of wikilinks, exactly as the site's own
+// `view: routes` reads it — so a stop added to the note moves the line on the
+// map and on the site together, with no change here.
+function readCorridors() {
+  const p = '/home/user/Towers-of-Saeroth/campaign/world/Trade Routes.md';
+  const out = [];
+  for (const line of fs.readFileSync(p, 'utf8').split('\n')) {
+    const t = line.trim();
+    if (t[0] !== '|') continue;
+    const cs = t.replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim());
+    if (cs.length < 4) continue;
+    const name = cs[0].replace(/\*+/g, '').trim();
+    const carry = cs[1].replace(/\*+/g, '').trim().toLowerCase();
+    const stops = [...cs[2].matchAll(/\[\[([^\]|#]+)[^\]]*\]\]/g)].map(m => m[1].trim());
+    if (!name || stops.length < 2 || !CARRIER[carry]) continue;
+    out.push({ name, carry, stops, cargo: cs[3] || '' });
+  }
+  return out;
 }
+
+const openApp = b => APP.openApp(b, { width: MAP_W, height: MAP_H, cells: CELLS });
 async function baseGen(p, c) {
   return p.evaluate(async (c) => {
+    // The world's own latitude model fixes the map scale, so there is no reason
+    // to let the dice pick it: the canvas spans LAT_TOP..LAT_BOT degrees over
+    // its own height, and a degree of latitude is 111 km. Left random it came
+    // out anywhere from 1 to 5 km per pixel, which makes every distance and
+    // every journey time on the map wrong by up to a factor of five — and the
+    // trade corridors are measured in exactly those units.
+    const kmPerPx = Math.round(1110 * c.latSpan / graphHeight) / 10;
     const L = { template: c.tmpl, statesNumber: '24', cultures: '12', religionsNumber: '6',
                 temperatureEquator: String(c.eq), temperatureNorthPole: String(c.np),
-                temperatureSouthPole: String(c.sp), prec: String(c.prec), provincesRatio: '30' };
+                temperatureSouthPole: String(c.sp), prec: String(c.prec), provincesRatio: '30',
+                distanceScale: String(kmPerPx) };
     for (const [k, v] of Object.entries(L)) localStorage.setItem(k, v);
     applyOption(document.getElementById('templateInput'), c.tmpl, c.tmpl);
     options.temperatureEquator = c.eq; options.temperatureNorthPole = c.np;
@@ -95,6 +151,10 @@ async function baseGen(p, c) {
     const set = (id, v) => { const e = document.getElementById(id); if (e) e.value = v; };
     set('statesNumber', '24'); set('precInput', String(c.prec));
     set('mapSizeInput', '100'); set('latitudeInput', '50');
+    // the stored key alone is not enough: it stops randomizeOptions rerolling
+    // the value, but nothing reads it back into the live input mid-session
+    set('distanceScaleInput', String(kmPerPx));
+    window.distanceScale = kmPerPx;
     // cell density is read from pointsInput.dataset.cells, NOT from the url —
     // the ?cells= parameter is silently ignored once a value has been stored
     const pts = document.getElementById('pointsInput');
@@ -112,18 +172,24 @@ async function baseGen(p, c) {
     const t0 = Date.now();
     while (window.mapId === before && Date.now() - t0 < 240000) await new Promise(r => setTimeout(r, 300));
     await new Promise(r => setTimeout(r, 500));
-    return { w: graphWidth, h: graphHeight, grid: grid.cells.i.length, pack: pack.cells.i.length };
+    // regenerateMap runs randomizeOptions, which re-reads the input: put the
+    // value back on the global as well, since that is what the save writes
+    window.distanceScale = kmPerPx;
+    return { w: graphWidth, h: graphHeight, grid: grid.cells.i.length,
+             pack: pack.cells.i.length, kmPerPx };
   }, c);
 }
 
 (async () => {
   const ties = readTies();
-  console.log(`read ${ties.length} ties from the vault`);
-  const b = await chromium.launch({ args: ['--no-sandbox', '--js-flags=--max-old-space-size=6144'] });
+  const corridors = readCorridors();
+  console.log(`read ${ties.length} ties and ${corridors.length} trade corridors from the vault`);
+  const b = await APP.launch();
   const p = await openApp(b);
   p.on('pageerror', e => console.log('  [pageerror] ' + e.message.slice(0, 200)));
-  const base = await baseGen(p, Object.assign({ cells: CELLS }, CFG));
-  console.log(`canvas ${base.w}x${base.h}, grid ${base.grid} cells, pack ${base.pack}`);
+  const base = await baseGen(p, Object.assign({ cells: CELLS, latSpan: W.LAT_TOP - W.LAT_BOT }, CFG));
+  console.log(`canvas ${base.w}x${base.h}, grid ${base.grid} cells, pack ${base.pack}, ` +
+              `${base.kmPerPx} km per pixel`);
   console.log(`forging world seed ${OPTS.seed}`);
 
   const t0 = Date.now();
@@ -146,11 +212,23 @@ async function baseGen(p, c) {
               'TropRainforest','TempRainforest','Taiga','Tundra','Glacier','Wetland'];
   const mix = Object.entries(r.biomeMix).sort((a, b2) => b2[1] - a[1])
     .map(([k, v]) => `${BI[k] || k} ${Math.round(v / r.landTotal * 100)}%`).join(' ');
+  // How much of the map's political geography the vault actually asked for. A
+  // world where every frontier is one the notes have an opinion about reads as
+  // a diagram of the diplomacy rather than as a place: most countries border
+  // someone they have nothing to say about, and those are the frontiers that
+  // make the rest look like geography instead of a graph.
+  const tieSet = new Set(ties.map(t => [t[0], t[1]].sort().join('|')));
+  const frontier = new Set();
+  for (const s of r.prof) for (const n of s.neighbours) frontier.add([s.nation, n].sort().join('|'));
+  const quiet = [...frontier].filter(k => !tieSet.has(k)).length;
+
   console.log(`terrain majority ${maj}/${r.prof.length}, borders ${gotB.length}/${W.BORDERS.length}, ` +
               `${r.unclaimed} unclaimed of ${r.landTotal} land (${r.wildTotal} wilderness), ` +
               `${r.rivers} rivers, ${r.lakes} lakes, shore ${(r.intricacy * 100).toFixed(0)}%, ` +
               `${r.masses} landmasses`);
   console.log('  biomes: ' + mix);
+  console.log(`  frontiers: ${frontier.size} in all, ${quiet} of them between nations ` +
+              `the vault says nothing about (${Math.round(100 * quiet / Math.max(1, frontier.size))}%)`);
   const sizes = r.prof.slice().sort((a, c) => c.cells - a.cells);
   console.log(`  largest ${sizes[0].nation} ${(100 * sizes[0].cells / (r.landTotal - r.wildTotal)).toFixed(0)}%, ` +
               `smallest ${sizes[sizes.length - 1].nation} ${sizes[sizes.length - 1].cells} cells`);
@@ -270,6 +348,24 @@ async function baseGen(p, c) {
       used.add(nm); b.name = nm; b.culture = cid; renamedBurgs++;
       if (b.capital) capNames.push([pack.states[b.state] && pack.states[b.state].fullName, nm, !!canon]);
     }
+    // Everything downstream of a border was computed against a political map
+    // that no longer exists. The forge stamps its own territory over the states
+    // Azgaar drew, so the main roads ran between Azgaar's capitals, the
+    // provinces belonged to countries that had since moved, and the stamp
+    // cleared every army outright. Rebuild them on the map as it now stands —
+    // and rebuild the ROADS first, because a trade corridor's land legs are
+    // pathfound over the road network, so roads to the wrong capitals would
+    // put the Salt Road through the wrong country.
+    const rebuilt = [];
+    for (const [what, step] of [
+      ['statistics', () => States.collectStatistics()],
+      ['roads', () => Routes.generate()],
+      ['provinces', () => { Provinces.generate(); Provinces.getPoles(); }],
+      ['armies', () => Military.generate()],
+    ]) {
+      try { step(); rebuilt.push(what); } catch (e) { rebuilt.push(what + ' FAILED: ' + e.message); }
+    }
+
     // Goods are distributed by biome AND by culture type, and the culture types
     // were random until a moment ago — so the steppe khaganate was not counted
     // as nomadic when horses were handed out. Regenerate now that every nation
@@ -341,45 +437,137 @@ async function baseGen(p, c) {
       pack.states[ib].diplomacy[ia] = DIPLO[t[2]];
       applied++;
     }
+    // ---- the vault's trade corridors, drawn as journeys -------------------
+    // Trade is Azgaar's own feature now: a journey is a named, multi-leg route
+    // with a transport per leg, saved with the map and drawn on its own layer.
+    // The nine corridors the notes describe are exactly that shape, so they go
+    // on the map as journeys rather than as decoration — each leg pathfound
+    // between two real settlements over the real roads or the real sea lanes,
+    // which is also the check that the corridor is possible on this map at
+    // all: a leg with no route means two nations the vault has trading are
+    // not actually connected.
+    const trade = { laid: [], partial: [], legs: 0, skipped: [] };
     try {
-      const lay = document.getElementById('labels');
-      const el = lay && lay.querySelector('#states');
-      if (el) el.innerHTML = '';
-      ['drawFeatures', 'drawStateLabels', 'drawStates', 'drawBorders', 'drawRivers',
-       'drawRelief', 'drawBurgIcons', 'drawLabels', 'drawIce'].forEach(fn => {
-        if (typeof window[fn] === 'function') { try { window[fn](); } catch (e) {} }
+      const tlist = Transports.getDefaults();
+      let tid = Math.max.apply(null, tlist.map(t => t.i)) + 1;
+      for (const t of a.EXTRA_TRANSPORTS) tlist.push(Object.assign({ i: tid++ }, t));
+      Transports.set(tlist);
+
+      const burgsOf = id => pack.burgs.filter(b => b && b.i && !b.removed && b.state === id);
+      // Where a corridor touches a nation. A road corridor leaves from the
+      // capital; a sea corridor leaves from the harbour, because a landlocked
+      // capital has no other way to put cargo on a hull. Ranked rather than
+      // picked, because a valid endpoint is not the same as a reachable one —
+      // the sea router insists on leaving through a cell's own haven — so the
+      // leg tries the next candidate instead of giving up on the first refusal.
+      const endpointsOf = (id, domain) => {
+        const st = pack.states[id];
+        const cap = st && st.capital && pack.burgs[st.capital];
+        const score = b => {
+          let v = 1 + (b.population || 0);
+          if (domain === 'water' && b.port) v *= 6;
+          if (b === cap) v *= 3;
+          return v;
+        };
+        return burgsOf(id)
+          .filter(b => Journeys.isValidEndpoint(b.cell, domain))
+          .sort((x, y) => score(y) - score(x))
+          .slice(0, 3);
+      };
+
+      const journeys = [];
+      a.corridors.forEach((cor, ci) => {
+        const car = a.CARRIER[cor.carry];
+        const tr = Transports.get(car.name);
+        const segments = [];
+        for (let k = 0; k + 1 < cor.stops.length; k++) {
+          const na = cor.stops[k], nb = cor.stops[k + 1];
+          const ia = byName[na], ib = byName[nb];
+          if (!ia || !ib) { trade.skipped.push(`${cor.name}: ${na}/${nb} not on the map`); continue; }
+          const AS = endpointsOf(ia, car.domain), BS = endpointsOf(ib, car.domain);
+          let A = null, B = null, r = null, why = 'nowhere to leave from';
+          for (const x of AS) {
+            for (const y of BS) {
+              // a land leg between two landmasses can only fail, and failing
+              // costs a Dijkstra over the whole pack: nine of those per leg
+              // turned a half-minute build into five minutes
+              if (car.domain === 'land' && cc.f[x.cell] !== cc.f[y.cell]) {
+                why = 'no-land-path'; continue;
+              }
+              const t2 = Journeys.findPath(x.cell, y.cell, car.domain);
+              if (t2.errorCode || t2.points.length < 2) { why = t2.errorCode || 'no path'; continue; }
+              A = x; B = y; r = t2; break;
+            }
+            if (r) break;
+          }
+          if (!r) { trade.skipped.push(`${cor.name}: ${na} \u2192 ${nb} (${why})`); continue; }
+          segments.push({ i: segments.length, name: `${A.name} \u2192 ${B.name}`,
+                          from: A.cell, to: B.cell, transport: tr.name, speed: tr.speed,
+                          distance: r.distance, points: r.points });
+        }
+        if (segments.length === cor.stops.length - 1) trade.laid.push(cor.name);
+        else trade.partial.push(`${cor.name} ${segments.length}/${cor.stops.length - 1} legs`);
+        if (!segments.length) return;
+        journeys.push({ i: journeys.length, name: cor.name, type: 'Trade route',
+                        color: a.ROUTE_COLORS[ci % a.ROUTE_COLORS.length], segments, lock: true });
+        trade.legs += segments.length;
       });
-    } catch (e) { /* cosmetic */ }
+      // replaces the one journey the generator seeds every map with
+      pack.journeys = journeys;
+      // Azgaar's default styles are sized for a canvas about a thousand pixels
+      // across. This one is 3,600, so a 1.8px corridor is a hairline you
+      // cannot see at fit-width — which rather defeats putting the trade on
+      // the map. Widen the journey stroke to match the canvas.
+      // The style record is the source of truth since 1.150, but writing to it
+      // does not touch the drawing: `Styles.apply` is what pushes the attrs
+      // onto the layer group. Set one and not the other and the saved map is
+      // right while every render out of this build is a hairline.
+      if (window.styles && styles.journeys) {
+        styles.journeys.attrs['stroke-width'] = a.journeyStroke || 5;
+        styles.journeys.attrs.opacity = 0.85;
+        try { Styles.apply('journeys'); } catch (e) { /* older build */ }
+      }
+    } catch (e) { trade.skipped.push('trade: ' + e.message); }
+
+    // Every renderer used to be a bare global that could be called by name.
+    // They are module-scoped now and reachable only through the layer
+    // registry, which also knows the draw order — so ask it to redraw the lot
+    // rather than naming nine functions that may or may not still exist.
+    try { Layers.drawAll(); } catch (e) { /* cosmetic */ }
     await new Promise(x => setTimeout(x, 2500));
     const data = a.skip ? null : await window.Services.Save.prepareMapData();
-    return { data, applied, unmatched, renamed: Object.keys(byName).length, renamedBurgs, addedBurgs, goodsFixed, seeded, res, capNames, goodNames: (pack.goods||[]).map(g=>[g.i,g.name]), stateNames: pack.states.filter(x=>x.i&&!x.removed).map(x=>[x.i,x.fullName]), cultures: cultures.length - 1 };
-  }, { names: r.names, ties, DIPLO, FORMS, SHORT, NAME_BASE: WORLD.NAME_BASE, CULTURE_TYPE: WORLD.CULTURE_TYPE, CAPITAL: WORLD.CAPITAL, SPECIALTY: WORLD.SPECIALTY, skip: !!process.env.SKIP_SAVE });
+    return { data, applied, unmatched, trade, rebuilt, renamed: Object.keys(byName).length, renamedBurgs, addedBurgs, goodsFixed, seeded, res, capNames, goodNames: (pack.goods||[]).map(g=>[g.i,g.name]), stateNames: pack.states.filter(x=>x.i&&!x.removed).map(x=>[x.i,x.fullName]), cultures: cultures.length - 1 };
+  }, { names: r.names, ties, DIPLO, FORMS, SHORT, corridors, CARRIER, EXTRA_TRANSPORTS, ROUTE_COLORS,
+       journeyStroke: OPTS.journeyStroke,
+       NAME_BASE: WORLD.NAME_BASE, CULTURE_TYPE: WORLD.CULTURE_TYPE, CAPITAL: WORLD.CAPITAL,
+       SPECIALTY: WORLD.SPECIALTY, skip: !!process.env.SKIP_SAVE });
 
   // look at it before believing any of the numbers above
+  // Layers are addressed by their own ids now (`Layers.set` turns the listed
+  // ones on and everything else off), not by clicking a toggle button whose
+  // element id the build had to guess at.
+  const POLITICAL = ['texture', 'lakes', 'rivers', 'relief', 'states', 'borders',
+                     'routes', 'ice', 'burgIcons', 'labels', 'journeys'];
   const views = process.env.NO_SHOT ? {} : {
-    [PFX + '-world.png']: { states: 1, biomes: 0, height: 0, relief: 1 },
-    [PFX + '-biomes.png']: { states: 0, biomes: 1, height: 0, relief: 0 },
-    [PFX + '-relief.png']: { states: 0, biomes: 0, height: 1, relief: 1 },
+    [PFX + '-world.png']: POLITICAL,
+    [PFX + '-biomes.png']: ['biomes', 'lakes', 'rivers', 'ice'],
+    [PFX + '-relief.png']: ['heightmap', 'lakes', 'rivers', 'relief'],
+    [PFX + '-trade.png']: ['texture', 'lakes', 'rivers', 'states', 'borders',
+                           'routes', 'burgIcons', 'journeys'],
   };
-  for (const [file, v] of Object.entries(views)) {
-    await p.evaluate(async (v) => {
+  for (const [file, on] of Object.entries(views)) {
+    await p.evaluate(async (on) => {
       if (typeof resetZoom === 'function') resetZoom(0);
-      const want = (id, on) => { if (!!layerIsOn(id) !== !!on) { const e = document.getElementById(id); if (e) e.click(); } };
-      want('toggleStates', v.states); want('toggleBiomes', v.biomes);
-      want('toggleHeight', v.height); want('toggleRelief', v.relief);
-      document.querySelectorAll('.dialog, #alert').forEach(d => { d.style.display = 'none'; });
+      Layers.set(on);
       await new Promise(r => setTimeout(r, 800));
-      if (typeof drawLabels === 'function') drawLabels();
+      Layers.draw('labels');
       await new Promise(r => setTimeout(r, 1500));
-    }, v);
-    const el = await p.$('#map');
-    await (el ? el.screenshot({ path: file }) : p.screenshot({ path: file }));
+    }, on);
+    await APP.hideChrome(p);
+    await APP.shoot(p, file);
     console.log('  shot ' + file);
   }
-  await p.evaluate(() => {
-    const want = (id, on) => { if (!!layerIsOn(id) !== !!on) { const e = document.getElementById(id); if (e) e.click(); } };
-    want('toggleStates', 1); want('toggleBiomes', 0); want('toggleHeight', 0); want('toggleRelief', 1);
-  });
+  await p.evaluate((on) => Layers.set(on), POLITICAL);
 
   if (r.stats) {
     const hi = Object.values(r.stats).filter(v => v && v.mtn >= 0.04)
@@ -403,15 +591,29 @@ async function baseGen(p, c) {
                 (gen.length ? `, generated for ${gen.map(c => c[0] + ' (' + c[1] + ')').join(', ')}` : ''));
   }
   console.log(`renamed ${res.renamed} states, ${res.renamedBurgs} burgs (${res.addedBurgs} added) across ${res.cultures} cultures, applied ${res.applied}/${ties.length} ties`);
+  if (res.rebuilt) console.log('  rebuilt after the territory stamp: ' + res.rebuilt.join(', '));
+  if (res.trade) {
+    const wantLegs = corridors.reduce((n, c) => n + c.stops.length - 1, 0);
+    console.log(`  trade: ${res.trade.laid.length}/${corridors.length} corridors whole, ` +
+                `${res.trade.legs}/${wantLegs} legs pathfound`);
+    for (const w of res.trade.partial) console.log('    PARTIAL ' + w);
+    for (const w of res.trade.skipped) console.log('    no route: ' + w);
+  }
   if (res.unmatched.length) console.log('  UNMATCHED: ' + res.unmatched.join(', '));
-  if (process.env.SKIP_SAVE) { await b.close(); return; }
-  fs.writeFileSync(OUT, res.data);
-  console.log(`wrote ${OUT} (${(res.data.length / 1e6).toFixed(1)} MB)`);
-  fs.writeFileSync('saeroth2-profile.json', JSON.stringify({
+  // The profile is what `inspect.py` reads, so a scoring run has to write one
+  // too — otherwise a sweep can only be ranked by eye on the console output,
+  // which is how a map with a country in the polar ice got shipped twice.
+  fs.writeFileSync(process.env.PROFILE || 'saeroth2-profile.json', JSON.stringify({
     cfg: CFG, opts: OPTS, size: r.size, cells: r.cells, majority: maj, borders: gotB.length,
     unclaimed: r.unclaimed, wildTotal: r.wildTotal, landTotal: r.landTotal, rivers: r.rivers,
     lakes: r.lakes, masses: r.masses, intricacy: r.intricacy, biomeMix: r.biomeMix,
-    prof: r.prof, log: r.log, founded: r.founded, colonies: r.colonies,
+    prof: r.prof, log: r.log, founded: r.founded, colonies: r.colonies, trade: res.trade,
+    ties: res.applied, tiesRead: ties.length, frontiers: frontier.size, quietFrontiers: quiet,
+    corridors: corridors.map(c => ({ name: c.name, carry: c.carry, legs: c.stops.length - 1 })),
     claim: W.CLAIM, land: W.LAND, sizes: W.SIZE, group: W.GROUP }, null, 1));
+  if (!process.env.SKIP_SAVE) {
+    fs.writeFileSync(OUT, res.data);
+    console.log(`wrote ${OUT} (${(res.data.length / 1e6).toFixed(1)} MB)`);
+  }
   await b.close();
 })();

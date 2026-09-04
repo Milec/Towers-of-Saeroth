@@ -37,6 +37,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--profile', default=os.path.join(REPO, 'saeroth2-profile.json'))
     ap.add_argument('--quiet', action='store_true')
+    ap.add_argument('--json', action='store_true', help='one line of scores, for a sweep')
     a = ap.parse_args()
     if not os.path.exists(a.profile):
         print(f'no profile at {a.profile} — run a build first (without SKIP_SAVE)', file=sys.stderr)
@@ -63,6 +64,14 @@ def main():
         if r.get('islands', 1) > 2 and (P.get('claim') or {}).get(n) != 'islands':
             notes.append(f'{n}: territory spread over {r["islands"]} landmasses')
 
+    # A corridor the notes describe that the map cannot carry is a map problem,
+    # not a note problem: the nine trade routes are what half the setting's
+    # foreign policy is about, and a leg with no road and no sea lane means two
+    # nations the vault has trading are not actually connected.
+    trade = P.get('trade') or {}
+    for miss in trade.get('skipped') or []:
+        fails.append(f'trade: {miss}')
+
     # Oversize is measured per CONTINENT: each group is given a fixed slice of
     # the world, and a nation's share is its weight within its own group.
     group = P.get('group') or {}
@@ -81,6 +90,20 @@ def main():
             share = gcells[g] * weight.get(n, 1) / (gtot[g] or 1)
             if share and cells / share > FAT:
                 fails.append(f'{n}: {cells} cells, {cells/share:.1f}x its share — it has eaten a lobe')
+
+    if a.json:
+        print(json.dumps({
+            'problems': len(fails), 'notes': len(notes),
+            'seed': (P.get('opts') or {}).get('seed'),
+            'borders': P.get('borders'), 'majority': P.get('majority'),
+            'masses': P.get('masses'),
+            'legs': trade.get('legs'), 'whole': len(trade.get('laid') or []),
+            'drift': round(max((abs(r['lat'] - land[r['nation']]['tlat'])
+                                for r in prof
+                                if (land.get(r['nation']) or {}).get('tlat') is not None), default=0), 1),
+            'fails': fails,
+        }))
+        sys.exit(1 if fails else 0)
 
     if not a.quiet:
         print(f'{len(prof)} nations, {settled} settled cells')

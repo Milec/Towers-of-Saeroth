@@ -47,9 +47,16 @@ L.push('   Anything it drowns inland that is smaller than a real lake gets fille
 L.push('   back in — that one pass is the difference between a continent and a doily.');
 L.push('4. **A polar cap is built along the north edge**, with a frozen strait south');
 L.push('   of it, and **hotspot chains** raise volcanic isles out in the deep ocean.');
-L.push('5. **Territories are carved** with a capacity-constrained power diagram at');
-L.push('   exact target sizes, then the borders **relax onto the relief** — sliding');
-L.push('   along crests and down the valleys the rivers cut.');
+L.push('5. **Territories are carved** by growing each nation outward from its own');
+L.push('   capital with a priority queue, where the price of a step is the ground');
+L.push('   it crosses: a river costs several times its own width to get over, and');
+L.push('   a climb costs by the square of it. Growth stalls where the ground is');
+L.push('   expensive, so two nations meet there — which is what a frontier');
+L.push('   physically is. Nobody stops at a quota; size is controlled purely by');
+L.push('   each nation\'s own cost multiplier, iterated between rounds. Then, once');
+L.push('   the real rivers exist, every border is **redrawn over the actual');
+L.push('   drainage**, so the line between two countries settles into a river or');
+L.push('   onto a watershed.');
 L.push('6. **A climate model is run over the finished heightmap.** Zonal temperature');
 L.push('   falling from the equator, zonal rainfall with an equatorial wet belt, a');
 L.push('   subtropical dry belt and wet mid-latitudes; prevailing winds that swing');
@@ -150,6 +157,31 @@ if (P.founded && P.founded.length) {
   L.push('');
 }
 
+if (P.trade && P.corridors) {
+  L.push('## The trade corridors\n');
+  L.push('`campaign/world/Trade Routes.md` names nine corridors, and they are on the map');
+  L.push('as **journeys** — Azgaar\'s own named multi-leg routes, each leg carrying its');
+  L.push('own transport and pathfound over the real roads or the real sea lanes. Nothing');
+  L.push('is drawn by hand: a leg exists on the map only if a wagon or a hull could');
+  L.push('actually make the trip, which is also the check that the world can carry the');
+  L.push('trade the notes describe.\n');
+  L.push('| Corridor | Carried by | Legs |');
+  L.push('| --- | --- | ---: |');
+  const laid = new Set(P.trade.laid || []);
+  for (const c of P.corridors) {
+    L.push(`| ${c.name} | ${c.carry} | ${laid.has(c.name) ? c.legs + '/' + c.legs :
+             '**' + (c.legs - (P.trade.skipped || []).filter(x => x.startsWith(c.name)).length) +
+             '/' + c.legs + '**'} |`);
+  }
+  L.push('');
+  if ((P.trade.skipped || []).length) {
+    L.push('Legs the map could not carry — a road or a sea lane the notes assume and the');
+    L.push('geography does not provide:\n');
+    for (const w of P.trade.skipped) L.push('- ' + w);
+    L.push('');
+  }
+}
+
 L.push('## Notes from the build\n');
 for (const l of P.log) L.push('- ' + l);
 L.push('');
@@ -158,7 +190,7 @@ L.push('## Loading it\n');
 L.push('Open <https://azgaar.github.io/Fantasy-Map-Generator/>, then **Menu → Load Map');
 L.push('→ Load from machine**, and pick `Saeroth.map`. It is Azgaar\'s own save format,');
 L.push('not JSON — Azgaar cannot import JSON, which is why this is a `.map`.\n');
-L.push('All 79 diplomatic ties from `campaign/nations/Political Relations.md` are carried');
+L.push(`All ${P.ties || 0} diplomatic ties from \`campaign/nations/Political Relations.md\` are carried`);
 L.push('into Azgaar\'s own relations matrix. Covert ties are stored as Neutral, which is');
 L.push('the correct lie: a deniable tie should look like nothing from outside.\n');
 

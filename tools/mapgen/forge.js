@@ -129,8 +129,19 @@ async function forgeWorld(page, opts) {
           } else if ((adjWant[a] || []).includes(b)) {
             f = (d - touch * (O.touchAt || 0.82)) * (O.attract || 0.10);
           } else {
-            const sep = touch * (O.separate || 1.12);
-            f = d < sep ? (d - sep) * (O.repel || 0.05) : 0;
+            // Two nations with nothing to say about each other used to do
+            // nothing but push apart, which made the diplomacy graph the only
+            // thing holding a continent together: every frontier on the map
+            // was one the vault had a reason for. Real countries mostly border
+            // someone they have no opinion of, and a continent laid out this
+            // way came out as a chain of related states with holes between
+            // them for the carve to paper over. So they knit as well as repel
+            // — pushed apart only where they actually overlap, and pulled back
+            // in once they have drifted past touching.
+            const sep = touch * (O.separate || 1.00);
+            const knit = touch * (O.knitAt || 1.45);
+            f = d < sep ? (d - sep) * (O.repel || 0.05)
+              : d > knit ? (d - knit) * (O.knit || 0.018) : 0;
           }
           F[a][0] += dx * f; F[a][1] += dy * f;
           F[b][0] -= dx * f; F[b][1] -= dy * f;
@@ -829,9 +840,17 @@ async function forgeWorld(page, opts) {
     const settled = new Uint8Array(gn);
     for (const g of groupIds) for (const c of groupCells[g]) settled[c] = 1;
     const settledCells = landCells.filter(c => settled[c]);
-    for (const g of groupIds)
+    for (const g of groupIds) {
+      // The count on its own is misleading and was read wrongly for a while:
+      // a continent whose 7,868 cells are one landmass of 7,862 plus six cells
+      // on two skerries reads as "3 landmasses" and looks fractured. Print the
+      // sizes, so a real split is visible and a stray cell is not.
+      const per = {};
+      for (const c of groupCells[g]) per[massOf[c]] = (per[massOf[c]] || 0) + 1;
+      const sizes = Object.values(per).sort((a, b) => b - a);
       log.push(`group ${g}: ${groupCells[g].length} cells across ` +
-        `${new Set(groupCells[g].map(c => massOf[c])).size} landmass(es)`);
+        `${sizes.length} landmass(es) (${sizes.slice(0, 6).join(', ')})`);
+    }
     for (const wd of WILD.concat([{ id: -9, why: 'the polar ice' }])) {
       const n = masses.reduce((a, m, mi) => a + (massGroup[mi] === wd.id ? m.length : 0), 0);
       if (n) log.push(`wilderness: ${n} cells — ${wd.why}`);
@@ -903,7 +922,13 @@ async function forgeWorld(page, opts) {
         for (const pass of [0, 1]) {
           for (const c of cells) {
             if (taken.has(c)) continue;
-            if (pass === 0 && LAND[n].coastal && !openSea[c]) continue;
+            // `seaward` is the weaker sibling of `coastal`: it asks only that
+            // the nation START on an open-sea shore, so its capital is a port
+            // and a sea route can leave from it, and then lets the territory
+            // grow wherever the ground and the latitude take it. `coastal`
+            // additionally prices every cell by its distance from the water,
+            // which turns a highland sultanate into a beach.
+            if (pass === 0 && (LAND[n].coastal || LAND[n].seaward) && !openSea[c]) continue;
             if (pass === 0 && LAND[n].ridged && upN[c] < 0.35) continue;
             const dx = GP[c][0] - P[n][0], dy = GP[c][1] - P[n][1];
             const d = dx * dx + dy * dy;
@@ -1095,7 +1120,7 @@ async function forgeWorld(page, opts) {
             const cx = sum[n][0] / sum[n][2], cy = sum[n][1] / sum[n][2];
             let bc = seedCell[n], bd = Infinity;
             for (const c of cells) {
-              if (LAND[n].coastal && seaDist[c] > (O.coastWant || 4)) continue;
+              if ((LAND[n].coastal || LAND[n].seaward) && seaDist[c] > (O.coastWant || 4)) continue;
               if (drain[c]) continue;              // do not sit a capital in a riverbed
               const dx = GP[c][0] - cx, dy = GP[c][1] - cy;
               const d = dx * dx + dy * dy;
@@ -1162,7 +1187,7 @@ async function forgeWorld(page, opts) {
         const tx = pt[0] + (push[n][0] / k) * 0.22, ty = pt[1] + (push[n][1] / k) * 0.22;
         let bc = seedCell[n], bd = Infinity;
         for (const c of cells) {
-          if (LAND[n].coastal && seaDist[c] > (O.coastWant || 4)) continue;
+          if ((LAND[n].coastal || LAND[n].seaward) && seaDist[c] > (O.coastWant || 4)) continue;
           const dx = GP[c][0] - tx, dy = GP[c][1] - ty;
           const d = dx * dx + dy * dy;
           if (d < bd) { bd = d; bc = c; }
@@ -1283,7 +1308,8 @@ async function forgeWorld(page, opts) {
         for (const i of settledCells) {
           const mine = owner[i];
           if (mine < 0) continue;
-          if (LAND[NAMES[mine]].coastal && seaDist[i] <= 1) continue;
+          const Lm = LAND[NAMES[mine]];
+          if ((Lm.coastal || Lm.seaward) && seaDist[i] <= 1) continue;
           const tally = {};
           let own = 0;
           for (const c of nbrs(i)) {
@@ -1516,29 +1542,35 @@ async function forgeWorld(page, opts) {
     }
 
     // ---------- 8. hand it to Azgaar ---------------------------------------
-    Features.markupGrid();
-    OceanLayers();
-    calculateTemperatures();
-    generatePrecipitation();
-    for (let i = 0; i < gn; i++) { G.temp[i] = pT[i]; G.prec[i] = pP[i]; }
-    reGraph();
-    Features.markupPack();
-    Rivers.generate(true);
-    Biomes.define();
-    Features.defineGroups();
-    Goods.generate();
-    rankCells();
-    Cultures.generate();
-    Cultures.expand();
-    Burgs.generate();
-    States.generate();
-    Routes.generate();
-    Religions.generate();
-    Burgs.specify();
-    for (const step of [() => Ice.generate(), () => Markets.generate(),
-                        () => Production.produce(), () => Military.generate(),
-                        () => Markers.generate(), () => Zones.generate()]) {
-      try { step(); } catch (e) { /* decorative layers are best-effort */ }
+    // Azgaar owns the order now. Since 1.149 the app declares its generation
+    // sequence as a pipeline object, and the hand-copied call list that used
+    // to live here had already gone stale against it: no provinces, no lake
+    // names, no taxes, no map name, and half a dozen bare globals
+    // (`reGraph`, `calculateTemperatures`, `rankCells`) that the Vite build
+    // deleted outright. So run the app's own pipeline, and substitute only
+    // the three steps this world owns — the heightmap, and the two climate
+    // fields — by wrapping them for the length of the run.
+    //
+    // Substituting rather than pre-writing matters: the pipeline's first step
+    // is `Grid.prepare`, which blanks `grid.cells.h` before anything reads it.
+    // Anything written to the grid before the run is thrown away.
+    const forgedH = Uint8Array.from(G.h);
+    const HG = window.HeightmapGenerator, TG = window.Temperature, PG = window.Precipitation;
+    const keep = { h: HG.generate, t: TG.generate, p: PG.generate };
+    HG.generate = async function (graph) {
+      // the real one reseeds the PRNG here, and every later step is downstream
+      // of that: drop it and the same forge seed stops producing the same world
+      Math.random = aleaPRNG(seed);
+      const g = graph || grid;
+      g.cells.h = Uint8Array.from(forgedH);
+      return g.cells.h;
+    };
+    TG.generate = function () { keep.t.apply(TG, arguments); grid.cells.temp.set(pT); };
+    PG.generate = function () { keep.p.apply(PG, arguments); grid.cells.prec.set(pP); };
+    try {
+      await GenerationPipeline.run({});
+    } finally {
+      HG.generate = keep.h; TG.generate = keep.t; PG.generate = keep.p;
     }
 
     // ---------- 9. stamp our territories -----------------------------------
