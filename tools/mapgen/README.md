@@ -208,16 +208,17 @@ seven times its share sitting fifty degrees out of its climate band.
 
 `campaign/Saeroth.map` is **seed 7**, built on Azgaar **1.151.1**: 28 nations
 on a 3,600 x 2,150 canvas at 5 km to the pixel, **16/16 required borders**,
-**28/28 terrain majorities**, both inhabited continents a single landmass each,
-the middle sea a **16-island archipelago**, **all nine trade corridors whole**
-at 24 of 24 legs, and `inspect.py` reports **3** problems.
+**26/28 terrain majorities**, both inhabited continents a single landmass each
+(plus a 37-cell and a 7-cell skerry), the middle sea a **16-island
+archipelago**, **all nine trade corridors whole** at 24 of 24 legs, and
+`inspect.py` reports **nothing a reader would flag**.
 
-It carries 1,277 settlements — 27 of the capitals named by the vault, the
+It carries 1,288 settlements — 27 of the capitals named by the vault, the
 twenty-eighth generated because Tal Ulad's note says its seat moves with the
-season — 340 provinces, 102 regiments, 560 rivers, and all 119 diplomatic ties
+season — 358 provinces, 100 regiments, 713 rivers, and all 119 diplomatic ties
 from `Political Relations.md`.
 
-Of its 58 frontiers, **16 are between nations the vault says nothing about**.
+Of its 58 frontiers, **13 are between nations the vault says nothing about**.
 That number is the point of the layout change that produced this map: at the
 old spacing it was 7 of 50, and a continent whose every border was one the
 notes had a reason for read as a diagram of the diplomacy rather than as a
@@ -231,20 +232,19 @@ an earlier map out by up to a factor of five.
 
 Known-imperfect, and in the output rather than hidden:
 
-- **Thurigypt sits 21 degrees south of its band.** It and Qeshara both want the
-  24-27N strip on the same continent and both are large; something has to give.
-  Every way of separating them was tried and cost more than it bought — see the
-  note on their entries in `world.js`.
-- **Voskreld is 17 degrees south of its**, and **Tal Ulad holds 618 cells,
-  three times its share.** The territory trade below cuts the worst of the
-  sizes and cannot finish the job: a runaway with no starved neighbour has
-  nobody to give to.
+- **Two terrain majorities are missed**, both narrowly. Nothing else in the
+  inspector fires, which is a first for this map; the seed sweep that found it
+  ran under the crest ranges and the borrowed coastlines, and seed 7 came out
+  at zero problems against seven for the runner-up.
 - **One leg of the Delta Run goes by wagon.** Grauthaven and Ilmen Wharf sit on
   different drainages, so the barges cannot make it and the build says so
   rather than pretending otherwise.
 - Retuning the growth controller was tried against this seed and made all of it
   worse: `growIters` 70 dropped the required borders to 13 and left Tal Ulad
   with one cell; `growGain` 0.45 put Tal Ulad at 5.8x. Leave it alone.
+- `packCorridor` is 20 rather than the forge's own 14. At 14 this seed comes out
+  one required border short; the pack-side repair needs the longer reach to
+  find it after the redraw over the real drainage.
 
 ### Mountains are tectonic, not political
 
@@ -273,11 +273,72 @@ away into its neighbours, and Melisor — 178 cells of claimed highland — came
 out at grassland height. So `nationPin` closes part of the remaining gap
 unblurred: enough to hold the claim, not enough to rebuild the wall.
 
+3. **A chain walked along the crest.** A fold field says where mountains are;
+   it never says where any one range starts or ends, so a whole orogen comes
+   out as corrugation over a wide area rather than as something you could name.
+   Azgaar's own `Range` operator has the answer and always has: a range is a
+   **path**. Walk a connected line of cells, raise it, let the height fall away
+   either side, and it reads as a range because it is one. Same idea here,
+   except the strokes are not random — each is walked along the crest of the
+   orogen the plates already built, stepping to whichever neighbour holds the
+   most uplift and favouring carrying straight on over doubling back. Ten
+   chains, the longest 92 cells.
+
+   Two things make or break it. Each finished chain **fences off the ground
+   around it** (`crestKeepout`), because otherwise the walk starts the next
+   range one cell from the last and a dozen of them packed together is a
+   plateau — the exact blob this was written to remove. And the chains are
+   **blended over the folds** rather than replacing them (`crestMix`,
+   `crestAmp`): the folds are the foothills a nation's terrain claim actually
+   stands on, the chain is the range. Drop the folds and the terrain claims go
+   with them.
+
+   `relief: 'fold'` turns the chains off and leaves the folds alone.
+
 `RIDGE_BORDERS` in `world.js` is the exception that proves the rule. A border
 is normally wherever two nations happen to stop; the Thesal–Vaelic frontier is
 a fact about the ground, because the vault leans on it — the coronation road is
 a single high pass, which is what makes the two an alliance rather than a
 march. Those cells are found after the territory is drawn and raised directly.
+
+### The coastline is borrowed from Azgaar's Old World template
+
+Plate tectonics decides where the continents are and decides it well, but a
+plate is a Voronoi cell, and a warped Voronoi cell is still a blob. What the
+plate model does not produce is structure at every scale at once: the gulf, the
+peninsula off the gulf, the cape off the peninsula. That self-similarity is
+most of what makes a coastline read as a real one.
+
+Azgaar's **Old World** heightmap template has it, because it is not noise —
+three long `Range` strokes, hills at two sizes, a strait cut end to end, then a
+field of troughs and pits, each landing at a different scale. So the forge runs
+that template on its own grid, through Azgaar's own `HeightmapGenerator`, and
+adds the result to the potential field before the sea level is taken.
+
+Three details are the whole thing:
+
+- **One template run per continent, not one averaged field.** The first version
+  ran it twice and averaged the pair, which cancelled exactly the structure
+  that made either worth borrowing and left a smooth mush. A template also only
+  ever describes one world, so a single field draped over three continents
+  gives all three the same silhouette.
+- **Each donor is slid so its own landmass sits over the continent it shapes**,
+  rather than sampled where it happens to fall.
+- **The donor is rescaled around its own sea level** (`oldWorldSoft`), not
+  min-to-max. A template spends most of its 0–100 on mountains, so a plain
+  min-max normalisation leaves the land/sea decision — the only part being
+  borrowed — squeezed into a narrow band near the bottom, and the coast barely
+  moves. Pivoting at 20 took the shore from 17% of cells to 22% and the
+  landmass count from 31 to 47.
+
+`oldWorld` is the amplitude, in the same units as the continental step itself
+(`contBase` 0.55 against `oceanBase` -0.55), so it reads as a fraction of how
+strongly the plate says land here. At 0.8 a donor can carve a gulf into a
+continent or leave an island off it, and cannot move a continent. It goes into
+the potential field rather than replacing the land mask, and every group is
+re-levelled to its own land budget straight after, so this changes the *shape*
+of a coast and never how much land a group gets or which group a nation lands
+on. `oldWorld: 0` turns it off.
 
 ### The territory trade
 

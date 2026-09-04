@@ -487,6 +487,92 @@ async function forgeWorld(page, opts) {
       }
     }
 
+    // ---- borrowed shape: one Old World heightmap per continent -------------
+    // Plate tectonics decides where the continents are, and it decides it well
+    // — but a plate is a Voronoi cell, and a warped Voronoi cell is still a
+    // blob. What the plate model does not produce is structure at every scale
+    // at once: the gulf, the peninsula off the gulf, the cape off the
+    // peninsula. That self-similarity is most of what makes a coastline read
+    // as a real one rather than an outline somebody drew.
+    //
+    // Azgaar's own Old World template has it, because it is not noise: three
+    // long Range strokes, hills at two sizes, a strait cut end to end, then a
+    // field of troughs and pits, each landing at a different scale. So run that
+    // template on this grid and let it decide the shape of the coast.
+    //
+    // ONE PER CONTINENT, not one averaged field over the whole map. The first
+    // version of this ran the template twice and averaged the pair, which was
+    // exactly wrong: averaging two fractal fields cancels the structure that
+    // made either of them worth borrowing and leaves a smooth mush. A template
+    // also only ever describes one world, so a single field draped over three
+    // continents gives all three the same silhouette. Running it once per group
+    // and sliding each result so its own landmass sits over the continent it
+    // is shaping keeps the full amplitude and gives every continent a coast of
+    // its own.
+    //
+    // It goes into the potential field rather than replacing the land mask, so
+    // the continents still sit where the diplomacy and the climate bands put
+    // them, and each group is re-levelled to its own land budget straight
+    // after. This can change the SHAPE of a coast. It cannot change how much
+    // land a group ends up with, or which group a nation lands on.
+    const OW = O.oldWorld === undefined ? 0.8 : O.oldWorld;
+    if (OW > 0 && typeof HeightmapGenerator !== 'undefined') {
+      const DONORS = O.oldWorldDonors === undefined ? 3 : O.oldWorldDonors;
+      const groupAt = i => plateGroup[plateOf[i]];
+      const donorFor = g => (g >= 0 ? g : 1 - g) % DONORS;
+
+      // where each group actually sits, so a donor can be slid onto it
+      const gx = new Float64Array(DONORS), gy = new Float64Array(DONORS), gc = new Int32Array(DONORS);
+      for (let i = 0; i < gn; i++) {
+        const g = groupAt(i);
+        if (g < 0) continue;                  // ocean and wilderness pull the
+        const d = donorFor(g);                // centroid off the continent
+        gx[d] += GP[i][0]; gy[d] += GP[i][1]; gc[d]++;
+      }
+
+      const keepH = Uint8Array.from(G.h);
+      const keepRandom = Math.random;
+      const field = [], dx = new Float64Array(DONORS), dy = new Float64Array(DONORS);
+      try {
+        for (let d = 0; d < DONORS; d++) {
+          Math.random = aleaPRNG(`${SEED}-oldworld-${d}`);
+          G.h.fill(0);
+          const hh = Float32Array.from(
+            HeightmapGenerator.fromTemplate(grid, O.oldWorldTemplate || 'oldWorld'));
+          // slide the donor so ITS land sits over OUR continent
+          let ax = 0, ay = 0, ac = 0;
+          for (let i = 0; i < gn; i++) if (hh[i] >= 20) { ax += GP[i][0]; ay += GP[i][1]; ac++; }
+          if (ac && gc[d]) { dx[d] = gx[d] / gc[d] - ax / ac; dy[d] = gy[d] / gc[d] - ay / ac; }
+          // Rescale around the donor's OWN sea level, not its full range. A
+          // template spends most of its 0-100 on mountains, so a plain min-max
+          // leaves the land/sea decision — the only part being borrowed —
+          // sitting in a narrow band near the bottom, and the coast barely
+          // moves. Pivoting at 20 and saturating a little above it gives the
+          // donor's coastline the whole amplitude.
+          const soft = O.oldWorldSoft === undefined ? 25 : O.oldWorldSoft;
+          for (let i = 0; i < gn; i++) hh[i] = Math.max(-1, Math.min(1, (hh[i] - 20) / soft));
+          field.push(hh);
+        }
+      } finally {
+        Math.random = keepRandom;
+        G.h.set(keepH);
+      }
+
+      // The amplitude is in the same units as the continental step itself
+      // (0.55 for crust, -0.55 for ocean), so `oldWorld` reads as a fraction of
+      // "how strongly does the plate say land here": at 0.8 the donor can carve
+      // a gulf into a continent or leave an island off it, and cannot move a
+      // continent.
+      for (let i = 0; i < gn; i++) {
+        const d = donorFor(groupAt(i));
+        const sx = Math.max(0, Math.min(W - 1, GP[i][0] - dx[d]));
+        const sy = Math.max(0, Math.min(H - 1, GP[i][1] - dy[d]));
+        const j = Grid.findCell(sx, sy, grid);
+        fv[i] += OW * field[d][j === undefined ? i : j];
+      }
+      log.push(`shaped the coast from ${DONORS} Old World heightmap(s), one per continent (amp ${OW})`);
+    }
+
     // Coastal detail. A second, much finer noise field is added with an
     // amplitude that peaks AT sea level and dies inland and offshore, so it
     // carves bays, capes and skerries without turning the interior to gravel.
@@ -1145,7 +1231,7 @@ async function forgeWorld(page, opts) {
       }
       return set;
     };
-    let missing = [], best = null;
+    let missing = [], best = null, latRounds = 0;
     for (let attempt = 0; attempt <= (O.borderFix || 26); attempt++) {
       owner.fill(-1);
       for (const g of groupIds)
@@ -1165,23 +1251,88 @@ async function forgeWorld(page, opts) {
       missing = BORDERS.filter(([a, b]) => GROUP[a] === GROUP[b] &&
         !adj.has(idxOf[a] < idxOf[b] ? idxOf[a] + ':' + idxOf[b] : idxOf[b] + ':' + idxOf[a]));
       const tally = new Int32Array(NAMES.length);
-      for (const i of settledCells) if (owner[i] >= 0) tally[owner[i]]++;
+      const ySum = new Float64Array(NAMES.length);
+      for (const i of settledCells) {
+        const o = owner[i];
+        if (o < 0) continue;
+        tally[o]++; ySum[o] += GP[i][1];
+      }
       let smallest = Infinity;
       for (const n of NAMES) smallest = Math.min(smallest, tally[idxOf[n]]);
+
+      // This loop already re-seeds the world forty-five times looking for the
+      // frontiers the vault requires, and it was scoring only those. Two of
+      // the three things a reader still notices — a nation twenty degrees
+      // south of the band its climate belongs in, and one at three times its
+      // share — are visible in every one of those attempts and were being
+      // thrown away with them. Score them too.
+      //
+      // Both terms are CAPPED below the price of a single required border, so
+      // the search stays lexicographic: it never trades a frontier the notes
+      // assert for a nation sitting a few degrees more comfortably. They only
+      // choose between attempts that got the same borders.
+      let drift = 0, fat = 0;
+      {
+        const quota = new Float64Array(NAMES.length);
+        for (const g of groupIds) {
+          const mem = NAMES.filter(n => GROUP[n] === g);
+          let have = 0;
+          for (const n of mem) have += tally[idxOf[n]];
+          const tw2 = mem.reduce((a2, n) => a2 + SIZE[n], 0);
+          for (const n of mem) quota[idxOf[n]] = Math.max(8, have * SIZE[n] / tw2);
+        }
+        for (const n of NAMES) {
+          const k = idxOf[n];
+          if (!tally[k]) { drift += 900; continue; }
+          const d = Math.max(0, Math.abs(latOf(ySum[k] / tally[k]) - LAND[n].tlat) -
+                                (O.driftFree || 8));
+          drift += d * d;
+          const over = Math.max(0, tally[k] / quota[k] - (O.fatFree || 2.0));
+          fat += over * over;
+        }
+      }
       const score = -missing.length * 100
+                  - Math.min(drift * (O.driftW || 0.10), 90)
+                  - Math.min(fat * (O.fatW || 6), 60)
                   + Math.min(smallest, O.minCells || 60)
                   + Math.min(smallest, 400) / 1000;
       if (!best || score > best.score)
         best = { score, owner: Int16Array.from(owner), seeds: Object.assign({}, seedCell), missing: missing.slice() };
-      if (!missing.length || attempt === (O.borderFix || 26)) break;
+      if (attempt === (O.borderFix || 26)) break;
       const push = {};
-      for (const [a, b] of missing) {
-        const pa = GP[seedCell[a]], pb = GP[seedCell[b]];
-        const mx = (pa[0] + pb[0]) / 2, my = (pa[1] + pb[1]) / 2;
-        for (const [n, pt] of [[a, pa], [b, pb]]) {
-          push[n] = push[n] || [0, 0, 0];
-          push[n][0] += mx - pt[0]; push[n][1] += my - pt[1]; push[n][2]++;
+      if (missing.length) {
+        for (const [a, b] of missing) {
+          const pa = GP[seedCell[a]], pb = GP[seedCell[b]];
+          const mx = (pa[0] + pb[0]) / 2, my = (pa[1] + pb[1]) / 2;
+          for (const [n, pt] of [[a, pa], [b, pb]]) {
+            push[n] = push[n] || [0, 0, 0];
+            push[n][0] += mx - pt[0]; push[n][1] += my - pt[1]; push[n][2]++;
+          }
         }
+      } else {
+        // Every required frontier is met, and the loop used to stop here — on
+        // the first arrangement that satisfied the vault's adjacencies,
+        // whatever else was wrong with it. Nothing was pushing on the thing a
+        // reader actually notices next: a nation twenty degrees south of the
+        // band its climate belongs in.
+        //
+        // So spend what is left of the budget pulling the worst drifters back
+        // north or south by the amount their own territory is out by. The
+        // border pushes above are unchanged and still come first; an attempt
+        // that loses a frontier scores a hundred points worse and is thrown
+        // away, so this can only ever choose among arrangements that kept
+        // them all.
+        if (latRounds++ >= (O.latFix === undefined ? 14 : O.latFix)) break;
+        let nudged = 0;
+        for (const n of NAMES) {
+          const k = idxOf[n];
+          if (!tally[k]) continue;
+          const off = yOfLat(LAND[n].tlat) - ySum[k] / tally[k];
+          if (Math.abs(latOf(ySum[k] / tally[k]) - LAND[n].tlat) < (O.driftFree || 8)) continue;
+          push[n] = [0, off, 1];
+          nudged++;
+        }
+        if (!nudged) break;
       }
       for (const n of Object.keys(push)) {
         const cells = groupCells[GROUP[n]], pt = GP[seedCell[n]], k = push[n][2];
@@ -1394,6 +1545,119 @@ async function forgeWorld(page, opts) {
     const BIAS = O.nationBias === undefined ? 1 : O.nationBias;
     const BIASBLUR = O.biasBlur === undefined ? 7 : O.biasBlur;
 
+    // CRESTS. A fold field says where mountains are; it does not say where any
+    // one range STARTS and ENDS, so the whole orogen comes out as texture —
+    // corrugation over a wide area rather than a chain you could name. Azgaar's
+    // own `Range` operator has the answer and has had it all along: a range is a
+    // PATH. Walk a connected line of cells, raise it, let the height fall away
+    // either side, and the result reads as a range because it is one. The Old
+    // World template is three of those strokes plus hills, and its mountains
+    // look more like mountains than any noise field's do.
+    //
+    // The difference here is that the strokes are not random. Each one is walked
+    // along the crest of the orogen the plates already built — step to whichever
+    // neighbour holds the most uplift, favour carrying straight on over turning
+    // back, and stop where the uplift runs out. So the chains follow the real
+    // collision fronts, fork where the fronts fork, and taper at both ends the
+    // way a range dies into foothills instead of stopping at a contour.
+    const crestBelt = () => {
+      const AT = O.crestAt === undefined ? 0.46 : O.crestAt;      // start a chain here
+      const END = O.crestEnd === undefined ? 0.22 : O.crestEnd;   // give up here
+      const MINLEN = O.crestMin === undefined ? 8 : O.crestMin;
+      const MAXLEN = O.crestMax === undefined ? 140 : O.crestMax;
+      const FLANK = O.crestFlank === undefined ? 0.54 : O.crestFlank;
+      const TAPER = O.crestTaper === undefined ? 9 : O.crestTaper;
+      const KEEPOUT = O.crestKeepout === undefined ? 4 : O.crestKeepout;
+      const val = new Float32Array(gn);
+
+      const seeds = [];
+      for (let i = 0; i < gn; i++) if (isLand[i] && upN[i] >= AT) seeds.push(i);
+      seeds.sort((a, b) => upN[b] - upN[a]);
+
+      // A chain is only a chain if it stands alone. Left to itself the walk
+      // starts a new one beside the last, and a dozen ranges packed a cell
+      // apart is a plateau — which is the blob this was written to be rid of.
+      // So each finished chain fences off the ground around it, and the next
+      // range has to start somewhere else.
+      const claimed = new Uint8Array(gn);   // cells a chain has walked
+      const fenced = new Uint8Array(gn);    // and the ground it holds off
+      const chains = [];
+      for (const s0 of seeds) {
+        if (claimed[s0] || fenced[s0]) continue;
+        const chain = [s0];
+        claimed[s0] = 1;
+        // walk away from the seed twice, so a chain grows out of its own
+        // highest point in both directions rather than trailing off one end
+        for (let dir = 0; dir < 2; dir++) {
+          let cur = s0, prev = -1;
+          for (let step = 0; step < MAXLEN; step++) {
+            let best = -1, bv = 0;
+            for (const c of nbrs(cur)) {
+              if (!isLand[c] || claimed[c] || upN[c] < END) continue;
+              let v = upN[c];
+              if (prev >= 0) {
+                // momentum: a range bends, it does not double back
+                const [px, py] = GP[prev], [cx, cy] = GP[cur], [nx, ny] = GP[c];
+                const ax = cx - px, ay = cy - py, bx = nx - cx, by = ny - cy;
+                const m = Math.hypot(ax, ay) * Math.hypot(bx, by) || 1;
+                v *= 0.45 + 0.55 * Math.max(0, (ax * bx + ay * by) / m);
+              }
+              v *= 0.85 + 0.30 * hash2(c * 11 + dir, step * 7);
+              if (v > bv) { bv = v; best = c; }
+            }
+            if (best < 0) break;
+            claimed[best] = 1;
+            if (dir === 0) chain.push(best); else chain.unshift(best);
+            prev = cur; cur = best;
+          }
+        }
+        if (chain.length < MINLEN) continue;
+        chains.push(chain);
+        let ring2 = chain.slice();
+        for (const i of ring2) fenced[i] = 1;
+        for (let r = 0; r < KEEPOUT && ring2.length; r++) {
+          const nx = [];
+          for (const i of ring2) for (const c of nbrs(i)) {
+            if (fenced[c]) continue;
+            fenced[c] = 1; nx.push(c);
+          }
+          ring2 = nx;
+        }
+      }
+
+      // lay the chains down, tapering to nothing at either end and dropping
+      // into saddles along the way — the passes roads and armies have to use
+      const ring0 = [];
+      for (const chain of chains) {
+        const L = chain.length;
+        for (let k = 0; k < L; k++) {
+          const i = chain[k];
+          const [x, y] = GP[i];
+          const gap = 0.55 + 0.45 * fbm(x + 3300, y + 8800, 2, O.passFreq || 0.0042);
+          const taper = Math.min(1, (Math.min(k, L - 1 - k) + 1) / TAPER);
+          const a = gap * (0.35 + 0.65 * taper);
+          if (a > val[i]) { val[i] = a; ring0.push(i); }
+        }
+      }
+      // and let each one fall away over its own flanks
+      let ring = ring0;
+      for (let r = 0; r < 24 && ring.length; r++) {
+        const next = [];
+        for (const i of ring) {
+          const v = val[i] * FLANK;
+          if (v < 0.05) continue;
+          for (const c of nbrs(i)) {
+            if (!isLand[c] || val[c] >= v - 1e-4) continue;
+            val[c] = v; next.push(c);
+          }
+        }
+        ring = next;
+      }
+      log.push(`${chains.length} range chain(s), longest ${chains.reduce((m, c) => Math.max(m, c.length), 0)} cells`);
+      return val;
+    };
+    const CREST = O.relief === 'crest' ? crestBelt() : null;
+
     const h0 = new Float32Array(gn);
     for (let i = 0; i < gn; i++) {
       if (!isLand[i]) { h0[i] = G.h[i]; continue; }
@@ -1408,7 +1672,15 @@ async function forgeWorld(page, opts) {
       // into saddles — the passes that roads, armies and trade all have to
       // use, and that every border on this map is drawn to run through.
       const gap = 0.62 + 0.38 * fbm(x + 3300, y + 8800, 2, O.passFreq || 0.0042);
-      const belt = Math.pow(fold, O.foldSharp || 1.6) * spine * spine * gap;
+      const folded = Math.pow(fold, O.foldSharp || 1.6) * spine * spine * gap;
+      // The folds are the foothills — broad, and what a nation's terrain claim
+      // actually stands on. The chains are the range itself. Keeping both is
+      // what puts a white crest line inside a wide brown country instead of
+      // either a bare plateau or a bare thread.
+      const belt = CREST
+        ? folded * (O.crestMix === undefined ? 0.52 : O.crestMix)
+          + CREST[i] * (O.crestAmp === undefined ? 0.95 : O.crestAmp)
+        : folded;
       // a range does not politely subside before it reaches the sea, but a
       // plain does fade to the shore
       const plain = fbm(x, y, 5, 0.010) * (0.35 + 0.65 * shore);
@@ -2006,7 +2278,9 @@ async function forgeWorld(page, opts) {
       // few cells wide is a pass or a river crossing, which is what a border
       // between two countries that barely meet looks like anyway.
       {
-        const maxGap = O.packCorridor === undefined ? 10 : O.packCorridor;
+        // 14, not 10: the latitude repair moves nations further than the border
+        // repair ever did, so the gap it has to bridge afterwards is wider.
+        const maxGap = O.packCorridor === undefined ? 14 : O.packCorridor;
         let fixed = 0;
         for (const [a2, b2] of BORDERS) {
           const A = idxOf[a2], B = idxOf[b2];
