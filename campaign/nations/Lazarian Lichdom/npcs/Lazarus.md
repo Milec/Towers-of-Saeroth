@@ -5,6 +5,9 @@ role: Lich Emperor of Lazarian Lichdom
 visibility: GM only below the first section — what Lazarus found is the secret of [[The Nameless Empire]], and no in-world source can confirm any of it
 ---
 
+![Portrait of Lazarus, the Lich Emperor](Lazarus.webp)
+*Lazarus*
+
 Lazarus has ruled [[Lazarian Lichdom]] for longer than any living record
 agrees on. The Cathedral Court gave up arguing about his age decades ago and
 argues instead about how much longer the silence will last. The answer, which

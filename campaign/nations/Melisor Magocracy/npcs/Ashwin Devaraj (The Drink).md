@@ -5,6 +5,9 @@ level: 6
 role: spellblade duelist, colloquially "The Drink"
 ---
 
+![Portrait of Ashwin Devaraj holding an elemental reagent and rune-etched sword](AshwinDevaraj.webp)
+*Ashwin Devaraj, “The Drink”*
+
 No chair at any [[Melisor Magocracy]] academy will sanction spellblade
 theory. Magic is meant to be cast, not swung. Ashwin Devaraj stopped waiting
 for one to change its mind. He fights with a rune-etched longsword in one

@@ -6,6 +6,9 @@ role: hedge-necromancer on the Quivar–Vaelic–Lazarian tri-point
 statblock: reskin of Mage For Hire (NPC Core), level 3
 ---
 
+![Portrait of Wenzel Grauth](WenzelGrauth.webp)
+*Wenzel Grauth*
+
 Nobody administers the ground where [[Quivar]], the [[Vaelic Principality]]
 and the [[Lazarian Lichdom]] all meet, and Wenzel Grauth has lived there for
 nine years on that basis. He is not of the Lichdom. He learned what he knows
