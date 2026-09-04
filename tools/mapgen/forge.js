@@ -552,16 +552,37 @@ async function forgeWorld(page, opts) {
       const keepH = Uint8Array.from(G.h);
       const keepRandom = Math.random;
       const soft = O.oldWorldSoft === undefined ? 25 : O.oldWorldSoft;
-      const field = [], raw = [], dx = new Float64Array(DONORS), dy = new Float64Array(DONORS);
+      const field = [], raw = [];
+      // where the donor's own land sits, and where ours does — the donor is
+      // slid from one to the other, and optionally magnified about that point
+      const dcx = new Float64Array(DONORS), dcy = new Float64Array(DONORS);
+      const ocx = new Float64Array(DONORS), ocy = new Float64Array(DONORS);
+      const ZOOM = O.donorZoom || [];
       try {
         for (let d = 0; d < DONORS; d++) {
           Math.random = aleaPRNG(`${SEED}-donor-${d}`);
           G.h.fill(0);
           const hh = Float32Array.from(HeightmapGenerator.fromTemplate(grid, TMPL[d]));
+          // An archipelago template cuts ten troughs and two straits through
+          // low hills, which at this grid's spacing lands a lot of its detail
+          // at one cell across — and one cell of land beside one cell of sea
+          // is not a coastline, it is a sawtooth. Blurring first turns that
+          // back into islands with shapes.
+          for (let k = 0; k < (O.donorSmooth || 0); k++) {
+            const t2 = Float32Array.from(hh);
+            for (let i = 0; i < gn; i++) {
+              let sum = hh[i], c2 = 1;
+              for (const q of nbrs(i)) { sum += hh[q]; c2++; }
+              t2[i] = sum / c2;
+            }
+            hh.set(t2);
+          }
           // slide the donor so ITS land sits over OUR continent
           let ax = 0, ay = 0, ac = 0;
           for (let i = 0; i < gn; i++) if (hh[i] >= 20) { ax += GP[i][0]; ay += GP[i][1]; ac++; }
-          if (ac && gc[d]) { dx[d] = gx[d] / gc[d] - ax / ac; dy[d] = gy[d] / gc[d] - ay / ac; }
+          if (ac) { dcx[d] = ax / ac; dcy[d] = ay / ac; } else { dcx[d] = W / 2; dcy[d] = H / 2; }
+          if (gc[d]) { ocx[d] = gx[d] / gc[d]; ocy[d] = gy[d] / gc[d]; }
+          else { ocx[d] = W / 2; ocy[d] = H / 2; }
           // The saturated copy is for the coastline: rescaled around the
           // donor's OWN sea level, so the land/sea decision — the only part
           // being borrowed for the shape — gets the whole amplitude. The raw
@@ -581,10 +602,24 @@ async function forgeWorld(page, opts) {
       // 0.8 a donor can carve a gulf into a continent or leave an island off
       // it, and cannot move a continent. The middle sea runs hotter, because
       // there the fragmenting IS the point.
+      // MAGNIFICATION. Azgaar's templates are written against its default grid
+      // of about ten thousand cells; this one runs fifty thousand, so every
+      // hill, trough and strait in a template lands at roughly a fifth of the
+      // size it was drawn for. On a continent that reads as a nicely detailed
+      // coast. On an archipelago it reads as a sponge: land and sea alternating
+      // every three cells over half the map.
+      //
+      // Blurring the donor does not fix it — past a few passes the field goes
+      // flat, loses its authority over the waterline, and hands the coastline
+      // back to whatever noise is left underneath, which is how the sponge
+      // survived a hundred and sixty passes of it. Sampling the donor
+      // magnified about its own centre does fix it: the same structure, drawn
+      // at the size it was meant to be.
       for (let i = 0; i < gn; i++) {
         const d = donorFor(groupAt(i));
-        const sx = Math.max(0, Math.min(W - 1, GP[i][0] - dx[d]));
-        const sy = Math.max(0, Math.min(H - 1, GP[i][1] - dy[d]));
+        const z = ZOOM[d] || 1;
+        const sx = Math.max(0, Math.min(W - 1, dcx[d] + (GP[i][0] - ocx[d]) / z));
+        const sy = Math.max(0, Math.min(H - 1, dcy[d] + (GP[i][1] - ocy[d]) / z));
         const j = Grid.findCell(sx, sy, grid);
         const k = j === undefined ? i : j;
         tmpl[i] = field[d][k];
@@ -614,8 +649,28 @@ async function forgeWorld(page, opts) {
       if (O.landFrom === 'template') {
         const gain = O.templateGain === undefined ? 2.4 : O.templateGain;
         const keepPlate = O.plateMix === undefined ? 0.18 : O.plateMix;
-        for (let i = 0; i < gn; i++)
-          fv[i] = tmpl[i] * gain + (fv[i] - frame[i]) * keepPlate + frame[i];
+        // THE RAW HEIGHTMAP, not the saturated one. The saturated field is
+        // built for nudging a coastline: it clips a few units above the
+        // donor's sea level so its shore gets the whole amplitude. Used as the
+        // land itself that clipping is fatal — every land cell sits in the same
+        // flat band, so a waterline drawn anywhere inside it falls on flat
+        // ground and whatever noise is left underneath draws the coast. That
+        // is the sponge the middle sea kept coming out as, and why neither
+        // blurring the donor nor magnifying it moved the result at all: the
+        // donor was not the thing deciding.
+        //
+        // Unclipped, the waterline is a contour of Azgaar's own heightmap,
+        // which is the whole point of borrowing it.
+        const w0 = O.templateSea === undefined ? 20 : O.templateSea;
+        const wSpan = O.templateSpan === undefined ? 30 : O.templateSpan;
+        for (let i = 0; i < gn; i++) {
+          const nrm = (tmplRaw[i] - w0) / wSpan;
+          fv[i] = nrm * gain + (fv[i] - frame[i]) * keepPlate + frame[i];
+        }
+        let above = 0;
+        for (let i = 0; i < gn; i++) if (tmplRaw[i] >= w0) above++;
+        log.push(`the template's own land is ${(above / gn * 100).toFixed(0)}% of the canvas ` +
+                 `against a budget of ${(landFrac * 100).toFixed(0)}%`);
         const used = [...new Set(Object.values(GROUP).map(g => TMPL[donorFor(g)]))];
         log.push(`land taken from the ${used.join(' + ')} template (gain ${gain}, plates at ${keepPlate})`);
 
@@ -630,6 +685,34 @@ async function forgeWorld(page, opts) {
         // fraction of the step becomes an island chain off the coast, which is
         // worth having. An archipelago region opts out — there, many masses
         // are the entire point.
+        // CONFETTI. A template cut hard enough to make an archipelago also
+        // leaves a few hundred scraps of one to five cells, and at map scale
+        // those do not read as islands — they read as noise sprayed over the
+        // sea. Sink anything below a size worth drawing. The waterline is
+        // taken afterwards to hit the land budget, so what they give up goes
+        // straight back into the islands that were worth keeping.
+        const minIsle = O.minIsle === undefined ? 12 : O.minIsle;
+        if (minIsle > 0) {
+          const prov = Float32Array.from(fv).sort();
+          const wl = prov[Math.max(0, gn - Math.round(gn * landFrac) - 1)];
+          const seen = new Uint8Array(gn);
+          let sunk = 0, isles = 0;
+          for (let i = 0; i < gn; i++) {
+            if (fv[i] <= wl || seen[i]) continue;
+            const mass = [i];
+            seen[i] = 1;
+            for (let k = 0; k < mass.length; k++)
+              for (const q of nbrs(mass[k])) {
+                if (seen[q] || fv[q] <= wl) continue;
+                seen[q] = 1; mass.push(q);
+              }
+            if (mass.length >= minIsle) continue;
+            for (const c of mass) fv[c] -= 4;
+            sunk += mass.length; isles++;
+          }
+          if (isles) log.push(`sank ${isles} scrap(s) of land under ${minIsle} cells (${sunk} cells)`);
+        }
+
         if (O.oneContinent) {
           // Deep, not shallow. The sea level is taken afterwards as whatever
           // percentile hits the land budget, so a gentle push down just lowers
@@ -755,7 +838,13 @@ async function forgeWorld(page, opts) {
       const frac = O.arcLand || 0.40, amp = span * (O.arcAmp || 0.95);
       for (let i = 0; i < gn; i++) {
         if (plateGroup[plateOf[i]] !== 2) continue;
-        const n = fbm(GP[i][0] + 4400, GP[i][1] + 1300, 4, O.arcFreq || 0.017);
+        // The octave count matters as much as the frequency here, because this
+        // does not modulate the arc's height — it REPLACES it. Four octaves off
+        // a base wavelength of three cells is not an archipelago, it is a
+        // sponge: land and sea alternating cell by cell over the whole group.
+        // On the world map the arc was twelve hundred cells and that never
+        // showed; given its own canvas it is all you can see.
+        const n = fbm(GP[i][0] + 4400, GP[i][1] + 1300, O.arcOct || 4, O.arcFreq || 0.017);
         fv[i] = thresh + (n - (1 - frac)) * amp;
       }
     }

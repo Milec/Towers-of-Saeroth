@@ -232,8 +232,11 @@ async function baseGen(p, c) {
     WD.ice ? {} : { iceLift: 0, iceMoat: 0 },
     { landFraction: WD.landFraction, settledFraction: WD.settledFraction,
       // a region holds one continent, so a stock template can simply BE it
-      landFrom: 'template', oneContinent: WD.oneContinent },
+      landFrom: WD.landFrom, oneContinent: WD.oneContinent },
+    WD.minIsle === undefined ? {} : { minIsle: WD.minIsle },
+    WD.donorSmooth === undefined ? {} : { donorSmooth: WD.donorSmooth },
     WD.donorAmp ? { donorAmp: WD.donorAmp } : {},
+    WD.arcFreq === undefined ? {} : { arcFreq: WD.arcFreq, arcOct: WD.arcOct },
     ENV) : {};
   const b = await APP.launch();
   const p = await openApp(b);
