@@ -391,6 +391,7 @@ async function forgeWorld(page, opts) {
     const CONT = O.contBase !== undefined ? O.contBase : 0.55;
     const OCEA = O.oceanBase !== undefined ? O.oceanBase : -0.55;
     const width = O.beltWidth || 2.8;
+    const frame = new Float32Array(gn);
     const fv = new Float32Array(gn);
     const uplift = new Float32Array(gn);
     for (let i = 0; i < gn; i++) {
@@ -439,11 +440,15 @@ async function forgeWorld(page, opts) {
       // it its own bays and headlands.
       if (plateGroup[a] < -1)
         v += (fbm(GP[i][0] + 7700, GP[i][1] + 2300, 4, O.wildFreq || 0.0055) - 0.5) * (O.wildRelief || 1.6);
-      // drown the rim so the world has an ocean around it
+      // drown the rim so the world has an ocean around it. This and the ice
+      // below are the FRAME rather than the crust: they are kept separately
+      // because a template-shaped world throws the plate field away and still
+      // needs an ocean at the edges and a cap at the top.
+      let rim = 0;
       const [px, py] = GP[i];
       const mx = (O.marginX || 0.075) * W, mtop = (O.marginTop || 0.020) * H, mbot = (O.marginBot || 0.045) * H;
       const e = Math.min(px / mx, (W - px) / mx, py / mtop, (H - py) / mbot);
-      if (e < 1) v -= (1 - e) * (O.edgeDrop || 2.2);
+      if (e < 1) rim -= (1 - e) * (O.edgeDrop || 2.2);
 
       // The ice. Left to the plates it either failed to surface or fused onto
       // the top of the settled continent; a polar cap is too important to the
@@ -455,10 +460,11 @@ async function forgeWorld(page, opts) {
       // the map into a coast: where it runs low the sea opens to the map edge,
       // where it runs deep the ice reaches south in a great peninsula.
       const wob = iceY * (0.15 + 1.85 * fbm(px + 6100, 0, 4, O.iceFreq || 0.0013));
-      if (py < wob) v += (1 - py / wob) * (O.iceLift || 2.6);
+      if (py < wob) rim += (1 - py / wob) * (O.iceLift || 2.6);
       const gap = (py - wob) / ((O.iceMoatW || 0.045) * H);
-      if (gap > -0.4 && gap < 2.6) v -= Math.exp(-Math.pow(gap - 0.7, 2)) * (O.iceMoat || 2.4);
-      fv[i] = v;
+      if (gap > -0.4 && gap < 2.6) rim -= Math.exp(-Math.pow(gap - 0.7, 2)) * (O.iceMoat || 2.4);
+      frame[i] = rim;
+      fv[i] = v + rim;
     }
 
     // Hotspot chains: a volcanic line in the deep ocean, which is where the
@@ -487,7 +493,7 @@ async function forgeWorld(page, opts) {
       }
     }
 
-    // ---- borrowed shape: one Old World heightmap per continent -------------
+    // ---- borrowed shape: one heightmap template per continent --------------
     // Plate tectonics decides where the continents are, and it decides it well
     // — but a plate is a Voronoi cell, and a warped Voronoi cell is still a
     // blob. What the plate model does not produce is structure at every scale
@@ -495,20 +501,28 @@ async function forgeWorld(page, opts) {
     // peninsula. That self-similarity is most of what makes a coastline read
     // as a real one rather than an outline somebody drew.
     //
-    // Azgaar's own Old World template has it, because it is not noise: three
-    // long Range strokes, hills at two sizes, a strait cut end to end, then a
-    // field of troughs and pits, each landing at a different scale. So run that
-    // template on this grid and let it decide the shape of the coast.
+    // Azgaar's stock templates have it, because they are not noise: Old World
+    // is three long Range strokes, hills at two sizes, a strait cut end to end
+    // and a field of troughs and pits, each landing at a different scale.
+    // So the shape of every coast here is borrowed from one.
     //
-    // ONE PER CONTINENT, not one averaged field over the whole map. The first
-    // version of this ran the template twice and averaged the pair, which was
-    // exactly wrong: averaging two fractal fields cancels the structure that
-    // made either of them worth borrowing and leaves a smooth mush. A template
-    // also only ever describes one world, so a single field draped over three
-    // continents gives all three the same silhouette. Running it once per group
-    // and sliding each result so its own landmass sits over the continent it
-    // is shaping keeps the full amplitude and gives every continent a coast of
-    // its own.
+    // ONE TEMPLATE RUN PER CONTINENT, and each continent names its own. A
+    // template only ever describes one world: run it once and drape the result
+    // over three continents and all three come out with the same silhouette,
+    // and the middle sea — which is supposed to read as an archipelago —
+    // comes out shaped like a continent that drowned. So the two settled
+    // continents take Old World, the middle sea takes Azgaar's Archipelago
+    // (ten troughs and two straits cut through low hills, which is what makes
+    // islands rather than a coast), and the wilderness takes its own fourth
+    // run so it does not inherit either neighbour's outline.
+    //
+    // What does NOT work is averaging them. The first version ran the template
+    // twice over the whole map and averaged the pair, which cancels exactly
+    // the structure that made either of them worth borrowing and leaves a
+    // smooth mush. Neither does normalising a donor min-to-max: a template
+    // spends most of its 0-100 on mountains, so that squeezes the land/sea
+    // decision — the only part being borrowed — into a narrow band near the
+    // bottom, and the coast barely moves.
     //
     // It goes into the potential field rather than replacing the land mask, so
     // the continents still sit where the diplomacy and the climate bands put
@@ -516,10 +530,15 @@ async function forgeWorld(page, opts) {
     // after. This can change the SHAPE of a coast. It cannot change how much
     // land a group ends up with, or which group a nation lands on.
     const OW = O.oldWorld === undefined ? 0.8 : O.oldWorld;
+    const tmpl = new Float32Array(gn), tmplRaw = new Float32Array(gn);
     if (OW > 0 && typeof HeightmapGenerator !== 'undefined') {
-      const DONORS = O.oldWorldDonors === undefined ? 3 : O.oldWorldDonors;
+      // index by group: 0 and 1 are the settled continents, 2 is the middle
+      // sea, and the last entry catches the wilderness and the open ocean
+      const TMPL = O.donorTemplates || ['oldWorld', 'oldWorld', 'archipelago', 'oldWorld'];
+      const AMP = O.donorAmp || [1, 1, 1.4, 1];
+      const DONORS = TMPL.length;
       const groupAt = i => plateGroup[plateOf[i]];
-      const donorFor = g => (g >= 0 ? g : 1 - g) % DONORS;
+      const donorFor = g => (g >= 0 && g < DONORS - 1) ? g : DONORS - 1;
 
       // where each group actually sits, so a donor can be slid onto it
       const gx = new Float64Array(DONORS), gy = new Float64Array(DONORS), gc = new Int32Array(DONORS);
@@ -532,24 +551,22 @@ async function forgeWorld(page, opts) {
 
       const keepH = Uint8Array.from(G.h);
       const keepRandom = Math.random;
-      const field = [], dx = new Float64Array(DONORS), dy = new Float64Array(DONORS);
+      const soft = O.oldWorldSoft === undefined ? 25 : O.oldWorldSoft;
+      const field = [], raw = [], dx = new Float64Array(DONORS), dy = new Float64Array(DONORS);
       try {
         for (let d = 0; d < DONORS; d++) {
-          Math.random = aleaPRNG(`${SEED}-oldworld-${d}`);
+          Math.random = aleaPRNG(`${SEED}-donor-${d}`);
           G.h.fill(0);
-          const hh = Float32Array.from(
-            HeightmapGenerator.fromTemplate(grid, O.oldWorldTemplate || 'oldWorld'));
+          const hh = Float32Array.from(HeightmapGenerator.fromTemplate(grid, TMPL[d]));
           // slide the donor so ITS land sits over OUR continent
           let ax = 0, ay = 0, ac = 0;
           for (let i = 0; i < gn; i++) if (hh[i] >= 20) { ax += GP[i][0]; ay += GP[i][1]; ac++; }
           if (ac && gc[d]) { dx[d] = gx[d] / gc[d] - ax / ac; dy[d] = gy[d] / gc[d] - ay / ac; }
-          // Rescale around the donor's OWN sea level, not its full range. A
-          // template spends most of its 0-100 on mountains, so a plain min-max
-          // leaves the land/sea decision — the only part being borrowed —
-          // sitting in a narrow band near the bottom, and the coast barely
-          // moves. Pivoting at 20 and saturating a little above it gives the
-          // donor's coastline the whole amplitude.
-          const soft = O.oldWorldSoft === undefined ? 25 : O.oldWorldSoft;
+          // The saturated copy is for the coastline: rescaled around the
+          // donor's OWN sea level, so the land/sea decision — the only part
+          // being borrowed for the shape — gets the whole amplitude. The raw
+          // copy keeps the template's relief, which is what its mountains are.
+          raw.push(Float32Array.from(hh));
           for (let i = 0; i < gn; i++) hh[i] = Math.max(-1, Math.min(1, (hh[i] - 20) / soft));
           field.push(hh);
         }
@@ -559,18 +576,105 @@ async function forgeWorld(page, opts) {
       }
 
       // The amplitude is in the same units as the continental step itself
-      // (0.55 for crust, -0.55 for ocean), so `oldWorld` reads as a fraction of
-      // "how strongly does the plate say land here": at 0.8 the donor can carve
-      // a gulf into a continent or leave an island off it, and cannot move a
-      // continent.
+      // (`contBase` for crust against `oceanBase` for ocean), so `oldWorld`
+      // reads as a fraction of "how strongly does the plate say land here": at
+      // 0.8 a donor can carve a gulf into a continent or leave an island off
+      // it, and cannot move a continent. The middle sea runs hotter, because
+      // there the fragmenting IS the point.
       for (let i = 0; i < gn; i++) {
         const d = donorFor(groupAt(i));
         const sx = Math.max(0, Math.min(W - 1, GP[i][0] - dx[d]));
         const sy = Math.max(0, Math.min(H - 1, GP[i][1] - dy[d]));
         const j = Grid.findCell(sx, sy, grid);
-        fv[i] += OW * field[d][j === undefined ? i : j];
+        const k = j === undefined ? i : j;
+        tmpl[i] = field[d][k];
+        tmplRaw[i] = raw[d][k];
+        fv[i] += OW * (AMP[d] === undefined ? 1 : AMP[d]) * tmpl[i];
       }
-      log.push(`shaped the coast from ${DONORS} Old World heightmap(s), one per continent (amp ${OW})`);
+
+      // LAND FROM THE TEMPLATE, not from the plates.
+      //
+      // A plate is a Voronoi cell. Warp it, add noise at the shore, add a
+      // template on top at a third of the crust step, and it is still a
+      // Voronoi cell underneath — the continents come out as rounded lobes
+      // because that is the shape the model has. Azgaar's templates do not
+      // have that problem, and never did.
+      //
+      // Handing them the land outright only became possible with the region
+      // split. A template describes ONE world: ask it for three continents on
+      // one canvas and it gives you a supercontinent, land to both edges and
+      // no archipelago, which is why this was tried and rejected before. Ask
+      // it for one continent on one canvas and it gives you exactly that.
+      //
+      // The plate field still runs, and is still worth running — the orogen it
+      // computes is what the mountain chains are walked along, and the rift and
+      // moat structure is what breaks a coast up. It just no longer decides
+      // where the water is. What survives from it here is the FRAME: an ocean
+      // drowning the rim, and the polar cap.
+      if (O.landFrom === 'template') {
+        const gain = O.templateGain === undefined ? 2.4 : O.templateGain;
+        const keepPlate = O.plateMix === undefined ? 0.18 : O.plateMix;
+        for (let i = 0; i < gn; i++)
+          fv[i] = tmpl[i] * gain + (fv[i] - frame[i]) * keepPlate + frame[i];
+        const used = [...new Set(Object.values(GROUP).map(g => TMPL[donorFor(g)]))];
+        log.push(`land taken from the ${used.join(' + ')} template (gain ${gain}, plates at ${keepPlate})`);
+
+        // A REGION IS ONE CONTINENT. Old World does not know that: left alone
+        // it hands back a main mass and a second one nearly as large, and the
+        // carve then puts half a continent's nations on each — which severed
+        // five of the east's seven required borders, because two countries
+        // cannot share a frontier across open sea.
+        //
+        // So find the landmasses at a provisional waterline, keep the biggest,
+        // and push the rest down. Down rather than away: a second mass at a
+        // fraction of the step becomes an island chain off the coast, which is
+        // worth having. An archipelago region opts out — there, many masses
+        // are the entire point.
+        if (O.oneContinent) {
+          // Deep, not shallow. The sea level is taken afterwards as whatever
+          // percentile hits the land budget, so a gentle push down just lowers
+          // the waterline to compensate and the rival surfaces again. It has
+          // to go under far enough that the main continent grows to take the
+          // budget instead.
+          const sink = O.sinkRivals === undefined ? 4 : O.sinkRivals;
+          const prov = Float32Array.from(fv).sort();
+          const wl = prov[Math.max(0, gn - Math.round(gn * landFrac) - 1)];
+          const comp = new Int32Array(gn).fill(-1);
+          const sizes = [];
+          for (let i = 0; i < gn; i++) {
+            if (fv[i] <= wl || comp[i] >= 0) continue;
+            const id = sizes.length;
+            let ring = [i], n2 = 0;
+            comp[i] = id;
+            while (ring.length) {
+              const next = [];
+              for (const c of ring) {
+                n2++;
+                for (const q of nbrs(c)) {
+                  if (comp[q] >= 0 || fv[q] <= wl) continue;
+                  comp[q] = id; next.push(q);
+                }
+              }
+              ring = next;
+            }
+            sizes.push(n2);
+          }
+          let big = -1, bn = 0;
+          sizes.forEach((n2, id) => { if (n2 > bn) { bn = n2; big = id; } });
+          if (big >= 0 && sizes.length > 1) {
+            let dropped = 0;
+            for (let i = 0; i < gn; i++) {
+              if (comp[i] < 0 || comp[i] === big) continue;
+              // the bigger the rival, the harder it goes down; a genuine
+              // islet was never competing for the nations in the first place
+              const w2 = Math.min(1, sizes[comp[i]] / (bn * 0.12));
+              fv[i] -= sink * w2; dropped++;
+            }
+            log.push(`one continent: kept ${bn} cells, sank ${sizes.length - 1} rival mass(es) (${dropped} cells)`);
+          }
+        }
+      }
+      log.push(`shaped the coast from ${DONORS} heightmaps (${TMPL.join(', ')}) at amp ${OW}`);
     }
 
     // Coastal detail. A second, much finer noise field is added with an
@@ -615,7 +719,7 @@ async function forgeWorld(page, opts) {
     // cells and seven from one seed to the next, and why the polar cap came and
     // went. Levelling first makes each group surface what it was promised, and
     // leaves the global threshold to do nothing but pick the waterline.
-    {
+    if (O.landFrom !== 'template') {
       const byGroup = new Map();
       for (let i = 0; i < gn; i++) {
         const g = plateGroup[plateOf[i]];
@@ -845,6 +949,22 @@ async function forgeWorld(page, opts) {
     const upMax = Math.max(0.0001, uplift.reduce((a, b) => Math.max(a, b), 0));
     const upN = new Float32Array(gn);
     for (let i = 0; i < gn; i++) upN[i] = uplift[i] / upMax;
+    // When the land comes from a template, its own Range strokes ARE its
+    // orogen — and they are the only relief that agrees with the coastline it
+    // just drew. Blend them into the uplift, because everything downstream
+    // reads this one field: the chains are walked along it, the carve steers a
+    // mountain nation onto it, and the fold belt is gated by it. Only ground
+    // well above the template's own plains counts; taken as absolute height it
+    // reads as uplift everywhere there is land at all.
+    if (O.landFrom === 'template') {
+      const at = O.tmplHillAt === undefined ? 34 : O.tmplHillAt;
+      const wd = O.tmplHillW === undefined ? 26 : O.tmplHillW;
+      const mix = O.templateRelief === undefined ? 0.72 : O.templateRelief;
+      for (let i = 0; i < gn; i++) {
+        const r = Math.max(0, Math.min(1, (tmplRaw[i] - at) / wd));
+        upN[i] = upN[i] * (1 - mix) + r * mix;
+      }
+    }
 
     // ---------- 3. landmasses of the world we just made --------------------
     const isLand = new Uint8Array(gn), landCells = [];

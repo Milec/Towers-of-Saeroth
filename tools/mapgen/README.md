@@ -204,6 +204,109 @@ values, which is the whole argument for sweeping: the same settings give one
 seed 28/28 terrain with two whole continents, and the next one a country at
 seven times its share sitting fifty degrees out of its climate band.
 
+## Three maps, one world
+
+`campaign/maps/Saeroth-west.map`, `-middle.map` and `-east.map` are the same
+world built one continent at a time, and they exist because putting three
+continents on one canvas is the constraint behind most of what is still wrong
+with the world map. Azgaar generates one heightmap from one template per
+canvas, so three continents share a single silhouette. The 50,000-cell grid is
+split three ways, so a coast can only be as detailed as a third of a world
+allows. And every nation competes for latitude with 27 others rather than with
+the ten or so it actually shares a landmass with.
+
+```
+REGION=west   node tools/mapgen/build.js
+REGION=middle node tools/mapgen/build.js
+REGION=east   node tools/mapgen/build.js
+```
+
+`regions.js` names them and hands `forgeWorld` a filtered world — the same
+nations, borders, terrain claims and climate bands, minus everything on another
+continent. Nothing downstream knows a region build is happening.
+
+**The land is Azgaar's, not the plate model's.** A region sets
+`landFrom: 'template'`, and from there the heightmap template *is* the land: the
+plate field is kept at 18% for the rift and moat structure that breaks a coast
+up, plus the rim drown and the polar cap, and it no longer decides where the
+water is. Warp a Voronoi cell all you like and it is still a Voronoi cell, which
+is why the continents came out as rounded lobes for as long as the plates drew
+them.
+
+Handing the template the land outright only became possible *because* of the
+region split. A template describes one world: ask it for three continents on one
+canvas and it gives a supercontinent with land to both edges and no archipelago,
+which is why this was tried and rejected earlier. Ask it for one continent on
+one canvas and it gives exactly that.
+
+Two rules make it work:
+
+- **A region is one continent** (`oneContinent`). Old World handed the east a
+  main mass and a second nearly as large, and the carve put half the nations on
+  each — which severed five of the east's seven required borders, because two
+  countries cannot share a frontier across open sea. Rival masses are found at a
+  provisional waterline and sunk. **Deep**, not gently: the sea level is taken
+  afterwards as whatever percentile hits the land budget, so a small push down
+  just lowers the waterline and the rival surfaces again. Sunk properly, the
+  main continent grows to take the budget and the rivals come back as island
+  chains off its coast. The middle sea opts out — there, many landmasses are the
+  entire point.
+- **The template's own relief is the orogen** (`templateRelief`). Its `Range`
+  strokes are the only high ground that agrees with the coastline it just drew,
+  so they are blended into the uplift field that the mountain chains are walked
+  along and that the carve steers a mountain nation onto. Only ground well above
+  the template's plains counts: taken as absolute height it reads as uplift
+  everywhere there is land at all.
+
+| region | nations | required borders | trade |
+| --- | --- | --- | --- |
+| west | 17 | 9 | 5 corridors, 13 legs |
+| middle | 2 | — | — |
+| east | 9 | 7 | 3 corridors, 6 legs |
+
+The committed `.map` files are the plate-shaped builds (west seed 10, middle
+seed 6, east seed 1: 16/16 borders, 27/28 terrain majorities and two inspector
+problems between them). The template-shaped land landed after them and needs its
+own seed sweep, because a seed chosen against one geometry says nothing about
+another.
+
+All **16 required borders survive the split** — every one of them is between
+nations on the same continent, so no region build can be short one the world
+build gets. What does not survive is anything that crosses water: 60 of the 119
+diplomatic ties, and a leg in each of four trade corridors. Those are named in
+the build output rather than silently dropped, because getting them back is
+what a merge is *for*.
+
+Two things the split fixes outright:
+
+- **The middle sea is an archipelago again.** On its own canvas at
+  `landFraction` 0.14 it comes out as 127 landmasses at 54% shore, with both
+  nations landing within a degree of their target latitude. On the world map
+  the same two nations share 8% of the land with 26 others and the result reads
+  as a drowned continent.
+- **Thurigypt sits in its own climate band.** It and Qeshara both want the
+  24–27N strip and both are large; on the world map one of them was always
+  15–20 degrees out, through every fix tried across two rebuilds. Given a
+  canvas with nine nations on it instead of twenty-eight, Thurigypt lands at
+  26N against a target of 24N.
+
+Each region keeps its own latitude window — west 64N–14N, middle 42N–12N, east
+52N–18S — taken from the nations it holds with room for ocean at each end. The
+window has to sit close to the nations' own span: a region's continent fills
+its canvas, so a generous window just pushes the southernmost country onto the
+bottom edge and out of its climate. That also means the three maps are at three
+different scales (2.6, 1.5 and 3.6 km per pixel), which the merge has to
+reconcile. That is deliberate: the alternative is shrinking each canvas to its
+share of the world and handing back the resolution the split exists to buy.
+
+**There is no merge tool yet.** `campaign/Saeroth.map` remains the one map the
+site draws from — and it is now the *last plate-shaped build*, not something the
+current code reproduces. A world build from here would use the four-donor
+template set and land a different map (seed 7: 28/28 terrain majorities but
+three inspector problems, against the committed map's 26/28 and none). The
+region maps are the path forward, and what a merge tool will consume; the world
+map is frozen until there is one.
+
 ## The current map
 
 `campaign/Saeroth.map` is **seed 7**, built on Azgaar **1.151.1**: 28 nations
@@ -301,7 +404,7 @@ a fact about the ground, because the vault leans on it — the coronation road i
 a single high pass, which is what makes the two an alliance rather than a
 march. Those cells are found after the territory is drawn and raised directly.
 
-### The coastline is borrowed from Azgaar's Old World template
+### The coastlines are borrowed, one template per continent
 
 Plate tectonics decides where the continents are and decides it well, but a
 plate is a Voronoi cell, and a warped Voronoi cell is still a blob. What the
@@ -309,19 +412,26 @@ plate model does not produce is structure at every scale at once: the gulf, the
 peninsula off the gulf, the cape off the peninsula. That self-similarity is
 most of what makes a coastline read as a real one.
 
-Azgaar's **Old World** heightmap template has it, because it is not noise —
+Azgaar's stock templates have it, because they are not noise — **Old World** is
 three long `Range` strokes, hills at two sizes, a strait cut end to end, then a
 field of troughs and pits, each landing at a different scale. So the forge runs
-that template on its own grid, through Azgaar's own `HeightmapGenerator`, and
-adds the result to the potential field before the sea level is taken.
+a template on its own grid, through Azgaar's own `HeightmapGenerator`, and adds
+the result to the potential field before the sea level is taken.
 
 Three details are the whole thing:
 
-- **One template run per continent, not one averaged field.** The first version
-  ran it twice and averaged the pair, which cancelled exactly the structure
-  that made either worth borrowing and left a smooth mush. A template also only
-  ever describes one world, so a single field draped over three continents
-  gives all three the same silhouette.
+- **One template run per continent, and each continent names its own.** A
+  template only ever describes one world: run it once and drape the result over
+  three continents and all three come out with the same silhouette, and the
+  middle sea — which is supposed to read as an archipelago — comes out shaped
+  like a continent that drowned. The two settled continents take Old World, the
+  middle sea takes **Archipelago** (ten troughs and two straits cut through low
+  hills, which is what makes islands rather than a coast), and the wilderness
+  takes a fourth run so it does not inherit a neighbour's outline. That is
+  `donorTemplates`; `donorAmp` runs the middle hotter, because there the
+  fragmenting is the point. Averaging two fields over the whole map instead —
+  the first version — cancelled exactly the structure that made either worth
+  borrowing and left a smooth mush.
 - **Each donor is slid so its own landmass sits over the continent it shapes**,
   rather than sampled where it happens to fall.
 - **The donor is rescaled around its own sea level** (`oldWorldSoft`), not

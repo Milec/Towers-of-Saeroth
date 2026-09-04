@@ -1,6 +1,14 @@
 // Build Saeroth.map from world.js/forge.js on a big canvas.
 const APP = require('./app.js');
 const W = require('./forge.js');
+const { REGIONS, regionWorld } = require('./regions.js');
+
+// A region build gives ONE continent the whole canvas and the whole cell
+// budget, instead of splitting both three ways. Everything downstream — the
+// forge, the scoring, the profile, inspect.py — works on whatever world object
+// it is handed, so the only thing a region changes is which world that is.
+const REGION = process.env.REGION || '';
+const WD = REGION ? regionWorld(W, REGION) : W;
 const WORLD = require('./world.js');
 const fs = require('fs');
 
@@ -43,10 +51,11 @@ const OPTS = Object.assign({
   warpAmp: 165, warpFreq: 0.0016, coastNoise: 0.19, coastBand: 0.12, coastFreq: 0.007, fjordFreq: 0.022, weather: 1,
   // ranges walked along the crest of the orogen, and coastlines shaped by
   // one Old World heightmap per continent — see tools/mapgen/README.md
-  relief: 'crest', oldWorld: 0.8, packCorridor: 20,
+  relief: 'crest', oldWorld: 0.8, donorAmp: [1, 1, 2, 1], packCorridor: 20,
 }, JSON.parse(process.env.OPTS || '{}'));
-const OUT = process.env.OUT || 'Saeroth.map';
-const PFX = process.env.PFX || 'saeroth2';
+const OUT = process.env.OUT ||
+  (REGION ? `campaign/maps/Saeroth-${REGION}.map` : 'Saeroth.map');
+const PFX = process.env.PFX || (REGION ? `saeroth-${REGION}` : 'saeroth2');
 
 const DIPLO = {
   Allied: 'Ally', Friendly: 'Friendly', Trade: 'Friendly', Rivalry: 'Rival',
@@ -190,34 +199,68 @@ async function baseGen(p, c) {
 }
 
 (async () => {
-  const ties = readTies();
-  const corridors = readCorridors();
+  let ties = readTies();
+  let corridors = readCorridors();
   console.log(`read ${ties.length} ties and ${corridors.length} trade corridors from the vault`);
+  if (REGION) {
+    // A tie or a trade leg between two continents has nowhere to be drawn on a
+    // map holding one of them. Drop them here rather than letting the forge
+    // fail to find a route it was never going to find, and say what was
+    // dropped, because getting them back is what the merge is FOR.
+    const keep = n => WD.SIZE[n] !== undefined;
+    const tiesOut = ties.length;
+    ties = ties.filter(t => keep(t[0]) && keep(t[1]));
+    const cut = [];
+    corridors = corridors.map(c => {
+      const stops = c.stops.filter(keep);
+      if (stops.length !== c.stops.length) cut.push(`${c.name} (${c.stops.length - stops.length} stop(s) off-map)`);
+      return stops.length >= 2 ? Object.assign({}, c, { stops }) : null;
+    }).filter(Boolean);
+    console.log(`region ${REGION}: ${WD.why}`);
+    console.log(`  ${Object.keys(WD.SIZE).length} nations, ${WD.BORDERS.length} required borders, ` +
+                `${WD.LAT_TOP}N to ${WD.LAT_BOT}N`);
+    console.log(`  ${ties.length}/${tiesOut} ties on this map; ${corridors.length} corridors` +
+                (cut.length ? `, trimmed: ${cut.join(', ')}` : ''));
+  }
+  // Only the west reaches the ice. Building a cap on a map whose north edge is
+  // 48N puts a glacier in the temperate zone.
+  // A region's own land budget has to beat build.js's world-map defaults —
+  // an archipelago at the world's 0.43 land comes out as a continent with
+  // channels in it — but an explicit OPTS from the command line still wins.
+  const ENV = JSON.parse(process.env.OPTS || '{}');
+  const ICE = REGION ? Object.assign(
+    WD.ice ? {} : { iceLift: 0, iceMoat: 0 },
+    { landFraction: WD.landFraction, settledFraction: WD.settledFraction,
+      // a region holds one continent, so a stock template can simply BE it
+      landFrom: 'template', oneContinent: WD.oneContinent },
+    WD.donorAmp ? { donorAmp: WD.donorAmp } : {},
+    ENV) : {};
   const b = await APP.launch();
   const p = await openApp(b);
   p.on('pageerror', e => console.log('  [pageerror] ' + e.message.slice(0, 200)));
-  const base = await baseGen(p, Object.assign({ cells: CELLS, latSpan: W.LAT_TOP - W.LAT_BOT }, CFG));
+  const base = await baseGen(p, Object.assign({ cells: CELLS, latSpan: WD.LAT_TOP - WD.LAT_BOT }, CFG));
   console.log(`canvas ${base.w}x${base.h}, grid ${base.grid} cells, pack ${base.pack}, ` +
               `${base.kmPerPx} km per pixel`);
   console.log(`forging world seed ${OPTS.seed}`);
 
   const t0 = Date.now();
-  const r = await W.forgeWorld(p, Object.assign({
-    SIZE: W.SIZE, LAND: W.LAND, CLAIM: W.CLAIM, BORDERS: W.BORDERS,
-    RIDGE_BORDERS: W.RIDGE_BORDERS, GROUP: W.GROUP,
-    ANCHOR: W.ANCHOR, WILD: W.WILD, GROUP_SHARE: W.GROUP_SHARE, ISLE_LANES: W.ISLE_LANES, LAT_TOP: W.LAT_TOP, LAT_BOT: W.LAT_BOT }, OPTS));
+  const r = await WD.forgeWorld(p, Object.assign({
+    SIZE: WD.SIZE, LAND: WD.LAND, CLAIM: WD.CLAIM, BORDERS: WD.BORDERS,
+    RIDGE_BORDERS: WD.RIDGE_BORDERS, GROUP: WD.GROUP,
+    ANCHOR: WD.ANCHOR, WILD: WD.WILD, GROUP_SHARE: WD.GROUP_SHARE, ISLE_LANES: WD.ISLE_LANES,
+    LAT_TOP: WD.LAT_TOP, LAT_BOT: WD.LAT_BOT }, OPTS, ICE));
   console.log(`forged in ${((Date.now() - t0) / 1000).toFixed(0)}s`);
   for (const l of r.log) console.log('  ' + l);
 
   let maj = 0;
   const fails = [];
   for (const s of r.prof) {
-    const k = W.CLAIM[s.nation];
+    const k = WD.CLAIM[s.nation];
     const v = k === 'islands' ? (s.islands >= 3 ? 1 : 0) : s[k];
     if (v >= 0.5) maj++; else fails.push(`${s.nation} ${k}=${Math.round(v * 100)}%`);
   }
   const nb = Object.fromEntries(r.prof.map(s => [s.nation, new Set(s.neighbours)]));
-  const gotB = W.BORDERS.filter(([a, c]) => nb[a] && nb[a].has(c));
+  const gotB = WD.BORDERS.filter(([a, c]) => nb[a] && nb[a].has(c));
   const BI = ['Marine','HotDesert','ColdDesert','Savanna','Grassland','TropSeasForest','TempDecidForest',
               'TropRainforest','TempRainforest','Taiga','Tundra','Glacier','Wetland'];
   const mix = Object.entries(r.biomeMix).sort((a, b2) => b2[1] - a[1])
@@ -232,7 +275,7 @@ async function baseGen(p, c) {
   for (const s of r.prof) for (const n of s.neighbours) frontier.add([s.nation, n].sort().join('|'));
   const quiet = [...frontier].filter(k => !tieSet.has(k)).length;
 
-  console.log(`terrain majority ${maj}/${r.prof.length}, borders ${gotB.length}/${W.BORDERS.length}, ` +
+  console.log(`terrain majority ${maj}/${r.prof.length}, borders ${gotB.length}/${WD.BORDERS.length}, ` +
               `${r.unclaimed} unclaimed of ${r.landTotal} land (${r.wildTotal} wilderness), ` +
               `${r.rivers} rivers, ${r.lakes} lakes, shore ${(r.intricacy * 100).toFixed(0)}%, ` +
               `${r.masses} landmasses`);
@@ -246,14 +289,14 @@ async function baseGen(p, c) {
     console.log('  short:');
     for (const f of fails) {
       const s = r.prof.find(x => f.startsWith(x.nation));
-      const L = W.LAND[s.nation];
+      const L = WD.LAND[s.nation];
       console.log(`    ${f.padEnd(34)} lat ${L.tlat}/${s.lat}  T ${L.temp}/${s.meanT.toFixed(0)}` +
                   `  P ${L.prec}/${s.meanP.toFixed(0)}  h ${s.meanH.toFixed(0)}  ` +
                   s.top.map(([k, v]) => `${BI[k]} ${v}%`).join(' '));
     }
   }
   console.log('  latitudes want/got: ' + r.prof.map(s =>
-    `${s.nation.split(' ')[0]} ${W.LAND[s.nation].tlat}/${s.lat}`).join(', '));
+    `${s.nation.split(' ')[0]} ${WD.LAND[s.nation].tlat}/${s.lat}`).join(', '));
   if (r.colonies && r.colonies.length)
     console.log('  colonies: ' + r.colonies.map(c => `${c.nation} ${c.cells}`).join(', '));
   if (r.founded.length) console.log('founded capitals: ' + r.founded.map(x => x.nation).join(', '));
@@ -740,14 +783,18 @@ async function baseGen(p, c) {
   // The profile is what `inspect.py` reads, so a scoring run has to write one
   // too — otherwise a sweep can only be ranked by eye on the console output,
   // which is how a map with a country in the polar ice got shipped twice.
-  fs.writeFileSync(process.env.PROFILE || 'saeroth2-profile.json', JSON.stringify({
+  // A region build must not clobber the world build's profile, or the one the
+  // last region wrote — inspect.py reads exactly one file and would happily
+  // score the wrong map.
+  fs.writeFileSync(process.env.PROFILE ||
+    (REGION ? `saeroth-${REGION}-profile.json` : 'saeroth2-profile.json'), JSON.stringify({
     cfg: CFG, opts: OPTS, size: r.size, cells: r.cells, majority: maj, borders: gotB.length,
     unclaimed: r.unclaimed, wildTotal: r.wildTotal, landTotal: r.landTotal, rivers: r.rivers,
     lakes: r.lakes, masses: r.masses, intricacy: r.intricacy, biomeMix: r.biomeMix,
     prof: r.prof, log: r.log, founded: r.founded, colonies: r.colonies, trade: res.trade,
     ties: res.applied, tiesRead: ties.length, frontiers: frontier.size, quietFrontiers: quiet,
     corridors: corridors.map(c => ({ name: c.name, carry: c.carry, legs: c.stops.length - 1 })),
-    claim: W.CLAIM, land: W.LAND, sizes: W.SIZE, group: W.GROUP }, null, 1));
+    claim: WD.CLAIM, land: WD.LAND, sizes: WD.SIZE, group: WD.GROUP, region: REGION || null }, null, 1));
   if (!process.env.SKIP_SAVE) {
     fs.writeFileSync(OUT, res.data);
     console.log(`wrote ${OUT} (${(res.data.length / 1e6).toFixed(1)} MB)`);
