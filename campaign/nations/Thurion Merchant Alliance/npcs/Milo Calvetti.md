@@ -6,6 +6,9 @@ nation: Thurion Merchant Alliance
 role: caravan master, the Berruel consignment
 ---
 
+![Portrait of caravan master Milo Calvetti](MiloCalvetti.webp)
+*Milo Calvetti*
+
 Milo Calvetti has run wagon trains for [[Casa Berruel]], one of the great
 houses of the [[Thurion Merchant Alliance]], for eleven years and has never
 lost one. He checks the axles himself before every departure, pays

@@ -5,6 +5,9 @@ level: 6
 role: mercenary swordsman
 ---
 
+![Portrait of Garrick Thorne](GarrickThorne.webp)
+*Garrick Thorne*
+
 A sellsword who has outlived three companies and every captain who ever gave
 him an order he didn't like. He fights two-handed. He favours ground he chose
 that morning, and he treats a battlefield as a puzzle with one correct answer,
