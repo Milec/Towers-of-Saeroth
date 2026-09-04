@@ -474,6 +474,14 @@ file has none. `verify.js` does apply.
 corridor drawn two subtly different ways on two maps is exactly the drift the
 sync scripts exist to prevent.
 
+**`tools/mapgen/census.js` audits what the map claims about its people** —
+`FIX=1` to repair. It caught a `Uint16Array` overflow in `pack.cells.s` that had
+handed five settlements six to thirty-three *million* people each, 84 of the
+world's 277 million between them, and it reseats a capital whose own note
+describes a place it is demonstrably not sitting in. Only that: a capital the
+notes are happy with stays put even when the audit flags it, and the flags are
+printed so the decision stays visible.
+
 **A region build exists and is not the current map.** `REGION=west|middle|east
 node tools/mapgen/build.js` gives one continent the whole canvas, taking its
 land from an Azgaar heightmap template rather than the plate model. It works —

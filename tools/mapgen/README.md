@@ -366,6 +366,57 @@ it does. A map that arrived as a file has no such record. What can still be
 checked on it is checked: `verify.js` reloads it and confirms the journeys,
 provinces, regiments and route segments survive the round trip.
 
+## Auditing what a finished map claims about its people
+
+`census.js` reads settlement population and capital placement off a map and,
+with `FIX=1`, repairs the two things that were wrong with this one. Both are
+the kind that hide in plain sight, because the map renders perfectly either way.
+
+```
+node tools/mapgen/census.js          # audit only
+FIX=1 node tools/mapgen/census.js    # repair and save
+```
+
+**Suitability overflowed.** `pack.cells.s` is a `Uint16Array`, and seventeen
+land cells came out of the older generator pegged at 65535 — against a median
+of 12 and a 99th percentile of 38. Azgaar derives a settlement's population
+straight from it (`cells.s / 5`, times 1.5 for a capital, times the cell's
+connectivity), so the five burgs standing on those cells were handed populations
+of six to thirty-three **million**. The next largest settlement in the world has
+ninety thousand people. Between them those five held 84 of the world's 277
+million, and the Qeshara Sultanate came out 98% urban. Repaired, the world is
+183 million and 4% urban, which is what a pre-industrial one should read as.
+
+The repair takes the **median of the cell's own land neighbours** rather than a
+constant, so a genuinely good site stays a good site and a mountain-top desert
+cell goes back to being one, then recomputes the affected burgs with Azgaar's
+own rule minus its gaussian jitter — this has to be reproducible.
+
+**A capital in a place its note says it is not.** Two were reseated:
+
+- **Reichsmund** is "a fortified river-city that holds the Diet and the High
+  Prince's court", and was sitting on a three-way corner with foreign territory
+  on two sides, on a stream carrying a flux of 34. It moved 485px inland to the
+  principality's own river — flux 3,355, four cells clear of any frontier.
+- **Myrrhkand** is "a walled city of spice-souks and star-towers", and was the
+  *fifth* settlement of its own realm at 4,876 people, on a desert peak. Azgaar's
+  suitability is an agricultural score and Qeshara is desert, so no cell in the
+  sultanate will ever hand its capital the size the note describes — hence the
+  `first` flag, which raises a reseated capital past its largest rival when the
+  terrain model cannot see why it is rich.
+
+A capital keeps **the larger of** what it was and what its new ground supports.
+A city does not shrink because the map was corrected about where it stands.
+
+Two capitals were deliberately **left alone**, and the audit still flags them so
+the decision stays visible. Sunkenhold is "a warden-hold built across a chasm,
+reachable only by bridges that can be cut from either side" — small, third in
+its own realm and hard against a frontier is exactly what that note says.
+Brightfurrow is "a canal-town where the guildhalls sit level with the locks they
+govern", and a canal town near a border in a 282-cell state is not a defect.
+**Only a capital whose own note describes a place it is demonstrably not sitting
+in gets moved**, and the list of them is in the file.
+
 ## Bringing an existing map forward
 
 `build.js` forges a world from the vault, and is right when the world itself

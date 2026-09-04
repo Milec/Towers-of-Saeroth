@@ -1,0 +1,269 @@
+// Audit — and repair — settlement population and capital placement on a
+// finished map.
+//
+// Two things went wrong on `campaign/Saeroth.map` and both are the kind that
+// hide in plain sight, because the map renders perfectly either way.
+//
+// **Suitability overflowed.** `pack.cells.s` is a Uint16Array, and seventeen
+// land cells came out of the older generator pegged at 65535 against a median
+// of 12 and a 99th percentile of 38. Azgaar derives a settlement's population
+// straight from it — `cells.s / 5`, times 1.5 for a capital, times the cell's
+// connectivity — so the five burgs standing on those cells were handed
+// populations of six to thirty-three MILLION. The next largest settlement in
+// the world has ninety thousand people. Between them those five held 84 of the
+// world's 277 million, and Qeshara came out 98% urban.
+//
+// **A capital on a frontier.** Reichsmund is the seat of the Diet and the High
+// Prince's court, and the note calls it a fortified river-city. It was sitting
+// on a cell with foreign territory on two sides — a three-way corner — 197px
+// off its own realm's centre, on a stream carrying a flux of 34.
+//
+// Neither is a judgement call about what the world should look like. The first
+// is an integer overflow and the second is a capital in a place its own note
+// says it is not. Everything else this prints, it prints and leaves alone.
+//
+//   node tools/mapgen/census.js            # audit only
+//   FIX=1 node tools/mapgen/census.js      # repair and save
+//   MAP=other.map FIX=1 node tools/mapgen/census.js
+//
+// Needs Azgaar served on 5199, the same as build.js.
+const APP = require('./app.js');
+const fs = require('fs');
+
+const MAP = process.env.MAP || 'campaign/Saeroth.map';
+const FIX = !!process.env.FIX;
+// Above this a suitability is not a high score, it is a broken number: the 99th
+// percentile of this map is 38.
+const S_CEILING = Number(process.env.S_CEILING || 200);
+// Capitals to reseat, and what the vault says they are. A capital is only moved
+// when its note describes a place it is demonstrably not sitting in.
+// Two, and only two. Sunkenhold is "a warden-hold built across a chasm,
+// reachable only by bridges that can be cut from either side" — small, third in
+// its own realm and hard against a frontier is exactly what that note says, so
+// it stays. Brightfurrow is "a canal-town where the guildhalls sit level with
+// the locks they govern", and a canal town near a border in a 282-cell state is
+// not a defect either. Neither is moved.
+const RESEAT = JSON.parse(process.env.RESEAT || JSON.stringify({
+  // "a fortified river-city that holds the Diet and the High Prince's court"
+  'Reichsmund': { river: true, offBorder: 2 },
+  // "a walled city of spice-souks and star-towers" — which the map had as the
+  // fifth settlement of its own realm, on a desert peak. `first` because
+  // Azgaar's suitability is an agricultural score and Qeshara is desert: the
+  // model cannot see that a caravan city on the Salt Road is rich, so no cell
+  // in the sultanate will ever hand its capital the size its note describes.
+  'Myrrhkand': { river: false, offBorder: 1, first: true },
+}));
+
+(async () => {
+  const b = await APP.launch();
+  const head = fs.readFileSync(MAP, 'utf8').slice(0, 400).split('\n')[0].split('|');
+  const p = await APP.openApp(b, { width: +head[4] || 3600, height: +head[5] || 2150,
+                                   cells: 50000, viewport: { width: 1800, height: 1080 } });
+  const errs = []; p.on('pageerror', e => errs.push(e.message.slice(0, 160)));
+  await APP.loadMap(p, MAP);
+
+  const out = await p.evaluate(async (a) => {
+    const cc = pack.cells;
+    const live = pack.states.filter(s => s && s.i && !s.removed);
+    const nameOf = {}; live.forEach(s => { nameOf[s.i] = s.fullName || s.name; });
+    const land = Array.from(cc.i).filter(i => cc.h[i] >= 20);
+    const rate = populationRate, urb = urbanization;
+    const K = v => Math.round(v * rate * urb);
+    const conn = c => { try { return Routes.getConnectivityRate(c) || 1; } catch (e) { return 1; } };
+
+    const report = { fixedCells: [], repopulated: [], moved: [], notes: [] };
+
+    // ---- 1. the overflowed suitability -----------------------------------
+    // Replaced with the median of the cell's own land neighbours rather than a
+    // constant, so a genuinely good site stays a good site and a mountain-top
+    // desert cell goes back to being one.
+    const broken = land.filter(i => cc.s[i] > a.S_CEILING);
+    for (const i of broken) {
+      const near = cc.c[i].filter(c => cc.h[c] >= 20 && cc.s[c] <= a.S_CEILING)
+        .map(c => cc.s[c]).sort((x, y) => x - y);
+      const was = cc.s[i];
+      cc.s[i] = near.length ? near[Math.floor(near.length / 2)] : 1;
+      report.fixedCells.push([i, was, cc.s[i], nameOf[cc.state[i]] || 'unclaimed']);
+    }
+
+    // ---- 2. the settlements that were standing on them --------------------
+    // Azgaar's own rule, minus its gaussian jitter: this has to be reproducible.
+    if (broken.length) {
+      const bset = new Set(broken);
+      for (const bg of pack.burgs) {
+        if (!bg || !bg.i || bg.removed || !bset.has(bg.cell)) continue;
+        const was = bg.population;
+        let v = cc.s[bg.cell] / 5;
+        if (bg.capital) v *= 1.5;
+        v *= conn(bg.cell);
+        v += ((bg.i % 100) - (bg.cell % 100)) / 1000;   // unround, as the generator does
+        bg.population = Math.round(Math.max(v, 0.01) * 1000) / 1000;
+        report.repopulated.push([bg.name, nameOf[bg.state] || '-', K(was), K(bg.population)]);
+      }
+    }
+
+    // ---- 3. capitals sitting somewhere their note says they are not -------
+    const borderDist = (cell, state, cap) => {
+      // rings out from the cell until foreign land is met
+      let ring = [cell]; const seen = new Set(ring);
+      for (let d = 1; d <= cap; d++) {
+        const next = [];
+        for (const i of ring) for (const c of cc.c[i]) {
+          if (seen.has(c)) continue; seen.add(c); next.push(c);
+          if (cc.h[c] >= 20 && cc.state[c] && cc.state[c] !== state) return d;
+        }
+        ring = next;
+      }
+      return cap + 1;
+    };
+
+    for (const [bname, want] of Object.entries(a.RESEAT)) {
+      const bg = pack.burgs.find(x => x && x.name === bname && !x.removed);
+      if (!bg) { report.notes.push(`${bname}: not on this map`); continue; }
+      const st = bg.state;
+      const own = land.filter(i => cc.state[i] === st);
+      if (!own.length) { report.notes.push(`${bname}: its state holds no land`); continue; }
+      let cx = 0, cy = 0;
+      for (const i of own) { cx += cc.p[i][0]; cy += cc.p[i][1]; }
+      cx /= own.length; cy /= own.length;
+
+      const fluxes = own.map(i => cc.fl[i] || 0);
+      const maxFlux = Math.max.apply(null, fluxes) || 1;
+      const maxS = Math.max.apply(null, own.map(i => cc.s[i])) || 1;
+      const maxD = Math.max.apply(null, own.map(i =>
+        Math.hypot(cc.p[i][0] - cx, cc.p[i][1] - cy))) || 1;
+
+      let best = null, bestScore = -Infinity;
+      for (const i of own) {
+        if (cc.burg[i] && cc.burg[i] !== bg.i) continue;      // somewhere else already stands
+        if (cc.h[i] >= 70) continue;                          // not on a peak
+        if (want.river && !(cc.fl[i] > 0) && !cc.r[i]) continue;
+        const d = borderDist(i, st, want.offBorder || 2);
+        if (d <= (want.offBorder || 2)) continue;             // still on the frontier
+        const dist = Math.hypot(cc.p[i][0] - cx, cc.p[i][1] - cy);
+        const score = 2.2 * ((cc.fl[i] || 0) / maxFlux)
+                    + 1.0 * (cc.s[i] / maxS)
+                    - 1.4 * (dist / maxD);
+        if (score > bestScore) { bestScore = score; best = i; }
+      }
+      if (best === null || best === bg.cell) {
+        report.notes.push(`${bname}: nothing inside ${nameOf[st]} scores better`);
+        continue;
+      }
+      const from = { cell: bg.cell, x: bg.x, y: bg.y, fl: Math.round(cc.fl[bg.cell] || 0),
+                     border: borderDist(bg.cell, st, 3) };
+      if (cc.burg[bg.cell] === bg.i) cc.burg[bg.cell] = 0;
+      bg.cell = best;
+      bg.x = Math.round(cc.p[best][0] * 100) / 100;
+      bg.y = Math.round(cc.p[best][1] * 100) / 100;
+      cc.burg[best] = bg.i;
+      bg.port = 0;                       // a river seat inland is not a port
+      // The larger of what it was and what the new ground supports. A city does
+      // not shrink because the map was corrected about where it stands — but a
+      // capital the map had as a hamlet on a peak can grow into the seat its
+      // note describes.
+      let v = cc.s[best] / 5;
+      if (bg.capital) v *= 1.5;
+      v *= conn(best);
+      const wasPop = bg.population;
+      let pop = Math.max(v, wasPop, 0.01);
+      if (want.first) {
+        const rivals = pack.burgs
+          .filter(x => x && x.i && !x.removed && x.state === st && x.i !== bg.i)
+          .map(x => x.population);
+        const top = rivals.length ? Math.max.apply(null, rivals) : 0;
+        if (pop <= top) { pop = top * 1.05; report.notes.push(
+          `${bname}: raised to ${Math.round(pop * rate * urb).toLocaleString()} to be ` +
+          `the first city of ${nameOf[st]}, which is what its note calls it`); }
+      }
+      bg.population = Math.round(pop * 1000) / 1000;
+      report.moved.push({
+        name: bname, state: nameOf[st], from, to: { cell: best, x: bg.x, y: bg.y,
+          fl: Math.round(cc.fl[best] || 0), border: borderDist(best, st, 3), s: cc.s[best] },
+        pop: K(bg.population),
+        movedPx: Math.round(Math.hypot(bg.x - from.x, bg.y - from.y)),
+      });
+    }
+
+    // measured AFTER the repairs, so the table is the map as it now stands
+    const audit = live.map(s => {
+      const bs = pack.burgs.filter(x => x && x.i && !x.removed && x.state === s.i);
+      const sorted = bs.slice().sort((x, y) => y.population - x.population);
+      const cap = pack.burgs[s.capital];
+      const cells = land.filter(i => cc.state[i] === s.i);
+      const rural = cells.reduce((n, i) => n + cc.pop[i], 0);
+      const urban = bs.reduce((n, x) => n + x.population, 0);
+      return {
+        name: nameOf[s.i], cells: cells.length, burgs: bs.length,
+        urban: Math.round(urban * rate * urb), rural: Math.round(rural * rate),
+        capital: cap ? cap.name : null, capPop: cap ? K(cap.population) : 0,
+        capRank: cap ? sorted.findIndex(x => x.i === cap.i) + 1 : 0,
+        largest: sorted[0] ? sorted[0].name : null,
+        largestPop: sorted[0] ? K(sorted[0].population) : 0,
+        capBorder: cap ? borderDist(cap.cell, s.i, 3) : null,
+        capFlux: cap ? Math.round(cc.fl[cap.cell] || 0) : 0,
+      };
+    });
+
+    if (a.FIX) {
+      try { States.collectStatistics(); } catch (e) { report.notes.push('statistics: ' + e.message); }
+      try { Layers.drawAll(); } catch (e) { /* cosmetic */ }
+      await new Promise(r => setTimeout(r, 2000));
+    }
+    return { report, audit, rate, urb,
+             sStats: (() => {
+               const v = land.map(i => cc.s[i]).sort((x, y) => y - x);
+               return { max: v[0], p99: v[Math.floor(v.length * 0.01)], median: v[Math.floor(v.length / 2)] };
+             })() };
+  }, { S_CEILING, RESEAT, FIX });
+
+  const R = out.report;
+  console.log(`suitability now: max ${out.sStats.max}, 99th ${out.sStats.p99}, median ${out.sStats.median}`);
+  if (R.fixedCells.length) {
+    console.log(`repaired ${R.fixedCells.length} overflowed suitability cell(s):`);
+    const byState = {};
+    for (const [, , , st] of R.fixedCells) byState[st] = (byState[st] || 0) + 1;
+    for (const [st, n] of Object.entries(byState)) console.log(`    ${n} in ${st}`);
+  }
+  for (const [n, st, was, now] of R.repopulated)
+    console.log(`  ${n} (${st}) ${was.toLocaleString()} -> ${now.toLocaleString()}`);
+  for (const m of R.moved)
+    console.log(`  moved ${m.name} (${m.state}) ${m.movedPx}px: ` +
+                `river flux ${m.from.fl} -> ${m.to.fl}, ` +
+                `${m.from.border} cell(s) from a foreign border -> ${m.to.border}, ` +
+                `population ${m.pop.toLocaleString()}`);
+  for (const n of R.notes) console.log('  ' + n);
+
+  const A = out.audit.slice().sort((x, y) => (y.urban + y.rural) - (x.urban + x.rural));
+  const world = A.reduce((n, r) => n + r.urban + r.rural, 0);
+  console.log(`\n${A.length} nations, ${world.toLocaleString()} people, ` +
+              `${Math.round(A.reduce((n, r) => n + r.urban, 0) / world * 100)}% of them urban\n`);
+  console.log('nation'.padEnd(28) + 'cells'.padStart(6) + 'burgs'.padStart(6) +
+              'total'.padStart(12) + 'urb%'.padStart(6) + '  ' + 'capital'.padEnd(16) +
+              'pop'.padStart(9) + '  notes');
+  for (const r of A) {
+    const tot = r.urban + r.rural;
+    const flags = [];
+    if (r.capRank > 1) flags.push(`capital is #${r.capRank} behind ${r.largest} (${r.largestPop.toLocaleString()})`);
+    if (r.capBorder !== null && r.capBorder <= 1) flags.push('capital on a foreign border');
+    console.log(r.name.slice(0, 27).padEnd(28) + String(r.cells).padStart(6) +
+      String(r.burgs).padStart(6) + tot.toLocaleString().padStart(12) +
+      (Math.round(r.urban / tot * 100) + '%').padStart(6) + '  ' +
+      String(r.capital).slice(0, 15).padEnd(16) + r.capPop.toLocaleString().padStart(9) +
+      '  ' + flags.join('; '));
+  }
+
+  if (FIX) {
+    if (!R.fixedCells.length && !R.moved.length) {
+      console.log('\nnothing to repair — not rewriting the map');
+    } else {
+      const data = await p.evaluate(() => window.Services.Save.prepareMapData());
+      fs.writeFileSync(MAP, data);
+      console.log(`\nwrote ${MAP} (${(data.length / 1048576).toFixed(1)} MB)`);
+    }
+  } else {
+    console.log('\naudit only — rerun with FIX=1 to repair and save');
+  }
+  console.log('ERRORS:', errs.length ? errs.slice(0, 3) : 'none');
+  await b.close();
+})();
