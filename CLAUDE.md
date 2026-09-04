@@ -487,6 +487,13 @@ Two things worth knowing before changing anything there:
 - **Don't add a correction pass without checking what created the problem.**
   Three passes once existed only to repair damage from a single line capping
   territory growth; deleting that line deleted all three and improved the map.
+- **Mountains come from the plates, not from the nations.** Relief is one
+  global orogenic field — collision uplift, folded into ridges along the front
+  and modulated along it so the crest drops into passes — with a *smoothed*
+  per-nation bias on top. Painting each nation's own `elev` band gave every
+  mountain country a solid blob of hatching in the shape of a country, ending
+  at the frontier. `RIDGE_BORDERS` is the one place politics sets the ground,
+  and only because a note leans on it.
 
 ## Formatting statblocks
 

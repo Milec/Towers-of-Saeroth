@@ -18,7 +18,10 @@
 const SIZE = {
   'Xian Ti': 2.2, 'Khazan Khaganate': 2.0, 'Vaelic Principality': 2.4,
   'Thurigypt': 1.4, 'Elven Confederacy': 1.3, 'Voskreld Union': 1.2,
-  'Nordheim': 0.9, 'Quivar': 0.55, 'Kesmarch Frontier': 0.8,
+  // Kesmarch is a frontier — chartered homesteads at the edge of the jungle,
+  // not a power. It was carrying almost as much weight as Nordheim and coming
+  // out the largest country on its continent.
+  'Nordheim': 0.9, 'Quivar': 0.55, 'Kesmarch Frontier': 0.55,
   'Thornwild Confederation': 0.8, 'Aquoniti': 0.8, 'Lazarian Lichdom': 0.35,
   'Dalstan': 0.7, 'Corvane Republic': 0.55, 'Silicar': 0.6,
   'Stoneborn Holds': 0.6, 'Cindral Ashlands': 0.5, 'Thesal Theocracy': 0.5,
@@ -26,9 +29,16 @@ const SIZE = {
   'Undertide Reaches': 0.3,
   // the six minor states of the eastern continent
   'Kelvary March': 0.45, 'Tal Ulad': 0.28, 'Sarrowmere': 0.4,
-  'Ashkar Pale': 0.4, 'Tessine': 0.15,
-  // filled a gap in the setting's real-world inspirations
-  'Sahenna Compact': 0.5, 'Qeshara Sultanate': 0.45,
+  // Tessine is a city that is also a country — "the nation is the city", and
+  // its capital shares its name. At 0.15 it came out the size of a small
+  // kingdom, which is the wrong shape for a signory that grows, mines and
+  // makes nothing and lives off three trade corridors passing through it.
+  'Ashkar Pale': 0.4, 'Tessine': 0.11,
+  // filled a gap in the setting's real-world inspirations. Qeshara is the
+  // setting's Middle East — the caravan roads, the incense coast and the
+  // sultanate that sells passage on both — and it has to read as one of the
+  // eastern continent's powers rather than as a border province.
+  'Sahenna Compact': 0.5, 'Qeshara Sultanate': 1.1,
 };
 
 // tlat  target latitude in degrees north (the map runs 66°N to 30°S)
@@ -37,6 +47,8 @@ const SIZE = {
 //       (moisture = 4 + prec, and >=25 moisture with the right height is marsh)
 // elev  height band; >=60 reads as mountain, 40-59 as hills
 // ridged   sits on a fold belt: gets the collision uplift and parallel ridges
+// coastWant how many cells inland it likes to stay; below the default 4 the
+//          nation stretches along the shore instead of thickening inland
 // coastal  seeded on an OCEAN shore rather than the edge of an inland sea, and
 //          every cell priced by how far inland it is: a nation that LIVES on
 //          the water
@@ -52,7 +64,11 @@ const SIZE = {
 // takeMul  how much of the fold-belt uplift its own terrain takes
 const LAND = {
   // ---- the European continent, arctic down to the steppe march ----------
-  'Nordheim':                   { tlat: 56, temp: -1, prec: 9,  elev: [24, 46], coastal: 1, why: 'taiga and a fjord coast' },
+  // coastWant 2 rather than the usual 4: Nordheim is a raiding kingdom and its
+  // whole strategic position is shoreline, so it is priced to stretch along
+  // the water rather than to thicken inland. The fjord cutting north of 40N
+  // then gives that shoreline its length.
+  'Nordheim':                   { tlat: 56, temp: -1, prec: 9,  elev: [24, 46], coastal: 1, coastWant: 2, why: 'taiga and a fjord coast, and every hall within a day of a keel' },
   'Melisor Magocracy':          { ridged: 1, tlat: 56, temp: 3, prec: 5, elev: [44, 68], why: 'a high plateau' },
   'Stoneborn Holds':            { ridged: 1, tlat: 53, temp: 4, prec: 4, elev: [59, 90], why: 'high cold mountains' },
   'Undertide Reaches':          { ridged: 1, tlat: 51, temp: 4, prec: 4, elev: [59, 94], why: 'the mountains they live under' },
@@ -84,7 +100,16 @@ const LAND = {
   // shore and lets the country climb inland from there, which is what
   // Myrrhkand and the incense road actually are.
   'Qeshara Sultanate':          { ridged: 1, seaward: 1, tlat: 27, temp: 22, prec: -2, elev: [34, 56], why: 'a highland desert of oasis valleys behind an incense coast, on the northern arm of the range' },
-  'Thurigypt':                  { tlat: 24, temp: 25, prec: -3, elev: [26, 40], why: 'hot desert; the river makes its own green belt, and the range breaks around it' },
+  // Thurigypt and Qeshara both want the 24-27N band on the same continent, and
+  // once Qeshara was reweighted to a power the two of them could not both stand
+  // there: Thurigypt gets shoved south of where its note puts it. `latW` does
+  // not fix that — the ground it wants is simply occupied — and every way of
+  // separating their bands was tried and cost more than it bought. Qeshara at
+  // 20N or 30N, or lighter at 0.85, each took the eastern continent from three
+  // inspector problems to five, six and eight, mostly by cascading into
+  // Sahenna, Kesmarch and the Salt Road. `tlat` is a layout parameter, not a
+  // local one; see the Vaelic note in tools/mapgen/README.md.
+  'Thurigypt':                  { tlat: 24, latW: 1.4, temp: 25, prec: -3, elev: [26, 40], why: 'hot desert; the river makes its own green belt, and the range breaks around it' },
   'Cindral Ashlands':           { ridged: 1, tlat: 20, temp: 24, prec: 1, elev: [58, 92], volcanic: 1, why: 'volcanic highland, hot and bare' },
   'Ashkar Pale':                { ridged: 1, tlat: 17, temp: 23, prec: 4, varMul: 0.55, elev: [25, 44], why: 'ash plains and terraced valleys under the volcano, on the range\'s southern arm' },
   'Sahenna Compact':            { tlat: 15, temp: 24, prec: 2,  elev: [22, 36], why: 'open savanna between the frontier jungle and the equatorial rainforest' },
@@ -173,6 +198,17 @@ const BORDERS = [
   ['Sahenna Compact', 'Qeshara Sultanate'],
 ];
 
+// Frontiers the vault describes as mountain country, so the map has to build
+// them that way. A border is normally wherever two nations happen to stop; one
+// of these is a fact about the ground, and the notes lean on it.
+const RIDGE_BORDERS = [
+  // "no Vaelic prince is crowned without a Thesal celebrant, and that is a
+  // road between two capitals, not a sea crossing" — and the road is a pass.
+  // The alliance's only physical link is a single high crossing, which is what
+  // makes it an alliance rather than a march.
+  ['Thesal Theocracy', 'Vaelic Principality'],
+];
+
 // Which continent each nation belongs to — and the split is now thematic, not
 // just geometric. **Group 0 is the European-analogue continent**: Nordic,
 // Ruthenian, Celtic, Italian, German, Greek, French, Finnic, English,
@@ -220,8 +256,8 @@ const GROUP = {
 // because it is really a statement about LAND PER DEGREE OF LATITUDE. A
 // continent that cannot fit its band bulges past it, and no cost function pulls
 // it back (docs/azgaar-map-generation.md §8). After the European/everywhere-else
-// split, group 0 carries 17 nations and weight 12.1 across a 26° band
-// (28°N-54°N); group 1 carries 9 and weight 9.1 across 40° (3°N-43°N).
+// split, group 0 carries 17 nations and weight 11.7 across a 26° band
+// (28°N-54°N); group 1 carries 9 and weight 9.5 across 40° (3°N-43°N).
 // Land-by-weight wants 0.53/0.39 and land-by-band wants 0.36/0.56; 0.47/0.45
 // is what actually tested best between them. Push group 0 to 0.50 and the
 // European continent itself splits in two; drop it to 0.44 and its small
@@ -260,7 +296,7 @@ const ISLE_LANES = [
   { at: [0.47, 0.22], ang: 0.60, cones: 4 },   // the northern reach of the archipelago
 ];
 
-module.exports = { SIZE, LAND, CLAIM, BORDERS, GROUP, GROUP_SHARE, ANCHOR, WILD, ISLE_LANES };
+module.exports = { SIZE, LAND, CLAIM, BORDERS, RIDGE_BORDERS, GROUP, GROUP_SHARE, ANCHOR, WILD, ISLE_LANES };
 
 // ---------------------------------------------------------------------------
 // Naming. Azgaar seeds a dozen random cultures with real-world name bases and

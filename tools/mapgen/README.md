@@ -130,14 +130,19 @@ The diagnostics matter more than the map looking nice at a glance:
 group 0: 7904 cells across 1 landmass(es) (7904)   ← continent coherence, with the
 group 1: 7868 cells across 3 landmass(es) (7862, 5, 1)   sizes: this one is whole,
                                                   the other two are stray cells
-required borders after the redraw: 15/16      ← the vault's adjacencies, measured
+territory traded: 801 cells from the swollen  ← the size fix, and what it left
+  to the starved
+raised 35 cells of frontier the vault calls   ← RIDGE_BORDERS
+  mountains
+required borders repaired on the pack: 3      ← frontiers the redraw pulled apart
+required borders after the redraw: 16/16      ← the vault's adjacencies, measured
                                                 AFTER the last pass that moves a cell
-terrain majority 28/28                        ← each nation has the terrain its note claims
-frontiers: 56 in all, 12 of them between      ← how much of the political map is
-  nations the vault says nothing about (21%)    geography rather than diplomacy
+terrain majority 27/28                        ← each nation has the terrain its note claims
+frontiers: 59 in all, 13 of them between      ← how much of the political map is
+  nations the vault says nothing about (22%)    geography rather than diplomacy
 trade: 9/9 corridors whole, 24/24 legs        ← the world can carry its own trade
-worst oversize: Tal Ulad 795 (4.0x)           ← size against WEIGHT, not raw cells
-worst undersize: Voskreld Union 144 (0.2x)
+worst oversize: Tal Ulad 645 (3.2x)           ← size against WEIGHT, not raw cells
+worst undersize: Voskreld Union 281 (0.3x)
 ```
 
 **Print the landmass sizes, not just the count.** A continent of 7,862 cells
@@ -172,25 +177,21 @@ seven times its share sitting fifty degrees out of its climate band.
 ## The current map
 
 `campaign/Saeroth.map` is **seed 7**, built on Azgaar **1.151.1**: 28 nations
-on a 3,600 x 2,150 canvas at 5 km to the pixel, **15/16 required borders**,
-**28/28 terrain majorities**, both inhabited continents a single landmass each,
+on a 3,600 x 2,150 canvas at 5 km to the pixel, **16/16 required borders**,
+27/28 terrain majorities, both inhabited continents a single landmass each,
 **all nine trade corridors whole** at 24 of 24 legs, and `inspect.py` reports
-**1** problem.
+**3** problems.
 
-It carries 1,240 settlements — 27 of the capitals named by the vault, the
+It carries 1,249 settlements — 27 of the capitals named by the vault, the
 twenty-eighth generated because Tal Ulad's note says its seat moves with the
-season — 333 provinces, 102 regiments, 67 markets, 748 rivers, and all 119
-diplomatic ties from `Political Relations.md`.
+season — 340 provinces, 99 regiments, 645 rivers, and all 119 diplomatic ties
+from `Political Relations.md`.
 
-Of its 56 frontiers, **12 are between nations the vault says nothing about**.
+Of its 59 frontiers, **13 are between nations the vault says nothing about**.
 That number is the point of the layout change that produced this map: at the
 old spacing it was 7 of 50, and a continent whose every border was one the
 notes had a reason for read as a diagram of the diplomacy rather than as a
 place.
-
-It is still chosen on the inspector rather than on borders or terrain — a map
-before it scored 15/15 and 27/28 while putting Stoneborn Holds twelve degrees
-inside the arctic.
 
 The scale is derived rather than rolled: the canvas spans 96 degrees of
 latitude over 2,150 pixels, and a degree is 111 km, so 5 km per pixel is the
@@ -198,28 +199,75 @@ only value consistent with the world's own climate model. Azgaar picks that
 number at random otherwise, which put every distance and every journey time on
 the previous map out by up to a factor of five.
 
-**The European band was widened from 26 deg to 35 deg (21N-56N)** to make this
-possible. Seventeen nations in a 26-degree strip is more land than the band can
-hold, so the continent bulged and threw nations out of it — Stoneborn north into
-the ice at 64N, Corvane twenty-one degrees south. Widening the band cut the best
-seed's inspector score from 7 problems to 3. If nations start drifting again,
-widen the band before touching `GROUP_SHARE`.
-
 Known-imperfect, and in the output rather than hidden:
 
-- **Tal Ulad holds 795 cells, four times its share.** It is the one thing
-  `inspect.py` fails on. The plateau it is given is real terrain rather than a
-  lobe it wandered into, and the fix would be to raise a SIZE weight to match
-  the map instead of the note, which is the wrong direction.
-- **Corvane Republic and Dalstan do not touch**, so 15 of the 16 required
-  borders are met rather than all 16.
-- **Voskreld and Sahenna come out at a fifth of their share** (144 and 119
-  cells). The growth controller cannot equalise a nation boxed in by
-  mountains and coast, and every seed tried has two or three like this.
+- **Thurigypt sits 19 degrees south of its band.** It and Qeshara both want the
+  24-27N strip on the same continent and both are large; something has to give.
+  Every way of separating them was tried and cost more than it bought — see the
+  note on their entries in `world.js`.
+- **Tal Ulad holds 645 cells, three times its share**, and **Voskreld 281, a
+  third of its.** The territory trade below cuts the worst of this and cannot
+  finish the job: a runaway with no starved neighbour has nobody to give to,
+  and a nation boxed in by mountains and coast has nobody to take from.
+- Retuning the growth controller was tried against this seed and made all of it
+  worse: `growIters` 70 dropped the required borders to 13 and left Tal Ulad
+  with one cell; `growGain` 0.45 put Tal Ulad at 5.8x. Leave it alone.
 
-Retuning the growth controller was tried against this seed and made all of it
-worse: `growIters` 70 dropped the required borders to 13 and left Tal Ulad with
-one cell; `growGain` 0.45 put Tal Ulad at 5.8x. Leave it alone.
+### Mountains are tectonic, not political
+
+Relief used to be painted per nation out of its own `elev` band, with `elev[0]`
+read as a floor. That gives a mountain nation whose every cell stands at
+mountain height: a solid blob of hatching in the shape of a country, stopping
+dead at the frontier with a flat plain on the other side. Every mountain
+country on the map had the same blob.
+
+Real ranges do not know where the borders are. So height is built in two parts:
+
+1. **The orogen, which is global.** The collision uplift a cell actually sits
+   on, folded into ridges running along the front and dying away from it, times
+   a low-frequency modulation *along* the range so the crest drops into
+   saddles — the passes that roads, armies and trade all have to use. A range
+   with no gaps in it is a wall, and a wall is not somewhere a campaign
+   happens.
+2. **A regional bias, one number per nation** — the gap between the ground it
+   was given and the band its note claims — which is **smoothed across the
+   whole map** before it is added. That is what turns a political step into a
+   slope: a mountain kingdom rides high and its neighbour comes down off the
+   range gradually instead of falling off a cliff at the frontier.
+
+The smoothing has a cost of its own: a small nation's correction gets smeared
+away into its neighbours, and Melisor — 178 cells of claimed highland — came
+out at grassland height. So `nationPin` closes part of the remaining gap
+unblurred: enough to hold the claim, not enough to rebuild the wall.
+
+`RIDGE_BORDERS` in `world.js` is the exception that proves the rule. A border
+is normally wherever two nations happen to stop; the Thesal–Vaelic frontier is
+a fact about the ground, because the vault leans on it — the coronation road is
+a single high pass, which is what makes the two an alliance rather than a
+march. Those cells are found after the territory is drawn and raised directly.
+
+### The territory trade
+
+The cost multiplier in the carve cannot shrink a runaway, and the reason is
+structural: growth runs until every cell is claimed, so cost decides only where
+two nations *meet*. A nation alone beside an empty lobe takes the whole lobe at
+any price — which is how Tal Ulad came out at four times its share while
+Voskreld and Sahenna sat at a fifth of theirs.
+
+What works is trading. Peel the cells furthest from a swollen nation's own seat
+and hand each one to whichever neighbour is furthest under quota. Two passes:
+one for the runaways (above 1.3x giving to anything under 0.9x), then a much
+gentler one for the crushed alone (a neighbour barely over quota can spare a
+little for a nation at half its share).
+
+**It runs once, on the finished territory, not inside the carve.** The first
+version ran on every border-fix attempt, severed a frontier the vault requires,
+and the attempt loop then spent the rest of its budget re-seeding to win that
+border back — scoring a hundred points for the border against thirteen for the
+country it had crushed getting there. Tal Ulad came out of a *size fix* at 47
+cells. A required frontier is guarded inside the trade for the same reason, and
+repaired again on the pack afterwards, because the redraw over the real
+drainage can pull two nations apart that the grid still had touching.
 
 ### How far apart unrelated nations stand
 

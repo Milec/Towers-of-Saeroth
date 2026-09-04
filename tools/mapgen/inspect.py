@@ -27,10 +27,14 @@ LAT_DRIFT = 12
 # The map runs 66N to 30S and builds a polar cap at the top. Anything centred
 # above this is in or under the ice.
 POLAR = 60
-# Below this a nation is a smear you cannot put a settlement in.
-RUNT = 100
+# Below this a nation is a smear you cannot put a settlement in, whatever its
+# weight says. A city-state is meant to be small; it is not meant to be a dot.
+RUNT = 60
+# And below this share of what its own weight is due it has been crushed by its
+# neighbours rather than built small on purpose.
+THIN = 0.35
 # Above this it has eaten a lobe that was not its own.
-FAT = 3.0
+FAT = 2.6
 
 
 def main():
@@ -90,6 +94,8 @@ def main():
             share = gcells[g] * weight.get(n, 1) / (gtot[g] or 1)
             if share and cells / share > FAT:
                 fails.append(f'{n}: {cells} cells, {cells/share:.1f}x its share — it has eaten a lobe')
+            if share and cells / share < THIN:
+                fails.append(f'{n}: {cells} cells, {cells/share:.1f}x its share — crushed by its neighbours')
 
     if a.json:
         print(json.dumps({

@@ -376,7 +376,25 @@ journey.segments.push({ i: 0, name: 'Setharu → Myrrhkand', from: fromCell, to:
                         transport: t.name, speed: t.speed, distance: r.distance, points: r.points });
 ```
 
-Three things that are not obvious:
+Four things that are not obvious:
+
+- **The sea router prices water by distance from shore**, because its own
+  searoutes are coasting trade: coastline 1, sea 1.8, open sea 4, ocean 6,
+  anything deeper 8, all multiplying squared distance. A journey pathfound
+  through it comes out traced along the shoreline — a run between two
+  continents drawn as an outline of the coast rather than as a sea lane, and it
+  looks like one. Swap the schedule for the length of the pass by wrapping
+  `Routes.getWaterPathCost`: read the original, pass `Infinity` straight
+  through (that is where every hard rule lives — leaving through a cell's own
+  haven, staying on a navigable river, not sailing into ice), and re-price the
+  finite case yourself off `pack.cells.t[to]`.
+
+  **Keep a gradient.** Flattening it outright — every water cell at one price —
+  leaves the search nothing to follow, so it fans out across the whole ocean
+  hunting one port's haven, and a half-minute build becomes a ten-minute one.
+  Making `sea` the cheapest tier and the shoreline dearer than it costs nothing
+  and puts the lane a cell or two off the beach, which is where a hull with a
+  destination actually sails.
 
 - **The transports live in `options`, not in the pack**, so they ride in the
   settings blob rather than on the journeys line. A corridor can round-trip its

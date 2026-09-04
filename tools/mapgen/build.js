@@ -194,7 +194,8 @@ async function baseGen(p, c) {
 
   const t0 = Date.now();
   const r = await W.forgeWorld(p, Object.assign({
-    SIZE: W.SIZE, LAND: W.LAND, CLAIM: W.CLAIM, BORDERS: W.BORDERS, GROUP: W.GROUP,
+    SIZE: W.SIZE, LAND: W.LAND, CLAIM: W.CLAIM, BORDERS: W.BORDERS,
+    RIDGE_BORDERS: W.RIDGE_BORDERS, GROUP: W.GROUP,
     ANCHOR: W.ANCHOR, WILD: W.WILD, GROUP_SHARE: W.GROUP_SHARE, ISLE_LANES: W.ISLE_LANES, LAT_TOP: W.LAT_TOP, LAT_BOT: W.LAT_BOT }, OPTS));
   console.log(`forged in ${((Date.now() - t0) / 1000).toFixed(0)}s`);
   for (const l of r.log) console.log('  ' + l);
@@ -453,6 +454,35 @@ async function baseGen(p, c) {
       for (const t of a.EXTRA_TRANSPORTS) tlist.push(Object.assign({ i: tid++ }, t));
       Transports.set(tlist);
 
+      // Azgaar's sea router prices water by how far from shore it is —
+      // coastline 1, sea 1.8, open sea 4, ocean 6, anything deeper 8 — because
+      // its own searoutes are coasting trade between neighbouring ports. Every
+      // corridor here came out of that traced along the shoreline, so a run
+      // from Xian Ti to Nordheim was drawn as an outline of the coast rather
+      // than as a sea lane, and looked like one.
+      //
+      // Replace the schedule for the length of this pass. The cheapest water
+      // is now `sea` — a cell or two off the beach, where a hull with a
+      // destination actually sails — the shoreline itself costs more than
+      // that, and the deep ocean is a premium rather than a wall.
+      //
+      // Keep a gradient. Flattening the schedule outright (everything at 1.6)
+      // leaves the search nothing to follow, so it fans across the whole ocean
+      // hunting one port's haven and the build goes from half a minute to ten.
+      // The hard rules are untouched: leaving through a cell's own haven,
+      // staying on a navigable river and not sailing into ice all come back
+      // from the original as Infinity and are passed straight through.
+      const SEA_MOD = { '-1': 1.5, '-2': 1.0, '-3': 1.3, '-4': 1.8 };
+      const seaDeep = a.seaDetour === undefined ? 2.2 : a.seaDetour;
+      const seaCost = Routes.getWaterPathCost.bind(Routes);
+      Routes.getWaterPathCost = function (from, to) {
+        const c = seaCost(from, to);
+        if (!isFinite(c)) return c;
+        const d2 = dist2(pack.cells.p[from], pack.cells.p[to]);
+        if (!(d2 > 0)) return c;
+        return d2 * (SEA_MOD[pack.cells.t[to]] || seaDeep);
+      };
+
       const burgsOf = id => pack.burgs.filter(b => b && b.i && !b.removed && b.state === id);
       // Where a corridor touches a nation. A road corridor leaves from the
       // capital; a sea corridor leaves from the harbour, because a landlocked
@@ -512,6 +542,7 @@ async function baseGen(p, c) {
                         color: a.ROUTE_COLORS[ci % a.ROUTE_COLORS.length], segments, lock: true });
         trade.legs += segments.length;
       });
+      Routes.getWaterPathCost = seaCost;   // the app's own routes keep coasting
       // replaces the one journey the generator seeds every map with
       pack.journeys = journeys;
       // Azgaar's default styles are sized for a canvas about a thousand pixels
@@ -538,7 +569,7 @@ async function baseGen(p, c) {
     const data = a.skip ? null : await window.Services.Save.prepareMapData();
     return { data, applied, unmatched, trade, rebuilt, renamed: Object.keys(byName).length, renamedBurgs, addedBurgs, goodsFixed, seeded, res, capNames, goodNames: (pack.goods||[]).map(g=>[g.i,g.name]), stateNames: pack.states.filter(x=>x.i&&!x.removed).map(x=>[x.i,x.fullName]), cultures: cultures.length - 1 };
   }, { names: r.names, ties, DIPLO, FORMS, SHORT, corridors, CARRIER, EXTRA_TRANSPORTS, ROUTE_COLORS,
-       journeyStroke: OPTS.journeyStroke,
+       journeyStroke: OPTS.journeyStroke, seaDetour: OPTS.seaDetour,
        NAME_BASE: WORLD.NAME_BASE, CULTURE_TYPE: WORLD.CULTURE_TYPE, CAPITAL: WORLD.CAPITAL,
        SPECIALTY: WORLD.SPECIALTY, skip: !!process.env.SKIP_SAVE });
 
