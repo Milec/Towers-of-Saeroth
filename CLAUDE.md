@@ -459,6 +459,21 @@ Skip it and the nodes stay pinned to where the nations used to be, which no
 check will catch — the page still loads, the ties are still right, and every
 country is simply in the wrong place.
 
+**The world can also be built one continent at a time.** `REGION=west|middle|east
+node tools/mapgen/build.js` writes `campaign/maps/Saeroth-<region>.map`, giving
+that continent the whole canvas and the whole cell budget instead of a third of
+each — `tools/mapgen/regions.js` hands the forge a filtered world and nothing
+downstream knows the difference. All 16 required borders survive the split;
+what does not is anything crossing water (60 of the 119 ties, and a leg in each
+of four trade corridors), and the build names those rather than dropping them
+quietly. A region also takes its **land from an Azgaar heightmap template**
+rather than from the plate model (`landFrom: 'template'`), which only works
+because one canvas now holds one continent — a template describes one world, and
+asked for three at once it gives a supercontinent. **There is no merge tool
+yet**, so `campaign/Saeroth.map` is still the one map the site draws from, and
+it is the last plate-shaped build rather than something the current code
+reproduces — the region maps are the input a merge will take.
+
 `docs/azgaar-map-generation.md` is the manual for all of this: how to drive
 Azgaar from a script, its pipeline order, and the traps. Read it before
 touching `forge.js` — several of its rules look arbitrary and are not, and the
@@ -500,14 +515,16 @@ Two things worth knowing before changing anything there:
   every mountain country a solid blob in the shape of a country, ending at the
   frontier. `RIDGE_BORDERS` is the one place politics sets the ground, and only
   because a note leans on it.
-- **The coastlines are borrowed, one Old World heightmap per continent.** A
+- **The coastlines are borrowed, one heightmap template per continent.** A
   plate is a Voronoi cell and a warped Voronoi cell is still a blob, so the
-  forge runs Azgaar's Old World template through its own `HeightmapGenerator`
-  — once per continent, each slid onto the continent it shapes — and adds it to
-  the potential field before sea level is taken. Running it *twice and
-  averaging* cancels the structure that made it worth borrowing; so does
-  normalising the donor min-to-max instead of pivoting at its own sea level.
-  Both were tried.
+  forge runs Azgaar's own `HeightmapGenerator` once per continent — Old World
+  for the two settled ones, **Archipelago** for the middle sea, a fourth run
+  for the wilderness — each slid onto the continent it shapes, and adds the
+  result to the potential field before sea level is taken. One field draped
+  over all three gives all three the same silhouette; running it *twice and
+  averaging* cancels the structure that made it worth borrowing; normalising a
+  donor min-to-max instead of pivoting at its own sea level barely moves the
+  coast at all. All three were tried.
 
 ## Formatting statblocks
 
