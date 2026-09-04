@@ -92,6 +92,13 @@ one.** If the Salt Road has no road between two of its nations, or the Incense
 Coast has no sea lane, then two countries the vault has trading are not
 actually connected, and the seed is wrong.
 
+**A corridor that cannot be carried by its own transport is carried by the
+other one.** A river leg between two fens on different drainages is not a hole
+in the world — the cargo goes overland, which is what a smuggling run does
+anyway. The build says which legs did it (`REROUTED`), because a river route on
+wheels is worth knowing about, and `inspect.py` still fails on a leg that
+neither wheels nor hulls can make.
+
 **A corridor ends at a capital, not at a wharf.** The capital wins the endpoint
 whenever the transport can reach it at all — a delta or river capital is a
 valid water endpoint and the router will run a hull up the river to it — and
@@ -152,19 +159,20 @@ The diagnostics matter more than the map looking nice at a glance:
 group 0: 7904 cells across 1 landmass(es) (7904)   ← continent coherence, with the
 group 1: 7868 cells across 3 landmass(es) (7862, 5, 1)   sizes: this one is whole,
                                                   the other two are stray cells
-territory traded: 801 cells from the swollen  ← the size fix, and what it left
+territory traded: 780 cells from the swollen  ← the size fix, and what it left
   to the starved
 raised 35 cells of frontier the vault calls   ← RIDGE_BORDERS
   mountains
 required borders repaired on the pack: 3      ← frontiers the redraw pulled apart
 required borders after the redraw: 16/16      ← the vault's adjacencies, measured
                                                 AFTER the last pass that moves a cell
-terrain majority 27/28                        ← each nation has the terrain its note claims
-frontiers: 59 in all, 13 of them between      ← how much of the political map is
-  nations the vault says nothing about (22%)    geography rather than diplomacy
+terrain majority 28/28                        ← each nation has the terrain its note claims
+frontiers: 58 in all, 16 of them between      ← how much of the political map is
+  nations the vault says nothing about (28%)    geography rather than diplomacy
 trade: 9/9 corridors whole, 24/24 legs        ← the world can carry its own trade
-worst oversize: Tal Ulad 645 (3.2x)           ← size against WEIGHT, not raw cells
-worst undersize: Voskreld Union 281 (0.3x)
+wander 1.56x straight on average               ← a leg at 3x is creeping, not travelling
+worst oversize: Tal Ulad 618 (3.1x)           ← size against WEIGHT, not raw cells
+worst undersize: Voskreld Union 349 (0.4x)
 ```
 
 **Print the landmass sizes, not just the count.** A continent of 7,862 cells
@@ -200,16 +208,16 @@ seven times its share sitting fifty degrees out of its climate band.
 
 `campaign/Saeroth.map` is **seed 7**, built on Azgaar **1.151.1**: 28 nations
 on a 3,600 x 2,150 canvas at 5 km to the pixel, **16/16 required borders**,
-27/28 terrain majorities, both inhabited continents a single landmass each,
-**all nine trade corridors whole** at 24 of 24 legs, and `inspect.py` reports
-**3** problems.
+**28/28 terrain majorities**, both inhabited continents a single landmass each,
+the middle sea a **16-island archipelago**, **all nine trade corridors whole**
+at 24 of 24 legs, and `inspect.py` reports **3** problems.
 
-It carries 1,249 settlements — 27 of the capitals named by the vault, the
+It carries 1,277 settlements — 27 of the capitals named by the vault, the
 twenty-eighth generated because Tal Ulad's note says its seat moves with the
-season — 340 provinces, 99 regiments, 645 rivers, and all 119 diplomatic ties
+season — 340 provinces, 102 regiments, 560 rivers, and all 119 diplomatic ties
 from `Political Relations.md`.
 
-Of its 59 frontiers, **13 are between nations the vault says nothing about**.
+Of its 58 frontiers, **16 are between nations the vault says nothing about**.
 That number is the point of the layout change that produced this map: at the
 old spacing it was 7 of 50, and a continent whose every border was one the
 notes had a reason for read as a diagram of the diplomacy rather than as a
@@ -219,18 +227,21 @@ The scale is derived rather than rolled: the canvas spans 96 degrees of
 latitude over 2,150 pixels, and a degree is 111 km, so 5 km per pixel is the
 only value consistent with the world's own climate model. Azgaar picks that
 number at random otherwise, which put every distance and every journey time on
-the previous map out by up to a factor of five.
+an earlier map out by up to a factor of five.
 
 Known-imperfect, and in the output rather than hidden:
 
-- **Thurigypt sits 19 degrees south of its band.** It and Qeshara both want the
+- **Thurigypt sits 21 degrees south of its band.** It and Qeshara both want the
   24-27N strip on the same continent and both are large; something has to give.
   Every way of separating them was tried and cost more than it bought — see the
   note on their entries in `world.js`.
-- **Tal Ulad holds 645 cells, three times its share**, and **Voskreld 281, a
-  third of its.** The territory trade below cuts the worst of this and cannot
-  finish the job: a runaway with no starved neighbour has nobody to give to,
-  and a nation boxed in by mountains and coast has nobody to take from.
+- **Voskreld is 17 degrees south of its**, and **Tal Ulad holds 618 cells,
+  three times its share.** The territory trade below cuts the worst of the
+  sizes and cannot finish the job: a runaway with no starved neighbour has
+  nobody to give to.
+- **One leg of the Delta Run goes by wagon.** Grauthaven and Ilmen Wharf sit on
+  different drainages, so the barges cannot make it and the build says so
+  rather than pretending otherwise.
 - Retuning the growth controller was tried against this seed and made all of it
   worse: `growIters` 70 dropped the required borders to 13 and left Tal Ulad
   with one cell; `growGain` 0.45 put Tal Ulad at 5.8x. Leave it alone.
