@@ -482,6 +482,15 @@ describes a place it is demonstrably not sitting in. Only that: a capital the
 notes are happy with stays put even when the audit flags it, and the flags are
 printed so the decision stays visible.
 
+**`tools/export_brief.js` writes the world out as constraints rather than as a
+map.** `node tools/export_brief.js` produces `saeroth-brief.json` — every
+nation's continent, relative size, target latitude, claimed ground and capital,
+the 16 required borders, all 119 diplomatic ties and the 9 trade corridors — and
+**no geometry at all**, on purpose: coastlines and coordinates are one *solution*
+to those constraints, and shipping them just asks for this map back. It reads the
+same sources the generator does, so it cannot drift from the vault. It is for
+handing Saeroth to something that will lay it out its own way.
+
 **A region build exists and is not the current map.** `REGION=west|middle|east
 node tools/mapgen/build.js` gives one continent the whole canvas, taking its
 land from an Azgaar heightmap template rather than the plate model. It works —
