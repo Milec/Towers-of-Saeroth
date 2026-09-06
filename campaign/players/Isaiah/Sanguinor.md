@@ -37,6 +37,11 @@ It cut Isaiah's mother. The wound spent her life force getting her pregnant and
 made her a vampire in the same stroke, so the child took both halves of what
 the blade was carrying.
 
+Nothing is left of it. The blade went into her whole at the conception and did
+not come back out as an object. What it became is him. He is the blade, and the
+blade is what fathered him, so he is his own father and his own son, and there
+is no relic anywhere for anybody to find.
+
 She prayed for him not to be born a vampire. Something answered. What was born
 was a nephilim, which is the prayer working on the half it could reach, and
 the rest of it is still in him.
@@ -47,6 +52,14 @@ what fell, and the blade is one of those. The spark came from no parent,
 nothing selected him, and nothing blessed him. It is the trace surfacing, the
 same as any other exemplar. It went through a relic on the way, which is a
 route rather than an exception.
+
+Two things fall out of that. [[Exemplars]] defines an ikon as an object or a
+feature of the body that the spark can live inside, and he collapses the
+distinction: there is nothing to carry, because he is the thing that would be
+carried. And by the definition in [[The God Sundering]] he is himself a divine
+artifact, genuinely divine and consecrated by nobody. Dalstan's Cathedral Court
+sells relics with certificates. It has never had to decide what to do about one
+that walks.
 
 ## Sanguinor Mechanics
 
