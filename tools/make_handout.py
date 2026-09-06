@@ -23,6 +23,7 @@ is already here for the tests, so a table in the handout looks like the same
 table on the site.
 """
 import html
+import json
 import os
 import re
 import subprocess
@@ -47,10 +48,17 @@ PLAYERS = os.path.join(ROOT, 'campaign', 'players')
 #:   drop_paras     remove single paragraphs, matched on their opening words
 #:   subs           rewrite a phrase that only makes sense inside the vault
 #:   lead           the handout's own opening, where the note addresses the GM
+#:
+#: And one key on the handout itself:
+#:   foot           the line printed under every section. Exemplar prose
+#:                  about the erasure reads as nonsense on a nation
+#:                  handout, so it is named per handout rather than
+#:                  hardcoded.
 HANDOUTS = [
     {
         'player': 'Isaiah',
         'out': 'Exemplar handout.pdf',
+        'foot': 'You cannot repeat any of this. Not to the party, not on paper, not in stone.',
         'docs': [
             {
                 'file': 'Exemplars.md',
@@ -103,8 +111,29 @@ HANDOUTS = [
         ],
     },
     {
+        'player': 'Isaiah',
+        'out': 'Sanguinor handout.pdf',
+        'foot': 'There is one Sanguinor in the world.',
+        'docs': [
+            {
+                'file': 'Sanguinor.md',
+                'title': 'Sanguinor',
+                # Where it came from is GM-side: Isaiah has the exemplar
+                # dreams and no account of what is under them. At the table
+                # is the GM's dials for running the Red Thirst.
+                'drop_sections': ['Where it came from', 'At the table'],
+                'drop_from': None,
+                'drop_lead': False,
+                'drop_paras': [],
+                'subs': [],
+                'lead': None,
+            },
+        ],
+    },
+    {
         'player': 'Liam',
         'out': 'Magitech handout.pdf',
+        'foot': 'You cannot repeat any of this. Not to the party, not on paper, not in stone.',
         'docs': [
             {
                 'file': 'Magitech.md',
@@ -136,6 +165,7 @@ HANDOUTS = [
     {
         'player': 'Ellie',
         'out': 'Nordheim handout.pdf',
+        'foot': 'You cannot repeat any of this. Not to the party, not on paper, not in stone.',
         'docs': [
             {
                 'file': 'Nordheim.md',
@@ -325,9 +355,10 @@ def build(handout):
         '  s.innerHTML = "<h1>" + s.dataset.title + "</h1>"'
         '    + "<p class=\\"sub\\">Towers of Saeroth &middot; player handout</p>"'
         '    + marked.parse(md)'
-        '    + "<p class=\\"foot\\">You cannot repeat any of this. Not to the '
-        'party, not on paper, not in stone.</p>";'
+        '    + FOOT;'
         '}</script></body>')
+    page = page.replace(
+        'FOOT', json.dumps(f'<p class="foot">{html.escape(handout["foot"])}</p>'))
 
     tmp = os.path.join(ROOT, '_handout.html')
     page = page.replace('MARKED', 'site/marked.min.js')

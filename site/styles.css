@@ -607,3 +607,54 @@ body {
   .content .nat-rel .nat-what { display: block; margin-top: 5px; }
   .content .nat-rel .nat-how { margin-left: 7px; }
 }
+
+/* ---- print, which is how the topbar's PDF button exports ----------------
+   `window.print()` and the browser's own Save-as-PDF do the work, so there
+   is no library to vendor and nothing to keep in step with a renderer. What
+   is left to do here is strip the app back to the note.
+
+   Three things are not obvious. The palette is forced light: dark theme
+   prints as a black rectangle, and the tokens are redefined rather than
+   overridden with literals so a new colour still only has to be added in
+   token form. A wide table scrolls inside itself on screen and there is
+   nowhere to scroll to on paper, so it becomes a real table again. And the
+   custom views (relations web, trade routes, timeline) are inline SVG and
+   print as they stand, which is why nothing here touches them. */
+@page { margin: 18mm 16mm; }
+
+@media print {
+  :root,
+  :root[data-theme="dark"],
+  :root[data-theme="light"] {
+    --bg: #fff; --panel: #fff; --ink: #17130f; --muted: #574e44;
+    --rule: #b3a893; --link: #17130f; --code: #f3ede1; --mark: #f0e4c4;
+    --sb-bg: #fbf6ea; --sb-border: #6e2b1e;
+  }
+
+  html, body { background: #fff; color: var(--ink); }
+
+  /* Chrome, the graph overlay, and the frontmatter block: navigation and
+     machine metadata, none of which is the note. */
+  .topbar, .sidebar, .scrim, .modal, .graphview,
+  .backlinks, .crumbs, .props,
+  .linkbtn { display: none !important; }
+
+  /* A closed disclosure prints as a triangle and nothing else, so open the
+     ones that hold real content — the source table under a generated view.
+     A browser that ignores this just prints them closed, as it does now. */
+  .content details > :not(summary) { display: block !important; }
+
+  .layout { display: block; }
+  .main { overflow: visible; padding: 0; }
+  .content, .content.wide { max-width: none; margin: 0; }
+  .content.wide > :not(.relweb):not(.relsource):not(.routemap) { max-width: none; }
+
+  .content table { display: table; overflow: visible; }
+  .content pre { white-space: pre-wrap; overflow: visible; }
+
+  /* A dead link should not read as a live one. */
+  .content a { color: inherit; text-decoration: none; }
+
+  h1, h2, h3 { break-after: avoid; }
+  table, pre, blockquote, figure, img, .statblock { break-inside: avoid; }
+}
