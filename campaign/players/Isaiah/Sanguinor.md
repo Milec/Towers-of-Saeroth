@@ -4,9 +4,29 @@ type: ancestry
 rarity: unique
 source: homebrew
 player: Isaiah
+visibility: Mechanics are Isaiah's. Where it came from is GM — he has the exemplar dreams and no account of what is under them
 ---
 
-*One character's ancestry. The vampirism came off the blade that killed the god. The prayer meant to undo it only got half.*
+*One character's ancestry. The vampiric half of Isaiah, in the ancestry slot so the nephilim can keep the heritage.*
+
+## Why this is an ancestry
+
+Three strands, one slot each.
+
+| Strand | Where it sits |
+| --- | --- |
+| The divinity | Exemplar, the class. See [[Exemplars]] |
+| The vampirism | Sanguinor, this ancestry |
+| The gods' blessing | Nephilim, the versatile heritage |
+
+Dhampir and nephilim are both versatile heritages and a character gets one, so
+the vampiric half had nowhere to go. Moving it into the ancestry slot leaves
+the heritage free for the nephilim, which is the whole reason this exists.
+A [[Dhampir|dhampir]] is the nearest published thing and is not the same thing.
+
+## Where it came from
+
+**GM.** Isaiah has the dreams every exemplar gets and nothing underneath them.
 
 The blade was one of the things the sorcerer-kings used in the ritual. It went
 into the ground with everything else and sat in the red layer for twenty-four
@@ -15,32 +35,18 @@ anybody who handled it after. See [[The God Sundering]].
 
 It cut Isaiah's mother. The wound spent her life force getting her pregnant and
 made her a vampire in the same stroke, so the child took both halves of what
-the blade was carrying: a piece of the dead god, and the vampirism.
+the blade was carrying.
 
 She prayed for him not to be born a vampire. Something answered. What was born
 was a nephilim, which is the prayer working on the half it could reach, and
 the rest of it is still in him.
 
-## Why this is an ancestry
-
-Three strands came out of that, and each one is a different slot on the sheet.
-
-| Strand | Where it sits |
-| --- | --- |
-| The god's spark | Exemplar, the class. See [[Exemplars]] |
-| The vampirism | Sanguinor, this ancestry |
-| The answered prayer | Nephilim, the versatile heritage |
-
-Dhampir and nephilim are both versatile heritages and a character gets one, so
-the vampiric half had nowhere to go. Moving it into the ancestry slot leaves
-the heritage free for the nephilim, which is the whole reason this exists.
-A [[Dhampir|dhampir]] is the nearest published thing and is not the same thing.
-
-His spark is also the only one in the world with a provenance. Every other
-exemplar is the trace surfacing out of soaked ground. This one came off the
-murder weapon by direct transmission, and whatever answered his mother could
-not have seen what it was reaching past, because none of them remember who
-died.
+None of that puts him outside the rule. [[The God Sundering]] already has
+objects that were out in the blood, or cut from the band, carrying a piece of
+what fell, and the blade is one of those. The spark came from no parent,
+nothing selected him, and nothing blessed him. It is the trace surfacing, the
+same as any other exemplar. It went through a relic on the way, which is a
+route rather than an exception.
 
 ## Sanguinor Mechanics
 
