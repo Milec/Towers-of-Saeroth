@@ -62,6 +62,14 @@ How the app is put together:
   by `env(safe-area-inset-top)`; `--topbar-h` is remeasured from the live
   element by `syncTopbarHeight()`, and the sidebar, scrim and graph overlay are
   all positioned from it.
+- The topbar's PDF button is `window.print()` plus one `@media print` block at
+  the end of `styles.css`. No library, so there is no renderer to keep in step
+  with. That block forces the light tokens — a dark page prints as a black
+  rectangle — hides the chrome, breadcrumb, frontmatter block, backlinks and
+  every `.linkbtn`, turns a table that scrolls inside itself back into a real
+  table, and forces the source-table disclosures open so they don't print as a
+  bare triangle. **It exports what is on screen, GM sections and all.** The
+  redacted copy you hand a player is what `make_handout.py` is for.
 
 ### `players/` is a separate site, on purpose
 
@@ -183,10 +191,13 @@ Follow that pattern for any new view — never duplicate campaign data into JS.
 
 ## The exemplar player's handout
 
-`tools/make_handout.py` builds `campaign/players/Isaiah/Exemplar handout.pdf`
-out of the two notes in that folder, cutting the GM-only parts and rendering
-what is left through the site's own vendored `marked.js`, so a table in the
-handout looks like the same table on the site. The PDF is committed and is
+`tools/make_handout.py` builds a PDF per entry in `HANDOUTS` — Isaiah's
+`Exemplar handout.pdf` and `Sanguinor handout.pdf`, Liam's and Ellie's — out of
+notes in that player's own folder, cutting the GM-only parts and rendering what
+is left through the site's own vendored `marked.js`, so a table in the handout
+looks like the same table on the site. Each entry names its own `foot`, the
+line printed under every section, because the exemplar's *you cannot repeat any
+of this* reads as nonsense on a nation handout. The PDF is committed and is
 **not** copied into `_site/` — `build_site.py` only takes `.md` and images, and
 this one is for one player rather than for the public site.
 

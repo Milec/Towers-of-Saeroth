@@ -2598,6 +2598,9 @@ async function init() {
     localStorage.setItem('theme', cur);
     if (graph.nodes.length) { drawLegend(); needsDraw(); }   // palette swaps with the theme
   };
+  // The browser's own print dialog is what writes the PDF, so there is no
+  // library here. The @media print block in styles.css is the whole export.
+  $('printBtn').onclick = () => window.print();
   $('graphBtn').onclick = () => ($('graphView').hidden ? openGraph() : closeGraph());
   $('graphClose').onclick = closeGraph;
   $('gLeave').onclick = closeGraph;
