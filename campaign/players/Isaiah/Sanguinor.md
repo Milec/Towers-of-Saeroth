@@ -142,7 +142,20 @@ Thirst rises, and it stays until the encounter ends. While it is on you:
 
 - You gain a +1 circumstance bonus to melee damage rolls and to Intimidation checks.
 - You take a -1 circumstance penalty to Will saves.
-- On each of your turns, at least one of your actions must be a Strike against, or movement toward, the nearest creature you can see that has taken piercing or slashing damage. If no such creature is visible, this restriction does not apply that turn.
+
+At the start of each of your turns, if you can see an enemy that has taken
+piercing or slashing damage, attempt a **Will save** against the level-based DC
+for your level: 15 at 1st, 20 at 5th, 27 at 10th, 34 at 15th, 43 at 20th. The
+penalty above applies to it, so the thirst makes you worse at resisting the
+thirst.
+
+**Success** You act freely this turn.
+
+**Failure** At least one of your actions this turn must be a Strike against, or
+movement toward, the nearest such enemy.
+
+**Critical Failure** As failure, and at least two of your actions must go that
+way.
 
 ### Heritage
 
@@ -156,13 +169,19 @@ feats of whatever versatile heritage you took.
 
 ## At the table
 
-The Red Thirst says *creature*, not *enemy*, so the nearest bleeding thing can
-be a party member. That is the horror in it, and the reason to play one. It can
-also wreck a fight in a way nobody at the table enjoys. Narrow it to enemies if
-that happens; nothing else changes.
+The save has no critical success clause on purpose. Unassailable Soul at 7th
+level turns every successful Will save into a critical success, so anything
+hung on one would quietly switch the Red Thirst off for the rest of his career.
+Greater Unassailable Soul at 13th removes critical failures from Will saves the
+same way, which retires the two-action clause. The class is his answer to this
+and it arrives on its own schedule.
 
-The +1 stops mattering somewhere around 9th level. The action restriction never
-does. Watch for the point where the Red Thirst has become a pure tax, and hand
-out something that scales when it arrives.
+Against a level-based DC he lands near a coin flip at every level, which is the
+weight intended. If it plays too soft, raise the DC rather than dropping the
+save. The +1 is unconditional and the save is the only thing paying for it.
+
+The +1 stops mattering somewhere around 9th level. Watch for the point where
+the Red Thirst has become a pure tax, and hand out something that scales when
+it arrives.
 
 *No published entry. Built from the dhampir versatile heritage (Player Core 2 pg. 42) and the basic undead benefits (Book of the Dead pg. 44), without the undead trait.*
