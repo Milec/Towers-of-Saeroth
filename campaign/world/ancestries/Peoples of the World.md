@@ -6,9 +6,7 @@ type: index
 Every ancestry with a home somewhere in the setting. These are culture and
 flavour stubs only — no mechanics; each note links back to the full rules
 entry under `vault/` for anyone running the whole repo rather than just
-`campaign/` as their Obsidian vault. [[Sanguinor]] is the exception. It is
-homebrew, there is no published entry to point at, so that note carries its
-own rules.
+`campaign/` as their Obsidian vault.
 
 | People | Found in |
 | --- | --- |
@@ -51,7 +49,6 @@ own rules.
 | [[Oread]] | Cindral Ashlands |
 | [[Ratfolk]] | Thornwild Confederation |
 | [[Samsaran]] | Xian Ti |
-| [[Sanguinor]] | Lazarian Lichdom |
 | [[Skeleton]] | Lazarian Lichdom |
 | [[Tanuki]] | Xian Ti |
 | [[Tengu]] | Xian Ti |
