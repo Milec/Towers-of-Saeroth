@@ -9,6 +9,7 @@ on:
       - 'vault/**'
       - 'site/**'
       - 'tools/build_site.py'
+      - 'tools/build_atlas_lore.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
     inputs:

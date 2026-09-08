@@ -1,0 +1,21 @@
+{
+  "woodlandMarkers": 5653,
+  "previousScatteredMarkers": 854,
+  "byType": {
+    "pine": 1296,
+    "forest": 2153,
+    "palm": 2204
+  },
+  "biomes": [
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "allCentersInForestBiomes": true,
+  "spacing": 12.5,
+  "settlementClearings": true,
+  "roadsAndRiversReserved": true,
+  "otherReliefPreserved": 378
+}

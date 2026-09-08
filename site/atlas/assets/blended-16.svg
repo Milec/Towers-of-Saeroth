@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256">
+ <defs>
+ <filter id="wash" color-interpolation-filters="sRGB" x="-5%" y="-5%" width="110%" height="110%">
+ <feMorphology in="SourceAlpha" operator="erode" radius="1.05" result="inset"/>
+ <feGaussianBlur in="inset" stdDeviation="0.45" result="edge"/>
+ <feComposite in="SourceGraphic" in2="edge" operator="in"/>
+ <feColorMatrix type="saturate" values="0.62"/>
+ <feComponentTransfer><feFuncR type="linear" slope=".82" intercept=".09"/><feFuncG type="linear" slope=".82" intercept=".105"/><feFuncB type="linear" slope=".80" intercept=".09"/></feComponentTransfer>
+ </filter>
+ <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="white"/><stop offset="0.83" stop-color="white"/><stop offset="1" stop-color="black"/></linearGradient>
+ <mask id="fade" maskUnits="userSpaceOnUse" x="0" y="0" width="256" height="256"><rect width="256" height="256" fill="url(#ground)"/></mask>
+ </defs><image xlink:href="painted-16.png" width="256" height="256" filter="url(#wash)" mask="url(#fade)"/></svg>

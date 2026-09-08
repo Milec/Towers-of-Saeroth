@@ -1,0 +1,3 @@
+
+# Azgaar records use meaningful line separators; preserve the source bytes.
+*.map -text -diff

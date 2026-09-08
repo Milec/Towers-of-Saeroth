@@ -1,0 +1,9 @@
+{
+  "geographicLabels": 39,
+  "riverLabels": 22,
+  "existingNamedWoods": 13,
+  "descriptiveRanges": 4,
+  "geometryChanged": false,
+  "populationChanged": false,
+  "riverNameAssociation": "Nearest native mouth within 120 map units; descriptive association, not canonical revised river coordinates"
+}

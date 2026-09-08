@@ -1,0 +1,16 @@
+{
+  "addedMountainClusters": 93,
+  "totalMountainClusters": 266,
+  "roadId": 1340,
+  "from": "Aisach",
+  "to": "Ercellenenay",
+  "states": [
+    3,
+    8,
+    24
+  ],
+  "cells": 53,
+  "roadKm": 1059,
+  "maxDistanceFromLazarian": 79,
+  "allRoadCellsOnLand": true
+}

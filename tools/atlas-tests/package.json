@@ -1,0 +1,12 @@
+{
+  "name": "saeroth-atlas-tests",
+  "private": true,
+  "scripts": {
+    "test": "node browser.cjs",
+    "test:features": "node features.cjs"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0",
+    "playwright": "^1.55.0"
+  }
+}

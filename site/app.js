@@ -336,6 +336,12 @@ async function route() {
   // way — whether they came from a node, the tree, or the back arrow.
   if (!$('graphView').hidden) closeGraph();
   const el = $('content');
+  if (target === 'atlas') {
+    mountAtlas(el, frag);
+    $('backlinks').hidden = true;
+    $('main').scrollTop = 0;
+    markActive(target); closeSidebar(); return;
+  }
   // Vault notes cross-link heavily to other vault notes, so the vault index
   // has to be in memory before rendering or every one of those links renders
   // as unresolved. Campaign notes never link into the vault, so this stays
@@ -366,6 +372,7 @@ async function route() {
     }
     document.title = target.split('/').pop().replace(/\.md$/, '') + ' — Towers of Saeroth';
     renderBacklinks(target);
+    addAtlasLinks(el, target);
     if (frag) {
       const t = document.getElementById(frag.toLowerCase().replace(/[^\w]+/g, '-'));
       if (t) t.scrollIntoView();
