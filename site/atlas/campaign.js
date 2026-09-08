@@ -1,5 +1,9 @@
 /* The host owns note routing; this document owns all map coordinates and UI. */
 (() => {
+  if (new URLSearchParams(location.search).has('integrated')) {
+    document.documentElement.classList.add('integrated');
+    document.querySelector('header').hidden = true;
+  }
   let index;
   const info = document.getElementById('info');
   function links() {

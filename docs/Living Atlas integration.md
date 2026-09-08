@@ -5,6 +5,11 @@ app. It runs in a same-origin frame under `site/atlas/` to preserve its existing
 SVG renderer, globals, keyboard controls, search, journey planner and mobile
 layout. No framework or production JavaScript dependency is added.
 
+The integrated view fills the main site surface, hides the duplicate atlas
+header, and follows the wiki theme. The players Nations map uses the illustrated
+political PNG with relief and roads; all overview pins share the generated
+interior territory coordinates.
+
 ## Sources of truth
 
 - Campaign Markdown owns lore. `tools/build_atlas_lore.py`, called on every site
@@ -18,7 +23,7 @@ layout. No framework or production JavaScript dependency is added.
   current narrative/diplomatic information. Old embedded nation prose is not
   displayed as a second authoritative version.
 - The build regenerates `_site/nation-positions.json` using the current
-  3840×2160 atlas and national seats. Relations and trade views therefore use
+  3840×2160 atlas and interior points of national territories. Relations and trade views therefore use
   the same background and coordinates as the interactive atlas.
 - `atlas-source/Atlas-Revised-Source.map` is the corrected Azgaar data source;
   `geography.npz` and the unlabelled SVGs retain the reshaped geography. The

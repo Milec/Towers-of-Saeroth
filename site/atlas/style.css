@@ -62,3 +62,18 @@ body{font-size:16px}label,#layerlist label{font-size:14px}button,select,input{to
 @media(max-width:800px){header{padding:10px 12px;gap:10px}header h1{font-size:22px}header a{display:none}.eyebrow{font-size:12px}.mapframe{height:60svh;min-height:330px}#layerlist{grid-template-columns:1fr 1fr}aside{padding-bottom:env(safe-area-inset-bottom)}.mapstatus{font-size:12px}.maptools{top:10px;left:10px}}
 
 header a.campaign-home{display:inline-block}.campaign-link a{font-weight:bold;text-decoration:underline}
+/* Integrated atlas: one application header and one content surface. */
+.integrated body{margin:0;height:100svh;overflow:hidden}
+.integrated header[hidden]{display:none!important}
+.integrated main{height:100svh}
+.integrated .atlas-jumps{margin:0;border-radius:0}
+.integrated[data-theme=dark]{--panel:#252420;--muted:#beb8a8;--ink:#eee6d3}
+.integrated[data-theme=dark] aside,.integrated[data-theme=dark] .search,.integrated[data-theme=dark] .atlas-jumps{background:var(--panel);color:var(--ink)}
+.integrated[data-theme=dark] input,.integrated[data-theme=dark] select,.integrated[data-theme=dark] aside button,.integrated[data-theme=dark] .atlas-jumps button{background:#34332c;color:var(--ink);border-color:#686451}
+@media(max-width:800px){
+ .integrated body{overflow:auto}
+ .integrated main{height:auto}
+ .integrated .atlas-jumps{position:sticky;top:0;z-index:10}
+ .integrated .mapframe{height:calc(65svh - 56px);min-height:300px}
+}
+.integrated .maptools button{color:#233a36;background:#f7f4eb}.integrated[data-theme=dark] a{color:#d4bf83}@media(min-width:801px){.integrated .atlas-jumps{display:none}}

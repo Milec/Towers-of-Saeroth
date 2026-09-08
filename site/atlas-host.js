@@ -2,13 +2,23 @@
 window.mountAtlas = function(container, selection) {
   container.classList.add('wide');
   container.replaceChildren();
-  const title = document.createElement('h1');
-  title.textContent = 'Living Atlas';
+  document.body.classList.add('view-atlas');
   const frame = document.createElement('iframe');
   frame.title = 'Interactive Living Atlas of Saeroth';
   frame.className = 'atlas-frame';
-  frame.src = 'atlas/' + (/^(nation|burg|poi|province|route)-\d+$/.test(selection || '') ? '#' + selection : '');
-  container.append(title, frame);
+  frame.src = 'atlas/?integrated=1' + (/^(nation|burg|poi|province|route)-\d+$/.test(selection || '') ? '#' + selection : '');
+  container.append(frame);
+  frame.addEventListener('load', () => {
+    const syncTheme = () => {
+      const theme = document.documentElement.dataset.theme ||
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      frame.contentDocument.documentElement.dataset.theme = theme;
+    };
+    syncTheme();
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+    frame.addEventListener('atlas-dispose', () => observer.disconnect(), {once:true});
+  }, {once:true});
   document.title = 'Living Atlas — Towers of Saeroth';
 };
 let atlasLore;
