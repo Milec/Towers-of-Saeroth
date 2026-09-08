@@ -6,7 +6,7 @@
     "test:features": "node features.cjs"
   },
   "devDependencies": {
-    "jsdom": "^26.1.0",
-    "playwright": "^1.55.0"
+    "jsdom": "30.0.1",
+    "playwright": "1.62.1"
   }
 }
