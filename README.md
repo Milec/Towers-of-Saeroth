@@ -61,3 +61,18 @@ automatically — ask for encounters, rules answers, treasure, or NPCs in plain
 language, no commands needed.
 
 See `vault/LICENSE-AND-ATTRIBUTION.md` for the reference material's licensing.
+
+## Living Atlas
+
+Open **Explore the Living Atlas** in the site sidebar to use the geological
+map, settlements, terrain layers and journey planner. Nation and landmark
+links connect the map to campaign notes. See
+[the integration guide](docs/Living%20Atlas%20integration.md) for source files,
+build instructions, caching behavior and verification.
+
+## Agent guidance
+
+[AGENTS.md](AGENTS.md) is the shared guidance for Codex and Claude. Claude
+loads it through `CLAUDE.md`; Codex discovers the skill entrypoints in
+`.agents/skills/`. Both load the same maintained skills in `.claude/skills/`,
+so their scripts and references have a single source.

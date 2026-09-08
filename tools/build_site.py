@@ -9,6 +9,7 @@ the same size as the repo instead of several times larger.
                campaign notes still work in full)
 """
 import argparse, json, os, re, shutil, sys
+from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, '_site')
@@ -123,6 +124,9 @@ def main():
         src = os.path.join(ROOT, 'site', name)
         dst = os.path.join(OUT, name)
         shutil.copytree(src, dst) if os.path.isdir(src) else shutil.copyfile(src, dst)
+
+    from build_atlas_lore import build as build_atlas_lore
+    build_atlas_lore(Path(OUT))
 
     # players/ is a separate little site at /players/ — a handful of hand-written
     # documents with their own reader page. It is deliberately NOT part of the

@@ -1,0 +1,10 @@
+{
+  "worldPopulation": 30722498,
+  "ruralPopulation": 26463423,
+  "settlementPopulation": 4259075,
+  "populationRate": 250,
+  "urbanization": 1,
+  "includesUnclaimedLands": true,
+  "southernWildernessPopulation": 0,
+  "method": "Corrected source cell rural population plus current settlement population. Do not sum neutral-state cached totals, which retain obsolete pre-wilderness values."
+}

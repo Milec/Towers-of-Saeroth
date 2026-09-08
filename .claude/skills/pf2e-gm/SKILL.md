@@ -1,17 +1,6 @@
 ---
 name: pf2e-gm
-description: >-
-  Game mastering and worldbuilding assistant for Pathfinder Second Edition,
-  backed by a local Obsidian vault of the full PF2e rules (41,000+ notes covering
-  spells, feats, creatures, hazards, equipment, deities and rules). Use this
-  whenever the user is preparing or running a Pathfinder 2e game — building or
-  balancing an encounter, looking up a spell, feat, item, monster or rule,
-  statting an NPC, picking level-appropriate treasure, designing a dungeon or
-  settlement, inventing factions, deities or plot hooks, or asking "is this fight
-  too hard for my party". Also use it for questions phrased casually about PF2E,
-  PF2e, Pathfinder 2e or Golarion, and whenever the user mentions their party
-  level, their players, or an upcoming session — even if they never say
-  "Pathfinder" outright.
+description: Query the local Pathfinder 2e rules vault for rules, encounters, treasure, and NPC statistics. Use for PF2e mechanics and session preparation, not atlas implementation or unrelated repository work.
 ---
 
 # Pathfinder 2e Game Master
@@ -36,8 +25,12 @@ implying it came from the vault.
 ## Querying
 
 Scripts are in `scripts/`, need only Python 3.9+, and find the vault
-automatically inside this checkout. Otherwise: `export PF2E_VAULT=~/AON-Scrap/vault`.
-The first call builds an index (~25s); later calls are instant.
+automatically inside this checkout. Run examples from this skill directory,
+or prefix `scripts/` with `.claude/skills/pf2e-gm/` when at the repository root.
+Use the available Python 3 executable. To use another vault, set `PF2E_VAULT`
+in the current shell (`export PF2E_VAULT=...` in Bash, `$env:PF2E_VAULT=...` in
+PowerShell). The first query builds a local index; timing depends on the host.
+The vault is a local snapshot, not a guarantee of complete or current errata.
 
 ```bash
 # structured filters — traits and traditions AND together
@@ -88,9 +81,10 @@ not follow it with a lookup per creature; that is the expensive mistake this
 command exists to prevent. Pass `--no-stats` only if you genuinely just want
 names.
 
-Shape matters more than the total: a lone creature far above the party is a boss
-that action economy grinds down, while six weak ones can overwhelm at identical
-XP. Offer two shapes with a line on how each plays, not a catalogue.
+Consider party size, level difference, terrain and available tactics as well
+as XP. Do not assume a solo creature is easy because it has fewer actions.
+For difficulty advice, read `references/encounter-design.md` and verify the
+relevant rules before making a specific claim.
 
 ## Treasure, shops and NPCs
 
@@ -115,8 +109,8 @@ python3 scripts/npc.py roles
 ```
 
 `budget` is a whole level's allowance, not one hoard — use `--share 30` or so
-for a single find, and say which you are giving. Prices come from the vault, so
-they are correct without checking.
+for a single find, and say which you are giving. Prices are sourced from the local vault snapshot; cite that source and
+verify current errata when recency matters.
 
 `npc.py make` returns published stat blocks with their numbers. Prefer this:
 reskin by changing name, appearance, ancestry, traits and the flavour of
@@ -165,3 +159,9 @@ depends on both. Say when the vault has nothing rather than inventing an entry
 that looks official; it covers published material, not homebrew or third-party
 content. And ask about tone when it would change the answer, since the same XP
 budget serves grim horror and comedy very differently.
+
+## Repository integration
+
+Follow `AGENTS.md` at the repository root. Campaign Markdown owns canon;
+atlas population, geography and production are modeled records. A rules
+lookup does not authorize rewriting map data, publishing, or merging a PR.

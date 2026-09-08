@@ -1,0 +1,12 @@
+{
+  "burgId": 205,
+  "newCell": 4223,
+  "oldCell": 2569,
+  "elevation": 4130,
+  "distanceFromCoastKm": 221,
+  "provincePreserved": true,
+  "roadId": 1341,
+  "roadCells": 15,
+  "populationPreserved": 49.4112,
+  "portRemoved": true
+}

@@ -14,3 +14,7 @@ probe*.png
 loaded-saeroth.png
 Saeroth-map-notes.md
 site/map/*.png
+
+# Maintained atlas image downloads are part of the site.
+!site/atlas/Saeroth-Roads-and-Settlements.png
+!site/atlas/Saeroth-Political-Travel.png

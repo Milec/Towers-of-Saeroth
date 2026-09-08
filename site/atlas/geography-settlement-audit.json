@@ -1,0 +1,5612 @@
+{
+  "summary": {
+    "settlements": 1279,
+    "population": 30722498,
+    "landComponents": 41,
+    "riverSegments": 4912,
+    "uphillSegments": 0,
+    "southernSettlements": 0,
+    "southernRuralPopulation": 0,
+    "archipelagoLandComponents": {
+      "11": [
+        162,
+        64,
+        56,
+        38,
+        34,
+        3,
+        2
+      ],
+      "20": [
+        593,
+        205,
+        132,
+        19
+      ]
+    }
+  },
+  "counts": {
+    "no_mapped_land_route": 30,
+    "province_membership": 15,
+    "high_altitude_settlement": 24,
+    "harsh_biome_city": 1,
+    "capital_population_concentration": 1
+  },
+  "findings": {
+    "no_mapped_land_route": [
+      {
+        "id": 3,
+        "name": "Hadriavoria",
+        "state": 19,
+        "people": 798,
+        "cell": 4269,
+        "port": false
+      },
+      {
+        "id": 44,
+        "name": "Braquendatu",
+        "state": 19,
+        "people": 270,
+        "cell": 3373,
+        "port": true
+      },
+      {
+        "id": 84,
+        "name": "Autumn",
+        "state": 0,
+        "people": 7,
+        "cell": 36583,
+        "port": true
+      },
+      {
+        "id": 114,
+        "name": "Vetonorum",
+        "state": 19,
+        "people": 299,
+        "cell": 3547,
+        "port": false
+      },
+      {
+        "id": 122,
+        "name": "Sprin",
+        "state": 0,
+        "people": 3,
+        "cell": 34034,
+        "port": false
+      },
+      {
+        "id": 163,
+        "name": "Victomuri",
+        "state": 19,
+        "people": 380,
+        "cell": 2730,
+        "port": true
+      },
+      {
+        "id": 279,
+        "name": "Aegiorum",
+        "state": 19,
+        "people": 226,
+        "cell": 5980,
+        "port": true
+      },
+      {
+        "id": 406,
+        "name": "Greguard",
+        "state": 0,
+        "people": 9,
+        "cell": 35390,
+        "port": true
+      },
+      {
+        "id": 456,
+        "name": "Nergomapi",
+        "state": 19,
+        "people": 628,
+        "cell": 9156,
+        "port": false
+      },
+      {
+        "id": 458,
+        "name": "Mancantori",
+        "state": 19,
+        "people": 181,
+        "cell": 5076,
+        "port": false
+      },
+      {
+        "id": 496,
+        "name": "Ipontium",
+        "state": 19,
+        "people": 438,
+        "cell": 7016,
+        "port": true
+      },
+      {
+        "id": 593,
+        "name": "Simestorm",
+        "state": 0,
+        "people": 6,
+        "cell": 35394,
+        "port": true
+      },
+      {
+        "id": 596,
+        "name": "Louritorum",
+        "state": 19,
+        "people": 1085,
+        "cell": 7295,
+        "port": true
+      },
+      {
+        "id": 605,
+        "name": "Esondabis",
+        "state": 19,
+        "people": 246,
+        "cell": 3911,
+        "port": true
+      },
+      {
+        "id": 623,
+        "name": "Villemacino",
+        "state": 19,
+        "people": 335,
+        "cell": 7015,
+        "port": true
+      },
+      {
+        "id": 631,
+        "name": "Drunum",
+        "state": 19,
+        "people": 517,
+        "cell": 2869,
+        "port": true
+      },
+      {
+        "id": 694,
+        "name": "Earth",
+        "state": 0,
+        "people": 11,
+        "cell": 40218,
+        "port": true
+      },
+      {
+        "id": 809,
+        "name": "Cerantium",
+        "state": 19,
+        "people": 209,
+        "cell": 6755,
+        "port": false
+      },
+      {
+        "id": 828,
+        "name": "Heart",
+        "state": 0,
+        "people": 6,
+        "cell": 36360,
+        "port": true
+      },
+      {
+        "id": 840,
+        "name": "Bridwel",
+        "state": 0,
+        "people": 2,
+        "cell": 35146,
+        "port": false
+      },
+      {
+        "id": 921,
+        "name": "Night",
+        "state": 0,
+        "people": 2,
+        "cell": 36363,
+        "port": false
+      },
+      {
+        "id": 931,
+        "name": "Clif",
+        "state": 0,
+        "people": 4,
+        "cell": 34592,
+        "port": true
+      },
+      {
+        "id": 938,
+        "name": "Stogue",
+        "state": 0,
+        "people": 8,
+        "cell": 31473,
+        "port": false
+      },
+      {
+        "id": 939,
+        "name": "Quickward",
+        "state": 0,
+        "people": 4,
+        "cell": 39921,
+        "port": true
+      },
+      {
+        "id": 971,
+        "name": "Lentiagencu",
+        "state": 19,
+        "people": 1674,
+        "cell": 3906,
+        "port": true
+      },
+      {
+        "id": 1008,
+        "name": "Steamhorn",
+        "state": 0,
+        "people": 2,
+        "cell": 29715,
+        "port": false
+      },
+      {
+        "id": 1092,
+        "name": "Bridhol",
+        "state": 0,
+        "people": 2,
+        "cell": 30892,
+        "port": false
+      },
+      {
+        "id": 1098,
+        "name": "Clifpas",
+        "state": 0,
+        "people": 38,
+        "cell": 32941,
+        "port": true
+      },
+      {
+        "id": 1166,
+        "name": "Boloborum",
+        "state": 19,
+        "people": 194,
+        "cell": 5078,
+        "port": true
+      },
+      {
+        "id": 1226,
+        "name": "Goldb",
+        "state": 0,
+        "people": 2,
+        "cell": 33227,
+        "port": false
+      }
+    ],
+    "province_membership": [
+      {
+        "id": 84,
+        "name": "Autumn",
+        "state": 0,
+        "people": 7,
+        "cell": 36583,
+        "provinces": []
+      },
+      {
+        "id": 122,
+        "name": "Sprin",
+        "state": 0,
+        "people": 3,
+        "cell": 34034,
+        "provinces": []
+      },
+      {
+        "id": 406,
+        "name": "Greguard",
+        "state": 0,
+        "people": 9,
+        "cell": 35390,
+        "provinces": []
+      },
+      {
+        "id": 593,
+        "name": "Simestorm",
+        "state": 0,
+        "people": 6,
+        "cell": 35394,
+        "provinces": []
+      },
+      {
+        "id": 694,
+        "name": "Earth",
+        "state": 0,
+        "people": 11,
+        "cell": 40218,
+        "provinces": []
+      },
+      {
+        "id": 828,
+        "name": "Heart",
+        "state": 0,
+        "people": 6,
+        "cell": 36360,
+        "provinces": []
+      },
+      {
+        "id": 840,
+        "name": "Bridwel",
+        "state": 0,
+        "people": 2,
+        "cell": 35146,
+        "provinces": []
+      },
+      {
+        "id": 921,
+        "name": "Night",
+        "state": 0,
+        "people": 2,
+        "cell": 36363,
+        "provinces": []
+      },
+      {
+        "id": 931,
+        "name": "Clif",
+        "state": 0,
+        "people": 4,
+        "cell": 34592,
+        "provinces": []
+      },
+      {
+        "id": 938,
+        "name": "Stogue",
+        "state": 0,
+        "people": 8,
+        "cell": 31473,
+        "provinces": []
+      },
+      {
+        "id": 939,
+        "name": "Quickward",
+        "state": 0,
+        "people": 4,
+        "cell": 39921,
+        "provinces": []
+      },
+      {
+        "id": 1008,
+        "name": "Steamhorn",
+        "state": 0,
+        "people": 2,
+        "cell": 29715,
+        "provinces": []
+      },
+      {
+        "id": 1092,
+        "name": "Bridhol",
+        "state": 0,
+        "people": 2,
+        "cell": 30892,
+        "provinces": []
+      },
+      {
+        "id": 1098,
+        "name": "Clifpas",
+        "state": 0,
+        "people": 38,
+        "cell": 32941,
+        "provinces": []
+      },
+      {
+        "id": 1226,
+        "name": "Goldb",
+        "state": 0,
+        "people": 2,
+        "cell": 33227,
+        "provinces": []
+      }
+    ],
+    "high_altitude_settlement": [
+      {
+        "id": 89,
+        "name": "Yazhou",
+        "state": 1,
+        "people": 761,
+        "cell": 20142,
+        "elevation": 4039,
+        "dwarvenException": false
+      },
+      {
+        "id": 117,
+        "name": "Chang",
+        "state": 1,
+        "people": 863,
+        "cell": 25001,
+        "elevation": 3385,
+        "dwarvenException": false
+      },
+      {
+        "id": 205,
+        "name": "Highforge",
+        "state": 16,
+        "people": 12353,
+        "cell": 4223,
+        "elevation": 4130,
+        "dwarvenException": true
+      },
+      {
+        "id": 266,
+        "name": "Mudford",
+        "state": 10,
+        "people": 38,
+        "cell": 35704,
+        "elevation": 2549,
+        "dwarvenException": false
+      },
+      {
+        "id": 269,
+        "name": "Wenzhou",
+        "state": 1,
+        "people": 775,
+        "cell": 21873,
+        "elevation": 3304,
+        "dwarvenException": false
+      },
+      {
+        "id": 486,
+        "name": "Runyang",
+        "state": 1,
+        "people": 426,
+        "cell": 24654,
+        "elevation": 2579,
+        "dwarvenException": false
+      },
+      {
+        "id": 540,
+        "name": "Shaming",
+        "state": 1,
+        "people": 973,
+        "cell": 18209,
+        "elevation": 3530,
+        "dwarvenException": false
+      },
+      {
+        "id": 563,
+        "name": "Jilijiang",
+        "state": 1,
+        "people": 741,
+        "cell": 17872,
+        "elevation": 2603,
+        "dwarvenException": false
+      },
+      {
+        "id": 654,
+        "name": "Yethmel",
+        "state": 5,
+        "people": 26,
+        "cell": 4809,
+        "elevation": 3385,
+        "dwarvenException": false
+      },
+      {
+        "id": 673,
+        "name": "Jarich",
+        "state": 17,
+        "people": 1149,
+        "cell": 30962,
+        "elevation": 3551,
+        "dwarvenException": false
+      },
+      {
+        "id": 697,
+        "name": "Wenzhou",
+        "state": 1,
+        "people": 728,
+        "cell": 24657,
+        "elevation": 3826,
+        "dwarvenException": false
+      },
+      {
+        "id": 699,
+        "name": "Taifengde",
+        "state": 1,
+        "people": 2855,
+        "cell": 23264,
+        "elevation": 3340,
+        "dwarvenException": false
+      },
+      {
+        "id": 737,
+        "name": "Nalazar",
+        "state": 16,
+        "people": 363,
+        "cell": 4415,
+        "elevation": 4184,
+        "dwarvenException": true
+      },
+      {
+        "id": 844,
+        "name": "Khiz",
+        "state": 16,
+        "people": 303,
+        "cell": 3502,
+        "elevation": 2558,
+        "dwarvenException": true
+      },
+      {
+        "id": 872,
+        "name": "Schopendin",
+        "state": 12,
+        "people": 109,
+        "cell": 24450,
+        "elevation": 3290,
+        "dwarvenException": false
+      },
+      {
+        "id": 896,
+        "name": "Sichenan",
+        "state": 1,
+        "people": 5321,
+        "cell": 17546,
+        "elevation": 2991,
+        "dwarvenException": false
+      },
+      {
+        "id": 927,
+        "name": "Ukthar",
+        "state": 16,
+        "people": 394,
+        "cell": 5023,
+        "elevation": 3967,
+        "dwarvenException": true
+      },
+      {
+        "id": 1040,
+        "name": "Gaozhou",
+        "state": 1,
+        "people": 3514,
+        "cell": 22228,
+        "elevation": 2518,
+        "dwarvenException": false
+      },
+      {
+        "id": 1086,
+        "name": "Nanzan",
+        "state": 5,
+        "people": 24,
+        "cell": 4408,
+        "elevation": 2729,
+        "dwarvenException": false
+      },
+      {
+        "id": 1142,
+        "name": "Yethmellenil",
+        "state": 5,
+        "people": 26,
+        "cell": 4412,
+        "elevation": 4058,
+        "dwarvenException": false
+      },
+      {
+        "id": 1192,
+        "name": "Shuan",
+        "state": 1,
+        "people": 653,
+        "cell": 21505,
+        "elevation": 2681,
+        "dwarvenException": false
+      },
+      {
+        "id": 1213,
+        "name": "Dengzhou",
+        "state": 1,
+        "people": 734,
+        "cell": 23961,
+        "elevation": 2827,
+        "dwarvenException": false
+      },
+      {
+        "id": 1232,
+        "name": "Caozhou",
+        "state": 1,
+        "people": 846,
+        "cell": 18850,
+        "elevation": 3044,
+        "dwarvenException": false
+      },
+      {
+        "id": 1236,
+        "name": "Merahtor",
+        "state": 17,
+        "people": 1563,
+        "cell": 29494,
+        "elevation": 3119,
+        "dwarvenException": false
+      }
+    ],
+    "harsh_biome_city": [
+      {
+        "id": 205,
+        "name": "Highforge",
+        "state": 16,
+        "people": 12353,
+        "cell": 4223,
+        "biome": 11,
+        "port": false
+      }
+    ],
+    "capital_population_concentration": [
+      {
+        "state": "Tessine",
+        "capital": "Tessine"
+      }
+    ],
+    "road_crosses_water_polygon": [],
+    "southern_settlement": []
+  },
+  "geometryChecks": {
+    "uniqueRoadRiverCrossings": 475,
+    "crossingsWithoutNearbyBridgeMarker": 466,
+    "bridgeMarkerMatchingToleranceKm": 24,
+    "roadWaterPolygonIntersections": 0,
+    "invalidWaterPolygons": 0,
+    "crossings": [
+      {
+        "route": 0,
+        "name": "Andingxia Road",
+        "point": [
+          2990.080138299733,
+          954.0119403369611
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 455.0
+      },
+      {
+        "route": 0,
+        "name": "Andingxia Road",
+        "point": [
+          2978.99367009514,
+          959.2906216046426
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 467.9
+      },
+      {
+        "route": 0,
+        "name": "Andingxia Road",
+        "point": [
+          2827.4084195385926,
+          1139.3362306468975
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 725.3
+      },
+      {
+        "route": 0,
+        "name": "Andingxia Road",
+        "point": [
+          2792.3862099802445,
+          1174.8285743904848
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 786.9
+      },
+      {
+        "route": 1,
+        "name": "Hangzhong Road",
+        "point": [
+          2924.6143799607935,
+          880.3801146064126
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 350.1
+      },
+      {
+        "route": 1,
+        "name": "Hangzhong Road",
+        "point": [
+          2860.342542754386,
+          885.2054279870903
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 283.5
+      },
+      {
+        "route": 1,
+        "name": "Hangzhong Road",
+        "point": [
+          2505.883109673877,
+          869.4403461740949
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 542.2
+      },
+      {
+        "route": 1,
+        "name": "Hangzhong Road",
+        "point": [
+          2442.88851455582,
+          817.4210736064789
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 643.4
+      },
+      {
+        "route": 2,
+        "name": "Baifeng Road",
+        "point": [
+          2511.929765421028,
+          1182.2496034820404
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 943.8
+      },
+      {
+        "route": 3,
+        "name": "Sichenan Road",
+        "point": [
+          2877.3810504095823,
+          840.8509427003511
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 257.4
+      },
+      {
+        "route": 3,
+        "name": "Sichenan Road",
+        "point": [
+          2846.0636904001576,
+          832.4109625929234
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 194.4
+      },
+      {
+        "route": 5,
+        "name": "Galtsogt Road",
+        "point": [
+          2762.6770071062424,
+          782.48936861998
+        ],
+        "bridgeMarkerNearby": true,
+        "nearestBridgeKm": 0.0
+      },
+      {
+        "route": 6,
+        "name": "Bayankhon Road",
+        "point": [
+          2786.1991636759567,
+          756.5117294006006
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 70.1
+      },
+      {
+        "route": 6,
+        "name": "Bayankhon Road",
+        "point": [
+          2731.693831274942,
+          625.3828152214501
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 320.3
+      },
+      {
+        "route": 6,
+        "name": "Bayankhon Road",
+        "point": [
+          2736.9549208930257,
+          615.2001318848503
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 338.5
+      },
+      {
+        "route": 6,
+        "name": "Bayankhon Road",
+        "point": [
+          2740.3454437948126,
+          560.8870352676449
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 445.4
+      },
+      {
+        "route": 6,
+        "name": "Bayankhon Road",
+        "point": [
+          2740.202896595369,
+          534.4390083708321
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 498.1
+      },
+      {
+        "route": 6,
+        "name": "Bayankhon Road",
+        "point": [
+          2780.041300507628,
+          309.65665511628544
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 789.9
+      },
+      {
+        "route": 6,
+        "name": "Bayankhon Road",
+        "point": [
+          2779.0633387331527,
+          302.1384351705335
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 803.5
+      },
+      {
+        "route": 7,
+        "name": "Bayanmonkh Road",
+        "point": [
+          2793.460182992205,
+          757.5729085017948
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 79.2
+      },
+      {
+        "route": 7,
+        "name": "Bayanmonkh Road",
+        "point": [
+          2855.279602655476,
+          627.6802868850805
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 286.3
+      },
+      {
+        "route": 7,
+        "name": "Bayanmonkh Road",
+        "point": [
+          2923.8883188913774,
+          557.5025198054797
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 220.3
+      },
+      {
+        "route": 7,
+        "name": "Bayanmonkh Road",
+        "point": [
+          2930.6652701644944,
+          551.5024510571271
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 220.8
+      },
+      {
+        "route": 9,
+        "name": "Damir Road",
+        "point": [
+          2690.291421657644,
+          525.1843247053216
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 534.6
+      },
+      {
+        "route": 9,
+        "name": "Damir Road",
+        "point": [
+          2685.7516480349937,
+          525.7494966011466
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 536.0
+      },
+      {
+        "route": 9,
+        "name": "Damir Road",
+        "point": [
+          2668.9551269697686,
+          532.9685579903035
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 533.1
+      },
+      {
+        "route": 9,
+        "name": "Damir Road",
+        "point": [
+          2649.528788238195,
+          543.4312215672231
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 529.0
+      },
+      {
+        "route": 10,
+        "name": "Morov Road",
+        "point": [
+          2925.6067276014332,
+          567.6084175036957
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 203.4
+      },
+      {
+        "route": 11,
+        "name": "Rench Road",
+        "point": [
+          2798.129537589287,
+          573.164453431232
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 420.9
+      },
+      {
+        "route": 11,
+        "name": "Rench Road",
+        "point": [
+          2910.587226471244,
+          398.339553634356
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 512.1
+      },
+      {
+        "route": 12,
+        "name": "Kesslin Road",
+        "point": [
+          353.410742898498,
+          1083.9397841965804
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 903.9
+      },
+      {
+        "route": 12,
+        "name": "Kesslin Road",
+        "point": [
+          357.2959593409669,
+          1082.8111737647064
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 900.7
+      },
+      {
+        "route": 12,
+        "name": "Kesslin Road",
+        "point": [
+          370.1111600268047,
+          1077.6846863308376
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 887.6
+      },
+      {
+        "route": 12,
+        "name": "Kesslin Road",
+        "point": [
+          374.1488775671985,
+          1081.7013843355276
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 894.8
+      },
+      {
+        "route": 12,
+        "name": "Kesslin Road",
+        "point": [
+          542.9608579888718,
+          1095.1730868947452
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 953.6
+      },
+      {
+        "route": 12,
+        "name": "Kesslin Road",
+        "point": [
+          618.703406466574,
+          1142.8967946647972
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1093.0
+      },
+      {
+        "route": 12,
+        "name": "Kesslin Road",
+        "point": [
+          621.1897418995819,
+          1145.959244244256
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1100.6
+      },
+      {
+        "route": 12,
+        "name": "Kesslin Road",
+        "point": [
+          874.2388580116454,
+          1294.6282987699965
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1542.6
+      },
+      {
+        "route": 13,
+        "name": "Thornwycke Road",
+        "point": [
+          553.3497931310537,
+          1031.5968934477623
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 838.5
+      },
+      {
+        "route": 13,
+        "name": "Thornwycke Road",
+        "point": [
+          568.2750395829157,
+          1017.0540524211731
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 821.9
+      },
+      {
+        "route": 13,
+        "name": "Thornwycke Road",
+        "point": [
+          577.2392850871088,
+          1018.1116127675733
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 830.7
+      },
+      {
+        "route": 13,
+        "name": "Thornwycke Road",
+        "point": [
+          689.0729300143946,
+          991.9972176598552
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 842.9
+      },
+      {
+        "route": 15,
+        "name": "Aldreich Road",
+        "point": [
+          739.9653870890326,
+          1272.6213487820971
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1409.8
+      },
+      {
+        "route": 16,
+        "name": "Hama Road",
+        "point": [
+          2988.9432367510435,
+          643.7096913893288
+        ],
+        "bridgeMarkerNearby": true,
+        "nearestBridgeKm": 20.4
+      },
+      {
+        "route": 17,
+        "name": "Durqatum Road",
+        "point": [
+          2985.0965788206126,
+          645.4246947414487
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 28.8
+      },
+      {
+        "route": 17,
+        "name": "Durqatum Road",
+        "point": [
+          3020.921461071045,
+          688.091413081384
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 81.7
+      },
+      {
+        "route": 17,
+        "name": "Durqatum Road",
+        "point": [
+          3218.859015346527,
+          855.0291104325145
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 490.3
+      },
+      {
+        "route": 17,
+        "name": "Durqatum Road",
+        "point": [
+          3232.5045258010177,
+          870.0103354441261
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 529.3
+      },
+      {
+        "route": 17,
+        "name": "Durqatum Road",
+        "point": [
+          3239.967097406089,
+          879.8699606257005
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 552.6
+      },
+      {
+        "route": 17,
+        "name": "Durqatum Road",
+        "point": [
+          3284.2722844695086,
+          919.3582717561325
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 670.3
+      },
+      {
+        "route": 17,
+        "name": "Durqatum Road",
+        "point": [
+          3306.374608862271,
+          934.0575938765923
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 723.4
+      },
+      {
+        "route": 18,
+        "name": "Assu Road",
+        "point": [
+          2999.516915802565,
+          690.1175749300374
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 77.1
+      },
+      {
+        "route": 18,
+        "name": "Assu Road",
+        "point": [
+          3009.5911926809385,
+          727.3332886646388
+        ],
+        "bridgeMarkerNearby": true,
+        "nearestBridgeKm": 0.0
+      },
+      {
+        "route": 18,
+        "name": "Assu Road",
+        "point": [
+          3014.2478891186015,
+          759.1280055906774
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 64.3
+      },
+      {
+        "route": 18,
+        "name": "Assu Road",
+        "point": [
+          3016.010724597865,
+          770.486987794392
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 87.3
+      },
+      {
+        "route": 18,
+        "name": "Assu Road",
+        "point": [
+          3018.0901780408785,
+          790.7326838179811
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 127.9
+      },
+      {
+        "route": 21,
+        "name": "Himmargorlon Road",
+        "point": [
+          1118.911129147584,
+          515.6648947253937
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1137.0
+      },
+      {
+        "route": 21,
+        "name": "Himmargorlon Road",
+        "point": [
+          1153.009764586107,
+          574.883987886044
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1195.3
+      },
+      {
+        "route": 21,
+        "name": "Himmargorlon Road",
+        "point": [
+          1153.8248434086188,
+          597.1568074749161
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1196.5
+      },
+      {
+        "route": 21,
+        "name": "Himmargorlon Road",
+        "point": [
+          1157.7814888816804,
+          622.2322419160388
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1205.9
+      },
+      {
+        "route": 22,
+        "name": "Nealosthas Road",
+        "point": [
+          922.5042496582521,
+          438.8017702493263
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 795.4
+      },
+      {
+        "route": 25,
+        "name": "Svidyche Road",
+        "point": [
+          1324.0766476056062,
+          900.5040154235833
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1656.0
+      },
+      {
+        "route": 25,
+        "name": "Svidyche Road",
+        "point": [
+          1324.2256919014396,
+          895.1315117152814
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1652.3
+      },
+      {
+        "route": 25,
+        "name": "Svidyche Road",
+        "point": [
+          1322.0360964661068,
+          890.4057880185039
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1644.8
+      },
+      {
+        "route": 26,
+        "name": "Ogovets Road",
+        "point": [
+          1230.5679602593702,
+          944.7569537539589
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1523.0
+      },
+      {
+        "route": 26,
+        "name": "Ogovets Road",
+        "point": [
+          1220.4015111607282,
+          962.1807173133501
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1521.6
+      },
+      {
+        "route": 26,
+        "name": "Ogovets Road",
+        "point": [
+          1204.0686214262303,
+          996.9190657050004
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1528.8
+      },
+      {
+        "route": 26,
+        "name": "Ogovets Road",
+        "point": [
+          1162.6169661325468,
+          1082.237348664908
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1560.2
+      },
+      {
+        "route": 28,
+        "name": "Putivl Road",
+        "point": [
+          1325.7349377337723,
+          891.8220627913984
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1652.7
+      },
+      {
+        "route": 28,
+        "name": "Putivl Road",
+        "point": [
+          1286.4250917297402,
+          759.349303200166
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1499.4
+      },
+      {
+        "route": 29,
+        "name": "Kansreyri Road",
+        "point": [
+          530.983642149004,
+          393.8029279254692
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 399.9
+      },
+      {
+        "route": 30,
+        "name": "Erbaknes Road",
+        "point": [
+          570.6826430125516,
+          391.2645394125252
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 403.1
+      },
+      {
+        "route": 31,
+        "name": "Donmoen Road",
+        "point": [
+          675.3302763728243,
+          385.5412886004871
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 477.8
+      },
+      {
+        "route": 31,
+        "name": "Donmoen Road",
+        "point": [
+          693.3204219865543,
+          391.235584067308
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 487.4
+      },
+      {
+        "route": 33,
+        "name": "Borand Road",
+        "point": [
+          1303.6437655683235,
+          1268.659693068935
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2017.0
+      },
+      {
+        "route": 33,
+        "name": "Borand Road",
+        "point": [
+          1301.3560777022806,
+          1263.8606729854475
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2007.2
+      },
+      {
+        "route": 33,
+        "name": "Borand Road",
+        "point": [
+          1366.6168955616392,
+          1194.214704669366
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2020.0
+      },
+      {
+        "route": 35,
+        "name": "Louneuf Road",
+        "point": [
+          1290.6216484389677,
+          1303.056707408475
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2045.0
+      },
+      {
+        "route": 35,
+        "name": "Louneuf Road",
+        "point": [
+          1303.0911743135205,
+          1306.0605882755099
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2067.1
+      },
+      {
+        "route": 35,
+        "name": "Louneuf Road",
+        "point": [
+          1459.001385428334,
+          1335.427332177539
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2339.6
+      },
+      {
+        "route": 35,
+        "name": "Louneuf Road",
+        "point": [
+          1516.6225151219705,
+          1330.1715588558495
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2423.3
+      },
+      {
+        "route": 35,
+        "name": "Louneuf Road",
+        "point": [
+          1548.5513102639297,
+          1319.4468902265269
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2461.5
+      },
+      {
+        "route": 36,
+        "name": "Madonville Road",
+        "point": [
+          1219.8659397429972,
+          1255.2425235697906
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1877.0
+      },
+      {
+        "route": 37,
+        "name": "Ercellenenay Road",
+        "point": [
+          1168.1492177677728,
+          1254.4300424378284
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1804.1
+      },
+      {
+        "route": 37,
+        "name": "Ercellenenay Road",
+        "point": [
+          1112.2332781891682,
+          1226.6219477552527
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1687.9
+      },
+      {
+        "route": 37,
+        "name": "Ercellenenay Road",
+        "point": [
+          1062.8479146155128,
+          1211.786807553895
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1601.4
+      },
+      {
+        "route": 37,
+        "name": "Ercellenenay Road",
+        "point": [
+          1038.2413003678366,
+          1220.4836984064762
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1584.5
+      },
+      {
+        "route": 37,
+        "name": "Ercellenenay Road",
+        "point": [
+          1040.91473176254,
+          1230.0622934408807
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1602.9
+      },
+      {
+        "route": 37,
+        "name": "Ercellenenay Road",
+        "point": [
+          1044.7031270369548,
+          1252.0134978343197
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1642.6
+      },
+      {
+        "route": 39,
+        "name": "Hornrith Road",
+        "point": [
+          3307.6364136434618,
+          1245.3498474628097
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1195.3
+      },
+      {
+        "route": 39,
+        "name": "Hornrith Road",
+        "point": [
+          3298.4915296018066,
+          1215.7646177568809
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1135.0
+      },
+      {
+        "route": 40,
+        "name": "Bridge Road",
+        "point": [
+          3284.816028145789,
+          1476.6622974652905
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1596.6
+      },
+      {
+        "route": 40,
+        "name": "Bridge Road",
+        "point": [
+          3262.0458829979257,
+          1528.2952290373864
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1679.6
+      },
+      {
+        "route": 41,
+        "name": "Fiverbury Road",
+        "point": [
+          3230.1635193640996,
+          1420.4459445860243
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1454.7
+      },
+      {
+        "route": 41,
+        "name": "Fiverbury Road",
+        "point": [
+          3224.42515082904,
+          1424.9538199789058
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1459.9
+      },
+      {
+        "route": 42,
+        "name": "Thaxningdon Road",
+        "point": [
+          3321.7424383206694,
+          1244.035955694047
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1207.3
+      },
+      {
+        "route": 42,
+        "name": "Thaxningdon Road",
+        "point": [
+          3315.5769201017533,
+          1191.1414488980827
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1111.3
+      },
+      {
+        "route": 43,
+        "name": "Direrevame Road",
+        "point": [
+          3161.5244218194143,
+          1388.141065905857
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1356.1
+      },
+      {
+        "route": 43,
+        "name": "Direrevame Road",
+        "point": [
+          3074.3479566336077,
+          1600.4984374170403
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1750.7
+      },
+      {
+        "route": 45,
+        "name": "Oxbreachtti Road",
+        "point": [
+          3022.451881445391,
+          1461.2556182837604
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1453.6
+      },
+      {
+        "route": 47,
+        "name": "Schopendin Road",
+        "point": [
+          791.7137403417026,
+          1068.1472904750892
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1062.5
+      },
+      {
+        "route": 49,
+        "name": "Uskoma Road",
+        "point": [
+          774.7444351607589,
+          658.4212053641373
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 457.8
+      },
+      {
+        "route": 50,
+        "name": "Pelailov Road",
+        "point": [
+          698.2214796907415,
+          599.0393056989329
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 285.6
+      },
+      {
+        "route": 51,
+        "name": "Chern Road",
+        "point": [
+          908.8519398603146,
+          637.163112462445
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 712.2
+      },
+      {
+        "route": 51,
+        "name": "Chern Road",
+        "point": [
+          941.5461051555662,
+          673.1150535999042
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 788.7
+      },
+      {
+        "route": 51,
+        "name": "Chern Road",
+        "point": [
+          949.192355297777,
+          679.2700447589447
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 806.2
+      },
+      {
+        "route": 51,
+        "name": "Chern Road",
+        "point": [
+          968.8434716916717,
+          693.0262595904408
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 850.7
+      },
+      {
+        "route": 51,
+        "name": "Chern Road",
+        "point": [
+          971.5561368372902,
+          695.6270832195609
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 857.2
+      },
+      {
+        "route": 53,
+        "name": "Clifnalmond Road",
+        "point": [
+          532.7042605031006,
+          451.42480843116533
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 285.4
+      },
+      {
+        "route": 53,
+        "name": "Clifnalmond Road",
+        "point": [
+          568.413271295615,
+          443.34104790088395
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 298.9
+      },
+      {
+        "route": 54,
+        "name": "Redcleston Road",
+        "point": [
+          520.6568621707017,
+          429.06139274177923
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 333.8
+      },
+      {
+        "route": 56,
+        "name": "Staple Road",
+        "point": [
+          404.24996416793914,
+          680.99060322195
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 92.0
+      },
+      {
+        "route": 56,
+        "name": "Staple Road",
+        "point": [
+          434.19127021378057,
+          656.4307397186528
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 57.0
+      },
+      {
+        "route": 56,
+        "name": "Staple Road",
+        "point": [
+          555.5922540569718,
+          592.2536509036522
+        ],
+        "bridgeMarkerNearby": true,
+        "nearestBridgeKm": 0.0
+      },
+      {
+        "route": 57,
+        "name": "Bairue Road",
+        "point": [
+          499.78902357545724,
+          711.2427274662635
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 227.8
+      },
+      {
+        "route": 57,
+        "name": "Bairue Road",
+        "point": [
+          506.0482692036254,
+          712.6821530247346
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 239.2
+      },
+      {
+        "route": 58,
+        "name": "Hatreton Road",
+        "point": [
+          383.9102359729972,
+          676.8074108574551
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 101.5
+      },
+      {
+        "route": 58,
+        "name": "Hatreton Road",
+        "point": [
+          377.580209820194,
+          664.1620079177401
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 92.3
+      },
+      {
+        "route": 58,
+        "name": "Hatreton Road",
+        "point": [
+          374.2903163130338,
+          653.4220673748728
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 87.1
+      },
+      {
+        "route": 58,
+        "name": "Hatreton Road",
+        "point": [
+          375.5380909996165,
+          644.3007378477438
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 79.1
+      },
+      {
+        "route": 58,
+        "name": "Hatreton Road",
+        "point": [
+          395.52115001890655,
+          608.4659098997475
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 66.7
+      },
+      {
+        "route": 58,
+        "name": "Hatreton Road",
+        "point": [
+          397.89196218596004,
+          601.4952848320441
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 76.5
+      },
+      {
+        "route": 65,
+        "name": "Henixthraraut Road",
+        "point": [
+          3028.9214162144103,
+          1093.3553684924889
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 733.1
+      },
+      {
+        "route": 66,
+        "name": "Racorum Road",
+        "point": [
+          1023.3244380652721,
+          870.6084784081443
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1088.6
+      },
+      {
+        "route": 66,
+        "name": "Racorum Road",
+        "point": [
+          992.3838989692449,
+          931.9366412352871
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1106.7
+      },
+      {
+        "route": 66,
+        "name": "Racorum Road",
+        "point": [
+          988.6056295228824,
+          942.2441960744238
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1113.5
+      },
+      {
+        "route": 67,
+        "name": "Lintiames Road",
+        "point": [
+          1093.7171345190798,
+          735.5434895210168
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1113.8
+      },
+      {
+        "route": 67,
+        "name": "Lintiames Road",
+        "point": [
+          1069.8988244527789,
+          752.6134554863542
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1077.5
+      },
+      {
+        "route": 67,
+        "name": "Lintiames Road",
+        "point": [
+          937.0230112326165,
+          805.0056407466269
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 873.5
+      },
+      {
+        "route": 67,
+        "name": "Lintiames Road",
+        "point": [
+          852.7669982392484,
+          819.5722327221996
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 748.3
+      },
+      {
+        "route": 68,
+        "name": "Dianiacigo Road",
+        "point": [
+          1021.7765594534391,
+          858.0874137665787
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1073.3
+      },
+      {
+        "route": 69,
+        "name": "Pornum Road",
+        "point": [
+          1075.2531263129752,
+          733.543229497301
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1077.1
+      },
+      {
+        "route": 71,
+        "name": "Bilbundush Road",
+        "point": [
+          1286.816687298403,
+          728.0308725855921
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1487.4
+      },
+      {
+        "route": 71,
+        "name": "Bilbundush Road",
+        "point": [
+          1275.9523036002074,
+          690.2515701183061
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1454.0
+      },
+      {
+        "route": 73,
+        "name": "Tanorare Road",
+        "point": [
+          325.2886380149314,
+          641.8246549101823
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 178.2
+      },
+      {
+        "route": 74,
+        "name": "Agarzuesa Road",
+        "point": [
+          308.51512188904553,
+          794.5643437273425
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 381.0
+      },
+      {
+        "route": 75,
+        "name": "Ajdamuba Road",
+        "point": [
+          588.7138022089131,
+          787.7217183168406
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 396.5
+      },
+      {
+        "route": 76,
+        "name": "Darchiluz Road",
+        "point": [
+          424.0732261884418,
+          862.9979391346073
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 454.2
+      },
+      {
+        "route": 76,
+        "name": "Darchiluz Road",
+        "point": [
+          433.4993781318535,
+          884.5167442123696
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 498.4
+      },
+      {
+        "route": 76,
+        "name": "Darchiluz Road",
+        "point": [
+          433.33494668445485,
+          893.0953358344839
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 515.4
+      },
+      {
+        "route": 76,
+        "name": "Darchiluz Road",
+        "point": [
+          434.4204626837657,
+          896.855261914116
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 523.1
+      },
+      {
+        "route": 76,
+        "name": "Darchiluz Road",
+        "point": [
+          441.78007668602095,
+          906.2299245192058
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 543.1
+      },
+      {
+        "route": 76,
+        "name": "Darchiluz Road",
+        "point": [
+          446.7315896611945,
+          909.5135867939513
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 550.7
+      },
+      {
+        "route": 78,
+        "name": "Preskirk Road",
+        "point": [
+          981.8748511005156,
+          1146.2318990073281
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1398.0
+      },
+      {
+        "route": 78,
+        "name": "Preskirk Road",
+        "point": [
+          1055.0946772999134,
+          1162.8526084010912
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1516.7
+      },
+      {
+        "route": 78,
+        "name": "Preskirk Road",
+        "point": [
+          1066.977438898178,
+          1163.8091077323227
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1533.9
+      },
+      {
+        "route": 78,
+        "name": "Preskirk Road",
+        "point": [
+          1125.66254984414,
+          1179.0443694218386
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1636.2
+      },
+      {
+        "route": 79,
+        "name": "Asingstoles Road",
+        "point": [
+          955.4113657365323,
+          1144.943580582669
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1364.3
+      },
+      {
+        "route": 79,
+        "name": "Asingstoles Road",
+        "point": [
+          1018.8334619078367,
+          1220.0692965661592
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1560.4
+      },
+      {
+        "route": 79,
+        "name": "Asingstoles Road",
+        "point": [
+          1024.0719268235353,
+          1222.2166468817118
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1570.1
+      },
+      {
+        "route": 80,
+        "name": "Congravenil Road",
+        "point": [
+          2836.016897907925,
+          1354.4596109195368
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1153.3
+      },
+      {
+        "route": 80,
+        "name": "Congravenil Road",
+        "point": [
+          2850.416066211362,
+          1358.3454098889285
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1165.0
+      },
+      {
+        "route": 80,
+        "name": "Congravenil Road",
+        "point": [
+          2879.5246067660537,
+          1385.3085382097288
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1228.1
+      },
+      {
+        "route": 80,
+        "name": "Congravenil Road",
+        "point": [
+          2877.1803656981524,
+          1434.5643444940524
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1324.1
+      },
+      {
+        "route": 80,
+        "name": "Congravenil Road",
+        "point": [
+          2893.763711340159,
+          1493.0597721939544
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1445.1
+      },
+      {
+        "route": 81,
+        "name": "Bridhurst Road",
+        "point": [
+          2799.0332160665066,
+          1372.3583778259615
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1182.0
+      },
+      {
+        "route": 84,
+        "name": "Penteford Road",
+        "point": [
+          2837.954994870842,
+          1371.504146850057
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1187.6
+      },
+      {
+        "route": 84,
+        "name": "Penteford Road",
+        "point": [
+          2843.198920671518,
+          1409.9057514301733
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1265.1
+      },
+      {
+        "route": 84,
+        "name": "Penteford Road",
+        "point": [
+          2838.7295437118914,
+          1450.7857826236495
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1345.2
+      },
+      {
+        "route": 84,
+        "name": "Penteford Road",
+        "point": [
+          2798.044741008469,
+          1490.2311038397665
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1417.3
+      },
+      {
+        "route": 86,
+        "name": "Nyadodo Road",
+        "point": [
+          3407.8265816553235,
+          1174.55517254108
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1197.7
+      },
+      {
+        "route": 86,
+        "name": "Nyadodo Road",
+        "point": [
+          3398.530062327782,
+          1130.9464817013716
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1121.0
+      },
+      {
+        "route": 86,
+        "name": "Nyadodo Road",
+        "point": [
+          3374.685757979529,
+          1033.859400794021
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 953.4
+      },
+      {
+        "route": 87,
+        "name": "Rurido Road",
+        "point": [
+          3400.4695377735284,
+          1190.6052462852533
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1212.3
+      },
+      {
+        "route": 88,
+        "name": "Ofingamnai Road",
+        "point": [
+          3403.795296141741,
+          1181.814113224703
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1203.2
+      },
+      {
+        "route": 88,
+        "name": "Ofingamnai Road",
+        "point": [
+          3377.6662249059505,
+          1137.4645400056083
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1102.2
+      },
+      {
+        "route": 88,
+        "name": "Ofingamnai Road",
+        "point": [
+          3351.2476540017256,
+          1068.1856821990916
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 965.2
+      },
+      {
+        "route": 89,
+        "name": "Araraye Road",
+        "point": [
+          3428.1225959969042,
+          1297.0252523066144
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1413.8
+      },
+      {
+        "route": 90,
+        "name": "Koran Road",
+        "point": [
+          3181.823507015183,
+          847.6512602713542
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 420.2
+      },
+      {
+        "route": 90,
+        "name": "Koran Road",
+        "point": [
+          3191.510590695487,
+          854.9517716941925
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 444.4
+      },
+      {
+        "route": 90,
+        "name": "Koran Road",
+        "point": [
+          3231.2266471755124,
+          881.1181588951055
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 539.5
+      },
+      {
+        "route": 91,
+        "name": "Barzabas Road",
+        "point": [
+          3136.3202641676016,
+          880.9238803858437
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 398.2
+      },
+      {
+        "route": 91,
+        "name": "Barzabas Road",
+        "point": [
+          3158.8665677971076,
+          919.5571527567005
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 486.8
+      },
+      {
+        "route": 91,
+        "name": "Barzabas Road",
+        "point": [
+          3235.6567758544998,
+          1031.1764951987732
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 757.4
+      },
+      {
+        "route": 92,
+        "name": "Golat Road",
+        "point": [
+          3145.862023544894,
+          872.0846039403734
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 397.6
+      },
+      {
+        "route": 92,
+        "name": "Golat Road",
+        "point": [
+          3155.911386716036,
+          875.2583208278486
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 416.1
+      },
+      {
+        "route": 92,
+        "name": "Golat Road",
+        "point": [
+          3199.624636502859,
+          904.34586672616
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 519.4
+      },
+      {
+        "route": 92,
+        "name": "Golat Road",
+        "point": [
+          3279.354713741328,
+          990.0316857106599
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 753.1
+      },
+      {
+        "route": 94,
+        "name": "Ornovets Way",
+        "point": [
+          1249.7950870273303,
+          823.9018708661151
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1463.7
+      },
+      {
+        "route": 95,
+        "name": "Changbai Way",
+        "point": [
+          2499.1969964307445,
+          902.7674853838791
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 579.3
+      },
+      {
+        "route": 95,
+        "name": "Changbai Way",
+        "point": [
+          2520.2012676752997,
+          938.4116673681108
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 576.6
+      },
+      {
+        "route": 97,
+        "name": "Huzhou Way",
+        "point": [
+          2412.2679445175067,
+          1195.0148610286994
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1082.5
+      },
+      {
+        "route": 98,
+        "name": "Hochegen Way",
+        "point": [
+          792.6506455877585,
+          1302.4301999747447
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1497.4
+      },
+      {
+        "route": 100,
+        "name": "Bayankhaan Way",
+        "point": [
+          2840.62476516165,
+          688.5925351224288
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 244.1
+      },
+      {
+        "route": 100,
+        "name": "Bayankhaan Way",
+        "point": [
+          2842.6398739579404,
+          683.669009101337
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 254.2
+      },
+      {
+        "route": 100,
+        "name": "Bayankhaan Way",
+        "point": [
+          2876.6747257021,
+          661.9742252148627
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 246.9
+      },
+      {
+        "route": 101,
+        "name": "Schil Way",
+        "point": [
+          983.1119345390405,
+          1315.0294015078691
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1679.5
+      },
+      {
+        "route": 102,
+        "name": "Anganhai Way",
+        "point": [
+          2496.5042276817976,
+          1168.014972827149
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 937.0
+      },
+      {
+        "route": 102,
+        "name": "Anganhai Way",
+        "point": [
+          2498.608480173286,
+          1164.630381926352
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 929.0
+      },
+      {
+        "route": 102,
+        "name": "Anganhai Way",
+        "point": [
+          2499.2350744843698,
+          1156.4878985955047
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 914.9
+      },
+      {
+        "route": 102,
+        "name": "Anganhai Way",
+        "point": [
+          2492.831308777715,
+          1142.1572268493007
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 899.3
+      },
+      {
+        "route": 103,
+        "name": "Wyhren Way",
+        "point": [
+          354.06330370930976,
+          1079.7857863369845
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 895.5
+      },
+      {
+        "route": 104,
+        "name": "Swaren Way",
+        "point": [
+          3222.614792456688,
+          1416.2554032448131
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1442.2
+      },
+      {
+        "route": 104,
+        "name": "Swaren Way",
+        "point": [
+          3241.05898418642,
+          1380.998204045335
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1386.9
+      },
+      {
+        "route": 106,
+        "name": "Freyshield Way",
+        "point": [
+          2993.2311123988316,
+          1646.0191702899806
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1787.6
+      },
+      {
+        "route": 107,
+        "name": "Ervan Ovi Way",
+        "point": [
+          2842.7053993207956,
+          691.9210027468142
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 241.7
+      },
+      {
+        "route": 111,
+        "name": "Lihuanan Way",
+        "point": [
+          2524.8109714850975,
+          1185.561309175735
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 936.1
+      },
+      {
+        "route": 118,
+        "name": "Tengchang Way",
+        "point": [
+          2659.4560365706575,
+          1041.0771474829494
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 556.9
+      },
+      {
+        "route": 136,
+        "name": "Dongchang Way",
+        "point": [
+          2412.5112680355974,
+          1202.4359798653236
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1093.6
+      },
+      {
+        "route": 138,
+        "name": "Sortustium Way",
+        "point": [
+          966.5792150408719,
+          930.5187891266002
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1064.6
+      },
+      {
+        "route": 142,
+        "name": "Tienheimberg Way",
+        "point": [
+          329.49923609030867,
+          1139.6569426061537
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1021.3
+      },
+      {
+        "route": 157,
+        "name": "Tonkhan Way",
+        "point": [
+          2216.0906917231246,
+          675.075006574258
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1114.1
+      },
+      {
+        "route": 165,
+        "name": "Thevacentia Way",
+        "point": [
+          1101.9383779276109,
+          726.1739517181687
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1125.0
+      },
+      {
+        "route": 165,
+        "name": "Thevacentia Way",
+        "point": [
+          1101.0444081561006,
+          729.6037249412763
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1125.0
+      },
+      {
+        "route": 180,
+        "name": "Shaozhoui Way",
+        "point": [
+          2508.263143648387,
+          1147.023461179989
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 889.1
+      },
+      {
+        "route": 180,
+        "name": "Shaozhoui Way",
+        "point": [
+          2512.9660406068842,
+          1110.5871590670038
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 824.6
+      },
+      {
+        "route": 180,
+        "name": "Shaozhoui Way",
+        "point": [
+          2518.615386666281,
+          994.5878456900476
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 646.7
+      },
+      {
+        "route": 189,
+        "name": "Charlowces Way",
+        "point": [
+          557.114523198314,
+          425.27983468186784
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 334.0
+      },
+      {
+        "route": 189,
+        "name": "Charlowces Way",
+        "point": [
+          564.6852596755334,
+          427.1171197067134
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 330.8
+      },
+      {
+        "route": 193,
+        "name": "Sulzheim Way",
+        "point": [
+          719.5666471696971,
+          992.0768518878771
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 864.3
+      },
+      {
+        "route": 196,
+        "name": "Mishun Way",
+        "point": [
+          2924.256613722207,
+          898.9868714533612
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 383.4
+      },
+      {
+        "route": 201,
+        "name": "Vidnilo Way",
+        "point": [
+          973.3297404868441,
+          704.1241526361955
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 864.9
+      },
+      {
+        "route": 208,
+        "name": "Malsbacher Way",
+        "point": [
+          737.7768041585301,
+          1276.9991839615618
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1417.1
+      },
+      {
+        "route": 210,
+        "name": "Milington Way",
+        "point": [
+          3254.752235487846,
+          1219.7542611455794
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1100.2
+      },
+      {
+        "route": 210,
+        "name": "Milington Way",
+        "point": [
+          3252.61874520417,
+          1223.0144969343255
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1104.1
+      },
+      {
+        "route": 211,
+        "name": "Quzhou Way",
+        "point": [
+          2410.3768774123846,
+          790.5856450546089
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 704.8
+      },
+      {
+        "route": 211,
+        "name": "Quzhou Way",
+        "point": [
+          2387.7457618344615,
+          788.3358022302485
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 750.0
+      },
+      {
+        "route": 211,
+        "name": "Quzhou Way",
+        "point": [
+          2376.4769406322175,
+          789.8585474558608
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 772.5
+      },
+      {
+        "route": 214,
+        "name": "Shibal Way",
+        "point": [
+          2770.7072260539203,
+          291.0397428800378
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 831.3
+      },
+      {
+        "route": 217,
+        "name": "Cannsito Way",
+        "point": [
+          1097.4348457551876,
+          730.4751153038372
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1118.4
+      },
+      {
+        "route": 217,
+        "name": "Cannsito Way",
+        "point": [
+          1095.4403953375227,
+          720.6713183880058
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1109.8
+      },
+      {
+        "route": 219,
+        "name": "Reabington Way",
+        "point": [
+          3231.7276618867163,
+          1155.1249628064054
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 964.1
+      },
+      {
+        "route": 221,
+        "name": "Lahrzarkir Way",
+        "point": [
+          667.5051492413324,
+          978.314512370108
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 803.9
+      },
+      {
+        "route": 221,
+        "name": "Lahrzarkir Way",
+        "point": [
+          671.1316266146699,
+          979.8272063883658
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 808.9
+      },
+      {
+        "route": 221,
+        "name": "Lahrzarkir Way",
+        "point": [
+          658.1657342561931,
+          973.7775653548536
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 790.1
+      },
+      {
+        "route": 221,
+        "name": "Lahrzarkir Way",
+        "point": [
+          644.8380002317693,
+          966.4200589530475
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 769.3
+      },
+      {
+        "route": 228,
+        "name": "Hauberghaup Way",
+        "point": [
+          698.6130342968297,
+          997.8636707847934
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 860.2
+      },
+      {
+        "route": 237,
+        "name": "Dozelsk Way",
+        "point": [
+          1397.878176945743,
+          960.2225224328347
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1838.3
+      },
+      {
+        "route": 237,
+        "name": "Dozelsk Way",
+        "point": [
+          1415.4280416052238,
+          929.5114199730059
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1847.2
+      },
+      {
+        "route": 258,
+        "name": "Shaoqing Way",
+        "point": [
+          2498.971152362378,
+          1104.110557457633
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 831.8
+      },
+      {
+        "route": 265,
+        "name": "Puzhou Way",
+        "point": [
+          2710.2812472366913,
+          1053.411965372009
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 551.9
+      },
+      {
+        "route": 265,
+        "name": "Puzhou Way",
+        "point": [
+          2694.4026246654053,
+          1021.891376036695
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 497.9
+      },
+      {
+        "route": 277,
+        "name": "Gayanjar Way",
+        "point": [
+          2694.8622945099714,
+          333.1658845553884
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 861.2
+      },
+      {
+        "route": 279,
+        "name": "Bington Way",
+        "point": [
+          554.9690876361258,
+          421.94547144901156
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 340.6
+      },
+      {
+        "route": 279,
+        "name": "Bington Way",
+        "point": [
+          558.5035777642031,
+          417.3408880929411
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 349.9
+      },
+      {
+        "route": 279,
+        "name": "Bington Way",
+        "point": [
+          566.904011945312,
+          416.0369429784674
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 353.2
+      },
+      {
+        "route": 280,
+        "name": "Barud Way",
+        "point": [
+          2912.3601576816454,
+          394.595781843812
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 518.0
+      },
+      {
+        "route": 280,
+        "name": "Barud Way",
+        "point": [
+          2906.3834178949564,
+          394.29167648302456
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 522.6
+      },
+      {
+        "route": 280,
+        "name": "Barud Way",
+        "point": [
+          2877.576127483671,
+          354.55480808553784
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 617.8
+      },
+      {
+        "route": 289,
+        "name": "Aisendorfrin Way",
+        "point": [
+          486.67348407360436,
+          947.6770701160118
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 639.8
+      },
+      {
+        "route": 289,
+        "name": "Aisendorfrin Way",
+        "point": [
+          500.53585510035606,
+          936.1813205378884
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 624.5
+      },
+      {
+        "route": 296,
+        "name": "Chengjiang Way",
+        "point": [
+          2335.7127305254307,
+          780.8418684282877
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 853.9
+      },
+      {
+        "route": 296,
+        "name": "Chengjiang Way",
+        "point": [
+          2316.6603101175947,
+          780.0111924138107
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 892.0
+      },
+      {
+        "route": 297,
+        "name": "Breilerkir Way",
+        "point": [
+          781.4216871413377,
+          1279.7138212236216
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1447.2
+      },
+      {
+        "route": 299,
+        "name": "Thvethaluna Way",
+        "point": [
+          848.9133990600418,
+          456.8195312157267
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 646.2
+      },
+      {
+        "route": 303,
+        "name": "Wyhwebengen Way",
+        "point": [
+          872.6803298789289,
+          1310.429832255266
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1570.1
+      },
+      {
+        "route": 312,
+        "name": "Tolger Way",
+        "point": [
+          2404.1140887723836,
+          585.1762426792642
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 818.5
+      },
+      {
+        "route": 312,
+        "name": "Tolger Way",
+        "point": [
+          2387.9394442201087,
+          581.9530223919359
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 850.0
+      },
+      {
+        "route": 316,
+        "name": "Bombodong Way",
+        "point": [
+          2699.772201034904,
+          341.4052073763806
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 842.6
+      },
+      {
+        "route": 325,
+        "name": "Saikhan Way",
+        "point": [
+          2797.4739777995665,
+          773.2281389177296
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 72.0
+      },
+      {
+        "route": 325,
+        "name": "Saikhan Way",
+        "point": [
+          2848.926474599915,
+          828.0775832670713
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 195.1
+      },
+      {
+        "route": 327,
+        "name": "March Way",
+        "point": [
+          568.5258433072456,
+          955.6488376628919
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 709.7
+      },
+      {
+        "route": 330,
+        "name": "Ascrinanis Way",
+        "point": [
+          835.6481258378237,
+          737.0930596995885
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 630.6
+      },
+      {
+        "route": 330,
+        "name": "Ascrinanis Way",
+        "point": [
+          823.9540394074543,
+          743.982936972654
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 616.6
+      },
+      {
+        "route": 333,
+        "name": "Briadonvilles Way",
+        "point": [
+          1554.4067218996722,
+          1324.6933872365255
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2477.2
+      },
+      {
+        "route": 352,
+        "name": "Rouvrerelle Way",
+        "point": [
+          1436.27713742438,
+          1320.1352156410442
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2285.1
+      },
+      {
+        "route": 353,
+        "name": "Kaptenin Way",
+        "point": [
+          806.1452114243751,
+          1277.2376194655508
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1458.7
+      },
+      {
+        "route": 354,
+        "name": "Aesoscri Way",
+        "point": [
+          988.1251151030617,
+          932.2532328314195
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1100.3
+      },
+      {
+        "route": 354,
+        "name": "Aesoscri Way",
+        "point": [
+          996.4105357321542,
+          939.7794673079333
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1122.7
+      },
+      {
+        "route": 356,
+        "name": "Chulag Agt Way",
+        "point": [
+          2801.1451614843,
+          768.454997280537
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 81.9
+      },
+      {
+        "route": 356,
+        "name": "Chulag Agt Way",
+        "point": [
+          2829.8424907421163,
+          781.7827931452971
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 134.3
+      },
+      {
+        "route": 361,
+        "name": "Khokh Way",
+        "point": [
+          3095.7731647391424,
+          391.2691446650967
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 440.0
+      },
+      {
+        "route": 363,
+        "name": "Hernaquro Way",
+        "point": [
+          899.0655410860421,
+          780.445947170362
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 783.3
+      },
+      {
+        "route": 363,
+        "name": "Hernaquro Way",
+        "point": [
+          914.6517275615787,
+          792.2639923669307
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 822.0
+      },
+      {
+        "route": 365,
+        "name": "Fengtian Way",
+        "point": [
+          2776.3747400491598,
+          1137.6133091113268
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 710.8
+      },
+      {
+        "route": 397,
+        "name": "Steier Way",
+        "point": [
+          407.35939869087883,
+          1068.416712086292
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 864.8
+      },
+      {
+        "route": 400,
+        "name": "Tiedengen Way",
+        "point": [
+          796.7466219359089,
+          1294.6143607411268
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1485.2
+      },
+      {
+        "route": 405,
+        "name": "Bibal Way",
+        "point": [
+          2827.5132862323326,
+          775.5023724731124
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 130.4
+      },
+      {
+        "route": 418,
+        "name": "Tutley Way",
+        "point": [
+          683.3253461960358,
+          393.50659071230865
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 472.5
+      },
+      {
+        "route": 432,
+        "name": "Mesch Way",
+        "point": [
+          979.2477217102254,
+          665.1107742861498
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 859.7
+      },
+      {
+        "route": 436,
+        "name": "Saikhushig Way",
+        "point": [
+          2857.912270923818,
+          765.1677217415255
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 193.6
+      },
+      {
+        "route": 439,
+        "name": "Memech Way",
+        "point": [
+          1284.119692712726,
+          762.065095591392
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1496.1
+      },
+      {
+        "route": 440,
+        "name": "Shuan Way",
+        "point": [
+          2958.558983627001,
+          928.1293502187704
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 414.4
+      },
+      {
+        "route": 442,
+        "name": "Blesta Way",
+        "point": [
+          956.3373562716768,
+          868.2603633962473
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 973.2
+      },
+      {
+        "route": 444,
+        "name": "Tatong Way",
+        "point": [
+          2544.8928566304844,
+          1166.4563398594728
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 882.9
+      },
+      {
+        "route": 449,
+        "name": "Southbrid Way",
+        "point": [
+          563.9421584679376,
+          413.4074938622571
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 358.1
+      },
+      {
+        "route": 449,
+        "name": "Southbrid Way",
+        "point": [
+          569.6617319159191,
+          405.7901550949729
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 374.0
+      },
+      {
+        "route": 466,
+        "name": "Bindun Way",
+        "point": [
+          2865.881806949268,
+          772.848343388059
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 207.3
+      },
+      {
+        "route": 466,
+        "name": "Bindun Way",
+        "point": [
+          2874.879860372748,
+          771.9376731088935
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 225.4
+      },
+      {
+        "route": 468,
+        "name": "Ganzhou Way",
+        "point": [
+          2774.2829650244694,
+          1158.2800556516916
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 751.9
+      },
+      {
+        "route": 482,
+        "name": "Marbatat Way",
+        "point": [
+          445.7130476567109,
+          914.0790431775442
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 559.5
+      },
+      {
+        "route": 492,
+        "name": "Stotlere Way",
+        "point": [
+          3274.6847161959486,
+          1544.5290705107207
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1718.2
+      },
+      {
+        "route": 492,
+        "name": "Stotlere Way",
+        "point": [
+          3305.348149519642,
+          1488.890161409685
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1633.9
+      },
+      {
+        "route": 498,
+        "name": "Pemeva Way",
+        "point": [
+          676.6349315007179,
+          619.4525347145116
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 248.1
+      },
+      {
+        "route": 506,
+        "name": "Breitlinzach Way",
+        "point": [
+          869.6901630566192,
+          1037.7881210478886
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1090.2
+      },
+      {
+        "route": 514,
+        "name": "Tarbevensis Way",
+        "point": [
+          1084.7318305350852,
+          722.2475665970851
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1089.7
+      },
+      {
+        "route": 516,
+        "name": "Castialer Way",
+        "point": [
+          927.7535312757025,
+          887.7667293914053
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 950.4
+      },
+      {
+        "route": 524,
+        "name": "Mararingdon Way",
+        "point": [
+          527.2210727897358,
+          438.7561049440302
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 312.2
+      },
+      {
+        "route": 530,
+        "name": "Oakwar Way",
+        "point": [
+          540.4069612273481,
+          460.0149759820776
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 266.2
+      },
+      {
+        "route": 546,
+        "name": "Balai Way",
+        "point": [
+          2864.754640907184,
+          789.5831694000278
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 204.6
+      },
+      {
+        "route": 552,
+        "name": "Assarsip Way",
+        "point": [
+          3190.069168092942,
+          590.040170634301
+        ],
+        "bridgeMarkerNearby": true,
+        "nearestBridgeKm": 0.0
+      },
+      {
+        "route": 552,
+        "name": "Assarsip Way",
+        "point": [
+          3190.5715977776426,
+          711.9237791074107
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 243.8
+      },
+      {
+        "route": 554,
+        "name": "Serlen Way",
+        "point": [
+          1239.865770259375,
+          1043.9314773894453
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1639.8
+      },
+      {
+        "route": 558,
+        "name": "Chernitvin Way",
+        "point": [
+          934.0794174382236,
+          672.3562040171528
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 773.7
+      },
+      {
+        "route": 565,
+        "name": "Dachstet Way",
+        "point": [
+          670.1814539717426,
+          1084.5616491282588
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1010.9
+      },
+      {
+        "route": 565,
+        "name": "Dachstet Way",
+        "point": [
+          671.2470175572249,
+          1105.2275198128789
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1051.7
+      },
+      {
+        "route": 572,
+        "name": "Linan Way",
+        "point": [
+          3006.5552448727562,
+          969.6303104214923
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 484.6
+      },
+      {
+        "route": 572,
+        "name": "Linan Way",
+        "point": [
+          3011.2710282003623,
+          975.6887846614447
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 496.7
+      },
+      {
+        "route": 572,
+        "name": "Linan Way",
+        "point": [
+          3020.253317748248,
+          982.8938500179092
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 511.6
+      },
+      {
+        "route": 572,
+        "name": "Linan Way",
+        "point": [
+          3023.6846920655044,
+          985.927003688201
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 518.0
+      },
+      {
+        "route": 572,
+        "name": "Linan Way",
+        "point": [
+          3033.89268217738,
+          995.0369100449495
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 537.6
+      },
+      {
+        "route": 572,
+        "name": "Linan Way",
+        "point": [
+          3039.2344017075043,
+          1004.9433476682577
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 558.4
+      },
+      {
+        "route": 580,
+        "name": "Kaiaoqing Way",
+        "point": [
+          2819.183218575836,
+          866.1543833687155
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 201.9
+      },
+      {
+        "route": 583,
+        "name": "Bysoborys Way",
+        "point": [
+          684.6141102963952,
+          610.2918174716385
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 260.6
+      },
+      {
+        "route": 584,
+        "name": "Villes Way",
+        "point": [
+          1086.3262197663423,
+          1333.0940025577454
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1822.7
+      },
+      {
+        "route": 595,
+        "name": "Bayan Way",
+        "point": [
+          2832.7083999446895,
+          761.165656464097
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 146.4
+      },
+      {
+        "route": 598,
+        "name": "Horbhaunin Way",
+        "point": [
+          748.6306976124872,
+          1245.388861719374
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1362.1
+      },
+      {
+        "route": 612,
+        "name": "Bumedmalant Way",
+        "point": [
+          2872.109567295435,
+          761.6361160862925
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 222.8
+      },
+      {
+        "route": 621,
+        "name": "Rheinzell Way",
+        "point": [
+          538.6804034930768,
+          1031.7918460914877
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 829.6
+      },
+      {
+        "route": 626,
+        "name": "Argalanuur Way",
+        "point": [
+          2591.8743523109833,
+          557.2570382116619
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 565.3
+      },
+      {
+        "route": 634,
+        "name": "Halces Way",
+        "point": [
+          516.2558228798921,
+          424.07011416416276
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 345.4
+      },
+      {
+        "route": 652,
+        "name": "Dunscombe Way",
+        "point": [
+          561.0653089373293,
+          434.18993174125006
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 316.3
+      },
+      {
+        "route": 654,
+        "name": "Dongchang Way",
+        "point": [
+          2401.292403332873,
+          1286.1219145321745
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1239.7
+      },
+      {
+        "route": 661,
+        "name": "Dirtshield Way",
+        "point": [
+          3026.423457032494,
+          1443.9975237927335
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1424.3
+      },
+      {
+        "route": 666,
+        "name": "Dayankh Way",
+        "point": [
+          2930.031324569469,
+          394.1450569372882
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 508.3
+      },
+      {
+        "route": 666,
+        "name": "Dayankh Way",
+        "point": [
+          2936.5114410111664,
+          395.8930861238834
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 501.6
+      },
+      {
+        "route": 666,
+        "name": "Dayankh Way",
+        "point": [
+          2940.1104343298352,
+          396.80890848483506
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 498.1
+      },
+      {
+        "route": 674,
+        "name": "Fuzhou Way",
+        "point": [
+          2789.254981664232,
+          1152.4080327359932
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 741.7
+      },
+      {
+        "route": 679,
+        "name": "Aldachlenlin Way",
+        "point": [
+          420.5587231408216,
+          1046.7467780402349
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 821.4
+      },
+      {
+        "route": 684,
+        "name": "Bitonrith Way",
+        "point": [
+          577.4022735925521,
+          412.3462914561595
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 362.4
+      },
+      {
+        "route": 684,
+        "name": "Bitonrith Way",
+        "point": [
+          585.9588561407135,
+          412.5815042606923
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 364.4
+      },
+      {
+        "route": 684,
+        "name": "Bitonrith Way",
+        "point": [
+          594.5330814029803,
+          410.9644306511524
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 370.8
+      },
+      {
+        "route": 696,
+        "name": "Thelhoriath Way",
+        "point": [
+          1138.6521516202743,
+          591.7249415290457
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1166.1
+      },
+      {
+        "route": 696,
+        "name": "Thelhoriath Way",
+        "point": [
+          1111.9801233699347,
+          562.2940395181611
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1114.4
+      },
+      {
+        "route": 711,
+        "name": "Harford Way",
+        "point": [
+          3250.463818643845,
+          1227.072394533351
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1109.5
+      },
+      {
+        "route": 715,
+        "name": "Mouvy Way",
+        "point": [
+          1365.5590591727278,
+          1141.5659507627001
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1957.3
+      },
+      {
+        "route": 715,
+        "name": "Mouvy Way",
+        "point": [
+          1349.4907007367397,
+          1136.24494627009
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1924.8
+      },
+      {
+        "route": 715,
+        "name": "Mouvy Way",
+        "point": [
+          1338.6120554233917,
+          1132.462569224492
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1902.6
+      },
+      {
+        "route": 717,
+        "name": "Castia Way",
+        "point": [
+          971.4403191784069,
+          952.8974114162827
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1100.9
+      },
+      {
+        "route": 720,
+        "name": "Zag On Way",
+        "point": [
+          2801.796963883795,
+          763.384214259111
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 87.1
+      },
+      {
+        "route": 720,
+        "name": "Zag On Way",
+        "point": [
+          2818.5488652796207,
+          751.4298983339493
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 127.8
+      },
+      {
+        "route": 721,
+        "name": "Schwetershut Way",
+        "point": [
+          349.8081323035929,
+          1080.1477693377187
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 897.4
+      },
+      {
+        "route": 726,
+        "name": "Lugransis Way",
+        "point": [
+          940.1571957145486,
+          874.8328487696848
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 954.4
+      },
+      {
+        "route": 735,
+        "name": "Liliang Way",
+        "point": [
+          2521.589826480007,
+          945.8161727059753
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 582.4
+      },
+      {
+        "route": 735,
+        "name": "Liliang Way",
+        "point": [
+          2519.7298142143322,
+          952.9391647413187
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 593.6
+      },
+      {
+        "route": 755,
+        "name": "Yining Way",
+        "point": [
+          2620.172845565106,
+          1236.752456477632
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 952.2
+      },
+      {
+        "route": 755,
+        "name": "Yining Way",
+        "point": [
+          2628.8959509592187,
+          1241.8203251460816
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 956.8
+      },
+      {
+        "route": 759,
+        "name": "Cemitoma Way",
+        "point": [
+          859.6481138931108,
+          761.7144420461318
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 696.2
+      },
+      {
+        "route": 787,
+        "name": "Padsfield Way",
+        "point": [
+          564.9026955729895,
+          400.1549204430879
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 384.6
+      },
+      {
+        "route": 792,
+        "name": "Tineton Way",
+        "point": [
+          583.0939539660088,
+          423.0608682868618
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 342.8
+      },
+      {
+        "route": 799,
+        "name": "Chang Way",
+        "point": [
+          2691.463661777364,
+          1051.7944934328193
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 557.1
+      },
+      {
+        "route": 799,
+        "name": "Chang Way",
+        "point": [
+          2686.361084339615,
+          1028.0180775130382
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 514.2
+      },
+      {
+        "route": 801,
+        "name": "Glins Way",
+        "point": [
+          998.5129159628174,
+          620.8723166694017
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 887.7
+      },
+      {
+        "route": 801,
+        "name": "Glins Way",
+        "point": [
+          1008.0445267701266,
+          613.4715183826054
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 905.9
+      },
+      {
+        "route": 805,
+        "name": "Bagaanbulan Way",
+        "point": [
+          2774.7671200246964,
+          762.5754647117884
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 46.6
+      },
+      {
+        "route": 810,
+        "name": "Schluried Way",
+        "point": [
+          557.0432314203202,
+          962.6745274445128
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 712.9
+      },
+      {
+        "route": 811,
+        "name": "Ilaurtharien Way",
+        "point": [
+          1025.6077053647057,
+          446.14269201761266
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 984.4
+      },
+      {
+        "route": 811,
+        "name": "Ilaurtharien Way",
+        "point": [
+          1024.1939996390363,
+          452.2368438709053
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 978.1
+      },
+      {
+        "route": 811,
+        "name": "Ilaurtharien Way",
+        "point": [
+          1018.9582761079745,
+          458.11804837989615
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 964.8
+      },
+      {
+        "route": 820,
+        "name": "Durten Way",
+        "point": [
+          659.6200093296779,
+          1110.90584065647
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1058.0
+      },
+      {
+        "route": 829,
+        "name": "Steingen Way",
+        "point": [
+          667.561106018242,
+          959.2188165497503
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 767.3
+      },
+      {
+        "route": 838,
+        "name": "Tadon Way",
+        "point": [
+          1332.6845038900547,
+          1141.1794616741954
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1902.8
+      },
+      {
+        "route": 842,
+        "name": "Huang Way",
+        "point": [
+          3016.571519580143,
+          982.0742935294061
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 509.7
+      },
+      {
+        "route": 853,
+        "name": "Betbute Way",
+        "point": [
+          534.4114575338803,
+          491.25803483631313
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 206.4
+      },
+      {
+        "route": 853,
+        "name": "Betbute Way",
+        "point": [
+          537.5218384118541,
+          495.6689487897817
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 196.5
+      },
+      {
+        "route": 867,
+        "name": "Gopyl Way",
+        "point": [
+          1004.1739188361203,
+          610.2314895540474
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 897.9
+      },
+      {
+        "route": 880,
+        "name": "Tselgan Way",
+        "point": [
+          2245.983380219196,
+          547.6160697178047
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1135.1
+      },
+      {
+        "route": 880,
+        "name": "Tselgan Way",
+        "point": [
+          2260.3749106125742,
+          552.8250869459064
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1104.6
+      },
+      {
+        "route": 922,
+        "name": "Klechkin Way",
+        "point": [
+          1377.197443809383,
+          1034.0828402117968
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1865.7
+      },
+      {
+        "route": 950,
+        "name": "Guilterris Way",
+        "point": [
+          1314.3335977156573,
+          1290.4282471626766
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 2062.2
+      },
+      {
+        "route": 974,
+        "name": "Chechgolo Way",
+        "point": [
+          720.5508383963851,
+          679.3299266440399
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 373.1
+      },
+      {
+        "route": 982,
+        "name": "Emouth Way",
+        "point": [
+          3217.842100895517,
+          1240.3879396310967
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1107.4
+      },
+      {
+        "route": 982,
+        "name": "Emouth Way",
+        "point": [
+          3207.329961851303,
+          1219.6962292162018
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1061.2
+      },
+      {
+        "route": 996,
+        "name": "Ofengen Way",
+        "point": [
+          646.3049675719009,
+          997.8948835340951
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 831.3
+      },
+      {
+        "route": 996,
+        "name": "Ofengen Way",
+        "point": [
+          608.8890375800572,
+          1001.3293910019659
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 825.1
+      },
+      {
+        "route": 1005,
+        "name": "Yuatong Way",
+        "point": [
+          2934.3757292595333,
+          1002.5978547042257
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 558.3
+      },
+      {
+        "route": 1008,
+        "name": "Uvendesthei Way",
+        "point": [
+          1021.14539811173,
+          450.2601129258335
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 973.5
+      },
+      {
+        "route": 1008,
+        "name": "Uvendesthei Way",
+        "point": [
+          1017.0782998752799,
+          450.8678402485214
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 965.3
+      },
+      {
+        "route": 1008,
+        "name": "Uvendesthei Way",
+        "point": [
+          986.268902940978,
+          462.02920809337667
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 899.9
+      },
+      {
+        "route": 1028,
+        "name": "Bulag Way",
+        "point": [
+          2776.1752050274067,
+          300.24592194623364
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 809.9
+      },
+      {
+        "route": 1029,
+        "name": "Sornes Way",
+        "point": [
+          671.4155504356291,
+          392.2005507924536
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 462.3
+      },
+      {
+        "route": 1035,
+        "name": "Haton Way",
+        "point": [
+          3251.1898600359,
+          1198.013342160628
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1058.1
+      },
+      {
+        "route": 1035,
+        "name": "Haton Way",
+        "point": [
+          3248.7351139272646,
+          1204.8541537531667
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1068.1
+      },
+      {
+        "route": 1035,
+        "name": "Haton Way",
+        "point": [
+          3241.4601522885455,
+          1217.7748604428273
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1085.0
+      },
+      {
+        "route": 1035,
+        "name": "Haton Way",
+        "point": [
+          3238.2599032174703,
+          1227.1785811894208
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1099.3
+      },
+      {
+        "route": 1036,
+        "name": "Saint Way",
+        "point": [
+          2611.9631681478572,
+          565.9253783361173
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 527.7
+      },
+      {
+        "route": 1036,
+        "name": "Saint Way",
+        "point": [
+          2593.6977715006565,
+          568.5866154562091
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 545.2
+      },
+      {
+        "route": 1037,
+        "name": "Bayandor Way",
+        "point": [
+          2909.8358284777773,
+          767.8090373122752
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 215.3
+      },
+      {
+        "route": 1047,
+        "name": "Urup Way",
+        "point": [
+          3214.7562034528223,
+          802.4048607753006
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 427.6
+      },
+      {
+        "route": 1061,
+        "name": "Bernere Way",
+        "point": [
+          382.1089971123072,
+          663.6658262999297
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 84.6
+      },
+      {
+        "route": 1062,
+        "name": "Dunsle Way",
+        "point": [
+          597.0900268579677,
+          614.9785157861846
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 94.6
+      },
+      {
+        "route": 1062,
+        "name": "Dunsle Way",
+        "point": [
+          599.3550704146729,
+          631.1572041926402
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 117.1
+      },
+      {
+        "route": 1070,
+        "name": "Bosted Way",
+        "point": [
+          519.0739200235878,
+          725.080378394952
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 275.1
+      },
+      {
+        "route": 1070,
+        "name": "Bosted Way",
+        "point": [
+          492.74894682551354,
+          728.1326075222019
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 242.0
+      },
+      {
+        "route": 1071,
+        "name": "Keterkego Way",
+        "point": [
+          381.79435363212417,
+          674.4139518373833
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 100.4
+      },
+      {
+        "route": 1073,
+        "name": "Padsterpor Way",
+        "point": [
+          568.4707117000147,
+          604.1268479937881
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 35.0
+      },
+      {
+        "route": 1074,
+        "name": "Guildford Way",
+        "point": [
+          410.4073266021801,
+          687.1451724259174
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 102.4
+      },
+      {
+        "route": 1076,
+        "name": "Oakham Way",
+        "point": [
+          546.6627178121679,
+          587.6258036544403
+        ],
+        "bridgeMarkerNearby": true,
+        "nearestBridgeKm": 20.1
+      },
+      {
+        "route": 1084,
+        "name": "Thetham Way",
+        "point": [
+          414.21466573963943,
+          636.0868950355185
+        ],
+        "bridgeMarkerNearby": true,
+        "nearestBridgeKm": 0.0
+      },
+      {
+        "route": 1085,
+        "name": "Meylosheh Way",
+        "point": [
+          3281.1251296045707,
+          981.5856287885952
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 744.0
+      },
+      {
+        "route": 1085,
+        "name": "Meylosheh Way",
+        "point": [
+          3263.706596132448,
+          957.0521768181253
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 685.1
+      },
+      {
+        "route": 1087,
+        "name": "Fuzey Way",
+        "point": [
+          3231.605866607762,
+          1032.5712071150049
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 754.9
+      },
+      {
+        "route": 1093,
+        "name": "Ordu-Khazan–Renshan Road",
+        "point": [
+          2859.9535241150197,
+          825.709299774833
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 212.9
+      },
+      {
+        "route": 1094,
+        "name": "Ordu-Khazan–Setharu Road",
+        "point": [
+          2930.6974336694548,
+          628.8028236403753
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 136.1
+      },
+      {
+        "route": 1094,
+        "name": "Ordu-Khazan–Setharu Road",
+        "point": [
+          2940.9201693034897,
+          627.7383815102093
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 116.4
+      },
+      {
+        "route": 1096,
+        "name": "Sylanthir–Ostravin Road",
+        "point": [
+          969.8263665024394,
+          470.469002179199
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 863.5
+      },
+      {
+        "route": 1096,
+        "name": "Sylanthir–Ostravin Road",
+        "point": [
+          859.0112831242662,
+          501.9043440745355
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 633.2
+      },
+      {
+        "route": 1096,
+        "name": "Sylanthir–Ostravin Road",
+        "point": [
+          846.0816490924944,
+          502.93501207832423
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 607.8
+      },
+      {
+        "route": 1099,
+        "name": "Hravnfjord–Ostravin Road",
+        "point": [
+          568.8565841834202,
+          402.65098764552374
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 380.1
+      },
+      {
+        "route": 1099,
+        "name": "Hravnfjord–Ostravin Road",
+        "point": [
+          608.9313590440179,
+          423.0540855212145
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 354.8
+      },
+      {
+        "route": 1099,
+        "name": "Hravnfjord–Ostravin Road",
+        "point": [
+          622.17507386823,
+          427.84243422436407
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 354.8
+      },
+      {
+        "route": 1101,
+        "name": "Valmont–Ilmen Wharf Road",
+        "point": [
+          1061.7112979081128,
+          1204.9954257236197
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1589.5
+      },
+      {
+        "route": 1102,
+        "name": "Charterhold–Bonemarket Road",
+        "point": [
+          3373.7337254108234,
+          1260.6764561023738
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1291.6
+      },
+      {
+        "route": 1104,
+        "name": "Vantry–Brightfurrow Road",
+        "point": [
+          343.2473536622051,
+          620.1858901905441
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 145.5
+      },
+      {
+        "route": 1104,
+        "name": "Vantry–Brightfurrow Road",
+        "point": [
+          355.94990883750495,
+          632.6030943400136
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 116.7
+      },
+      {
+        "route": 1106,
+        "name": "Emberthrone–Renshan Road",
+        "point": [
+          3041.1657251146935,
+          1086.8359006508115
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 721.8
+      },
+      {
+        "route": 1106,
+        "name": "Emberthrone–Renshan Road",
+        "point": [
+          3037.540708552151,
+          1078.4616835141692
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 704.5
+      },
+      {
+        "route": 1106,
+        "name": "Emberthrone–Renshan Road",
+        "point": [
+          3033.6451582911923,
+          1074.1740769999112
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 695.3
+      },
+      {
+        "route": 1106,
+        "name": "Emberthrone–Renshan Road",
+        "point": [
+          3027.5937670669177,
+          1037.6929754178436
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 621.8
+      },
+      {
+        "route": 1106,
+        "name": "Emberthrone–Renshan Road",
+        "point": [
+          3028.983161403201,
+          1021.8716048862365
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 590.4
+      },
+      {
+        "route": 1106,
+        "name": "Emberthrone–Renshan Road",
+        "point": [
+          3028.137953107873,
+          992.8789346117901
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 532.4
+      },
+      {
+        "route": 1107,
+        "name": "Concord–Ostravin Road",
+        "point": [
+          1085.0206643454787,
+          706.0342628390076
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1083.0
+      },
+      {
+        "route": 1107,
+        "name": "Concord–Ostravin Road",
+        "point": [
+          1051.4452671141566,
+          680.6718414599567
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1007.3
+      },
+      {
+        "route": 1109,
+        "name": "Sunkenhold–Voskgrad Road",
+        "point": [
+          1368.4667471223174,
+          894.2336534348959
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1734.3
+      },
+      {
+        "route": 1111,
+        "name": "Ilmen Wharf–Grauthaven Road",
+        "point": [
+          954.0902509806284,
+          1147.7250216948717
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1367.3
+      },
+      {
+        "route": 1111,
+        "name": "Ilmen Wharf–Grauthaven Road",
+        "point": [
+          920.9571285127092,
+          1164.8294675689176
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1358.4
+      },
+      {
+        "route": 1111,
+        "name": "Ilmen Wharf–Grauthaven Road",
+        "point": [
+          898.6455749675547,
+          1166.7180559779881
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1338.2
+      },
+      {
+        "route": 1113,
+        "name": "Vetch Landing–Emberthrone Road",
+        "point": [
+          2836.9254713354017,
+          1344.0217023695739
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1132.8
+      },
+      {
+        "route": 1113,
+        "name": "Vetch Landing–Emberthrone Road",
+        "point": [
+          2884.899516192536,
+          1289.9916150005688
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1044.0
+      },
+      {
+        "route": 1115,
+        "name": "Bonemarket–Myrrhkand Road",
+        "point": [
+          3373.19861848097,
+          1138.5061249854202
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1097.8
+      },
+      {
+        "route": 1115,
+        "name": "Bonemarket–Myrrhkand Road",
+        "point": [
+          3327.442753517131,
+          1070.9084237227794
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 936.1
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          616.5147830681175,
+          913.0589453196027
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 653.1
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          627.8395405899302,
+          908.2312922097733
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 648.3
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          640.2229815233097,
+          903.947954130431
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 646.0
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          895.5557434236315,
+          974.1920312107966
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1022.6
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          908.6262518698171,
+          977.7521287918597
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1045.5
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          915.6404573584355,
+          1103.4021721746942
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1250.5
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          902.6136529822014,
+          1169.9860786354325
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1347.9
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          906.6900395666661,
+          1175.8560831235102
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1362.1
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          916.8582069470673,
+          1181.1168143900206
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1381.7
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          934.9638902204272,
+          1187.0450084955226
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1411.0
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          956.8945382928175,
+          1195.353871958519
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1448.8
+      },
+      {
+        "route": 1203,
+        "name": "The Uplad Circuit — Mercers’ Saddle",
+        "point": [
+          1024.0978316733892,
+          1206.0362832105147
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1544.3
+      },
+      {
+        "route": 1205,
+        "name": "The Iron Road — Voskgrad to Brightfurrow",
+        "point": [
+          1160.0756864744915,
+          803.2979305148402
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1280.5
+      },
+      {
+        "route": 1205,
+        "name": "The Iron Road — Voskgrad to Brightfurrow",
+        "point": [
+          984.561822869941,
+          731.1554477054109
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 901.8
+      },
+      {
+        "route": 1205,
+        "name": "The Iron Road — Voskgrad to Brightfurrow",
+        "point": [
+          590.507543133605,
+          612.5262192021511
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 80.7
+      },
+      {
+        "route": 1205,
+        "name": "The Iron Road — Voskgrad to Brightfurrow",
+        "point": [
+          445.2185014735747,
+          662.8070579859891
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 81.9
+      },
+      {
+        "route": 1206,
+        "name": "The Wagon Road — Setharu to Charterhold",
+        "point": [
+          3007.9510812241892,
+          688.5556955715198
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 77.6
+      },
+      {
+        "route": 1206,
+        "name": "The Wagon Road — Setharu to Charterhold",
+        "point": [
+          3162.5180322937354,
+          859.9101740381839
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 404.8
+      },
+      {
+        "route": 1206,
+        "name": "The Wagon Road — Setharu to Charterhold",
+        "point": [
+          3214.4622145962394,
+          901.1707727171892
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 537.4
+      },
+      {
+        "route": 1206,
+        "name": "The Wagon Road — Setharu to Charterhold",
+        "point": [
+          3358.961651902678,
+          1149.4929170457629
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1096.0
+      },
+      {
+        "route": 1213,
+        "name": "Karbilzu Canal Road",
+        "point": [
+          3039.439374465077,
+          772.2819513104661
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 107.9
+      },
+      {
+        "route": 1215,
+        "name": "Larrappum Canal Road",
+        "point": [
+          3015.4954082207214,
+          801.0202415558457
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 147.8
+      },
+      {
+        "route": 1217,
+        "name": "Shekh Canal Road",
+        "point": [
+          3038.329566510349,
+          676.3466592000614
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 109.9
+      },
+      {
+        "route": 1218,
+        "name": "Shawdaba Canal Road",
+        "point": [
+          3029.878952599799,
+          688.6713382073318
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 87.3
+      },
+      {
+        "route": 1226,
+        "name": "Haganu Canal Road",
+        "point": [
+          3053.231568856731,
+          784.8787763932941
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 144.4
+      },
+      {
+        "route": 1227,
+        "name": "Shalma Canal Road",
+        "point": [
+          3051.035682021156,
+          671.1338563353959
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 124.0
+      },
+      {
+        "route": 1228,
+        "name": "Dûrmir Canal Road",
+        "point": [
+          3149.5136650378995,
+          602.0390100759375
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 84.6
+      },
+      {
+        "route": 1228,
+        "name": "Dûrmir Canal Road",
+        "point": [
+          3138.258330841386,
+          609.0095768788728
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 110.3
+      },
+      {
+        "route": 1232,
+        "name": "Har-Shul Canal Road",
+        "point": [
+          3401.499757787489,
+          662.4645957594853
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 447.0
+      },
+      {
+        "route": 1237,
+        "name": "Shurbisi Canal Road",
+        "point": [
+          3174.601599806309,
+          708.468244046926
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 238.9
+      },
+      {
+        "route": 1238,
+        "name": "Kar-Shari Canal Road",
+        "point": [
+          3166.5423016302843,
+          596.5098905224596
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 48.8
+      },
+      {
+        "route": 1241,
+        "name": "Akad Canal Road",
+        "point": [
+          2997.479086212103,
+          757.5797310367972
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 65.2
+      },
+      {
+        "route": 1241,
+        "name": "Akad Canal Road",
+        "point": [
+          2987.86123032663,
+          747.2334685723185
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 58.9
+      },
+      {
+        "route": 1247,
+        "name": "Kuabur Canal Road",
+        "point": [
+          3194.8398675369635,
+          588.924955187862
+        ],
+        "bridgeMarkerNearby": true,
+        "nearestBridgeKm": 9.8
+      },
+      {
+        "route": 1252,
+        "name": "Sheh Canal Road",
+        "point": [
+          3225.5950929690894,
+          646.1254876378684
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 132.8
+      },
+      {
+        "route": 1253,
+        "name": "Larra'um Canal Road",
+        "point": [
+          3352.785895013601,
+          693.9500311954948
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 386.1
+      },
+      {
+        "route": 1254,
+        "name": "Nurum Canal Road",
+        "point": [
+          2978.944111033368,
+          688.1075296077528
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 99.6
+      },
+      {
+        "route": 1254,
+        "name": "Nurum Canal Road",
+        "point": [
+          2974.159967624851,
+          696.2386432413495
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 94.3
+      },
+      {
+        "route": 1254,
+        "name": "Nurum Canal Road",
+        "point": [
+          2961.0674098961,
+          714.4057082831266
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 100.4
+      },
+      {
+        "route": 1263,
+        "name": "Sippaki Canal Road",
+        "point": [
+          3177.636809781302,
+          565.1929566299947
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 55.6
+      },
+      {
+        "route": 1263,
+        "name": "Sippaki Canal Road",
+        "point": [
+          3138.978427848303,
+          517.8397863481467
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 176.9
+      },
+      {
+        "route": 1264,
+        "name": "Hatna Canal Road",
+        "point": [
+          3098.1359275353084,
+          520.989303645518
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 230.0
+      },
+      {
+        "route": 1266,
+        "name": "Melidmor Canal Road",
+        "point": [
+          3006.2865575933156,
+          808.221599439454
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 161.9
+      },
+      {
+        "route": 1278,
+        "name": "Shagrig Canal Road",
+        "point": [
+          3230.4184681397514,
+          730.1711548505459
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 291.6
+      },
+      {
+        "route": 1278,
+        "name": "Shagrig Canal Road",
+        "point": [
+          3234.872006963081,
+          756.388365442983
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 344.6
+      },
+      {
+        "route": 1292,
+        "name": "Nilum Canal Road",
+        "point": [
+          3053.555678713561,
+          666.5182617275931
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 124.0
+      },
+      {
+        "route": 1292,
+        "name": "Nilum Canal Road",
+        "point": [
+          3136.8039816492715,
+          713.4914673995446
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 255.9
+      },
+      {
+        "route": 1298,
+        "name": "Tisharad Canal Road",
+        "point": [
+          2997.992375729123,
+          639.0207245060086
+        ],
+        "bridgeMarkerNearby": true,
+        "nearestBridgeKm": 0.0
+      },
+      {
+        "route": 1302,
+        "name": "Abisurda Canal Road",
+        "point": [
+          3147.252919463434,
+          511.54900036750416
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 178.8
+      },
+      {
+        "route": 1302,
+        "name": "Abisurda Canal Road",
+        "point": [
+          3146.3567217558825,
+          492.5686645518114
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 213.6
+      },
+      {
+        "route": 1303,
+        "name": "Itutirra Canal Road",
+        "point": [
+          3120.7495863800013,
+          520.7099568601176
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 196.1
+      },
+      {
+        "route": 1327,
+        "name": "Argur-Ma Canal Road",
+        "point": [
+          3352.1299105851726,
+          689.6051668142363
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 380.4
+      },
+      {
+        "route": 1328,
+        "name": "Iyahnun Canal Road",
+        "point": [
+          3070.9885108694475,
+          795.0247839989263
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 182.8
+      },
+      {
+        "route": 1340,
+        "name": "Vaelic–Quivar Frontier Road",
+        "point": [
+          823.4142462571189,
+          1213.28575731258
+        ],
+        "bridgeMarkerNearby": false,
+        "nearestBridgeKm": 1352.6
+      }
+    ],
+    "requiredBordersChecked": 16,
+    "missingRequiredBorders": [],
+    "nordheimMaximumElevationM": 2583,
+    "namedBridgePOIs": 6,
+    "unclassifiedRiverCrossings": [],
+    "surfaceRuralPopulationOnGlacier": 0,
+    "riverDischargeDecreases": 0,
+    "unclaimedProvinceExceptions": 15,
+    "melisorTeleportationExceptions": 15,
+    "invalidLandPolygons": 0,
+    "seaLaneInteriorLandCuts": [],
+    "ruralPopulationOnWater": 0,
+    "ruralPopulationOnGlacierByNation": {
+      "Stoneborn": 437085,
+      "Undertide": 76888
+    },
+    "capitalTerrain": [
+      {
+        "name": "Voskgrad",
+        "state": 6,
+        "elevationM": 9,
+        "biome": "Temperate rainforest",
+        "nearestDrawnRiverKm": 0.0
+      },
+      {
+        "name": "Reichsmund",
+        "state": 3,
+        "elevationM": 12,
+        "biome": "Grassland",
+        "nearestDrawnRiverKm": 0.0
+      },
+      {
+        "name": "Valmont",
+        "state": 8,
+        "elevationM": 12,
+        "biome": "Tropical rainforest",
+        "nearestDrawnRiverKm": 13.9
+      },
+      {
+        "name": "Tetvarba",
+        "state": 23,
+        "elevationM": 402,
+        "biome": "Grassland",
+        "nearestDrawnRiverKm": 126.3
+      },
+      {
+        "name": "Vantry",
+        "state": 14,
+        "elevationM": 16,
+        "biome": "Temperate rainforest",
+        "nearestDrawnRiverKm": 98.9
+      },
+      {
+        "name": "Ilmen Wharf",
+        "state": 24,
+        "elevationM": 10,
+        "biome": "Wetland",
+        "nearestDrawnRiverKm": 0.0
+      },
+      {
+        "name": "Sylanthir",
+        "state": 5,
+        "elevationM": 985,
+        "biome": "Taiga",
+        "nearestDrawnRiverKm": 54.2
+      },
+      {
+        "name": "Highforge",
+        "state": 16,
+        "elevationM": 4130,
+        "biome": "Glacier",
+        "nearestDrawnRiverKm": 262.5
+      },
+      {
+        "name": "Tessine",
+        "state": 26,
+        "elevationM": 17,
+        "biome": "Wetland",
+        "nearestDrawnRiverKm": 95.4
+      },
+      {
+        "name": "Harrowgate",
+        "state": 22,
+        "elevationM": 26,
+        "biome": "Wetland",
+        "nearestDrawnRiverKm": 102.7
+      },
+      {
+        "name": "Setharu",
+        "state": 4,
+        "elevationM": 193,
+        "biome": "Temperate deciduous forest",
+        "nearestDrawnRiverKm": 7.5
+      },
+      {
+        "name": "Thalassar",
+        "state": 11,
+        "elevationM": 27,
+        "biome": "Tropical seasonal forest",
+        "nearestDrawnRiverKm": 328.3
+      },
+      {
+        "name": "Emberthrone",
+        "state": 17,
+        "elevationM": 700,
+        "biome": "Cold desert",
+        "nearestDrawnRiverKm": 45.4
+      },
+      {
+        "name": "Vetch Landing",
+        "state": 25,
+        "elevationM": 304,
+        "biome": "Savanna",
+        "nearestDrawnRiverKm": 15.7
+      },
+      {
+        "name": "Concord",
+        "state": 18,
+        "elevationM": 29,
+        "biome": "Grassland",
+        "nearestDrawnRiverKm": 9.5
+      },
+      {
+        "name": "Charterhold",
+        "state": 9,
+        "elevationM": 138,
+        "biome": "Tropical seasonal forest",
+        "nearestDrawnRiverKm": 77.7
+      },
+      {
+        "name": "Ostravin",
+        "state": 13,
+        "elevationM": 511,
+        "biome": "Grassland",
+        "nearestDrawnRiverKm": 51.9
+      },
+      {
+        "name": "Hravnfjord",
+        "state": 7,
+        "elevationM": 28,
+        "biome": "Taiga",
+        "nearestDrawnRiverKm": 17.7
+      },
+      {
+        "name": "Thelemar",
+        "state": 19,
+        "elevationM": 1250,
+        "biome": "Taiga",
+        "nearestDrawnRiverKm": 212.2
+      },
+      {
+        "name": "Myrrhkand",
+        "state": 28,
+        "elevationM": 254,
+        "biome": "Tropical seasonal forest",
+        "nearestDrawnRiverKm": 31.6
+      },
+      {
+        "name": "Brightfurrow",
+        "state": 15,
+        "elevationM": 218,
+        "biome": "Temperate deciduous forest",
+        "nearestDrawnRiverKm": 7.3
+      },
+      {
+        "name": "Ordu-Khazan",
+        "state": 2,
+        "elevationM": 154,
+        "biome": "Grassland",
+        "nearestDrawnRiverKm": 10.7
+      },
+      {
+        "name": "Renshan",
+        "state": 1,
+        "elevationM": 425,
+        "biome": "Savanna",
+        "nearestDrawnRiverKm": 106.1
+      },
+      {
+        "name": "Grauthaven",
+        "state": 12,
+        "elevationM": 1769,
+        "biome": "Savanna",
+        "nearestDrawnRiverKm": 84.3
+      },
+      {
+        "name": "Rootmeet",
+        "state": 10,
+        "elevationM": 35,
+        "biome": "Temperate rainforest",
+        "nearestDrawnRiverKm": 107.6
+      },
+      {
+        "name": "Bonemarket",
+        "state": 27,
+        "elevationM": 8,
+        "biome": "Wetland",
+        "nearestDrawnRiverKm": 22.1
+      },
+      {
+        "name": "Sunkenhold",
+        "state": 21,
+        "elevationM": 183,
+        "biome": "Glacier",
+        "nearestDrawnRiverKm": 45.5
+      },
+      {
+        "name": "Vessene",
+        "state": 20,
+        "elevationM": 8,
+        "biome": "Temperate rainforest",
+        "nearestDrawnRiverKm": 412.6
+      }
+    ]
+  },
+  "method": "Read-only checks against current transformed cell mesh, source rural cells, current settlement records and province membership. Distance estimates use 2 km per map unit. Extreme terrain and absent mapped roads are review flags, not automatic errors. Rivers descend on the cached hydrological surface, not a separately simulated erosion model. Bridge-marker absence does not prove a missing physical crossing."
+}
