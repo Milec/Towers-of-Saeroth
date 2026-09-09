@@ -61,22 +61,51 @@
     group.replaceChildren();
     const context=document.createElement('canvas').getContext('2d');
     const boundary=new Path2D(region.path), unit=crop[2]/width, size=23*unit;
-    const occupied=[];
+    const inverse=map.getScreenCTM().inverse();
+    const iconRects=[];
+    for(const icon of map.querySelectorAll('#settlements .burg:not([hidden])')) {
+      const settlement=burg(icon.dataset.id);
+      if(!settlement)continue;
+      for(const art of icon.querySelectorAll(':scope > use, :scope > .settlement-art')) {
+        const box=art.getBBox(), transform=inverse.multiply(art.getScreenCTM());
+        const points=[[box.x,box.y],[box.x+box.width,box.y],[box.x,box.y+box.height],[box.x+box.width,box.y+box.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(transform));
+        const xs=points.map(p=>p.x),ys=points.map(p=>p.y);
+        iconRects.push([Math.min(...xs)-3*unit,Math.min(...ys)-3*unit,Math.max(...xs)-Math.min(...xs)+6*unit,Math.max(...ys)-Math.min(...ys)+6*unit]);
+      }
+    }
+    const occupied=[...iconRects];
     context.font='23px Georgia';
     const inside=(x,y)=>context.isPointInPath(boundary,x,y,'evenodd');
-    const settlements=D.burgs.filter(b=>tierPrefs[tier(b)].names && inside(b.x,b.y))
+    const settlements=D.burgs.filter(b=>tierPrefs[tier(b)].names && tierPrefs[tier(b)].icons && inside(b.x,b.y))
       .sort((a,b)=>(b.capital||0)-(a.capital||0)||b.population-a.population);
     for (const b of settlements) {
-      const w=context.measureText(b.name).width*unit, h=size*1.2, gap=10*unit;
-      const options=[[b.x+gap,b.y-gap],[b.x-w-gap,b.y-gap],[b.x-w/2,b.y-h-gap],[b.x-w/2,b.y+h+gap]];
+      const w=context.measureText(b.name).width*unit, h=size*1.2;
+      const options=[];
+      // Search around the true geographic anchor, not the edge of a neighboring icon.
+      for(const radius of [14,30,50,75,110,160,220]) {
+        const gap=radius*unit;
+        options.push([b.x+gap,b.y+h/2],[b.x-w-gap,b.y+h/2],
+          [b.x-w/2,b.y-gap],[b.x-w/2,b.y+h+gap],
+          [b.x+gap,b.y-gap],[b.x-w-gap,b.y-gap]);
+      }
       for (const [x,y] of options) {
-        const rect=[x,y-h,w,h];
+        const rect=[x-3*unit,y-h-3*unit,w+6*unit,h+6*unit];
         if (![[x,y],[x+w,y],[x,y-h],[x+w,y-h],[x+w/2,y-h/2]].every(([a,c])=>inside(a,c))) continue;
-        if(occupied.some(r=>x<r[0]+r[2]&&x+w>r[0]&&y-h<r[1]+r[3]&&y>r[1]))continue;
+        if(occupied.some(r=>rect[0]<r[0]+r[2]&&rect[0]+rect[2]>r[0]&&rect[1]<r[1]+r[3]&&rect[1]+rect[3]>r[1]))continue;
+        const endX=Math.max(x,Math.min(x+w,b.x)),endY=Math.max(y-h,Math.min(y,b.y));
+        // Do not connect across a neighboring jurisdiction or a hole in the territory.
+        if(!Array.from({length:9},(_,i)=>i/8).every(t=>inside(b.x+(endX-b.x)*t,b.y+(endY-b.y)*t)))continue;
         occupied.push(rect);
+        const caption=document.createElementNS(NS,'g');caption.dataset.place='burg-'+b.i;
+        const leader=document.createElementNS(NS,'path');leader.setAttribute('d',`M${b.x},${b.y}L${endX},${endY}`);
+        leader.setAttribute('fill','none');leader.setAttribute('stroke','#514936');leader.setAttribute('stroke-width',String(1.2*unit));
+        const halo=leader.cloneNode(true);halo.setAttribute('stroke',PAPER);halo.setAttribute('stroke-width',String(3.5*unit));
+        const dot=document.createElementNS(NS,'circle');
+        for(const [key,value]of Object.entries({cx:b.x,cy:b.y,r:2.5*unit,fill:'#233a36',stroke:PAPER,'stroke-width':unit}))dot.setAttribute(key,value);
         const text=document.createElementNS(NS,'text');text.textContent=b.name;
         for(const [key,value] of Object.entries({x,y,fill:'#233a36',stroke:PAPER,'stroke-width':3*unit,'paint-order':'stroke','font-family':'Georgia','font-size':size}))text.setAttribute(key,value);
-        group.append(text);break;
+        if(b.capital)text.setAttribute('font-weight','bold');
+        caption.append(halo,leader,dot,text);group.append(caption);break;
       }
     }
   }

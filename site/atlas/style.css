@@ -102,3 +102,5 @@ header a.campaign-home{display:inline-block}.campaign-link a{font-weight:bold;te
 .handout-tools h3{margin:0 0 8px}.handout-tools label{min-height:44px;display:flex;gap:8px;align-items:center}.handout-tools button:disabled{opacity:.6;cursor:wait}
 
 .atlas-sepia{display:flex;align-items:center;gap:10px;min-height:44px;padding:10px 16px;margin:0;border-bottom:1px solid var(--line);font-size:14px;cursor:pointer}.atlas-sepia input{width:18px;height:18px}
+
+#map[data-style="political"] .province{fill:var(--province-fill);fill-opacity:var(--province-opacity)}
