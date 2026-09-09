@@ -1,0 +1,47 @@
+name: Publish verified atlas POI notes
+on:
+  workflow_run:
+    workflows: [Verify repository and interface]
+    types: [completed]
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+concurrency:
+  group: atlas-poi-auto-merge
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      # No PR checkout, artifacts, caches, or PR-supplied code are executed here.
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const run = context.payload.workflow_run;
+            const {owner, repo} = context.repo;
+            if (run.conclusion !== 'success' || run.event !== 'pull_request' ||
+                run.head_repository?.full_name !== `${owner}/${repo}` ||
+                !/^atlas-notes-\d+$/.test(run.head_branch || '')) return;
+            const candidates = await github.paginate(github.rest.pulls.list, {
+              owner, repo, state: 'open', head: `${owner}:${run.head_branch}`
+            });
+            if (candidates.length !== 1) return;
+            const {data: pr} = await github.rest.pulls.get({owner, repo, pull_number: candidates[0].number});
+            if (pr.draft || pr.base.ref !== 'main' || pr.user.login !== owner ||
+                pr.head.repo?.full_name !== `${owner}/${repo}` ||
+                pr.head.sha !== run.head_sha || !pr.body?.includes('<!-- atlas-poi-sync -->')) return;
+            const files = await github.paginate(github.rest.pulls.listFiles, {owner, repo, pull_number: pr.number});
+            const allowed = path => path === 'campaign/world/Atlas Locations.md' ||
+              /^campaign\/\.atlas\/poi-\d+\.json$/.test(path) ||
+              /^campaign\/(?:world\/locations|nations\/[^/]+\/locations)\/[^/]+\.md$/.test(path);
+            if (!files.length || files.some(file => !allowed(file.filename) ||
+                file.previous_filename && !allowed(file.previous_filename) ||
+                !['added', 'modified', 'renamed'].includes(file.status))) return;
+            const {data: merged} = await github.rest.pulls.merge({
+              owner, repo, pull_number: pr.number, sha: run.head_sha, merge_method: 'squash'
+            });
+            if (!merged.merged) throw new Error('GitHub did not merge the verified atlas changes.');
+            // GITHUB_TOKEN merges do not trigger push workflows. Dispatch Pages explicitly.
+            await github.rest.actions.createWorkflowDispatch({owner, repo, workflow_id: 'pages.yml', ref: 'main'});

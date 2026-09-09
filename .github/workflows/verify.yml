@@ -28,6 +28,9 @@ jobs:
       - name: Check campaign consistency
         run: |
           python tools/check_subprovinces.py
+          python tools/test_campaign_pois.py
+          node tools/atlas-tests/poi-github.cjs
+          node tools/atlas-tests/poi-auto-merge.cjs
           python tools/lint_notes.py
           python tools/sync_relations.py --check
           python tools/sync_faith.py --check
@@ -47,3 +50,4 @@ jobs:
           node tools/atlas-tests/subprovinces.cjs
           node tools/atlas-tests/journey-inputs.cjs
           node tools/atlas-tests/custom-pois.cjs
+          node tools/atlas-tests/poi-sync.cjs

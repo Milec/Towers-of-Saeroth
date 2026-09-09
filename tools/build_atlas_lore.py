@@ -50,9 +50,13 @@ def build(out):
     for key in ('markers', 'notes'):
         match = re.search(r'ATLAS\.' + key + r'\.push\(\.\.\.(\[.*?\])\);', extra)
         if match: data[key].extend(json.loads(match[1]))
+    from build_campaign_pois import build as build_campaign_pois
+    campaign_pois = build_campaign_pois(ROOT, out)
+    custom_paths = {p['notePath'] for p in campaign_pois}
     notes = list((ROOT / 'campaign').rglob('*.md'))
     names = {}
     for p in notes:
+        if p.relative_to(ROOT).as_posix() in custom_paths: continue
         names.setdefault(normal(p.stem), []).append(p.relative_to(ROOT).as_posix())
     entries, by_note, unmatched = {}, {}, []
     def add(kind, obj, name, aliases=(), fallback=None):
@@ -97,6 +101,10 @@ def build(out):
     district_data = json.loads(district_source[district_source.index('{'):].rstrip().rstrip(';'))
     for district in district_data['districts']:
         add('subprovince', district, district['name'], fallback=entries.get(f'nation-{district["state"]}', {}).get('note'))
+    for p in campaign_pois:
+        key = f'custompoi-{p["id"]}'
+        entries[key] = {'name':p['name'],'note':p['notePath'],'direct':True}
+        by_note.setdefault(p['notePath'],[]).append(key)
     result = {'entries': entries, 'byNote': by_note, 'unmatched': unmatched}
     (out / 'atlas/lore-index.json').write_text(json.dumps(result, ensure_ascii=False), encoding='utf-8')
     (out / 'nation-positions.json').write_text(json.dumps({'width':3840, 'height':2160, 'nations':positions, 'image':'atlas/political.webp', 'playerImage':'atlas/Saeroth-Political-Travel.png', 'note':'Generated from interior points of the Living Atlas national territories by build_atlas_lore.py.'}), encoding='utf-8')

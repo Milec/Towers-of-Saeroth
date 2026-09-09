@@ -14,6 +14,16 @@ async function cacheChecks(){
   for(const resource of ['atlas/app.js','content/campaign/test.md','app.js']){let result;events.fetch({request:{url:scope+resource,method:'GET'},respondWith:p=>result=p});assert.equal(await(await result).text(),'network works',failure+' '+resource);}
   let activated;events.activate({waitUntil:p=>activated=p});await activated;assert.deepEqual(deleted,['saeroth-/Towers/-shell-v120']);
  }
+ const handlers={};let offline=false,cached=new Response('old');
+ const cache={match:async()=>cached.clone(),put:async(req,response)=>{cached=response.clone();}};
+ const scope='https://example.test/Towers/';
+ const sandbox={URL,Response,location:new URL(scope),fetch:async()=>{if(offline)throw Error('offline');return new Response('fresh');},caches:{open:async()=>cache},self:{registration:{scope},addEventListener:(name,handler)=>handlers[name]=handler}};
+ vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../../site/sw.js'),'utf8'),sandbox);
+ for(const resource of ['atlas/campaign-pois.json','atlas/lore-index.json','content/campaign/world/Test.md']){
+  offline=false;cached=new Response('old');let result;handlers.fetch({request:{url:scope+resource,method:'GET'},respondWith:p=>result=p});assert.equal(await(await result).text(),'fresh');
+  offline=true;handlers.fetch({request:{url:scope+resource,method:'GET'},respondWith:p=>result=p});assert.equal(await(await result).text(),'fresh');
+ }
+ console.log('PASS: campaign data refreshes over stale cache and remains available offline.');
  console.log('PASS: cache open/write failures preserve network responses; cleanup is scope-owned.');
 }
 (async()=>{

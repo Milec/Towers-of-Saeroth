@@ -156,7 +156,7 @@ then choose a position on the map and save. Editing also supports moving a
 marker; deleting requires confirmation. Keyboard users can pan the map and press
 Enter to place at its center, or Escape to cancel placement.
 
-Custom locations are a separate browser-local overlay in
+Unsynced custom locations are a separate browser-local overlay in
 `saeroth-custom-pois-v1` localStorage, not edits to campaign canon or the published
 map snapshot. They are searchable and have their own symbol/name layer controls.
 They appear in territory PNG handouts when enabled; their notes are not part of
@@ -166,10 +166,66 @@ Export/import JSON backups move locations and notes between devices. Import is
 additive: existing IDs are retained, not overwritten; malformed files are
 rejected before any write. Limits are 500 POIs, 100 characters per name and 5,000
 per note. Browser storage can be cleared or unavailable, so exported backups
-are the durable copy. These records do not automatically sync across devices or
-publish to other visitors, and custom-location deep links only resolve where
-that record has been saved/imported. This feature does not add server storage,
-accounts, route-graph nodes or campaign Markdown files.
+are the durable copy. Unsynced drafts do not appear on other devices. Connect Campaign note sync to
+create repository notes and publish shared POIs after automated checks. The browser still
+does not add route-graph nodes or its own server accounts.
 
 `tools/atlas-tests/custom-pois.cjs` covers placement, edits, persistence, search,
 layer dependencies, backup round trips, invalid imports and failed storage writes.
+
+
+## POI ↔ campaign note synchronization
+
+Open **Campaign note sync** and connect a fine-grained GitHub token scoped to
+Towers-of-Saeroth with Contents and Pull requests read/write. The credential is
+held only in the current tab's JavaScript memory, never local/session storage,
+exports, commits or site configuration. Reconnect after refresh. This uses
+GitHub's [Git database APIs](https://docs.github.com/en/rest/git) and
+[pull-request API](https://docs.github.com/en/rest/pulls/pulls).
+
+With automatic sync enabled, saving a POI updates a shared atlas review PR
+(or creates one when none is open), so multiple POIs do not create competing
+index edits. Use
+**Sync pending POIs** for older local drafts. The browser does not write directly to main. Owner-authored atlas sync PRs
+automatically merge after repository verification succeeds. A single atomic commit contains the Markdown note, its index link,
+and `campaign/.atlas/poi-ID.json` tracking record. Notes go under their owning
+nation's `locations/` folder, or `campaign/world/locations/` offshore. The note
+has `title`, `type: location`, and a JSON `atlas_poi` frontmatter field with stable
+ID, displayed name, icon kind and map coordinates. Its body is the POI notes.
+Renaming leaves a wikilink redirect; collisions never overwrite unrelated notes.
+
+`tools/build_campaign_pois.py` compiles these notes into
+`atlas/campaign-pois.json`; `build_atlas_lore.py` adds the bidirectional note/map
+links. Editing a linked note's body on GitHub updates its atlas notes after the
+next merge/build. Coordinate/icon edits belong in `atlas_poi`. Keep the ID stable
+and note bodies within 5,000 characters. Duplicate IDs or invalid coordinates
+fail the build. The original Azgaar/world snapshots remain unchanged.
+
+Local pending edits and unmerged review copies remain visible until the matching
+note is published. **Use published version** explicitly discards local edits.
+Git blob hashes detect conflicting note edits, and branch updates never force
+past concurrent writes. Failed saves retain the local draft; repeating a save
+can recover a successful request whose response was lost. Linked note deletion
+is handled through GitHub review rather than silently deleting campaign prose.
+Campaign notes and the shared POI/lore indexes refresh from the network with an
+offline cache fallback, so content-only merges do not need a new atlas version.
+
+Verification includes an in-memory GitHub transport (atomic writes, redirects,
+name collisions, retry recovery and conflicts), temporary-file note compilation,
+and browser tests with mocked GitHub responses. No test credentials or sample
+campaign notes are published. A user GitHub connection is required for live sync.
+
+
+### Automatic publication of POI notes
+
+`atlas-poi-auto-merge.yml` runs after successful PR verification. It merges only
+owner-authored, same-repository `atlas-notes-*` branches with the atlas sync
+marker and changes confined to location Markdown, POI tracking JSON, and the
+Atlas Locations index. Other PRs, deletions, code changes, failed checks, and
+newer unverified commits are excluded. The merge pins the verified head SHA.
+No PR code or artifacts are executed by this privileged workflow.
+
+After merging, the workflow explicitly dispatches Pages because merges made
+with `GITHUB_TOKEN` do not trigger ordinary push workflows. GitHub documents
+this behavior under [GITHUB_TOKEN](https://docs.github.com/en/actions/concepts/security/github_token).
+Failed/conflicting merges stay open; the sync progress link shows their status.
