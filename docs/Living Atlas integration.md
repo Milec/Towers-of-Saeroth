@@ -94,3 +94,7 @@ A progress message reports artwork loading and raster rendering; the resulting
 save link remains available for mobile browsers. Missing artwork stops export
 with a retry message. Handout browser tests cover a nation, province and archipelago,
 verify painted interiors and sample exterior pixels away from antialiased edges.
+
+The **Sepia parchment palette** toggle beneath the map presets applies to terrain
+and political views, including roads and icons. Its setting persists on the device
+and is captured for PNG exports; the opaque exterior remains parchment-colored.

@@ -99,7 +99,7 @@
 
   async function exportHandout() {
     if (exporting || !territory()) return;
-    const region = territory(), crop = bounds(region);
+    const region = territory(), crop = bounds(region), sepia = window.ATLAS_SEPIA?.enabled();
     const status = document.getElementById('handoutStatus');
     const button = document.getElementById('handoutExport');
     exporting = true; button.disabled = true;
@@ -137,7 +137,7 @@
       handoutLabels(clone,region,crop,w);
       clone.setAttribute('xmlns',NS);clone.setAttribute('viewBox',crop.join(' '));
       clone.setAttribute('width',w);clone.setAttribute('height',h);
-      clone.style.width=w+'px';clone.style.height=h+'px';clone.style.background='transparent';
+      clone.style.width=w+'px';clone.style.height=h+'px';clone.style.background='transparent';clone.style.filter='none';
       status.textContent='Loading artwork for the handout…'; await nextPaint();
       await Promise.all([...clone.querySelectorAll('image')].map(async image => {
         const href=image.getAttribute('href')||image.getAttributeNS('http://www.w3.org/1999/xlink','href');
@@ -152,7 +152,8 @@
       // A second raster clip makes redaction independent of SVG/CSS rendering quirks.
       context.save();context.scale(w/crop[2],h/crop[3]);context.translate(-crop[0],-crop[1]);
       context.clip(new Path2D(region.path),'evenodd');
-      context.drawImage(image,crop[0],crop[1],crop[2],crop[3]);context.restore();
+      const artwork=sepia ? window.ATLAS_SEPIA.raster(image,w,h) : image;
+      context.drawImage(artwork,crop[0],crop[1],crop[2],crop[3]);context.restore();
       context.fillStyle='#233a36';context.font='28px Georgia';context.textAlign='center';
       context.fillText(region.name,w/2,h+42,w-40);context.font='16px system-ui';
       context.fillText('Saeroth · Territory handout',w/2,h+72);
