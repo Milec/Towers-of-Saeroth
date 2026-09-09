@@ -10,6 +10,7 @@ async function request(url,options){
  if(method!=='GET')writes.push({path,body});
  if(!path)return ok({permissions:{push:true}});
  if(path==='/pulls'&&method==='GET')return ok(reviews);
+ if(/^\/pulls\/\d+$/.test(path)&&method==='GET')return ok(reviews.find(r=>r.number===+path.split('/').pop()));
  if(path.startsWith('/git/ref/heads/')){const sha=refs.get(path.slice('/git/ref/heads/'.length));return sha?ok({object:{sha}}):fail(404);}
  if(path.startsWith('/git/commits/')){const c=commits.get(path.split('/').pop());return ok({tree:{sha:c.tree}});}
  if(path.startsWith('/git/trees/')&&method==='GET'){
@@ -27,7 +28,7 @@ async function request(url,options){
   const ref=path.slice('/git/refs/heads/'.length);assert.notEqual(ref,'main');assert.equal(body.force,false);
   if(rejectPatch)return fail(422);assert.equal(commits.get(body.sha).parent,refs.get(ref));refs.set(ref,body.sha);return ok({});
  }
- if(path==='/pulls'&&method==='POST'){const review={body:body.body,head:{ref:body.head,repo:{full_name:'Milec/Towers-of-Saeroth'}},html_url:'https://github.com/Milec/Towers-of-Saeroth/pull/1000'};reviews.push(review);return ok(review);}
+ if(path==='/pulls'&&method==='POST'){const review={number:1000+reviews.length,state:'open',body:body.body,head:{ref:body.head,repo:{full_name:'Milec/Towers-of-Saeroth'}},html_url:'https://github.com/Milec/Towers-of-Saeroth/pull/1000'};reviews.push(review);return ok(review);}
  throw Error('Unhandled '+method+' '+path);
 }
 (async()=>{

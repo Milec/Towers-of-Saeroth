@@ -167,7 +167,7 @@ additive: existing IDs are retained, not overwritten; malformed files are
 rejected before any write. Limits are 500 POIs, 100 characters per name and 5,000
 per note. Browser storage can be cleared or unavailable, so exported backups
 are the durable copy. Unsynced drafts do not appear on other devices. Connect Campaign note sync to
-create repository notes and publish shared POIs after review. The browser still
+create repository notes and publish shared POIs after automated checks. The browser still
 does not add route-graph nodes or its own server accounts.
 
 `tools/atlas-tests/custom-pois.cjs` covers placement, edits, persistence, search,
@@ -186,8 +186,8 @@ GitHub's [Git database APIs](https://docs.github.com/en/rest/git) and
 With automatic sync enabled, saving a POI updates a shared atlas review PR
 (or creates one when none is open), so multiple POIs do not create competing
 index edits. Use
-**Sync pending POIs** for older local drafts. No main-branch writes or automatic
-merges occur. A single atomic commit contains the Markdown note, its index link,
+**Sync pending POIs** for older local drafts. The browser does not write directly to main. Owner-authored atlas sync PRs
+automatically merge after repository verification succeeds. A single atomic commit contains the Markdown note, its index link,
 and `campaign/.atlas/poi-ID.json` tracking record. Notes go under their owning
 nation's `locations/` folder, or `campaign/world/locations/` offshore. The note
 has `title`, `type: location`, and a JSON `atlas_poi` frontmatter field with stable
@@ -214,3 +214,18 @@ Verification includes an in-memory GitHub transport (atomic writes, redirects,
 name collisions, retry recovery and conflicts), temporary-file note compilation,
 and browser tests with mocked GitHub responses. No test credentials or sample
 campaign notes are published. A user GitHub connection is required for live sync.
+
+
+### Automatic publication of POI notes
+
+`atlas-poi-auto-merge.yml` runs after successful PR verification. It merges only
+owner-authored, same-repository `atlas-notes-*` branches with the atlas sync
+marker and changes confined to location Markdown, POI tracking JSON, and the
+Atlas Locations index. Other PRs, deletions, code changes, failed checks, and
+newer unverified commits are excluded. The merge pins the verified head SHA.
+No PR code or artifacts are executed by this privileged workflow.
+
+After merging, the workflow explicitly dispatches Pages because merges made
+with `GITHUB_TOKEN` do not trigger ordinary push workflows. GitHub documents
+this behavior under [GITHUB_TOKEN](https://docs.github.com/en/actions/concepts/security/github_token).
+Failed/conflicting merges stay open; the sync progress link shows their status.
