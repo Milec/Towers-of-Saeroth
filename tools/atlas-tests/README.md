@@ -12,3 +12,5 @@ Browser tests capture runtime errors on every page they open.
 Legacy render tools resolve the same Playwright installation (or NODE_PATH)
 through `tools/browser.js`. They do not require an /opt installation.
 The PR workflow runs these checks; Pages runs them before deployment.
+
+`pnpm run test:handouts` checks PNG export and outside-territory redaction.

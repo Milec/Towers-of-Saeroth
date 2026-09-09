@@ -97,3 +97,8 @@ header a.campaign-home{display:inline-block}.campaign-link a{font-weight:bold;te
  .integrated .atlas-jumps button {min-height:44px}
  .integrated .atlas-jumps [aria-current="true"] {box-shadow:inset 0 -3px var(--ink)}
 }
+
+.handout-tools {padding:12px;margin:14px 0;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.handout-tools h3{margin:0 0 8px}.handout-tools label{min-height:44px;display:flex;gap:8px;align-items:center}.handout-tools button:disabled{opacity:.6;cursor:wait}
+
+.atlas-sepia{display:flex;align-items:center;gap:10px;min-height:44px;padding:10px 16px;margin:0;border-bottom:1px solid var(--line);font-size:14px;cursor:pointer}.atlas-sepia input{width:18px;height:18px}

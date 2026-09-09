@@ -4,7 +4,8 @@
   "scripts": {
     "test": "node browser.cjs",
     "test:features": "node features.cjs",
-    "test:audits": "node audits.cjs"
+    "test:audits": "node audits.cjs",
+    "test:handouts": "node handouts.cjs"
   },
   "devDependencies": {
     "jsdom": "30.0.1",

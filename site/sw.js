@@ -2,7 +2,7 @@
    campaign/ is small (under 1 MB) so it is precached in full and works fully
    offline. vault/ is ~192 MB across 41k files, so it is cached lazily as pages
    are actually opened — anything you have read once stays available offline. */
-const VERSION = 'v122';
+const VERSION = 'v123';
 const PREFIX = 'saeroth-' + new URL(self.registration.scope).pathname + '-';
 const SHELL = PREFIX + 'shell-' + VERSION;
 const NOTES = PREFIX + 'notes';
