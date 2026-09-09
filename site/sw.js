@@ -2,7 +2,7 @@
    campaign/ is small (under 1 MB) so it is precached in full and works fully
    offline. vault/ is ~192 MB across 41k files, so it is cached lazily as pages
    are actually opened — anything you have read once stays available offline. */
-const VERSION = 'v127';
+const VERSION = 'v128';
 const PREFIX = 'saeroth-' + new URL(self.registration.scope).pathname + '-';
 const SHELL = PREFIX + 'shell-' + VERSION;
 const NOTES = PREFIX + 'notes';
@@ -74,6 +74,14 @@ self.addEventListener('fetch', (e) => {
   // Atlas art and detail tiles are fetched only when viewed. Never substitute
   // wiki HTML for an unavailable image or script while offline.
   const atlas = new URL('./atlas/', self.registration.scope).pathname;
+  const campaign = new URL('./content/campaign/', self.registration.scope).pathname;
+  if (url.pathname.startsWith(campaign) || [atlas+'campaign-pois.json',atlas+'lore-index.json'].includes(url.pathname)) {
+    e.respondWith((async () => {
+      try { const response=await fetch(req); await remember(NOTES,req,response); return response; }
+      catch (_) { return (await readCache(NOTES,req)) || new Response('Campaign data unavailable offline',{status:503}); }
+    })());
+    return;
+  }
   if (url.pathname.startsWith(atlas)) {
     e.respondWith((async () => {
       const name = PREFIX + 'atlas-' + VERSION;

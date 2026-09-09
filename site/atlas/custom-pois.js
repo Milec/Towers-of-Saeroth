@@ -7,14 +7,15 @@
     const ids=new Set();
     return value.pois.map(p=>{
       if(!p||!Number.isSafeInteger(p.id)||p.id<1||ids.has(p.id)||typeof p.name!=='string'||!p.name.trim()||p.name.length>100||typeof p.notes!=='string'||p.notes.length>5000||!Object.hasOwn(kinds,p.kind)||!Number.isFinite(p.x)||!Number.isFinite(p.y)||p.x<0||p.x>3840||p.y<0||p.y>2160)throw Error('This backup contains an invalid or duplicate POI. Nothing was imported.');
-      ids.add(p.id);return {id:p.id,name:p.name.trim(),kind:p.kind,notes:p.notes,x:p.x,y:p.y};
+      if(p.notePath && (p.notePath.split('/').some(s=>s==='..'||s==='.') || !/^campaign\/(?:nations|world)\/(?!.*(?:^|\/)\.\.(?:\/|$))[^\\\r\n]+\.md$/.test(p.notePath) || !/^[a-f0-9]{40}$/.test(p.noteSHA||'')))throw Error('Invalid campaign note link.');
+      ids.add(p.id);return {id:p.id,name:p.name.trim(),kind:p.kind,notes:p.notes,x:p.x,y:p.y,...(p.notePath?{notePath:p.notePath,noteSHA:p.noteSHA}:{}),...(p.pendingSync?{pendingSync:true}:{}),...(p.pendingReview?{pendingReview:true}:{}),...(p.published?{published:true}:{})};
     });
   };
-  let items=[],loadError='';
+  let items=[],loadError='';const publishedItems=new Map();
   try{const raw=localStorage.getItem(KEY);if(raw)items=decode(JSON.parse(raw));}catch(_){loadError='Saved POIs could not be read. Your existing browser data has not been changed.';}
   let editing=null,locationPoint=null,placing=false;
   const panel=document.createElement('details');panel.className='atlas-controls custom-poi-panel';panel.id='customPOIPanel';
-  panel.innerHTML=`<summary>My points of interest</summary><p class="muted">Saved only in this browser. Export a backup to move locations between devices. Custom POIs are included in PNG handouts when their layer is enabled; notes are not printed.</p><div class="journey-actions"><button type="button" id="customPOIAdd">Add POI</button><button type="button" id="customPOIExport">Export backup</button><button type="button" id="customPOIImport">Import backup</button></div><input id="customPOIFile" type="file" accept="application/json,.json" hidden><p id="customPOIStatus" role="status" aria-live="polite"></p><form id="customPOIForm" hidden><h3 id="customPOIHeading">New point of interest</h3><label for="customPOIName">Name</label><input id="customPOIName" required maxlength="100" autocomplete="off"><label for="customPOIKind">Icon</label><select id="customPOIKind">${Object.entries(kinds).map(([key,[name]])=>`<option value="${key}">${name}</option>`).join('')}</select><label for="customPOINotes">Notes</label><textarea id="customPOINotes" rows="4" maxlength="5000" placeholder="Encounter ideas, tower details, or campaign notes"></textarea><p id="customPOILocation">Choose a location on the map.</p><button type="button" id="customPOIPlace">Choose on map</button><div class="journey-actions"><button type="submit">Save POI</button><button type="button" id="customPOICancel">Cancel</button></div></form><div id="customPOIList"></div>`;
+  panel.innerHTML=`<summary>My points of interest</summary><p class="muted">Local drafts stay in this browser. Connect GitHub below to create linked campaign notes; merged notes appear on other devices. Export backups for drafts. Custom POIs are included in PNG handouts when their layer is enabled; notes are not printed.</p><div class="journey-actions"><button type="button" id="customPOIAdd">Add POI</button><button type="button" id="customPOIExport">Export backup</button><button type="button" id="customPOIImport">Import backup</button></div><input id="customPOIFile" type="file" accept="application/json,.json" hidden><p id="customPOIStatus" role="status" aria-live="polite"></p><form id="customPOIForm" hidden><h3 id="customPOIHeading">New point of interest</h3><label for="customPOIName">Name</label><input id="customPOIName" required maxlength="100" autocomplete="off"><label for="customPOIKind">Icon</label><select id="customPOIKind">${Object.entries(kinds).map(([key,[name]])=>`<option value="${key}">${name}</option>`).join('')}</select><label for="customPOINotes">Notes</label><textarea id="customPOINotes" rows="4" maxlength="5000" placeholder="Encounter ideas, tower details, or campaign notes"></textarea><p id="customPOILocation">Choose a location on the map.</p><button type="button" id="customPOIPlace">Choose on map</button><div class="journey-actions"><button type="submit">Save POI</button><button type="button" id="customPOICancel">Cancel</button></div></form><div id="customPOIList"></div>`;
   $('.search').after(panel);
   const status=text=>$('#customPOIStatus').textContent=text;
   status(loadError);
@@ -59,9 +60,9 @@
   }
   $('#customPOIForm').onsubmit=e=>{
     e.preventDefault();if(!locationPoint){status('Choose a map location before saving.');return;}
-    const p={id:editing??nextID(),name:$('#customPOIName').value.trim(),kind:$('#customPOIKind').value,notes:$('#customPOINotes').value,x:locationPoint[0],y:locationPoint[1]};
+    const p={...(items.find(p=>p.id===editing)||{}),pendingSync:true,id:editing??nextID(),name:$('#customPOIName').value.trim(),kind:$('#customPOIKind').value,notes:$('#customPOINotes').value,x:locationPoint[0],y:locationPoint[1]};
     const next=editing?items.map(old=>old.id===editing?p:old):[...items,p];
-    if(commit(next)){endPlacement();$('#customPOIForm').hidden=true;status('POI saved in this browser.');show('custompoi',p.id,false);}
+    if(commit(next)){endPlacement();$('#customPOIForm').hidden=true;status('POI saved in this browser.');show('custompoi',p.id,false);dispatchEvent(new CustomEvent('atlas-poi-saved',{detail:p.id}));}
   };
   const priorShow=show;
   show=function(type,id,fly=true){
@@ -70,8 +71,14 @@
     const p=items.find(p=>p.id===+id);if(!p)return;
     selected={type:'custompoi',id:p.id};
     const toggle=$('[data-layer="custompois"]');toggle.checked=true;layer.removeAttribute('hidden');
-    $('#info').innerHTML=`<span class="eyebrow">MY POI · ${esc(kinds[p.kind][0])}</span><h2>${esc(p.name)}</h2><p class="note">${esc(p.notes||'No notes yet.')}</p><p class="muted">Custom location saved in this browser.</p><div class="journey-actions"><button type="button" id="customPOIEdit">Edit / move POI</button><button type="button" id="customPOIDelete">Delete POI</button></div><div id="customPOIDeleteConfirm"></div>`;
+    $('#info').innerHTML=`<span class="eyebrow">MY POI · ${esc(kinds[p.kind][0])}</span><h2>${esc(p.name)}</h2><p class="note">${esc(p.notes||'No notes yet.')}</p><p class="muted">${p.notePath?'Linked campaign location'+(p.pendingSync?' · local changes waiting to sync':p.pendingReview?' · awaiting merge':''):'Local draft'}</p><div class="journey-actions"><button type="button" id="customPOIEdit">Edit / move POI</button><button type="button" id="customPOIDelete">Delete POI</button></div><div id="customPOIDeleteConfirm"></div>`;
     $('#customPOIEdit').onclick=()=>edit(p);
+    if(publishedItems.has(p.id)&&(p.pendingSync||p.pendingReview)){
+      const reset=document.createElement('button');reset.type='button';reset.textContent='Use published version';
+      reset.onclick=()=>{reset.textContent='Discard local changes and use published version';reset.onclick=()=>{if(commit(items.map(item=>item.id===p.id?publishedItems.get(p.id):item)))show('custompoi',p.id,false);};};
+      $('#info').append(reset);
+    }
+    if(p.notePath){$('#customPOIDelete').disabled=true;$('#customPOIDelete').title='Remove the linked campaign note on GitHub to delete a published location.';}
     $('#customPOIDelete').onclick=()=>{
       $('#customPOIDeleteConfirm').innerHTML='<p>Delete this custom location?</p><button type="button" id="customPOIDeleteYes">Delete permanently</button><button type="button" id="customPOIDeleteNo">Keep POI</button>';
       $('#customPOIDeleteNo').onclick=()=>$('#customPOIDeleteConfirm').replaceChildren();
@@ -110,7 +117,22 @@
     }catch(error){status(error instanceof SyntaxError?'This file is not valid JSON. Nothing was imported.':error.message);}
     e.target.value='';
   };
-  window.ATLAS_CUSTOM_POIS={has:id=>items.some(p=>p.id===+id)};
+  window.ATLAS_CUSTOM_POIS={
+    has:id=>items.some(p=>p.id===+id),
+    all:()=>items.map(p=>({...p})),
+    get:id=>{const p=items.find(p=>p.id===+id);return p?{...p}:null;},
+    synced:(snapshot,notePath,noteSHA)=>{
+      const current=items.find(p=>p.id===snapshot.id);if(!current)return;
+      const unchanged=['name','kind','notes','x','y'].every(k=>current[k]===snapshot[k]);
+      commit(items.map(p=>p.id===snapshot.id?{...p,notePath,noteSHA,pendingSync:!unchanged,pendingReview:true}:p));
+    }
+  };
   sync();
+  fetch('campaign-pois.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(value=>{
+    const shared=decode(value).map(p=>({...p,published:true})),local=items;shared.forEach(p=>publishedItems.set(p.id,p));
+    items=[...shared.map(p=>local.find(l=>l.id===p.id&&(l.pendingSync||l.pendingReview&&l.noteSHA!==p.noteSHA))||p),...local.filter(p=>!shared.some(s=>s.id===p.id)&&(!p.published||p.pendingSync||p.pendingReview))];sync();
+    try{localStorage.setItem(KEY,JSON.stringify({version:1,pois:items}));}catch(_){}
+    const link=location.hash.match(/^#custompoi-(\d+)$/);if(link)show('custompoi',+link[1],false);
+  }).catch(()=>{});
   const initial=location.hash.match(/^#custompoi-(\d+)$/);if(initial)show('custompoi',+initial[1],false);
 })();

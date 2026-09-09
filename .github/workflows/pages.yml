@@ -10,6 +10,7 @@ on:
       - 'site/**'
       - 'tools/build_site.py'
       - 'tools/build_atlas_lore.py'
+      - 'tools/build_campaign_pois.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
     inputs:
