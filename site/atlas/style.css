@@ -115,3 +115,12 @@ header a.campaign-home{display:inline-block}.campaign-link a{font-weight:bold;te
 .journey-suggestions{position:absolute;top:100%;left:0;right:0;z-index:10;max-height:240px;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px;box-shadow:0 4px 12px #142b3033}
 .journey-suggestions button{display:block;width:100%;min-height:44px;text-align:left;border:0;border-radius:0;white-space:normal;font-size:14px}
 .journey-suggestions button[aria-selected=true]{background:var(--accent);color:white}
+
+.custom-poi-panel input,.custom-poi-panel select,.custom-poi-panel textarea{width:100%}
+.custom-poi-panel textarea{font:16px/1.5 system-ui,sans-serif;min-height:110px;resize:vertical;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:10px}
+.custom-poi-panel input,.custom-poi-panel select{font-size:16px}
+#customPOIList{max-height:280px;overflow:auto}
+#customPOIStatus{font-size:13px}#custompois [data-type]{cursor:pointer}
+#custompoilabels text{fill:#f9edcf;stroke:#364b46;paint-order:stroke;stroke-linejoin:round;font-family:Georgia,serif}
+.custom-placement{position:absolute;top:12px;left:80px;right:12px;z-index:4;padding:12px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;font-size:13px}
+.custom-placement:not([hidden]){display:flex;gap:8px;align-items:center}.custom-placement button{flex-shrink:0}.placing-poi{cursor:crosshair!important}

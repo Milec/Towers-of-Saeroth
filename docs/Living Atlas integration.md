@@ -147,3 +147,29 @@ accounting and complete province coverage. Feature tests verify each new outpost
 can reach its province seat using existing roads/trails without sailing or
 cross-country travel. Browser tests cover district navigation, filters, persisted
 deep links, and exported handouts.
+
+
+## Custom points of interest
+
+Open **My points of interest → Add POI**, enter a name, icon and optional notes,
+then choose a position on the map and save. Editing also supports moving a
+marker; deleting requires confirmation. Keyboard users can pan the map and press
+Enter to place at its center, or Escape to cancel placement.
+
+Custom locations are a separate browser-local overlay in
+`saeroth-custom-pois-v1` localStorage, not edits to campaign canon or the published
+map snapshot. They are searchable and have their own symbol/name layer controls.
+They appear in territory PNG handouts when enabled; their notes are not part of
+the rendered map. Map presets preserve the custom layer choices.
+
+Export/import JSON backups move locations and notes between devices. Import is
+additive: existing IDs are retained, not overwritten; malformed files are
+rejected before any write. Limits are 500 POIs, 100 characters per name and 5,000
+per note. Browser storage can be cleared or unavailable, so exported backups
+are the durable copy. These records do not automatically sync across devices or
+publish to other visitors, and custom-location deep links only resolve where
+that record has been saved/imported. This feature does not add server storage,
+accounts, route-graph nodes or campaign Markdown files.
+
+`tools/atlas-tests/custom-pois.cjs` covers placement, edits, persistence, search,
+layer dependencies, backup round trips, invalid imports and failed storage writes.
