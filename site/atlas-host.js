@@ -1,5 +1,5 @@
 /* Narrow integration boundary: atlas globals never enter the wiki document. */
-const validAtlasSelection = value => /^(nation|burg|poi|province|subprovince|route)-\d+$/.test(value || '');
+const validAtlasSelection = value => /^(nation|burg|poi|province|subprovince|custompoi|route)-\d+$/.test(value || '');
 window.offerAtlasUpdate = () => {
   const frame = document.querySelector('.atlas-frame');
   if (!frame) return false;
@@ -18,6 +18,7 @@ window.selectHostedAtlas = selection => {
 };
 window.addEventListener('message', e => {
   const frame = document.querySelector('.atlas-frame');
+  if (e.origin === location.origin && e.source === frame?.contentWindow && e.data?.type === 'atlas-custom-selection-cleared') { history.replaceState(null, '', '#/atlas'); dispatchEvent(new CustomEvent('atlas-selection-change',{detail:''})); return; }
   if (e.origin !== location.origin || e.source !== frame?.contentWindow || e.data?.type !== 'atlas-selection' || !validAtlasSelection(e.data.selection)) return;
   history.replaceState(null, '', '#/atlas#' + e.data.selection);
   dispatchEvent(new CustomEvent('atlas-selection-change',{detail:e.data.selection}));
@@ -29,7 +30,7 @@ window.mountAtlas = function(container, selection) {
   const frame = document.createElement('iframe');
   frame.title = 'Interactive Living Atlas of Saeroth';
   frame.className = 'atlas-frame';
-  frame.src = 'atlas/?integrated=1' + (/^(nation|burg|poi|province|subprovince|route)-\d+$/.test(selection || '') ? '#' + selection : '');
+  frame.src = 'atlas/?integrated=1' + (/^(nation|burg|poi|province|subprovince|custompoi|route)-\d+$/.test(selection || '') ? '#' + selection : '');
   container.append(frame);
   frame.addEventListener('load', () => {
     if (!frame.isConnected) return;

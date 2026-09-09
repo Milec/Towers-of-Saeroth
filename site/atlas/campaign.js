@@ -12,6 +12,7 @@
     document.querySelector(`[data-style="${name==='Political'?'political':'terrain'}"]`).click();
     for(const input of document.querySelectorAll('[data-layer]')) {
       const key=input.dataset.layer;
+      if (['custompois','custompoilabels'].includes(key)) continue;
       const on=name==='Political'?['countries','provinces','settlements','townlabels'].includes(key):name==='Travel'?['countries','roads','trails','searoutes','settlements','ports','pois','townlabels'].includes(key):['countries','relief','roads','settlements','pois','townlabels'].includes(key);
       input.checked=on;input.dispatchEvent(new Event('change',{bubbles:true}));
     }
@@ -50,8 +51,9 @@
   };
   addEventListener('message', e => {
     if (e.origin !== location.origin || e.source !== parent || e.data?.type !== 'atlas-select') return;
-    const match = /^(nation|burg|poi|province|subprovince|route)-(\d+)$/.exec(e.data.selection || '');
+    const match = /^(nation|burg|poi|province|subprovince|custompoi|route)-(\d+)$/.exec(e.data.selection || '');
     if (!match) return;
+    if (match[1] === 'custompoi') { if(window.ATLAS_CUSTOM_POIS?.has(+match[2])) show('custompoi',+match[2]); return; }
     const records = {nation:D.states, burg:D.burgs, poi:D.markers, province:D.provinces, subprovince:districts, route:D.routes}[match[1]];
     if (records?.some(r => r && r.i === +match[2] && !r.removed)) show(match[1], +match[2]);
   });
