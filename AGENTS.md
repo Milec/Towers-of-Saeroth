@@ -54,8 +54,10 @@ paths, a preinstalled browser, or a particular global Node installation.
   coordinates from the current atlas during every site build. Never replace
   these with the older static map coordinates or scale those old coordinates.
 - `atlas-source/` retains the corrected native map, reshaped geography and SVG
-  backgrounds. The historical Azgaar files and `tools/mapgen/` are separate
-  workflows; regenerating them does not regenerate the Living Atlas.
+  backgrounds. Native Azgaar downloads are retained reference artifacts; the
+  retired generator is available in Git history only. Use the maintained
+  workflows in [tools/README.md](tools/README.md). Frontier lint constraints
+  live in `tools/data/required-borders.json`.
 - Read [Living Atlas integration](docs/Living%20Atlas%20integration.md) before
   changing map data or tile generation. Atlas production, population and
   diplomacy are retained snapshots; lore changes do not automatically alter

@@ -108,6 +108,10 @@ test dependency lockfile and supported Node version for reproducibility.
 
 ### 6. P2 — legacy map/export tools still depend on another machine
 
+**Resolved:** the obsolete Azgaar generator and backdrop pipeline have been
+removed. Maintained PDF and icon exporters use `tools/browser.js` for portable
+browser discovery. The evidence below describes the original audit state.
+
 **Evidence:** `tools/mapgen/app.js:19`, `tools/rasterize.js:3`, and
 `tools/topdf.js:3` require Playwright from `/opt/node22/...`.
 `tools/mapgen/journeys.js:43`, `build.js:93` and `verify.js:11` use

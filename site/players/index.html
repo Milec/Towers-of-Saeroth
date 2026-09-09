@@ -419,9 +419,8 @@
 
   /* ---- The world map, on the Nations page only -------------------------
 
-     Both halves of this are generated out of campaign/Saeroth.map by
-     tools/map_backdrop.js, so a rebuilt map moves the pins with no edit
-     here. The nation data is read out of the page's own rendered tables
+     tools/build_atlas_lore.py derives nation positions from the current
+     Living Atlas during every site build and selects its travel artwork. The nation data is read out of the page's own rendered tables
      rather than duplicated, which is the same rule the vault's other views
      follow: adding a row to the markdown adds a pin.
 
