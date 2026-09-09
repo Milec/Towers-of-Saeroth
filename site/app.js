@@ -2704,6 +2704,9 @@ async function init() {
     let reloading = false;
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (!hadWorker || reloading) return;
+      // The atlas can contain an unfinished journey. Updating caches must not
+      // replace its document while the user is entering locations.
+      if (window.offerAtlasUpdate?.()) { showVersion(); return; }
       reloading = true;
       location.reload();
     });

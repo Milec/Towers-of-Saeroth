@@ -701,3 +701,4 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {o
 .diagram-tools input,.diagram-tools select {font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:8px;padding:8px;min-height:44px;max-width:100%}
 .diagram-tools p {margin:0;font-size:14px}
 .diagram-tools button:hover,.nation-picker button:hover {border-color:var(--accent)}
+.view-atlas #content:has(.atlas-update){display:flex;flex-direction:column}.view-atlas #content:has(.atlas-update)>.atlas-frame{flex:1;min-height:0}.atlas-update{flex-shrink:0;padding:8px 16px;background:var(--bg);color:var(--ink);border-bottom:1px solid var(--rule);font-size:14px}.atlas-update button{min-height:44px;margin-left:8px}

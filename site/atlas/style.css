@@ -109,3 +109,9 @@ header a.campaign-home{display:inline-block}.campaign-link a{font-weight:bold;te
 #map[data-style="political"] .subprovince{fill:var(--province-fill);fill-opacity:var(--province-opacity)}
 .district-hierarchy{padding:12px 0}.district-hierarchy h3{margin-top:12px}
 #districtlabels text{fill:#f9edcf;stroke:#364b46;paint-order:stroke;stroke-linejoin:round;font-family:Georgia,serif;font-style:italic;pointer-events:none}
+
+.journey-picker{position:relative;margin-bottom:10px}
+#journeyForm .journey-picker input{font-size:16px}
+.journey-suggestions{position:absolute;top:100%;left:0;right:0;z-index:10;max-height:240px;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px;box-shadow:0 4px 12px #142b3033}
+.journey-suggestions button{display:block;width:100%;min-height:44px;text-align:left;border:0;border-radius:0;white-space:normal;font-size:14px}
+.journey-suggestions button[aria-selected=true]{background:var(--accent);color:white}

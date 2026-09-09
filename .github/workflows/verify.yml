@@ -45,3 +45,4 @@ jobs:
           node tools/atlas-tests/audits.cjs
           node tools/atlas-tests/handouts.cjs
           node tools/atlas-tests/subprovinces.cjs
+          node tools/atlas-tests/journey-inputs.cjs
