@@ -1,7 +1,7 @@
 const fs=require('fs'),path=require('path'),assert=require('node:assert/strict'),{JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'../../site/atlas');
 const dom=new JSDOM(fs.readFileSync(path.join(root,'index.html'),'utf8'),{url:'http://localhost/',runScripts:'outside-only',pretendToBeVisual:true}),w=dom.window,d=w.document;
-const files=['data.js','settlement-additions-data.js','settlement-additions.js','subprovinces-data.js','lore-features.js','icons.js','painted-manifest.js','painted-icons.js','app.js','routing-data.js','routing.js','features.js','polish-data.js','polish.js','geography.js','settlement-hierarchy.js','route-alignment.js','background-detail.js'];
+const files=['data.js','settlement-additions-data.js','settlement-additions.js','subprovinces-data.js','lore-features.js','icons.js','painted-manifest.js','painted-icons.js','app.js','routing-data.js','routing.js','journey-inputs.js','features.js','polish-data.js','polish.js','geography.js','settlement-hierarchy.js','route-alignment.js','background-detail.js'];
 w.eval(files.map(f=>fs.readFileSync(path.join(root,f),'utf8')).join('\n'));
 (async()=>{
  await new Promise(r=>setTimeout(r,60));

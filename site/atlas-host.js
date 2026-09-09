@@ -1,5 +1,18 @@
 /* Narrow integration boundary: atlas globals never enter the wiki document. */
 const validAtlasSelection = value => /^(nation|burg|poi|province|subprovince|route)-\d+$/.test(value || '');
+window.offerAtlasUpdate = () => {
+  const frame = document.querySelector('.atlas-frame');
+  if (!frame) return false;
+  if (!document.querySelector('.atlas-update')) {
+    const notice = document.createElement('div'); notice.className = 'atlas-update';
+    notice.setAttribute('role', 'status');
+    notice.append('A map update is ready. ');
+    const refresh = document.createElement('button'); refresh.type = 'button';
+    refresh.textContent = 'Refresh when ready'; refresh.onclick = () => location.reload();
+    notice.append(refresh); frame.before(notice);
+  }
+  return true;
+};
 window.selectHostedAtlas = selection => {
   if (validAtlasSelection(selection)) document.querySelector('.atlas-frame')?.contentWindow.postMessage({type:'atlas-select', selection}, location.origin);
 };
