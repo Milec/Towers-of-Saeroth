@@ -27,6 +27,7 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
       - name: Check campaign consistency
         run: |
+          python tools/check_subprovinces.py
           python tools/lint_notes.py
           python tools/sync_relations.py --check
           python tools/sync_faith.py --check
@@ -43,3 +44,4 @@ jobs:
           node tools/atlas-tests/browser.cjs
           node tools/atlas-tests/audits.cjs
           node tools/atlas-tests/handouts.cjs
+          node tools/atlas-tests/subprovinces.cjs

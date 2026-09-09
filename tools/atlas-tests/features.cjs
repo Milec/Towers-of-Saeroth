@@ -1,7 +1,7 @@
 const fs=require('fs'),path=require('path'),assert=require('node:assert/strict'),{JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'../../site/atlas');
 const dom=new JSDOM(fs.readFileSync(path.join(root,'index.html'),'utf8'),{url:'http://localhost/',runScripts:'outside-only',pretendToBeVisual:true}),w=dom.window,d=w.document;
-const files=['data.js','lore-features.js','icons.js','painted-manifest.js','painted-icons.js','app.js','routing-data.js','routing.js','features.js','polish-data.js','polish.js','geography.js','settlement-hierarchy.js','route-alignment.js','background-detail.js'];
+const files=['data.js','settlement-additions-data.js','settlement-additions.js','subprovinces-data.js','lore-features.js','icons.js','painted-manifest.js','painted-icons.js','app.js','routing-data.js','routing.js','features.js','polish-data.js','polish.js','geography.js','settlement-hierarchy.js','route-alignment.js','background-detail.js'];
 w.eval(files.map(f=>fs.readFileSync(path.join(root,f),'utf8')).join('\n'));
 (async()=>{
  await new Promise(r=>setTimeout(r,60));
@@ -40,7 +40,7 @@ w.eval(files.map(f=>fs.readFileSync(path.join(root,f),'utf8')).join('\n'));
  const tiny=w.ATLAS.burgs.find(b=>b.population*250<1000&&!b.capital);
  w.show('burg',tiny.i,false);await new Promise(r=>setTimeout(r,40));
  assert(!d.querySelector('#settlements [data-id="'+tiny.i+'"]').hasAttribute('hidden'));
- assert.equal(d.querySelectorAll('#settlements [data-type=burg]').length,1279);
+ assert.equal(d.querySelectorAll('#settlements [data-type=burg]').length,1293);
  assert(w.ATLAS_ICONS.relief.filter(r=>r.canopy).length>5000);assert.equal(d.querySelector('#map').lastElementChild.id,'labels');assert.equal(d.querySelector('#nationlabels').parentElement.id,'labels');assert.equal(d.querySelector('#townlabels').parentElement.id,'labels');assert(d.querySelector('#nationlabels text'));assert(!d.querySelector('#nationlabels').textContent.includes('Highforge'));
  assert.equal(d.querySelectorAll('#pois [data-type=poi]').length,468);
  assert(d.querySelector('#poi-volcano'));assert(d.querySelector('#icon-highforge image'));assert(d.querySelector('#icon-mountain image'));assert(d.querySelector('#poi-volcano image'));for(const e of d.querySelectorAll('[clip-path]'))assert(d.getElementById(e.getAttribute('clip-path').slice(5,-1)));assert.equal(d.querySelectorAll('.lore-landmark').length,2);
@@ -53,6 +53,15 @@ w.eval(files.map(f=>fs.readFileSync(path.join(root,f),'utf8')).join('\n'));
  const names=d.querySelector('[data-tier=metropolis][data-part=names]');names.checked=false;names.dispatchEvent(new w.Event('change',{bubbles:true}));await new Promise(r=>setTimeout(r,30));assert.equal(d.querySelectorAll('#townlabels text').length,0);assert(d.querySelectorAll('#settlements .burg:not([hidden])').length>0);
  d.querySelector('[data-preset=all]').click();
  const network=w.ATLAS_NETWORK,router=new w.AtlasRouter(network);
+ assert.equal(w.ATLAS_ADDITIONS.burgs.length,14);
+ assert.equal(w.ATLAS.burgs.filter(b=>!b.modeledDistrictSeat).length,1279);
+ for(const b of w.ATLAS_ADDITIONS.burgs){
+  const p=w.ATLAS.provinces.find(p=>p?.i===b.province);
+  const capital=w.ATLAS.burgs.find(b=>b.i===p.burg);
+  assert.equal(b.population*250,200);assert.equal(b.culture,capital.culture);
+  assert(router.find(b.cell,capital.cell,{sail:false,offroad:false}),b.name+' needs a continuous road/trail connection');
+ }
+
  const melisor=w.ATLAS.burgs.filter(b=>b.state===19),mh=melisor.find(b=>b.capital),mt=melisor.find(b=>!b.capital);
  const magic=router.find(mh.cell,mt.cell,{sail:false,offroad:false,teleport:true});assert(magic&&magic.teleportLegs>0);assert(d.querySelector('#journeyTeleport'));assert(!d.querySelector('#journeyTeleport').checked);
  assert(w.ATLAS.crossings.length>400);assert(d.querySelector('#crossings'));assert.equal(d.querySelector('#map').lastElementChild.id,'labels');
@@ -150,5 +159,5 @@ w.eval(files.map(f=>fs.readFileSync(path.join(root,f),'utf8')).join('\n'));
  d.querySelector('#mapHome').click();await tick();w.updateBackgroundDetail();assert.equal(d.querySelector('#backgroundDetail').children.length,0);
  assert.equal(d.querySelector('#background').nextElementSibling.id,'backgroundDetail');
  assert.equal(d.querySelector('#map').lastElementChild.id,'labels');
- console.log(JSON.stringify({settlements:1279,landmarks:468,nodes:network.nodes.length,edges:network.edges.length,landRouteKm:Math.round(land.km),islandRouteKm:Math.round(sea.km),passed:'tier filters, labels, symbols, search, route graph, sailing restrictions, waypoints, controls'}));dom.window.close();
+ console.log(JSON.stringify({settlements:1293,landmarks:468,nodes:network.nodes.length,edges:network.edges.length,landRouteKm:Math.round(land.km),islandRouteKm:Math.round(sea.km),passed:'tier filters, labels, symbols, search, route graph, sailing restrictions, waypoints, controls'}));dom.window.close();
 })().catch(e=>{console.error(e);dom.window.close();process.exitCode=1;});

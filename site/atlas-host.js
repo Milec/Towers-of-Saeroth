@@ -1,5 +1,5 @@
 /* Narrow integration boundary: atlas globals never enter the wiki document. */
-const validAtlasSelection = value => /^(nation|burg|poi|province|route)-\d+$/.test(value || '');
+const validAtlasSelection = value => /^(nation|burg|poi|province|subprovince|route)-\d+$/.test(value || '');
 window.selectHostedAtlas = selection => {
   if (validAtlasSelection(selection)) document.querySelector('.atlas-frame')?.contentWindow.postMessage({type:'atlas-select', selection}, location.origin);
 };
@@ -16,7 +16,7 @@ window.mountAtlas = function(container, selection) {
   const frame = document.createElement('iframe');
   frame.title = 'Interactive Living Atlas of Saeroth';
   frame.className = 'atlas-frame';
-  frame.src = 'atlas/?integrated=1' + (/^(nation|burg|poi|province|route)-\d+$/.test(selection || '') ? '#' + selection : '');
+  frame.src = 'atlas/?integrated=1' + (/^(nation|burg|poi|province|subprovince|route)-\d+$/.test(selection || '') ? '#' + selection : '');
   container.append(frame);
   frame.addEventListener('load', () => {
     if (!frame.isConnected) return;

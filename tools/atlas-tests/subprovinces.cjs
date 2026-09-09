@@ -1,0 +1,20 @@
+const {chromium}=require('playwright'),assert=require('node:assert/strict');
+const base=process.env.ATLAS_TEST_URL||'http://127.0.0.1:8899/';
+(async()=>{const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});try{
+ const page=await browser.newPage({viewport:{width:390,height:844},serviceWorkers:'block'});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(base+'#/atlas#province-43');const frame=page.frameLocator('.atlas-frame');await frame.locator('.district-hierarchy').waitFor();const inner=page.frames().find(f=>f.url().includes('/atlas/'));
+ const counts=await inner.evaluate(()=>({districts:districts.length,paths:document.querySelectorAll('#subprovinces path').length}));assert.equal(counts.districts,362);assert.equal(counts.districts,counts.paths);
+ await frame.locator('.district-hierarchy [data-type="subprovince"]').first().click();await page.waitForFunction(()=>location.hash.includes('#subprovince-'));
+ const selected=await inner.evaluate(()=>({id:selected.id,d:districts.find(d=>d.i===selected.id)}));assert(selected.d.burgs.includes(selected.d.capital));
+ assert(await frame.locator('[data-layer="subprovinces"]').isChecked());assert(await frame.locator('#handoutExport').isVisible());
+ const capital=await inner.evaluate(()=>districts.find(d=>d.i===selected.id).capital);await frame.locator('#info button[data-type="burg"][data-id="'+capital+'"]').first().click();await frame.locator('.district-hierarchy').getByText('District capital',{exact:true}).waitFor();
+ await frame.locator('.district-hierarchy [data-type="subprovince"]').click();await frame.locator('a.campaign-link').waitFor();
+ await frame.locator('.layers > summary').click();
+ await frame.locator('[data-layer="districtlabels"]').check();await inner.evaluate(()=>{box=[...box];box[2]=300;box[3]=168.75;renderView();});
+ await frame.locator('[data-layer="subprovinces"]').uncheck();await inner.waitForFunction(()=>!document.querySelector('#districtlabels').children.length&&document.querySelector('#districtseats').hasAttribute('hidden'));
+ await frame.locator('[data-layer="subprovinces"]').check();await frame.locator('#handoutFit').click();
+ const download=page.waitForEvent('download',{timeout:120000});await frame.locator('#handoutExport').click();const file=await download;assert((await file.suggestedFilename()).includes('District'));
+ await file.saveAs(require('node:path').join(__dirname,'../../../output/subprovince-handout.png'));
+ await page.reload();await page.frameLocator('.atlas-frame').locator('#info h2').filter({hasText:selected.d.name}).waitFor();
+ assert.deepEqual(errors,[]);console.log('PASS: province → district → capital, host deep link/reload, hidden-layer labels, and district PNG handout.');
+ }finally{await browser.close();}})().catch(e=>{console.error(e);process.exit(1);});
