@@ -151,7 +151,7 @@ def generate():
             point = shape.representative_point()
             records.append({'i':province['i']*10+label+1, 'name':name, 'fullName':name, 'province':province['i'], 'state':province['state'], 'capital':capital['i'], 'externalSeat':external, 'burgs':[b['i'] for b in group], 'population':populations[label], 'area':round(shape.area,4), 'bounds':[round(n,4) for n in shape.bounds], 'pole':[round(point.x,4),round(point.y,4)], 'path':svg_path(shape), 'components':len(list(polygon_parts(shape)))})
         checks.append({'province':province['i'], 'districts':count, 'settlements':len(members), 'coverageError':round(error,8), 'overlapArea':round(overlap,8)})
-    return {'schemaVersion':1, 'geographySHA256':hashlib.sha256((ROOT/'atlas-source/geography.npz').read_bytes()).hexdigest(), 'sourceSHA256':hashlib.sha256(data_path.read_bytes()).hexdigest(), 'method':'Terrain-weighted growth over clipped Voronoi cells; settlement seeds; detached islands assigned to nearest district seed.', 'singleSeatPolicy':'added-settlements', 'additionsSHA256':hashlib.sha256(ADDITIONS.read_bytes()).hexdigest(), 'districts':records, 'checks':checks}
+    return {'schemaVersion':1, 'geographySHA256':hashlib.sha256((ROOT/'atlas-source/geography.npz').read_bytes()).hexdigest(), 'sourceSHA256':hashlib.sha256(data_path.read_bytes()).hexdigest(), 'method':'Terrain-weighted growth over clipped Voronoi cells; settlement seeds; detached islands assigned to nearest district seed.', 'singleSeatPolicy':'added-settlements', 'additionsSHA256':hashlib.sha256(ADDITIONS.read_text(encoding='utf-8').encode('utf-8')).hexdigest(), 'districts':records, 'checks':checks}
 
 if __name__ == '__main__':
     result = generate()

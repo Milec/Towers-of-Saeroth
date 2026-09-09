@@ -22,7 +22,7 @@ def check():
     assert len(d['burgs'])==len({b['i'] for b in d['burgs']})
     assert generated['geographySHA256']==hashlib.sha256((ROOT/'atlas-source/geography.npz').read_bytes()).hexdigest()
     assert generated['sourceSHA256']==hashlib.sha256((ROOT/'site/atlas/data.js').read_bytes()).hexdigest(),'Regenerate stale districts'
-    assert generated['additionsSHA256']==hashlib.sha256(ADDITIONS.read_bytes()).hexdigest()
+    assert generated['additionsSHA256']==hashlib.sha256(ADDITIONS.read_text(encoding='utf-8').encode('utf-8')).hexdigest()
     provinces={p['i']:p for p in d['provinces'] if p and p.get('i') and not p.get('removed')}
     burgs={b['i']:b for b in d['burgs']};by_parent=collections.defaultdict(list);assigned=[]
     ids=[r['i'] for r in generated['districts']];assert len(ids)==len(set(ids))
