@@ -42,3 +42,4 @@ jobs:
           trap 'kill "$server_pid"' EXIT
           node tools/atlas-tests/browser.cjs
           node tools/atlas-tests/audits.cjs
+          node tools/atlas-tests/handouts.cjs

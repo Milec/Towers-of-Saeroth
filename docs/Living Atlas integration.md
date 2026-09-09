@@ -73,3 +73,24 @@ The renderer's `verification.json` describes the original generated map snapshot
 not the current website build. Current runtime verification lives in the PR checks
 and `tools/atlas-tests/`. Rebuild note links and positions with `build_site.py`;
 regenerating the legacy Azgaar tools does not regenerate atlas artwork or tiles.
+
+## Territory handouts
+
+Select a nation or province and open Place details. **Hide outside territory**
+previews an opaque parchment cover; **Fit territory** includes every component,
+including detached islands. **Export PNG handout** always conceals the exterior,
+regardless of the preview checkbox. The export is a flattened raster, not an SVG
+containing hidden world geometry. Blur alone would still reveal neighboring shapes.
+
+Exports use the selected boundary, current map layers, and settlement name filters.
+Settlement captions are fitted inside the territory; labels that cannot fit are
+omitted. Roads, relief and settlement artwork remain visible. The overview raster
+supplies the background; streamed regional SVG detail tiles are omitted. Exports
+are up to 2400 pixels wide, capped at 3000 map pixels tall plus a title strip.
+Boundary holes (including unclaimed lakes) and all other exterior areas are covered.
+The interactive source remains a GM tool; share the downloaded PNG with players.
+
+A progress message reports artwork loading and raster rendering; the resulting
+save link remains available for mobile browsers. Missing artwork stops export
+with a retry message. Handout browser tests cover a nation, province and archipelago,
+verify painted interiors and sample exterior pixels away from antialiased edges.
