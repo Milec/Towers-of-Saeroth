@@ -16,7 +16,7 @@
 //
 // Needs the app served on 5199:
 //   cd /path/to/Fantasy-Map-Generator && setsid nohup npx vite --port 5199 --strictPort &
-const { chromium } = require('/opt/node22/lib/node_modules/playwright');
+const { chromium } = require('../browser');
 const path = require('path');
 
 const BASE = process.env.FMG_URL || 'http://127.0.0.1:5199/Fantasy-Map-Generator/';

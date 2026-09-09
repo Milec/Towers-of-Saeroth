@@ -3,10 +3,15 @@
   "private": true,
   "scripts": {
     "test": "node browser.cjs",
-    "test:features": "node features.cjs"
+    "test:features": "node features.cjs",
+    "test:audits": "node audits.cjs"
   },
   "devDependencies": {
     "jsdom": "30.0.1",
     "playwright": "1.62.1"
+  },
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=24"
   }
 }

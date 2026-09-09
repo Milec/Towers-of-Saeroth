@@ -4,6 +4,26 @@
     document.documentElement.classList.add('integrated');
     document.querySelector('header').hidden = true;
   }
+  const presets = document.createElement('nav'); presets.className='atlas-presets'; presets.setAttribute('aria-label','Map presets');
+  presets.innerHTML=['Explore','Political','Travel'].map(name=>`<button type="button" data-map-preset="${name}">${name}</button>`).join('');
+  document.querySelector('.search').after(presets);
+  presets.onclick=e=>{
+    const name=e.target.dataset.mapPreset;if(!name)return;
+    document.querySelector(`[data-style="${name==='Political'?'political':'terrain'}"]`).click();
+    for(const input of document.querySelectorAll('[data-layer]')) {
+      const key=input.dataset.layer;
+      const on=name==='Political'?['countries','provinces','settlements','townlabels'].includes(key):name==='Travel'?['countries','roads','trails','searoutes','settlements','ports','pois','townlabels'].includes(key):['countries','relief','roads','settlements','pois','townlabels'].includes(key);
+      input.checked=on;input.dispatchEvent(new Event('change',{bubbles:true}));
+    }
+    for(const button of presets.children)button.setAttribute('aria-pressed',button===e.target);
+  };
+  const jumps=document.querySelector('.atlas-jumps');
+  jumps?.addEventListener('click',e=>{if(e.target.dataset.jump)for(const b of jumps.children)b.setAttribute('aria-current',b===e.target?'true':'false');});
+  // Keep presentation state when visiting lore; never save geographic records.
+  const save=()=>{try{sessionStorage.setItem('saeroth-view',JSON.stringify({box,selection:location.hash,layers:[...document.querySelectorAll('[data-layer]')].map(e=>[e.dataset.layer,e.checked])}));}catch{}};
+  addEventListener('pagehide',save);
+  document.addEventListener('click',e=>{if(e.target.closest('a[target="_top"]'))save();});
+  try{const saved=JSON.parse(sessionStorage.getItem('saeroth-view'));if(saved?.selection===location.hash&&saved.box?.length===4&&saved.box.every(Number.isFinite)){box=saved.box;for(const [key,on]of saved.layers||[]){const input=[...document.querySelectorAll('[data-layer]')].find(e=>e.dataset.layer===key);if(input){input.checked=on;input.dispatchEvent(new Event('change',{bubbles:true}));}}renderView();}}catch{}
   let index;
   const info = document.getElementById('info');
   function links() {
@@ -24,7 +44,17 @@
   // Wrapping the current selection function preserves the existing geography,
   // symbol alignment and label hooks installed before this module.
   const originalShow = show;
-  show = function(...args) { originalShow(...args); links(); };
+  show = function(...args) {
+    originalShow(...args); links();
+    if (parent !== window && selected) parent.postMessage({type:'atlas-selection', selection:`${selected.type}-${selected.id}`}, location.origin);
+  };
+  addEventListener('message', e => {
+    if (e.origin !== location.origin || e.source !== parent || e.data?.type !== 'atlas-select') return;
+    const match = /^(nation|burg|poi|province|route)-(\d+)$/.exec(e.data.selection || '');
+    if (!match) return;
+    const records = {nation:D.states, burg:D.burgs, poi:D.markers, province:D.provinces, route:D.routes}[match[1]];
+    if (records?.some(r => r && r.i === +match[2] && !r.removed)) show(match[1], +match[2]);
+  });
   fetch('lore-index.json').then(r => { if (!r.ok) throw Error(r.status); return r.json(); })
     .then(value => { index = value; links(); }).catch(() => {});
 })();

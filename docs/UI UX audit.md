@@ -1,5 +1,7 @@
 # Website UI/UX audit
 
+Implementation follow-up: [Audit fixes](Audit%20fixes.md) records the corrections and regression checks for PR #187. The findings below describe the original audited revision.
+
 Reviewed the published Towers of Saeroth website after PR #186. PR #187's
 contrast fix was still pending and is identified separately below. This pass
 is an audit, not a redesign or a release.

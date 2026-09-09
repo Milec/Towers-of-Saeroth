@@ -1,5 +1,7 @@
 # Repository audit
 
+Implementation follow-up: [Audit fixes](Audit%20fixes.md) records the corrections and regression checks for PR #187. The findings below describe the original audited revision.
+
 Audited published commit `82db15aead71ce4b1853758814053631ac0253ca`.
 Scope: application, Living Atlas, player site, campaign consistency, build and
 release workflow, shared agent guidance, and supporting tools. The PF2e vault

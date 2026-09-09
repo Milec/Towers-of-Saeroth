@@ -90,7 +90,7 @@ def build(out):
         if fallback and f'poi-{m["i"]}' not in by_note.get(fallback, []):
             by_note.setdefault(fallback, []).append(f'poi-{m["i"]}')
     for p in data['provinces']:
-        if p and p.get('i'):
+        if p and p.get('i') and not p.get('removed'):
             add('province', p, p.get('fullName', p.get('name', '')), fallback=entries.get(f'nation-{p.get("state")}', {}).get('note'))
     result = {'entries': entries, 'byNote': by_note, 'unmatched': unmatched}
     (out / 'atlas/lore-index.json').write_text(json.dumps(result, ensure_ascii=False), encoding='utf-8')

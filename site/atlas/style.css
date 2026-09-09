@@ -86,3 +86,14 @@ header a.campaign-home{display:inline-block}.campaign-link a{font-weight:bold;te
 .integrated[data-theme=dark] input::placeholder{color:#beb8a8;opacity:1}
 .integrated[data-theme=dark] aside button:hover,.integrated[data-theme=dark] aside button[aria-pressed=true],.integrated[data-theme=dark] .atlas-jumps button:hover{background:#37615d;color:#fff}
 .skip{color:#233a36}
+.atlas-presets {display:flex;gap:6px;padding:12px;flex-wrap:wrap}
+.atlas-presets button {flex:1;min-height:44px;background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.atlas-presets [aria-pressed="true"] {outline:2px solid var(--ink)}
+@media(max-width:800px){
+ .integrated body {overflow:hidden;padding-top:56px;box-sizing:border-box}
+ .integrated .atlas-jumps {position:fixed;inset:0 0 auto;height:56px;z-index:30;background:var(--panel)}
+ .integrated main {height:calc(100svh - 56px);overflow:auto;display:block;scroll-padding-top:12px}
+ .integrated main>aside {height:auto;overflow:visible}
+ .integrated .atlas-jumps button {min-height:44px}
+ .integrated .atlas-jumps [aria-current="true"] {box-shadow:inset 0 -3px var(--ink)}
+}

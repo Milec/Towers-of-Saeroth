@@ -309,6 +309,7 @@
       color: var(--muted); margin-bottom: 1px;
     }
   }
+.pzoom,.ptab,.pscroll{min-height:44px;min-width:44px}.pmapbar{flex-wrap:wrap}.pmapbar select{min-height:44px;max-width:100%;color:var(--ink);background:var(--panel)}
 </style>
 </head>
 <body>
@@ -441,8 +442,9 @@
     return mapData;
   }
 
-  async function mountMap(root) {
+  async function mountMap(root, generation) {
     const data = await positions();
+    if(generation!==showGeneration)return null;
     if (!data || !data.nations || !data.width) return null;
 
     /* Index the rendered rows by nation name. The first cell is the name and
@@ -563,6 +565,11 @@
         box.scrollTop = cy * inner.offsetHeight - box.clientHeight / 2;
       });
     }
+    const picker=document.createElement('select');picker.setAttribute('aria-label','Find a nation on the map');
+    picker.add(new Option('Find a nation…',''));
+    for(const name of [...pins.keys()].sort())picker.add(new Option(name,name));
+    picker.onchange=()=>{if(picker.value){setZoom(Math.max(z,2.5));requestAnimationFrame(()=>select(picker.value,true));}};
+    wrap.querySelector('.pmapbar').prepend(picker);
     for (const b of wrap.querySelectorAll('.pzoom')) {
       b.onclick = () => {
         if (b.dataset.z === 'fit') { z = 1; inner.style.setProperty('--z', 1); box.scrollTo(0, 0); }
@@ -689,11 +696,20 @@
       .insertAdjacentElement(h1 ? 'afterend' : 'beforebegin', rail);
   }
 
+  tabs.addEventListener('keydown', e => {
+    if (!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
+    e.preventDefault();
+    const i=e.key==='Home'?0:e.key==='End'?pages.length-1:(current+(e.key==='ArrowRight'?1:-1)+pages.length)%pages.length;
+    show(i);tabs.children[i].focus();
+  });
+  let showGeneration=0;
   async function show(i, focus) {
+    const generation=++showGeneration;
     current = i;
     [...tabs.children].forEach((b, n) => {
       const on = n === i;
       b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
       if (on) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     });
     updateTabHints();
@@ -702,8 +718,11 @@
     doc.innerHTML = '<p class="muted">Loading…</p>';
     try {
       const res = await fetch('content/' + encodeURIComponent(pages[i].file));
+      if(generation!==showGeneration)return;
       if (!res.ok) throw new Error(res.status);
-      doc.innerHTML = marked.parse(clean(await res.text()));
+      const text=await res.text();
+      if(generation!==showGeneration)return;
+      doc.innerHTML = marked.parse(clean(text));
       labelCells(doc);
       resolveImages(doc);
       markSigil(doc);
@@ -711,7 +730,8 @@
       scrollTo(0, 0);
       let placed = false;
       if (pages[i].file === MAP_PAGE) {
-        const select = await mountMap(doc);
+        const select = await mountMap(doc, generation);
+        if(generation!==showGeneration)return;
         // A link may name a nation: #The%20Nations/Dalstan opens the tab with
         // that country already picked on the map, which is the only reason
         // somebody following a link about Dalstan wanted this page.
@@ -720,6 +740,7 @@
       // Anything else a link names is a section heading, on any page.
       if (focus && !placed) focusSection(doc, focus);
     } catch (e) {
+      if(generation!==showGeneration)return;
       doc.innerHTML = '<p class="muted">Could not load that page.</p>';
     }
   }

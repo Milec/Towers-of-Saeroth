@@ -48,6 +48,7 @@ const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8899/';
       await context.close();
     }
     const page = await browser.newPage({viewport:{width:1440,height:1000}});
+    page.on('pageerror', e => errors.push(e.message));
     const positions = await (await page.request.get(base+'nation-positions.json')).json();
     await page.goto(base+'#/campaign/nations/Political%20Relations.md');
     await page.locator('.rel-mode').click();
