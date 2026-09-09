@@ -77,3 +77,12 @@ header a.campaign-home{display:inline-block}.campaign-link a{font-weight:bold;te
  .integrated .mapframe{height:calc(65svh - 56px);min-height:300px}
 }
 .integrated .maptools button{color:#233a36;background:#f7f4eb}.integrated[data-theme=dark] a{color:#d4bf83}@media(min-width:801px){.integrated .atlas-jumps{display:none}}
+/* Text-bearing surfaces must change with their foreground in dark mode. */
+:root{--card-surface:#e6eae1;--badge-surface:#e4e9df}
+.integrated[data-theme=dark]{--card-surface:#34332c;--badge-surface:#3d4035;--line:#686451}
+.stat{background:var(--card-surface);color:var(--ink)}
+.pill{background:var(--badge-surface);color:var(--ink)}
+.integrated[data-theme=dark] .tier-table small{color:var(--muted)}
+.integrated[data-theme=dark] input::placeholder{color:#beb8a8;opacity:1}
+.integrated[data-theme=dark] aside button:hover,.integrated[data-theme=dark] aside button[aria-pressed=true],.integrated[data-theme=dark] .atlas-jumps button:hover{background:#37615d;color:#fff}
+.skip{color:#233a36}
