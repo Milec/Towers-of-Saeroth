@@ -50,9 +50,9 @@
   };
   addEventListener('message', e => {
     if (e.origin !== location.origin || e.source !== parent || e.data?.type !== 'atlas-select') return;
-    const match = /^(nation|burg|poi|province|route)-(\d+)$/.exec(e.data.selection || '');
+    const match = /^(nation|burg|poi|province|subprovince|route)-(\d+)$/.exec(e.data.selection || '');
     if (!match) return;
-    const records = {nation:D.states, burg:D.burgs, poi:D.markers, province:D.provinces, route:D.routes}[match[1]];
+    const records = {nation:D.states, burg:D.burgs, poi:D.markers, province:D.provinces, subprovince:districts, route:D.routes}[match[1]];
     if (records?.some(r => r && r.i === +match[2] && !r.removed)) show(match[1], +match[2]);
   });
   fetch('lore-index.json').then(r => { if (!r.ok) throw Error(r.status); return r.json(); })

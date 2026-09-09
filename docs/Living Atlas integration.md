@@ -104,3 +104,46 @@ existing color when Provinces is enabled. Terrain mode retains boundary lines on
 Handout settlement labels avoid settlement artwork and use haloed leader lines
 and anchor dots at the stored town coordinates. Capital names are bold; this
 keeps nearby places such as Valmont and Tisonville distinct without moving them.
+
+
+## Administrative districts
+
+The atlas hierarchy is nation → province → district → settlement. All 127 active
+provinces contain 2–5 districts (362 total). Search and territory details link
+between these tiers; districts have their own boundary toggle, optional names,
+capital rings, deep links, and isolated PNG handouts. Capital rings respect the
+settlement tier filters. District names appear only with district boundaries.
+
+`tools/build_subprovinces.py` generates committed `subprovinces-data.js` from
+terrain-weighted growth across clipped Voronoi cells. It preserves province
+outlines, assigns every settlement exactly once, and chooses the most populous
+settlement in each district as its capital. Separate islands join the nearest
+seed district. District populations allocate existing provincial estimates by
+settlement population and rural land area; they do not add world population.
+These administrative records are modeled geography, not new campaign canon or
+hereditary titles. “District” avoids imposing CK3 title names on every culture.
+
+Fourteen provinces originally contained only one settlement. Following the
+user's explicit choice, `tools/build_district_seats.py` adds one 200-person
+outpost to each, using existing land road/trail nodes inside the province.
+`settlement-additions-data.js` stores these additions separately from the source
+snapshot. Their working names derive from the original seats, their cultures
+match those seats, and their residents are transferred from existing rural
+estimates at both province and nation level. The viewer contains 1,293
+settlements; all 1,279 original settlement records and native map files remain
+unchanged. No new trade production is invented for the outposts.
+
+Regeneration requires NumPy, SciPy and Shapely 2.1+; regular builds use the
+committed artifacts and Python's standard library:
+
+```
+python tools/build_district_seats.py
+python tools/build_subprovinces.py
+python tools/check_subprovinces.py
+```
+
+The checker verifies source fingerprints, membership, capital choice, population
+accounting and complete province coverage. Feature tests verify each new outpost
+can reach its province seat using existing roads/trails without sailing or
+cross-country travel. Browser tests cover district navigation, filters, persisted
+deep links, and exported handouts.

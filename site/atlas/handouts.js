@@ -15,6 +15,10 @@
       const record = D.countries.find(c => c.properties.state === selected.id);
       return record && {path:record.path, name:state(selected.id).fullName};
     }
+    if (selected?.type === 'subprovince') {
+      const record=districts.find(d=>d.i===selected.id);
+      return record && {path:record.path,name:record.name};
+    }
     if (selected?.type === 'province') {
       const record = D.provinces.find(p => p?.i === selected.id && !p.removed);
       return record?.path && {path:record.path, name:record.fullName || record.name};

@@ -46,7 +46,7 @@ const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8899/';
       }
       assert(await inner.evaluate(() => document.querySelector('header').hidden));
       assert(await page.evaluate(() => Math.abs(document.querySelector('.atlas-frame').getBoundingClientRect().width-document.querySelector('#main').getBoundingClientRect().width)<2));
-      assert.equal(await inner.evaluate(() => window.ATLAS.burgs.length), 1279);
+      assert.equal(await inner.evaluate(() => window.ATLAS.burgs.length), 1293);
       assert.equal(await inner.evaluate(() => window.ATLAS.routes.length), 1331);
       await inner.evaluate(() => show('poi', 10001));
       await frame.getByRole('link', {name:'Read campaign lore →', exact:true}).click();

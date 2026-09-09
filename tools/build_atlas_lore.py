@@ -2,6 +2,7 @@
 import json
 import re
 from pathlib import Path
+from atlas_additions import apply_additions
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -44,7 +45,7 @@ def normal(value):
 
 def build(out):
     raw = (ROOT / 'site/atlas/data.js').read_text(encoding='utf-8')
-    data = json.loads(raw[raw.index('{'):].rstrip().rstrip(';'))
+    data = apply_additions(json.loads(raw[raw.index('{'):].rstrip().rstrip(';')))
     extra = (ROOT / 'site/atlas/lore-features.js').read_text(encoding='utf-8')
     for key in ('markers', 'notes'):
         match = re.search(r'ATLAS\.' + key + r'\.push\(\.\.\.(\[.*?\])\);', extra)
@@ -92,6 +93,10 @@ def build(out):
     for p in data['provinces']:
         if p and p.get('i') and not p.get('removed'):
             add('province', p, p.get('fullName', p.get('name', '')), fallback=entries.get(f'nation-{p.get("state")}', {}).get('note'))
+    district_source = (ROOT / 'site/atlas/subprovinces-data.js').read_text(encoding='utf-8')
+    district_data = json.loads(district_source[district_source.index('{'):].rstrip().rstrip(';'))
+    for district in district_data['districts']:
+        add('subprovince', district, district['name'], fallback=entries.get(f'nation-{district["state"]}', {}).get('note'))
     result = {'entries': entries, 'byNote': by_note, 'unmatched': unmatched}
     (out / 'atlas/lore-index.json').write_text(json.dumps(result, ensure_ascii=False), encoding='utf-8')
     (out / 'nation-positions.json').write_text(json.dumps({'width':3840, 'height':2160, 'nations':positions, 'image':'atlas/political.webp', 'playerImage':'atlas/Saeroth-Political-Travel.png', 'note':'Generated from interior points of the Living Atlas national territories by build_atlas_lore.py.'}), encoding='utf-8')
