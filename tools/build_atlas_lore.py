@@ -5,6 +5,40 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
+def territory_anchor(svg_path):
+    """Place an overview pin inside the largest land polygon, away from shores."""
+    rings = []
+    for part in re.findall(r'M[^M]+', svg_path):
+        nums = list(map(float, re.findall(r'-?\d+(?:\.\d+)?', part)))
+        ring = list(zip(nums[::2], nums[1::2]))
+        if len(ring) >= 3: rings.append(ring)
+    def area(r):
+        return abs(sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(r,r[1:]+r[:1])))
+    ring = max(rings, key=area)
+    edges = [edge for polygon in rings for edge in zip(polygon, polygon[1:]+polygon[:1])]
+    def score(x,y):
+        inside = False
+        distance = float('inf')
+        for (ax,ay),(bx,by) in edges:
+            if (ay>y)!=(by>y) and x<(bx-ax)*(y-ay)/(by-ay)+ax: inside = not inside
+            dx,dy=bx-ax,by-ay
+            t=max(0,min(1,((x-ax)*dx+(y-ay)*dy)/(dx*dx+dy*dy))) if dx or dy else 0
+            distance=min(distance,(x-ax-t*dx)**2+(y-ay-t*dy)**2)
+        return distance if inside else -distance
+    x0,x1=min(x for x,y in ring),max(x for x,y in ring)
+    y0,y1=min(y for x,y in ring),max(y for x,y in ring)
+    best=(-float('inf'),x0,y0)
+    for _ in range(4):
+        dx,dy=(x1-x0)/12,(y1-y0)/12
+        for ix in range(13):
+            for iy in range(13):
+                x,y=x0+ix*dx,y0+iy*dy
+                best=max(best,(score(x,y),x,y))
+        _,x,y=best
+        x0,x1,y0,y1=x-dx,x+dx,y-dy,y+dy
+    if best[0] <= 0: raise ValueError('No interior nation anchor')
+    return [round(best[1],2),round(best[2],2)]
+
 def normal(value):
     return re.sub(r'[^a-z0-9]', '', value.lower())
 
@@ -41,7 +75,8 @@ def build(out):
         path = add('nation', s, name)
         if not path: raise ValueError(f'Nation has no campaign note: {name}')
         b = next(b for b in data['burgs'] if b['i'] == s['capital'])
-        positions[name] = [b['x'], b['y']]
+        country = next(c for c in data['countries'] if c['properties']['state'] == s['i'])
+        positions[name] = territory_anchor(country['path'])
     for b in data['burgs']:
         nation = entries.get(f'nation-{b.get("state")}', {}).get('note')
         aliases = [b['previousName']] if b.get('previousName') else []
@@ -59,7 +94,7 @@ def build(out):
             add('province', p, p.get('fullName', p.get('name', '')), fallback=entries.get(f'nation-{p.get("state")}', {}).get('note'))
     result = {'entries': entries, 'byNote': by_note, 'unmatched': unmatched}
     (out / 'atlas/lore-index.json').write_text(json.dumps(result, ensure_ascii=False), encoding='utf-8')
-    (out / 'nation-positions.json').write_text(json.dumps({'width':3840, 'height':2160, 'nations':positions, 'image':'atlas/political.webp', 'note':'Generated from Living Atlas capital coordinates by build_atlas_lore.py.'}), encoding='utf-8')
+    (out / 'nation-positions.json').write_text(json.dumps({'width':3840, 'height':2160, 'nations':positions, 'image':'atlas/political.webp', 'playerImage':'atlas/Saeroth-Political-Travel.png', 'note':'Generated from interior points of the Living Atlas national territories by build_atlas_lore.py.'}), encoding='utf-8')
     print(f'Atlas lore: {len(positions)} nations, {len(by_note)} linked notes; {len(unmatched)} records without a dedicated note or nation fallback')
     return result
 

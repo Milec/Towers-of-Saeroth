@@ -50,7 +50,7 @@ paths, a preinstalled browser, or a particular global Node installation.
   `#/atlas` mounts it through `atlas-host.js` in an isolated same-origin frame.
   Keep wiki and atlas globals separate. `campaign.js` connects selections to
   campaign notes without copying their prose into the renderer.
-- `tools/build_atlas_lore.py` rebuilds note links and the **3840×2160** nation
+- `tools/build_atlas_lore.py` rebuilds note links and the **3840×2160** interior nation
   coordinates from the current atlas during every site build. Never replace
   these with the older static map coordinates or scale those old coordinates.
 - `atlas-source/` retains the corrected native map, reshaped geography and SVG

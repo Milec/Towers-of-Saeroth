@@ -659,4 +659,7 @@ body {
   table, pre, blockquote, figure, img, .statblock { break-inside: avoid; }
 }
 
-.atlas-frame{display:block;width:100%;height:calc(100svh - var(--topbar-h) - 6rem);min-height:480px;border:0}.atlas-note-links{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0}.sidehead>.linkbtn{display:block;margin-bottom:.8rem}
+.atlas-frame{display:block;width:100%;height:100%;border:0}.atlas-note-links{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0}.sidehead>.linkbtn{display:block;margin-bottom:.8rem}
+.view-atlas .main{padding:0;overflow:hidden;min-width:0}
+.view-atlas #content{max-width:none;width:100%;height:100%;margin:0}
+.view-atlas #content>.atlas-frame{max-width:none}

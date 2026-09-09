@@ -469,7 +469,7 @@
     wrap.className = 'pmap';
     wrap.innerHTML =
       '<div class="pmapbox"><div class="pmapinner">' +
-      '<img alt="Political map of Saeroth" src="../' + data.image + '">' +
+      '<img alt="Illustrated map of Saeroth with mountain relief, forests, settlements and roads" src="../' + (data.playerImage || data.image) + '">' +
       '</div></div>' +
       '<div class="pmapbar">' +
       '<button class="pzoom" type="button" data-z="out" aria-label="Zoom out">&minus;</button>' +

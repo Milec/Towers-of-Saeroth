@@ -18,6 +18,8 @@ const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8899/';
       await frame.locator('#info h2').filter({hasText:'Vaelic Principality'}).waitFor();
       await frame.locator('a.campaign-link').waitFor();
       const inner = page.frames().find(f => /\/atlas\//.test(f.url()));
+      assert(await inner.evaluate(() => document.querySelector('header').hidden));
+      assert(await page.evaluate(() => Math.abs(document.querySelector('.atlas-frame').getBoundingClientRect().width-document.querySelector('#main').getBoundingClientRect().width)<2));
       assert.equal(await inner.evaluate(() => window.ATLAS.burgs.length), 1279);
       assert.equal(await inner.evaluate(() => window.ATLAS.routes.length), 1331);
       await inner.evaluate(() => show('poi', 10001));
@@ -32,6 +34,27 @@ const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8899/';
       if (screenshot) await page.screenshot({path:path.join(screenshot, mobile?'atlas-mobile.png':'atlas-desktop.png')});
       await context.close();
     }
+    const page = await browser.newPage({viewport:{width:1440,height:1000}});
+    const positions = await (await page.request.get(base+'nation-positions.json')).json();
+    await page.goto(base+'#/campaign/nations/Political%20Relations.md');
+    await page.locator('.rel-mode').click();
+    const nationNodes = await page.locator('.rel-node').evaluateAll(nodes => nodes.map(n => ({name:n.querySelector('text').textContent,x:+n.querySelector('circle').getAttribute('cx'),y:+n.querySelector('circle').getAttribute('cy')})));
+    for (const n of nationNodes) {
+      assert(Math.abs(n.x-positions.nations[n.name][0]*1120/3840)<.01);
+      assert(Math.abs(n.y-positions.nations[n.name][1]*1120/3840)<.01);
+    }
+    await page.goto(base+'#/campaign/world/Trade%20Routes.md');
+    await page.locator('.route-dot').first().waitFor();
+    const dots = await page.locator('.route-dot').evaluateAll(nodes=>nodes.map(n=>[+n.getAttribute('cx'),+n.getAttribute('cy')]));
+    for (const [x,y] of dots) assert(Object.values(positions.nations).some(p=>Math.abs(x-p[0]*1120/3840)<.01&&Math.abs(y-p[1]*1120/3840)<.01));
+    await page.goto(base+'players/#The%20Nations');
+    const playerMap=page.locator('.pmap img');
+    await playerMap.waitFor();
+    assert((await playerMap.getAttribute('src')).endsWith('Saeroth-Political-Travel.png'));
+    await page.waitForFunction(()=>document.querySelector('.pmap img')?.naturalWidth>0);
+    assert.deepEqual(await playerMap.evaluate(i=>[i.naturalWidth,i.naturalHeight]),[3840,2160]);
+    console.log('PASS: full-width atlas, 28 geographic relation anchors, trade anchors, illustrated player PNG.');
+    await page.close();
     assert.deepEqual(errors, []);
     const index = JSON.parse(fs.readFileSync(path.join(__dirname,'../../_site/atlas/lore-index.json')));
     assert.equal(Object.keys(index.entries).filter(k=>k.startsWith('nation-')).length, 28);

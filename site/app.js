@@ -327,6 +327,8 @@ function resolveImages(el, notePath) {
 }
 
 async function route() {
+  document.querySelector('.atlas-frame')?.dispatchEvent(new Event('atlas-dispose'));
+  document.body.classList.remove('view-atlas');
   const hash = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   const [path, frag] = hash.split('#');
   const target = path || 'campaign/README.md';
@@ -2114,7 +2116,7 @@ async function mountRoutes(container, bodyText) {
                  x="0" y="0" width="${RMAP.w}" height="${RMAP.h}"></image>
           <g class="route-lines"></g><g class="route-stops"></g>
         </svg>
-        <p class="rel-hint muted">Tap a corridor for what it carries · tap a port to open its note</p>
+        <p class="rel-hint muted">Tap a corridor for what it carries · tap a nation to open its note</p>
       </div>
       <aside class="rel-ledger" aria-live="polite"></aside>
     </div>
