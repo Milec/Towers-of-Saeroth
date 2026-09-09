@@ -2,13 +2,18 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
 const base=process.env.ATLAS_TEST_URL||'http://127.0.0.1:8899/';
 (async()=>{const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});try{
  const page=await browser.newPage({viewport:{width:390,height:844},serviceWorkers:'block',acceptDownloads:true});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.addInitScript(()=>{const original=URL.createObjectURL;URL.createObjectURL=function(blob){if(blob.type.startsWith('image/svg+xml'))window.lastHandoutSVG=blob;return original.call(this,blob);};});
  await page.goto(base+'atlas/#nation-3');await page.locator('#handoutExport').waitFor();
  await page.locator('#sepiaMap').check();await page.reload();await page.locator('#handoutExport').waitFor();assert(await page.locator('#sepiaMap').isChecked());assert.equal(await page.locator('#map').evaluate(e=>getComputedStyle(e).filter),'sepia(1)');
- const cases=await page.evaluate(()=>[['nation',3],['province',D.provinces.find(p=>p?.i&&!p.removed&&p.state===3)?.i],['nation',D.states.find(s=>/Thurion/.test(s.fullName||''))?.i]]);
+ const cases=await page.evaluate(()=>[['province',43],['nation',3],['province',D.provinces.find(p=>p?.i&&!p.removed&&p.state===3)?.i],['nation',D.states.find(s=>/Thurion/.test(s.fullName||''))?.i]]);
  for(const [type,id] of cases){assert(id);await page.locator('#sepiaMap').setChecked(type==='nation');await page.evaluate(([t,i])=>show(t,i),[type,id]);await page.locator('#handoutHide').check();await page.locator('#handoutFit').click();if(type==='province')await page.locator('#handoutHide').uncheck();
  const download=page.waitForEvent('download',{timeout:120000});await page.locator('#handoutExport').click();
  const file=await download;await file.saveAs(path.join(__dirname,'../../..','output',`handout-${type}-${id}.png`));
  const result=await page.evaluate(async()=>{
+  if(selected.type==='province'&&selected.id===43){
+    const svg=new DOMParser().parseFromString(await window.lastHandoutSVG.text(),'image/svg+xml');
+    for(const name of ['Valmont','Tisonville']){const b=D.burgs.find(b=>b.name===name),caption=svg.querySelector('[data-place="burg-'+b.i+'"]');if(caption?.querySelector('text')?.textContent!==name||!caption.querySelector('path').getAttribute('d').startsWith('M'+b.x+','+b.y+'L'))throw Error('Incorrect settlement label anchor: '+name);}
+   }
   const img=new Image();img.src=document.querySelector('#handoutStatus a').href;await img.decode();
   const c=document.createElement('canvas');c.width=img.width;c.height=img.height;const ctx=c.getContext('2d');ctx.drawImage(img,0,0);
   const region=selected.type==='nation'?D.countries.find(c=>c.properties.state===selected.id):D.provinces.find(p=>p?.i===selected.id);

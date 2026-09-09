@@ -18,6 +18,19 @@ const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8899/';
       await frame.locator('#info h2').filter({hasText:'Vaelic Principality'}).waitFor();
       await frame.locator('a.campaign-link').waitFor();
       const inner = page.frames().find(f => /\/atlas\//.test(f.url()));
+      await inner.evaluate(() => {
+        document.querySelector('[data-style="political"]').click();
+        const toggle=document.querySelector('[data-layer="provinces"]');
+        toggle.checked=true;toggle.dispatchEvent(new Event('change',{bubbles:true}));
+      });
+      const tones=await inner.evaluate(()=>[...document.querySelectorAll('.province')].map(e=>{
+        const c=getComputedStyle(e);return [c.fill,+c.fillOpacity];
+      }));
+      assert(new Set(tones.map(t=>t.join(':'))).size>1);
+      assert(tones.every(t=>t[1]>0&&t[1]<=.18));
+      await inner.evaluate(()=>document.querySelector('[data-style="terrain"]').click());
+      assert(await inner.evaluate(()=>[...document.querySelectorAll('.province')].every(e=>getComputedStyle(e).fill==='rgba(0, 0, 0, 0)')));
+      await inner.evaluate(()=>{const t=document.querySelector('[data-layer="provinces"]');t.checked=false;t.dispatchEvent(new Event('change',{bubbles:true}));});
       for (const theme of ['light', 'dark']) {
         await page.evaluate(t => document.documentElement.dataset.theme=t, theme);
         await inner.waitForFunction(t => document.documentElement.dataset.theme===t, theme);

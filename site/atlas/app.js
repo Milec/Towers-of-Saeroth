@@ -17,7 +17,15 @@ $('#layerlist').innerHTML=layers.map(([id,label,on])=>`<label><input type="check
 const stats=(items)=>'<div class="stats">'+items.map(([v,k])=>`<div class="stat"><strong>${esc(v)}</strong>${esc(k)}</div>`).join('')+'</div>';
 $('#counts').innerHTML=stats([[D.burgs.length,'settlements'],[D.routes.length,'routes'],[D.markers.length,'POIs']]);
 $('#countries').innerHTML=D.countries.map(f=>`<path class="country" data-type="nation" data-id="${f.properties.state}" d="${f.path}"><title>${esc(f.properties.name)}</title></path>`).join('');
-$('#provinces').innerHTML=D.provinces.filter(p=>p&&p.i&&!p.removed).map(p=>`<path class="province" data-type="province" data-id="${p.i}" d="${p.path}"><title>${esc(p.fullName)}</title></path>`).join('');
+// Neutral translucent washes vary lightness while retaining the ruling nation's hue.
+const provinceTones=[['#fff',.12],['#000',.06],['#fff',.05],['#000',.11],['#fff',.18],['#000',.03]];
+const provinceRanks=new Map();
+$('#provinces').innerHTML=D.provinces.filter(p=>p&&p.i&&!p.removed).sort((a,b)=>a.i-b.i).map(p=>{
+ const rank=provinceRanks.get(p.state)||0;provinceRanks.set(p.state,rank+1);
+ const [fill,opacity]=provinceTones[rank%provinceTones.length];
+ return `<path class="province" data-type="province" data-id="${p.i}" style="--province-fill:${fill};--province-opacity:${opacity}" d="${p.path}"><title>${esc(p.fullName)}</title></path>`;
+}).join('');
+map.dataset.style='terrain';
 for(const group of ['roads','trails','searoutes'])$('#'+group).innerHTML=D.routes.filter(r=>r.group===group).map(r=>`<g class="${r.atlasFrontierRoad?'frontier-road':''}" data-type="route" data-id="${r.i}"><path class="route" d="${path(r.points)}"/><path class="route-hit" d="${path(r.points)}"><title>${esc(r.name||'Unnamed route')}</title></path></g>`).join('');
 $('#settlements').innerHTML=D.burgs.slice().sort((a,b)=>a.population-b.population).map(b=>`<g class="burg tier-${tier(b)} ${b.capital?'capital':''}" data-type="burg" data-id="${b.i}" transform="translate(${b.x} ${b.y})"><title>${esc(b.name)} · ${tier(b)} · ${num(b.population*250)} people${b.capital?' · national seat':''}</title><circle r="11" fill="transparent" stroke="none"/>${icon(b.name==='Highforge'&&I.symbols.highforge?'highforge':b.port&&tier(b)==='town'&&I.symbols.harbor?'harbor':tier(b),0,0,b.capital?1.15:1)}${b.capital?icon('seat',0,-19,1):''}</g>`).join('');
 $('#ports').innerHTML=D.burgs.filter(b=>b.port).map(b=>`<g class="port-icon" data-type="burg" data-id="${b.i}"><title>${esc(b.name)} · port</title>${icon('port',b.x+15,b.y+3,.8)}</g>`).join('');
@@ -25,7 +33,7 @@ $('#symbolLegend').innerHTML=[['village','Village · under 1,000'],['town','Town
 $('#pois').innerHTML=D.markers.map(m=>`<path class="poi" data-type="poi" data-id="${m.i}" d="M${m.x},${m.y-4}l4,4 -4,4 -4,-4Z"><title>${esc(note('marker'+m.i)?.name||m.type)}</title></path>`).join('');
 layers.forEach(([id,,on])=>$('#'+id).toggleAttribute('hidden',!on));
 $('#layerlist').addEventListener('change',e=>{const id=e.target.dataset.layer;if(id){$('#'+id).toggleAttribute('hidden',!e.target.checked);renderView();}});
-document.querySelectorAll('[data-style]').forEach(b=>b.onclick=()=>{$('#background').setAttribute('href',b.dataset.style+'.webp');document.querySelectorAll('[data-style]').forEach(x=>x.setAttribute('aria-pressed',x===b));});
+document.querySelectorAll('[data-style]').forEach(b=>b.onclick=()=>{map.dataset.style=b.dataset.style;$('#background').setAttribute('href',b.dataset.style+'.webp');document.querySelectorAll('[data-style]').forEach(x=>x.setAttribute('aria-pressed',x===b));});
 const records=[...D.states.filter(s=>s.i&&!s.removed).map(s=>({type:'nation',id:s.i,name:s.fullName,sub:'Nation'})),...D.burgs.map(b=>({type:'burg',id:b.i,name:b.name,sub:state(b.state)?.fullName||'Unclaimed lands'})),...D.provinces.filter(p=>p&&p.i&&!p.removed).map(p=>({type:'province',id:p.i,name:p.fullName,sub:state(p.state)?.fullName})),...D.routes.map(r=>({type:'route',id:r.i,name:r.name||'Unnamed route',sub:r.group})),...D.markers.map(m=>({type:'poi',id:m.i,name:note('marker'+m.i)?.name||m.type,sub:m.type}))];
 const resultHTML=r=>`<button class="result" data-type="${r.type}" data-id="${r.id}">${esc(r.name)}<small>${esc(r.sub)}</small></button>`;
 $('#search').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();const found=q?records.filter(r=>r.name.toLowerCase().includes(q)).slice(0,30):[];$('#results').innerHTML=found.map(resultHTML).join('')||(q?'<p class="empty">No matching records.</p>':'');});

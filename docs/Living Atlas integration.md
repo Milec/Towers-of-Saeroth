@@ -98,3 +98,9 @@ verify painted interiors and sample exterior pixels away from antialiased edges.
 The **Sepia parchment palette** toggle beneath the map presets applies to terrain
 and political views, including roads and icons. Its setting persists on the device
 and is captured for PNG exports; the opaque exterior remains parchment-colored.
+
+Political mode uses subtle light and dark province washes over each nation’s
+existing color when Provinces is enabled. Terrain mode retains boundary lines only.
+Handout settlement labels avoid settlement artwork and use haloed leader lines
+and anchor dots at the stored town coordinates. Capital names are bold; this
+keeps nearby places such as Valmont and Tisonville distinct without moving them.
