@@ -326,14 +326,23 @@ function resolveImages(el, notePath) {
   }
 }
 
+addEventListener('atlas-selection-change', e => {
+  if (nav.stack[nav.i]?.startsWith('atlas')) nav.stack[nav.i] = 'atlas#' + e.detail;
+});
+let routeGeneration = 0;
 async function route() {
+  const generation = ++routeGeneration;
+  if (/^#\/atlas(?:#|$)/.test(location.hash) && document.querySelector('.atlas-frame')) {
+    window.selectHostedAtlas?.(location.hash.split('#')[2] || '');
+    return;
+  }
   document.querySelector('.atlas-frame')?.dispatchEvent(new Event('atlas-dispose'));
   document.body.classList.remove('view-atlas');
   const hash = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   const [path, frag] = hash.split('#');
   const target = path || 'campaign/README.md';
   state.current = target;
-  navRecord(target);
+  navRecord(target === 'atlas' && frag ? 'atlas#' + frag : target);
   // Navigating means the reader wants the note, so the graph gets out of the
   // way — whether they came from a node, the tree, or the back arrow.
   if (!$('graphView').hidden) closeGraph();
@@ -351,20 +360,28 @@ async function route() {
   if (target.startsWith('vault/')) {
     try { await ensureVault(); } catch (_) { /* offline: links degrade to plain text */ }
   }
+  if (generation !== routeGeneration) return;
   try {
     const raw = await fetchNote(target);
+    if (generation !== routeGeneration) return;
     const { fm, body } = stripFrontmatter(raw);
     el.classList.remove('wide');   // only a relations note widens the column
     el.innerHTML =
       `<nav class="crumbs">${crumbs(target)}</nav>` +
       frontmatterTable(fm) +
       marked.parse(body);
+    if (!el.querySelector('h1')) {
+      const heading = document.createElement('h1');
+      heading.textContent = fmField(fm, 'title') || target.split('/').pop().replace(/\.md$/, '');
+      el.querySelector('.crumbs').after(heading);
+    }
+    window.polishNote?.(el, target);
     resolveImages(el, target);
     if (fmField(fm, 'view') === 'relations') {
       try { mountRelations(el, body); } catch (_) { /* the table still renders */ }
     }
     if (fmField(fm, 'view') === 'routes') {
-      mountRoutes(el, body).catch(() => { /* the table still renders */ });
+      mountRoutes(el, body, generation).catch(() => { /* the table still renders */ });
     }
     if (fmField(fm, 'view') === 'nation') {
       try { mountNation(el); } catch (_) { /* the bullets still render */ }
@@ -377,11 +394,12 @@ async function route() {
     addAtlasLinks(el, target);
     if (frag) {
       const t = document.getElementById(frag.toLowerCase().replace(/[^\w]+/g, '-'));
-      if (t) t.scrollIntoView();
+      if (t) {for(let p=t.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;t.scrollIntoView();}
     } else {
       $('main').scrollTop = 0;
     }
   } catch (e) {
+    if (generation !== routeGeneration) return;
     el.innerHTML = `<h1>Not found</h1><p class="muted">Could not load <code>${escapeHtml(target)}</code>.</p>`;
   }
   markActive(target);
@@ -533,11 +551,11 @@ function indexEntry(p) {
   state.byName.get(n).push(p);
 }
 
-function search(q) {
+function search(q, scope = 'All') {
   const needle = normalize(q);
   if (!needle) return [];
   const out = [];
-  for (const it of state.campaign) {
+  for (const it of (scope === 'Rules' || scope === 'Places' ? [] : state.campaign)) {
     const name = it.p.split('/').pop().replace(/\.md$/, '');
     const inTitle = normalize(name).includes(needle);
     const body = state.text.get(it.p) || '';
@@ -547,7 +565,7 @@ function search(q) {
         snippet: at >= 0 ? body.slice(Math.max(0, at - 40), at + 80) : '' });
     }
   }
-  if (state.vaultLoaded) {
+  if (state.vaultLoaded && scope !== 'Lore' && scope !== 'Places') {
     for (const it of state.vault) {
       const name = it.p.split('/').pop().replace(/\.md$/, '');
       if (normalize(name).includes(needle)) out.push({ p: it.p, name, score: 2, snippet: '' });
@@ -628,7 +646,7 @@ function buildScopeUI() {
     groups.set(k, (groups.get(k) || 0) + 1);
   }
   const vaultGroups = new Map();
-  if (state.vaultLoaded) {
+  if (state.vaultLoaded && scope !== 'Lore' && scope !== 'Places') {
     for (const it of state.vault) {
       const k = scopeKey(it.p);
       vaultGroups.set(k, (vaultGroups.get(k) || 0) + 1);
@@ -1345,6 +1363,8 @@ function openGraph() {
   $('graphBtn').setAttribute('aria-pressed', 'true');
   setPanel(true);
   buildScopeUI();
+  $('renderGraph').click();
+  setPanel(false);
 }
 function closeGraph() {
   $('graphView').hidden = true;
@@ -1660,13 +1680,14 @@ function mountRelations(container, body) {
   renderRelLedger(fig);
   loadNationThemes(fig);
   offerMapMode(fig);
+  window.polishDiagram?.(fig, nodes, node => selectRelNode(fig, node));
 }
 
 /* The toggle only exists if the generated positions do. An older deploy, or a
    service worker still holding the previous shell, simply gets the web. */
 async function offerMapMode(fig) {
   const d = await loadMapPositions();
-  if (!d) return;
+  if (!d || !fig.isConnected) return;
   const missing = rel.nodes.filter((n) => !d.nations[n.name]);
   // one or two nations off the map is survivable — they drop out of map mode
   // and say so. Half of them missing means the JSON is stale, and a map with
@@ -2029,6 +2050,7 @@ async function loadNationThemes(fig) {
   if (!path) return;
   try {
     const raw = await fetchNote(path);
+    if (!fig.isConnected) return;
     for (const line of raw.split(/\r?\n/)) {
       const t = line.trim();
       if (t[0] !== '|') continue;
@@ -2086,10 +2108,11 @@ function parseRoutes(bodyText) {
   return out;
 }
 
-async function mountRoutes(container, bodyText) {
+async function mountRoutes(container, bodyText, generation = routeGeneration) {
   const list = parseRoutes(bodyText);
   if (!list.length) return;
   const pos = await loadMapPositions();
+  if (generation !== routeGeneration) return;
   if (!pos) return;                       // no map on this deploy: table only
   const missing = list.filter((r) => r.stops.some((s) => !pos.nations[s]));
   if (missing.length === list.length) return;
@@ -2140,6 +2163,8 @@ async function mountRoutes(container, bodyText) {
     container.appendChild(fig);
   }
   container.classList.add('wide');
+
+  window.polishDiagram?.(fig);
 
   const img = fig.querySelector('.rel-basemap');
   img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', BASE + pos.image);
@@ -2226,7 +2251,9 @@ async function mountRoutes(container, bodyText) {
     }
     fig.querySelectorAll('.route-chip').forEach((b) =>
       b.setAttribute('aria-pressed', r && b.dataset.r === r.name ? 'true' : 'false'));
-    if (r) detail(r); else overview();
+    const svg=fig.querySelector('.route-svg');
+    svg.dataset.worldView=`0 0 ${RMAP.w} ${RMAP.h}`;
+    if(r){const pts=r.stops.map(P),xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]),x=Math.min(...xs)-50,y=Math.min(...ys)-50;svg.setAttribute('viewBox',`${x} ${y} ${Math.max(...xs)-x+50} ${Math.max(...ys)-y+50}`);detail(r);}else{svg.setAttribute('viewBox',svg.dataset.worldView);overview();}
   };
 
   fig.querySelectorAll('.route-chip').forEach((btn) => {
@@ -2250,6 +2277,10 @@ async function mountRoutes(container, bodyText) {
   for (const r of routes.list) {
     r.hit.addEventListener('click', () => show(routes.sel === r ? null : r));
   }
+  const picker=document.createElement('select');picker.setAttribute('aria-label','Focus trade map on a nation');picker.add(new Option('Find a nation…',''));
+  for(const name of [...stops].sort())picker.add(new Option(name,name));
+  picker.onchange=()=>{if(!picker.value)return;const [x,y]=P(picker.value);fig.querySelector('.route-svg').setAttribute('viewBox',`${x-180} ${y-110} 360 220`);};
+  fig.querySelector('.diagram-tools').append(picker);
   show(null);
 }
 
@@ -2357,6 +2388,12 @@ function mountNation(container) {
   const tbody = document.createElement('tbody');
   for (const r of rows) tbody.appendChild(r.tr);
   table.appendChild(tbody);
+  const facts = document.createElement('dl'); facts.className='nation-quickfacts';
+  for (const {field,tr} of rows.filter(r=>['Capital','Government','Geography'].includes(r.field))) {
+    const term=document.createElement('dt');term.textContent=field;
+    const value=document.createElement('dd');value.innerHTML=tr.lastElementChild.innerHTML;facts.append(term,value);
+  }
+  container.querySelector('h1')?.after(facts);
 
   let relFrag = null;
   if (rel) {
@@ -2538,6 +2575,7 @@ function mountTimeline(container, bodyText) {
   const prev = first.previousElementSibling;
   const anchor = prev && /^H[2-4]$/.test(prev.tagName) ? prev : first;
   anchor.parentNode.insertBefore(fig, anchor);
+  container.querySelector('h1')?.after(fig);
   const det = document.createElement('details');
   det.className = 'relsource';
   const n = eras.reduce((a, e) => a + e.rows.length, 0);

@@ -40,7 +40,7 @@ const ROUTE_COLORS = ['#1f5f8b', '#8a5a1f', '#2f6b46', '#7a2f5f', '#5a4a9a',
 // `view: routes` reads it — so a stop added to the note moves the line on the
 // map and on the site together, with no change here.
 function readCorridors() {
-  const p = '/home/user/Towers-of-Saeroth/campaign/world/Trade Routes.md';
+  const p = require('path').resolve(__dirname, '../..', 'campaign/world/Trade Routes.md');
   const out = [];
   for (const line of fs.readFileSync(p, 'utf8').split('\n')) {
     const t = line.trim();

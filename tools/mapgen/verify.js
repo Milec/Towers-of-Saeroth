@@ -8,7 +8,7 @@ const fs=require('fs');
   console.log('before load:', before.join(', '));
 
   // feed the .map file through the app's own uploader
-  const mapPath = process.env.MAP || '/home/user/Towers-of-Saeroth/campaign/Saeroth.map';
+  const mapPath = process.env.MAP || require('path').resolve(__dirname, '../..', 'campaign/Saeroth.map');
   await APP.loadMap(p, mapPath).catch(async e=>{
     console.log('  FAILED to load', mapPath, '-', e.message);
     throw e;

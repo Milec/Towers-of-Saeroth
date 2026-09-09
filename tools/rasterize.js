@@ -1,6 +1,6 @@
 /* Render an SVG to a PNG at a given size, using the Chromium that is already
    here for the browser tests. Used by tools/make_icons.py. */
-const { chromium } = require('/opt/node22/lib/node_modules/playwright');
+const { chromium } = require('./browser');
 const fs = require('fs');
 const [, , src, out, size] = process.argv;
 (async () => {

@@ -8,7 +8,7 @@ instructions take precedence over repository defaults.
 
 - Work on a feature branch and open a pull request. Do not merge or deploy
   unless the user has authorized that action. Opening a PR is not permission
-  to merge it. The current atlas integration is intentionally unpublished.
+  to merge it. The atlas integration is live; new changes stay on their review branch until authorized.
 - Check `.github/workflows/pages.yml` before release: relevant pushes to
   `main` deploy GitHub Pages. Leave the separate live ChatGPT atlas unchanged
   unless the user requests changes to that deployment.
@@ -115,9 +115,9 @@ paths, a preinstalled browser, or a particular global Node installation.
 - Site changes: `python tools/build_site.py --no-vault` for iteration; use the
   full build for changes affecting vault indexing or final integration checks.
   Wait for the build to finish before testing against `_site/`.
-- Atlas changes: install test dependencies in `tools/atlas-tests/`, then run
-  `npm run test:features`. Serve `_site/` on one available local port and run
-  `npm test` there for browser checks. `ATLAS_TEST_URL` selects the server;
+- Atlas changes: install locked test dependencies with `pnpm install --frozen-lockfile` in `tools/atlas-tests/`, then run
+  `pnpm run test:features`. Serve `_site/` on one available local port and run
+  `pnpm test` there for browser checks. `ATLAS_TEST_URL` selects the server;
   `CHROME_PATH` selects installed Chrome, or install Playwright Chromium.
 - For changed UI behavior inspect desktop and phone layouts, both wiki themes,
   and browser errors. Reuse the server and stop it when finished. Do not claim

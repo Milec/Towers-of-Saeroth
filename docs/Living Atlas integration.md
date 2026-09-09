@@ -59,7 +59,17 @@ precache. Visited regions can be reused offline; this is not a guarantee that
 unvisited map regions are available. Missing offline assets return an error
 instead of being replaced by the wiki HTML. The players site remains separate.
 
-This branch is for review. No ChatGPT hosting configuration, credentials,
-runtime installations or generated publication archives are imported. The
-existing live ChatGPT atlas is unchanged. Merging to `main` would trigger the
-repository's existing GitHub Pages deployment; do not merge until approved.
+The integration is live on GitHub Pages. New changes require review before merging
+into `main`, which triggers deployment. The separate ChatGPT atlas is unchanged.
+
+Notes use a scope-specific persistent cache. Campaign notes refresh during worker
+installation; visited rules remain available across releases. Atlas artwork is
+versioned and cached on demand: an update invalidates previous atlas tiles to
+avoid mixing editions. Cache quota failures preserve network responses. Only
+caches in this deployment's namespace are cleaned; legacy unnamespaced caches
+are left alone because other Pages applications may own them.
+
+The renderer's `verification.json` describes the original generated map snapshot,
+not the current website build. Current runtime verification lives in the PR checks
+and `tools/atlas-tests/`. Rebuild note links and positions with `build_site.py`;
+regenerating the legacy Azgaar tools does not regenerate atlas artwork or tiles.

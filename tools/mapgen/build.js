@@ -90,7 +90,7 @@ const SHORT = {
 };
 
 function readTies() {
-  const p = '/home/user/Towers-of-Saeroth/campaign/nations/Political Relations.md';
+  const p = require('path').resolve(__dirname, '../..', 'campaign/nations/Political Relations.md');
   const out = [];
   for (const line of fs.readFileSync(p, 'utf8').split('\n')) {
     const s = line.trim();

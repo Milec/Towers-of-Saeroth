@@ -7,7 +7,7 @@ PF2e worldbuilding vault, readable as a website and installable as an app.
   [Milec/AON-Scrap](https://github.com/Milec/AON-Scrap)
 - `site/` — the web app that browses both (see below)
 - `tools/` — `build_site.py` (the static-site build), `sync_relations.py`,
-  which pushes the Political Relations table out to all 21 nation notes so the
+  which pushes the Political Relations table out to all 28 nation notes so the
   two can't drift, and `make_icons.py` for the PWA icons
 - `.claude/skills/pf2e-gm/` — a Claude Code skill that queries the reference:
   encounter building, rules lookup, treasure, shops, NPC stat blocks

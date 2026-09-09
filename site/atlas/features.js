@@ -2,7 +2,7 @@
 const tiers=['metropolis','city','town','village'];
 const defaults=()=>Object.fromEntries(tiers.map(t=>[t,{icons:true,names:['metropolis','city'].includes(t)}]));
 let tierPrefs=defaults();try{const p=JSON.parse(localStorage.getItem('saeroth-tiers'));if(p)for(const t of tiers)for(const k of ['icons','names'])if(typeof p[t]?.[k]==='boolean')tierPrefs[t][k]=p[t][k];}catch{}
-const filterPanel=document.createElement('details');filterPanel.className='atlas-controls';filterPanel.open=true;
+const filterPanel=document.createElement('details');filterPanel.className='atlas-controls';filterPanel.open=false;
 filterPanel.innerHTML=`<summary>Settlement detail</summary><div class="filter-presets"><button data-preset="all">All</button><button data-preset="metropolis">Metropolises only</button><button data-preset="city">Cities & larger</button><button data-preset="none">None</button></div><table class="tier-table"><thead><tr><th>Population tier</th><th>Icons</th><th>Names</th></tr></thead><tbody>${tiers.map(t=>`<tr><th>${t[0].toUpperCase()+t.slice(1)}<small>${{metropolis:'50,000+',city:'10,000–49,999',town:'1,000–9,999',village:'Under 1,000'}[t]}</small></th>${['icons','names'].map(k=>`<td><input type="checkbox" data-tier="${t}" data-part="${k}" aria-label="${t} ${k}" ${tierPrefs[t][k]?'checked':''}></td>`).join('')}</tr>`).join('')}</tbody></table><p class="muted">Crowns follow their settlement’s tier. Names avoid overlaps; zoom in for more.</p>`;
 $('.layers').after(filterPanel);
 function renderSettlementNames(z,unit){

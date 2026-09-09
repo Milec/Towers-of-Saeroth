@@ -18,6 +18,19 @@ const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8899/';
       await frame.locator('#info h2').filter({hasText:'Vaelic Principality'}).waitFor();
       await frame.locator('a.campaign-link').waitFor();
       const inner = page.frames().find(f => /\/atlas\//.test(f.url()));
+      for (const theme of ['light', 'dark']) {
+        await page.evaluate(t => document.documentElement.dataset.theme=t, theme);
+        await inner.waitForFunction(t => document.documentElement.dataset.theme===t, theme);
+        const contrast = await inner.evaluate(() => {
+          const luminance = rgb => rgb.slice(0,3).map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4)
+            .reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
+          return [...document.querySelectorAll('#info .stat,#info .pill')].map(e=>{
+            const s=getComputedStyle(e),a=luminance(s.color.match(/[\d.]+/g).map(Number)),b=luminance(s.backgroundColor.match(/[\d.]+/g).map(Number));
+            return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+          });
+        });
+        assert(contrast.length>0);assert(contrast.every(r=>r>=4.5), `${theme} info-card contrast: ${contrast}`);
+      }
       assert(await inner.evaluate(() => document.querySelector('header').hidden));
       assert(await page.evaluate(() => Math.abs(document.querySelector('.atlas-frame').getBoundingClientRect().width-document.querySelector('#main').getBoundingClientRect().width)<2));
       assert.equal(await inner.evaluate(() => window.ATLAS.burgs.length), 1279);
@@ -35,6 +48,7 @@ const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8899/';
       await context.close();
     }
     const page = await browser.newPage({viewport:{width:1440,height:1000}});
+    page.on('pageerror', e => errors.push(e.message));
     const positions = await (await page.request.get(base+'nation-positions.json')).json();
     await page.goto(base+'#/campaign/nations/Political%20Relations.md');
     await page.locator('.rel-mode').click();
