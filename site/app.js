@@ -1432,16 +1432,9 @@ const RVIEW = { w: 1120, h: 780 };
 const SVGNS = 'http://www.w3.org/2000/svg';
 
 /* ---- the same web, laid over the world map -------------------------------
-   An optional second mode: instead of the force layout deciding where nations
-   sit, pin each one to where it actually is on `campaign/Saeroth.map`, so the
-   ties read as trade routes and borders rather than as an abstract graph.
-
-   Both halves of it are GENERATED — `tools/map_backdrop.js` writes
-   `nation-positions.json` and the backdrop image out of the .map file itself —
-   so when the map is rebuilt, rerunning that script moves the nodes with it.
-   Nothing here is hand-placed, and nothing about the force layout changed:
-   `web` is still the default and still the mode this note opens in. Deleting
-   the toggle, the JSON and the image removes the whole feature again. */
+   The map mode pins nations to interior points of the current Living Atlas.
+   tools/build_atlas_lore.py regenerates nation-positions.json during every
+   site build; the record also identifies the maintained atlas backdrop. */
 const RMAP = {
   data: null,          // null = not tried, false = unavailable, else the JSON
   w: 1120,             // the map is drawn into the same width as the web

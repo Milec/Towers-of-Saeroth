@@ -26,6 +26,7 @@ It also prints one **advisory** line measuring the prose voice, which is not a
 check and can never fail the run — see `prose_advisory` at the bottom.
 """
 import os
+import json
 import glob
 import re
 import sys
@@ -33,7 +34,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 CAMPAIGN = os.path.join(REPO, 'campaign')
-WORLD_JS = os.path.join(HERE, 'mapgen', 'world.js')
+BORDERS_FILE = os.path.join(HERE, 'data', 'required-borders.json')
 TABLE = os.path.join(CAMPAIGN, 'nations', 'Political Relations.md')
 ROUTES = os.path.join(CAMPAIGN, 'world', 'Trade Routes.md')
 AGES = os.path.join(CAMPAIGN, 'world', 'history', 'Ages of Saeroth.md')
@@ -224,18 +225,17 @@ def main():
             problems.append(f'{os.path.relpath(path, REPO)}: filed under {nation} '
                             f'but never links [[{nation}]]')
 
-    # 4. Territorial ties with no required border on the generated map
-    required = set()
-    if os.path.exists(WORLD_JS):
-        js = open(WORLD_JS, encoding='utf-8').read()
-        block = re.search(r'const BORDERS = \[(.*?)\n\];', js, re.S)
-        if block:
-            for line in block.group(1).split('\n'):
-                if line.strip().startswith('//'):
-                    continue  # deliberately disabled, with a reason above it
-                m = re.search(r"\['([^']+)',\s*'([^']+)'\]", line)
-                if m:
-                    required.add(frozenset(m.groups()))
+    # 4. Territorial ties must match the maintained frontier constraints.
+    # Missing or malformed constraints must fail rather than skip this check.
+    with open(BORDERS_FILE, encoding='utf-8') as source:
+        border_pairs = json.load(source)['borders']
+    if not isinstance(border_pairs, list) or not border_pairs or any(
+        not isinstance(pair, list) or len(pair) != 2
+        or any(not isinstance(name, str) or not name.strip() for name in pair)
+        or pair[0] == pair[1] for pair in border_pairs
+    ):
+        raise ValueError('required-borders.json must contain nonempty, distinct nation pairs')
+    required = {frozenset(pair) for pair in border_pairs}
 
     n_terr = 0
     if os.path.exists(TABLE):
@@ -250,7 +250,7 @@ def main():
             a, b = (p.strip() for p in pair)
             if frozenset((a, b)) not in required and not NO_FRONTIER.search(cells[2]):
                 problems.append(
-                    f'Political Relations.md: {a} <-> {b} is Territorial but world.js does not '
+                    f'Political Relations.md: {a} <-> {b} is Territorial but required-borders.json does not '
                     f'require a border, and the row does not say they share no frontier')
 
     # 5. Trade-route legs between nations with no relationship at all

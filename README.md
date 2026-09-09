@@ -6,13 +6,11 @@ PF2e worldbuilding vault, readable as a website and installable as an app.
 - `vault/` — the full Archives of Nethys reference (41,700+ notes), from
   [Milec/AON-Scrap](https://github.com/Milec/AON-Scrap)
 - `site/` — the web app that browses both (see below)
-- `tools/` — `build_site.py` (the static-site build), `sync_relations.py`,
-  which pushes the Political Relations table out to all 28 nation notes so the
-  two can't drift, and `make_icons.py` for the PWA icons
+- `tools/` — [maintained build, validation and export tools](tools/README.md)
 - `.claude/skills/pf2e-gm/` — a Claude Code skill that queries the reference:
   encounter building, rules lookup, treasure, shops, NPC stat blocks
-- `docs/` — [driving Azgaar's Fantasy Map Generator from a script](docs/azgaar-map-generation.md),
-  the notes from generating the world map to match these campaign notes
+- `docs/` — [Living Atlas sources and build workflow](docs/Living%20Atlas%20integration.md),
+  integration notes and repository audits
 
 ## The web app
 

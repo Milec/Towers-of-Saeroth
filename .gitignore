@@ -5,9 +5,8 @@ __pycache__/
 _site/
 node_modules/
 
-# build artifacts from tools/mapgen (renders and the profile dump)
+# Retired generator outputs (keep local historical artifacts untracked)
 saeroth*-profile.json
-# regenerated from the vault by tools/export_brief.js — never hand-edited
 saeroth-brief.json
 saeroth*.png
 probe*.png
