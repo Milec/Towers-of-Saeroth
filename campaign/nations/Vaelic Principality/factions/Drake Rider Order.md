@@ -141,5 +141,7 @@ them answer up the Order's chain of command and not to the local lord, and
 electors resent housing an armed, dragon-mounted institution they do not
 control. They push at the Diet about it every few years.
 [[House Kesslin]]'s campaign to reclaim its aerie is the sharpest current
-example. The Grand Marshal holds a standing, non-voting Diet seat partly
-to represent the Order's interests against exactly this pressure.
+example. The Grand Marshal sits at the Diet as
+Marshal-Elector, one of the seven, partly to put the Order's interests in the
+room against exactly this pressure. An elector arguing to break up the Order
+is arguing in front of its commander.
