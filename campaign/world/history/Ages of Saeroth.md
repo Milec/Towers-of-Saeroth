@@ -150,6 +150,7 @@ for the church at the middle of it.*
 | c. 2322 | Vaelic rewrites the Drake Rider Order into its present form, by people arguing about those nine years | [[Drake Rider Order]] |
 | c. 2325 | Silicar's guilds build the first working firelock — a weapon for a militia that must be raised in a fortnight and can never be large | [[Silicar]] |
 | 2336 | The last fall of the volcano over Ashkar Pale | [[Ashkar Pale]] |
+| 2347 | Rutger Thornwycke dies after thirty-one years. The Diet declines to renew his house and elects Reinhardt von Aldreich | [[Reinhardt von Aldreich]] |
 | 2365 | Lazarus issues his last edict, and stops | [[Lazarus]] |
 | 2370 | The Delta War. Thurigypt sails against the delta on a reading of that silence, and about a third comes home | [[The Delta War]] |
 | 2375 | The first tower. There is no second event — they simply keep arriving | [[The Towers]] |
