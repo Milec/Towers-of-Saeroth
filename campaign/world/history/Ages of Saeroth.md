@@ -146,6 +146,7 @@ for the church at the middle of it.*
 | 2316 | The Pilgrim's Peace signed at Concord: four clauses, and the Concord Table every third spring | [[The Pilgrim's Peace]] |
 | 2316 | Tessine founded the second time: both sides' fortunes and both sides' exiles arrive in the same decade, and the Harbour Signory keeps them | [[Tessine]] |
 | 2317 | Kesmarch's founding charter, half its first homesteads taken by families shipped out of the Hungry Year with nothing to go back to | [[Kesmarch Frontier]] |
+| c. 2318 | The crowning moves to Concord. A prince elected at Reichsmund now walks fifty days to reach his own coronation, so that no faction can crown one with a celebrant it happened to find | [[Sigillum Dei]] |
 | c. 2322 | Vaelic rewrites the Drake Rider Order into its present form, by people arguing about those nine years | [[Drake Rider Order]] |
 | c. 2325 | Silicar's guilds build the first working firelock — a weapon for a militia that must be raised in a fortnight and can never be large | [[Silicar]] |
 | 2336 | The last fall of the volcano over Ashkar Pale | [[Ashkar Pale]] |
