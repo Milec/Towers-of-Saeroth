@@ -6,6 +6,16 @@
 const BASE = location.pathname.replace(/\/[^/]*$/, '/');
 const $ = (id) => document.getElementById(id);
 
+/* Nation artwork is stored with the static shell rather than embedded in the
+   notes. A nation note is fetched only when it is opened, so this keeps the
+   other 27 images out of both the page and the network waterfall. */
+function nationArtwork(name) {
+  const slug = name.toLowerCase().trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+  return `${BASE}assets/nations/${slug}.png`;
+}
+
 const state = {
   campaign: [],      // [{p:path, t:title}]
   vault: [],         // [{p:path, t:title}]  (lazy)
@@ -2386,7 +2396,18 @@ function mountNation(container) {
     const term=document.createElement('dt');term.textContent=field;
     const value=document.createElement('dd');value.innerHTML=tr.lastElementChild.innerHTML;facts.append(term,value);
   }
-  container.querySelector('h1')?.after(facts);
+  const artwork = document.createElement('figure');
+  artwork.className = 'nation-artwork';
+  const image = document.createElement('img');
+  const name = container.querySelector('h1')?.textContent.trim() || 'nation';
+  image.src = nationArtwork(name);
+  image.alt = `Concept art for ${name}`;
+  image.loading = 'lazy';
+  image.decoding = 'async';
+  artwork.appendChild(image);
+  const heading = container.querySelector('h1');
+  if (heading) heading.after(facts, artwork);
+  else container.prepend(artwork, facts);
 
   let relFrag = null;
   if (rel) {
