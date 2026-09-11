@@ -2,7 +2,7 @@
 title: Session 01 — The Berruel Consignment
 type: session
 status: prep
-party: 4 characters at level 1 (assumed — see Scaling)
+party: 6 characters at level 1 (assumed — see Scaling)
 route: [[Tessine]] → [[Quivar]] → [[Vaelic Principality]]
 ambush: the Quivar–Vaelic border, within sight of [[Lazarian Lichdom]]
 ---
@@ -11,7 +11,7 @@ A [[Thurion Merchant Alliance]] caravan carrying supplies for an expedition to
 a rumoured fourth tower, run by [[Milo Calvetti]], who has never lost a wagon
 train in eleven years for [[Casa Berruel]]. The party can be hired guards,
 factors travelling with their own goods, passengers who paid for the escort,
-or stowaways. All four fit a wagon train and none of them need to know each
+or stowaways. All six fit a wagon train and none of them need to know each
 other first.
 
 The caravan is going to be destroyed. That is not a failure state; it is the
@@ -120,7 +120,7 @@ why the Magocracy chose to look there.
 
 ## The fight
 
-Assumed party: **4 characters at level 1**. Moderate is 80 XP, severe is 120.
+Assumed party: **6 characters at level 1**. Moderate is 120 XP, severe is 180.
 
 Two kinds of zombie, and the difference is the encounter:
 
@@ -131,8 +131,8 @@ Two kinds of zombie, and the difference is the encounter:
 
 | Threat | Shape | XP |
 | --- | --- | --- |
-| Moderate | 2 kindled + 1 shambler | 80 |
-| Severe | 2 kindled + 3 shamblers | 120 |
+| Moderate | 2 kindled + 3 shamblers | 120 |
+| Severe | 4 kindled + 3 shamblers | 180 |
 
 **Zombie Shambler** — AC 12, HP 20, Fort +6 Ref +0 Will +2, Perc +0, Speed 25,
 weak to slashing 5 and vitality 5, immune to mental and to bleed, poison and
@@ -158,19 +158,21 @@ puts a level 1 character at dying 2. If your table would rather run the plain
 maths, use four plain shamblers and let the fire be narrative only.
 
 **[[Wenzel Grauth]] is not in this fight.** At level 3 he is worth 80 XP by
-himself, which would put the encounter past extreme. He watches from the
+himself; adding him to the standard fight makes a 200 XP encounter, between
+severe and extreme. He watches from the
 treeline, and leaves when the wagons are alight. Let the party see him if
 somebody looks; a figure that turns and walks away unhurried is worth more than
 a second fight.
 
-*If your table wants him fought in session one*: drop to 2 Shamblers (40) plus
-Grauth (80) for 120 XP — severe, and a much harder fight, because he can
-actually hurt a level 1 character. Do not run six zombies and a necromancer.
+*If your table wants him fought in session one*: run 5 Shamblers (100) plus
+Grauth (80) for 180 XP — severe, and a much harder fight, because he can
+actually hurt a level 1 character. Do not add him to the standard zombie fight.
 
-**Scaling.** At level 2, run 3 kindled and 3 plain. At level 3, promote the
-kindled ones to Plague Zombies (level 1, HP 50, Zombie Rot) carrying the same
-cases, and Grauth belongs in the fight while the burning wagons become the
-clock instead.
+**Scaling.** At level 2, run 3 kindled and 4 plain for a 120 XP moderate
+encounter. At level 3, promote the kindled ones to Plague Zombies (level 1, HP
+50, Zombie Rot) carrying the same cases; 4 plague zombies and 4 plain shamblers
+remain a 120 XP moderate encounter, while adding Grauth makes it 160 XP, just
+under severe. The burning wagons become the clock instead.
 
 *Creatures: `vault/Bestiary/Zombie Shambler (Monster Core).md` and*
 *`vault/Bestiary/Plague Zombie (Monster Core).md` — Monster Core.*
