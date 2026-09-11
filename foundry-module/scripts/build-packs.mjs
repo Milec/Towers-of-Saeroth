@@ -9,6 +9,7 @@ const repositoryDir = resolve(moduleDir, "..");
 const campaignDir = join(repositoryDir, "campaign");
 const packDir = join(moduleDir, "packs", "saeroth-actors");
 const actorAssetDir = join(moduleDir, "assets", "actors");
+const moduleId = "saeroth-pf2e-content";
 
 function loadClassicLevel() {
   const nodeModules = process.env.FOUNDRY_NODE_MODULES;
@@ -32,6 +33,42 @@ function html(value) {
     .replace(/>/g, "&gt;")
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\n/g, "<br />")}</p>`;
+}
+
+function actionDescription(value) {
+  let text = value.trim();
+  // The source notes remain readable Markdown. Convert the common mechanical
+  // phrases into the inline links PF2e enriches into clickable rolls and
+  // templates on an actor sheet.
+  text = text.replace(/\b(\d+)-foot\s+(burst|cone|emanation|line)\b/gi, (_match, distance, type) =>
+    `@Template[type:${type.toLowerCase()}|distance:${distance}]{${distance}-foot ${type.toLowerCase()}}`,
+  );
+  text = text.replace(/\b(\d+)\s*feet\s+(burst|cone|emanation|line)\b/gi, (_match, distance, type) =>
+    `@Template[type:${type.toLowerCase()}|distance:${distance}]{${distance}-foot ${type.toLowerCase()}}`,
+  );
+  text = text.replace(/\*\*basic\s+(Fortitude|Reflex|Will)\*\*\s+DC\s+(\d+)/gi, (_match, save, dc) =>
+    `@Check[${save.toLowerCase()}|dc:${dc}|basic]{Basic ${save} DC ${dc}}`,
+  );
+  text = text.replace(/\bDC\s+(\d+)\s+(Fortitude|Reflex|Will)\s+save\b/gi, (_match, dc, save) =>
+    `@Check[${save.toLowerCase()}|dc:${dc}]{${save} DC ${dc}} save`,
+  );
+  text = text.replace(/\bDC\s+(\d+)\s+(Fortitude|Reflex|Will)\b/gi, (_match, dc, save) =>
+    `@Check[${save.toLowerCase()}|dc:${dc}]{${save} DC ${dc}}`,
+  );
+  text = text.replace(/\b(Acrobatics|Arcana|Athletics|Crafting|Deception|Diplomacy|Intimidation|Medicine|Nature|Occultism|Performance|Religion|Society|Stealth|Survival|Thievery|[A-Za-z-]+ Lore)\s+check against the target's (Fortitude|Reflex|Will) DC\b/gi, (_match, skill, defense) =>
+    `@Check[${skillSlug(skill)}|defense:${defense.toLowerCase()}]{${skill.trim()}} check against the target's ${defense} DC`,
+  );
+  text = text.replace(/\b(?:can )?attempt to Escape \(DC\s+(\d+)\)/gi, (_match, dc) =>
+    `can attempt [[/act escape dc=${dc}]]{Escape (DC ${dc})}`,
+  );
+  text = text.replace(/\b(\d*d\d+(?:\s*[+-]\s*\d+)?)\s+(persistent\s+)?(acid|bleed|bludgeoning|cold|electricity|fire|force|mental|negative|piercing|poison|positive|slashing|sonic)\s+damage\b/gi, (_match, formula, persistent, damageType) => {
+    const normalized = formula.replace(/\s+/g, "");
+    const category = persistent ? "persistent," : "";
+    return `@Damage[${normalized}[${category}${damageType.toLowerCase()}]]{${formula} ${persistent ?? ""}${damageType} damage}`;
+  });
+  return html(text)
+    .replace(/;\s*(?=<strong>Effect<\/strong>)/g, "</p><hr /><p>")
+    .replace(/(?:<br \/>|\s+)(?=<strong>(?:Critical Success|Success|Failure|Critical Failure)<\/strong>)/g, "</p><hr /><p>");
 }
 
 function traitSlug(value) {
@@ -213,11 +250,13 @@ function parseActor(source, path, spellSources, portrait) {
     }
     const ability = line.match(/^\*\*(.+?)\*\*\s+`\[(one-action|two-actions|three-actions|reaction)\]`\s*(.*)$/i);
     if (ability && !/^Melee$/i.test(ability[1])) {
-      const [, abilityName, actionType, text] = ability;
+      const [, abilityName, actionType, sourceText] = ability;
+      const traitMatch = sourceText.match(/^\(([^)]+)\)\s*/);
+      const text = traitMatch ? sourceText.slice(traitMatch[0].length) : sourceText;
       const itemId = stableId(`${id}:action:${abilityName}`);
       actor.items.push(itemId);
       actor.__items ??= [];
-      actor.__items.push({ _id: itemId, name: abilityName.trim(), type: "action", img: actionType === "reaction" ? "systems/pf2e/icons/actions/Reaction.webp" : "systems/pf2e/icons/actions/OneAction.webp", system: { actionType: { value: actionType === "reaction" ? "reaction" : "action" }, actions: { value: actionType === "reaction" ? null : { "one-action": 1, "two-actions": 2, "three-actions": 3 }[actionType] }, category: "offensive", description: { value: html(text) }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, rules: [], slug: null, traits: { value: [] } } });
+      actor.__items.push({ _id: itemId, name: abilityName.trim(), type: "action", img: actionType === "reaction" ? "systems/pf2e/icons/actions/Reaction.webp" : `systems/pf2e/icons/actions/${actionType === "two-actions" ? "TwoActions" : actionType === "three-actions" ? "ThreeActions" : "OneAction"}.webp`, system: { actionType: { value: actionType === "reaction" ? "reaction" : "action" }, actions: { value: actionType === "reaction" ? null : { "one-action": 1, "two-actions": 2, "three-actions": 3 }[actionType] }, category: "offensive", description: { value: actionDescription(text) }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, rules: [], slug: null, traits: { rarity: "common", value: parseList(traitMatch?.[1]).map(traitSlug) } } });
     }
 
     const spellcasting = line.match(/^\*\*(arcane|divine|occult|primal)\s+(prepared|spontaneous|innate|focus)\s+spells\*\*\s+DC\s+(\d+),\s*attack\s+([+-]\d+);\s*(.+)$/i);
@@ -281,15 +320,30 @@ async function walk(directory) {
 const ClassicLevel = loadClassicLevel();
 const foundryDataDir = process.env.FOUNDRY_DATA_DIR ?? join(process.env.LOCALAPPDATA ?? "", "FoundryVTT", "Data");
 const spellPackDir = join(foundryDataDir, "systems", "pf2e", "packs", "spells");
-const spellSources = new Map();
-const spellDb = new ClassicLevel(spellPackDir, { valueEncoding: "json" });
-await spellDb.open();
-try {
-  for await (const [, item] of spellDb.iterator()) {
-    if (item.type === "spell" && item.system?.slug) spellSources.set(item.system.slug, item);
+async function readSpells(directory) {
+  const spells = new Map();
+  const db = new ClassicLevel(directory, { valueEncoding: "json" });
+  await db.open();
+  try {
+    for await (const [, item] of db.iterator()) {
+      if (item.type === "spell" && item.system?.slug) spells.set(item.system.slug, item);
+    }
+  } finally {
+    await db.close();
   }
-} finally {
-  await spellDb.close();
+  return spells;
+}
+
+let spellSources;
+try {
+  spellSources = await readSpells(spellPackDir);
+} catch (error) {
+  // Foundry holds an exclusive lock on its packs while it is running. The
+  // generated module pack is an equally valid source for already-imported
+  // official spells, so rebuilding can still repair its actors while Foundry
+  // is open.
+  console.warn(`Could not read Foundry's spells pack (${error.code ?? error.message}); using the existing module pack instead.`);
+  spellSources = await readSpells(packDir);
 }
 const markdown = (await walk(campaignDir)).filter((path) => path.endsWith(".md"));
 const actors = [];
@@ -301,9 +355,10 @@ for (const path of markdown) {
   if (!/^type:\s*(creature|npc)\s*$/mi.test(source) || !/```pf2e-stats/i.test(source)) continue;
   const id = stableId(relative(repositoryDir, path));
   const sourcePortrait = portraitSource(source, path);
-  const portrait = sourcePortrait ? `assets/actors/${id}${extname(sourcePortrait).toLowerCase()}` : null;
+  const portraitFilename = sourcePortrait ? `${id}${extname(sourcePortrait).toLowerCase()}` : null;
+  const portrait = portraitFilename ? `modules/${moduleId}/assets/actors/${portraitFilename}` : null;
   if (sourcePortrait) {
-    await copyFile(sourcePortrait, join(moduleDir, portrait));
+    await copyFile(sourcePortrait, join(actorAssetDir, portraitFilename));
     portraits += 1;
   }
   actors.push(parseActor(source, path, spellSources, portrait));
