@@ -265,6 +265,13 @@
   }
   .pcard dd { margin: 1px 0 0; }
   .pcard dl { margin: 0; }
+  .pcard-art {
+    display: block; width: min(100%, 560px); aspect-ratio: 16 / 9;
+    margin: 0 0 12px; overflow: hidden; border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--p-gold) 40%, transparent);
+    background: var(--p-gold-wash);
+  }
+  .pcard-art img { display: block; width: 100%; height: 100%; object-fit: cover; }
   /* The nation name in the table doubles as a way onto the map. */
   .pnamebtn {
     border: 0; background: none; padding: 0; margin: 0; font: inherit;
@@ -431,6 +438,13 @@
   let mapData = null;      // the parsed positions file, fetched once
   let mapDataTried = false;
 
+  function nationArtwork(name) {
+    const slug = name.toLowerCase().trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+    return '../assets/nations/' + slug + '.png';
+  }
+
   async function positions() {
     if (mapDataTried) return mapData;
     mapDataTried = true;
@@ -522,9 +536,17 @@
         }
       }
       card.innerHTML = '';
+      const art = document.createElement('figure');
+      art.className = 'pcard-art';
+      const image = document.createElement('img');
+      image.src = nationArtwork(name);
+      image.alt = 'Concept art for ' + name;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      art.appendChild(image);
       const h = document.createElement('h3');
       h.textContent = name;
-      card.append(h, dl);
+      card.append(art, h, dl);
       card.hidden = false;
       if (scroll) {
         box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
