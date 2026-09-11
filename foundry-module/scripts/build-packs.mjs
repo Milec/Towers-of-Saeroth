@@ -69,7 +69,48 @@ function parseList(line) {
   return line ? line.split(",").map((entry) => entry.trim()).filter(Boolean) : [];
 }
 
-function parseActor(source, path) {
+function spellRank(label) {
+  if (/^cantrips/i.test(label)) return 0;
+  return Number.parseInt(label, 10);
+}
+
+function spellHeightenedLevel(label) {
+  return Number(label.match(/\((\d+)(?:st|nd|rd|th)\)/i)?.[1] ?? spellRank(label));
+}
+
+function titleCase(value) {
+  return value.replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function makeFallbackSpell(name, rank, entryId, heightenedLevel) {
+  return {
+    _id: stableId(`${entryId}:spell:${name}`),
+    name: titleCase(name),
+    type: "spell",
+    img: "systems/pf2e/icons/default-icons/spell.svg",
+    system: {
+      area: { type: "", value: 0 },
+      cost: { value: "" },
+      counteraction: false,
+      damage: {},
+      defense: { save: { basic: false, statistic: null } },
+      description: { value: "<p>Imported from a Saeroth statblock. Add the spell's full text before play.</p>" },
+      duration: { sustained: false, value: "" },
+      level: { value: Math.max(rank, 1) },
+      location: { value: entryId, heightenedLevel },
+      publication: { license: "", remaster: true, title: "Towers of Saeroth" },
+      range: { value: "" },
+      requirements: "",
+      rules: [],
+      slug: traitSlug(name),
+      target: { value: "" },
+      time: { value: "" },
+      traits: { rarity: "common", traditions: [], value: [] },
+    },
+  };
+}
+
+function parseActor(source, path, spellSources) {
   const frontmatter = parseFrontmatter(source, path);
   const fence = source.match(/```pf2e-stats\r?\n([\s\S]*?)```/i);
   if (!fence) throw new Error(`${path}: no pf2e-stats block.`);
@@ -162,6 +203,55 @@ function parseActor(source, path) {
       actor.__items ??= [];
       actor.__items.push({ _id: itemId, name: abilityName.trim(), type: "action", img: actionType === "reaction" ? "systems/pf2e/icons/actions/Reaction.webp" : "systems/pf2e/icons/actions/OneAction.webp", system: { actionType: { value: actionType === "reaction" ? "reaction" : "action" }, actions: { value: actionType === "reaction" ? null : { "one-action": 1, "two-actions": 2, "three-actions": 3 }[actionType] }, category: "offensive", description: { value: html(text) }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, rules: [], slug: null, traits: { value: [] } } });
     }
+
+    const spellcasting = line.match(/^\*\*(arcane|divine|occult|primal)\s+(prepared|spontaneous|innate|focus)\s+spells\*\*\s+DC\s+(\d+),\s*attack\s+([+-]\d+);\s*(.+)$/i);
+    if (!spellcasting) continue;
+
+    const [, tradition, preparation, dc, attack, spellList] = spellcasting;
+    const entryId = stableId(`${id}:spellcasting:${tradition}:${preparation}`);
+    const slots = {};
+    const spells = [];
+    for (const match of spellList.matchAll(/\*\*(Cantrips(?:\s+\(\d+(?:st|nd|rd|th)\))?|\d+(?:st|nd|rd|th))\*\*\s+([^;]+)(?:;|$)/gi)) {
+      const [, label, names] = match;
+      const rank = spellRank(label);
+      const heightenedLevel = spellHeightenedLevel(label);
+      const spellNames = parseList(names);
+      if (rank > 0) slots[`slot${rank}`] = { max: spellNames.length, value: spellNames.length };
+      for (const spellName of spellNames) {
+        const sourceSpell = spellSources.get(traitSlug(spellName));
+        const spell = sourceSpell
+          ? structuredClone(sourceSpell)
+          : makeFallbackSpell(spellName, rank, entryId, heightenedLevel);
+        spell._id = stableId(`${entryId}:spell:${spellName}`);
+        spell.system.location = { value: entryId, heightenedLevel };
+        spells.push(spell);
+      }
+    }
+    if (spells.length === 0) continue;
+
+    actor.items.push(entryId);
+    actor.__items ??= [];
+    actor.__items.push({
+      _id: entryId,
+      name: `${tradition[0].toUpperCase()}${tradition.slice(1).toLowerCase()} ${preparation[0].toUpperCase()}${preparation.slice(1).toLowerCase()} Spells`,
+      type: "spellcastingEntry",
+      img: "systems/pf2e/icons/default-icons/spellcastingEntry.svg",
+      system: {
+        autoHeightenLevel: { value: null },
+        description: { value: "" },
+        prepared: { value: preparation.toLowerCase() },
+        proficiency: { value: 1 },
+        publication: { license: "", remaster: true, title: "Towers of Saeroth" },
+        rules: [],
+        slots,
+        slug: null,
+        spelldc: { dc: Number(dc), value: Number(attack) },
+        tradition: { value: tradition.toLowerCase() },
+        traits: {},
+      },
+    });
+    actor.items.push(...spells.map((spell) => spell._id));
+    actor.__items.push(...spells);
   }
   return actor;
 }
@@ -173,11 +263,23 @@ async function walk(directory) {
 }
 
 const ClassicLevel = loadClassicLevel();
+const foundryDataDir = process.env.FOUNDRY_DATA_DIR ?? join(process.env.LOCALAPPDATA ?? "", "FoundryVTT", "Data");
+const spellPackDir = join(foundryDataDir, "systems", "pf2e", "packs", "spells");
+const spellSources = new Map();
+const spellDb = new ClassicLevel(spellPackDir, { valueEncoding: "json" });
+await spellDb.open();
+try {
+  for await (const [, item] of spellDb.iterator()) {
+    if (item.type === "spell" && item.system?.slug) spellSources.set(item.system.slug, item);
+  }
+} finally {
+  await spellDb.close();
+}
 const markdown = (await walk(campaignDir)).filter((path) => path.endsWith(".md"));
 const actors = [];
 for (const path of markdown) {
   const source = await readFile(path, "utf8");
-  if (/^type:\s*(creature|npc)\s*$/mi.test(source) && /```pf2e-stats/i.test(source)) actors.push(parseActor(source, path));
+  if (/^type:\s*(creature|npc)\s*$/mi.test(source) && /```pf2e-stats/i.test(source)) actors.push(parseActor(source, path, spellSources));
 }
 if (actors.length === 0) throw new Error("No eligible creature or NPC statblocks found.");
 
