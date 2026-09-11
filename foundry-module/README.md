@@ -9,7 +9,9 @@ The Cream Man, Wenzel Grauth, Garrick Thorne, and Ashwin Devaraj.
 
 An eligible note lives beneath `campaign/`, has frontmatter with `type: creature`
 or `type: npc`, and contains a `pf2e-stats` fenced block. The campaign note stays
-the editable source of truth; the generated LevelDB pack is an output.
+the editable source of truth; the generated LevelDB pack is an output. The first
+Markdown image in an eligible note is copied into `assets/actors/` and used as
+both the Actor portrait and its prototype token texture.
 
 ## Build
 

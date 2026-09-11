@@ -1,13 +1,14 @@
 import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
-import { readdir, readFile, rm } from "node:fs/promises";
-import { dirname, join, relative, resolve } from "node:path";
+import { copyFile, mkdir, readdir, readFile, rm } from "node:fs/promises";
+import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const moduleDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const repositoryDir = resolve(moduleDir, "..");
 const campaignDir = join(repositoryDir, "campaign");
 const packDir = join(moduleDir, "packs", "saeroth-actors");
+const actorAssetDir = join(moduleDir, "assets", "actors");
 
 function loadClassicLevel() {
   const nodeModules = process.env.FOUNDRY_NODE_MODULES;
@@ -60,6 +61,20 @@ function parseFrontmatter(source, path) {
   return fields;
 }
 
+function portraitSource(source, notePath) {
+  const markdownImage = source.match(/!\[[\s\S]*?\]\(([^)]+)\)/);
+  if (!markdownImage) return null;
+  const sourcePath = resolve(dirname(notePath), markdownImage[1].trim());
+  const campaignRelative = relative(campaignDir, sourcePath);
+  if (campaignRelative.startsWith("..") || resolve(campaignDir, campaignRelative) !== sourcePath) {
+    throw new Error(`${notePath}: portrait must be stored beneath campaign/.`);
+  }
+  if (!/\.(avif|gif|jpe?g|png|svg|webp)$/i.test(sourcePath)) {
+    throw new Error(`${notePath}: portrait must be an image file.`);
+  }
+  return sourcePath;
+}
+
 function statValue(block, label) {
   const match = block.match(new RegExp(`\\*\\*${label}\\*\\*\\s*([+-]?\\d+)`, "i"));
   return match ? Number(match[1]) : null;
@@ -110,7 +125,7 @@ function makeFallbackSpell(name, rank, entryId, heightenedLevel) {
   };
 }
 
-function parseActor(source, path, spellSources) {
+function parseActor(source, path, spellSources, portrait) {
   const frontmatter = parseFrontmatter(source, path);
   const fence = source.match(/```pf2e-stats\r?\n([\s\S]*?)```/i);
   if (!fence) throw new Error(`${path}: no pf2e-stats block.`);
@@ -153,7 +168,8 @@ function parseActor(source, path, spellSources) {
     _id: id,
     name,
     type: "npc",
-    img: "systems/pf2e/icons/default-icons/npc.svg",
+    img: portrait ?? "systems/pf2e/icons/default-icons/npc.svg",
+    prototypeToken: { texture: { src: portrait ?? "systems/pf2e/icons/default-icons/npc.svg" } },
     items: [],
     effects: [],
     flags: { saeroth: { source: relative(repositoryDir, path).replaceAll("\\", "/") } },
@@ -277,9 +293,20 @@ try {
 }
 const markdown = (await walk(campaignDir)).filter((path) => path.endsWith(".md"));
 const actors = [];
+let portraits = 0;
+await rm(actorAssetDir, { recursive: true, force: true });
+await mkdir(actorAssetDir, { recursive: true });
 for (const path of markdown) {
   const source = await readFile(path, "utf8");
-  if (/^type:\s*(creature|npc)\s*$/mi.test(source) && /```pf2e-stats/i.test(source)) actors.push(parseActor(source, path, spellSources));
+  if (!/^type:\s*(creature|npc)\s*$/mi.test(source) || !/```pf2e-stats/i.test(source)) continue;
+  const id = stableId(relative(repositoryDir, path));
+  const sourcePortrait = portraitSource(source, path);
+  const portrait = sourcePortrait ? `assets/actors/${id}${extname(sourcePortrait).toLowerCase()}` : null;
+  if (sourcePortrait) {
+    await copyFile(sourcePortrait, join(moduleDir, portrait));
+    portraits += 1;
+  }
+  actors.push(parseActor(source, path, spellSources, portrait));
 }
 if (actors.length === 0) throw new Error("No eligible creature or NPC statblocks found.");
 
@@ -296,4 +323,4 @@ try {
 } finally {
   await db.close();
 }
-console.log(`Built ${actors.length} PF2e actors in ${relative(repositoryDir, packDir)}.`);
+console.log(`Built ${actors.length} PF2e actors and copied ${portraits} portraits in ${relative(repositoryDir, packDir)}.`);
