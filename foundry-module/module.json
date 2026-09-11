@@ -1,0 +1,40 @@
+{
+  "id": "saeroth-pf2e-content",
+  "title": "Towers of Saeroth PF2e Content",
+  "description": "Custom creatures and NPCs from the Towers of Saeroth campaign.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "14.361",
+    "verified": "14.367",
+    "maximum": "14"
+  },
+  "authors": [
+    {
+      "name": "Towers of Saeroth"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "8.5.0"
+        }
+      }
+    ]
+  },
+  "packs": [
+    {
+      "name": "saeroth-actors",
+      "label": "Saeroth Creatures & NPCs",
+      "path": "packs/saeroth-actors",
+      "type": "Actor",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ]
+}
