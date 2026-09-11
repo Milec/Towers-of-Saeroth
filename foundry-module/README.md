@@ -32,7 +32,8 @@ The script validates frontmatter and the core PF2e stat lines before replacing
 only `foundry-module/packs/saeroth-actors`. It builds NPC actor statistics,
 melee strikes, action entries, and spellcasting entries. Action descriptions
 turn common statblock mechanics into PF2e inline check, damage, Escape, and
-template controls. Official spells are
+template controls, as well as links to the standard PF2e conditions named in
+an ability's text. Official spells are
 copied from the installed PF2e system; a spell that is absent there becomes a
 clearly marked placeholder while its source statblock remains in the actor's
 public notes. Commit the generated pack with the source-note changes so a

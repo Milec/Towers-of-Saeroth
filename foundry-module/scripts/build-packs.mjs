@@ -10,6 +10,34 @@ const campaignDir = join(repositoryDir, "campaign");
 const packDir = join(moduleDir, "packs", "saeroth-actors");
 const actorAssetDir = join(moduleDir, "assets", "actors");
 const moduleId = "saeroth-pf2e-content";
+const conditionUuids = {
+  blinded: "XgEqL1kFApUbl5Z2",
+  clumsy: "i3OJZU2nk64Df3xm",
+  concealed: "DmAIPqOBomZ7H95W",
+  confused: "yblD8fOR1J8rDwEQ",
+  dazzled: "TkIyaNPgTZFBCCuh",
+  deafened: "9PR9y0bi4JPKnHPR",
+  doomed: "3uh1r86TzbQvosxv",
+  drained: "4D2KBtexWXa6oUMR",
+  enfeebled: "MIRkyAjyBeXivMa7",
+  fascinated: "AdPVz7rbaVSRxHFg",
+  fatigued: "HL2l2VRSaQHu9lUw",
+  fleeing: "sDPxOjQ9kx2RZE8D",
+  frightened: "TBSHQspnbcqxsmjL",
+  grabbed: "kWc1fhmv9LBiTuei",
+  immobilized: "eIcWbB5o3pP6OIMe",
+  "off-guard": "AJh5ex99aV6VTggg",
+  paralyzed: "6uEgoh53GbXuHpTF",
+  prone: "j91X7x0XSomq8d60",
+  quickened: "nlCjDvLMf2EkV2dl",
+  restrained: "VcDeM8A5oI6VqhbM",
+  sickened: "fesd1n5eVhpCSS18",
+  slowed: "xYTAsEpcJE1Ccni3",
+  stunned: "dfCMdR4wnpbYNTix",
+  stupefied: "e1XGnhKNSQIm5IXg",
+  unconscious: "fBnFDH2MTzgFijKf",
+  wounded: "Yl48xTdMh3aeQYL2",
+};
 
 function loadClassicLevel() {
   const nodeModules = process.env.FOUNDRY_NODE_MODULES;
@@ -33,6 +61,16 @@ function html(value) {
     .replace(/>/g, "&gt;")
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\n/g, "<br />")}</p>`;
+}
+
+function linkConditions(value) {
+  const names = Object.keys(conditionUuids).sort((a, b) => b.length - a.length);
+  const pattern = new RegExp(`\\b(${names.map((name) => name.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")).join("|")})\\b(?:\\s+(\\d+))?`, "gi");
+  return value.replace(pattern, (match, name, value) => {
+    const key = name.toLowerCase();
+    const label = value ? `${name} ${value}` : name;
+    return `@UUID[Compendium.pf2e.conditionitems.Item.${conditionUuids[key]}]{${label}}`;
+  });
 }
 
 function actionDescription(value) {
@@ -66,6 +104,7 @@ function actionDescription(value) {
     const category = persistent ? "persistent," : "";
     return `@Damage[${normalized}[${category}${damageType.toLowerCase()}]]{${formula} ${persistent ?? ""}${damageType} damage}`;
   });
+  text = linkConditions(text);
   return html(text)
     .replace(/;\s*(?=<strong>Effect<\/strong>)/g, "</p><hr /><p>")
     .replace(/(?:<br \/>|\s+)(?=<strong>(?:Critical Success|Success|Failure|Critical Failure)<\/strong>)/g, "</p><hr /><p>");
