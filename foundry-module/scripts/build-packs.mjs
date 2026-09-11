@@ -259,6 +259,18 @@ function parseActor(source, path, spellSources, portrait) {
       actor.__items.push({ _id: itemId, name: abilityName.trim(), type: "action", img: actionType === "reaction" ? "systems/pf2e/icons/actions/Reaction.webp" : `systems/pf2e/icons/actions/${actionType === "two-actions" ? "TwoActions" : actionType === "three-actions" ? "ThreeActions" : "OneAction"}.webp`, system: { actionType: { value: actionType === "reaction" ? "reaction" : "action" }, actions: { value: actionType === "reaction" ? null : { "one-action": 1, "two-actions": 2, "three-actions": 3 }[actionType] }, category: "offensive", description: { value: actionDescription(text) }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, rules: [], slug: null, traits: { rarity: "common", value: parseList(traitMatch?.[1]).map(traitSlug) } } });
     }
 
+    // Some creature abilities have no encounter action cost (for example,
+    // Wenzel's longer rituals). Import these as native passive abilities so
+    // they appear on the PF2e NPC sheet instead of being stranded in notes.
+    const passive = line.match(/^\*\*([^*]+?)\*\*\s+\(([^)]+)\)\s+(.+)$/i);
+    if (!ability && passive) {
+      const [, abilityName, traitText, text] = passive;
+      const itemId = stableId(`${id}:passive:${abilityName}`);
+      actor.items.push(itemId);
+      actor.__items ??= [];
+      actor.__items.push({ _id: itemId, name: abilityName.trim(), type: "action", img: "systems/pf2e/icons/actions/Passive.webp", system: { actionType: { value: "passive" }, actions: { value: null }, category: "interaction", description: { value: actionDescription(text) }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, rules: [], slug: null, traits: { rarity: "common", value: parseList(traitText).map(traitSlug) } } });
+    }
+
     const spellcasting = line.match(/^\*\*(arcane|divine|occult|primal)\s+(prepared|spontaneous|innate|focus)\s+spells\*\*\s+DC\s+(\d+),\s*attack\s+([+-]\d+);\s*(.+)$/i);
     if (!spellcasting) continue;
 
