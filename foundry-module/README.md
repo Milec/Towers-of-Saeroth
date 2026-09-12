@@ -15,6 +15,27 @@ both the Actor portrait and its prototype token texture. Their generated paths
 are module-qualified, so portraits load from the compendium as well as after an
 actor is dragged into a scene.
 
+## Portrait workflow
+
+For a newly created creature or NPC, add a concise `portrait-prompt` field to
+its frontmatter. Use the portrait-request helper to produce the standardized
+prompt and intended output filename:
+
+```powershell
+node foundry-module/scripts/portrait-request.mjs "campaign/npcs/New NPC.md"
+```
+
+Generate that request with Codex ImageGen, save the selected PNG next to the
+source note using the reported filename, and insert the reported Markdown image
+line in the note. The default art direction is hand-inked dark fantasy: strong
+black contour lines, cross-hatching, muted earth tones, expressive stylized
+faces, and a charcoal-and-parchment atmosphere. `--check` scans all eligible
+notes and returns a nonzero exit code while any portraits are ready to generate. A build refuses a note that has
+`portrait-prompt` but no Markdown image, preventing a source change from being
+published without its requested token art. The normal build then copies the
+image into `assets/actors/` and references it from the Actor and token
+automatically; no image URL or API key is needed.
+
 ## Build
 
 Run the builder from the repository root after installing Foundry VTT. It needs
@@ -32,7 +53,8 @@ The script validates frontmatter and the core PF2e stat lines before replacing
 only `foundry-module/packs/saeroth-actors`. It builds NPC actor statistics,
 melee strikes, action entries, and spellcasting entries. Action descriptions
 turn common statblock mechanics into PF2e inline check, damage, Escape, and
-template controls. Official spells are
+template controls, as well as links to the standard PF2e conditions named in
+an ability's text. Official spells are
 copied from the installed PF2e system; a spell that is absent there becomes a
 clearly marked placeholder while its source statblock remains in the actor's
 public notes. Commit the generated pack with the source-note changes so a
