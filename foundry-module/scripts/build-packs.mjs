@@ -48,8 +48,11 @@ function loadClassicLevel() {
       "Set FOUNDRY_NODE_MODULES to Foundry's resources/app/node_modules directory before building packs.",
     );
   }
-  const require = createRequire(join(resolve(nodeModules), "package.json"));
-  return require("classic-level").ClassicLevel;
+  // nodeModules is the directory that directly contains classic-level. A
+  // require rooted at nodeModules/package.json searches nodeModules/node_modules
+  // first and fails after Foundry updates; load the package by its exact path.
+  const require = createRequire(fileURLToPath(import.meta.url));
+  return require(join(resolve(nodeModules), "classic-level")).ClassicLevel;
 }
 
 function stableId(seed) {
@@ -311,12 +314,33 @@ function parseActor(source, path, spellSources, portrait) {
   );
   const speedLine = block.match(/\*\*Speed\*\*\s*(\d+)\s*feet([^\n]*)/i);
   const otherSpeeds = [...(speedLine?.[2] ?? "").matchAll(/(climb|fly|swim|burrow)\s+(\d+)\s*feet/gi)].map((match) => ({ type: match[1].toLowerCase(), value: Number(match[2]) }));
-  const hpTail = hpLine[2];
+  // HP, immunities, resistances, and weaknesses are one statblock paragraph,
+  // but long entries commonly wrap across several Markdown lines. Reading only
+  // hpLine's physical line silently discarded every wrapped defense afterwards.
+  const defenseText = block.match(/\*\*HP\*\*[\s\S]*?(?=\r?\n\s*\r?\n|$)/i)?.[0] ?? hpLine[0];
+  const defenseLabels = "Immunities|Resistances|Weaknesses";
+  const defenseValue = (label) => {
+    const match = defenseText.match(new RegExp(
+      `\\*\\*${label}\\*\\*\\s*([\\s\\S]*?)(?=\\s*;\\s*\\*\\*(?:${defenseLabels})\\*\\*|$)`,
+      "i",
+    ));
+    return match?.[1].replace(/\s+/g, " ").trim() ?? "";
+  };
   const parseDefenses = (label, numeric = false) => {
-    const match = hpTail.match(new RegExp(`\\*\\*${label}\\*\\*\\s*([^;]+)`, "i"));
-    return parseList(match?.[1]).map((entry) => {
-      const parts = entry.match(/(.+?)\s+(\d+)$/);
-      if (numeric) return parts ? { type: traitSlug(parts[1]), value: Number(parts[2]), exceptions: [] } : { type: traitSlug(entry), value: 0, exceptions: [] };
+    const value = defenseValue(label);
+    // A resistance's parenthetical exception list is comma-separated too;
+    // split only the top-level list of defenses, not its exception details.
+    const entries = value ? value.split(/,(?![^()]*\))/).map((entry) => entry.trim()).filter(Boolean) : [];
+    return entries.map((entry) => {
+      const parts = entry.match(/^(.+?)\s+(\d+)(?:\s*\(([^)]*)\))?$/);
+      if (numeric) {
+        if (!parts) return { type: traitSlug(entry), value: 0, exceptions: [] };
+        const exceptionMatch = /(?:^|;)\s*except\s+(.+?)(?:;|$)/i.exec(parts[3] ?? "");
+        const exceptions = exceptionMatch
+          ? exceptionMatch[1].split(/,|\s+or\s+/i).map((part) => traitSlug(part.trim())).filter(Boolean)
+          : [];
+        return { type: traitSlug(parts[1]), value: Number(parts[2]), exceptions };
+      }
       return { type: traitSlug(entry), exceptions: [] };
     });
   };
