@@ -55,7 +55,10 @@ Hooks.on("renderActorSheetPF2e", (app, html) => {
   const actor = app.actor;
   if (!isSanguinor(actor)) return;
   const root = sheetRoot(html);
-  const actionsTab = root?.querySelector('[data-tab="actions"]');
+  // The sheet has both an Actions navigation control and an Actions content
+  // panel with data-tab="actions". Query only the panel: the broad selector
+  // inserted the tracker into the icon bar and over the character header.
+  const actionsTab = root?.querySelector('.tab.actions, .tab[data-tab="actions"]');
   if (!actionsTab || actionsTab.querySelector(".saeroth-hunger-tracker")) return;
 
   const state = actor.getFlag(MODULE_ID, HUNGER_FLAG) === "fed" ? "fed" : "unfed";
