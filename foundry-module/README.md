@@ -27,8 +27,10 @@ node foundry-module/scripts/portrait-request.mjs "campaign/npcs/New NPC.md"
 
 Generate that request with Codex ImageGen, save the selected PNG next to the
 source note using the reported filename, and insert the reported Markdown image
-line in the note. `--check` scans all eligible notes and returns a nonzero exit
-code while any portraits are ready to generate. A build refuses a note that has
+line in the note. The default art direction is hand-inked dark fantasy: strong
+black contour lines, cross-hatching, muted earth tones, expressive stylized
+faces, and a charcoal-and-parchment atmosphere. `--check` scans all eligible
+notes and returns a nonzero exit code while any portraits are ready to generate. A build refuses a note that has
 `portrait-prompt` but no Markdown image, preventing a source change from being
 published without its requested token art. The normal build then copies the
 image into `assets/actors/` and references it from the Actor and token

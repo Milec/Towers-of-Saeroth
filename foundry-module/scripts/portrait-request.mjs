@@ -58,7 +58,7 @@ function promptRequest(fields, notePath) {
       "Asset type: square Foundry VTT NPC or monster portrait and token art.",
       `Subject: ${concept}`,
       "Composition: centered character or creature, readable silhouette, enough padding for a circular or square token crop.",
-      "Style: polished dark-fantasy tabletop RPG illustration, dramatic but readable lighting, rich material detail.",
+      "Art direction: hand-inked dark-fantasy character illustration with strong black contour lines, visible cross-hatching, muted earth-tone colors, desaturated shadows, expressive slightly stylized faces, and a moody charcoal-and-parchment atmosphere. Keep the rendering painterly beneath the inkwork, with clean readable forms for a tabletop token.",
       "Constraints: no text, no lettering, no watermark, no border, no UI, no collage.",
     ].join("\n"),
   };
