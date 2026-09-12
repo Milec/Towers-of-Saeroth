@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
-import { copyFile, mkdir, readdir, readFile, rm } from "node:fs/promises";
+import { copyFile, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -13,6 +13,8 @@ const ancestryPackDir = join(moduleDir, "packs", "saeroth-ancestries");
 const ancestryAssetDir = join(moduleDir, "assets", "ancestries");
 const sanguinorEffectsPackDir = join(moduleDir, "packs", "saeroth-sanguinor-effects");
 const ancestryFeaturesPackDir = join(moduleDir, "packs", "saeroth-ancestry-features");
+const syncContentDir = join(moduleDir, "content");
+const syncManifestPath = join(syncContentDir, "saeroth-creatures.json");
 const moduleId = "saeroth-pf2e-content";
 const sanguinorIcon = `modules/${moduleId}/assets/ancestries/l5hQzZ0rPerT2amm.png`;
 const conditionUuids = {
@@ -60,6 +62,10 @@ function loadClassicLevel() {
 
 function stableId(seed) {
   return createHash("sha256").update(seed).digest("base64url").slice(0, 16);
+}
+function githubRawUrl(path) {
+  const encodedPath = relative(repositoryDir, path).replaceAll("\\", "/").split("/").map(encodeURIComponent).join("/");
+  return `https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/${encodedPath}`;
 }
 // Foundry v14 document IDs are strictly alphanumeric. Existing generated
 // actors retain their historic IDs for compatibility, while new Sanguinor
@@ -620,6 +626,7 @@ try {
 }
 const markdown = (await walk(campaignDir)).filter((path) => path.endsWith(".md"));
 const actors = [];
+const syncedActors = [];
 const ancestries = [];
 let actorPortraits = 0;
 let ancestryPortraits = 0;
@@ -646,6 +653,14 @@ for (const path of markdown) {
     actorPortraits += 1;
   }
   actors.push(parseActor(source, path, spellSources, portrait));
+  const syncActor = structuredClone(actors.at(-1));
+  const remotePortrait = sourcePortrait ? githubRawUrl(sourcePortrait) : null;
+  if (remotePortrait) {
+    syncActor.img = remotePortrait;
+    syncActor.prototypeToken.texture.src = remotePortrait;
+  }
+  syncActor.flags.saeroth.syncKey = relative(repositoryDir, path).replaceAll("\\", "/");
+  syncedActors.push(syncActor);
 }
 if (actors.length === 0) throw new Error("No eligible creature or NPC statblocks found.");
 
@@ -708,7 +723,10 @@ try {
 } finally {
   await ancestryFeaturesDb.close();
 }
+await mkdir(syncContentDir, { recursive: true });
+await writeFile(syncManifestPath, `${JSON.stringify({ schema: 1, actors: syncedActors }, null, 2)}\n`);
 console.log(`Built ${actors.length} PF2e actors and copied ${actorPortraits} portraits in ${relative(repositoryDir, packDir)}.`);
 console.log(`Built ${ancestries.length} PF2e ancestries and copied ${ancestryPortraits} portraits in ${relative(repositoryDir, ancestryPackDir)}.`);
 console.log(`Built ${sanguinorEffects.length} Sanguinor tracking effects in ${relative(repositoryDir, sanguinorEffectsPackDir)}.`);
 console.log(`Built ${sanguinorAncestryFeatures.length} Sanguinor ancestry features in ${relative(repositoryDir, ancestryFeaturesPackDir)}.`);
+console.log(`Built ${syncedActors.length} runtime-sync actors in ${relative(repositoryDir, syncManifestPath)}.`);
