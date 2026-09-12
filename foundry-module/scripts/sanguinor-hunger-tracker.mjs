@@ -3,15 +3,15 @@ const HUNGER_FLAG = "sanguinorHunger";
 const EFFECTS = {
   fed: {
     slug: "fed",
-    uuid: "Compendium.saeroth-pf2e-content.saeroth-sanguinor-effects.Item._nJ0caqSSSyRxx6P",
+    uuid: "Compendium.saeroth-pf2e-content.saeroth-sanguinor-effects.Item.fe727471aa92492c",
   },
   unfed: {
     slug: "unfed",
-    uuid: "Compendium.saeroth-pf2e-content.saeroth-sanguinor-effects.Item.VQO3iAywKPpd8uU8",
+    uuid: "Compendium.saeroth-pf2e-content.saeroth-sanguinor-effects.Item.5503b7880cb028fa",
   },
   redThirst: {
     slug: "red-thirst",
-    uuid: "Compendium.saeroth-pf2e-content.saeroth-sanguinor-effects.Item.mJAGdb7KRaWAONyX",
+    uuid: "Compendium.saeroth-pf2e-content.saeroth-sanguinor-effects.Item.98900675beca45a5",
   },
 };
 

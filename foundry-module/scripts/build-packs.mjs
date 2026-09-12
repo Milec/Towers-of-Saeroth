@@ -60,19 +60,25 @@ function loadClassicLevel() {
 function stableId(seed) {
   return createHash("sha256").update(seed).digest("base64url").slice(0, 16);
 }
+// Foundry v14 document IDs are strictly alphanumeric. Existing generated
+// actors retain their historic IDs for compatibility, while new Sanguinor
+// items use this safe variant so GrantItem can resolve them.
+function foundryId(seed) {
+  return createHash("sha256").update(seed).digest("hex").slice(0, 16);
+}
 
 const sanguinorEffectIds = Object.freeze({
-  fed: stableId("sanguinor-effect:fed"),
-  unfed: stableId("sanguinor-effect:unfed"),
-  "red-thirst": stableId("sanguinor-effect:red-thirst"),
+  fed: foundryId("sanguinor-effect:fed"),
+  unfed: foundryId("sanguinor-effect:unfed"),
+  "red-thirst": foundryId("sanguinor-effect:red-thirst"),
 });
 const sanguinorAncestryFeatureIds = Object.freeze({
-  "sunlight-sensitivity": stableId("sanguinor-ancestry-feature:sunlight-sensitivity"),
-  "fledgling-fangs": stableId("sanguinor-ancestry-feature:fledgling-fangs"),
-  "disease-and-poison-protection": stableId("sanguinor-ancestry-feature:disease-and-poison-protection"),
-  "void-healing": stableId("sanguinor-ancestry-feature:void-healing"),
-  "balanced-hunger": stableId("sanguinor-ancestry-feature:balanced-hunger"),
-  "red-thirst": stableId("sanguinor-ancestry-feature:red-thirst"),
+  "sunlight-sensitivity": foundryId("sanguinor-ancestry-feature:sunlight-sensitivity"),
+  "fledgling-fangs": foundryId("sanguinor-ancestry-feature:fledgling-fangs"),
+  "disease-and-poison-protection": foundryId("sanguinor-ancestry-feature:disease-and-poison-protection"),
+  "void-healing": foundryId("sanguinor-ancestry-feature:void-healing"),
+  "balanced-hunger": foundryId("sanguinor-ancestry-feature:balanced-hunger"),
+  "red-thirst": foundryId("sanguinor-ancestry-feature:red-thirst"),
 });
 function sanguinorEffectUuid(slug) {
   return `Compendium.${moduleId}.saeroth-sanguinor-effects.Item.${sanguinorEffectIds[slug]}`;
