@@ -137,6 +137,18 @@ function parseFrontmatter(source, path) {
   return fields;
 }
 
+function assertSourceLocation(fields, notePath) {
+  const sourcePath = relative(campaignDir, notePath).replaceAll("\\", "/");
+  const isNpcFolder = sourcePath.startsWith("npcs/") || /^nations\/[^/]+\/npcs\//.test(sourcePath);
+  const isBestiaryFolder = sourcePath.startsWith("world/bestiary/");
+  if (fields.type === "npc" && !isNpcFolder) {
+    throw new Error(`${notePath}: NPC source notes belong in campaign/npcs/ or campaign/nations/<Nation>/npcs/.`);
+  }
+  if (fields.type === "creature" && !isBestiaryFolder) {
+    throw new Error(`${notePath}: creature source notes belong in campaign/world/bestiary/.`);
+  }
+}
+
 function portraitSource(source, notePath) {
   const markdownImage = source.match(/!\[[\s\S]*?\]\(([^)]+)\)/);
   if (!markdownImage) return null;
@@ -405,6 +417,7 @@ for (const path of markdown) {
   const source = await readFile(path, "utf8");
   if (!/^type:\s*(creature|npc)\s*$/mi.test(source) || !/```pf2e-stats/i.test(source)) continue;
   const frontmatter = parseFrontmatter(source, path);
+  assertSourceLocation(frontmatter, path);
   const id = stableId(relative(repositoryDir, path));
   const sourcePortrait = portraitSource(source, path);
   if (!sourcePortrait && frontmatter["portrait-prompt"]) {

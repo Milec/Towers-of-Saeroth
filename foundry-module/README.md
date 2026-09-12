@@ -7,8 +7,10 @@ The Cream Man, Wenzel Grauth, Garrick Thorne, and Ashwin Devaraj.
 
 ## Source format
 
-An eligible note lives beneath `campaign/`, has frontmatter with `type: creature`
-or `type: npc`, and contains a `pf2e-stats` fenced block. The campaign note stays
+An eligible NPC lives in `campaign/npcs/`; an NPC owned by a nation lives in
+`campaign/nations/<Nation>/npcs/`; and a creature lives in
+`campaign/world/bestiary/`. It has frontmatter with `type: creature` or
+`type: npc`, and contains a `pf2e-stats` fenced block. The campaign note stays
 the editable source of truth; the generated LevelDB pack is an output. The first
 Markdown image in an eligible note is copied into `assets/actors/` and used as
 both the Actor portrait and its prototype token texture. Their generated paths

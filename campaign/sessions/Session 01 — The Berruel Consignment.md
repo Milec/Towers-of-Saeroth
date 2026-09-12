@@ -14,6 +14,9 @@ factors travelling with their own goods, passengers who paid for the escort,
 or stowaways. All six fit a wagon train and none of them need to know each
 other first.
 
+[[John Guard]] is a suitable hired escort if the caravan needs an experienced
+road hand beyond the party.
+
 The caravan is going to be destroyed. That is not a failure state; it is the
 premise. What the party does about *why* is the campaign.
 

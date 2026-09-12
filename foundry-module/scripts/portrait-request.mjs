@@ -30,6 +30,18 @@ function parseFrontmatter(source, path) {
   return fields;
 }
 
+function assertSourceLocation(fields, notePath) {
+  const sourcePath = relative(campaignDir, notePath).replaceAll("\\", "/");
+  const isNpcFolder = sourcePath.startsWith("npcs/") || /^nations\/[^/]+\/npcs\//.test(sourcePath);
+  const isBestiaryFolder = sourcePath.startsWith("world/bestiary/");
+  if (fields.type === "npc" && !isNpcFolder) {
+    throw new Error(`${notePath}: NPC source notes belong in campaign/npcs/ or campaign/nations/<Nation>/npcs/.`);
+  }
+  if (fields.type === "creature" && !isBestiaryFolder) {
+    throw new Error(`${notePath}: creature source notes belong in campaign/world/bestiary/.`);
+  }
+}
+
 function portraitPath(source, notePath) {
   const markdownImage = source.match(/!\[[\s\S]*?\]\(([^)]+)\)/);
   if (!markdownImage) return null;
@@ -78,6 +90,7 @@ async function inspect(notePath) {
   const source = await readFile(notePath, "utf8");
   if (!isEligible(source)) throw new Error(`${notePath}: not a PF2e creature or NPC source note.`);
   const fields = parseFrontmatter(source, notePath);
+  assertSourceLocation(fields, notePath);
   const image = portraitPath(source, notePath);
   if (image) {
     return {
