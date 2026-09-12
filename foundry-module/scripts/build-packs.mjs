@@ -14,6 +14,7 @@ const ancestryAssetDir = join(moduleDir, "assets", "ancestries");
 const sanguinorEffectsPackDir = join(moduleDir, "packs", "saeroth-sanguinor-effects");
 const ancestryFeaturesPackDir = join(moduleDir, "packs", "saeroth-ancestry-features");
 const moduleId = "saeroth-pf2e-content";
+const sanguinorIcon = `modules/${moduleId}/assets/ancestries/l5hQzZ0rPerT2amm.png`;
 const conditionUuids = {
   blinded: "XgEqL1kFApUbl5Z2",
   clumsy: "i3OJZU2nk64Df3xm",
@@ -275,7 +276,7 @@ function makeSanguinorAncestryFeatures() {
     _id: sanguinorAncestryFeatureIds[slug],
     name,
     type: "feat",
-    img: "systems/pf2e/icons/default-icons/ancestry.svg",
+    img: sanguinorIcon,
     effects: [],
     flags: { saeroth: { ancestry: "sanguinor" } },
     system: {
@@ -310,7 +311,7 @@ function makeSanguinorAncestryFeatures() {
       value: true,
     }]),
     makeFeature("Balanced Hunger", "balanced-hunger", "<p>Ordinary food keeps your body running, but you are Unfed unless you have drunk at least a pint of blood within the last 24 hours. Drinking blood takes 1 minute and requires a willing, grabbed, restrained, unconscious, or freshly dead creature with blood, or a stored supply. Being Unfed carries no penalty by itself.</p><p>Use the Sanguinor Hunger selector in the Actions tab to track your state.</p>"),
-    makeFeature("Red Thirst", "red-thirst", `<p>While you are Unfed, spilled blood pulls at you. The first time in an encounter that a creature within 30 feet takes piercing or slashing damage, the thirst rises until the encounter ends.</p><p>The hunger tracker applies @UUID[${sanguinorEffectUuid("red-thirst")}]{Red Thirst} when combat begins while you are Unfed. It grants +1 circumstance to melee Strike damage and Intimidation, and -1 circumstance to Will saves. Resolve the beginning-of-turn Will save and compelled actions described in the Sanguinor ancestry manually.</p>`),
+    makeFeature("Red Thirst", "red-thirst", `<p>While you are Unfed, spilled blood pulls at you. The first time in an encounter that a creature within 30 feet takes piercing or slashing damage, the Red Thirst rises, and it stays until the encounter ends.</p><ul><li>You gain a +1 circumstance bonus to melee damage rolls and to Intimidation checks.</li><li>You take a -1 circumstance penalty to Will saves.</li></ul><p>At the start of each of your turns, if you can see an enemy that has taken piercing or slashing damage, attempt a Will save against the level-based DC for your level: 15 at 1st, 20 at 5th, 27 at 10th, 34 at 15th, and 43 at 20th. The penalty above applies to this save.</p><p><strong>Success</strong> You act freely this turn.</p><p><strong>Failure</strong> At least one of your actions this turn must be a Strike against, or movement toward, the nearest such enemy.</p><p><strong>Critical Failure</strong> As failure, and at least two of your actions must go that way.</p><p>The hunger tracker applies @UUID[${sanguinorEffectUuid("red-thirst")}]{Red Thirst} when combat begins while you are Unfed. Resolve this turn-by-turn Will save and compelled actions manually.</p>`),
   ];
 }
 
