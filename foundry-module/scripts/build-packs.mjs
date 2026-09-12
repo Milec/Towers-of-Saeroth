@@ -12,6 +12,7 @@ const actorAssetDir = join(moduleDir, "assets", "actors");
 const ancestryPackDir = join(moduleDir, "packs", "saeroth-ancestries");
 const ancestryAssetDir = join(moduleDir, "assets", "ancestries");
 const sanguinorEffectsPackDir = join(moduleDir, "packs", "saeroth-sanguinor-effects");
+const ancestryFeaturesPackDir = join(moduleDir, "packs", "saeroth-ancestry-features");
 const moduleId = "saeroth-pf2e-content";
 const conditionUuids = {
   blinded: "XgEqL1kFApUbl5Z2",
@@ -65,8 +66,19 @@ const sanguinorEffectIds = Object.freeze({
   unfed: stableId("sanguinor-effect:unfed"),
   "red-thirst": stableId("sanguinor-effect:red-thirst"),
 });
+const sanguinorAncestryFeatureIds = Object.freeze({
+  "sunlight-sensitivity": stableId("sanguinor-ancestry-feature:sunlight-sensitivity"),
+  "fledgling-fangs": stableId("sanguinor-ancestry-feature:fledgling-fangs"),
+  "disease-and-poison-protection": stableId("sanguinor-ancestry-feature:disease-and-poison-protection"),
+  "void-healing": stableId("sanguinor-ancestry-feature:void-healing"),
+  "balanced-hunger": stableId("sanguinor-ancestry-feature:balanced-hunger"),
+  "red-thirst": stableId("sanguinor-ancestry-feature:red-thirst"),
+});
 function sanguinorEffectUuid(slug) {
   return `Compendium.${moduleId}.saeroth-sanguinor-effects.Item.${sanguinorEffectIds[slug]}`;
+}
+function sanguinorAncestryFeatureUuid(slug) {
+  return `Compendium.${moduleId}.saeroth-ancestry-features.Item.${sanguinorAncestryFeatureIds[slug]}`;
 }
 
 function html(value) {
@@ -227,7 +239,7 @@ function parseAncestry(source, path, portrait) {
       additionalLanguages: { count: 1, custom: "", value: ["aklo", "elven", "undercommon"] },
       boosts: { 0: { value: ["cha"] }, 1: { value: ["str", "dex", "con", "int", "wis", "cha"] }, 2: { value: ["str", "dex", "con", "int", "wis", "cha"] } },
       description: {
-        value: mechanicsHtml(mechanics) + `<hr /><p><strong>Hunger tracking.</strong> This ancestry grants <strong>Unfed</strong> automatically. When the Sanguinor drinks a pint of blood, remove Unfed and apply @UUID[${sanguinorEffectUuid("fed")}]{Fed}. When 24 hours pass without blood, reverse that change. When spilled blood awakens the thirst, apply @UUID[${sanguinorEffectUuid("red-thirst")}]{Red Thirst} and remove it when the encounter ends.</p>`,
+        value: mechanicsHtml(mechanics) + `<hr /><p><strong>Hunger tracking.</strong> The Actions-tab tracker manages the mutually exclusive @UUID[${sanguinorEffectUuid("fed")}]{Fed} and @UUID[${sanguinorEffectUuid("unfed")}]{Unfed} effects. When combat begins while Unfed, it applies @UUID[${sanguinorEffectUuid("red-thirst")}]{Red Thirst}.</p>`,
       },
       flaws: { 0: { value: ["con"] } },
       hands: 2,
@@ -236,15 +248,11 @@ function parseAncestry(source, path, portrait) {
       languages: { custom: "", value: ["common", "necril"] },
       publication: { license: "", remaster: true, title: "Towers of Saeroth" },
       reach: 5,
-      // Void Healing is the one Sanguinor mechanic PF2e can model directly.
-      // The hunger state is an actor-level sheet tracker, managed by the
-      // module script so Fed and Unfed remain mutually exclusive.
-      rules: [{
-        key: "ActiveEffectLike",
-        mode: "override",
-        path: "system.attributes.hp.negativeHealing",
-        value: true,
-      }],
+      // Each inherited ability is a native ancestry feature on the sheet.
+      rules: Object.keys(sanguinorAncestryFeatureIds).map((slug) => ({
+        key: "GrantItem",
+        uuid: sanguinorAncestryFeatureUuid(slug),
+      })),
       size: "med",
       slug: "sanguinor",
       speed: 25,
@@ -254,6 +262,50 @@ function parseAncestry(source, path, portrait) {
     },
     _stats: { coreVersion: "14.361", systemId: "pf2e", systemVersion: "8.5.0" },
   };
+}
+
+function makeSanguinorAncestryFeatures() {
+  const makeFeature = (name, slug, description, rules = []) => ({
+    _id: sanguinorAncestryFeatureIds[slug],
+    name,
+    type: "feat",
+    img: "systems/pf2e/icons/default-icons/ancestry.svg",
+    effects: [],
+    flags: { saeroth: { ancestry: "sanguinor" } },
+    system: {
+      actionType: { value: "passive" },
+      actions: { value: null },
+      category: "ancestryfeature",
+      description: { value: description, gm: "" },
+      level: { value: 0 },
+      prerequisites: { value: [] },
+      publication: { license: "", remaster: true, title: "Towers of Saeroth" },
+      rules,
+      slug,
+      traits: { rarity: "unique", value: [] },
+      _migration: { version: 0.959, previous: null },
+    },
+    _stats: { coreVersion: "14.361", systemId: "pf2e", systemVersion: "8.5.0" },
+  });
+  return [
+    makeFeature("Sunlight Sensitivity", "sunlight-sensitivity", `<p>While directly exposed to sunlight, you are @UUID[Compendium.pf2e.conditionitems.Item.${conditionUuids.clumsy}]{Clumsy 1}. Covering yourself with a hood, cloak, veil, or similar garment prevents this.</p><p><em>Direct sunlight and sufficient cover require GM judgment, so this condition is intentionally not applied automatically.</em></p>`),
+    makeFeature("Fledgling Fangs", "fledgling-fangs", "<p>Your incisors are elongated and you can drink blood directly from a creature. They aren't a functional weapon and grant no unarmed attack.</p>"),
+    makeFeature("Disease and Poison Protection", "disease-and-poison-protection", "<p>You gain a +1 circumstance bonus to saving throws against diseases and poisons.</p>", [{
+      key: "FlatModifier",
+      predicate: [{ or: ["disease", "poison"] }],
+      selector: "saving-throw",
+      type: "circumstance",
+      value: 1,
+    }]),
+    makeFeature("Void Healing", "void-healing", "<p>You are harmed by vitality damage and aren't healed by vitality healing effects. You don't take void damage, and you are healed by void effects that heal undead. You remain a living creature, so Treat Wounds and Battle Medicine work normally and you use the ordinary dying rules.</p>", [{
+      key: "ActiveEffectLike",
+      mode: "override",
+      path: "system.attributes.hp.negativeHealing",
+      value: true,
+    }]),
+    makeFeature("Balanced Hunger", "balanced-hunger", "<p>Ordinary food keeps your body running, but you are Unfed unless you have drunk at least a pint of blood within the last 24 hours. Drinking blood takes 1 minute and requires a willing, grabbed, restrained, unconscious, or freshly dead creature with blood, or a stored supply. Being Unfed carries no penalty by itself.</p><p>Use the Sanguinor Hunger selector in the Actions tab to track your state.</p>"),
+    makeFeature("Red Thirst", "red-thirst", `<p>While you are Unfed, spilled blood pulls at you. The first time in an encounter that a creature within 30 feet takes piercing or slashing damage, the thirst rises until the encounter ends.</p><p>The hunger tracker applies @UUID[${sanguinorEffectUuid("red-thirst")}]{Red Thirst} when combat begins while you are Unfed. It grants +1 circumstance to melee Strike damage and Intimidation, and -1 circumstance to Will saves. Resolve the beginning-of-turn Will save and compelled actions described in the Sanguinor ancestry manually.</p>`),
+  ];
 }
 
 function makeSanguinorEffects() {
@@ -639,6 +691,17 @@ try {
 } finally {
   await sanguinorEffectsDb.close();
 }
+const sanguinorAncestryFeatures = makeSanguinorAncestryFeatures();
+await rm(ancestryFeaturesPackDir, { recursive: true, force: true });
+const ancestryFeaturesDb = new ClassicLevel(ancestryFeaturesPackDir, { valueEncoding: "json" });
+await ancestryFeaturesDb.open();
+try {
+  for (const feature of sanguinorAncestryFeatures) await ancestryFeaturesDb.put(`!items!${feature._id}`, feature);
+  await ancestryFeaturesDb.compactRange("\x00", "\xff");
+} finally {
+  await ancestryFeaturesDb.close();
+}
 console.log(`Built ${actors.length} PF2e actors and copied ${actorPortraits} portraits in ${relative(repositoryDir, packDir)}.`);
 console.log(`Built ${ancestries.length} PF2e ancestries and copied ${ancestryPortraits} portraits in ${relative(repositoryDir, ancestryPackDir)}.`);
 console.log(`Built ${sanguinorEffects.length} Sanguinor tracking effects in ${relative(repositoryDir, sanguinorEffectsPackDir)}.`);
+console.log(`Built ${sanguinorAncestryFeatures.length} Sanguinor ancestry features in ${relative(repositoryDir, ancestryFeaturesPackDir)}.`);

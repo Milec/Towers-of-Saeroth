@@ -2,7 +2,7 @@
   "id": "saeroth-pf2e-content",
   "title": "Towers of Saeroth PF2e Content",
   "description": "Custom creatures and NPCs from the Towers of Saeroth campaign.",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "compatibility": {
     "minimum": "14.361",
     "verified": "14.367",
@@ -57,6 +57,17 @@
       "name": "saeroth-sanguinor-effects",
       "label": "Sanguinor Effects",
       "path": "packs/saeroth-sanguinor-effects",
+      "type": "Item",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "saeroth-ancestry-features",
+      "label": "Saeroth Ancestry Features",
+      "path": "packs/saeroth-ancestry-features",
       "type": "Item",
       "system": "pf2e",
       "ownership": {
