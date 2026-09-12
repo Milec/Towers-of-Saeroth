@@ -15,6 +15,25 @@ both the Actor portrait and its prototype token texture. Their generated paths
 are module-qualified, so portraits load from the compendium as well as after an
 actor is dragged into a scene.
 
+## Portrait workflow
+
+For a newly created creature or NPC, add a concise `portrait-prompt` field to
+its frontmatter. Use the portrait-request helper to produce the standardized
+prompt and intended output filename:
+
+```powershell
+node foundry-module/scripts/portrait-request.mjs "campaign/npcs/New NPC.md"
+```
+
+Generate that request with Codex ImageGen, save the selected PNG next to the
+source note using the reported filename, and insert the reported Markdown image
+line in the note. `--check` scans all eligible notes and returns a nonzero exit
+code while any portraits are ready to generate. A build refuses a note that has
+`portrait-prompt` but no Markdown image, preventing a source change from being
+published without its requested token art. The normal build then copies the
+image into `assets/actors/` and references it from the Actor and token
+automatically; no image URL or API key is needed.
+
 ## Build
 
 Run the builder from the repository root after installing Foundry VTT. It needs

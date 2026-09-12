@@ -404,8 +404,14 @@ await mkdir(actorAssetDir, { recursive: true });
 for (const path of markdown) {
   const source = await readFile(path, "utf8");
   if (!/^type:\s*(creature|npc)\s*$/mi.test(source) || !/```pf2e-stats/i.test(source)) continue;
+  const frontmatter = parseFrontmatter(source, path);
   const id = stableId(relative(repositoryDir, path));
   const sourcePortrait = portraitSource(source, path);
+  if (!sourcePortrait && frontmatter["portrait-prompt"]) {
+    throw new Error(
+      `${path}: portrait-prompt is present but the note has no Markdown image. Generate the portrait, save it beneath campaign/, and add it with ![Portrait](image-file.png).`,
+    );
+  }
   const portraitFilename = sourcePortrait ? `${id}${extname(sourcePortrait).toLowerCase()}` : null;
   const portrait = portraitFilename ? `modules/${moduleId}/assets/actors/${portraitFilename}` : null;
   if (sourcePortrait) {
