@@ -9,6 +9,8 @@ const repositoryDir = resolve(moduleDir, "..");
 const campaignDir = join(repositoryDir, "campaign");
 const packDir = join(moduleDir, "packs", "saeroth-actors");
 const actorAssetDir = join(moduleDir, "assets", "actors");
+const ancestryPackDir = join(moduleDir, "packs", "saeroth-ancestries");
+const ancestryAssetDir = join(moduleDir, "assets", "ancestries");
 const moduleId = "saeroth-pf2e-content";
 const conditionUuids = {
   blinded: "XgEqL1kFApUbl5Z2",
@@ -119,7 +121,7 @@ function skillSlug(value) {
   return aliases[value.trim().toLowerCase()] ?? traitSlug(value);
 }
 
-function parseFrontmatter(source, path) {
+function parseFrontmatter(source, path, allowedTypes = ["creature", "npc"]) {
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
   if (!match) throw new Error(`${path}: missing frontmatter.`);
   const fields = Object.fromEntries(
@@ -131,8 +133,8 @@ function parseFrontmatter(source, path) {
         return [line.slice(0, separator).trim(), line.slice(separator + 1).trim()];
       }),
   );
-  if (!fields.title || !["creature", "npc"].includes(fields.type)) {
-    throw new Error(`${path}: requires title and type: creature or type: npc.`);
+  if (!fields.title || !allowedTypes.includes(fields.type)) {
+    throw new Error(`${path}: requires title and type: ${allowedTypes.join(" or type: ")}.`);
   }
   return fields;
 }
@@ -161,6 +163,70 @@ function portraitSource(source, notePath) {
     throw new Error(`${notePath}: portrait must be an image file.`);
   }
   return sourcePath;
+}
+
+function inlineMechanics(value) {
+  return linkConditions(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>");
+}
+
+function mechanicsHtml(value) {
+  const blocks = value.trim().split(/\r?\n\r?\n/).filter(Boolean);
+  return blocks.map((block) => {
+    const heading = block.match(/^###\s+(.+?)(?:\r?\n([\s\S]*))?$/);
+    if (heading) return `<h3>${inlineMechanics(heading[1])}</h3>${heading[2] ? mechanicsHtml(heading[2]) : ""}`;
+    const lines = block.split(/\r?\n/);
+    if (lines.every((line) => line.startsWith("- "))) {
+      return `<ul>${lines.map((line) => `<li>${inlineMechanics(line.slice(2))}</li>`).join("")}</ul>`;
+    }
+    return `<p>${inlineMechanics(block).replace(/\r?\n/g, "<br />")}</p>`;
+  }).join("\n");
+}
+
+function parseAncestry(source, path, portrait) {
+  const frontmatter = parseFrontmatter(source, path, ["ancestry"]);
+  if (frontmatter.title !== "Sanguinor") throw new Error(`${path}: only the Sanguinor ancestry source is currently supported.`);
+  const normalizedSource = source.replace(/\r/g, "");
+  const heading = /^##\s+Sanguinor Mechanics\s*$/m.exec(normalizedSource);
+  const mechanicsStart = heading ? heading.index + heading[0].length : -1;
+  const nextHeading = mechanicsStart >= 0 ? /^##\s+/m.exec(normalizedSource.slice(mechanicsStart)) : null;
+  const mechanics = mechanicsStart >= 0
+    ? normalizedSource.slice(mechanicsStart, mechanicsStart + (nextHeading?.index ?? normalizedSource.length)).trim()
+    : "";
+  if (!mechanics) throw new Error(`${path}: missing the Sanguinor Mechanics section.`);
+  const id = stableId(relative(repositoryDir, path));
+  return {
+    _id: id,
+    name: frontmatter.title,
+    type: "ancestry",
+    img: portrait ?? "systems/pf2e/icons/default-icons/ancestry.svg",
+    effects: [],
+    flags: { saeroth: { source: relative(repositoryDir, path).replaceAll("\\", "/") } },
+    system: {
+      additionalLanguages: { count: 1, custom: "", value: ["aklo", "elven", "undercommon"] },
+      boosts: { 0: { value: ["cha"] }, 1: { value: ["str", "dex", "con", "int", "wis", "cha"] }, 2: { value: ["str", "dex", "con", "int", "wis", "cha"] } },
+      description: { value: mechanicsHtml(mechanics) },
+      flaws: { 0: { value: ["con"] } },
+      hands: 2,
+      hp: 10,
+      items: {},
+      languages: { custom: "", value: ["common", "necril"] },
+      publication: { license: "", remaster: true, title: "Towers of Saeroth" },
+      reach: 5,
+      rules: [],
+      size: "med",
+      slug: "sanguinor",
+      speed: 25,
+      traits: { rarity: "unique", value: ["dhampir", "humanoid", "sanguinor"] },
+      vision: "low-light-vision",
+      _migration: { version: 0.959, previous: null },
+    },
+    _stats: { coreVersion: "14.361", systemId: "pf2e", systemVersion: "8.5.0" },
+  };
 }
 
 function statValue(block, label) {
@@ -410,9 +476,13 @@ try {
 }
 const markdown = (await walk(campaignDir)).filter((path) => path.endsWith(".md"));
 const actors = [];
-let portraits = 0;
+const ancestries = [];
+let actorPortraits = 0;
+let ancestryPortraits = 0;
 await rm(actorAssetDir, { recursive: true, force: true });
 await mkdir(actorAssetDir, { recursive: true });
+await rm(ancestryAssetDir, { recursive: true, force: true });
+await mkdir(ancestryAssetDir, { recursive: true });
 for (const path of markdown) {
   const source = await readFile(path, "utf8");
   if (!/^type:\s*(creature|npc)\s*$/mi.test(source) || !/```pf2e-stats/i.test(source)) continue;
@@ -429,11 +499,25 @@ for (const path of markdown) {
   const portrait = portraitFilename ? `modules/${moduleId}/assets/actors/${portraitFilename}` : null;
   if (sourcePortrait) {
     await copyFile(sourcePortrait, join(actorAssetDir, portraitFilename));
-    portraits += 1;
+    actorPortraits += 1;
   }
   actors.push(parseActor(source, path, spellSources, portrait));
 }
 if (actors.length === 0) throw new Error("No eligible creature or NPC statblocks found.");
+
+for (const path of markdown) {
+  const source = await readFile(path, "utf8");
+  if (!/^type:\s*ancestry\s*$/mi.test(source) || !/^title:\s*Sanguinor\s*$/mi.test(source)) continue;
+  const id = stableId(relative(repositoryDir, path));
+  const sourcePortrait = portraitSource(source, path);
+  const portraitFilename = sourcePortrait ? `${id}${extname(sourcePortrait).toLowerCase()}` : null;
+  const portrait = portraitFilename ? `modules/${moduleId}/assets/ancestries/${portraitFilename}` : null;
+  if (sourcePortrait) {
+    await copyFile(sourcePortrait, join(ancestryAssetDir, portraitFilename));
+    ancestryPortraits += 1;
+  }
+  ancestries.push(parseAncestry(source, path, portrait));
+}
 
 await rm(packDir, { recursive: true, force: true });
 const db = new ClassicLevel(packDir, { valueEncoding: "json" });
@@ -445,7 +529,19 @@ try {
     await db.put(`!actors!${actor._id}`, actor);
     for (const item of items) await db.put(`!actors.items!${actor._id}.${item._id}`, item);
   }
+  await db.compactRange("\x00", "\xff");
 } finally {
   await db.close();
 }
-console.log(`Built ${actors.length} PF2e actors and copied ${portraits} portraits in ${relative(repositoryDir, packDir)}.`);
+
+await rm(ancestryPackDir, { recursive: true, force: true });
+const ancestryDb = new ClassicLevel(ancestryPackDir, { valueEncoding: "json" });
+await ancestryDb.open();
+try {
+  for (const ancestry of ancestries) await ancestryDb.put(`!items!${ancestry._id}`, ancestry);
+  await ancestryDb.compactRange("\x00", "\xff");
+} finally {
+  await ancestryDb.close();
+}
+console.log(`Built ${actors.length} PF2e actors and copied ${actorPortraits} portraits in ${relative(repositoryDir, packDir)}.`);
+console.log(`Built ${ancestries.length} PF2e ancestries and copied ${ancestryPortraits} portraits in ${relative(repositoryDir, ancestryPackDir)}.`);

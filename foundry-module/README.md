@@ -1,7 +1,8 @@
 # Towers of Saeroth PF2e Content
 
 This module is generated from the campaign's own Markdown notes. It publishes
-homebrew creatures and NPCs as a native Foundry VTT PF2e Actor compendium. The
+homebrew creatures and NPCs as a native Foundry VTT PF2e Actor compendium, and
+player ancestries as a native PF2e Item compendium. The
 initial build discovers five existing campaign statblocks, including Skinwright,
 The Cream Man, Wenzel Grauth, Garrick Thorne, and Ashwin Devaraj.
 
@@ -16,6 +17,11 @@ Markdown image in an eligible note is copied into `assets/actors/` and used as
 both the Actor portrait and its prototype token texture. Their generated paths
 are module-qualified, so portraits load from the compendium as well as after an
 actor is dragged into a scene.
+
+An eligible `type: ancestry` note is generated into the **Saeroth Ancestries**
+compendium. Sanguinor reads its mechanics directly from Isaiah's campaign note;
+its core ancestry values are native Foundry fields, while its custom hunger and
+Red Thirst rules remain formatted text for the player and GM to apply.
 
 ## Portrait workflow
 
