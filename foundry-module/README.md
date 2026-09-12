@@ -20,8 +20,11 @@ actor is dragged into a scene.
 
 An eligible `type: ancestry` note is generated into the **Saeroth Ancestries**
 compendium. Sanguinor reads its mechanics directly from Isaiah's campaign note;
-its core ancestry values are native Foundry fields, while its custom hunger and
-Red Thirst rules remain formatted text for the player and GM to apply.
+its core ancestry values are native Foundry fields. It grants the **Unfed**
+tracking effect automatically; linked **Fed** and **Red Thirst** effects live in
+the **Sanguinor Effects** compendium. Red Thirst applies its melee damage,
+Intimidation, and Will modifiers natively, while its blood-damage trigger and
+end-of-encounter removal remain table actions.
 
 ## Portrait workflow
 

@@ -11,6 +11,7 @@ const packDir = join(moduleDir, "packs", "saeroth-actors");
 const actorAssetDir = join(moduleDir, "assets", "actors");
 const ancestryPackDir = join(moduleDir, "packs", "saeroth-ancestries");
 const ancestryAssetDir = join(moduleDir, "assets", "ancestries");
+const sanguinorEffectsPackDir = join(moduleDir, "packs", "saeroth-sanguinor-effects");
 const moduleId = "saeroth-pf2e-content";
 const conditionUuids = {
   blinded: "XgEqL1kFApUbl5Z2",
@@ -57,6 +58,15 @@ function loadClassicLevel() {
 
 function stableId(seed) {
   return createHash("sha256").update(seed).digest("base64url").slice(0, 16);
+}
+
+const sanguinorEffectIds = Object.freeze({
+  fed: stableId("sanguinor-effect:fed"),
+  unfed: stableId("sanguinor-effect:unfed"),
+  "red-thirst": stableId("sanguinor-effect:red-thirst"),
+});
+function sanguinorEffectUuid(slug) {
+  return `Compendium.${moduleId}.saeroth-sanguinor-effects.Item.${sanguinorEffectIds[slug]}`;
 }
 
 function html(value) {
@@ -216,7 +226,9 @@ function parseAncestry(source, path, portrait) {
     system: {
       additionalLanguages: { count: 1, custom: "", value: ["aklo", "elven", "undercommon"] },
       boosts: { 0: { value: ["cha"] }, 1: { value: ["str", "dex", "con", "int", "wis", "cha"] }, 2: { value: ["str", "dex", "con", "int", "wis", "cha"] } },
-      description: { value: mechanicsHtml(mechanics) },
+      description: {
+        value: mechanicsHtml(mechanics) + `<hr /><p><strong>Hunger tracking.</strong> This ancestry grants <strong>Unfed</strong> automatically. When the Sanguinor drinks a pint of blood, remove Unfed and apply @UUID[${sanguinorEffectUuid("fed")}]{Fed}. When 24 hours pass without blood, reverse that change. When spilled blood awakens the thirst, apply @UUID[${sanguinorEffectUuid("red-thirst")}]{Red Thirst} and remove it when the encounter ends.</p>`,
+      },
       flaws: { 0: { value: ["con"] } },
       hands: 2,
       hp: 10,
@@ -231,6 +243,10 @@ function parseAncestry(source, path, portrait) {
         mode: "override",
         path: "system.attributes.hp.negativeHealing",
         value: true,
+      }, {
+        key: "GrantItem",
+        uuid: sanguinorEffectUuid("unfed"),
+        onDeleteActions: { grantee: "cascade" },
       }],
       size: "med",
       slug: "sanguinor",
@@ -241,6 +257,43 @@ function parseAncestry(source, path, portrait) {
     },
     _stats: { coreVersion: "14.361", systemId: "pf2e", systemVersion: "8.5.0" },
   };
+}
+
+function makeSanguinorEffects() {
+  const makeEffect = (name, slug, description, rules = []) => ({
+    _id: sanguinorEffectIds[slug],
+    name,
+    type: "effect",
+    img: "systems/pf2e/icons/default-icons/effect.svg",
+    effects: [],
+    flags: { saeroth: { ancestry: "sanguinor" } },
+    system: {
+      badge: null,
+      context: null,
+      description: { value: description, gm: "" },
+      duration: { value: -1, unit: "unlimited", expiry: null, sustained: false },
+      fromSpell: false,
+      level: { value: 1 },
+      publication: { license: "", remaster: true, title: "Towers of Saeroth" },
+      rules,
+      slug,
+      start: { value: 0, initiative: null },
+      tokenIcon: { show: false },
+      traits: { otherTags: [], value: [] },
+      unidentified: false,
+      _migration: { version: 0.959, previous: null },
+    },
+    _stats: { coreVersion: "14.361", systemId: "pf2e", systemVersion: "8.5.0" },
+  });
+  return [
+    makeEffect("Fed", "fed", "<p>You have drunk at least a pint of blood within the last 24 hours. This tracks the Sanguinor's hunger and has no automatic modifier by itself.</p>"),
+    makeEffect("Unfed", "unfed", "<p>You have not drunk at least a pint of blood within the last 24 hours. Being unfed carries no penalty by itself, but it can allow Red Thirst to awaken.</p>"),
+    makeEffect("Red Thirst", "red-thirst", "<p><strong>Trigger:</strong> While Unfed, the first time in an encounter that a creature within 30 feet takes piercing or slashing damage.</p><p>You gain a +1 circumstance bonus to melee Strike damage rolls and Intimidation checks, and take a -1 circumstance penalty to Will saves. Remove this effect when the encounter ends.</p>", [
+      { key: "FlatModifier", selector: "strike-damage", predicate: ["item:melee"], type: "circumstance", value: 1 },
+      { key: "FlatModifier", selector: "intimidation", type: "circumstance", value: 1 },
+      { key: "FlatModifier", selector: "will", type: "circumstance", value: -1 },
+    ]),
+  ];
 }
 
 function statValue(block, label) {
@@ -578,5 +631,17 @@ try {
 } finally {
   await ancestryDb.close();
 }
+
+const sanguinorEffects = makeSanguinorEffects();
+await rm(sanguinorEffectsPackDir, { recursive: true, force: true });
+const sanguinorEffectsDb = new ClassicLevel(sanguinorEffectsPackDir, { valueEncoding: "json" });
+await sanguinorEffectsDb.open();
+try {
+  for (const effect of sanguinorEffects) await sanguinorEffectsDb.put(`!items!${effect._id}`, effect);
+  await sanguinorEffectsDb.compactRange("\x00", "\xff");
+} finally {
+  await sanguinorEffectsDb.close();
+}
 console.log(`Built ${actors.length} PF2e actors and copied ${actorPortraits} portraits in ${relative(repositoryDir, packDir)}.`);
 console.log(`Built ${ancestries.length} PF2e ancestries and copied ${ancestryPortraits} portraits in ${relative(repositoryDir, ancestryPackDir)}.`);
+console.log(`Built ${sanguinorEffects.length} Sanguinor tracking effects in ${relative(repositoryDir, sanguinorEffectsPackDir)}.`);
