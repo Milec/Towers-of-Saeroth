@@ -224,7 +224,14 @@ function parseAncestry(source, path, portrait) {
       languages: { custom: "", value: ["common", "necril"] },
       publication: { license: "", remaster: true, title: "Towers of Saeroth" },
       reach: 5,
-      rules: [],
+      // Void Healing is the one Sanguinor mechanic PF2e can model directly.
+      // The custom hunger and Red Thirst text remains in the ancestry entry.
+      rules: [{
+        key: "ActiveEffectLike",
+        mode: "override",
+        path: "system.attributes.hp.negativeHealing",
+        value: true,
+      }],
       size: "med",
       slug: "sanguinor",
       speed: 25,

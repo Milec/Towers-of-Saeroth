@@ -2,7 +2,7 @@
   "id": "saeroth-pf2e-content",
   "title": "Towers of Saeroth PF2e Content",
   "description": "Custom creatures and NPCs from the Towers of Saeroth campaign.",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "compatibility": {
     "minimum": "14.361",
     "verified": "14.367",
