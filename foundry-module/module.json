@@ -1,0 +1,80 @@
+{
+  "id": "saeroth-pf2e-content",
+  "title": "Towers of Saeroth PF2e Content",
+  "description": "Custom creatures and NPCs from the Towers of Saeroth campaign.",
+  "version": "0.1.18",
+  "compatibility": {
+    "minimum": "14.361",
+    "verified": "14.367",
+    "maximum": "14"
+  },
+  "authors": [
+    {
+      "name": "Towers of Saeroth"
+    }
+  ],
+  "esmodules": [
+    "scripts/sanguinor-hunger-tracker.mjs",
+    "scripts/saeroth-content-sync.mjs"
+  ],
+  "styles": [
+    "styles/sanguinor-hunger-tracker.css"
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "8.5.0"
+        }
+      }
+    ]
+  },
+  "packs": [
+    {
+      "name": "saeroth-actors",
+      "label": "Saeroth Creatures & NPCs",
+      "path": "packs/saeroth-actors",
+      "type": "Actor",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "saeroth-ancestries",
+      "label": "Saeroth Ancestries",
+      "path": "packs/saeroth-ancestries",
+      "type": "Item",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "saeroth-sanguinor-effects",
+      "label": "Sanguinor Effects",
+      "path": "packs/saeroth-sanguinor-effects",
+      "type": "Item",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "saeroth-ancestry-features",
+      "label": "Saeroth Ancestry Features",
+      "path": "packs/saeroth-ancestry-features",
+      "type": "Item",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "LIMITED",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ]
+}

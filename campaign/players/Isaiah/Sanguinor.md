@@ -5,9 +5,12 @@ rarity: unique
 source: homebrew
 player: Isaiah
 visibility: Mechanics are Isaiah's. Where it came from is GM — he has the exemplar dreams and no account of what is under them
+portrait-prompt: "A living sanguinor, a pale dhampir-nephilim with subtle fangs, dark travel-worn clothing, a faint crimson glow beneath the skin at the sternum, and a restrained but hungry expression"
 ---
 
 *One character's ancestry. The vampiric half of Isaiah, in the ancestry slot so the nephilim can keep the heritage.*
+
+![Sanguinor ancestry portrait](Sanguinor.png)
 
 ## Why this is an ancestry
 

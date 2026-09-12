@@ -1,0 +1,53 @@
+name: Verify repository and interface
+on:
+  pull_request:
+  workflow_call:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '11.19.0'
+      - name: Install locked test dependencies
+        working-directory: tools/atlas-tests
+        run: pnpm install --frozen-lockfile
+      - name: Install Chromium
+        working-directory: tools/atlas-tests
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Check campaign consistency
+        run: |
+          python tools/check_subprovinces.py
+          python tools/test_campaign_pois.py
+          node tools/atlas-tests/poi-github.cjs
+          node tools/atlas-tests/poi-auto-merge.cjs
+          python tools/lint_notes.py
+          python tools/sync_relations.py --check
+          python tools/sync_faith.py --check
+      - name: Build preview
+        run: python tools/build_site.py --no-vault
+      - name: Test atlas behavior
+        working-directory: tools/atlas-tests
+        run: pnpm run test:features
+      - name: Test website in Chromium
+        run: |
+          python -m http.server 8899 --directory _site > /tmp/saeroth-preview.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          node tools/atlas-tests/browser.cjs
+          node tools/atlas-tests/audits.cjs
+          node tools/atlas-tests/handouts.cjs
+          node tools/atlas-tests/subprovinces.cjs
+          node tools/atlas-tests/journey-inputs.cjs
+          node tools/atlas-tests/custom-pois.cjs
+          node tools/atlas-tests/poi-sync.cjs

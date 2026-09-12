@@ -1,0 +1,5 @@
+# LevelDB runtime bookkeeping; pack data itself is committed.
+**/LOCK
+**/LOG
+**/LOG.old
+**/*.log

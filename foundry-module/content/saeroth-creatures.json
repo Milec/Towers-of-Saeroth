@@ -1,0 +1,2797 @@
+{
+  "schema": 1,
+  "actors": [
+    {
+      "_id": "HjfuZ6d6NjIiyWls",
+      "name": "Ashwin Devaraj (The Drink)",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Melisor%20Magocracy/npcs/AshwinDevaraj.webp",
+      "prototypeToken": {
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Melisor%20Magocracy/npcs/AshwinDevaraj.webp"
+        }
+      },
+      "items": [
+        "DTOwWQdXM9WsTRcG",
+        "xMGAjAIJAo8-Oz-b",
+        "-IEyh_jA1JO4Ddet",
+        "bdVQEnROR8upWxHh"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/nations/Melisor Magocracy/npcs/Ashwin Devaraj (The Drink).md",
+          "syncKey": "campaign/nations/Melisor Magocracy/npcs/Ashwin Devaraj (The Drink).md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 3
+          },
+          "dex": {
+            "mod": 2
+          },
+          "con": {
+            "mod": 3
+          },
+          "int": {
+            "mod": 4
+          },
+          "wis": {
+            "mod": 1
+          },
+          "cha": {
+            "mod": 2
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 24,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 96,
+            "max": 96,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [],
+          "resistances": [],
+          "weaknesses": [],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [],
+            "details": ""
+          },
+          "level": {
+            "value": 6
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Ashwin Devaraj (The Drink)\r<br />## Creature 6\r<br />\r<br />---\r<br />\r<br />==Unique== ==Medium== ==Human== ==Humanoid==\r<br />\r<br /><strong>Perception</strong> +14\r<br />\r<br /><strong>Skills</strong> Arcana +18, Athletics +13, Society +13\r<br />\r<br /><strong>Str</strong> +3, <strong>Dex</strong> +2, <strong>Con</strong> +3, <strong>Int</strong> +4, <strong>Wis</strong> +1, <strong>Cha</strong> +2\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 24; <strong>Fort</strong> +16, <strong>Ref</strong> +14, <strong>Will</strong> +11\r<br />\r<br /><strong>HP</strong> 96\r<br />\r<br /><strong>Reagent Draught</strong> `[one-action]` (concentrate, manipulate) Ashwin uncorks\r<br />and drains a vial of raw elemental reagent. Until the end of his next turn,\r<br />his Spellstrike and Detonation deal an additional 2d6 fire damage — and he\r<br />takes 1d6 fire damage himself, the cost of carrying that much raw magic\r<br />through his own blood. Frequency once per encounter.\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 25 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` rune-etched longsword +17 (versatile P, magical),\r<br /><strong>Damage</strong> 2d8+9 slashing\r<br />\r<br /><strong>Spellstrike</strong> `[two-actions]` (arcane, concentrate, manipulate) Ashwin\r<br />channels a bolt of raw force through his blade and makes a melee Strike.\r<br />The Strike gains the arcane trait; on a hit, add 2d6 force damage. Until he\r<br />spends a single action (concentrate) to recharge it, he cannot use\r<br />Spellstrike again.\r<br />\r<br /><strong>Detonation</strong> `[two-actions]` (concentrate, fire, manipulate) A 20-foot\r<br />burst of fire centered on a point within 500 feet, dealing 6d6 fire damage\r<br />(<strong>basic Reflex</strong> DC 23). Frequency once per encounter.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "",
+          "mod": 14,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 16,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 14,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 11,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "arcana": {
+            "base": 18
+          },
+          "athletics": {
+            "base": 13
+          }
+        },
+        "traits": {
+          "rarity": "unique",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "human",
+            "humanoid"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "DTOwWQdXM9WsTRcG",
+          "name": "Reagent Draught",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p>Ashwin uncorks and drains a vial of raw elemental reagent. Until the end of his next turn, his Spellstrike and Detonation deal an additional @Damage[2d6[fire]]{2d6 fire damage} — and he takes @Damage[1d6[fire]]{1d6 fire damage} himself, the cost of carrying that much raw magic through his own blood. Frequency once per encounter.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "concentrate",
+                "manipulate"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "xMGAjAIJAo8-Oz-b",
+          "name": "rune-etched longsword",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 17
+            },
+            "damageRolls": {
+              "jTgIf8udClrRLdpU": {
+                "damage": "2d8+9",
+                "damageType": "slashing"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "versatile-p",
+                "magical"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "-IEyh_jA1JO4Ddet",
+          "name": "Spellstrike",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/TwoActions.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 2
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p>Ashwin channels a bolt of raw force through his blade and makes a melee Strike. The Strike gains the arcane trait; on a hit, add @Damage[2d6[force]]{2d6 force damage}. Until he spends a single action (concentrate) to recharge it, he cannot use Spellstrike again.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "arcane",
+                "concentrate",
+                "manipulate"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "bdVQEnROR8upWxHh",
+          "name": "Detonation",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/TwoActions.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 2
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p>A @Template[type:burst|distance:20]{20-foot burst} of fire centered on a point within 500 feet, dealing @Damage[6d6[fire]]{6d6 fire damage} (@Check[reflex|dc:23|basic]{Basic Reflex DC 23}). Frequency once per encounter.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "concentrate",
+                "fire",
+                "manipulate"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "BNZK5u_TBKtMnAeg",
+      "name": "Garrick Thorne",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/GarrickThorne.webp",
+      "prototypeToken": {
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/GarrickThorne.webp"
+        }
+      },
+      "items": [
+        "m5sw2_4_Cwt07uuU",
+        "XkqFO_NDX91AqW-s",
+        "ZGROQrzXQCflHPUz",
+        "23k9v7qcLZMbSiUm",
+        "eQBb5zGH_Mw6-JSE"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/npcs/Garrick Thorne.md",
+          "syncKey": "campaign/npcs/Garrick Thorne.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 5
+          },
+          "dex": {
+            "mod": 3
+          },
+          "con": {
+            "mod": 3
+          },
+          "int": {
+            "mod": 0
+          },
+          "wis": {
+            "mod": 1
+          },
+          "cha": {
+            "mod": 1
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 24,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 95,
+            "max": 95,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [],
+          "resistances": [],
+          "weaknesses": [],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [],
+            "details": ""
+          },
+          "level": {
+            "value": 6
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Garrick Thorne\r<br />## Creature 6\r<br />\r<br />---\r<br />\r<br />==Medium== ==Human== ==Humanoid==\r<br />\r<br /><strong>Perception</strong> +14\r<br />\r<br /><strong>Skills</strong> Athletics +16, Intimidation +14, Warfare Lore +13\r<br />\r<br /><strong>Str</strong> +5, <strong>Dex</strong> +3, <strong>Con</strong> +3, <strong>Int</strong> +0, <strong>Wis</strong> +1, <strong>Cha</strong> +1\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 24; <strong>Fort</strong> +16, <strong>Ref</strong> +14, <strong>Will</strong> +11\r<br />\r<br /><strong>HP</strong> 95\r<br />\r<br /><strong>Reactive Strike</strong> `[reaction]`\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 25 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` greatsword +17 (sweep, versatile P), <strong>Damage</strong> 2d6+8 slashing\r<br />\r<br /><strong>Melee</strong> `[one-action]` fist +15 (agile, finesse, nonlethal), <strong>Damage</strong> 1d4+8 bludgeoning\r<br />\r<br /><strong>Blade Storm</strong> `[two-actions]` Garrick makes one melee Strike against each of up to two adjacent creatures, using the same attack roll against both.\r<br />\r<br /><strong>Unstoppable Advance</strong> `[one-action]` (move) Garrick Strides up to his Speed, ignoring difficult terrain, then Strikes.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "",
+          "mod": 14,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 16,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 14,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 11,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "athletics": {
+            "base": 16
+          },
+          "intimidation": {
+            "base": 14
+          }
+        },
+        "traits": {
+          "rarity": "common",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "human",
+            "humanoid"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "m5sw2_4_Cwt07uuU",
+          "name": "Reactive Strike",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/Reaction.webp",
+          "system": {
+            "actionType": {
+              "value": "reaction"
+            },
+            "actions": {
+              "value": null
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p></p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "XkqFO_NDX91AqW-s",
+          "name": "greatsword",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 17
+            },
+            "damageRolls": {
+              "0K1lfwfedG5MtywX": {
+                "damage": "2d6+8",
+                "damageType": "slashing"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "sweep",
+                "versatile-p"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "ZGROQrzXQCflHPUz",
+          "name": "fist",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 15
+            },
+            "damageRolls": {
+              "7rs341UAfWSFbHyb": {
+                "damage": "1d4+8",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "agile",
+                "finesse",
+                "nonlethal"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "23k9v7qcLZMbSiUm",
+          "name": "Blade Storm",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/TwoActions.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 2
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p>Garrick makes one melee Strike against each of up to two adjacent creatures, using the same attack roll against both.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "eQBb5zGH_Mw6-JSE",
+          "name": "Unstoppable Advance",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p>Garrick Strides up to his Speed, ignoring difficult terrain, then Strikes.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "move"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "Z2m7G1wZXjqlIi6U",
+      "name": "John Guard",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/John%20Guard%20portrait.png",
+      "prototypeToken": {
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/John%20Guard%20portrait.png"
+        }
+      },
+      "items": [
+        "UO0Zz2IDOyXj1tCn",
+        "fkbuHIYBr6QVnq76",
+        "e4j04tWENh9hAkaH",
+        "HYnHEkmlgw9gi5en",
+        "Km7JpMqCIQIDdtPu"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/npcs/John Guard.md",
+          "syncKey": "campaign/npcs/John Guard.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 3
+          },
+          "dex": {
+            "mod": 1
+          },
+          "con": {
+            "mod": 3
+          },
+          "int": {
+            "mod": 0
+          },
+          "wis": {
+            "mod": 2
+          },
+          "cha": {
+            "mod": 0
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 19,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 45,
+            "max": 45,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [],
+          "resistances": [],
+          "weaknesses": [],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [
+              "common"
+            ],
+            "details": ""
+          },
+          "level": {
+            "value": 3
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># John Guard\r<br />## Creature 3\r<br />\r<br />---\r<br />\r<br />==Medium== ==Human== ==Humanoid==\r<br />\r<br /><strong>Perception</strong> +9\r<br />\r<br /><strong>Languages</strong> Common\r<br />\r<br /><strong>Skills</strong> Athletics +11, Intimidation +8, Survival +9, Caravan Lore +9\r<br />\r<br /><strong>Str</strong> +3, <strong>Dex</strong> +1, <strong>Con</strong> +3, <strong>Int</strong> +0, <strong>Wis</strong> +2, <strong>Cha</strong> +0\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 19; <strong>Fort</strong> +12, <strong>Ref</strong> +8, <strong>Will</strong> +9; AC 21 while shield is raised\r<br />\r<br /><strong>HP</strong> 45\r<br />\r<br /><strong>Shield Block</strong> `[reaction]` <strong>Trigger</strong> John has his shield raised and would\r<br />take damage from a physical attack; <strong>Effect</strong> John uses his shield to block\r<br />the attack, reducing the damage by 5 before applying the rest to himself.\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 25 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` mace +12 (shove), <strong>Damage</strong> 1d6+6 bludgeoning\r<br />\r<br /><strong>Melee</strong> `[one-action]` shield bash +12 (agile), <strong>Damage</strong> 1d4+6 bludgeoning\r<br />\r<br /><strong>Raise Shield</strong> `[one-action]` John raises his shield, gaining a +2\r<br />circumstance bonus to AC until the start of his next turn.\r<br />\r<br /><strong>Hold the Line</strong> `[one-action]` (manipulate) <strong>Requirements</strong> John is adjacent\r<br />to a wagon, pack animal, or ally; <strong>Effect</strong> John Raises his Shield. Until the\r<br />start of his next turn, the chosen adjacent creature gains a +1 circumstance\r<br />bonus to AC while it remains adjacent to John.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "",
+          "mod": 9,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 12,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 8,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 9,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "athletics": {
+            "base": 11
+          },
+          "intimidation": {
+            "base": 8
+          },
+          "survival": {
+            "base": 9
+          }
+        },
+        "traits": {
+          "rarity": "common",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "human",
+            "humanoid"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "UO0Zz2IDOyXj1tCn",
+          "name": "Shield Block",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/Reaction.webp",
+          "system": {
+            "actionType": {
+              "value": "reaction"
+            },
+            "actions": {
+              "value": null
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Trigger</strong> John has his shield raised and would take damage from a physical attack</p><hr /><p><strong>Effect</strong> John uses his shield to block the attack, reducing the damage by 5 before applying the rest to himself.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "fkbuHIYBr6QVnq76",
+          "name": "mace",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 12
+            },
+            "damageRolls": {
+              "S3CjVPJxsnTUurra": {
+                "damage": "1d6+6",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "shove"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "e4j04tWENh9hAkaH",
+          "name": "shield bash",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 12
+            },
+            "damageRolls": {
+              "JbPyaPIXzFyIuU3Q": {
+                "damage": "1d4+6",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "agile"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "HYnHEkmlgw9gi5en",
+          "name": "Raise Shield",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p>John raises his shield, gaining a +2 circumstance bonus to AC until the start of his next turn.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "Km7JpMqCIQIDdtPu",
+          "name": "Hold the Line",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Requirements</strong> John is adjacent to a wagon, pack animal, or ally</p><hr /><p><strong>Effect</strong> John Raises his Shield. Until the start of his next turn, the chosen adjacent creature gains a +1 circumstance bonus to AC while it remains adjacent to John.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "manipulate"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "ehGHhFeNztr2r5-Y",
+      "name": "Wenzel Grauth",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/WenzelGrauth.webp",
+      "prototypeToken": {
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/WenzelGrauth.webp"
+        }
+      },
+      "items": [
+        "_9j2WLGjf2YpLxPV",
+        "SpFIHE3yxJ4C6g2J",
+        "fjB68C7DcmeTvK6X",
+        "M-ccHKpTEeJDLVsv",
+        "mZ21bxrlQ6NNQSxO",
+        "4J-KD1EgyXPgWs11",
+        "qgE_zLZF_6_fwJ6T",
+        "gmPc4lTBPFIr_mmH",
+        "CQ_otrvZbJByhKw_",
+        "h4bGGlIxoi_3hirQ",
+        "fXbP1WAIPlybg37J",
+        "79ufpxyaz1bGFAcm",
+        "mB7imaGWbcsUM3WC",
+        "keCnT9JhgpFOj82-"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/npcs/Wenzel Grauth.md",
+          "syncKey": "campaign/npcs/Wenzel Grauth.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 0
+          },
+          "dex": {
+            "mod": 2
+          },
+          "con": {
+            "mod": 1
+          },
+          "int": {
+            "mod": 4
+          },
+          "wis": {
+            "mod": 1
+          },
+          "cha": {
+            "mod": 1
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 17,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 30,
+            "max": 30,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [],
+          "resistances": [],
+          "weaknesses": [],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [
+              "common"
+            ],
+            "details": ""
+          },
+          "level": {
+            "value": 3
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Wenzel Grauth\r<br />## Creature 3\r<br />\r<br />---\r<br />\r<br />==Unique== ==Medium== ==Human== ==Humanoid==\r<br />\r<br /><strong>Perception</strong> +7\r<br />\r<br /><strong>Languages</strong> Common\r<br />\r<br /><strong>Skills</strong> Arcana +9, Medicine +5, Occultism +9, Society +7, Stealth +7\r<br />\r<br /><strong>Str</strong> +0, <strong>Dex</strong> +2, <strong>Con</strong> +1, <strong>Int</strong> +4, <strong>Wis</strong> +1, <strong>Cha</strong> +1\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 17; <strong>Fort</strong> +8, <strong>Ref</strong> +9, <strong>Will</strong> +10\r<br />\r<br /><strong>HP</strong> 30\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 25 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` staff +7 (two-hand d8), <strong>Damage</strong> 1d4 bludgeoning\r<br />\r<br /><strong>Arcane Prepared Spells</strong> DC 20, attack +10; <strong>2nd</strong> false vitality,\r<br />mirror image, spectral hand; <strong>1st</strong> grim tendrils, mystic armor, summon undead;\r<br /><strong>Cantrips (2nd)</strong> electric arc, message, shield, telekinetic projectile\r<br />\r<br /><strong>Grave-Cut Raising</strong> (concentrate, manipulate) Grauth spends a minute over a\r<br />body in wet ground and it gets up. He can hold at most six at once, and the\r<br />sixth is always worse than the first — this is why the wave that arrives late\r<br />is the one that has mud in its mouth and no boots.\r<br />\r<br /><strong>Kindling</strong> (manipulate) Grauth straps a case of alchemist's fire under a\r<br />raising's ribs and runs a slow cord to the sternum. It takes him an hour a\r<br />corpse and he hates doing it. The raising is destroyed by its own delivery,\r<br />which is the part he cannot stop turning over: he was raised to think of a\r<br />body as a thing you keep.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "",
+          "mod": 7,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 8,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 9,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 10,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "arcana": {
+            "base": 9
+          },
+          "medicine": {
+            "base": 5
+          },
+          "occultism": {
+            "base": 9
+          },
+          "society": {
+            "base": 7
+          }
+        },
+        "traits": {
+          "rarity": "unique",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "human",
+            "humanoid"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "_9j2WLGjf2YpLxPV",
+          "name": "staff",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 7
+            },
+            "damageRolls": {
+              "7E5mi_vN0nhp8xDX": {
+                "damage": "1d4",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "two-hand-d8"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "SpFIHE3yxJ4C6g2J",
+          "name": "Arcane Prepared Spells",
+          "type": "spellcastingEntry",
+          "img": "systems/pf2e/icons/default-icons/spellcastingEntry.svg",
+          "system": {
+            "autoHeightenLevel": {
+              "value": null
+            },
+            "description": {
+              "value": ""
+            },
+            "prepared": {
+              "value": "prepared"
+            },
+            "proficiency": {
+              "value": 1
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slots": {
+              "slot2": {
+                "max": 3,
+                "value": 3
+              },
+              "slot1": {
+                "max": 3,
+                "value": 3
+              }
+            },
+            "slug": null,
+            "spelldc": {
+              "dc": 20,
+              "value": 10
+            },
+            "tradition": {
+              "value": "arcane"
+            },
+            "traits": {}
+          }
+        },
+        {
+          "_id": "fjB68C7DcmeTvK6X",
+          "folder": "lPzcDrjGDFbzuF2r",
+          "img": "systems/pf2e/icons/spells/false-life.webp",
+          "name": "False Vitality",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You augment your flesh with the energies typically used to manipulate the undead. You gain 10 temporary Hit Points.</p>\n<hr />\n<p><strong>Heightened (+1)</strong> The temporary Hit Points increase by 3.</p>\n<p>@UUID[Compendium.pf2e.spell-effects.Item.PANUWN5xXC20WBg2]{Spell Effect: False Vitality}</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "8 hours"
+            },
+            "level": {
+              "value": 2
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": ""
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "occult"
+              ],
+              "value": [
+                "concentrate",
+                "manipulate"
+              ]
+            },
+            "slug": "false-vitality",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "SpFIHE3yxJ4C6g2J",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.8ViwItUgwT4lOvvb"
+          },
+          "effects": []
+        },
+        {
+          "_id": "M-ccHKpTEeJDLVsv",
+          "folder": "lPzcDrjGDFbzuF2r",
+          "img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
+          "name": "Mirror Image",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>Three illusory images of you swirl about your space, potentially causing those who attack you to hit one of the images instead of you. Any attack that would hit you has a random chance of hitting one of your images instead of you. If all three images remain, there is a 1 in 4 chance of hitting you (1 on [[/r 1d4]]). With two images remaining, there is a 1 in 3 chance of hitting you (1-2 on [[/r 1d6]]). With only one image, the chances are 1 in 2 (1-3 on [[/r 1d6]]).</p>\n<p>Once an image is hit, it is destroyed. If an attack roll fails to hit your AC but doesn't critically fail, it destroys an image but has no additional effect (even if the attack would normally have an effect on a failure). If an attack roll is a critical success and would hit one of the images, one of the images is destroyed and the attack roll becomes a success against you. Once all the images are destroyed, the spell ends.</p>\n<p>@UUID[Compendium.pf2e.spell-effects.Item.0PO5mFRhh9HxGAtv]{Spell Effect: Mirror Image}</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "1 minute"
+            },
+            "level": {
+              "value": 2
+            },
+            "publication": {
+              "license": "OGL",
+              "remaster": false,
+              "title": "Pathfinder Core Rulebook"
+            },
+            "range": {
+              "value": ""
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "occult"
+              ],
+              "value": [
+                "concentrate",
+                "illusion",
+                "manipulate",
+                "visual"
+              ]
+            },
+            "slug": "mirror-image",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "SpFIHE3yxJ4C6g2J",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.j8vIoIEWElvpwkcI"
+          },
+          "effects": []
+        },
+        {
+          "_id": "mZ21bxrlQ6NNQSxO",
+          "name": "Spectral Hand",
+          "type": "spell",
+          "img": "systems/pf2e/icons/default-icons/spell.svg",
+          "system": {
+            "area": {
+              "type": "",
+              "value": 0
+            },
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": {
+              "save": {
+                "basic": false,
+                "statistic": null
+              }
+            },
+            "description": {
+              "value": "<p>Imported from a Saeroth statblock. Add the spell's full text before play.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": ""
+            },
+            "level": {
+              "value": 2
+            },
+            "location": {
+              "value": "SpFIHE3yxJ4C6g2J",
+              "heightenedLevel": 2
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": {
+              "value": ""
+            },
+            "requirements": "",
+            "rules": [],
+            "slug": "spectral-hand",
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": ""
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [],
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "4J-KD1EgyXPgWs11",
+          "folder": "T8AzYUgNIAgTJ9Iz",
+          "img": "systems/pf2e/icons/spells/grim-tendrils.webp",
+          "name": "Grim Tendrils",
+          "system": {
+            "area": {
+              "type": "line",
+              "value": 30
+            },
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {
+              "0": {
+                "applyMod": false,
+                "category": null,
+                "formula": "2d4",
+                "kinds": [
+                  "damage"
+                ],
+                "materials": [],
+                "type": "void"
+              }
+            },
+            "defense": {
+              "save": {
+                "basic": false,
+                "statistic": "fortitude"
+              }
+            },
+            "description": {
+              "value": "<p>Tendrils of darkness curl out from your fingertips and race through the air. You deal 2d4 void damage and @Damage[(@item.level)[bleed]] damage to living creatures in the line. Each living creature in the line must attempt a Fortitude save.</p>\n<hr />\n<p><strong>Critical Success</strong> The creature is unaffected.</p>\n<p><strong>Success</strong> The creature takes half the void damage and no persistent bleed damage.</p>\n<p><strong>Failure</strong> The creature takes full damage.</p>\n<p><strong>Critical Failure</strong> The creature takes double void damage and double persistent bleed damage.</p>\n<hr />\n<p><strong>Heightened (+1)</strong> The void damage increases by 2d4, and the persistent bleed damage increases by 1.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": ""
+            },
+            "heightening": {
+              "damage": {
+                "0": "2d4"
+              },
+              "interval": 1,
+              "type": "interval"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": ""
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "occult"
+              ],
+              "value": [
+                "concentrate",
+                "manipulate",
+                "void"
+              ]
+            },
+            "slug": "grim-tendrils",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "SpFIHE3yxJ4C6g2J",
+              "heightenedLevel": 1
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.k34hDOfIIMAxNL4a"
+          },
+          "effects": []
+        },
+        {
+          "_id": "qgE_zLZF_6_fwJ6T",
+          "folder": "T8AzYUgNIAgTJ9Iz",
+          "img": "systems/pf2e/icons/spells/mage-armor.webp",
+          "name": "Mystic Armor",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You ward yourself with shimmering magical energy, gaining a +1 item bonus to AC and a maximum Dexterity modifier of +5. While wearing <em>mystic armor</em>, you use your unarmored proficiency to calculate your AC.</p>\n<p>@UUID[Compendium.pf2e.spell-effects.Item.qkwb5DD3zmKwvbk0]{Spell Effect: Mystic Armor}</p>\n<hr />\n<p><strong>Heightened (4th)</strong> You gain a +1 item bonus to saving throws.</p>\n<p><strong>Heightened (6th)</strong> The item bonus to AC increases to +2, and you gain a +1 item bonus to saving throws.</p>\n<p><strong>Heightened (8th)</strong> The item bonus to AC increases to +2, and you gain a +2 item bonus to saving throws.</p>\n<p><strong>Heightened (10th)</strong> The item bonus to AC increases to +3, and you gain a +3 item bonus to saving throws.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "until your next daily preparations"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": ""
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "occult",
+                "primal"
+              ],
+              "value": [
+                "concentrate",
+                "manipulate"
+              ]
+            },
+            "slug": "mystic-armor",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "SpFIHE3yxJ4C6g2J",
+              "heightenedLevel": 1
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.aAbfKn8maGjJjk2W"
+          },
+          "effects": []
+        },
+        {
+          "_id": "gmPc4lTBPFIr_mmH",
+          "folder": "T8AzYUgNIAgTJ9Iz",
+          "img": "systems/pf2e/icons/spells/animate-dead.webp",
+          "name": "Summon Undead",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You summon a creature that has the undead trait and whose level is -1 to fight for you.</p>\n<hr />\n<p><strong>Heightened</strong> As listed in the @UUID[Compendium.pf2e.journals.JournalEntry.S55aqwWIzpQRFhcq.JournalEntryPage.8gcp880pEWZ9VPnF]{summon} trait.</p>"
+            },
+            "duration": {
+              "sustained": true,
+              "value": "1 minute"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "30 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "3"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "occult"
+              ],
+              "value": [
+                "concentrate",
+                "manipulate",
+                "summon"
+              ]
+            },
+            "slug": "summon-undead",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "SpFIHE3yxJ4C6g2J",
+              "heightenedLevel": 1
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.9WGeBwIIbbUuWKq0"
+          },
+          "effects": []
+        },
+        {
+          "_id": "CQ_otrvZbJByhKw_",
+          "folder": "D7UVaOiB40wTR6kv",
+          "img": "icons/magic/lightning/bolt-strike-forked-blue.webp",
+          "name": "Electric Arc",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {
+              "0": {
+                "applyMod": false,
+                "category": null,
+                "formula": "2d4",
+                "kinds": [
+                  "damage"
+                ],
+                "materials": [],
+                "type": "electricity"
+              }
+            },
+            "defense": {
+              "save": {
+                "basic": true,
+                "statistic": "reflex"
+              }
+            },
+            "description": {
+              "value": "<p>An arc of lightning leaps from one target to another. Each target takes 2d4 electricity damage with a basic Reflex save.</p>\n<hr />\n<p><strong>Heightened (+1)</strong> The damage increases by 1d4.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": ""
+            },
+            "heightening": {
+              "damage": {
+                "0": "1d4"
+              },
+              "interval": 1,
+              "type": "interval"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "30 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": "1 or 2 creatures"
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "primal"
+              ],
+              "value": [
+                "cantrip",
+                "concentrate",
+                "electricity",
+                "manipulate"
+              ]
+            },
+            "slug": "electric-arc",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "SpFIHE3yxJ4C6g2J",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf"
+          },
+          "effects": []
+        },
+        {
+          "_id": "h4bGGlIxoi_3hirQ",
+          "folder": "D7UVaOiB40wTR6kv",
+          "img": "systems/pf2e/icons/spells/message.webp",
+          "name": "Message",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You mouth words quietly, but instead of coming out of your mouth, they're transferred directly to the ears of the target. While others can't hear your words any better than if you normally mouthed them, the target can hear your words as if they were standing next to you. The target can give a brief response as a reaction, or as a free action on their next turn if they wish, but they must be able to see you and be within range to do so. If they respond, their response is delivered directly to your ear, just like the original message.</p>\n<hr />\n<p><strong>Heightened (3rd)</strong> The spell's range increases to 500 feet.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "see below"
+            },
+            "heightening": {
+              "levels": {
+                "3": {
+                  "range": {
+                    "value": "500 feet"
+                  }
+                }
+              },
+              "type": "fixed"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "120 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": "1 creature"
+            },
+            "time": {
+              "value": "1"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "occult"
+              ],
+              "value": [
+                "auditory",
+                "cantrip",
+                "concentrate",
+                "illusion",
+                "linguistic",
+                "mental",
+                "subtle"
+              ]
+            },
+            "slug": "message",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "SpFIHE3yxJ4C6g2J",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.vLzFcIaSXs7YTIqJ"
+          },
+          "effects": []
+        },
+        {
+          "_id": "fXbP1WAIPlybg37J",
+          "folder": "D7UVaOiB40wTR6kv",
+          "img": "systems/pf2e/icons/spells/shield.webp",
+          "name": "Shield",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You raise a magical shield of force. This counts as using the Raise a Shield action, giving you a +1 circumstance bonus to AC until the start of your next turn, but it doesn't require a hand to use.</p>\n<p>While the spell is in effect, you can use the @UUID[Compendium.pf2e.feats-srd.Item.jM72TjJ965jocBV8]{Shield Block} reaction with your magic shield. The shield has Hardness 5. You can use the spell's reaction to reduce damage from any spell or magical effect, even if it doesn't deal physical damage. After you use Shield Block, the spell ends and you can't cast it again for 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.spell-effects.Item.Jemq5UknGdMO7b73]{Spell Effect: Shield}</p>\n<p>@UUID[Compendium.pf2e.spell-effects.Item.QF6RDlCoTvkVHRo4]{Effect: Shield Immunity}</p>\n<hr />\n<p><strong>Heightened (+2)</strong> The shield's Hardness increases by 5.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "until the start of your next turn"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": ""
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "1"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "occult"
+              ],
+              "value": [
+                "cantrip",
+                "concentrate",
+                "force"
+              ]
+            },
+            "slug": "shield",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "SpFIHE3yxJ4C6g2J",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.TVKNbcgTee19PXZR"
+          },
+          "effects": []
+        },
+        {
+          "_id": "79ufpxyaz1bGFAcm",
+          "folder": "D7UVaOiB40wTR6kv",
+          "img": "icons/skills/ranged/bullets-triple-ball-yellow.webp",
+          "name": "Telekinetic Projectile",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {
+              "0": {
+                "applyMod": false,
+                "category": null,
+                "formula": "2d6",
+                "kinds": [
+                  "damage"
+                ],
+                "materials": [],
+                "type": "untyped"
+              }
+            },
+            "defense": null,
+            "description": {
+              "value": "<p>You hurl a loose, unattended object that is within range and that has 1 Bulk or less at the target. Make a spell attack roll against the target. If you hit, you deal 2d6 bludgeoning, piercing, or slashing damage—as appropriate for the object you hurled. No specific traits or magic properties of the hurled item affect the attack or the damage.</p>\n<hr />\n<p><strong>Critical Success</strong> You deal double damage.</p>\n<p><strong>Success</strong> You deal full damage.</p>\n<hr />\n<p><strong>Heightened (+1)</strong> The damage increases by 1d6.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": ""
+            },
+            "heightening": {
+              "damage": {
+                "0": "1d6"
+              },
+              "interval": 1,
+              "type": "interval"
+            },
+            "level": {
+              "value": 1
+            },
+            "overlays": {
+              "2I469pfbYcmFvzOA": {
+                "_id": "2I469pfbYcmFvzOA",
+                "name": "Telekinetic Projectile (Bludgeoning)",
+                "overlayType": "override",
+                "sort": 1,
+                "system": {
+                  "damage": {
+                    "0": {
+                      "category": null,
+                      "type": "bludgeoning"
+                    }
+                  }
+                }
+              },
+              "cUFX7ExSLeoa3vIF": {
+                "_id": "cUFX7ExSLeoa3vIF",
+                "name": "Telekinetic Projectile (Piercing)",
+                "overlayType": "override",
+                "sort": 2,
+                "system": {
+                  "damage": {
+                    "0": {
+                      "category": null,
+                      "type": "piercing"
+                    }
+                  }
+                }
+              },
+              "zFWsMjoeCnLxqJaV": {
+                "_id": "zFWsMjoeCnLxqJaV",
+                "name": "Telekinetic Projectile (Slashing)",
+                "overlayType": "override",
+                "sort": 3,
+                "system": {
+                  "damage": {
+                    "0": {
+                      "category": null,
+                      "type": "slashing"
+                    }
+                  }
+                }
+              }
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "30 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": "1 creature"
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "occult"
+              ],
+              "value": [
+                "attack",
+                "cantrip",
+                "concentrate",
+                "manipulate"
+              ]
+            },
+            "slug": "telekinetic-projectile",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "SpFIHE3yxJ4C6g2J",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.60sgbuMWN0268dB7"
+          },
+          "effects": []
+        },
+        {
+          "_id": "mB7imaGWbcsUM3WC",
+          "name": "Grave-Cut Raising",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/Passive.webp",
+          "system": {
+            "actionType": {
+              "value": "passive"
+            },
+            "actions": {
+              "value": null
+            },
+            "category": "interaction",
+            "description": {
+              "value": "<p>Grauth spends a minute over a body in wet ground and it gets up. He can hold at most six at once, and the sixth is always worse than the first — this is why the wave that arrives late is the one that has mud in its mouth and no boots.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "concentrate",
+                "manipulate"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "keCnT9JhgpFOj82-",
+          "name": "Kindling",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/Passive.webp",
+          "system": {
+            "actionType": {
+              "value": "passive"
+            },
+            "actions": {
+              "value": null
+            },
+            "category": "interaction",
+            "description": {
+              "value": "<p>Grauth straps a case of alchemist's fire under a raising's ribs and runs a slow cord to the sternum. It takes him an hour a corpse and he hates doing it. The raising is destroyed by its own delivery, which is the part he cannot stop turning over: he was raised to think of a body as a thing you keep.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "manipulate"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "DcJkY7S_R4VYspbv",
+      "name": "Old Man Conrad",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Old%20Man%20Conrad%20portrait.png",
+      "prototypeToken": {
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Old%20Man%20Conrad%20portrait.png"
+        }
+      },
+      "items": [
+        "DU_PZ3caqJJwLg-K",
+        "piYhbp4OBOiQyCQz",
+        "p9_uZCppl64pisr6",
+        "BVLjICKA8PFKqz-s"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/world/bestiary/Old Man Conrad.md",
+          "syncKey": "campaign/world/bestiary/Old Man Conrad.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": -5
+          },
+          "dex": {
+            "mod": 3
+          },
+          "con": {
+            "mod": 0
+          },
+          "int": {
+            "mod": 0
+          },
+          "wis": {
+            "mod": 2
+          },
+          "cha": {
+            "mod": 3
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 20,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 36,
+            "max": 36,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [
+            {
+              "type": "bleed",
+              "exceptions": []
+            },
+            {
+              "type": "death-effects",
+              "exceptions": []
+            },
+            {
+              "type": "disease",
+              "exceptions": []
+            },
+            {
+              "type": "paralyzed",
+              "exceptions": []
+            },
+            {
+              "type": "poison",
+              "exceptions": []
+            },
+            {
+              "type": "precision",
+              "exceptions": []
+            },
+            {
+              "type": "unconscious",
+              "exceptions": []
+            }
+          ],
+          "resistances": [
+            {
+              "type": "all-damage",
+              "value": 5,
+              "exceptions": [
+                "force",
+                "ghost-touch",
+                "spirit",
+                "vitality"
+              ]
+            }
+          ],
+          "weaknesses": [],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [
+              "common"
+            ],
+            "details": ""
+          },
+          "level": {
+            "value": 4
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Old Man Conrad<br />## Creature 4<br /><br />---<br /><br />==Unique== ==Medium== ==Ghost== ==Incorporeal== ==Spirit== ==Undead== ==Unholy==<br /><br /><strong>Perception</strong> +10; darkvision<br /><br /><strong>Languages</strong> Common<br /><br /><strong>Skills</strong> Deception +12, Intimidation +10, Society +8, Stealth +12<br /><br /><strong>Str</strong> -5, <strong>Dex</strong> +3, <strong>Con</strong> +0, <strong>Int</strong> +0, <strong>Wis</strong> +2, <strong>Cha</strong> +3<br /><br />---<br /><br /><strong>AC</strong> 20; <strong>Fort</strong> +8, <strong>Ref</strong> +11, <strong>Will</strong> +10<br /><br /><strong>HP</strong> 36 (rejuvenation, void healing); <strong>Immunities</strong> bleed, death effects,<br />disease, paralyzed, poison, precision, unconscious; <strong>Resistances</strong> all damage<br />5 (except force, ghost touch, spirit, or vitality; double resistance against<br />non-magical damage)<br /><br /><strong>Rejuvenation</strong> (divine) Conrad can move on only after a child he possessed<br />is safely heard and believed by the adults charged with their care.<br /><br />---<br /><br /><strong>Speed</strong> fly 25 feet<br /><br /><strong>Melee</strong> `[one-action]` ghostly hand +13 (agile, finesse, magical),<br /><strong>Damage</strong> 2d6+2 void<br /><br /><strong>Frightful Rebuke</strong> `[one-action]` (auditory, divine, emotion, fear, mental)<br />DC 21 A living creature within 30 feet hears Conrad's patient voice naming a<br />fear it tries to hide and must attempt a Will save.<br />\t<strong>Critical Failure</strong> The creature is frightened 3.<br />\t<strong>Failure</strong> The creature is frightened 2.<br />\t<strong>Success</strong> The creature is temporarily immune for 1 minute.<br /><br /><strong>Borrowed Plaything</strong> `[two-actions]` (divine, mental, possession) <strong>Frequency</strong><br />once per round; <strong>Requirements</strong> Conrad is adjacent to a living humanoid;<br /><strong>Effect</strong> The target must attempt a DC 21 Will save. Conrad enters the<br />target's space on a failure and possesses it for 1 minute. While possessing a<br />creature, Conrad is hidden inside it, can't use his own actions, and controls<br />the creature's movement and actions. At the end of each of the possessed<br />creature's turns, it can attempt a DC 21 Will save to force Conrad out. Conrad<br />prefers children, but will take an adult only when he needs a door opened or a<br />voice believed.<br />\t<strong>Critical Success</strong> The target is temporarily immune for 24 hours.<br />\t<strong>Success</strong> The target is temporarily immune for 1 minute.<br />\t<strong>Critical Failure</strong> Conrad possesses the target for 10 minutes instead.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "darkvision",
+          "mod": 10,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 8,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 11,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 10,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "deception": {
+            "base": 12
+          },
+          "intimidation": {
+            "base": 10
+          },
+          "society": {
+            "base": 8
+          },
+          "stealth": {
+            "base": 12
+          }
+        },
+        "traits": {
+          "rarity": "unique",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "ghost",
+            "incorporeal",
+            "spirit",
+            "undead",
+            "unholy"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "DU_PZ3caqJJwLg-K",
+          "name": "Rejuvenation",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/Passive.webp",
+          "system": {
+            "actionType": {
+              "value": "passive"
+            },
+            "actions": {
+              "value": null
+            },
+            "category": "interaction",
+            "description": {
+              "value": "<p>Conrad can move on only after a child he possessed is safely heard and believed by the adults charged with their care.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "divine"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "piYhbp4OBOiQyCQz",
+          "name": "ghostly hand",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 13
+            },
+            "damageRolls": {
+              "EzxdvHlH7MyUtcil": {
+                "damage": "2d6+2 void",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "agile",
+                "finesse",
+                "magical"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "p9_uZCppl64pisr6",
+          "name": "Frightful Rebuke",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p>DC 21 A living creature within 30 feet hears Conrad's patient voice naming a fear it tries to hide and must attempt a Will save.</p><hr /><p><strong>Critical Failure</strong> The creature is @UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{frightened 3}.</p><hr /><p><strong>Failure</strong> The creature is @UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{frightened 2}.</p><hr /><p><strong>Success</strong> The creature is temporarily immune for 1 minute.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "auditory",
+                "divine",
+                "emotion",
+                "fear",
+                "mental"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "BVLjICKA8PFKqz-s",
+          "name": "Borrowed Plaything",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/TwoActions.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 2
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Frequency</strong> once per round; <strong>Requirements</strong> Conrad is adjacent to a living humanoid</p><hr /><p><strong>Effect</strong> The target must attempt a @Check[will|dc:21]{Will DC 21} save. Conrad enters the target's space on a failure and possesses it for 1 minute. While possessing a creature, Conrad is hidden inside it, can't use his own actions, and controls the creature's movement and actions. At the end of each of the possessed creature's turns, it can attempt a @Check[will|dc:21]{Will DC 21} save to force Conrad out. Conrad prefers children, but will take an adult only when he needs a door opened or a voice believed.</p><hr /><p><strong>Critical Success</strong> The target is temporarily immune for 24 hours.</p><hr /><p><strong>Success</strong> The target is temporarily immune for 1 minute.</p><hr /><p><strong>Critical Failure</strong> Conrad possesses the target for 10 minutes instead.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "divine",
+                "mental",
+                "possession"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "5uVVhJUFKNPA9_X0",
+      "name": "Skinwright",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Skinwright.jpg",
+      "prototypeToken": {
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Skinwright.jpg"
+        }
+      },
+      "items": [
+        "mDKn71CF_uKOMwwB",
+        "6hfQEKLVKlGLY5Nb",
+        "0V5zBomUv7fUMolk",
+        "ebKUUEN9w_JjjjmV"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/world/bestiary/Skinwright.md",
+          "syncKey": "campaign/world/bestiary/Skinwright.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 5
+          },
+          "dex": {
+            "mod": 3
+          },
+          "con": {
+            "mod": 3
+          },
+          "int": {
+            "mod": -4
+          },
+          "wis": {
+            "mod": 1
+          },
+          "cha": {
+            "mod": -1
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 19,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 34,
+            "max": 34,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [
+            {
+              "type": "disease",
+              "exceptions": []
+            },
+            {
+              "type": "paralyzed",
+              "exceptions": []
+            },
+            {
+              "type": "poison",
+              "exceptions": []
+            },
+            {
+              "type": "sleep",
+              "exceptions": []
+            }
+          ],
+          "resistances": [
+            {
+              "type": "piercing",
+              "value": 5,
+              "exceptions": []
+            },
+            {
+              "type": "slashing",
+              "value": 5,
+              "exceptions": []
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "bludgeoning",
+              "value": 5,
+              "exceptions": []
+            }
+          ],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [
+              {
+                "type": "climb",
+                "value": 20
+              }
+            ],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [],
+            "details": ""
+          },
+          "level": {
+            "value": 3
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Skinwright\r<br />## Creature 3\r<br />\r<br />---\r<br />\r<br />==Medium== ==Construct==\r<br />\r<br /><strong>Perception</strong> +12; darkvision, scent (imprecise) 30 feet\r<br />\r<br /><strong>Skills</strong> Athletics +11, Deception +9, Stealth +11, Survival +7\r<br />\r<br /><strong>Str</strong> +5, <strong>Dex</strong> +3, <strong>Con</strong> +3, <strong>Int</strong> -4, <strong>Wis</strong> +1, <strong>Cha</strong> -1\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 19; <strong>Fort</strong> +12, <strong>Ref</strong> +12, <strong>Will</strong> +6\r<br />\r<br /><strong>HP</strong> 34; <strong>Immunities</strong> disease, paralyzed, poison, sleep; <strong>Resistances</strong> piercing 5, slashing 5; <strong>Weaknesses</strong> bludgeoning 5\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 25 feet, climb 20 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` claw +12 (agile), <strong>Damage</strong> 1d8+6 slashing\r<br />\r<br /><strong>Flaying Grasp</strong> `[two-actions]` <strong>Requirements</strong> The skinwright's claws are free; <strong>Effect</strong> The skinwright attempts two claw Strikes against one target. If both hit and deal damage, it attempts an Athletics check against the target's Fortitude DC.\r<br />\t<strong>Critical Success</strong> The target takes 2d6 persistent bleed damage and is frightened 2. The skinwright claims their skin, which it can later use with Wear Skin.\r<br />\t<strong>Success</strong> The target takes 1d6 persistent bleed damage.\r<br />\r<br /><strong>Wear Skin</strong> `[one-action]` (manipulate) <strong>Requirements</strong> The skinwright is holding a claimed skin and isn't already wearing one; <strong>Effect</strong> The skinwright dons the skin, appearing as a living member of that skin's ancestry. This automatically defeats a Perception check to determine its true creature type, and it gains a +2 status bonus to its Deception DC against attempts to see through the disguise. Wearing a skin grants 10 temporary Hit Points. When those run out, the skin is ruined and falls away at no action cost, with the same effect as Cast Off the Skin.\r<br />\r<br /><strong>Cast Off the Skin</strong> `[one-action]` (emotion, fear, mental, visual) <strong>Requirements</strong> The skinwright is wearing a skin; <strong>Effect</strong> The skinwright destroys the worn skin and reverts to its true form. Each creature within 30 feet currently observing it must succeed at a DC 19 Will save or become frightened 1 (frightened 2 on a critical failure). A creature already frightened by this ability today is temporarily immune.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "darkvision, scent (imprecise) 30 feet\r",
+          "mod": 12,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 12,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 12,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 6,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "athletics": {
+            "base": 11
+          },
+          "deception": {
+            "base": 9
+          },
+          "stealth": {
+            "base": 11
+          }
+        },
+        "traits": {
+          "rarity": "common",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "construct"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "mDKn71CF_uKOMwwB",
+          "name": "claw",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 12
+            },
+            "damageRolls": {
+              "5JkvwYgPm1XxBtNh": {
+                "damage": "1d8+6",
+                "damageType": "slashing"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "agile"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "6hfQEKLVKlGLY5Nb",
+          "name": "Flaying Grasp",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/TwoActions.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 2
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Requirements</strong> The skinwright's claws are free</p><hr /><p><strong>Effect</strong> The skinwright attempts two claw Strikes against one target. If both hit and deal damage, it attempts an @Check[athletics|defense:fortitude]{Athletics} check against the target's Fortitude DC.</p><hr /><p><strong>Critical Success</strong> The target takes @Damage[2d6[persistent,bleed]]{2d6 persistent bleed damage} and is @UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{frightened 2}. The skinwright claims their skin, which it can later use with Wear Skin.</p><hr /><p><strong>Success</strong> The target takes @Damage[1d6[persistent,bleed]]{1d6 persistent bleed damage}.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "0V5zBomUv7fUMolk",
+          "name": "Wear Skin",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Requirements</strong> The skinwright is holding a claimed skin and isn't already wearing one</p><hr /><p><strong>Effect</strong> The skinwright dons the skin, appearing as a living member of that skin's ancestry. This automatically defeats a Perception check to determine its true creature type, and it gains a +2 status bonus to its Deception DC against attempts to see through the disguise. Wearing a skin grants 10 temporary Hit Points. When those run out, the skin is ruined and falls away at no action cost, with the same effect as Cast Off the Skin.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "manipulate"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "ebKUUEN9w_JjjjmV",
+          "name": "Cast Off the Skin",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Requirements</strong> The skinwright is wearing a skin</p><hr /><p><strong>Effect</strong> The skinwright destroys the worn skin and reverts to its true form. Each creature within 30 feet currently observing it must succeed at a @Check[will|dc:19]{Will DC 19} save or become @UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{frightened 1} (@UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{frightened 2} on a critical failure). A creature already @UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{frightened} by this ability today is temporarily immune.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "emotion",
+                "fear",
+                "mental",
+                "visual"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "LZKxwg3wZ5FWE_vp",
+      "name": "The Cream Man",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/CreamMan.jpg",
+      "prototypeToken": {
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/CreamMan.jpg"
+        }
+      },
+      "items": [
+        "yen_DCqnkhCrGdhy",
+        "5uWXumsKojvsTo7f"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/world/bestiary/The Cream Man.md",
+          "syncKey": "campaign/world/bestiary/The Cream Man.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 4
+          },
+          "dex": {
+            "mod": 1
+          },
+          "con": {
+            "mod": 3
+          },
+          "int": {
+            "mod": -4
+          },
+          "wis": {
+            "mod": 1
+          },
+          "cha": {
+            "mod": 0
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 15,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 26,
+            "max": 26,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [
+            {
+              "type": "bleed",
+              "exceptions": []
+            },
+            {
+              "type": "paralyzed",
+              "exceptions": []
+            },
+            {
+              "type": "poison",
+              "exceptions": []
+            },
+            {
+              "type": "sleep",
+              "exceptions": []
+            }
+          ],
+          "resistances": [],
+          "weaknesses": [
+            {
+              "type": "fire",
+              "value": 5,
+              "exceptions": []
+            }
+          ],
+          "speed": {
+            "value": 15,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [],
+            "details": ""
+          },
+          "level": {
+            "value": 1
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># The Cream Man\r<br />## Creature 1\r<br />\r<br />---\r<br />\r<br />==Medium== ==Elemental== ==Water==\r<br />\r<br /><strong>Perception</strong> +7; darkvision\r<br />\r<br /><strong>Skills</strong> Athletics +9, Stealth +5\r<br />\r<br /><strong>Str</strong> +4, <strong>Dex</strong> +1, <strong>Con</strong> +3, <strong>Int</strong> -4, <strong>Wis</strong> +1, <strong>Cha</strong> +0\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 15; <strong>Fort</strong> +10, <strong>Ref</strong> +5, <strong>Will</strong> +7\r<br />\r<br /><strong>HP</strong> 26; <strong>Immunities</strong> bleed, paralyzed, poison, sleep; <strong>Weaknesses</strong> fire 5\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 15 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` slam +9, <strong>Damage</strong> 1d6+5 bludgeoning\r<br />\r<br /><strong>Cream Fill</strong> `[two-actions]` <strong>Effect</strong> The Cream Man Strides up to double its Speed and can move through the spaces of any creatures in its path. Any creature its size or smaller whose space it moves through can attempt a DC 17 Reflex save. A creature unable to act automatically critically fails.\r<br />\t<strong>Success</strong> The creature is pushed aside, or to the end of the Cream Man's movement, its choice.\r<br />\t<strong>Failure</strong> The creature is engulfed. It's grabbed, slowed 1, and must hold its breath or start suffocating. It takes 1d6+3 bludgeoning damage now and at the end of each of its turns while engulfed, and can attempt to Escape (DC 17) to break free. An engulfed creature can only attack the Cream Man with unarmed attacks or weapons of light Bulk or less, and the Cream Man is off-guard to those attacks. A single hit dealing 8 or more piercing or slashing damage lets an engulfed creature cut itself free on the spot. A creature that gets free by any method is sickened 1, or sickened 2 if it spent two or more of its own turns inside him, as its stomach objects to the sudden weight of cream. The Cream Man can hold as many creatures as fit in its space.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "darkvision\r",
+          "mod": 7,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 10,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 5,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 7,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "athletics": {
+            "base": 9
+          }
+        },
+        "traits": {
+          "rarity": "common",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "elemental",
+            "water"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "yen_DCqnkhCrGdhy",
+          "name": "slam",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 9
+            },
+            "damageRolls": {
+              "esYDobF3Zh4fHb91": {
+                "damage": "1d6+5",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "5uWXumsKojvsTo7f",
+          "name": "Cream Fill",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/TwoActions.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 2
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Effect</strong> The Cream Man Strides up to double its Speed and can move through the spaces of any creatures in its path. Any creature its size or smaller whose space it moves through can attempt a @Check[reflex|dc:17]{Reflex DC 17} save. A creature unable to act automatically critically fails.</p><hr /><p><strong>Success</strong> The creature is pushed aside, or to the end of the Cream Man's movement, its choice.</p><hr /><p><strong>Failure</strong> The creature is engulfed. It's @UUID[Compendium.pf2e.conditionitems.Item.kWc1fhmv9LBiTuei]{grabbed}, @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{slowed 1}, and must hold its breath or start suffocating. It takes @Damage[1d6+3[bludgeoning]]{1d6+3 bludgeoning damage} now and at the end of each of its turns while engulfed, and can attempt [[/act escape dc=17]]{Escape (DC 17)} to break free. An engulfed creature can only attack the Cream Man with unarmed attacks or weapons of light Bulk or less, and the Cream Man is @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{off-guard} to those attacks. A single hit dealing 8 or more piercing or slashing damage lets an engulfed creature cut itself free on the spot. A creature that gets free by any method is @UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{sickened 1}, or @UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{sickened 2} if it spent two or more of its own turns inside him, as its stomach objects to the sudden weight of cream. The Cream Man can hold as many creatures as fit in its space.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

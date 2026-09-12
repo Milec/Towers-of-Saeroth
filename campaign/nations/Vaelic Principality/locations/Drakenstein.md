@@ -10,7 +10,7 @@ tenure: Imperial ground — no elector's land, by charter
 The mother-aerie of the [[Drake Rider Order]], cut into the granite of the
 [[Vaelic Principality]]'s eastern range above the Sallow Gate, high enough that the drakes launch downhill and the supply trains
 come up switchbacks in four stages. It is where the Trial is held, where every
-bond is made, and where the Grand Marshal sits when he is not at the Diet.
+bond is made, and where the Grand Marshal sits when the Diet is not sitting.
 
 It faces east. Everything about it faces east. From the upper galleries on a
 clear morning you can see the ground fall away into the river haze over the
@@ -41,8 +41,8 @@ oriented any other way or for any other reason.
       — the *only* way. Vaelic and Thesal touch along one short stretch of
       summit and nowhere else, and the alternative is a march through
       [[Dalstan]], which is hostile to one ally and at odds with the other.
-      Hospice traffic, litters, physicians, and every coronation celebrant
-      Vaelic has ever had
+      Hospice traffic, litters, physicians, and every coronation the
+      Principality has ever seated, in both directions — see [[Sigillum Dei]]
 - **What is not watched** Everything else. The three gates are held; the range
   between them is four hundred miles of granite, snowfield and unmapped valley,
   and no crown has ever pretended otherwise. Riders sweep what they can reach
@@ -50,11 +50,14 @@ oriented any other way or for any other reason.
   Things live up there. Things are *put* up there. An expedition could work a
   season in the high country without anyone in Reichsmund hearing of it —
   which is exactly what one is doing
-- **The crowning** Because the Stair is the only road a Thesal celebrant can
-  take, the Order is the reason Vaelic can seat a High Prince at all: riders
-  clear it, hold it, and in two recorded winters have carried the celebrant
-  over it on drake-back when the snow closed the road entirely. No charter
-  says this is the Order's duty. Nobody has ever needed one to
+- **The crowning** Because the Stair is the only road between the two
+  countries, the Order is the reason Vaelic can seat a High Prince at all.
+  Before the Peace that meant getting a Thesal celebrant down into Vaelic, and
+  in two recorded winters riders carried one over on drake-back when the snow
+  closed the road entirely. Now it means getting the prince and a column of a
+  hundred and seventy up the other way, which is the harder job and takes about
+  fifty days. No charter says either is the Order's duty. Nobody has ever
+  needed one to
 - **Tension** [[House Kesslin]]'s campaign to bring its own aerie under local
   authority is aimed at Drakenstein by implication — nobody has yet said out
   loud that the mother-aerie should sit on some elector's roll, and everyone

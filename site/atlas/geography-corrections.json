@@ -1,0 +1,244 @@
+{
+  "terrain": {
+    "NordheimPeakM": 2583,
+    "ThelemarM": 1250,
+    "ReichsmundBiome": "Grassland",
+    "IlmenWharfBiome": "Wetland"
+  },
+  "surfaceRuralResidentsRelocated": 37393,
+  "routeGeometryRepairs": [
+    {
+      "route": 58,
+      "name": "Hatreton Road",
+      "cells": [
+        15870,
+        15613
+      ]
+    },
+    {
+      "route": 60,
+      "name": "Burakhund Road",
+      "cells": [
+        2691,
+        2578
+      ]
+    },
+    {
+      "route": 80,
+      "name": "Congravenil Road",
+      "cells": [
+        40011,
+        40164
+      ]
+    },
+    {
+      "route": 211,
+      "name": "Quzhou Way",
+      "cells": [
+        12334,
+        12333
+      ]
+    },
+    {
+      "route": 239,
+      "name": "Bamunzdus Way",
+      "cells": [
+        2691,
+        2578
+      ]
+    },
+    {
+      "route": 296,
+      "name": "Chengjiang Way",
+      "cells": [
+        12334,
+        12333
+      ]
+    },
+    {
+      "route": 361,
+      "name": "Khokh Way",
+      "cells": [
+        9663,
+        9662
+      ]
+    },
+    {
+      "route": 371,
+      "name": "Dengzhou Way",
+      "cells": [
+        12334,
+        12333
+      ]
+    },
+    {
+      "route": 423,
+      "name": "Xingzhou Way",
+      "cells": [
+        12334,
+        12333
+      ]
+    },
+    {
+      "route": 471,
+      "name": "Suzhou Way",
+      "cells": [
+        12334,
+        12333
+      ]
+    },
+    {
+      "route": 531,
+      "name": "Barabundukk Way",
+      "cells": [
+        2691,
+        2578
+      ]
+    },
+    {
+      "route": 553,
+      "name": "Bugtsogt Way",
+      "cells": [
+        9663,
+        9662
+      ]
+    },
+    {
+      "route": 631,
+      "name": "Vallezia Way",
+      "cells": [
+        13086,
+        13334
+      ]
+    },
+    {
+      "route": 779,
+      "name": "Shaoqing Way",
+      "cells": [
+        12334,
+        12333
+      ]
+    },
+    {
+      "route": 800,
+      "name": "Bibundushur Way",
+      "cells": [
+        2691,
+        2578
+      ]
+    },
+    {
+      "route": 864,
+      "name": "Hofstein Way",
+      "cells": [
+        33468,
+        33191
+      ]
+    },
+    {
+      "route": 898,
+      "name": "Turagzigzig Way",
+      "cells": [
+        2691,
+        2578
+      ]
+    },
+    {
+      "route": 932,
+      "name": "Nanhuang Way",
+      "cells": [
+        12334,
+        12333
+      ]
+    },
+    {
+      "route": 1025,
+      "name": "Nunargzah Way",
+      "cells": [
+        2691,
+        2578
+      ]
+    },
+    {
+      "route": 1033,
+      "name": "Kindum Way",
+      "cells": [
+        2691,
+        2578
+      ]
+    },
+    {
+      "route": 1103,
+      "name": "Rootmeet\u2013Charterhold Road",
+      "cells": [
+        37272,
+        37273
+      ]
+    },
+    {
+      "route": 1108,
+      "name": "Thelemar\u2013Highforge Road",
+      "cells": [
+        2578,
+        2691
+      ]
+    },
+    {
+      "route": 1155,
+      "name": "Valmont\u2013Borintrolis Shipping Lane",
+      "cells": [
+        29060,
+        29061
+      ]
+    },
+    {
+      "route": 1190,
+      "name": "Fargo\u2013Fontaga Shipping Lane",
+      "cells": [
+        7315,
+        7616
+      ]
+    },
+    {
+      "route": 1191,
+      "name": "Fargo\u2013Mintina Shipping Lane",
+      "cells": [
+        8533,
+        8232
+      ]
+    },
+    {
+      "route": 1191,
+      "name": "Fargo\u2013Mintina Shipping Lane",
+      "cells": [
+        7928,
+        7609
+      ]
+    },
+    {
+      "route": 1192,
+      "name": "Moniamatrico\u2013Fontaga Shipping Lane",
+      "cells": [
+        7315,
+        7616
+      ]
+    },
+    {
+      "route": 1194,
+      "name": "Fontaga\u2013Mintina Shipping Lane",
+      "cells": [
+        7616,
+        7315
+      ]
+    }
+  ],
+  "crossings": {
+    "classified": 475,
+    "namedBridgesRepositioned": 6,
+    "bridges": 282,
+    "fords": 193
+  },
+  "NordheimMountainClusters": 45,
+  "nationalPopulationTotalsPreserved": true,
+  "capitalCorrection": "Kelvary: Almenara \u2192 Harrowgate, following supplied nation lore; old name retained as an alias."
+}

@@ -6,13 +6,11 @@ PF2e worldbuilding vault, readable as a website and installable as an app.
 - `vault/` — the full Archives of Nethys reference (41,700+ notes), from
   [Milec/AON-Scrap](https://github.com/Milec/AON-Scrap)
 - `site/` — the web app that browses both (see below)
-- `tools/` — `build_site.py` (the static-site build), `sync_relations.py`,
-  which pushes the Political Relations table out to all 21 nation notes so the
-  two can't drift, and `make_icons.py` for the PWA icons
+- `tools/` — [maintained build, validation and export tools](tools/README.md)
 - `.claude/skills/pf2e-gm/` — a Claude Code skill that queries the reference:
   encounter building, rules lookup, treasure, shops, NPC stat blocks
-- `docs/` — [driving Azgaar's Fantasy Map Generator from a script](docs/azgaar-map-generation.md),
-  the notes from generating the world map to match these campaign notes
+- `docs/` — [Living Atlas sources and build workflow](docs/Living%20Atlas%20integration.md),
+  integration notes and repository audits
 
 ## The web app
 
@@ -61,3 +59,18 @@ automatically — ask for encounters, rules answers, treasure, or NPCs in plain
 language, no commands needed.
 
 See `vault/LICENSE-AND-ATTRIBUTION.md` for the reference material's licensing.
+
+## Living Atlas
+
+Open **Explore the Living Atlas** in the site sidebar to use the geological
+map, settlements, terrain layers and journey planner. Nation and landmark
+links connect the map to campaign notes. See
+[the integration guide](docs/Living%20Atlas%20integration.md) for source files,
+build instructions, caching behavior and verification.
+
+## Agent guidance
+
+[AGENTS.md](AGENTS.md) is the shared guidance for Codex and Claude. Claude
+loads it through `CLAUDE.md`; Codex discovers the skill entrypoints in
+`.agents/skills/`. Both load the same maintained skills in `.claude/skills/`,
+so their scripts and references have a single source.

@@ -265,6 +265,13 @@
   }
   .pcard dd { margin: 1px 0 0; }
   .pcard dl { margin: 0; }
+  .pcard-art {
+    display: block; width: min(100%, 560px); aspect-ratio: 16 / 9;
+    margin: 0 0 12px; overflow: hidden; border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--p-gold) 40%, transparent);
+    background: var(--p-gold-wash);
+  }
+  .pcard-art img { display: block; width: 100%; height: 100%; object-fit: cover; }
   /* The nation name in the table doubles as a way onto the map. */
   .pnamebtn {
     border: 0; background: none; padding: 0; margin: 0; font: inherit;
@@ -309,6 +316,7 @@
       color: var(--muted); margin-bottom: 1px;
     }
   }
+.pzoom,.ptab,.pscroll{min-height:44px;min-width:44px}.pmapbar{flex-wrap:wrap}.pmapbar select{min-height:44px;max-width:100%;color:var(--ink);background:var(--panel)}
 </style>
 </head>
 <body>
@@ -418,9 +426,8 @@
 
   /* ---- The world map, on the Nations page only -------------------------
 
-     Both halves of this are generated out of campaign/Saeroth.map by
-     tools/map_backdrop.js, so a rebuilt map moves the pins with no edit
-     here. The nation data is read out of the page's own rendered tables
+     tools/build_atlas_lore.py derives nation positions from the current
+     Living Atlas during every site build and selects its travel artwork. The nation data is read out of the page's own rendered tables
      rather than duplicated, which is the same rule the vault's other views
      follow: adding a row to the markdown adds a pin.
 
@@ -430,6 +437,13 @@
   const MAP_PAGE = 'The Nations.md';
   let mapData = null;      // the parsed positions file, fetched once
   let mapDataTried = false;
+
+  function nationArtwork(name) {
+    const slug = name.toLowerCase().trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+    return '../assets/nations/' + slug + '.png';
+  }
 
   async function positions() {
     if (mapDataTried) return mapData;
@@ -441,8 +455,9 @@
     return mapData;
   }
 
-  async function mountMap(root) {
+  async function mountMap(root, generation) {
     const data = await positions();
+    if(generation!==showGeneration)return null;
     if (!data || !data.nations || !data.width) return null;
 
     /* Index the rendered rows by nation name. The first cell is the name and
@@ -469,7 +484,7 @@
     wrap.className = 'pmap';
     wrap.innerHTML =
       '<div class="pmapbox"><div class="pmapinner">' +
-      '<img alt="Political map of Saeroth" src="../' + data.image + '">' +
+      '<img alt="Illustrated map of Saeroth with mountain relief, forests, settlements and roads" src="../' + (data.playerImage || data.image) + '">' +
       '</div></div>' +
       '<div class="pmapbar">' +
       '<button class="pzoom" type="button" data-z="out" aria-label="Zoom out">&minus;</button>' +
@@ -521,9 +536,17 @@
         }
       }
       card.innerHTML = '';
+      const art = document.createElement('figure');
+      art.className = 'pcard-art';
+      const image = document.createElement('img');
+      image.src = nationArtwork(name);
+      image.alt = 'Concept art for ' + name;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      art.appendChild(image);
       const h = document.createElement('h3');
       h.textContent = name;
-      card.append(h, dl);
+      card.append(art, h, dl);
       card.hidden = false;
       if (scroll) {
         box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
@@ -563,6 +586,11 @@
         box.scrollTop = cy * inner.offsetHeight - box.clientHeight / 2;
       });
     }
+    const picker=document.createElement('select');picker.setAttribute('aria-label','Find a nation on the map');
+    picker.add(new Option('Find a nation…',''));
+    for(const name of [...pins.keys()].sort())picker.add(new Option(name,name));
+    picker.onchange=()=>{if(picker.value){setZoom(Math.max(z,2.5));requestAnimationFrame(()=>select(picker.value,true));}};
+    wrap.querySelector('.pmapbar').prepend(picker);
     for (const b of wrap.querySelectorAll('.pzoom')) {
       b.onclick = () => {
         if (b.dataset.z === 'fit') { z = 1; inner.style.setProperty('--z', 1); box.scrollTo(0, 0); }
@@ -689,11 +717,20 @@
       .insertAdjacentElement(h1 ? 'afterend' : 'beforebegin', rail);
   }
 
+  tabs.addEventListener('keydown', e => {
+    if (!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
+    e.preventDefault();
+    const i=e.key==='Home'?0:e.key==='End'?pages.length-1:(current+(e.key==='ArrowRight'?1:-1)+pages.length)%pages.length;
+    show(i);tabs.children[i].focus();
+  });
+  let showGeneration=0;
   async function show(i, focus) {
+    const generation=++showGeneration;
     current = i;
     [...tabs.children].forEach((b, n) => {
       const on = n === i;
       b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
       if (on) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     });
     updateTabHints();
@@ -702,8 +739,11 @@
     doc.innerHTML = '<p class="muted">Loading…</p>';
     try {
       const res = await fetch('content/' + encodeURIComponent(pages[i].file));
+      if(generation!==showGeneration)return;
       if (!res.ok) throw new Error(res.status);
-      doc.innerHTML = marked.parse(clean(await res.text()));
+      const text=await res.text();
+      if(generation!==showGeneration)return;
+      doc.innerHTML = marked.parse(clean(text));
       labelCells(doc);
       resolveImages(doc);
       markSigil(doc);
@@ -711,7 +751,8 @@
       scrollTo(0, 0);
       let placed = false;
       if (pages[i].file === MAP_PAGE) {
-        const select = await mountMap(doc);
+        const select = await mountMap(doc, generation);
+        if(generation!==showGeneration)return;
         // A link may name a nation: #The%20Nations/Dalstan opens the tab with
         // that country already picked on the map, which is the only reason
         // somebody following a link about Dalstan wanted this page.
@@ -720,6 +761,7 @@
       // Anything else a link names is a section heading, on any page.
       if (focus && !placed) focusSection(doc, focus);
     } catch (e) {
+      if(generation!==showGeneration)return;
       doc.innerHTML = '<p class="muted">Could not load that page.</p>';
     }
   }

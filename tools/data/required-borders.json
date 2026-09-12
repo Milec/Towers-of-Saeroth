@@ -1,0 +1,69 @@
+{
+  "description": "Required frontier pairs retained from the retired generator for campaign relationship linting. These are lore/layout constraints, not a measurement of current atlas adjacency. Update alongside deliberate frontier lore changes.",
+  "borders": [
+    [
+      "Elven Confederacy",
+      "Nordheim"
+    ],
+    [
+      "Kesmarch Frontier",
+      "Thornwild Confederation"
+    ],
+    [
+      "Khazan Khaganate",
+      "Xian Ti"
+    ],
+    [
+      "Khazan Khaganate",
+      "Kesmarch Frontier"
+    ],
+    [
+      "Stoneborn Holds",
+      "Undertide Reaches"
+    ],
+    [
+      "Corvane Republic",
+      "Dalstan"
+    ],
+    [
+      "Dalstan",
+      "Thesal Theocracy"
+    ],
+    [
+      "Lazarian Lichdom",
+      "Thesal Theocracy"
+    ],
+    [
+      "Lazarian Lichdom",
+      "Vaelic Principality"
+    ],
+    [
+      "Thesal Theocracy",
+      "Vaelic Principality"
+    ],
+    [
+      "Ashkar Pale",
+      "Cindral Ashlands"
+    ],
+    [
+      "Kelvary March",
+      "Tal Ulad"
+    ],
+    [
+      "Silicar",
+      "Tal Ulad"
+    ],
+    [
+      "Sahenna Compact",
+      "Kesmarch Frontier"
+    ],
+    [
+      "Sahenna Compact",
+      "Thurigypt"
+    ],
+    [
+      "Sahenna Compact",
+      "Qeshara Sultanate"
+    ]
+  ]
+}

@@ -16,6 +16,7 @@ The four indexes and the two notes everything else hangs off:
 - [[Creatures of the World]] — monsters that belong to no single nation
 - [[Ages of Saeroth]] — the dated timeline, and the calendar it is counted in
 - [[The Towers]] — the campaign premise
+- [[Atlas Locations]] — locations added through the map editor
 
 ## How these notes are read
 

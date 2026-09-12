@@ -1,0 +1,732 @@
+import { createHash } from "node:crypto";
+import { createRequire } from "node:module";
+import { copyFile, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
+import { dirname, extname, join, relative, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const moduleDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const repositoryDir = resolve(moduleDir, "..");
+const campaignDir = join(repositoryDir, "campaign");
+const packDir = join(moduleDir, "packs", "saeroth-actors");
+const actorAssetDir = join(moduleDir, "assets", "actors");
+const ancestryPackDir = join(moduleDir, "packs", "saeroth-ancestries");
+const ancestryAssetDir = join(moduleDir, "assets", "ancestries");
+const sanguinorEffectsPackDir = join(moduleDir, "packs", "saeroth-sanguinor-effects");
+const ancestryFeaturesPackDir = join(moduleDir, "packs", "saeroth-ancestry-features");
+const syncContentDir = join(moduleDir, "content");
+const syncManifestPath = join(syncContentDir, "saeroth-creatures.json");
+const moduleId = "saeroth-pf2e-content";
+const sanguinorIcon = `modules/${moduleId}/assets/ancestries/l5hQzZ0rPerT2amm.png`;
+const conditionUuids = {
+  blinded: "XgEqL1kFApUbl5Z2",
+  clumsy: "i3OJZU2nk64Df3xm",
+  concealed: "DmAIPqOBomZ7H95W",
+  confused: "yblD8fOR1J8rDwEQ",
+  dazzled: "TkIyaNPgTZFBCCuh",
+  deafened: "9PR9y0bi4JPKnHPR",
+  doomed: "3uh1r86TzbQvosxv",
+  drained: "4D2KBtexWXa6oUMR",
+  enfeebled: "MIRkyAjyBeXivMa7",
+  fascinated: "AdPVz7rbaVSRxHFg",
+  fatigued: "HL2l2VRSaQHu9lUw",
+  fleeing: "sDPxOjQ9kx2RZE8D",
+  frightened: "TBSHQspnbcqxsmjL",
+  grabbed: "kWc1fhmv9LBiTuei",
+  immobilized: "eIcWbB5o3pP6OIMe",
+  "off-guard": "AJh5ex99aV6VTggg",
+  paralyzed: "6uEgoh53GbXuHpTF",
+  prone: "j91X7x0XSomq8d60",
+  quickened: "nlCjDvLMf2EkV2dl",
+  restrained: "VcDeM8A5oI6VqhbM",
+  sickened: "fesd1n5eVhpCSS18",
+  slowed: "xYTAsEpcJE1Ccni3",
+  stunned: "dfCMdR4wnpbYNTix",
+  stupefied: "e1XGnhKNSQIm5IXg",
+  unconscious: "fBnFDH2MTzgFijKf",
+  wounded: "Yl48xTdMh3aeQYL2",
+};
+
+function loadClassicLevel() {
+  const nodeModules = process.env.FOUNDRY_NODE_MODULES;
+  if (!nodeModules) {
+    throw new Error(
+      "Set FOUNDRY_NODE_MODULES to Foundry's resources/app/node_modules directory before building packs.",
+    );
+  }
+  // nodeModules is the directory that directly contains classic-level. A
+  // require rooted at nodeModules/package.json searches nodeModules/node_modules
+  // first and fails after Foundry updates; load the package by its exact path.
+  const require = createRequire(fileURLToPath(import.meta.url));
+  return require(join(resolve(nodeModules), "classic-level")).ClassicLevel;
+}
+
+function stableId(seed) {
+  return createHash("sha256").update(seed).digest("base64url").slice(0, 16);
+}
+function githubRawUrl(path) {
+  const encodedPath = relative(repositoryDir, path).replaceAll("\\", "/").split("/").map(encodeURIComponent).join("/");
+  return `https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/${encodedPath}`;
+}
+// Foundry v14 document IDs are strictly alphanumeric. Existing generated
+// actors retain their historic IDs for compatibility, while new Sanguinor
+// items use this safe variant so GrantItem can resolve them.
+function foundryId(seed) {
+  return createHash("sha256").update(seed).digest("hex").slice(0, 16);
+}
+
+const sanguinorEffectIds = Object.freeze({
+  fed: foundryId("sanguinor-effect:fed"),
+  unfed: foundryId("sanguinor-effect:unfed"),
+  "red-thirst": foundryId("sanguinor-effect:red-thirst"),
+});
+const sanguinorAncestryFeatureIds = Object.freeze({
+  "sunlight-sensitivity": foundryId("sanguinor-ancestry-feature:sunlight-sensitivity"),
+  "fledgling-fangs": foundryId("sanguinor-ancestry-feature:fledgling-fangs"),
+  "disease-and-poison-protection": foundryId("sanguinor-ancestry-feature:disease-and-poison-protection"),
+  "void-healing": foundryId("sanguinor-ancestry-feature:void-healing"),
+  "balanced-hunger": foundryId("sanguinor-ancestry-feature:balanced-hunger"),
+  "red-thirst": foundryId("sanguinor-ancestry-feature:red-thirst"),
+});
+function sanguinorEffectUuid(slug) {
+  return `Compendium.${moduleId}.saeroth-sanguinor-effects.Item.${sanguinorEffectIds[slug]}`;
+}
+function sanguinorAncestryFeatureUuid(slug) {
+  return `Compendium.${moduleId}.saeroth-ancestry-features.Item.${sanguinorAncestryFeatureIds[slug]}`;
+}
+
+function html(value) {
+  return `<p>${value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\n/g, "<br />")}</p>`;
+}
+
+function linkConditions(value) {
+  const names = Object.keys(conditionUuids).sort((a, b) => b.length - a.length);
+  const pattern = new RegExp(`\\b(${names.map((name) => name.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")).join("|")})\\b(?:\\s+(\\d+))?`, "gi");
+  return value.replace(pattern, (match, name, value) => {
+    const key = name.toLowerCase();
+    const label = value ? `${name} ${value}` : name;
+    return `@UUID[Compendium.pf2e.conditionitems.Item.${conditionUuids[key]}]{${label}}`;
+  });
+}
+
+function actionDescription(value) {
+  let text = value.trim();
+  // The source notes remain readable Markdown. Convert the common mechanical
+  // phrases into the inline links PF2e enriches into clickable rolls and
+  // templates on an actor sheet.
+  text = text.replace(/\b(\d+)-foot\s+(burst|cone|emanation|line)\b/gi, (_match, distance, type) =>
+    `@Template[type:${type.toLowerCase()}|distance:${distance}]{${distance}-foot ${type.toLowerCase()}}`,
+  );
+  text = text.replace(/\b(\d+)\s*feet\s+(burst|cone|emanation|line)\b/gi, (_match, distance, type) =>
+    `@Template[type:${type.toLowerCase()}|distance:${distance}]{${distance}-foot ${type.toLowerCase()}}`,
+  );
+  text = text.replace(/\*\*basic\s+(Fortitude|Reflex|Will)\*\*\s+DC\s+(\d+)/gi, (_match, save, dc) =>
+    `@Check[${save.toLowerCase()}|dc:${dc}|basic]{Basic ${save} DC ${dc}}`,
+  );
+  text = text.replace(/\bDC\s+(\d+)\s+(Fortitude|Reflex|Will)\s+save\b/gi, (_match, dc, save) =>
+    `@Check[${save.toLowerCase()}|dc:${dc}]{${save} DC ${dc}} save`,
+  );
+  text = text.replace(/\bDC\s+(\d+)\s+(Fortitude|Reflex|Will)\b/gi, (_match, dc, save) =>
+    `@Check[${save.toLowerCase()}|dc:${dc}]{${save} DC ${dc}}`,
+  );
+  text = text.replace(/\b(Acrobatics|Arcana|Athletics|Crafting|Deception|Diplomacy|Intimidation|Medicine|Nature|Occultism|Performance|Religion|Society|Stealth|Survival|Thievery|[A-Za-z-]+ Lore)\s+check against the target's (Fortitude|Reflex|Will) DC\b/gi, (_match, skill, defense) =>
+    `@Check[${skillSlug(skill)}|defense:${defense.toLowerCase()}]{${skill.trim()}} check against the target's ${defense} DC`,
+  );
+  text = text.replace(/\b(?:can )?attempt to Escape \(DC\s+(\d+)\)/gi, (_match, dc) =>
+    `can attempt [[/act escape dc=${dc}]]{Escape (DC ${dc})}`,
+  );
+  text = text.replace(/\b(\d*d\d+(?:\s*[+-]\s*\d+)?)\s+(persistent\s+)?(acid|bleed|bludgeoning|cold|electricity|fire|force|mental|negative|piercing|poison|positive|slashing|sonic)\s+damage\b/gi, (_match, formula, persistent, damageType) => {
+    const normalized = formula.replace(/\s+/g, "");
+    const category = persistent ? "persistent," : "";
+    return `@Damage[${normalized}[${category}${damageType.toLowerCase()}]]{${formula} ${persistent ?? ""}${damageType} damage}`;
+  });
+  text = linkConditions(text);
+  return html(text)
+    .replace(/;\s*(?=<strong>Effect<\/strong>)/g, "</p><hr /><p>")
+    .replace(/(?:<br \/>|\s+)(?=<strong>(?:Critical Success|Success|Failure|Critical Failure)<\/strong>)/g, "</p><hr /><p>");
+}
+
+function traitSlug(value) {
+  return value.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function skillSlug(value) {
+  const aliases = { "warfare lore": "warfare-lore" };
+  return aliases[value.trim().toLowerCase()] ?? traitSlug(value);
+}
+
+function parseFrontmatter(source, path, allowedTypes = ["creature", "npc"]) {
+  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
+  if (!match) throw new Error(`${path}: missing frontmatter.`);
+  const fields = Object.fromEntries(
+    match[1]
+      .split(/\r?\n/)
+      .filter(Boolean)
+      .map((line) => {
+        const separator = line.indexOf(":");
+        return [line.slice(0, separator).trim(), line.slice(separator + 1).trim()];
+      }),
+  );
+  if (!fields.title || !allowedTypes.includes(fields.type)) {
+    throw new Error(`${path}: requires title and type: ${allowedTypes.join(" or type: ")}.`);
+  }
+  return fields;
+}
+
+function assertSourceLocation(fields, notePath) {
+  const sourcePath = relative(campaignDir, notePath).replaceAll("\\", "/");
+  const isNpcFolder = sourcePath.startsWith("npcs/") || /^nations\/[^/]+\/npcs\//.test(sourcePath);
+  const isBestiaryFolder = sourcePath.startsWith("world/bestiary/");
+  if (fields.type === "npc" && !isNpcFolder) {
+    throw new Error(`${notePath}: NPC source notes belong in campaign/npcs/ or campaign/nations/<Nation>/npcs/.`);
+  }
+  if (fields.type === "creature" && !isBestiaryFolder) {
+    throw new Error(`${notePath}: creature source notes belong in campaign/world/bestiary/.`);
+  }
+}
+
+function portraitSource(source, notePath) {
+  const markdownImage = source.match(/!\[[\s\S]*?\]\(([^)]+)\)/);
+  if (!markdownImage) return null;
+  const rawPath = markdownImage[1].trim();
+  let imageName;
+  try { imageName = decodeURIComponent(rawPath); }
+  catch { throw new Error(`${notePath}: portrait URL has invalid percent encoding.`); }
+  const sourcePath = resolve(dirname(notePath), imageName);
+  const campaignRelative = relative(campaignDir, sourcePath);
+  if (campaignRelative.startsWith("..") || resolve(campaignDir, campaignRelative) !== sourcePath) {
+    throw new Error(`${notePath}: portrait must be stored beneath campaign/.`);
+  }
+  if (!/\.(avif|gif|jpe?g|png|svg|webp)$/i.test(sourcePath)) {
+    throw new Error(`${notePath}: portrait must be an image file.`);
+  }
+  return sourcePath;
+}
+
+function inlineMechanics(value) {
+  return linkConditions(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>");
+}
+
+function mechanicsHtml(value) {
+  const blocks = value.trim().split(/\r?\n\r?\n/).filter(Boolean);
+  return blocks.map((block) => {
+    const heading = block.match(/^###\s+(.+?)(?:\r?\n([\s\S]*))?$/);
+    if (heading) return `<h3>${inlineMechanics(heading[1])}</h3>${heading[2] ? mechanicsHtml(heading[2]) : ""}`;
+    const lines = block.split(/\r?\n/);
+    if (lines.every((line) => line.startsWith("- "))) {
+      return `<ul>${lines.map((line) => `<li>${inlineMechanics(line.slice(2))}</li>`).join("")}</ul>`;
+    }
+    return `<p>${inlineMechanics(block).replace(/\r?\n/g, "<br />")}</p>`;
+  }).join("\n");
+}
+
+function parseAncestry(source, path, portrait) {
+  const frontmatter = parseFrontmatter(source, path, ["ancestry"]);
+  if (frontmatter.title !== "Sanguinor") throw new Error(`${path}: only the Sanguinor ancestry source is currently supported.`);
+  const normalizedSource = source.replace(/\r/g, "");
+  const heading = /^##\s+Sanguinor Mechanics\s*$/m.exec(normalizedSource);
+  const mechanicsStart = heading ? heading.index + heading[0].length : -1;
+  const nextHeading = mechanicsStart >= 0 ? /^##\s+/m.exec(normalizedSource.slice(mechanicsStart)) : null;
+  const mechanics = mechanicsStart >= 0
+    ? normalizedSource.slice(mechanicsStart, mechanicsStart + (nextHeading?.index ?? normalizedSource.length)).trim()
+    : "";
+  if (!mechanics) throw new Error(`${path}: missing the Sanguinor Mechanics section.`);
+  const id = stableId(relative(repositoryDir, path));
+  return {
+    _id: id,
+    name: frontmatter.title,
+    type: "ancestry",
+    img: portrait ?? "systems/pf2e/icons/default-icons/ancestry.svg",
+    effects: [],
+    flags: { saeroth: { source: relative(repositoryDir, path).replaceAll("\\", "/") } },
+    system: {
+      additionalLanguages: { count: 1, custom: "", value: ["aklo", "elven", "undercommon"] },
+      boosts: { 0: { value: ["cha"] }, 1: { value: ["str", "dex", "con", "int", "wis", "cha"] }, 2: { value: ["str", "dex", "con", "int", "wis", "cha"] } },
+      description: {
+        value: mechanicsHtml(mechanics) + `<hr /><p><strong>Hunger tracking.</strong> The Actions-tab tracker manages the mutually exclusive @UUID[${sanguinorEffectUuid("fed")}]{Fed} and @UUID[${sanguinorEffectUuid("unfed")}]{Unfed} effects. When combat begins while Unfed, it applies @UUID[${sanguinorEffectUuid("red-thirst")}]{Red Thirst}.</p>`,
+      },
+      flaws: { 0: { value: ["con"] } },
+      hands: 2,
+      hp: 10,
+      items: {},
+      languages: { custom: "", value: ["common", "necril"] },
+      publication: { license: "", remaster: true, title: "Towers of Saeroth" },
+      reach: 5,
+      // Each inherited ability is a native ancestry feature on the sheet.
+      rules: Object.keys(sanguinorAncestryFeatureIds).map((slug) => ({
+        key: "GrantItem",
+        uuid: sanguinorAncestryFeatureUuid(slug),
+      })),
+      size: "med",
+      slug: "sanguinor",
+      speed: 25,
+      traits: { rarity: "unique", value: ["dhampir", "humanoid", "sanguinor"] },
+      vision: "low-light-vision",
+      _migration: { version: 0.959, previous: null },
+    },
+    _stats: { coreVersion: "14.361", systemId: "pf2e", systemVersion: "8.5.0" },
+  };
+}
+
+function makeSanguinorAncestryFeatures() {
+  const makeFeature = (name, slug, description, rules = []) => ({
+    _id: sanguinorAncestryFeatureIds[slug],
+    name,
+    type: "feat",
+    img: sanguinorIcon,
+    effects: [],
+    flags: { saeroth: { ancestry: "sanguinor" } },
+    system: {
+      actionType: { value: "passive" },
+      actions: { value: null },
+      category: "ancestryfeature",
+      description: { value: description, gm: "" },
+      level: { value: 0 },
+      prerequisites: { value: [] },
+      publication: { license: "", remaster: true, title: "Towers of Saeroth" },
+      rules,
+      slug,
+      traits: { rarity: "unique", value: [] },
+      _migration: { version: 0.959, previous: null },
+    },
+    _stats: { coreVersion: "14.361", systemId: "pf2e", systemVersion: "8.5.0" },
+  });
+  return [
+    makeFeature("Sunlight Sensitivity", "sunlight-sensitivity", `<p>While directly exposed to sunlight, you are @UUID[Compendium.pf2e.conditionitems.Item.${conditionUuids.clumsy}]{Clumsy 1}. Covering yourself with a hood, cloak, veil, or similar garment prevents this.</p><p><em>Direct sunlight and sufficient cover require GM judgment, so this condition is intentionally not applied automatically.</em></p>`),
+    makeFeature("Fledgling Fangs", "fledgling-fangs", "<p>Your incisors are elongated and you can drink blood directly from a creature. They aren't a functional weapon and grant no unarmed attack.</p>"),
+    makeFeature("Disease and Poison Protection", "disease-and-poison-protection", "<p>You gain a +1 circumstance bonus to saving throws against diseases and poisons.</p>", [{
+      key: "FlatModifier",
+      predicate: [{ or: ["disease", "poison"] }],
+      selector: "saving-throw",
+      type: "circumstance",
+      value: 1,
+    }]),
+    makeFeature("Void Healing", "void-healing", "<p>You are harmed by vitality damage and aren't healed by vitality healing effects. You don't take void damage, and you are healed by void effects that heal undead. You remain a living creature, so Treat Wounds and Battle Medicine work normally and you use the ordinary dying rules.</p>", [{
+      key: "ActiveEffectLike",
+      mode: "override",
+      path: "system.attributes.hp.negativeHealing",
+      value: true,
+    }]),
+    makeFeature("Balanced Hunger", "balanced-hunger", "<p>Ordinary food keeps your body running, but you are Unfed unless you have drunk at least a pint of blood within the last 24 hours. Drinking blood takes 1 minute and requires a willing, grabbed, restrained, unconscious, or freshly dead creature with blood, or a stored supply. Being Unfed carries no penalty by itself.</p><p>Use the Sanguinor Hunger selector in the Actions tab to track your state.</p>"),
+    makeFeature("Red Thirst", "red-thirst", `<p>While you are Unfed, spilled blood pulls at you. The first time in an encounter that a creature within 30 feet takes piercing or slashing damage, the Red Thirst rises, and it stays until the encounter ends.</p><ul><li>You gain a +1 circumstance bonus to melee damage rolls and to Intimidation checks.</li><li>You take a -1 circumstance penalty to Will saves.</li></ul><p>At the start of each of your turns, if you can see an enemy that has taken piercing or slashing damage, attempt a Will save against the level-based DC for your level: 15 at 1st, 20 at 5th, 27 at 10th, 34 at 15th, and 43 at 20th. The penalty above applies to this save.</p><p><strong>Success</strong> You act freely this turn.</p><p><strong>Failure</strong> At least one of your actions this turn must be a Strike against, or movement toward, the nearest such enemy.</p><p><strong>Critical Failure</strong> As failure, and at least two of your actions must go that way.</p><p>The hunger tracker applies @UUID[${sanguinorEffectUuid("red-thirst")}]{Red Thirst} when combat begins while you are Unfed. Resolve this turn-by-turn Will save and compelled actions manually.</p>`),
+  ];
+}
+
+function makeSanguinorEffects() {
+  const makeEffect = (name, slug, description, rules = []) => ({
+    _id: sanguinorEffectIds[slug],
+    name,
+    type: "effect",
+    img: "systems/pf2e/icons/default-icons/effect.svg",
+    effects: [],
+    flags: { saeroth: { ancestry: "sanguinor" } },
+    system: {
+      badge: null,
+      context: null,
+      description: { value: description, gm: "" },
+      duration: { value: -1, unit: "unlimited", expiry: null, sustained: false },
+      fromSpell: false,
+      level: { value: 1 },
+      publication: { license: "", remaster: true, title: "Towers of Saeroth" },
+      rules,
+      slug,
+      start: { value: 0, initiative: null },
+      tokenIcon: { show: false },
+      traits: { otherTags: [], value: [] },
+      unidentified: false,
+      _migration: { version: 0.959, previous: null },
+    },
+    _stats: { coreVersion: "14.361", systemId: "pf2e", systemVersion: "8.5.0" },
+  });
+  return [
+    makeEffect("Fed", "fed", "<p>You have drunk at least a pint of blood within the last 24 hours. This tracks the Sanguinor's hunger and has no automatic modifier by itself.</p>"),
+    makeEffect("Unfed", "unfed", "<p>You have not drunk at least a pint of blood within the last 24 hours. Being unfed carries no penalty by itself, but it can allow Red Thirst to awaken.</p>"),
+    makeEffect("Red Thirst", "red-thirst", "<p><strong>Trigger:</strong> While Unfed, the first time in an encounter that a creature within 30 feet takes piercing or slashing damage.</p><p>You gain a +1 circumstance bonus to melee Strike damage rolls and Intimidation checks, and take a -1 circumstance penalty to Will saves. Remove this effect when the encounter ends.</p>", [
+      { key: "FlatModifier", selector: "strike-damage", predicate: ["item:melee"], type: "circumstance", value: 1 },
+      { key: "FlatModifier", selector: "intimidation", type: "circumstance", value: 1 },
+      { key: "FlatModifier", selector: "will", type: "circumstance", value: -1 },
+    ]),
+  ];
+}
+
+function statValue(block, label) {
+  const match = block.match(new RegExp(`\\*\\*${label}\\*\\*\\s*([+-]?\\d+)`, "i"));
+  return match ? Number(match[1]) : null;
+}
+
+function parseList(line) {
+  return line ? line.split(",").map((entry) => entry.trim()).filter(Boolean) : [];
+}
+
+function spellRank(label) {
+  if (/^cantrips/i.test(label)) return 0;
+  return Number.parseInt(label, 10);
+}
+
+function spellHeightenedLevel(label) {
+  return Number(label.match(/\((\d+)(?:st|nd|rd|th)\)/i)?.[1] ?? spellRank(label));
+}
+
+function titleCase(value) {
+  return value.replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function makeFallbackSpell(name, rank, entryId, heightenedLevel) {
+  return {
+    _id: stableId(`${entryId}:spell:${name}`),
+    name: titleCase(name),
+    type: "spell",
+    img: "systems/pf2e/icons/default-icons/spell.svg",
+    system: {
+      area: { type: "", value: 0 },
+      cost: { value: "" },
+      counteraction: false,
+      damage: {},
+      defense: { save: { basic: false, statistic: null } },
+      description: { value: "<p>Imported from a Saeroth statblock. Add the spell's full text before play.</p>" },
+      duration: { sustained: false, value: "" },
+      level: { value: Math.max(rank, 1) },
+      location: { value: entryId, heightenedLevel },
+      publication: { license: "", remaster: true, title: "Towers of Saeroth" },
+      range: { value: "" },
+      requirements: "",
+      rules: [],
+      slug: traitSlug(name),
+      target: { value: "" },
+      time: { value: "" },
+      traits: { rarity: "common", traditions: [], value: [] },
+    },
+  };
+}
+
+function parseActor(source, path, spellSources, portrait) {
+  const frontmatter = parseFrontmatter(source, path);
+  const fence = source.match(/```pf2e-stats\r?\n([\s\S]*?)```/i);
+  if (!fence) throw new Error(`${path}: no pf2e-stats block.`);
+  const block = fence[1].trim();
+  const name = block.match(/^#\s+(.+)$/m)?.[1]?.trim();
+  const level = Number(block.match(/^##\s+Creature\s+(-?\d+)$/mi)?.[1]);
+  if (!name || !Number.isInteger(level)) throw new Error(`${path}: statblock needs '# Name' and '## Creature <level>'.`);
+
+  const abilityLine = block.match(/\*\*Str\*\*\s*([+-]?\d+),\s*\*\*Dex\*\*\s*([+-]?\d+),\s*\*\*Con\*\*\s*([+-]?\d+),\s*\*\*Int\*\*\s*([+-]?\d+),\s*\*\*Wis\*\*\s*([+-]?\d+),\s*\*\*Cha\*\*\s*([+-]?\d+)/i);
+  const defenseLine = block.match(/\*\*AC\*\*\s*(\d+);\s*\*\*Fort\*\*\s*([+-]?\d+),\s*\*\*Ref\*\*\s*([+-]?\d+),\s*\*\*Will\*\*\s*([+-]?\d+)/i);
+  const hpLine = block.match(/\*\*HP\*\*\s*(\d+)([^\n]*)/i);
+  if (!abilityLine || !defenseLine || !hpLine) throw new Error(`${path}: missing ability, defense, or HP line.`);
+
+  const traitsLine = block.split(/\r?\n/).find((line) => line.includes("==")) ?? "";
+  const traits = [...traitsLine.matchAll(/==([^=]+)==/g)].map((match) => traitSlug(match[1]));
+  const sizeMap = { tiny: "tiny", small: "sm", medium: "med", large: "lg", huge: "huge", gargantuan: "grg" };
+  const size = sizeMap[traits.find((trait) => Object.hasOwn(sizeMap, trait))] ?? "med";
+  const actorTraits = traits.filter((trait) => !Object.hasOwn(sizeMap, trait));
+  const perception = statValue(block, "Perception") ?? 0;
+  const perceptionDetails = block.match(/\*\*Perception\*\*[^;\n]*(?:;\s*([^\n]+))?/i)?.[1] ?? "";
+  const languages = parseList(block.match(/\*\*Languages\*\*\s*([^\n]+)/i)?.[1]).map(traitSlug);
+  const skillText = block.match(/\*\*Skills\*\*\s*([^\n]+)/i)?.[1] ?? "";
+  const skills = Object.fromEntries(
+    [...skillText.matchAll(/([A-Za-z ]+?)\s*([+-]\d+)(?:,|$)/g)].map((match) => [skillSlug(match[1]), { base: Number(match[2]) }]),
+  );
+  const speedLine = block.match(/\*\*Speed\*\*\s*(\d+)\s*feet([^\n]*)/i);
+  const otherSpeeds = [...(speedLine?.[2] ?? "").matchAll(/(climb|fly|swim|burrow)\s+(\d+)\s*feet/gi)].map((match) => ({ type: match[1].toLowerCase(), value: Number(match[2]) }));
+  // HP, immunities, resistances, and weaknesses are one statblock paragraph,
+  // but long entries commonly wrap across several Markdown lines. Reading only
+  // hpLine's physical line silently discarded every wrapped defense afterwards.
+  const defenseText = block.match(/\*\*HP\*\*[\s\S]*?(?=\r?\n\s*\r?\n|$)/i)?.[0] ?? hpLine[0];
+  const defenseLabels = "Immunities|Resistances|Weaknesses";
+  const defenseValue = (label) => {
+    const match = defenseText.match(new RegExp(
+      `\\*\\*${label}\\*\\*\\s*([\\s\\S]*?)(?=\\s*;\\s*\\*\\*(?:${defenseLabels})\\*\\*|$)`,
+      "i",
+    ));
+    return match?.[1].replace(/\s+/g, " ").trim() ?? "";
+  };
+  const parseDefenses = (label, numeric = false) => {
+    const value = defenseValue(label);
+    // A resistance's parenthetical exception list is comma-separated too;
+    // split only the top-level list of defenses, not its exception details.
+    const entries = value ? value.split(/,(?![^()]*\))/).map((entry) => entry.trim()).filter(Boolean) : [];
+    return entries.map((entry) => {
+      const parts = entry.match(/^(.+?)\s+(\d+)(?:\s*\(([^)]*)\))?$/);
+      if (numeric) {
+        if (!parts) return { type: traitSlug(entry), value: 0, exceptions: [] };
+        const exceptionMatch = /(?:^|;)\s*except\s+(.+?)(?:;|$)/i.exec(parts[3] ?? "");
+        const exceptions = exceptionMatch
+          ? exceptionMatch[1].split(/,|\s+or\s+/i).map((part) => traitSlug(part.trim())).filter(Boolean)
+          : [];
+        return { type: traitSlug(parts[1]), value: Number(parts[2]), exceptions };
+      }
+      return { type: traitSlug(entry), exceptions: [] };
+    });
+  };
+
+  const id = stableId(relative(repositoryDir, path));
+  const actor = {
+    _id: id,
+    name,
+    type: "npc",
+    img: portrait ?? "systems/pf2e/icons/default-icons/npc.svg",
+    prototypeToken: { texture: { src: portrait ?? "systems/pf2e/icons/default-icons/npc.svg" } },
+    items: [],
+    effects: [],
+    flags: { saeroth: { source: relative(repositoryDir, path).replaceAll("\\", "/") } },
+    system: {
+      abilities: Object.fromEntries(["str", "dex", "con", "int", "wis", "cha"].map((ability, index) => [ability, { mod: Number(abilityLine[index + 1]) }])),
+      attributes: {
+        ac: { value: Number(defenseLine[1]), details: "" },
+        allSaves: { value: "" },
+        hp: { value: Number(hpLine[1]), max: Number(hpLine[1]), temp: 0, details: "" },
+        immunities: parseDefenses("Immunities"),
+        resistances: parseDefenses("Resistances", true),
+        weaknesses: parseDefenses("Weaknesses", true),
+        speed: { value: Number(speedLine?.[1] ?? 25), otherSpeeds, details: "" },
+      },
+      details: { blurb: "", languages: { value: languages, details: "" }, level: { value: level }, privateNotes: "", publicNotes: html(block), publication: { license: "", remaster: true, title: "Towers of Saeroth" } },
+      initiative: { statistic: "perception" },
+      perception: { details: perceptionDetails, mod: perception, senses: [] },
+      resources: {},
+      saves: { fortitude: { value: Number(defenseLine[2]), saveDetail: "" }, reflex: { value: Number(defenseLine[3]), saveDetail: "" }, will: { value: Number(defenseLine[4]), saveDetail: "" } },
+      skills,
+      traits: { rarity: actorTraits.includes("unique") ? "unique" : "common", size: { value: size }, value: actorTraits.filter((trait) => trait !== "unique") },
+    },
+  };
+
+  // Statblocks wrap long attacks and actions over multiple source lines. Treat
+  // each blank-line-delimited paragraph as one entry before matching it.
+  const entries = block
+    .split(/\r?\n\s*\r?\n/)
+    .map((entry) => entry.replace(/\r?\n\s*/g, " ").trim())
+    .filter(Boolean);
+  for (const line of entries) {
+    const melee = line.match(/^\*\*Melee\*\*\s+`\[[^\]]+\]`\s+(.+?)\s+([+-]\d+)\s*(?:\(([^)]*)\))?,\s*\*\*Damage\*\*\s+(.+)$/i);
+    if (melee) {
+      const [, weaponName, bonus, traitText = "", damageText] = melee;
+      const damage = damageText.match(/^(.+?)\s+(bludgeoning|piercing|slashing|acid|cold|electricity|fire|force|mental|negative|positive|poison|sonic)(?:\s|$)/i);
+      const itemId = stableId(`${id}:melee:${weaponName}`);
+      actor.items.push(itemId);
+      actor.__items ??= [];
+      actor.__items.push({ _id: itemId, name: weaponName.trim(), type: "melee", img: "systems/pf2e/icons/default-icons/melee.svg", system: { attackEffects: { value: [] }, bonus: { value: Number(bonus) }, damageRolls: { [stableId(`${itemId}:damage`)]: { damage: damage?.[1] ?? damageText, damageType: damage?.[2]?.toLowerCase() ?? "bludgeoning" } }, description: { value: "" }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, range: null, rules: [], slug: null, traits: { value: parseList(traitText).map(traitSlug) } } });
+      continue;
+    }
+    const ability = line.match(/^\*\*(.+?)\*\*\s+`\[(one-action|two-actions|three-actions|reaction)\]`\s*(.*)$/i);
+    if (ability && !/^Melee$/i.test(ability[1])) {
+      const [, abilityName, actionType, sourceText] = ability;
+      const traitMatch = sourceText.match(/^\(([^)]+)\)\s*/);
+      const text = traitMatch ? sourceText.slice(traitMatch[0].length) : sourceText;
+      const itemId = stableId(`${id}:action:${abilityName}`);
+      actor.items.push(itemId);
+      actor.__items ??= [];
+      actor.__items.push({ _id: itemId, name: abilityName.trim(), type: "action", img: actionType === "reaction" ? "systems/pf2e/icons/actions/Reaction.webp" : `systems/pf2e/icons/actions/${actionType === "two-actions" ? "TwoActions" : actionType === "three-actions" ? "ThreeActions" : "OneAction"}.webp`, system: { actionType: { value: actionType === "reaction" ? "reaction" : "action" }, actions: { value: actionType === "reaction" ? null : { "one-action": 1, "two-actions": 2, "three-actions": 3 }[actionType] }, category: "offensive", description: { value: actionDescription(text) }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, rules: [], slug: null, traits: { rarity: "common", value: parseList(traitMatch?.[1]).map(traitSlug) } } });
+    }
+
+    // Some creature abilities have no encounter action cost (for example,
+    // Wenzel's longer rituals). Import these as native passive abilities so
+    // they appear on the PF2e NPC sheet instead of being stranded in notes.
+    const passive = line.match(/^\*\*([^*]+?)\*\*\s+\(([^)]+)\)\s+(.+)$/i);
+    if (!ability && passive) {
+      const [, abilityName, traitText, text] = passive;
+      const itemId = stableId(`${id}:passive:${abilityName}`);
+      actor.items.push(itemId);
+      actor.__items ??= [];
+      actor.__items.push({ _id: itemId, name: abilityName.trim(), type: "action", img: "systems/pf2e/icons/actions/Passive.webp", system: { actionType: { value: "passive" }, actions: { value: null }, category: "interaction", description: { value: actionDescription(text) }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, rules: [], slug: null, traits: { rarity: "common", value: parseList(traitText).map(traitSlug) } } });
+    }
+
+    const spellcasting = line.match(/^\*\*(arcane|divine|occult|primal)\s+(prepared|spontaneous|innate|focus)\s+spells\*\*\s+DC\s+(\d+),\s*attack\s+([+-]\d+);\s*(.+)$/i);
+    if (!spellcasting) continue;
+
+    const [, tradition, preparation, dc, attack, spellList] = spellcasting;
+    const entryId = stableId(`${id}:spellcasting:${tradition}:${preparation}`);
+    const slots = {};
+    const spells = [];
+    for (const match of spellList.matchAll(/\*\*(Cantrips(?:\s+\(\d+(?:st|nd|rd|th)\))?|\d+(?:st|nd|rd|th))\*\*\s+([^;]+)(?:;|$)/gi)) {
+      const [, label, names] = match;
+      const rank = spellRank(label);
+      const heightenedLevel = spellHeightenedLevel(label);
+      const spellNames = parseList(names);
+      if (rank > 0) slots[`slot${rank}`] = { max: spellNames.length, value: spellNames.length };
+      for (const spellName of spellNames) {
+        const sourceSpell = spellSources.get(traitSlug(spellName));
+        const spell = sourceSpell
+          ? structuredClone(sourceSpell)
+          : makeFallbackSpell(spellName, rank, entryId, heightenedLevel);
+        spell._id = stableId(`${entryId}:spell:${spellName}`);
+        spell.system.location = { value: entryId, heightenedLevel };
+        spells.push(spell);
+      }
+    }
+    if (spells.length === 0) continue;
+
+    actor.items.push(entryId);
+    actor.__items ??= [];
+    actor.__items.push({
+      _id: entryId,
+      name: `${tradition[0].toUpperCase()}${tradition.slice(1).toLowerCase()} ${preparation[0].toUpperCase()}${preparation.slice(1).toLowerCase()} Spells`,
+      type: "spellcastingEntry",
+      img: "systems/pf2e/icons/default-icons/spellcastingEntry.svg",
+      system: {
+        autoHeightenLevel: { value: null },
+        description: { value: "" },
+        prepared: { value: preparation.toLowerCase() },
+        proficiency: { value: 1 },
+        publication: { license: "", remaster: true, title: "Towers of Saeroth" },
+        rules: [],
+        slots,
+        slug: null,
+        spelldc: { dc: Number(dc), value: Number(attack) },
+        tradition: { value: tradition.toLowerCase() },
+        traits: {},
+      },
+    });
+    actor.items.push(...spells.map((spell) => spell._id));
+    actor.__items.push(...spells);
+  }
+  return actor;
+}
+
+async function walk(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = await Promise.all(entries.map(async (entry) => entry.isDirectory() ? walk(join(directory, entry.name)) : [join(directory, entry.name)]));
+  return files.flat();
+}
+
+const ClassicLevel = loadClassicLevel();
+const foundryDataDir = process.env.FOUNDRY_DATA_DIR ?? join(process.env.LOCALAPPDATA ?? "", "FoundryVTT", "Data");
+const spellPackDir = join(foundryDataDir, "systems", "pf2e", "packs", "spells");
+async function readSpells(directory) {
+  const spells = new Map();
+  const db = new ClassicLevel(directory, { valueEncoding: "json" });
+  await db.open();
+  try {
+    for await (const [, item] of db.iterator()) {
+      if (item.type === "spell" && item.system?.slug) spells.set(item.system.slug, item);
+    }
+  } finally {
+    await db.close();
+  }
+  return spells;
+}
+
+let spellSources;
+try {
+  spellSources = await readSpells(spellPackDir);
+} catch (error) {
+  // Foundry holds an exclusive lock on its packs while it is running. The
+  // generated module pack is an equally valid source for already-imported
+  // official spells, so rebuilding can still repair its actors while Foundry
+  // is open.
+  console.warn(`Could not read Foundry's spells pack (${error.code ?? error.message}); using the existing module pack instead.`);
+  spellSources = await readSpells(packDir);
+}
+const markdown = (await walk(campaignDir)).filter((path) => path.endsWith(".md"));
+const actors = [];
+const syncedActors = [];
+const ancestries = [];
+let actorPortraits = 0;
+let ancestryPortraits = 0;
+await rm(actorAssetDir, { recursive: true, force: true });
+await mkdir(actorAssetDir, { recursive: true });
+await rm(ancestryAssetDir, { recursive: true, force: true });
+await mkdir(ancestryAssetDir, { recursive: true });
+for (const path of markdown) {
+  const source = await readFile(path, "utf8");
+  if (!/^type:\s*(creature|npc)\s*$/mi.test(source) || !/```pf2e-stats/i.test(source)) continue;
+  const frontmatter = parseFrontmatter(source, path);
+  assertSourceLocation(frontmatter, path);
+  const id = stableId(relative(repositoryDir, path));
+  const sourcePortrait = portraitSource(source, path);
+  if (!sourcePortrait && frontmatter["portrait-prompt"]) {
+    throw new Error(
+      `${path}: portrait-prompt is present but the note has no Markdown image. Generate the portrait, save it beneath campaign/, and add it with ![Portrait](image-file.png).`,
+    );
+  }
+  const portraitFilename = sourcePortrait ? `${id}${extname(sourcePortrait).toLowerCase()}` : null;
+  const portrait = portraitFilename ? `modules/${moduleId}/assets/actors/${portraitFilename}` : null;
+  if (sourcePortrait) {
+    await copyFile(sourcePortrait, join(actorAssetDir, portraitFilename));
+    actorPortraits += 1;
+  }
+  actors.push(parseActor(source, path, spellSources, portrait));
+  const syncActor = structuredClone(actors.at(-1));
+  const remotePortrait = sourcePortrait ? githubRawUrl(sourcePortrait) : null;
+  if (remotePortrait) {
+    syncActor.img = remotePortrait;
+    syncActor.prototypeToken.texture.src = remotePortrait;
+  }
+  syncActor.flags.saeroth.syncKey = relative(repositoryDir, path).replaceAll("\\", "/");
+  syncedActors.push(syncActor);
+}
+if (actors.length === 0) throw new Error("No eligible creature or NPC statblocks found.");
+
+for (const path of markdown) {
+  const source = await readFile(path, "utf8");
+  if (!/^type:\s*ancestry\s*$/mi.test(source) || !/^title:\s*Sanguinor\s*$/mi.test(source)) continue;
+  const id = stableId(relative(repositoryDir, path));
+  const sourcePortrait = portraitSource(source, path);
+  const portraitFilename = sourcePortrait ? `${id}${extname(sourcePortrait).toLowerCase()}` : null;
+  const portrait = portraitFilename ? `modules/${moduleId}/assets/ancestries/${portraitFilename}` : null;
+  if (sourcePortrait) {
+    await copyFile(sourcePortrait, join(ancestryAssetDir, portraitFilename));
+    ancestryPortraits += 1;
+  }
+  ancestries.push(parseAncestry(source, path, portrait));
+}
+
+await rm(packDir, { recursive: true, force: true });
+const db = new ClassicLevel(packDir, { valueEncoding: "json" });
+await db.open();
+try {
+  for (const actor of actors) {
+    const items = actor.__items ?? [];
+    delete actor.__items;
+    await db.put(`!actors!${actor._id}`, actor);
+    for (const item of items) await db.put(`!actors.items!${actor._id}.${item._id}`, item);
+  }
+  await db.compactRange("\x00", "\xff");
+} finally {
+  await db.close();
+}
+
+await rm(ancestryPackDir, { recursive: true, force: true });
+const ancestryDb = new ClassicLevel(ancestryPackDir, { valueEncoding: "json" });
+await ancestryDb.open();
+try {
+  for (const ancestry of ancestries) await ancestryDb.put(`!items!${ancestry._id}`, ancestry);
+  await ancestryDb.compactRange("\x00", "\xff");
+} finally {
+  await ancestryDb.close();
+}
+
+const sanguinorEffects = makeSanguinorEffects();
+await rm(sanguinorEffectsPackDir, { recursive: true, force: true });
+const sanguinorEffectsDb = new ClassicLevel(sanguinorEffectsPackDir, { valueEncoding: "json" });
+await sanguinorEffectsDb.open();
+try {
+  for (const effect of sanguinorEffects) await sanguinorEffectsDb.put(`!items!${effect._id}`, effect);
+  await sanguinorEffectsDb.compactRange("\x00", "\xff");
+} finally {
+  await sanguinorEffectsDb.close();
+}
+const sanguinorAncestryFeatures = makeSanguinorAncestryFeatures();
+await rm(ancestryFeaturesPackDir, { recursive: true, force: true });
+const ancestryFeaturesDb = new ClassicLevel(ancestryFeaturesPackDir, { valueEncoding: "json" });
+await ancestryFeaturesDb.open();
+try {
+  for (const feature of sanguinorAncestryFeatures) await ancestryFeaturesDb.put(`!items!${feature._id}`, feature);
+  await ancestryFeaturesDb.compactRange("\x00", "\xff");
+} finally {
+  await ancestryFeaturesDb.close();
+}
+await mkdir(syncContentDir, { recursive: true });
+await writeFile(syncManifestPath, `${JSON.stringify({ schema: 1, actors: syncedActors }, null, 2)}\n`);
+console.log(`Built ${actors.length} PF2e actors and copied ${actorPortraits} portraits in ${relative(repositoryDir, packDir)}.`);
+console.log(`Built ${ancestries.length} PF2e ancestries and copied ${ancestryPortraits} portraits in ${relative(repositoryDir, ancestryPackDir)}.`);
+console.log(`Built ${sanguinorEffects.length} Sanguinor tracking effects in ${relative(repositoryDir, sanguinorEffectsPackDir)}.`);
+console.log(`Built ${sanguinorAncestryFeatures.length} Sanguinor ancestry features in ${relative(repositoryDir, ancestryFeaturesPackDir)}.`);
+console.log(`Built ${syncedActors.length} runtime-sync actors in ${relative(repositoryDir, syncManifestPath)}.`);

@@ -9,6 +9,8 @@ on:
       - 'vault/**'
       - 'site/**'
       - 'tools/build_site.py'
+      - 'tools/build_atlas_lore.py'
+      - 'tools/build_campaign_pois.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
     inputs:
@@ -29,7 +31,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  verify:
+    uses: ./.github/workflows/verify.yml
   build:
+    needs: verify
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
