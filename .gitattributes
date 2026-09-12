@@ -1,3 +1,7 @@
 
 # Azgaar records use meaningful line separators; preserve the source bytes.
 *.map -text -diff
+
+# Native Foundry LevelDB packs are binary. Text normalization corrupts their
+# manifest filenames on Windows and prevents a subsequent pack rebuild.
+foundry-module/packs/** -text -diff
