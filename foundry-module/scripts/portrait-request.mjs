@@ -45,7 +45,11 @@ function assertSourceLocation(fields, notePath) {
 function portraitPath(source, notePath) {
   const markdownImage = source.match(/!\[[\s\S]*?\]\(([^)]+)\)/);
   if (!markdownImage) return null;
-  const imagePath = resolve(dirname(notePath), markdownImage[1].trim());
+  const rawPath = markdownImage[1].trim();
+  let imageName;
+  try { imageName = decodeURIComponent(rawPath); }
+  catch { throw new Error(`${notePath}: portrait URL has invalid percent encoding.`); }
+  const imagePath = resolve(dirname(notePath), imageName);
   const campaignRelative = relative(campaignDir, imagePath);
   if (campaignRelative.startsWith("..") || resolve(campaignDir, campaignRelative) !== imagePath) {
     throw new Error(`${notePath}: portrait must be stored beneath campaign/.`);
@@ -64,7 +68,10 @@ function promptRequest(fields, notePath) {
     status: "ready-for-image-generation",
     source: relative(repositoryDir, notePath).replaceAll("\\", "/"),
     output: relative(repositoryDir, join(dirname(notePath), outputName)).replaceAll("\\", "/"),
-    markdown: `![Portrait of ${title}](${outputName})`,
+    // Common character names include spaces. Marked/CommonMark require those
+    // destinations to be percent-encoded; the actual on-disk filename stays
+    // human-readable, and portraitPath decodes it when packaging Foundry art.
+    markdown: `![Portrait of ${title}](${encodeURIComponent(outputName)})`,
     prompt: [
       "Use case: stylized-concept.",
       "Asset type: square Foundry VTT NPC or monster portrait and token art.",

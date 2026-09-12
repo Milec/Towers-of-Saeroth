@@ -6,7 +6,7 @@ role: caravan guard
 portrait-prompt: "A weathered human caravan guard in practical road-worn chain mail, holding a steel mace and a broad battered wooden shield, spare rope and a bedroll tied to his pack, watchful expression, wagon canvas and a dusty trade road behind him"
 ---
 
-![Portrait of John Guard](John Guard portrait.png)
+![Portrait of John Guard](John%20Guard%20portrait.png)
 
 *John Guard*
 

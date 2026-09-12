@@ -154,7 +154,11 @@ function assertSourceLocation(fields, notePath) {
 function portraitSource(source, notePath) {
   const markdownImage = source.match(/!\[[\s\S]*?\]\(([^)]+)\)/);
   if (!markdownImage) return null;
-  const sourcePath = resolve(dirname(notePath), markdownImage[1].trim());
+  const rawPath = markdownImage[1].trim();
+  let imageName;
+  try { imageName = decodeURIComponent(rawPath); }
+  catch { throw new Error(`${notePath}: portrait URL has invalid percent encoding.`); }
+  const sourcePath = resolve(dirname(notePath), imageName);
   const campaignRelative = relative(campaignDir, sourcePath);
   if (campaignRelative.startsWith("..") || resolve(campaignDir, campaignRelative) !== sourcePath) {
     throw new Error(`${notePath}: portrait must be stored beneath campaign/.`);
