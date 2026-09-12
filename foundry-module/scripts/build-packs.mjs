@@ -237,16 +237,13 @@ function parseAncestry(source, path, portrait) {
       publication: { license: "", remaster: true, title: "Towers of Saeroth" },
       reach: 5,
       // Void Healing is the one Sanguinor mechanic PF2e can model directly.
-      // The custom hunger and Red Thirst text remains in the ancestry entry.
+      // The hunger state is an actor-level sheet tracker, managed by the
+      // module script so Fed and Unfed remain mutually exclusive.
       rules: [{
         key: "ActiveEffectLike",
         mode: "override",
         path: "system.attributes.hp.negativeHealing",
         value: true,
-      }, {
-        key: "GrantItem",
-        uuid: sanguinorEffectUuid("unfed"),
-        onDeleteActions: { grantee: "cascade" },
       }],
       size: "med",
       slug: "sanguinor",

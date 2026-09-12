@@ -2,7 +2,7 @@
   "id": "saeroth-pf2e-content",
   "title": "Towers of Saeroth PF2e Content",
   "description": "Custom creatures and NPCs from the Towers of Saeroth campaign.",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "compatibility": {
     "minimum": "14.361",
     "verified": "14.367",
@@ -12,6 +12,12 @@
     {
       "name": "Towers of Saeroth"
     }
+  ],
+  "esmodules": [
+    "scripts/sanguinor-hunger-tracker.mjs"
+  ],
+  "styles": [
+    "styles/sanguinor-hunger-tracker.css"
   ],
   "relationships": {
     "systems": [
