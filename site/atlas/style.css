@@ -34,6 +34,8 @@
 #trails .route{stroke:#746888;stroke-width:var(--route-weight,1.05);opacity:.65;stroke-dasharray:2 4}
 #searoutes .route{stroke:#326f86;stroke-width:var(--route-weight,1.7);opacity:.8;stroke-dasharray:7 6}
 #roads .frontier-road .route{stroke:#356b5e;stroke-width:var(--route-weight,2.3)}
+#roads .route,#trails .route,#searoutes .route{vector-effect:non-scaling-stroke}
+.travel-view{background:#edf1e9}.travel-view label{display:flex;align-items:center;gap:8px;min-height:44px;margin:8px 0}.party-location{margin:14px 0 8px;font-weight:650}.travel-focus #roads .route{stroke:#a54d38;stroke-width:3.25;opacity:1}.travel-focus #trails .route{stroke:#66517b;stroke-width:2.5;opacity:.96;stroke-dasharray:3 5}.travel-focus #searoutes .route{stroke:#1d7890;stroke-width:3.3;opacity:1;stroke-dasharray:9 6}.travel-focus #roads .frontier-road .route{stroke:#216d54;stroke-width:3.8}.travel-focus #relief{opacity:.45}.route-selected-mode [data-type="route"] .route{opacity:.18}.route-selected-mode [data-type="route"].route-selected .route{stroke:#f8d36d!important;stroke-width:4.5!important;opacity:1!important;filter:drop-shadow(0 0 3px #233d3f)!important}.route-selection-shadow,.route-selection{fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;pointer-events:none}.route-selection-shadow{stroke:#1d3539;stroke-width:8;opacity:.92}.route-selection{stroke:#ffe287;stroke-width:4}.party-marker{pointer-events:none}.party-marker-halo{fill:#ee7b48;fill-opacity:.2;stroke:#ffe6a3;stroke-width:2;vector-effect:non-scaling-stroke}.party-marker-pin{fill:#c34f38;stroke:#fff0bd;stroke-width:2;vector-effect:non-scaling-stroke}.party-marker-arrow{fill:#fff3c2}.party-marker text{fill:#fff6d2;stroke:#263e40;stroke-width:3;paint-order:stroke;font:700 13px system-ui,sans-serif;vector-effect:non-scaling-stroke}
 .maptools{gap:8px}.maptools button{border-color:#c0c8b9;background:#f8f3e7f5;box-shadow:0 2px 7px #203c3f28}
 .maptools button:hover{background:var(--accent);color:white}
 #mapHome{font-size:23px}
@@ -85,6 +87,7 @@ header a.campaign-home{display:inline-block}.campaign-link a{font-weight:bold;te
 .integrated[data-theme=dark] .tier-table small{color:var(--muted)}
 .integrated[data-theme=dark] input::placeholder{color:#beb8a8;opacity:1}
 .integrated[data-theme=dark] aside button:hover,.integrated[data-theme=dark] aside button[aria-pressed=true],.integrated[data-theme=dark] .atlas-jumps button:hover{background:#37615d;color:#fff}
+.integrated[data-theme=dark] .travel-view{background:#2d3028}.integrated[data-theme=dark] .party-location{color:var(--ink)}
 .skip{color:#233a36}
 .atlas-presets {display:flex;gap:6px;padding:12px;flex-wrap:wrap}
 .atlas-presets button {flex:1;min-height:44px;background:var(--panel);color:var(--ink);border:1px solid var(--line)}

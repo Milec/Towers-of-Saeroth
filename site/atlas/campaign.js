@@ -16,6 +16,7 @@
       const on=name==='Political'?['countries','provinces','settlements','townlabels'].includes(key):name==='Travel'?['countries','roads','trails','searoutes','settlements','ports','pois','townlabels'].includes(key):['countries','relief','roads','settlements','pois','townlabels'].includes(key);
       input.checked=on;input.dispatchEvent(new Event('change',{bubbles:true}));
     }
+    window.setAtlasTravelFocus?.(name==='Travel');
     for(const button of presets.children)button.setAttribute('aria-pressed',button===e.target);
   };
   const jumps=document.querySelector('.atlas-jumps');
