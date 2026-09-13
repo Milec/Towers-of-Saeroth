@@ -11,7 +11,7 @@ All actionable defects identified in the initial audit have been addressed.
 - All 475 road–river intersections are classified: 282 bridges and 193 fords. Six existing named bridge POIs were moved to nearby crossings within their original nations.
 - 37,393 surface rural residents were redistributed off ice, preserving every nation's total. This includes ice newly formed by the Nordheim elevation correction. No surface rural population remains on glaciers.
 - Stoneborn and Undertide population records explicitly include underground residents; those people were not treated as surface farmers.
-- Kelvary's capital is Harrowgate, matching supplied lore. Almenara remains searchable as its former atlas name.
+- Kelvary's capital is Almenara, matching its Castilian frontier culture. Harrowgate remains searchable as its former English atlas name.
 - Optional Melisor teleportation planning connects its 15 remote settlements through Thelemar. It is off by default; permission and exact circle locations remain unspecified.
 - Independent homesteads and upland communities have access/habitat explanations. Their absence of national provinces or their altitude is not itself an error.
 

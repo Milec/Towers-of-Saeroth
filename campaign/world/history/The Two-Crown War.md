@@ -133,7 +133,7 @@ them lost more men than the March had lost in the preceding century of selling
 soldiers.
 
 They were neighbours. Kelvary is a small country and its regiments recruit from
-the same valleys. Harrowgate buried both companies in one season and has not
+the same valleys. Almenara buried both companies in one season and has not
 chartered opposite sides of the same conflict since — a rule that appears in no
 statute and has never once been broken.
 
@@ -144,7 +144,7 @@ Not with a battle. With a bank and a muster court.
 By the eleventh year both crowns were fighting entirely on credit. The
 [[Thurion Merchant Alliance]] had lent to both, could no longer pretend either
 would repay, and called the loans. In the same month the Muster Court at
-Harrowgate suspended new charters to either crown, for reasons Kelvary has
+Almenara suspended new charters to either crown, for reasons Kelvary has
 always described as commercial and everyone else understands as Ambry Ford.
 
 The money stopped and the soldiers stopped within about six weeks of each

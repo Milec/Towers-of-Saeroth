@@ -64,7 +64,7 @@ New generated stone bridge, mountain saddle and harbor entrance illustrations us
 ## Audited geography corrections
 The September 8 correction fits the terrain and drainage to Nordheim, Melisor, Vaelic and Sarrowmere lore. All road–river intersections have inferred bridge/ford classifications. Existing named bridges were aligned within their original nations; small crossing symbols appear at 5×. The population distribution excludes surface farming on ice while explicitly retaining subterranean residents in Stoneborn and Undertide.
 
-Kelvary's capital is Harrowgate, with Almenara retained as a searchable former atlas label. Melisor teleportation is an optional planning setting, disabled by default. One hour per transfer is an estimate, not a canonical journey time; permission and exact circle locations are unspecified.
+Kelvary's capital is Almenara, with Harrowgate retained as a searchable former English atlas label. Melisor teleportation is an optional planning setting, disabled by default. One hour per transfer is an estimate, not a canonical journey time; permission and exact circle locations are unspecified.
 
 The full audit is Geography-and-Settlement-Audit.md; machine-readable findings are geography-settlement-audit.json. The archived original native Azgaar pass remains a historical source. Current corrected physical geometry is maintained in the generated atlas and geography.npz.
 

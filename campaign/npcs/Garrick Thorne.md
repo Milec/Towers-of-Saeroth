@@ -14,7 +14,7 @@ that morning, and he treats a battlefield as a puzzle with one correct answer,
 which is whoever is left standing at the end of it. He is for hire. The price
 includes not asking what the last job was.
 
-He works out of Harrowgate without a charter, which is the whole of his
+He works out of Almenara without a charter, which is the whole of his
 position: the Muster Court of the [[Kelvary March]] has no authority over a man
 working alone, so Garrick takes the contracts no chartered company will put its
 seal on. Every paymaster in the town can name him and none of them has ever

@@ -88,7 +88,7 @@ Then three things made it a continental famine rather than a regional one.
    the year after that, when there is nothing to sow.
 
 The countries that starved were the ones with nothing to eat but what they
-bought: the deep holds, the Reaches, the academies, Harrowgate's muster towns,
+bought: the deep holds, the Reaches, the academies, Almenara's muster towns,
 Tessine's bay, and Dalstan's own cathedral-towns, which had backed one of the
 crowns. Stoneborn had steel and no bread and there was nobody left with bread
 to sell it to.
@@ -195,7 +195,7 @@ Concord Table cannot make a finding on a case that has not been brought.
 
 Who is actually paying for it: [[Kelvary March]], whose field kit is built to
 Silicaran specification and whose pumps keep a camp alive, and which sells to
-both of them. Harrowgate has begun quietly buying Quivar's share and reselling
+both of them. Almenara has begun quietly buying Quivar's share and reselling
 it at no margin, and calls this commercial.
 
 ## The coin

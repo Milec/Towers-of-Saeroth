@@ -123,7 +123,7 @@ for the church at the middle of it.*
 | c. 2000 | The relic trade opens between Ostravin and the Lazarian grave-fields, and has been deniable at both ends for four centuries | [[Dalstan]] |
 | 2041 | The last attempt to take the whole frontier. It fails, the line goes back to where it was, and both countries remember the man who ordered it as a fool for opposite reasons | [[The Long Frontier]] |
 | c. 2060 | Four generations of digging finish the irrigation network, and the guildmasters who had been coordinating the work are the state that maintains it | [[Silicar]] |
-| c. 2116 | The Muster Court at Harrowgate charters its first standing companies. Kelvary has had regiments on both sides of most wars since | [[Kelvary March]] |
+| c. 2116 | The Muster Court at Almenara charters its first standing companies. Kelvary has had regiments on both sides of most wars since | [[Kelvary March]] |
 | c. 2190 | A Melisor academy annexes its own hinterland to stop being taxed by it. The Council of Archmages is that faculty board, still meeting | [[Melisor Magocracy]] |
 | c. 2240 | Cindral and Ashkar Pale fight the second and last of their wars over the terraces between them. An eruption ends it; neither side does | [[Cindral Ashlands]] |
 
@@ -136,7 +136,7 @@ for the church at the middle of it.*
 | 2308 | The Lichdom, having declared for neither crown, takes a hundred miles of Vaelic's southern frontier and keeps it | [[Lazarian Lichdom]] |
 | 2309 | The Hungry Year. Both crowns burn the other's harvests, and the winter kills more people in five months than nine years of fighting — most of them in countries that never raised a soldier | [[The Two-Crown War]] |
 | 2312 | Ambry Ford. Two Kelvary companies recognise each other across a ford and fight for eleven hours anyway | [[Kelvary March]] |
-| 2316 | Thurion calls the loans and Harrowgate suspends the charters in the same month. The money and the soldiers stop within six weeks of each other | [[Thurion Merchant Alliance]] |
+| 2316 | Thurion calls the loans and Almenara suspends the charters in the same month. The money and the soldiers stop within six weeks of each other | [[Thurion Merchant Alliance]] |
 | 2316 | The Diet reconvenes at Concord under Thesal mediation and elects Rutger Thornwycke, whom nobody had proposed in eleven years | [[Vaelic Principality]] |
 
 ## 2316 – present — The Long Peace

@@ -65,7 +65,7 @@ w.eval(files.map(f=>fs.readFileSync(path.join(root,f),'utf8')).join('\n'));
  const melisor=w.ATLAS.burgs.filter(b=>b.state===19),mh=melisor.find(b=>b.capital),mt=melisor.find(b=>!b.capital);
  const magic=router.find(mh.cell,mt.cell,{sail:false,offroad:false,teleport:true});assert(magic&&magic.teleportLegs>0);assert(d.querySelector('#journeyTeleport'));assert(!d.querySelector('#journeyTeleport').checked);
  assert(w.ATLAS.crossings.length>400);assert(d.querySelector('#crossings'));assert.equal(d.querySelector('#map').lastElementChild.id,'labels');
- const alias=d.querySelector('#search');alias.value='Almenara';alias.dispatchEvent(new w.Event('input',{bubbles:true}));d.querySelector('#results button').click();assert.match(d.querySelector('#info h2').textContent,/Harrowgate/);
+ const alias=d.querySelector('#search');alias.value='Harrowgate';alias.dispatchEvent(new w.Event('input',{bubbles:true}));d.querySelector('#results button').click();assert.match(d.querySelector('#info h2').textContent,/Almenara/);
 
  const hf=w.ATLAS.burgs.find(b=>b.name==='Highforge');assert.equal(hf.port,0);assert(hf.mountainRelocation.elevation>1800);assert(hf.mountainRelocation.coastDistance>65);assert.equal(network.nodes[hf.cell][2],16);assert(router.find(hf.cell,hf.mountainRelocation.oldCell,{sail:false,offroad:false}));
  const frontier=w.ATLAS.routes.find(r=>r.atlasFrontierRoad);assert(frontier);assert(d.querySelector('#roads .frontier-road'));

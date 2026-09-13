@@ -137,7 +137,7 @@ this, which no Thurion document has done in sixty years.
   load-bearing.
 - **The Peace is an economic instrument, so it can be attacked economically.**
   Anyone who wanted a war would not need to raise an army. They would need
-  Thurion's credit committee, or a Muster Court vote at Harrowgate, or a
+  Thurion's credit committee, or a Muster Court vote at Almenara, or a
   reason for one great house to stop appearing at Concord.
 - **Nobody in the world is nostalgic for the war.** A villain arguing that the
   Peace has made everyone soft is arguing an unpopular position badly, and
