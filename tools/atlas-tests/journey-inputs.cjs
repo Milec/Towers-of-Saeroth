@@ -12,6 +12,7 @@ const base=process.env.ATLAS_TEST_URL||'http://127.0.0.1:8899/';
    });
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(base+'#/atlas');const frame=page.frameLocator('.atlas-frame');
+   await frame.locator('[data-open="journey"]').click();
    await frame.locator('#journeyFrom').waitFor();
    const inner=page.frames().find(f=>f.url().includes('/atlas/'));
    await inner.evaluate(()=>{window.inputTestIdentity='retained';});
