@@ -20,6 +20,9 @@ road hand beyond the party.
 The caravan is going to be destroyed. That is not a failure state; it is the
 premise. What the party does about *why* is the campaign.
 
+The group’s table and character agreements are collected in
+[[Session 00 — Table Agreement]].
+
 ## The shape of it
 
 **Everyone in this is telling the truth about something else.**
