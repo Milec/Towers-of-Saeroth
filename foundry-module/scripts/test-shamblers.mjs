@@ -14,7 +14,10 @@ for (const [name, level] of [["Kindled Shambler", 0], ["Zombie Shambler", -1]]) 
   assert.deepEqual(actor.system.attributes.immunities.map(i => i.type), ["bleed", "death-effects", "disease", "mental", "paralyzed", "poison", "unconscious"]);
   assert.deepEqual(actor.system.attributes.weaknesses.map(i => [i.type, i.value]), [["slashing", 5], ["vitality", 5]]);
   assert.equal(actor.system.perception.senses[0].type, "darkvision");
-  assert.equal(actor.img, actor.prototypeToken.texture.src);
+  assert.notEqual(actor.img, actor.prototypeToken.texture.src);
+  assert.ok(actor.prototypeToken.texture.src.endsWith(`${encodeURIComponent(name)}%20token.png`));
+  await access(new URL(`campaign/world/bestiary/${name} token.png`, root));
+  await access(new URL(`foundry-module/assets/actors/${actor._id}-token.png`, root));
   await access(new URL(`campaign/world/bestiary/${name} portrait.png`, root));
   await access(new URL(`foundry-module/assets/actors/${actor._id}.png`, root));
   const items = actor.__items;

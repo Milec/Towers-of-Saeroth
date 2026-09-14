@@ -2,6 +2,7 @@
 title: Zombie Shambler
 type: creature
 level: -1
+token-image: "Zombie%20Shambler%20token.png"
 portrait-prompt: "An ordinary shambling human zombie, muddy and rain-soaked, with ragged brown travel clothes and empty grasping hands, emerging from a roadside drainage ditch. Slack undead face, cloudy eyes, restrained non-graphic decay, no excessive gore. Show head through knees. No fire, no fuse, no flasks, no explosive harness, no weapons."
 ---
 

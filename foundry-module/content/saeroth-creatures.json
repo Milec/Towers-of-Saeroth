@@ -4365,7 +4365,7 @@
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Kindled%20Shambler%20portrait.png",
       "prototypeToken": {
         "texture": {
-          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Kindled%20Shambler%20portrait.png"
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Kindled%20Shambler%20token.png"
         }
       },
       "items": [
@@ -5584,7 +5584,7 @@
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Zombie%20Shambler%20portrait.png",
       "prototypeToken": {
         "texture": {
-          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Zombie%20Shambler%20portrait.png"
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Zombie%20Shambler%20token.png"
         }
       },
       "items": [

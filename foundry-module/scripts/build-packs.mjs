@@ -189,10 +189,10 @@ function assertSourceLocation(fields, notePath) {
   }
 }
 
-function portraitSource(source, notePath) {
+function portraitSource(source, notePath, explicitPath = null) {
   const markdownImage = source.match(/!\[[\s\S]*?\]\(([^)]+)\)/);
-  if (!markdownImage) return null;
-  const rawPath = markdownImage[1].trim();
+  if (!markdownImage && !explicitPath) return null;
+  const rawPath = explicitPath ?? markdownImage[1].trim();
   let imageName;
   try { imageName = decodeURIComponent(rawPath); }
   catch { throw new Error(`${notePath}: portrait URL has invalid percent encoding.`); }
@@ -656,12 +656,17 @@ for (const path of markdown) {
     await copyFile(sourcePortrait, join(actorAssetDir, portraitFilename));
     actorPortraits += 1;
   }
+  const sourceToken = frontmatter["token-image"]
+    ? portraitSource(source, path, frontmatter["token-image"].replace(/^['"]|['"]$/g, "")) : null;
+  const tokenFilename = sourceToken ? `${id}-token${extname(sourceToken).toLowerCase()}` : null;
+  if (sourceToken) await copyFile(sourceToken, join(actorAssetDir, tokenFilename));
   actors.push(parseActor(source, path, spellSources, portrait));
+  if (tokenFilename) actors.at(-1).prototypeToken.texture.src = `modules/${moduleId}/assets/actors/${tokenFilename}`;
   const syncActor = structuredClone(actors.at(-1));
   const remotePortrait = sourcePortrait ? githubRawUrl(sourcePortrait) : null;
   if (remotePortrait) {
     syncActor.img = remotePortrait;
-    syncActor.prototypeToken.texture.src = remotePortrait;
+    syncActor.prototypeToken.texture.src = sourceToken ? githubRawUrl(sourceToken) : remotePortrait;
   }
   syncActor.flags.saeroth.syncKey = relative(repositoryDir, path).replaceAll("\\", "/");
   syncedActors.push(syncActor);
