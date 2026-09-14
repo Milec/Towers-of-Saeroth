@@ -51,6 +51,24 @@ atlas and back. `ATLAS_TEST_URL` can select a server under a Pages-style
 subdirectory. The regression suite covers population sizing, filters, label
 visibility, POI alignment, route planning and regional detail loading.
 
+## Hexcrawl travel
+
+Open **Hexcrawl travel** below Travel view and enable the overlay. Choose a
+12, 24 or 48 km center-to-center hex scale, select a hex on the map (or enter
+its axial Q/R coordinates), then place the party. Subsequent moves must reach
+an adjacent hex. The visited trail, distance and moving-day estimate update
+with each step. Undo reverses the last step; Find party recenters the map.
+Reset trek asks before clearing progress and unlocks the scale selector.
+
+The grid uses the existing atlas scale without modifying geography. Zoom in
+for fine grids; rendering is limited to the visible region. Terrain is a
+manual GM choice, using the journey planner's existing speed multipliers.
+There is no automatic terrain, barrier, encounter or PF2e exploration check.
+Progress persists only in this browser, not across devices. The existing
+settlement party marker is preserved but hidden while a hex party is shown.
+Keyboard users can enter coordinates or choose the map center with Enter;
+Escape cancels map selection. Run `pnpm run test:hexcrawl` against a built site.
+
 ## Caching and release
 
 The atlas is loaded only when opened. Its large assets and regional tiles are

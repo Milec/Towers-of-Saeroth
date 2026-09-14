@@ -128,3 +128,16 @@ header a.campaign-home{display:inline-block}.campaign-link a{font-weight:bold;te
 .custom-placement{position:absolute;top:12px;left:80px;right:12px;z-index:4;padding:12px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;font-size:13px}
 .custom-placement:not([hidden]){display:flex;gap:8px;align-items:center}.custom-placement button{flex-shrink:0}.placing-poi{cursor:crosshair!important}
 #poiSync input[type=password]{font-size:16px}
+#hexControls[hidden]{display:none}
+#hexControls button,#hexControls select,#hexControls input{min-height:44px}
+#hexControls button{white-space:normal}
+.hex-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.hex-actions button{flex:1 1 120px}
+#hexControls :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#hexOverlay polygon,#hexOverlay polyline{vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.hex-cell{fill:none;stroke:#f5e4bd;stroke-width:1;stroke-opacity:.65}
+.hex-visited{fill:#358c86;fill-opacity:.25;stroke:#163f43;stroke-width:1.5}
+.hex-selected{fill:#f6d377;fill-opacity:.3;stroke:#fff0b5;stroke-width:3}
+.hex-trail{fill:none;stroke:#fff0b5;stroke-width:3;stroke-dasharray:6 4}
+.hex-party{fill:#fff0b5;stroke:#153f49;stroke-width:3}
+.hex-party-label{fill:#fff0b5;stroke:#153f49;stroke-width:3;paint-order:stroke;font:bold 13px Georgia,serif}
