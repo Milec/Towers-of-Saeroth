@@ -10,4 +10,8 @@ _Half-elves often appear primarily human, with subtly pointed ears and a taller 
 
 _Half-elves live longer than other humans, often reaching an age around 150 years. This causes some of them to fear friendship and romance with humans, knowing that they’ll likely outlive their companions._
 
+## People
+
+- [[Lua Solus]] — princess and priestess of the moon; royal house and homeland unassigned.
+
 *Full entry: `vault/Ancestries/Half-Elf.md` — Core Rulebook pg. 55*
