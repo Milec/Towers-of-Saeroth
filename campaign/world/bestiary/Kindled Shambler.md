@@ -2,6 +2,7 @@
 title: Kindled Shambler
 type: creature
 level: 0
+token-image: "Kindled%20Shambler%20token.png"
 portrait-prompt: "A recently raised muddy human zombie in ragged caravan travel clothes, leather straps holding glass alchemical fire flasks beneath its exposed ribs, a slow-burning fuse with a small ember glow, lurching with empty hands out of a roadside drainage ditch. Unsettling undead face, restrained non-graphic decay, no excessive gore. Show head through knees with the flask harness clearly visible."
 ---
 
