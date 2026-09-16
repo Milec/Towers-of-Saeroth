@@ -189,10 +189,10 @@ function assertSourceLocation(fields, notePath) {
   }
 }
 
-function portraitSource(source, notePath) {
+function portraitSource(source, notePath, explicitPath = null) {
   const markdownImage = source.match(/!\[[\s\S]*?\]\(([^)]+)\)/);
-  if (!markdownImage) return null;
-  const rawPath = markdownImage[1].trim();
+  if (!markdownImage && !explicitPath) return null;
+  const rawPath = explicitPath ?? markdownImage[1].trim();
   let imageName;
   try { imageName = decodeURIComponent(rawPath); }
   catch { throw new Error(`${notePath}: portrait URL has invalid percent encoding.`); }
@@ -409,6 +409,9 @@ function makeFallbackSpell(name, rank, entryId, heightenedLevel) {
 }
 
 function parseActor(source, path, spellSources, portrait) {
+  // Git may check Markdown out with CRLF on Windows; do not let the final
+  // carriage return drop the last skill or leak into generated descriptions.
+  source = source.replace(/\r\n/g, "\n");
   const frontmatter = parseFrontmatter(source, path);
   const fence = source.match(/```pf2e-stats\r?\n([\s\S]*?)```/i);
   if (!fence) throw new Error(`${path}: no pf2e-stats block.`);
@@ -482,7 +485,7 @@ function parseActor(source, path, spellSources, portrait) {
       attributes: {
         ac: { value: Number(defenseLine[1]), details: "" },
         allSaves: { value: "" },
-        hp: { value: Number(hpLine[1]), max: Number(hpLine[1]), temp: 0, details: "" },
+        hp: { value: Number(hpLine[1]), max: Number(hpLine[1]), temp: 0, details: "", ...(/\bvoid healing\b/i.test(hpLine[2]) ? { negativeHealing: true } : {}) },
         immunities: parseDefenses("Immunities"),
         resistances: parseDefenses("Resistances", true),
         weaknesses: parseDefenses("Weaknesses", true),
@@ -490,7 +493,7 @@ function parseActor(source, path, spellSources, portrait) {
       },
       details: { blurb: "", languages: { value: languages, details: "" }, level: { value: level }, privateNotes: "", publicNotes: html(block), publication: { license: "", remaster: true, title: "Towers of Saeroth" } },
       initiative: { statistic: "perception" },
-      perception: { details: perceptionDetails, mod: perception, senses: [] },
+      perception: { details: perceptionDetails, mod: perception, senses: /\bdarkvision\b/i.test(perceptionDetails) ? [{ type: "darkvision", acuity: "precise", range: null }] : [] },
       resources: {},
       saves: { fortitude: { value: Number(defenseLine[2]), saveDetail: "" }, reflex: { value: Number(defenseLine[3]), saveDetail: "" }, will: { value: Number(defenseLine[4]), saveDetail: "" } },
       skills,
@@ -529,7 +532,8 @@ function parseActor(source, path, spellSources, portrait) {
     // Some creature abilities have no encounter action cost (for example,
     // Wenzel's longer rituals). Import these as native passive abilities so
     // they appear on the PF2e NPC sheet instead of being stranded in notes.
-    const passive = line.match(/^\*\*([^*]+?)\*\*\s+\(([^)]+)\)\s+(.+)$/i);
+    const passive = line.match(/^\*\*([^*]+?)\*\*\s+\(([^)]+)\)\s+(.+)$/i)
+      ?? (line.startsWith("**Slow** ") ? [line, "Slow", "", line.slice("**Slow** ".length)] : null);
     if (!ability && passive) {
       const [, abilityName, traitText, text] = passive;
       const itemId = stableId(`${id}:passive:${abilityName}`);
@@ -652,12 +656,17 @@ for (const path of markdown) {
     await copyFile(sourcePortrait, join(actorAssetDir, portraitFilename));
     actorPortraits += 1;
   }
+  const sourceToken = frontmatter["token-image"]
+    ? portraitSource(source, path, frontmatter["token-image"].replace(/^['"]|['"]$/g, "")) : null;
+  const tokenFilename = sourceToken ? `${id}-token${extname(sourceToken).toLowerCase()}` : null;
+  if (sourceToken) await copyFile(sourceToken, join(actorAssetDir, tokenFilename));
   actors.push(parseActor(source, path, spellSources, portrait));
+  if (tokenFilename) actors.at(-1).prototypeToken.texture.src = `modules/${moduleId}/assets/actors/${tokenFilename}`;
   const syncActor = structuredClone(actors.at(-1));
   const remotePortrait = sourcePortrait ? githubRawUrl(sourcePortrait) : null;
   if (remotePortrait) {
     syncActor.img = remotePortrait;
-    syncActor.prototypeToken.texture.src = remotePortrait;
+    syncActor.prototypeToken.texture.src = sourceToken ? githubRawUrl(sourceToken) : remotePortrait;
   }
   syncActor.flags.saeroth.syncKey = relative(repositoryDir, path).replaceAll("\\", "/");
   syncedActors.push(syncActor);

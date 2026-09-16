@@ -132,8 +132,8 @@ Two kinds of zombie, and the difference is the encounter:
 
 | | What | Each | Role |
 | --- | --- | --- | --- |
-| **Kindled shambler** | Zombie Shambler carrying a case of lesser alchemist's fire | 30 XP (counted as level 0 for the death burst) | Walks at the wagons. Ignores anyone who lets it |
-| **Shambler** | plain `Bestiary/Zombie Shambler (Monster Core)` | 20 XP | Screens the kindled ones. Fights whoever is nearest |
+| [[Kindled Shambler]] | Zombie Shambler carrying a case of lesser alchemist's fire | 30 XP (counted as level 0 for the death burst) | Walks at the wagons. Ignores anyone who lets it |
+| [[Zombie Shambler]] | Ordinary zombie, using the Monster Core statistics | 20 XP | Screens the kindled ones. Fights whoever is nearest |
 
 | Threat | Shape | XP |
 | --- | --- | --- |
@@ -143,8 +143,9 @@ Two kinds of zombie, and the difference is the encounter:
 **Zombie Shambler** — AC 12, HP 20, Fort +6 Ref +0 Will +2, Perc +0, Speed 25,
 weak to slashing 5 and vitality 5, immune to mental and to bleed, poison and
 disease. **Slowed 1** permanently, which is the whole tactical shape of this:
-one action a turn, so they will never catch a running character and will
-always reach a stationary wagon.
+two actions a turn, limiting how they combine movement, Strikes, and Grab.
+They can still Stride twice for 50 feet; a stationary wagon gives them time
+to close the distance.
 
 **Kindled shambler** — as above, plus:
 

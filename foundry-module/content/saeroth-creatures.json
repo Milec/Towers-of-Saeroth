@@ -78,7 +78,7 @@
             "value": 6
           },
           "privateNotes": "",
-          "publicNotes": "<p># Ashwin Devaraj (The Drink)\r<br />## Creature 6\r<br />\r<br />---\r<br />\r<br />==Unique== ==Medium== ==Human== ==Humanoid==\r<br />\r<br /><strong>Perception</strong> +14\r<br />\r<br /><strong>Skills</strong> Arcana +18, Athletics +13, Society +13\r<br />\r<br /><strong>Str</strong> +3, <strong>Dex</strong> +2, <strong>Con</strong> +3, <strong>Int</strong> +4, <strong>Wis</strong> +1, <strong>Cha</strong> +2\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 24; <strong>Fort</strong> +16, <strong>Ref</strong> +14, <strong>Will</strong> +11\r<br />\r<br /><strong>HP</strong> 96\r<br />\r<br /><strong>Reagent Draught</strong> `[one-action]` (concentrate, manipulate) Ashwin uncorks\r<br />and drains a vial of raw elemental reagent. Until the end of his next turn,\r<br />his Spellstrike and Detonation deal an additional 2d6 fire damage — and he\r<br />takes 1d6 fire damage himself, the cost of carrying that much raw magic\r<br />through his own blood. Frequency once per encounter.\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 25 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` rune-etched longsword +17 (versatile P, magical),\r<br /><strong>Damage</strong> 2d8+9 slashing\r<br />\r<br /><strong>Spellstrike</strong> `[two-actions]` (arcane, concentrate, manipulate) Ashwin\r<br />channels a bolt of raw force through his blade and makes a melee Strike.\r<br />The Strike gains the arcane trait; on a hit, add 2d6 force damage. Until he\r<br />spends a single action (concentrate) to recharge it, he cannot use\r<br />Spellstrike again.\r<br />\r<br /><strong>Detonation</strong> `[two-actions]` (concentrate, fire, manipulate) A 20-foot\r<br />burst of fire centered on a point within 500 feet, dealing 6d6 fire damage\r<br />(<strong>basic Reflex</strong> DC 23). Frequency once per encounter.</p>",
+          "publicNotes": "<p># Ashwin Devaraj (The Drink)<br />## Creature 6<br /><br />---<br /><br />==Unique== ==Medium== ==Human== ==Humanoid==<br /><br /><strong>Perception</strong> +14<br /><br /><strong>Skills</strong> Arcana +18, Athletics +13, Society +13<br /><br /><strong>Str</strong> +3, <strong>Dex</strong> +2, <strong>Con</strong> +3, <strong>Int</strong> +4, <strong>Wis</strong> +1, <strong>Cha</strong> +2<br /><br />---<br /><br /><strong>AC</strong> 24; <strong>Fort</strong> +16, <strong>Ref</strong> +14, <strong>Will</strong> +11<br /><br /><strong>HP</strong> 96<br /><br /><strong>Reagent Draught</strong> `[one-action]` (concentrate, manipulate) Ashwin uncorks<br />and drains a vial of raw elemental reagent. Until the end of his next turn,<br />his Spellstrike and Detonation deal an additional 2d6 fire damage — and he<br />takes 1d6 fire damage himself, the cost of carrying that much raw magic<br />through his own blood. Frequency once per encounter.<br /><br />---<br /><br /><strong>Speed</strong> 25 feet<br /><br /><strong>Melee</strong> `[one-action]` rune-etched longsword +17 (versatile P, magical),<br /><strong>Damage</strong> 2d8+9 slashing<br /><br /><strong>Spellstrike</strong> `[two-actions]` (arcane, concentrate, manipulate) Ashwin<br />channels a bolt of raw force through his blade and makes a melee Strike.<br />The Strike gains the arcane trait; on a hit, add 2d6 force damage. Until he<br />spends a single action (concentrate) to recharge it, he cannot use<br />Spellstrike again.<br /><br /><strong>Detonation</strong> `[two-actions]` (concentrate, fire, manipulate) A 20-foot<br />burst of fire centered on a point within 500 feet, dealing 6d6 fire damage<br />(<strong>basic Reflex</strong> DC 23). Frequency once per encounter.</p>",
           "publication": {
             "license": "",
             "remaster": true,
@@ -113,6 +113,9 @@
             "base": 18
           },
           "athletics": {
+            "base": 13
+          },
+          "society": {
             "base": 13
           }
         },
@@ -343,7 +346,7 @@
             "value": 6
           },
           "privateNotes": "",
-          "publicNotes": "<p># Garrick Thorne\r<br />## Creature 6\r<br />\r<br />---\r<br />\r<br />==Medium== ==Human== ==Humanoid==\r<br />\r<br /><strong>Perception</strong> +14\r<br />\r<br /><strong>Skills</strong> Athletics +16, Intimidation +14, Warfare Lore +13\r<br />\r<br /><strong>Str</strong> +5, <strong>Dex</strong> +3, <strong>Con</strong> +3, <strong>Int</strong> +0, <strong>Wis</strong> +1, <strong>Cha</strong> +1\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 24; <strong>Fort</strong> +16, <strong>Ref</strong> +14, <strong>Will</strong> +11\r<br />\r<br /><strong>HP</strong> 95\r<br />\r<br /><strong>Reactive Strike</strong> `[reaction]`\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 25 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` greatsword +17 (sweep, versatile P), <strong>Damage</strong> 2d6+8 slashing\r<br />\r<br /><strong>Melee</strong> `[one-action]` fist +15 (agile, finesse, nonlethal), <strong>Damage</strong> 1d4+8 bludgeoning\r<br />\r<br /><strong>Blade Storm</strong> `[two-actions]` Garrick makes one melee Strike against each of up to two adjacent creatures, using the same attack roll against both.\r<br />\r<br /><strong>Unstoppable Advance</strong> `[one-action]` (move) Garrick Strides up to his Speed, ignoring difficult terrain, then Strikes.</p>",
+          "publicNotes": "<p># Garrick Thorne<br />## Creature 6<br /><br />---<br /><br />==Medium== ==Human== ==Humanoid==<br /><br /><strong>Perception</strong> +14<br /><br /><strong>Skills</strong> Athletics +16, Intimidation +14, Warfare Lore +13<br /><br /><strong>Str</strong> +5, <strong>Dex</strong> +3, <strong>Con</strong> +3, <strong>Int</strong> +0, <strong>Wis</strong> +1, <strong>Cha</strong> +1<br /><br />---<br /><br /><strong>AC</strong> 24; <strong>Fort</strong> +16, <strong>Ref</strong> +14, <strong>Will</strong> +11<br /><br /><strong>HP</strong> 95<br /><br /><strong>Reactive Strike</strong> `[reaction]`<br /><br />---<br /><br /><strong>Speed</strong> 25 feet<br /><br /><strong>Melee</strong> `[one-action]` greatsword +17 (sweep, versatile P), <strong>Damage</strong> 2d6+8 slashing<br /><br /><strong>Melee</strong> `[one-action]` fist +15 (agile, finesse, nonlethal), <strong>Damage</strong> 1d4+8 bludgeoning<br /><br /><strong>Blade Storm</strong> `[two-actions]` Garrick makes one melee Strike against each of up to two adjacent creatures, using the same attack roll against both.<br /><br /><strong>Unstoppable Advance</strong> `[one-action]` (move) Garrick Strides up to his Speed, ignoring difficult terrain, then Strikes.</p>",
           "publication": {
             "license": "",
             "remaster": true,
@@ -379,6 +382,9 @@
           },
           "intimidation": {
             "base": 14
+          },
+          "warfare-lore": {
+            "base": 13
           }
         },
         "traits": {
@@ -639,7 +645,7 @@
             "value": 3
           },
           "privateNotes": "",
-          "publicNotes": "<p># John Guard\r<br />## Creature 3\r<br />\r<br />---\r<br />\r<br />==Medium== ==Human== ==Humanoid==\r<br />\r<br /><strong>Perception</strong> +9\r<br />\r<br /><strong>Languages</strong> Common\r<br />\r<br /><strong>Skills</strong> Athletics +11, Intimidation +8, Survival +9, Caravan Lore +9\r<br />\r<br /><strong>Str</strong> +3, <strong>Dex</strong> +1, <strong>Con</strong> +3, <strong>Int</strong> +0, <strong>Wis</strong> +2, <strong>Cha</strong> +0\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 19; <strong>Fort</strong> +12, <strong>Ref</strong> +8, <strong>Will</strong> +9; AC 21 while shield is raised\r<br />\r<br /><strong>HP</strong> 45\r<br />\r<br /><strong>Shield Block</strong> `[reaction]` <strong>Trigger</strong> John has his shield raised and would\r<br />take damage from a physical attack; <strong>Effect</strong> John uses his shield to block\r<br />the attack, reducing the damage by 5 before applying the rest to himself.\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 25 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` mace +12 (shove), <strong>Damage</strong> 1d6+6 bludgeoning\r<br />\r<br /><strong>Melee</strong> `[one-action]` shield bash +12 (agile), <strong>Damage</strong> 1d4+6 bludgeoning\r<br />\r<br /><strong>Raise Shield</strong> `[one-action]` John raises his shield, gaining a +2\r<br />circumstance bonus to AC until the start of his next turn.\r<br />\r<br /><strong>Hold the Line</strong> `[one-action]` (manipulate) <strong>Requirements</strong> John is adjacent\r<br />to a wagon, pack animal, or ally; <strong>Effect</strong> John Raises his Shield. Until the\r<br />start of his next turn, the chosen adjacent creature gains a +1 circumstance\r<br />bonus to AC while it remains adjacent to John.</p>",
+          "publicNotes": "<p># John Guard<br />## Creature 3<br /><br />---<br /><br />==Medium== ==Human== ==Humanoid==<br /><br /><strong>Perception</strong> +9<br /><br /><strong>Languages</strong> Common<br /><br /><strong>Skills</strong> Athletics +11, Intimidation +8, Survival +9, Caravan Lore +9<br /><br /><strong>Str</strong> +3, <strong>Dex</strong> +1, <strong>Con</strong> +3, <strong>Int</strong> +0, <strong>Wis</strong> +2, <strong>Cha</strong> +0<br /><br />---<br /><br /><strong>AC</strong> 19; <strong>Fort</strong> +12, <strong>Ref</strong> +8, <strong>Will</strong> +9; AC 21 while shield is raised<br /><br /><strong>HP</strong> 45<br /><br /><strong>Shield Block</strong> `[reaction]` <strong>Trigger</strong> John has his shield raised and would<br />take damage from a physical attack; <strong>Effect</strong> John uses his shield to block<br />the attack, reducing the damage by 5 before applying the rest to himself.<br /><br />---<br /><br /><strong>Speed</strong> 25 feet<br /><br /><strong>Melee</strong> `[one-action]` mace +12 (shove), <strong>Damage</strong> 1d6+6 bludgeoning<br /><br /><strong>Melee</strong> `[one-action]` shield bash +12 (agile), <strong>Damage</strong> 1d4+6 bludgeoning<br /><br /><strong>Raise Shield</strong> `[one-action]` John raises his shield, gaining a +2<br />circumstance bonus to AC until the start of his next turn.<br /><br /><strong>Hold the Line</strong> `[one-action]` (manipulate) <strong>Requirements</strong> John is adjacent<br />to a wagon, pack animal, or ally; <strong>Effect</strong> John Raises his Shield. Until the<br />start of his next turn, the chosen adjacent creature gains a +1 circumstance<br />bonus to AC while it remains adjacent to John.</p>",
           "publication": {
             "license": "",
             "remaster": true,
@@ -677,6 +683,9 @@
             "base": 8
           },
           "survival": {
+            "base": 9
+          },
+          "caravan-lore": {
             "base": 9
           }
         },
@@ -3324,7 +3333,7 @@
             "value": 3
           },
           "privateNotes": "",
-          "publicNotes": "<p># Wenzel Grauth\r<br />## Creature 3\r<br />\r<br />---\r<br />\r<br />==Unique== ==Medium== ==Human== ==Humanoid==\r<br />\r<br /><strong>Perception</strong> +7\r<br />\r<br /><strong>Languages</strong> Common\r<br />\r<br /><strong>Skills</strong> Arcana +9, Medicine +5, Occultism +9, Society +7, Stealth +7\r<br />\r<br /><strong>Str</strong> +0, <strong>Dex</strong> +2, <strong>Con</strong> +1, <strong>Int</strong> +4, <strong>Wis</strong> +1, <strong>Cha</strong> +1\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 17; <strong>Fort</strong> +8, <strong>Ref</strong> +9, <strong>Will</strong> +10\r<br />\r<br /><strong>HP</strong> 30\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 25 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` staff +7 (two-hand d8), <strong>Damage</strong> 1d4 bludgeoning\r<br />\r<br /><strong>Arcane Prepared Spells</strong> DC 20, attack +10; <strong>2nd</strong> false vitality,\r<br />mirror image, spectral hand; <strong>1st</strong> grim tendrils, mystic armor, summon undead;\r<br /><strong>Cantrips (2nd)</strong> electric arc, message, shield, telekinetic projectile\r<br />\r<br /><strong>Grave-Cut Raising</strong> (concentrate, manipulate) Grauth spends a minute over a\r<br />body in wet ground and it gets up. He can hold at most six at once, and the\r<br />sixth is always worse than the first — this is why the wave that arrives late\r<br />is the one that has mud in its mouth and no boots.\r<br />\r<br /><strong>Kindling</strong> (manipulate) Grauth straps a case of alchemist's fire under a\r<br />raising's ribs and runs a slow cord to the sternum. It takes him an hour a\r<br />corpse and he hates doing it. The raising is destroyed by its own delivery,\r<br />which is the part he cannot stop turning over: he was raised to think of a\r<br />body as a thing you keep.</p>",
+          "publicNotes": "<p># Wenzel Grauth<br />## Creature 3<br /><br />---<br /><br />==Unique== ==Medium== ==Human== ==Humanoid==<br /><br /><strong>Perception</strong> +7<br /><br /><strong>Languages</strong> Common<br /><br /><strong>Skills</strong> Arcana +9, Medicine +5, Occultism +9, Society +7, Stealth +7<br /><br /><strong>Str</strong> +0, <strong>Dex</strong> +2, <strong>Con</strong> +1, <strong>Int</strong> +4, <strong>Wis</strong> +1, <strong>Cha</strong> +1<br /><br />---<br /><br /><strong>AC</strong> 17; <strong>Fort</strong> +8, <strong>Ref</strong> +9, <strong>Will</strong> +10<br /><br /><strong>HP</strong> 30<br /><br />---<br /><br /><strong>Speed</strong> 25 feet<br /><br /><strong>Melee</strong> `[one-action]` staff +7 (two-hand d8), <strong>Damage</strong> 1d4 bludgeoning<br /><br /><strong>Arcane Prepared Spells</strong> DC 20, attack +10; <strong>2nd</strong> false vitality,<br />mirror image, spectral hand; <strong>1st</strong> grim tendrils, mystic armor, summon undead;<br /><strong>Cantrips (2nd)</strong> electric arc, message, shield, telekinetic projectile<br /><br /><strong>Grave-Cut Raising</strong> (concentrate, manipulate) Grauth spends a minute over a<br />body in wet ground and it gets up. He can hold at most six at once, and the<br />sixth is always worse than the first — this is why the wave that arrives late<br />is the one that has mud in its mouth and no boots.<br /><br /><strong>Kindling</strong> (manipulate) Grauth straps a case of alchemist's fire under a<br />raising's ribs and runs a slow cord to the sternum. It takes him an hour a<br />corpse and he hates doing it. The raising is destroyed by its own delivery,<br />which is the part he cannot stop turning over: he was raised to think of a<br />body as a thing you keep.</p>",
           "publication": {
             "license": "",
             "remaster": true,
@@ -3365,6 +3374,9 @@
             "base": 9
           },
           "society": {
+            "base": 7
+          },
+          "stealth": {
             "base": 7
           }
         },
@@ -4347,6 +4359,373 @@
       ]
     },
     {
+      "_id": "a76rJnFG5gVYoIdL",
+      "name": "Kindled Shambler",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Kindled%20Shambler%20portrait.png",
+      "prototypeToken": {
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Kindled%20Shambler%20token.png"
+        }
+      },
+      "items": [
+        "sZr1lYZ9sNJnF8oN",
+        "u5QSJUnQp-SU_fe1",
+        "UPkjiwkkFrNMN3cm",
+        "abbmEpa4Eba_iNQ6",
+        "Eg14sbD_Q_V6nt8N",
+        "FkEorGNOx3rkAx6M"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/world/bestiary/Kindled Shambler.md",
+          "syncKey": "campaign/world/bestiary/Kindled Shambler.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 3
+          },
+          "dex": {
+            "mod": -2
+          },
+          "con": {
+            "mod": 2
+          },
+          "int": {
+            "mod": -5
+          },
+          "wis": {
+            "mod": 0
+          },
+          "cha": {
+            "mod": -2
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 12,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 20,
+            "max": 20,
+            "temp": 0,
+            "details": "",
+            "negativeHealing": true
+          },
+          "immunities": [
+            {
+              "type": "bleed",
+              "exceptions": []
+            },
+            {
+              "type": "death-effects",
+              "exceptions": []
+            },
+            {
+              "type": "disease",
+              "exceptions": []
+            },
+            {
+              "type": "mental",
+              "exceptions": []
+            },
+            {
+              "type": "paralyzed",
+              "exceptions": []
+            },
+            {
+              "type": "poison",
+              "exceptions": []
+            },
+            {
+              "type": "unconscious",
+              "exceptions": []
+            }
+          ],
+          "resistances": [],
+          "weaknesses": [
+            {
+              "type": "slashing",
+              "value": 5,
+              "exceptions": []
+            },
+            {
+              "type": "vitality",
+              "value": 5,
+              "exceptions": []
+            }
+          ],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [],
+            "details": ""
+          },
+          "level": {
+            "value": 0
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Kindled Shambler<br />## Creature 0<br /><br />---<br /><br />==Medium== ==Mindless== ==Undead== ==Unholy== ==Zombie==<br /><br /><strong>Perception</strong> +0; darkvision<br /><br /><strong>Skills</strong> Athletics +7<br /><br /><strong>Str</strong> +3, <strong>Dex</strong> -2, <strong>Con</strong> +2, <strong>Int</strong> -5, <strong>Wis</strong> +0, <strong>Cha</strong> -2<br /><br /><strong>Slow</strong> The shambler is permanently slowed 1 and can't use reactions. It normally has two actions each turn.<br /><br />---<br /><br /><strong>AC</strong> 12; <strong>Fort</strong> +6, <strong>Ref</strong> +0, <strong>Will</strong> +2<br /><br /><strong>HP</strong> 20; void healing; <strong>Immunities</strong> bleed, death effects, disease, mental, paralyzed, poison, unconscious; <strong>Weaknesses</strong> slashing 5, vitality 5<br /><br /><strong>Death Throes</strong> (fire) <strong>Trigger</strong> The shambler is destroyed; <strong>Effect</strong> The fire-case explodes in a 5-foot burst, dealing 1d8 fire damage with a <strong>basic Reflex</strong> DC 15 save. A creature that fails or critically fails also takes @Damage[1[persistent,fire]]{1 persistent fire damage}. Flammable objects in the burst, including wagon timber, tarpaulins, and dry stores, catch fire. This happens automatically, not as a reaction.<br /><br />---<br /><br /><strong>Speed</strong> 25 feet<br /><br /><strong>Melee</strong> `[one-action]` fist +7 (unarmed), <strong>Damage</strong> 1d6+3 bludgeoning plus Grab<br /><br /><strong>Melee</strong> `[one-action]` jaws (Zombie Bite only) +7 (unarmed), <strong>Damage</strong> 1d8+3 piercing<br /><br /><strong>Grab</strong> `[one-action]` <strong>Requirements</strong> The shambler's last action was a successful fist Strike, or it has a creature grabbed or restrained with its hands; <strong>Effect</strong> After the Strike, attempt to Grapple that target using Athletics +7 against its Fortitude DC. This attempt neither applies nor counts toward the multiple attack penalty. Alternatively, automatically extend a creature's existing grab or restraint with that hand until the end of the shambler's next turn.<br /><br /><strong>Zombie Bite</strong> `[one-action]` <strong>Requirements</strong> The target is grabbed or restrained; <strong>Effect</strong> Make the jaws Strike against the target: +7 to hit, 1d8+3 piercing damage. Use the jaws Strike buttons; this action is the Strike, not an extra action before it.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "darkvision",
+          "mod": 0,
+          "senses": [
+            {
+              "type": "darkvision",
+              "acuity": "precise",
+              "range": null
+            }
+          ]
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 6,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 0,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 2,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "athletics": {
+            "base": 7
+          }
+        },
+        "traits": {
+          "rarity": "common",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "mindless",
+            "undead",
+            "unholy",
+            "zombie"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "sZr1lYZ9sNJnF8oN",
+          "name": "Slow",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/Passive.webp",
+          "system": {
+            "actionType": {
+              "value": "passive"
+            },
+            "actions": {
+              "value": null
+            },
+            "category": "interaction",
+            "description": {
+              "value": "<p>The shambler is permanently @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{slowed 1} and can't use reactions. It normally has two actions each turn.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "u5QSJUnQp-SU_fe1",
+          "name": "Death Throes",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/Passive.webp",
+          "system": {
+            "actionType": {
+              "value": "passive"
+            },
+            "actions": {
+              "value": null
+            },
+            "category": "interaction",
+            "description": {
+              "value": "<p><strong>Trigger</strong> The shambler is destroyed</p><hr /><p><strong>Effect</strong> The fire-case explodes in a @Template[type:burst|distance:5]{5-foot burst}, dealing @Damage[1d8[fire]]{1d8 fire damage} with a @Check[reflex|dc:15|basic]{Basic Reflex DC 15} save. A creature that fails or critically fails also takes @Damage[1[persistent,fire]]{1 persistent fire damage}. Flammable objects in the burst, including wagon timber, tarpaulins, and dry stores, catch fire. This happens automatically, not as a reaction.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "fire"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "UPkjiwkkFrNMN3cm",
+          "name": "fist",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 7
+            },
+            "damageRolls": {
+              "gBjQuxs29YiNzjs3": {
+                "damage": "1d6+3",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "unarmed"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "abbmEpa4Eba_iNQ6",
+          "name": "jaws (Zombie Bite only)",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 7
+            },
+            "damageRolls": {
+              "RRo44VZEvBpM-mT4": {
+                "damage": "1d8+3",
+                "damageType": "piercing"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "unarmed"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "Eg14sbD_Q_V6nt8N",
+          "name": "Grab",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Requirements</strong> The shambler's last action was a successful fist Strike, or it has a creature @UUID[Compendium.pf2e.conditionitems.Item.kWc1fhmv9LBiTuei]{grabbed} or @UUID[Compendium.pf2e.conditionitems.Item.VcDeM8A5oI6VqhbM]{restrained} with its hands</p><hr /><p><strong>Effect</strong> After the Strike, attempt to Grapple that target using Athletics +7 against its Fortitude DC. This attempt neither applies nor counts toward the multiple attack penalty. Alternatively, automatically extend a creature's existing grab or restraint with that hand until the end of the shambler's next turn.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "FkEorGNOx3rkAx6M",
+          "name": "Zombie Bite",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Requirements</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.kWc1fhmv9LBiTuei]{grabbed} or @UUID[Compendium.pf2e.conditionitems.Item.VcDeM8A5oI6VqhbM]{restrained}</p><hr /><p><strong>Effect</strong> Make the jaws Strike against the target: +7 to hit, @Damage[1d8+3[piercing]]{1d8+3 piercing damage}. Use the jaws Strike buttons; this action is the Strike, not an extra action before it.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        }
+      ]
+    },
+    {
       "_id": "DcJkY7S_R4VYspbv",
       "name": "Old Man Conrad",
       "type": "npc",
@@ -4402,7 +4781,8 @@
             "value": 36,
             "max": 36,
             "temp": 0,
-            "details": ""
+            "details": "",
+            "negativeHealing": true
           },
           "immunities": [
             {
@@ -4465,7 +4845,7 @@
             "value": 4
           },
           "privateNotes": "",
-          "publicNotes": "<p># Old Man Conrad\r<br />## Creature 4\r<br />\r<br />---\r<br />\r<br />==Unique== ==Medium== ==Ghost== ==Incorporeal== ==Spirit== ==Undead== ==Unholy==\r<br />\r<br /><strong>Perception</strong> +10; darkvision\r<br />\r<br /><strong>Languages</strong> Common\r<br />\r<br /><strong>Skills</strong> Deception +12, Intimidation +10, Society +8, Stealth +12\r<br />\r<br /><strong>Str</strong> -5, <strong>Dex</strong> +3, <strong>Con</strong> +0, <strong>Int</strong> +0, <strong>Wis</strong> +2, <strong>Cha</strong> +3\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 20; <strong>Fort</strong> +8, <strong>Ref</strong> +11, <strong>Will</strong> +10\r<br />\r<br /><strong>HP</strong> 36 (rejuvenation, void healing); <strong>Immunities</strong> bleed, death effects,\r<br />disease, paralyzed, poison, precision, unconscious; <strong>Resistances</strong> all damage\r<br />5 (except force, ghost touch, spirit, or vitality; double resistance against\r<br />non-magical damage)\r<br />\r<br /><strong>Rejuvenation</strong> (divine) Conrad can move on only after a child he possessed\r<br />is safely heard and believed by the adults charged with their care.\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> fly 25 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` ghostly hand +13 (agile, finesse, magical),\r<br /><strong>Damage</strong> 2d6+2 void\r<br />\r<br /><strong>Frightful Rebuke</strong> `[one-action]` (auditory, divine, emotion, fear, mental)\r<br />DC 21 A living creature within 30 feet hears Conrad's patient voice naming a\r<br />fear it tries to hide and must attempt a Will save.\r<br />\t<strong>Critical Failure</strong> The creature is frightened 3.\r<br />\t<strong>Failure</strong> The creature is frightened 2.\r<br />\t<strong>Success</strong> The creature is temporarily immune for 1 minute.\r<br />\r<br /><strong>Borrowed Plaything</strong> `[two-actions]` (divine, mental, possession) <strong>Frequency</strong>\r<br />once per round; <strong>Requirements</strong> Conrad is adjacent to a living humanoid;\r<br /><strong>Effect</strong> The target must attempt a DC 21 Will save. Conrad enters the\r<br />target's space on a failure and possesses it for 1 minute. While possessing a\r<br />creature, Conrad is hidden inside it, can't use his own actions, and controls\r<br />the creature's movement and actions. At the end of each of the possessed\r<br />creature's turns, it can attempt a DC 21 Will save to force Conrad out. Conrad\r<br />prefers children, but will take an adult only when he needs a door opened or a\r<br />voice believed.\r<br />\t<strong>Critical Success</strong> The target is temporarily immune for 24 hours.\r<br />\t<strong>Success</strong> The target is temporarily immune for 1 minute.\r<br />\t<strong>Critical Failure</strong> Conrad possesses the target for 10 minutes instead.</p>",
+          "publicNotes": "<p># Old Man Conrad<br />## Creature 4<br /><br />---<br /><br />==Unique== ==Medium== ==Ghost== ==Incorporeal== ==Spirit== ==Undead== ==Unholy==<br /><br /><strong>Perception</strong> +10; darkvision<br /><br /><strong>Languages</strong> Common<br /><br /><strong>Skills</strong> Deception +12, Intimidation +10, Society +8, Stealth +12<br /><br /><strong>Str</strong> -5, <strong>Dex</strong> +3, <strong>Con</strong> +0, <strong>Int</strong> +0, <strong>Wis</strong> +2, <strong>Cha</strong> +3<br /><br />---<br /><br /><strong>AC</strong> 20; <strong>Fort</strong> +8, <strong>Ref</strong> +11, <strong>Will</strong> +10<br /><br /><strong>HP</strong> 36 (rejuvenation, void healing); <strong>Immunities</strong> bleed, death effects,<br />disease, paralyzed, poison, precision, unconscious; <strong>Resistances</strong> all damage<br />5 (except force, ghost touch, spirit, or vitality; double resistance against<br />non-magical damage)<br /><br /><strong>Rejuvenation</strong> (divine) Conrad can move on only after a child he possessed<br />is safely heard and believed by the adults charged with their care.<br /><br />---<br /><br /><strong>Speed</strong> fly 25 feet<br /><br /><strong>Melee</strong> `[one-action]` ghostly hand +13 (agile, finesse, magical),<br /><strong>Damage</strong> 2d6+2 void<br /><br /><strong>Frightful Rebuke</strong> `[one-action]` (auditory, divine, emotion, fear, mental)<br />DC 21 A living creature within 30 feet hears Conrad's patient voice naming a<br />fear it tries to hide and must attempt a Will save.<br />\t<strong>Critical Failure</strong> The creature is frightened 3.<br />\t<strong>Failure</strong> The creature is frightened 2.<br />\t<strong>Success</strong> The creature is temporarily immune for 1 minute.<br /><br /><strong>Borrowed Plaything</strong> `[two-actions]` (divine, mental, possession) <strong>Frequency</strong><br />once per round; <strong>Requirements</strong> Conrad is adjacent to a living humanoid;<br /><strong>Effect</strong> The target must attempt a DC 21 Will save. Conrad enters the<br />target's space on a failure and possesses it for 1 minute. While possessing a<br />creature, Conrad is hidden inside it, can't use his own actions, and controls<br />the creature's movement and actions. At the end of each of the possessed<br />creature's turns, it can attempt a DC 21 Will save to force Conrad out. Conrad<br />prefers children, but will take an adult only when he needs a door opened or a<br />voice believed.<br />\t<strong>Critical Success</strong> The target is temporarily immune for 24 hours.<br />\t<strong>Success</strong> The target is temporarily immune for 1 minute.<br />\t<strong>Critical Failure</strong> Conrad possesses the target for 10 minutes instead.</p>",
           "publication": {
             "license": "",
             "remaster": true,
@@ -4476,9 +4856,15 @@
           "statistic": "perception"
         },
         "perception": {
-          "details": "darkvision\r",
+          "details": "darkvision",
           "mod": 10,
-          "senses": []
+          "senses": [
+            {
+              "type": "darkvision",
+              "acuity": "precise",
+              "range": null
+            }
+          ]
         },
         "resources": {},
         "saves": {
@@ -4504,6 +4890,9 @@
           },
           "society": {
             "base": 8
+          },
+          "stealth": {
+            "base": 12
           }
         },
         "traits": {
@@ -4776,7 +5165,7 @@
             "value": 3
           },
           "privateNotes": "",
-          "publicNotes": "<p># Skinwright\r<br />## Creature 3\r<br />\r<br />---\r<br />\r<br />==Medium== ==Construct==\r<br />\r<br /><strong>Perception</strong> +12; darkvision, scent (imprecise) 30 feet\r<br />\r<br /><strong>Skills</strong> Athletics +11, Deception +9, Stealth +11, Survival +7\r<br />\r<br /><strong>Str</strong> +5, <strong>Dex</strong> +3, <strong>Con</strong> +3, <strong>Int</strong> -4, <strong>Wis</strong> +1, <strong>Cha</strong> -1\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 19; <strong>Fort</strong> +12, <strong>Ref</strong> +12, <strong>Will</strong> +6\r<br />\r<br /><strong>HP</strong> 34; <strong>Immunities</strong> disease, paralyzed, poison, sleep; <strong>Resistances</strong> piercing 5, slashing 5; <strong>Weaknesses</strong> bludgeoning 5\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 25 feet, climb 20 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` claw +12 (agile), <strong>Damage</strong> 1d8+6 slashing\r<br />\r<br /><strong>Flaying Grasp</strong> `[two-actions]` <strong>Requirements</strong> The skinwright's claws are free; <strong>Effect</strong> The skinwright attempts two claw Strikes against one target. If both hit and deal damage, it attempts an Athletics check against the target's Fortitude DC.\r<br />\t<strong>Critical Success</strong> The target takes 2d6 persistent bleed damage and is frightened 2. The skinwright claims their skin, which it can later use with Wear Skin.\r<br />\t<strong>Success</strong> The target takes 1d6 persistent bleed damage.\r<br />\r<br /><strong>Wear Skin</strong> `[one-action]` (manipulate) <strong>Requirements</strong> The skinwright is holding a claimed skin and isn't already wearing one; <strong>Effect</strong> The skinwright dons the skin, appearing as a living member of that skin's ancestry. This automatically defeats a Perception check to determine its true creature type, and it gains a +2 status bonus to its Deception DC against attempts to see through the disguise. Wearing a skin grants 10 temporary Hit Points. When those run out, the skin is ruined and falls away at no action cost, with the same effect as Cast Off the Skin.\r<br />\r<br /><strong>Cast Off the Skin</strong> `[one-action]` (emotion, fear, mental, visual) <strong>Requirements</strong> The skinwright is wearing a skin; <strong>Effect</strong> The skinwright destroys the worn skin and reverts to its true form. Each creature within 30 feet currently observing it must succeed at a DC 19 Will save or become frightened 1 (frightened 2 on a critical failure). A creature already frightened by this ability today is temporarily immune.</p>",
+          "publicNotes": "<p># Skinwright<br />## Creature 3<br /><br />---<br /><br />==Medium== ==Construct==<br /><br /><strong>Perception</strong> +12; darkvision, scent (imprecise) 30 feet<br /><br /><strong>Skills</strong> Athletics +11, Deception +9, Stealth +11, Survival +7<br /><br /><strong>Str</strong> +5, <strong>Dex</strong> +3, <strong>Con</strong> +3, <strong>Int</strong> -4, <strong>Wis</strong> +1, <strong>Cha</strong> -1<br /><br />---<br /><br /><strong>AC</strong> 19; <strong>Fort</strong> +12, <strong>Ref</strong> +12, <strong>Will</strong> +6<br /><br /><strong>HP</strong> 34; <strong>Immunities</strong> disease, paralyzed, poison, sleep; <strong>Resistances</strong> piercing 5, slashing 5; <strong>Weaknesses</strong> bludgeoning 5<br /><br />---<br /><br /><strong>Speed</strong> 25 feet, climb 20 feet<br /><br /><strong>Melee</strong> `[one-action]` claw +12 (agile), <strong>Damage</strong> 1d8+6 slashing<br /><br /><strong>Flaying Grasp</strong> `[two-actions]` <strong>Requirements</strong> The skinwright's claws are free; <strong>Effect</strong> The skinwright attempts two claw Strikes against one target. If both hit and deal damage, it attempts an Athletics check against the target's Fortitude DC.<br />\t<strong>Critical Success</strong> The target takes 2d6 persistent bleed damage and is frightened 2. The skinwright claims their skin, which it can later use with Wear Skin.<br />\t<strong>Success</strong> The target takes 1d6 persistent bleed damage.<br /><br /><strong>Wear Skin</strong> `[one-action]` (manipulate) <strong>Requirements</strong> The skinwright is holding a claimed skin and isn't already wearing one; <strong>Effect</strong> The skinwright dons the skin, appearing as a living member of that skin's ancestry. This automatically defeats a Perception check to determine its true creature type, and it gains a +2 status bonus to its Deception DC against attempts to see through the disguise. Wearing a skin grants 10 temporary Hit Points. When those run out, the skin is ruined and falls away at no action cost, with the same effect as Cast Off the Skin.<br /><br /><strong>Cast Off the Skin</strong> `[one-action]` (emotion, fear, mental, visual) <strong>Requirements</strong> The skinwright is wearing a skin; <strong>Effect</strong> The skinwright destroys the worn skin and reverts to its true form. Each creature within 30 feet currently observing it must succeed at a DC 19 Will save or become frightened 1 (frightened 2 on a critical failure). A creature already frightened by this ability today is temporarily immune.</p>",
           "publication": {
             "license": "",
             "remaster": true,
@@ -4787,9 +5176,15 @@
           "statistic": "perception"
         },
         "perception": {
-          "details": "darkvision, scent (imprecise) 30 feet\r",
+          "details": "darkvision, scent (imprecise) 30 feet",
           "mod": 12,
-          "senses": []
+          "senses": [
+            {
+              "type": "darkvision",
+              "acuity": "precise",
+              "range": null
+            }
+          ]
         },
         "resources": {},
         "saves": {
@@ -4815,6 +5210,9 @@
           },
           "stealth": {
             "base": 11
+          },
+          "survival": {
+            "base": 7
           }
         },
         "traits": {
@@ -5058,7 +5456,7 @@
             "value": 1
           },
           "privateNotes": "",
-          "publicNotes": "<p># The Cream Man\r<br />## Creature 1\r<br />\r<br />---\r<br />\r<br />==Medium== ==Elemental== ==Water==\r<br />\r<br /><strong>Perception</strong> +7; darkvision\r<br />\r<br /><strong>Skills</strong> Athletics +9, Stealth +5\r<br />\r<br /><strong>Str</strong> +4, <strong>Dex</strong> +1, <strong>Con</strong> +3, <strong>Int</strong> -4, <strong>Wis</strong> +1, <strong>Cha</strong> +0\r<br />\r<br />---\r<br />\r<br /><strong>AC</strong> 15; <strong>Fort</strong> +10, <strong>Ref</strong> +5, <strong>Will</strong> +7\r<br />\r<br /><strong>HP</strong> 26; <strong>Immunities</strong> bleed, paralyzed, poison, sleep; <strong>Weaknesses</strong> fire 5\r<br />\r<br />---\r<br />\r<br /><strong>Speed</strong> 15 feet\r<br />\r<br /><strong>Melee</strong> `[one-action]` slam +9, <strong>Damage</strong> 1d6+5 bludgeoning\r<br />\r<br /><strong>Cream Fill</strong> `[two-actions]` <strong>Effect</strong> The Cream Man Strides up to double its Speed and can move through the spaces of any creatures in its path. Any creature its size or smaller whose space it moves through can attempt a DC 17 Reflex save. A creature unable to act automatically critically fails.\r<br />\t<strong>Success</strong> The creature is pushed aside, or to the end of the Cream Man's movement, its choice.\r<br />\t<strong>Failure</strong> The creature is engulfed. It's grabbed, slowed 1, and must hold its breath or start suffocating. It takes 1d6+3 bludgeoning damage now and at the end of each of its turns while engulfed, and can attempt to Escape (DC 17) to break free. An engulfed creature can only attack the Cream Man with unarmed attacks or weapons of light Bulk or less, and the Cream Man is off-guard to those attacks. A single hit dealing 8 or more piercing or slashing damage lets an engulfed creature cut itself free on the spot. A creature that gets free by any method is sickened 1, or sickened 2 if it spent two or more of its own turns inside him, as its stomach objects to the sudden weight of cream. The Cream Man can hold as many creatures as fit in its space.</p>",
+          "publicNotes": "<p># The Cream Man<br />## Creature 1<br /><br />---<br /><br />==Medium== ==Elemental== ==Water==<br /><br /><strong>Perception</strong> +7; darkvision<br /><br /><strong>Skills</strong> Athletics +9, Stealth +5<br /><br /><strong>Str</strong> +4, <strong>Dex</strong> +1, <strong>Con</strong> +3, <strong>Int</strong> -4, <strong>Wis</strong> +1, <strong>Cha</strong> +0<br /><br />---<br /><br /><strong>AC</strong> 15; <strong>Fort</strong> +10, <strong>Ref</strong> +5, <strong>Will</strong> +7<br /><br /><strong>HP</strong> 26; <strong>Immunities</strong> bleed, paralyzed, poison, sleep; <strong>Weaknesses</strong> fire 5<br /><br />---<br /><br /><strong>Speed</strong> 15 feet<br /><br /><strong>Melee</strong> `[one-action]` slam +9, <strong>Damage</strong> 1d6+5 bludgeoning<br /><br /><strong>Cream Fill</strong> `[two-actions]` <strong>Effect</strong> The Cream Man Strides up to double its Speed and can move through the spaces of any creatures in its path. Any creature its size or smaller whose space it moves through can attempt a DC 17 Reflex save. A creature unable to act automatically critically fails.<br />\t<strong>Success</strong> The creature is pushed aside, or to the end of the Cream Man's movement, its choice.<br />\t<strong>Failure</strong> The creature is engulfed. It's grabbed, slowed 1, and must hold its breath or start suffocating. It takes 1d6+3 bludgeoning damage now and at the end of each of its turns while engulfed, and can attempt to Escape (DC 17) to break free. An engulfed creature can only attack the Cream Man with unarmed attacks or weapons of light Bulk or less, and the Cream Man is off-guard to those attacks. A single hit dealing 8 or more piercing or slashing damage lets an engulfed creature cut itself free on the spot. A creature that gets free by any method is sickened 1, or sickened 2 if it spent two or more of its own turns inside him, as its stomach objects to the sudden weight of cream. The Cream Man can hold as many creatures as fit in its space.</p>",
           "publication": {
             "license": "",
             "remaster": true,
@@ -5069,9 +5467,15 @@
           "statistic": "perception"
         },
         "perception": {
-          "details": "darkvision\r",
+          "details": "darkvision",
           "mod": 7,
-          "senses": []
+          "senses": [
+            {
+              "type": "darkvision",
+              "acuity": "precise",
+              "range": null
+            }
+          ]
         },
         "resources": {},
         "saves": {
@@ -5091,6 +5495,9 @@
         "skills": {
           "athletics": {
             "base": 9
+          },
+          "stealth": {
+            "base": 5
           }
         },
         "traits": {
@@ -5154,6 +5561,341 @@
             "category": "offensive",
             "description": {
               "value": "<p><strong>Effect</strong> The Cream Man Strides up to double its Speed and can move through the spaces of any creatures in its path. Any creature its size or smaller whose space it moves through can attempt a @Check[reflex|dc:17]{Reflex DC 17} save. A creature unable to act automatically critically fails.</p><hr /><p><strong>Success</strong> The creature is pushed aside, or to the end of the Cream Man's movement, its choice.</p><hr /><p><strong>Failure</strong> The creature is engulfed. It's @UUID[Compendium.pf2e.conditionitems.Item.kWc1fhmv9LBiTuei]{grabbed}, @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{slowed 1}, and must hold its breath or start suffocating. It takes @Damage[1d6+3[bludgeoning]]{1d6+3 bludgeoning damage} now and at the end of each of its turns while engulfed, and can attempt [[/act escape dc=17]]{Escape (DC 17)} to break free. An engulfed creature can only attack the Cream Man with unarmed attacks or weapons of light Bulk or less, and the Cream Man is @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{off-guard} to those attacks. A single hit dealing 8 or more piercing or slashing damage lets an engulfed creature cut itself free on the spot. A creature that gets free by any method is @UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{sickened 1}, or @UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{sickened 2} if it spent two or more of its own turns inside him, as its stomach objects to the sudden weight of cream. The Cream Man can hold as many creatures as fit in its space.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "B8B0q-AnirQr2z2O",
+      "name": "Zombie Shambler",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Zombie%20Shambler%20portrait.png",
+      "prototypeToken": {
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Zombie%20Shambler%20token.png"
+        }
+      },
+      "items": [
+        "MTyUo-fwhS4V1jtP",
+        "WZAbVyOBfYHIwXzC",
+        "V66phZZK2nE6qodG",
+        "ORdGsmzoNBSBP7HI",
+        "BOMOD1x5TsZzXj6R"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/world/bestiary/Zombie Shambler.md",
+          "syncKey": "campaign/world/bestiary/Zombie Shambler.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 3
+          },
+          "dex": {
+            "mod": -2
+          },
+          "con": {
+            "mod": 2
+          },
+          "int": {
+            "mod": -5
+          },
+          "wis": {
+            "mod": 0
+          },
+          "cha": {
+            "mod": -2
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 12,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 20,
+            "max": 20,
+            "temp": 0,
+            "details": "",
+            "negativeHealing": true
+          },
+          "immunities": [
+            {
+              "type": "bleed",
+              "exceptions": []
+            },
+            {
+              "type": "death-effects",
+              "exceptions": []
+            },
+            {
+              "type": "disease",
+              "exceptions": []
+            },
+            {
+              "type": "mental",
+              "exceptions": []
+            },
+            {
+              "type": "paralyzed",
+              "exceptions": []
+            },
+            {
+              "type": "poison",
+              "exceptions": []
+            },
+            {
+              "type": "unconscious",
+              "exceptions": []
+            }
+          ],
+          "resistances": [],
+          "weaknesses": [
+            {
+              "type": "slashing",
+              "value": 5,
+              "exceptions": []
+            },
+            {
+              "type": "vitality",
+              "value": 5,
+              "exceptions": []
+            }
+          ],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [],
+            "details": ""
+          },
+          "level": {
+            "value": -1
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Zombie Shambler<br />## Creature -1<br /><br />---<br /><br />==Medium== ==Mindless== ==Undead== ==Unholy== ==Zombie==<br /><br /><strong>Perception</strong> +0; darkvision<br /><br /><strong>Skills</strong> Athletics +7<br /><br /><strong>Str</strong> +3, <strong>Dex</strong> -2, <strong>Con</strong> +2, <strong>Int</strong> -5, <strong>Wis</strong> +0, <strong>Cha</strong> -2<br /><br /><strong>Slow</strong> The shambler is permanently slowed 1 and can't use reactions. It normally has two actions each turn.<br /><br />---<br /><br /><strong>AC</strong> 12; <strong>Fort</strong> +6, <strong>Ref</strong> +0, <strong>Will</strong> +2<br /><br /><strong>HP</strong> 20; void healing; <strong>Immunities</strong> bleed, death effects, disease, mental, paralyzed, poison, unconscious; <strong>Weaknesses</strong> slashing 5, vitality 5<br /><br />---<br /><br /><strong>Speed</strong> 25 feet<br /><br /><strong>Melee</strong> `[one-action]` fist +7 (unarmed), <strong>Damage</strong> 1d6+3 bludgeoning plus Grab<br /><br /><strong>Melee</strong> `[one-action]` jaws (Zombie Bite only) +7 (unarmed), <strong>Damage</strong> 1d8+3 piercing<br /><br /><strong>Grab</strong> `[one-action]` <strong>Requirements</strong> The shambler's last action was a successful fist Strike, or it has a creature grabbed or restrained with its hands; <strong>Effect</strong> After the Strike, attempt to Grapple that target using Athletics +7 against its Fortitude DC. This attempt neither applies nor counts toward the multiple attack penalty. Alternatively, automatically extend a creature's existing grab or restraint with that hand until the end of the shambler's next turn.<br /><br /><strong>Zombie Bite</strong> `[one-action]` <strong>Requirements</strong> The target is grabbed or restrained; <strong>Effect</strong> Make the jaws Strike against the target: +7 to hit, 1d8+3 piercing damage. Use the jaws Strike buttons; this action is the Strike, not an extra action before it.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "darkvision",
+          "mod": 0,
+          "senses": [
+            {
+              "type": "darkvision",
+              "acuity": "precise",
+              "range": null
+            }
+          ]
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 6,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 0,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 2,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "athletics": {
+            "base": 7
+          }
+        },
+        "traits": {
+          "rarity": "common",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "mindless",
+            "undead",
+            "unholy",
+            "zombie"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "MTyUo-fwhS4V1jtP",
+          "name": "Slow",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/Passive.webp",
+          "system": {
+            "actionType": {
+              "value": "passive"
+            },
+            "actions": {
+              "value": null
+            },
+            "category": "interaction",
+            "description": {
+              "value": "<p>The shambler is permanently @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{slowed 1} and can't use reactions. It normally has two actions each turn.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "WZAbVyOBfYHIwXzC",
+          "name": "fist",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 7
+            },
+            "damageRolls": {
+              "GpNDj6p_N4UOoDm4": {
+                "damage": "1d6+3",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "unarmed"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "V66phZZK2nE6qodG",
+          "name": "jaws (Zombie Bite only)",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 7
+            },
+            "damageRolls": {
+              "X3_9Wx_9_9EZoIoh": {
+                "damage": "1d8+3",
+                "damageType": "piercing"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "unarmed"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "ORdGsmzoNBSBP7HI",
+          "name": "Grab",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Requirements</strong> The shambler's last action was a successful fist Strike, or it has a creature @UUID[Compendium.pf2e.conditionitems.Item.kWc1fhmv9LBiTuei]{grabbed} or @UUID[Compendium.pf2e.conditionitems.Item.VcDeM8A5oI6VqhbM]{restrained} with its hands</p><hr /><p><strong>Effect</strong> After the Strike, attempt to Grapple that target using Athletics +7 against its Fortitude DC. This attempt neither applies nor counts toward the multiple attack penalty. Alternatively, automatically extend a creature's existing grab or restraint with that hand until the end of the shambler's next turn.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "BOMOD1x5TsZzXj6R",
+          "name": "Zombie Bite",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Requirements</strong> The target is @UUID[Compendium.pf2e.conditionitems.Item.kWc1fhmv9LBiTuei]{grabbed} or @UUID[Compendium.pf2e.conditionitems.Item.VcDeM8A5oI6VqhbM]{restrained}</p><hr /><p><strong>Effect</strong> Make the jaws Strike against the target: +7 to hit, @Damage[1d8+3[piercing]]{1d8+3 piercing damage}. Use the jaws Strike buttons; this action is the Strike, not an extra action before it.</p>"
             },
             "publication": {
               "license": "",

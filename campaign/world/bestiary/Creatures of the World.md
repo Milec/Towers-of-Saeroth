@@ -8,6 +8,8 @@ one location's folder. Add to this table whenever a new one joins the vault.
 
 | Creature | Found |
 | --- | --- |
+| [[Kindled Shambler]] | The Berruel consignment road ambush; fire-cases strapped beneath its ribs |
+| [[Zombie Shambler]] | Roadside ditches in the Berruel consignment ambush |
 | [[Skinwright]] | Caves and old-growth forest, wherever a road runs alone |
 | [[The Cream Man]] | Cellars, dairies, and cold stores, wherever milk or cream has stood too long |
 | [[Old Man Conrad]] | Nurseries, abandoned homes, and any room where a child is left alone after dark |

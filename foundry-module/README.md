@@ -16,7 +16,29 @@ the editable source of truth; the generated LevelDB pack is an output. The first
 Markdown image in an eligible note is copied into `assets/actors/` and used as
 both the Actor portrait and its prototype token texture. Their generated paths
 are module-qualified, so portraits load from the compendium as well as after an
-actor is dragged into a scene.
+actor is dragged into a scene. An optional `token-image` frontmatter field
+overrides only the prototype token, leaving the sheet portrait unchanged.
+Use a percent-encoded path relative to the note, such as
+`token-image: "Kindled%20Shambler%20token.png"`. Both images are packaged locally
+and receive separate URLs in the runtime-sync feed. Older notes without this
+field keep their existing portrait-as-token behavior.
+
+### Stamped tokens
+
+For new complete creature/NPC requests, create the full portrait first, then run
+`node foundry-module/scripts/token-request.mjs "campaign/path/Creature Name.md"`.
+Use its edit prompt and source portrait to produce a separate circular token:
+dark iron ring, subtle aged-brass edge, readable face and identifying equipment,
+and transparent corners. The approved local finishing step is
+`python foundry-module/scripts/stamp-token.py INPUT OUTPUT --crop LEFT TOP RIGHT BOTTOM`.
+It accepts a portrait or framed draft, stamps the same iron/brass rim, and saves
+a 512px RGBA PNG with verified clear corners. Pillow is required. Choose a crop
+that keeps the face and identifying equipment readable, inspect the result,
+and retain the source. Existing outputs require explicit `--force` to replace.
+Keep the full portrait as the note's first Markdown
+image and add the helper's `token-image` field. Inspect both art and actual alpha
+before packaging; a painted checkerboard is not transparency. Do not silently
+replace older portraits or restamp unrelated creatures.
 
 An eligible `type: ancestry` note is generated into the **Saeroth Ancestries**
 compendium. Sanguinor reads its mechanics directly from Isaiah's campaign note;
