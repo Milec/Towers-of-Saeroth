@@ -68,8 +68,11 @@ $('#journeyClear').onclick=()=>{routeGroup.innerHTML='';planned=null;$('#journey
 $('#journeyForm').onsubmit=async e=>{
  e.preventDefault();if(planning)return;const a=resolvePlace($('#journeyFrom').value),b=resolvePlace($('#journeyTo').value),via=$('#journeyVia').value.trim()?resolvePlace($('#journeyVia').value):null;
  routeGroup.innerHTML='';planned=null;
- if(!a||!b||$('#journeyVia').value.trim()&&!via){routeMessage('Choose an unambiguous location from the suggestions for each stop.');return;}
+ const invalid=[['journeyFrom',!a],['journeyTo',!b],['journeyVia',!!$('#journeyVia').value.trim()&&!via]];
+ for(const [id,bad]of invalid){$('#'+id).setAttribute('aria-invalid',String(bad));$('#'+id).setAttribute('aria-describedby','journeyResult');}
+ if(invalid.some(([,bad])=>bad)){routeMessage('Choose a matching location from the suggestions for each highlighted stop.');$('#'+invalid.find(([,bad])=>bad)[0]).focus();return;}
  const options={mode:$('#journeyMode').value,sail:$('#journeySail').checked,offroad:$('#journeyOffroad').checked,teleport:$('#journeyTeleport')?.checked||false};planning=true;routeMessage('Finding a route…');await new Promise(r=>setTimeout(r,25));
+ const submit=$('#journeyForm button[type=submit]');submit.disabled=true;submit.textContent='Finding route…';$('#journeyForm').setAttribute('aria-busy','true');
  try{router??=new AtlasRouter(window.ATLAS_NETWORK);const stops=via?[a,via,b]:[a,b],legs=[];
   for(let i=1;i<stops.length;i++){const leg=router.find(stops[i-1].cell,stops[i].cell,options);if(!leg){routeMessage('No connected route under these settings. Try allowing sailing or overland travel. Isolated landmarks may have no mapped approach.');return;}legs.push(leg);}
   planned={stops,legs};setTravelFocus(true);const totals=legs.reduce((t,l)=>({km:t.km+l.km,days:t.days+l.days,seaKm:t.seaKm+l.seaKm,offroadKm:t.offroadKm+l.offroadKm}),{km:0,days:0,seaKm:0,offroadKm:0});
@@ -83,7 +86,7 @@ $('#journeyForm').onsubmit=async e=>{
   if(crossings.size)$('#journeyResult').insertAdjacentHTML('beforeend',`<p class="border-warning"><strong>Border friction:</strong> ${[...crossings.values()].map(esc).join('; ')}. Recorded relations indicate possible difficulty; this is not a travel prohibition.</p>`);
   const fit=()=>focusPoints(legs.flatMap(l=>l.points),300);$('#journeyFit').onclick=fit;fit();
   $('#journeyDownload').onclick=()=>{const text=$('#journeyResult').innerText||$('#journeyResult').textContent,blob=new Blob([text],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='Saeroth-journey.txt';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
- }catch(err){routeMessage('This route could not be calculated. Reload the atlas and try again.');console.error(err);}finally{planning=false;}
+ }catch(err){routeMessage('This route could not be calculated. Reload the atlas and try again.');console.error(err);}finally{planning=false;submit.disabled=false;submit.textContent='Find route';$('#journeyForm').setAttribute('aria-busy','false');}
 };
 const originalShow=show;
 show=function(type,id,fly=true){originalShow(type,id,fly);const p=places.find(p=>p.key===type+':'+id);if(type==='route')setTravelFocus(true);if(p){$('#info').insertAdjacentHTML('beforeend','<div class="journey-actions"><button id="routeStart">Start here</button><button id="routeEnd">Travel here</button><button id="partyHere">Mark party here</button></div>');for(const [button,field] of [['routeStart','journeyFrom'],['routeEnd','journeyTo']])$('#'+button).onclick=()=>{$('#'+field).value=p.label;journey.open=true;journey.scrollIntoView?.({behavior:'smooth',block:'nearest'});};$('#partyHere').onclick=()=>setPartyLocation(p);}if(type==='poi'){const m=D.markers.find(m=>m.i===+id);if(m?.loreSource)$('#info').insertAdjacentHTML('beforeend',`<p><a href="${esc(m.loreSource)}" target="_blank" rel="noopener">Campaign lore ↗</a> · Approximate placement</p>`);}};

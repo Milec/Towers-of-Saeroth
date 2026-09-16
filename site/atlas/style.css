@@ -141,3 +141,22 @@ header a.campaign-home{display:inline-block}.campaign-link a{font-weight:bold;te
 .hex-trail{fill:none;stroke:#fff0b5;stroke-width:3;stroke-dasharray:6 4}
 .hex-party{fill:#fff0b5;stroke:#153f49;stroke-width:3}
 .hex-party-label{fill:#fff0b5;stroke:#153f49;stroke-width:3;paint-order:stroke;font:bold 13px Georgia,serif}
+/* Task-focused navigation and readable, touch-friendly controls. */
+.atlas-shortcuts{display:flex;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.atlas-shortcuts button{flex:1;padding:8px;font-size:13px;min-height:44px}
+#counts{grid-template-columns:repeat(3,minmax(0,1fr))}
+aside details>summary{display:list-item;min-height:44px;align-content:center;margin-bottom:0}
+aside details[open]>summary{margin-bottom:12px}
+aside details:not([open]){padding-top:8px;padding-bottom:8px}
+aside button:disabled{opacity:.5;cursor:not-allowed;background:var(--panel);color:var(--muted)}
+aside input,aside select{font-size:16px}
+#info{scroll-margin-top:64px}#hexcrawl,#mapOptions,.mapframe{scroll-margin-top:64px}
+.hex-coordinates{margin:10px 0;border:1px solid var(--line);border-radius:7px;padding:8px 12px}
+.hex-coordinates summary{font:600 14px system-ui,sans-serif}
+.hex-coordinate-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hex-coordinate-fields label{margin:0}.hex-coordinate-fields button{grid-column:1/-1}
+aside input[aria-invalid=true]{border:2px solid var(--focus)}
+.hex-map-prompt{position:absolute;top:12px;left:76px;right:12px;z-index:3;display:flex;gap:8px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font-size:13px;box-shadow:0 2px 8px #0003}
+.hex-map-prompt[hidden]{display:none}.hex-map-prompt span{flex:1}.hex-map-prompt button{min-height:44px}
+@media(max-width:800px){main{display:flex;flex-direction:column;height:auto}.atlas-jumps{gap:8px}.atlas-jumps button{min-width:0;padding:8px 5px;min-height:44px;font-size:13px}.atlas-shortcuts{padding:12px 16px}aside label{font-size:14px}}
+@media(max-width:800px){.mapframe,.integrated .mapframe{height:clamp(300px,46svh,440px);min-height:300px}}
