@@ -17,6 +17,7 @@ The four indexes and the two notes everything else hangs off:
 - [[Ages of Saeroth]] — the dated timeline, and the calendar it is counted in
 - [[The Towers]] — the campaign premise
 - [[Atlas Locations]] — locations added through the map editor
+- [[Player Characters]] — the party, organized by player
 
 ## How these notes are read
 
