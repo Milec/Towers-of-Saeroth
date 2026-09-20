@@ -3,11 +3,13 @@ title: Player Characters
 type: index
 ---
 
-Character summaries are filed under player names; these are not assumed to be character names.
+Character notes are filed under player names. Four backstories have been
+supplied so far; Ellie and Mary's entries still contain their initial
+character summaries.
 
-- [[Bobby]] — dwarven runesmith merchant from Stoneborn Holds; uses a gun.
+- [[Bobby]] — Belithûr Brightforge, dwarven runesmith and merchant from Stoneborn Holds; seeking his own standing beside his gifted elder brother.
 - [[Ellie]] — half-Jotun, half-human giant instinct barbarian from Nordheim; raider and a Jarl's daughter.
-- [[Liam]] — half-human, half-elf Spellshot gunslinger from Quivar; son of a minor noble.
-- [[Isaiah]] — Sanguinor Nephilim exemplar; uses shortswords.
+- [[Liam]] — Aurèle Lamora, half-human, half-elf Spellshot gunslinger from Quivar; engineer and minor noble's son rebuilding his life after a magitech accident.
+- [[Isaiah]] — Victarion Venelux, Sanguinor Nephilim exemplar; carries Death and Divinity. His backstory draft currently covers his early childhood.
 - [[Mary]] — human summoner from Qeshara Sultanate.
-- [[Dragon]] — Dragonblood cleric from Thesal; converted to the Lady of the North Star.
+- [[Dragon]] — Seneca, Dragonblood cleric from Thesal; a travelling chaplain seeking immortality to continue serving the downtrodden.
