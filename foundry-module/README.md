@@ -6,7 +6,35 @@ player ancestries as a native PF2e Item compendium. The
 initial build discovers five existing campaign statblocks, including Skinwright,
 The Cream Man, Wenzel Grauth, Garrick Thorne, and Ashwin Devaraj.
 
-## Source format
+## Battle maps
+
+**Saeroth Battle Maps** contains **Berruel Caravan — Roadside Ambush**, a
+Foundry v14 Scene for Session 1. Import it from that compendium into Scenes.
+The generated gridless image is included at
+`modules/saeroth-pf2e-content/assets/maps/berruel-caravan-ambush.png`.
+A standalone importable scene JSON is also supplied in
+`content/scenes/berruel-caravan-ambush.json` (requires the installed module for art).
+
+- 32 x 32 squares, 5 feet per square, 160 x 160 feet. The original raster is
+  fitted to a 3200px square canvas; this does not increase its image detail.
+- Three open-top wagons with movement-blocking sides; the short east side of
+  each is an openable tailgate. Low sides do not block vision or lantern light.
+- Two boulder outlines block movement, sight and light. Shallow ditch, crossings,
+  brush and road exits remain traversable; adjudicate cover and terrain manually.
+- Three warm animated lanterns: 20ft bright / 40ft dim. Dim global light and
+  mild dusk darkness keep the open battlefield readable. Token vision is on.
+- No actors or encounter spoilers are baked into the map or preplaced.
+  Wagon artwork is part of the background, not movable tiles. If a wagon moves
+  during play, adjudicate its position or use a separate tile and move its walls
+  and light; this scene does not automate vehicle movement, fire, or terrain costs.
+
+Build with `node foundry-module/scripts/build-scenes.mjs` after setting
+`FOUNDRY_NODE_MODULES` as below. This writes only the scene pack and scene JSON;
+the creature builder does not erase it. Run `node foundry-module/scripts/test-caravan-scene.mjs`.
+The creature live-sync button does not import Scenes. Module installation and
+scene import are separate steps; existing world scenes are not overwritten.
+
+## Creature source format
 
 An eligible NPC lives in `campaign/npcs/`; an NPC owned by a nation lives in
 `campaign/nations/<Nation>/npcs/`; and a creature lives in
