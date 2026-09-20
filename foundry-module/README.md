@@ -100,6 +100,15 @@ scene import are separate steps; existing world scenes are not overwritten.
 
 ## Creature source format
 
+Milo Calvetti is included as a homebrew level 2 caravan master, with separate
+portrait and stamped token art. Roadwise and Steady the Team appear on his sheet;
+the latter links the frightened condition, but its reduction and temporary
+immunity are adjudicated manually. His original WebP remains in the campaign.
+
+New notes may set `foundry-item-ids: alphanumeric` to use v14-safe embedded
+document IDs. Milo opts in; existing actors retain their IDs to avoid migration
+or duplicate-item changes outside this addition.
+
 An eligible NPC lives in `campaign/npcs/`; an NPC owned by a nation lives in
 `campaign/nations/<Nation>/npcs/`; and a creature lives in
 `campaign/world/bestiary/`. It has frontmatter with `type: creature` or

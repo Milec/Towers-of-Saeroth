@@ -413,6 +413,8 @@ function parseActor(source, path, spellSources, portrait) {
   // carriage return drop the last skill or leak into generated descriptions.
   source = source.replace(/\r\n/g, "\n");
   const frontmatter = parseFrontmatter(source, path);
+  // Opt in new notes without changing the embedded IDs of existing actors.
+  const itemIdFor = frontmatter["foundry-item-ids"] === "alphanumeric" ? foundryId : stableId;
   const fence = source.match(/```pf2e-stats\r?\n([\s\S]*?)```/i);
   if (!fence) throw new Error(`${path}: no pf2e-stats block.`);
   const block = fence[1].trim();
@@ -512,7 +514,7 @@ function parseActor(source, path, spellSources, portrait) {
     if (melee) {
       const [, weaponName, bonus, traitText = "", damageText] = melee;
       const damage = damageText.match(/^(.+?)\s+(bludgeoning|piercing|slashing|acid|cold|electricity|fire|force|mental|negative|positive|poison|sonic)(?:\s|$)/i);
-      const itemId = stableId(`${id}:melee:${weaponName}`);
+      const itemId = itemIdFor(`${id}:melee:${weaponName}`);
       actor.items.push(itemId);
       actor.__items ??= [];
       actor.__items.push({ _id: itemId, name: weaponName.trim(), type: "melee", img: "systems/pf2e/icons/default-icons/melee.svg", system: { attackEffects: { value: [] }, bonus: { value: Number(bonus) }, damageRolls: { [stableId(`${itemId}:damage`)]: { damage: damage?.[1] ?? damageText, damageType: damage?.[2]?.toLowerCase() ?? "bludgeoning" } }, description: { value: "" }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, range: null, rules: [], slug: null, traits: { value: parseList(traitText).map(traitSlug) } } });
@@ -523,7 +525,7 @@ function parseActor(source, path, spellSources, portrait) {
       const [, abilityName, actionType, sourceText] = ability;
       const traitMatch = sourceText.match(/^\(([^)]+)\)\s*/);
       const text = traitMatch ? sourceText.slice(traitMatch[0].length) : sourceText;
-      const itemId = stableId(`${id}:action:${abilityName}`);
+      const itemId = itemIdFor(`${id}:action:${abilityName}`);
       actor.items.push(itemId);
       actor.__items ??= [];
       actor.__items.push({ _id: itemId, name: abilityName.trim(), type: "action", img: actionType === "reaction" ? "systems/pf2e/icons/actions/Reaction.webp" : `systems/pf2e/icons/actions/${actionType === "two-actions" ? "TwoActions" : actionType === "three-actions" ? "ThreeActions" : "OneAction"}.webp`, system: { actionType: { value: actionType === "reaction" ? "reaction" : "action" }, actions: { value: actionType === "reaction" ? null : { "one-action": 1, "two-actions": 2, "three-actions": 3 }[actionType] }, category: "offensive", description: { value: actionDescription(text) }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, rules: [], slug: null, traits: { rarity: "common", value: parseList(traitMatch?.[1]).map(traitSlug) } } });
@@ -536,7 +538,7 @@ function parseActor(source, path, spellSources, portrait) {
       ?? (line.startsWith("**Slow** ") ? [line, "Slow", "", line.slice("**Slow** ".length)] : null);
     if (!ability && passive) {
       const [, abilityName, traitText, text] = passive;
-      const itemId = stableId(`${id}:passive:${abilityName}`);
+      const itemId = itemIdFor(`${id}:passive:${abilityName}`);
       actor.items.push(itemId);
       actor.__items ??= [];
       actor.__items.push({ _id: itemId, name: abilityName.trim(), type: "action", img: "systems/pf2e/icons/actions/Passive.webp", system: { actionType: { value: "passive" }, actions: { value: null }, category: "interaction", description: { value: actionDescription(text) }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, rules: [], slug: null, traits: { rarity: "common", value: parseList(traitText).map(traitSlug) } } });
@@ -546,7 +548,7 @@ function parseActor(source, path, spellSources, portrait) {
     if (!spellcasting) continue;
 
     const [, tradition, preparation, dc, attack, spellList] = spellcasting;
-    const entryId = stableId(`${id}:spellcasting:${tradition}:${preparation}`);
+    const entryId = itemIdFor(`${id}:spellcasting:${tradition}:${preparation}`);
     const slots = {};
     const spells = [];
     for (const match of spellList.matchAll(/\*\*(Cantrips(?:\s+\(\d+(?:st|nd|rd|th)\))?|\d+(?:st|nd|rd|th))\*\*\s+([^;]+)(?:;|$)/gi)) {
@@ -560,7 +562,7 @@ function parseActor(source, path, spellSources, portrait) {
         const spell = sourceSpell
           ? structuredClone(sourceSpell)
           : makeFallbackSpell(spellName, rank, entryId, heightenedLevel);
-        spell._id = stableId(`${entryId}:spell:${spellName}`);
+        spell._id = itemIdFor(`${entryId}:spell:${spellName}`);
         spell.system.location = { value: entryId, heightenedLevel };
         spells.push(spell);
       }

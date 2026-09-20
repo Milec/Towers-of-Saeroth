@@ -1,0 +1,6 @@
+Use case: stylized-concept.
+Asset type: square Foundry VTT NPC or monster portrait and token art.
+Subject: Milo Calvetti, a weathered middle-aged human caravan master with olive skin, dark wavy hair graying at the temples and a short salt-and-pepper beard, wearing a battered brown leather traveling coat and faded red scarf, holding a sealed freight manifest and leather ledger, brass keys at his belt, alert practical expression, wagon canvas and a rainy trade road softly visible behind him, centered head and upper torso with generous crop padding
+Composition: centered character or creature, readable silhouette, enough padding for a circular or square token crop.
+Art direction: hand-inked dark-fantasy character illustration with strong black contour lines, visible cross-hatching, muted earth-tone colors, desaturated shadows, expressive slightly stylized faces, and a moody charcoal-and-parchment atmosphere. Keep the rendering painterly beneath the inkwork, with clean readable forms for a tabletop token.
+Constraints: no text, no lettering, no watermark, no border, no UI, no collage.
