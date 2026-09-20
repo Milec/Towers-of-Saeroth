@@ -8,6 +8,26 @@ The Cream Man, Wenzel Grauth, Garrick Thorne, and Ashwin Devaraj.
 
 ## Battle maps
 
+### Blank-background repair in 0.1.21
+
+Version 0.1.20 omitted the scenes' `_stats.coreVersion`. Foundry consequently
+ran the legacy pre-v14 level conversion, replacing native levels with an empty
+background. Generated scenes now declare their v14 schema version. The module
+requires Foundry 14.364 or later.
+
+On GM login, the module repairs missing backgrounds in its scene compendium
+and identifiable world imports. Only single-level scenes with an empty
+background are eligible; user-selected images and multi-level scenes are left
+alone. The repair changes only that Level's image and texture fit, not tokens,
+walls, lights, grid, or scene dimensions. It uses Foundry's document API and
+restores the compendium lock afterward. Restart Foundry after installing the
+new module script. A successful repair shows a notification with the counts.
+
+The repair is idempotent and can be run again from the GM console with
+`await game.modules.get("saeroth-pf2e-content").api.repairCaravanBackgrounds()`.
+
+### Available scenes
+
 **Saeroth Battle Maps** contains three Foundry v14 Scenes. Import the desired
 scene from that compendium into Scenes. The campsite and woodland road are
 reusable encounters, not alternate states of the Session 1 ambush.
