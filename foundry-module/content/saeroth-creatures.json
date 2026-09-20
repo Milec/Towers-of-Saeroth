@@ -269,6 +269,292 @@
       ]
     },
     {
+      "_id": "BP32D1TQYvuZ8eIz",
+      "name": "Milo Calvetti",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Thurion%20Merchant%20Alliance/npcs/Milo%20Calvetti%20portrait.png",
+      "prototypeToken": {
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Thurion%20Merchant%20Alliance/npcs/Milo%20Calvetti%20token.png"
+        }
+      },
+      "items": [
+        "d9e77dff1804c782",
+        "d116056ad0a5fdfa",
+        "2382cc35a67024e7",
+        "6c075632cadb1635"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/nations/Thurion Merchant Alliance/npcs/Milo Calvetti.md",
+          "syncKey": "campaign/nations/Thurion Merchant Alliance/npcs/Milo Calvetti.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 2
+          },
+          "dex": {
+            "mod": 1
+          },
+          "con": {
+            "mod": 2
+          },
+          "int": {
+            "mod": 2
+          },
+          "wis": {
+            "mod": 3
+          },
+          "cha": {
+            "mod": 2
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 17,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 30,
+            "max": 30,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [],
+          "resistances": [],
+          "weaknesses": [],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [
+              "common"
+            ],
+            "details": ""
+          },
+          "level": {
+            "value": 2
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Milo Calvetti<br />## Creature 2<br /><br />---<br /><br />==Unique== ==Medium== ==Human== ==Humanoid==<br /><br /><strong>Perception</strong> +8<br /><br /><strong>Languages</strong> Common<br /><br /><strong>Skills</strong> Athletics +7, Crafting +8, Diplomacy +8, Nature +7, Society +7, Survival +8, Caravan Lore +11, Mercantile Lore +8<br /><br /><strong>Str</strong> +2, <strong>Dex</strong> +1, <strong>Con</strong> +2, <strong>Int</strong> +2, <strong>Wis</strong> +3, <strong>Cha</strong> +2<br /><br /><strong>Items</strong> club, dagger, leather armor, repair toolkit, ledger, sealed freight manifest<br /><br />---<br /><br /><strong>AC</strong> 17; <strong>Fort</strong> +8, <strong>Ref</strong> +5, <strong>Will</strong> +11<br /><br /><strong>HP</strong> 30<br /><br />---<br /><br /><strong>Speed</strong> 25 feet<br /><br /><strong>Melee</strong> `[one-action]` club +9, <strong>Damage</strong> 1d6+3 bludgeoning<br /><br /><strong>Melee</strong> `[one-action]` dagger +9 (agile, finesse, versatile S), <strong>Damage</strong> 1d4+3 piercing<br /><br /><strong>Roadwise</strong> (mental) Milo can use Caravan Lore to Recall Knowledge about wagon maintenance, cargo handling, and road hazards. This does not reveal hidden hazards automatically or replace checks to disable them.<br /><br /><strong>Steady the Team</strong> `[one-action]` (auditory, concentrate, emotion, mental) <strong>Frequency</strong> once per round; <strong>Effect</strong> Milo reassures one willing animal or humanoid ally within 30 feet that can hear and understand him. The target reduces its frightened value by 1. It is then temporarily immune to Steady the Team for 10 minutes.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "",
+          "mod": 8,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 8,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 5,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 11,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "athletics": {
+            "base": 7
+          },
+          "crafting": {
+            "base": 8
+          },
+          "diplomacy": {
+            "base": 8
+          },
+          "nature": {
+            "base": 7
+          },
+          "society": {
+            "base": 7
+          },
+          "survival": {
+            "base": 8
+          },
+          "caravan-lore": {
+            "base": 11
+          },
+          "mercantile-lore": {
+            "base": 8
+          }
+        },
+        "traits": {
+          "rarity": "unique",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "human",
+            "humanoid"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "d9e77dff1804c782",
+          "name": "club",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 9
+            },
+            "damageRolls": {
+              "pa33ro_V3Kfk_FfH": {
+                "damage": "1d6+3",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": []
+            }
+          }
+        },
+        {
+          "_id": "d116056ad0a5fdfa",
+          "name": "dagger",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 9
+            },
+            "damageRolls": {
+              "gDioghT_tVw8gsqP": {
+                "damage": "1d4+3",
+                "damageType": "piercing"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "agile",
+                "finesse",
+                "versatile-s"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "2382cc35a67024e7",
+          "name": "Roadwise",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/Passive.webp",
+          "system": {
+            "actionType": {
+              "value": "passive"
+            },
+            "actions": {
+              "value": null
+            },
+            "category": "interaction",
+            "description": {
+              "value": "<p>Milo can use Caravan Lore to Recall Knowledge about wagon maintenance, cargo handling, and road hazards. This does not reveal hidden hazards automatically or replace checks to disable them.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "mental"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "6c075632cadb1635",
+          "name": "Steady the Team",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Frequency</strong> once per round</p><hr /><p><strong>Effect</strong> Milo reassures one willing animal or humanoid ally within 30 feet that can hear and understand him. The target reduces its @UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{frightened} value by 1. It is then temporarily immune to Steady the Team for 10 minutes.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "auditory",
+                "concentrate",
+                "emotion",
+                "mental"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
       "_id": "BNZK5u_TBKtMnAeg",
       "name": "Garrick Thorne",
       "type": "npc",

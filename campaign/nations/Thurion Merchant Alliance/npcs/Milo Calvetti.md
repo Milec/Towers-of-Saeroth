@@ -4,9 +4,13 @@ type: npc
 level: 2
 nation: Thurion Merchant Alliance
 role: caravan master, the Berruel consignment
+token-image: "Milo%20Calvetti%20token.png"
+foundry-item-ids: alphanumeric
+portrait-prompt: "Milo Calvetti, a weathered middle-aged human caravan master with olive skin, dark wavy hair graying at the temples and a short salt-and-pepper beard, wearing a battered brown leather traveling coat and faded red scarf, holding a sealed freight manifest and leather ledger, brass keys at his belt, alert practical expression, wagon canvas and a rainy trade road softly visible behind him, centered head and upper torso with generous crop padding"
 ---
 
-![Portrait of caravan master Milo Calvetti](MiloCalvetti.webp)
+![Portrait of Milo Calvetti](Milo%20Calvetti%20portrait.png)
+
 *Milo Calvetti*
 
 Milo Calvetti has run wagon trains for [[Casa Berruel]], one of the great
@@ -37,3 +41,49 @@ seals, and never once checked the water barrels.
 
 *He would tell you he has never lost a wagon. He has not worked out yet that
 this one wasn't lost — it was spent.*
+
+## Foundry statistics
+
+This is a homebrew level 2 caravan master built from the PF2e creature-building
+tables. His strongest skills cover cargo, repairs, and keeping the train moving.
+In a fight he gets the hands and animals behind cover and leaves the front line
+to the guards. His established history and level are unchanged.
+
+```pf2e-stats
+# Milo Calvetti
+## Creature 2
+
+---
+
+==Unique== ==Medium== ==Human== ==Humanoid==
+
+**Perception** +8
+
+**Languages** Common
+
+**Skills** Athletics +7, Crafting +8, Diplomacy +8, Nature +7, Society +7, Survival +8, Caravan Lore +11, Mercantile Lore +8
+
+**Str** +2, **Dex** +1, **Con** +2, **Int** +2, **Wis** +3, **Cha** +2
+
+**Items** club, dagger, leather armor, repair toolkit, ledger, sealed freight manifest
+
+---
+
+**AC** 17; **Fort** +8, **Ref** +5, **Will** +11
+
+**HP** 30
+
+---
+
+**Speed** 25 feet
+
+**Melee** `[one-action]` club +9, **Damage** 1d6+3 bludgeoning
+
+**Melee** `[one-action]` dagger +9 (agile, finesse, versatile S), **Damage** 1d4+3 piercing
+
+**Roadwise** (mental) Milo can use Caravan Lore to Recall Knowledge about wagon maintenance, cargo handling, and road hazards. This does not reveal hidden hazards automatically or replace checks to disable them.
+
+**Steady the Team** `[one-action]` (auditory, concentrate, emotion, mental) **Frequency** once per round; **Effect** Milo reassures one willing animal or humanoid ally within 30 feet that can hear and understand him. The target reduces its frightened value by 1. It is then temporarily immune to Steady the Team for 10 minutes.
+```
+
+*Rules reference: the creature-building tables in `vault/Rules/Building Creatures (GM Core).md`; custom abilities are homebrew.*

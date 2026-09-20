@@ -38,6 +38,7 @@ jobs:
         run: python tools/build_site.py --no-vault
       - name: Check caravan scene assets and geometry
         run: |
+          node foundry-module/scripts/test-milo.mjs
           node foundry-module/scripts/test-caravan-scene.mjs
           node foundry-module/scripts/test-caravan-background-repair.mjs
       - name: Test atlas behavior
