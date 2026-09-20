@@ -4,6 +4,7 @@ import { access, mkdir, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildTravelScenes } from "./caravan-travel-scenes.mjs";
+import { sceneStats } from "./caravan-scene-version.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const moduleId = "saeroth-pf2e-content";
@@ -40,6 +41,7 @@ const lights = [[425,551],[712,551],[1006,551]].map(([x,y], i) => ({
     animation: { type: "torch", speed: 2, intensity: 2 } }
 }));
 const scene = {
+  _stats: sceneStats(),
   _id: id("scene"), name: "Berruel Caravan — Roadside Ambush", active: false,
   navigation: false, navOrder: 0, width: 3200, height: 3200, padding: 0,
   shiftX: 0, shiftY: 0, initial: { x: 1600, y: 1500, scale: .3 },

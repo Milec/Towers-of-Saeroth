@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import { buildTravelScenes } from "./caravan-travel-scenes.mjs";
+import { SCENE_CORE_VERSION } from "./caravan-scene-version.mjs";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { join } from "node:path";
@@ -103,6 +104,9 @@ for (const entry of expected) {
   console.log(`${current.name}: source parity, image dimensions, grid, doors, walls, lights and bounds passed.`);
 }
 assert.equal(new Set(scenes.map(s => s._id)).size, 3);
+for (const scene of scenes) assert.equal(scene._stats?.coreVersion, SCENE_CORE_VERSION,
+  "Native v14 scene data must not run the destructive pre-v14 migrateLevels conversion");
+assert.equal(manifest.compatibility.minimum, SCENE_CORE_VERSION);
 
 // Optional native LevelDB round-trip check when the Foundry runtime is present.
 if (process.env.FOUNDRY_NODE_MODULES) {

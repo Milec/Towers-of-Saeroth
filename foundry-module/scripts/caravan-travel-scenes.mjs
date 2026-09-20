@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { sceneStats } from "./caravan-scene-version.mjs";
 
 // Traced against the two original 1254 x 1254 ImageGen rasters. Scene scale
 // stays identical to the original ambush: matching wagons, 160ft square.
@@ -9,6 +10,7 @@ function makeScene(slug, name, size, night) {
   const px = value => Math.round(value * size / 1254);
   const asset = `assets/maps/${slug}.png`;
   const scene = {
+    _stats: sceneStats(),
     _id: id("scene"), name, active: false, navigation: false, navOrder: 0,
     width: size, height: size, padding: 0, shiftX: 0, shiftY: 0,
     initial: { x: size / 2, y: size / 2, scale: .4 }, initialLevel: levelId,
