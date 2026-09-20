@@ -3,6 +3,7 @@ import { createRequire } from "node:module";
 import { access, mkdir, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildTravelScenes } from "./caravan-travel-scenes.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const moduleId = "saeroth-pf2e-content";
@@ -58,8 +59,12 @@ const scene = {
     setup: "160ft square. Wagon sides block movement, not sight/light; open east tailgates to board. Ditch/brush terrain and cover are GM-adjudicated. No actors preplaced. Walls and lights stay fixed if you move the baked-in wagons."
   } }
 };
+const entries = [{ slug: "berruel-caravan-ambush", asset, scene }, ...buildTravelScenes()];
 await mkdir(join(root, "content", "scenes"), { recursive: true });
-await writeFile(join(root, "content", "scenes", "berruel-caravan-ambush.json"), JSON.stringify(scene, null, 2) + "\n");
+for (const entry of entries) {
+  await access(join(root, entry.asset));
+  await writeFile(join(root, "content", "scenes", `${entry.slug}.json`), JSON.stringify(entry.scene, null, 2) + "\n");
+}
 const require = createRequire(import.meta.url);
 if (!process.env.FOUNDRY_NODE_MODULES) throw new Error("Set FOUNDRY_NODE_MODULES to Foundry's bundled node_modules.");
 const { ClassicLevel } = require(join(process.env.FOUNDRY_NODE_MODULES, "classic-level"));
@@ -68,14 +73,18 @@ await db.open();
 try {
   // This pack is generated only by this script. Clearing avoids stale walls.
   await db.clear();
-  const packed = structuredClone(scene);
-  for (const collection of ["levels", "walls", "lights"]) {
-    packed[collection] = scene[collection].map(document => document._id);
-    for (const document of scene[collection]) await db.put(`!scenes.${collection}!${scene._id}.${document._id}`, document);
+  for (const { scene } of entries) {
+    const packed = structuredClone(scene);
+    for (const collection of ["levels", "walls", "lights"]) {
+      packed[collection] = scene[collection].map(document => document._id);
+      for (const document of scene[collection]) await db.put(`!scenes.${collection}!${scene._id}.${document._id}`, document);
+    }
+    await db.put(`!scenes!${scene._id}`, packed);
+    const stored = await db.get(`!scenes!${scene._id}`);
+    for (const collection of ["walls", "lights", "levels"]) {
+      if (stored[collection].length !== scene[collection].length) throw new Error(`Scene pack verification failed: ${scene.name}`);
+    }
+    console.log(`Built ${scene.name}: ${scene.walls.length} walls, ${scene.lights.length} lights, ${scene.width / scene.grid.size} x ${scene.height / scene.grid.size} five-foot squares.`);
   }
-  await db.put(`!scenes!${scene._id}`, packed);
   await db.compactRange("\x00", "\xff");
-  const stored = await db.get(`!scenes!${scene._id}`);
-  if (stored.walls.length !== 23 || stored.lights.length !== 3 || stored.levels.length !== 1) throw new Error("Scene pack verification failed");
 } finally { await db.close(); }
-console.log(`Built caravan scene: ${walls.length} walls (3 tailgates), ${lights.length} lights, 32 x 32 five-foot squares.`);

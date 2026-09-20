@@ -1,0 +1,1653 @@
+{
+  "_id": "7d4d995e9ea5e83a",
+  "name": "Berruel Caravan — Woodland Campsite",
+  "active": false,
+  "navigation": false,
+  "navOrder": 0,
+  "width": 3200,
+  "height": 3200,
+  "padding": 0,
+  "shiftX": 0,
+  "shiftY": 0,
+  "initial": {
+    "x": 1600,
+    "y": 1600,
+    "scale": 0.4
+  },
+  "initialLevel": "defaultLevel0000",
+  "thumb": "modules/saeroth-pf2e-content/assets/maps/berruel-caravan-campsite.png",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "distance": 5,
+    "units": "ft",
+    "alpha": 0.15,
+    "color": "#b8b0a0",
+    "style": "solidLines",
+    "thickness": 1
+  },
+  "tokenVision": true,
+  "environment": {
+    "darknessLevel": 0.75,
+    "darknessLock": true,
+    "cycle": false,
+    "globalLight": {
+      "enabled": false,
+      "bright": false,
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  },
+  "levels": [
+    {
+      "_id": "defaultLevel0000",
+      "name": "Camp",
+      "elevation": {
+        "bottom": null,
+        "top": null
+      },
+      "background": {
+        "src": "modules/saeroth-pf2e-content/assets/maps/berruel-caravan-campsite.png",
+        "color": "#252820"
+      },
+      "textures": {
+        "fit": "fill",
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "offsetX": 0,
+        "offsetY": 0,
+        "rotation": 0
+      }
+    }
+  ],
+  "walls": [
+    {
+      "_id": "4df74a251291b2b0",
+      "c": [
+        730,
+        1404,
+        1064,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "West wagon"
+        }
+      }
+    },
+    {
+      "_id": "45c029b8312a1c33",
+      "c": [
+        1064,
+        1404,
+        1064,
+        1458
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "West wagon"
+        }
+      }
+    },
+    {
+      "_id": "b7b89f595c408159",
+      "c": [
+        1064,
+        1458,
+        1064,
+        1566
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "West wagon entrance"
+        }
+      }
+    },
+    {
+      "_id": "6efaf740ab83af6e",
+      "c": [
+        1064,
+        1566,
+        1064,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "West wagon"
+        }
+      }
+    },
+    {
+      "_id": "4f1fdcaeaa2e312d",
+      "c": [
+        1064,
+        1620,
+        730,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "West wagon"
+        }
+      }
+    },
+    {
+      "_id": "2c533eb74f13fc0a",
+      "c": [
+        730,
+        1620,
+        730,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "West wagon"
+        }
+      }
+    },
+    {
+      "_id": "1499e1fb882522c9",
+      "c": [
+        1465,
+        1404,
+        1786,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Middle wagon"
+        }
+      }
+    },
+    {
+      "_id": "33042fcfa91ebb46",
+      "c": [
+        1786,
+        1404,
+        1786,
+        1458
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Middle wagon"
+        }
+      }
+    },
+    {
+      "_id": "65db0ab3359721f7",
+      "c": [
+        1786,
+        1458,
+        1786,
+        1566
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Middle wagon entrance"
+        }
+      }
+    },
+    {
+      "_id": "31890253f5586eca",
+      "c": [
+        1786,
+        1566,
+        1786,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Middle wagon"
+        }
+      }
+    },
+    {
+      "_id": "45e106a0dcecbae6",
+      "c": [
+        1786,
+        1620,
+        1465,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Middle wagon"
+        }
+      }
+    },
+    {
+      "_id": "faf557cb47b73aa7",
+      "c": [
+        1465,
+        1620,
+        1465,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Middle wagon"
+        }
+      }
+    },
+    {
+      "_id": "2cc52a468860d35f",
+      "c": [
+        2210,
+        1404,
+        2542,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "East wagon"
+        }
+      }
+    },
+    {
+      "_id": "1bfe68a03e04f7b0",
+      "c": [
+        2542,
+        1404,
+        2542,
+        1458
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "East wagon"
+        }
+      }
+    },
+    {
+      "_id": "696a299132f42d97",
+      "c": [
+        2542,
+        1458,
+        2542,
+        1566
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "East wagon entrance"
+        }
+      }
+    },
+    {
+      "_id": "8d328f5b6cc60c31",
+      "c": [
+        2542,
+        1566,
+        2542,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "East wagon"
+        }
+      }
+    },
+    {
+      "_id": "8905f04670121af9",
+      "c": [
+        2542,
+        1620,
+        2210,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "East wagon"
+        }
+      }
+    },
+    {
+      "_id": "510ba9f79c8bb571",
+      "c": [
+        2210,
+        1620,
+        2210,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "East wagon"
+        }
+      }
+    },
+    {
+      "_id": "c91a7063f4ab0f2e",
+      "c": [
+        602,
+        2070,
+        837,
+        1865
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest tent"
+        }
+      }
+    },
+    {
+      "_id": "f76765ca1868161e",
+      "c": [
+        837,
+        1865,
+        980,
+        2154
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest tent"
+        }
+      }
+    },
+    {
+      "_id": "6630594479e01ec8",
+      "c": [
+        980,
+        2154,
+        921,
+        2183
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest tent"
+        }
+      }
+    },
+    {
+      "_id": "79b266c08303ce4e",
+      "c": [
+        921,
+        2183,
+        802,
+        2242
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest tent entrance"
+        }
+      }
+    },
+    {
+      "_id": "2d89c9e8596a1139",
+      "c": [
+        802,
+        2242,
+        743,
+        2271
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest tent"
+        }
+      }
+    },
+    {
+      "_id": "0810e30a76713722",
+      "c": [
+        743,
+        2271,
+        602,
+        2070
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest tent"
+        }
+      }
+    },
+    {
+      "_id": "1d65faabfe179d61",
+      "c": [
+        2299,
+        2087,
+        2450,
+        1909
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast tent"
+        }
+      }
+    },
+    {
+      "_id": "fce70f8d2e3ec3df",
+      "c": [
+        2450,
+        1909,
+        2707,
+        2144
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast tent"
+        }
+      }
+    },
+    {
+      "_id": "58f89917db497966",
+      "c": [
+        2707,
+        2144,
+        2570,
+        2271
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast tent"
+        }
+      }
+    },
+    {
+      "_id": "f1ba0394f2ecf6ee",
+      "c": [
+        2570,
+        2271,
+        2502,
+        2225
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast tent"
+        }
+      }
+    },
+    {
+      "_id": "a710b60d93ffc310",
+      "c": [
+        2502,
+        2225,
+        2367,
+        2133
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast tent entrance"
+        }
+      }
+    },
+    {
+      "_id": "4e4b4f42f4febcd6",
+      "c": [
+        2367,
+        2133,
+        2299,
+        2087
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast tent"
+        }
+      }
+    },
+    {
+      "_id": "67714fbc8647bae7",
+      "c": [
+        852,
+        2559,
+        1079,
+        2332
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest tent"
+        }
+      }
+    },
+    {
+      "_id": "e7c371cb616f9825",
+      "c": [
+        1079,
+        2332,
+        1220,
+        2565
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest tent"
+        }
+      }
+    },
+    {
+      "_id": "9d59d18493d2d765",
+      "c": [
+        1220,
+        2565,
+        1169,
+        2603
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest tent"
+        }
+      }
+    },
+    {
+      "_id": "4cb5ab175c18464f",
+      "c": [
+        1169,
+        2603,
+        1067,
+        2679
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest tent entrance"
+        }
+      }
+    },
+    {
+      "_id": "2286742fa12374e1",
+      "c": [
+        1067,
+        2679,
+        1016,
+        2718
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest tent"
+        }
+      }
+    },
+    {
+      "_id": "734c11abb2d95c75",
+      "c": [
+        1016,
+        2718,
+        852,
+        2559
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest tent"
+        }
+      }
+    },
+    {
+      "_id": "b359686de84f2dab",
+      "c": [
+        2095,
+        2537,
+        2238,
+        2322
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast tent"
+        }
+      }
+    },
+    {
+      "_id": "6cdeb17762b18673",
+      "c": [
+        2238,
+        2322,
+        2460,
+        2544
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast tent"
+        }
+      }
+    },
+    {
+      "_id": "d702ceb6ea8c8de8",
+      "c": [
+        2460,
+        2544,
+        2322,
+        2697
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast tent"
+        }
+      }
+    },
+    {
+      "_id": "b90c5cd4990d0a11",
+      "c": [
+        2322,
+        2697,
+        2265,
+        2657
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast tent"
+        }
+      }
+    },
+    {
+      "_id": "ad8f0f8a958a0719",
+      "c": [
+        2265,
+        2657,
+        2152,
+        2577
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast tent entrance"
+        }
+      }
+    },
+    {
+      "_id": "e1ee94c96de97dbd",
+      "c": [
+        2152,
+        2577,
+        2095,
+        2537
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast tent"
+        }
+      }
+    },
+    {
+      "_id": "e7b290bbe9637d68",
+      "c": [
+        1187,
+        299,
+        1248,
+        258
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "2ae8659758d23b9f",
+      "c": [
+        1248,
+        258,
+        1322,
+        268
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "c1ef88a9c1568d19",
+      "c": [
+        1322,
+        268,
+        1375,
+        350
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "e4b7a9be4997a299",
+      "c": [
+        1375,
+        350,
+        1307,
+        403
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "16b35f791bfcc35f",
+      "c": [
+        1307,
+        403,
+        1189,
+        390
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "c59bde224b9aae0a",
+      "c": [
+        1189,
+        390,
+        1187,
+        299
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "d054f463bc0a50f5",
+      "c": [
+        2725,
+        370,
+        2784,
+        327
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "8f6ea8c7c40f6558",
+      "c": [
+        2784,
+        327,
+        2830,
+        347
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "eba3b0876dc9150a",
+      "c": [
+        2830,
+        347,
+        2863,
+        447
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "3dce219e60dec8cb",
+      "c": [
+        2863,
+        447,
+        2825,
+        493
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "b196231b0d12d7b7",
+      "c": [
+        2825,
+        493,
+        2733,
+        464
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "cf156fd15ac9ec90",
+      "c": [
+        2733,
+        464,
+        2725,
+        370
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Northeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "f8240f119bc62ee9",
+      "c": [
+        773,
+        768,
+        814,
+        712
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "a31cf7e827e1392c",
+      "c": [
+        814,
+        712,
+        868,
+        704
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "de8073ba7072026a",
+      "c": [
+        868,
+        704,
+        908,
+        771
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "6ab038c176ca8df8",
+      "c": [
+        908,
+        771,
+        888,
+        842
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "da29ef40d9dd1787",
+      "c": [
+        888,
+        842,
+        786,
+        834
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "c33d0f4905c7e566",
+      "c": [
+        786,
+        834,
+        773,
+        768
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    }
+  ],
+  "lights": [
+    {
+      "_id": "4af12182c8a83507",
+      "name": "Campfire",
+      "x": 1623,
+      "y": 2284,
+      "elevation": 1,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 20,
+        "dim": 40,
+        "angle": 360,
+        "color": "#ff9b42",
+        "alpha": 0.3,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 3,
+          "intensity": 4
+        }
+      }
+    },
+    {
+      "_id": "e706962741740470",
+      "name": "West wagon lantern",
+      "x": 1085,
+      "y": 1406,
+      "elevation": 5,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 20,
+        "dim": 40,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.3,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "f5043157c99be0dc",
+      "name": "Middle wagon lantern",
+      "x": 1817,
+      "y": 1406,
+      "elevation": 5,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 20,
+        "dim": 40,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.3,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "226667f7f29b7dd2",
+      "name": "East wagon lantern",
+      "x": 2567,
+      "y": 1406,
+      "elevation": 5,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 20,
+        "dim": 40,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.3,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    }
+  ],
+  "tokens": [],
+  "notes": [],
+  "sounds": [],
+  "drawings": [],
+  "regions": [],
+  "tiles": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "saeroth": {
+      "setup": "Reusable caravan scene. No actors preplaced. Wagon sides block movement only; doors are tailgates or tent flaps. Boulders and canvas tent sides block sight/light. Trees, brush and cover are GM-adjudicated. Background wagons/tents are fixed artwork; no moving vehicles, roof cutaways, automated fire damage or terrain costs."
+    }
+  }
+}
