@@ -10,6 +10,13 @@ function notify(message, type = "info") {
   ui.notifications[type](`${MODULE_ID}: ${message}`);
 }
 
+function syncKey(actor) {
+  // Older feeds used an unregistered "saeroth" namespace. Reading that with
+  // getFlag throws in v14, even when no value exists. Keep legacy matching
+  // through raw stored data, but write future flags under the module's ID.
+  return actor.flags?.[MODULE_ID]?.syncKey ?? actor.flags?.saeroth?.syncKey;
+}
+
 async function syncedPack() {
   let pack = game.packs.get(SYNC_PACK);
   if (pack) return pack;
@@ -30,6 +37,11 @@ function actorData(source) {
   delete data.__items;
   delete data.items;
   delete data._id;
+  const legacyFlags = data.flags?.saeroth;
+  if (legacyFlags) {
+    data.flags[MODULE_ID] = { ...legacyFlags, ...data.flags[MODULE_ID] };
+    delete data.flags.saeroth;
+  }
   for (const item of items) delete item._id;
   // Let Foundry supply current defaults rather than copying old module-pack
   // token schema fields into a live world document.
@@ -53,11 +65,11 @@ async function syncContent() {
     if (manifest?.schema !== 1 || !Array.isArray(manifest.actors)) throw new Error("The repository content manifest is invalid.");
     const pack = await syncedPack();
     const existing = await pack.getDocuments();
-    const byKey = new Map(existing.map((actor) => [actor.getFlag("saeroth", "syncKey"), actor]));
+    const byKey = new Map(existing.map((actor) => [syncKey(actor), actor]));
     let created = 0;
     let updated = 0;
     for (const source of manifest.actors) {
-      const key = source?.flags?.saeroth?.syncKey;
+      const key = syncKey(source);
       if (!key) continue;
       const { data, items } = actorData(source);
       const previous = byKey.get(key);
