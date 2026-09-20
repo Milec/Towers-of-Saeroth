@@ -15,7 +15,9 @@ or stowaways. All six fit a wagon train and none of them need to know each
 other first.
 
 [[John Guard]] is a suitable hired escort if the caravan needs an experienced
-road hand beyond the party.
+road hand beyond the party. A player who signs on as a guard at Tessine signs
+the [[Berruel Road Articles]], which are a prop, a wage, and four of the
+clues.
 
 The caravan is going to be destroyed. That is not a failure state; it is the
 premise. What the party does about *why* is the campaign.

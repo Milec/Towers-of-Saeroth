@@ -15,7 +15,9 @@ lost one. He checks the axles himself before every departure, pays
 the guards out of his own purse when the house is slow, and knows the Uplad
 horse road well enough to name the stream crossings that flood a day before
 the sky says they will. He was put on this contract because the cargo was
-worth being careful with, not because he was cheap.
+worth being careful with, not because he was cheap. Every hand on the train
+signed the [[Berruel Road Articles]] with his name on them as countersignatory,
+because Casa Berruel keeps no agent past the harbour.
 
 He does not know why the house was careful about the wrong things. Two of the
 wagons were sealed at Vessene and he was told not to open them, which is not
