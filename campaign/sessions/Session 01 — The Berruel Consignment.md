@@ -1,11 +1,40 @@
 ---
 title: Session 01 — The Berruel Consignment
 type: session
-status: prep
-party: 6 characters at level 1 (assumed — see Scaling)
+status: played; ambush prep carried forward
+party: 6 characters; now level 2
 route: [[Tessine]] → [[Quivar]] → [[Vaelic Principality]]
 ambush: the Quivar–Vaelic border, within sight of [[Lazarian Lichdom]]
 ---
+
+## Session 1 actual
+
+The session opened at the caravan's nighttime camp, where everyone introduced
+their characters. The party then fought goblins on the road. They did not
+reach the planned zombie encounter.
+
+The GM advanced the party to **level 2**. This was the intended starting level;
+the increase was delayed to give the GM a first session of play before moving
+the characters up. It was a GM-directed advancement, not a recorded XP award
+for the goblin fight.
+
+**Where we stopped:** the caravan is still travelling toward the prepared
+ambush site. The zombie attack and its aftermath have not happened.
+
+## Next session handoff
+
+- Resume with the caravan on the road toward the ambush.
+- The six-character party is now level 2. Use the level 2 option under
+  **Scaling** below; the original level 1 encounter figures are retained as
+  prep history, not the current party assumption.
+- Keep the zombie encounter, cargo consequences, and investigation clues as
+  unplayed material. None of the planned losses or discoveries below are
+  established events yet.
+
+## Original premise and unplayed prep
+
+The following material was prepared before Session 1. It remains available for
+the upcoming ambush; it is not a record of what happened at the table.
 
 A [[Thurion Merchant Alliance]] caravan carrying supplies for an expedition to
 a rumoured fourth tower, run by [[Milo Calvetti]], who has never lost a wagon
@@ -128,7 +157,9 @@ why the Magocracy chose to look there.
 
 ## The fight
 
-Assumed party: **6 characters at level 1**. Moderate is 120 XP, severe is 180.
+Original prep assumption: **6 characters at level 1**. The party reached level 2
+after Session 1; use **Scaling** below for the pending ambush. The figures in
+this section describe the original level 1 version. Moderate is 120 XP, severe is 180.
 
 Two kinds of zombie, and the difference is the encounter:
 
