@@ -1,0 +1,734 @@
+{
+  "_id": "c6774f7714932812",
+  "name": "Berruel Caravan — Roadside Ambush",
+  "active": false,
+  "navigation": false,
+  "navOrder": 0,
+  "width": 3200,
+  "height": 3200,
+  "padding": 0,
+  "shiftX": 0,
+  "shiftY": 0,
+  "initial": {
+    "x": 1600,
+    "y": 1500,
+    "scale": 0.3
+  },
+  "initialLevel": "defaultLevel0000",
+  "thumb": "modules/saeroth-pf2e-content/assets/maps/berruel-caravan-ambush.png",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "distance": 5,
+    "units": "ft",
+    "alpha": 0.15,
+    "color": "#b8b0a0",
+    "style": "solidLines",
+    "thickness": 1
+  },
+  "tokenVision": true,
+  "environment": {
+    "darknessLevel": 0.25,
+    "darknessLock": true,
+    "cycle": false,
+    "globalLight": {
+      "enabled": true,
+      "bright": false,
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  },
+  "levels": [
+    {
+      "_id": "defaultLevel0000",
+      "name": "Road",
+      "elevation": {
+        "bottom": null,
+        "top": null
+      },
+      "background": {
+        "src": "modules/saeroth-pf2e-content/assets/maps/berruel-caravan-ambush.png",
+        "color": "#252820"
+      },
+      "textures": {
+        "fit": "fill",
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "offsetX": 0,
+        "offsetY": 0,
+        "rotation": 0
+      }
+    }
+  ],
+  "walls": [
+    {
+      "_id": "dabaebd35f9d73c3",
+      "c": [
+        730,
+        1404,
+        1064,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "West wagon"
+        }
+      }
+    },
+    {
+      "_id": "67a0749c39334cb9",
+      "c": [
+        1064,
+        1404,
+        1064,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "West wagon tailgate"
+        }
+      }
+    },
+    {
+      "_id": "b23822eb696087da",
+      "c": [
+        1064,
+        1620,
+        730,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "West wagon"
+        }
+      }
+    },
+    {
+      "_id": "f2a1f462ac4d0089",
+      "c": [
+        730,
+        1620,
+        730,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "West wagon"
+        }
+      }
+    },
+    {
+      "_id": "b1ef772a691d05dd",
+      "c": [
+        1465,
+        1404,
+        1786,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Middle wagon"
+        }
+      }
+    },
+    {
+      "_id": "f5d0419bbff4a428",
+      "c": [
+        1786,
+        1404,
+        1786,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Middle wagon tailgate"
+        }
+      }
+    },
+    {
+      "_id": "fd49062e7f099d7f",
+      "c": [
+        1786,
+        1620,
+        1465,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Middle wagon"
+        }
+      }
+    },
+    {
+      "_id": "7d3e25fc6475a4c7",
+      "c": [
+        1465,
+        1620,
+        1465,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Middle wagon"
+        }
+      }
+    },
+    {
+      "_id": "d440afe6f35ec90d",
+      "c": [
+        2210,
+        1404,
+        2542,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "East wagon"
+        }
+      }
+    },
+    {
+      "_id": "209544b7cea4aa60",
+      "c": [
+        2542,
+        1404,
+        2542,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "East wagon tailgate"
+        }
+      }
+    },
+    {
+      "_id": "289cb2a5cd36dcc7",
+      "c": [
+        2542,
+        1620,
+        2210,
+        1620
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "East wagon"
+        }
+      }
+    },
+    {
+      "_id": "d925141a533bc62d",
+      "c": [
+        2210,
+        1620,
+        2210,
+        1404
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "East wagon"
+        }
+      }
+    },
+    {
+      "_id": "1146d9fd554dc5c3",
+      "c": [
+        791,
+        2549,
+        855,
+        2585
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "231a2c91ce173908",
+      "c": [
+        855,
+        2585,
+        847,
+        2649
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "3efa0af444a35408",
+      "c": [
+        847,
+        2649,
+        783,
+        2664
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "32f6c27592959dc6",
+      "c": [
+        783,
+        2664,
+        753,
+        2611
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "871104f736543e51",
+      "c": [
+        753,
+        2611,
+        791,
+        2549
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southwest boulder"
+        }
+      }
+    },
+    {
+      "_id": "03768a9c5178ebb4",
+      "c": [
+        2531,
+        2309,
+        2628,
+        2309
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "2a67e47cc7c65daa",
+      "c": [
+        2628,
+        2309,
+        2687,
+        2371
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "d17c8b706c350aea",
+      "c": [
+        2687,
+        2371,
+        2664,
+        2427
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "59d91b699911f833",
+      "c": [
+        2664,
+        2427,
+        2577,
+        2457
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "1254e1d1e5c07d7e",
+      "c": [
+        2577,
+        2457,
+        2503,
+        2406
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast boulder"
+        }
+      }
+    },
+    {
+      "_id": "a734d7a9e7acaf1e",
+      "c": [
+        2503,
+        2406,
+        2531,
+        2309
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth": {
+          "label": "Southeast boulder"
+        }
+      }
+    }
+  ],
+  "lights": [
+    {
+      "_id": "acd32de8f4610ba7",
+      "name": "Wagon 1 lantern",
+      "x": 1085,
+      "y": 1406,
+      "elevation": 5,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 20,
+        "dim": 40,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.3,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "7569c8cdb474a266",
+      "name": "Wagon 2 lantern",
+      "x": 1817,
+      "y": 1406,
+      "elevation": 5,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 20,
+        "dim": 40,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.3,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "aacae2b0e782de38",
+      "name": "Wagon 3 lantern",
+      "x": 2567,
+      "y": 1406,
+      "elevation": 5,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 20,
+        "dim": 40,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.3,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    }
+  ],
+  "tokens": [],
+  "notes": [],
+  "sounds": [],
+  "drawings": [],
+  "regions": [],
+  "tiles": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "saeroth": {
+      "source": "campaign/sessions/Session 01 — The Berruel Consignment.md",
+      "setup": "160ft square. Wagon sides block movement, not sight/light; open east tailgates to board. Ditch/brush terrain and cover are GM-adjudicated. No actors preplaced. Walls and lights stay fixed if you move the baked-in wagons."
+    }
+  }
+}

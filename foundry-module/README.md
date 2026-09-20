@@ -6,7 +6,79 @@ player ancestries as a native PF2e Item compendium. The
 initial build discovers five existing campaign statblocks, including Skinwright,
 The Cream Man, Wenzel Grauth, Garrick Thorne, and Ashwin Devaraj.
 
-## Source format
+## Battle maps
+
+**Saeroth Battle Maps** contains three Foundry v14 Scenes. Import the desired
+scene from that compendium into Scenes. The campsite and woodland road are
+reusable encounters, not alternate states of the Session 1 ambush.
+
+| Scene | Grid and area | Setup |
+| --- | --- | --- |
+| Berruel Caravan — Woodland Campsite | 32 x 32 squares; 160 x 160 feet | Night camp, three wagons, four tents, central fire |
+| Berruel Caravan — Woodland Road | 32 x 32 squares; 160 x 160 feet | Daylight, three intact wagons, clear verges and boulder cover |
+| Berruel Caravan — Roadside Ambush | 32 x 32 squares; 160 x 160 feet | Original Session 1 setup, unchanged |
+
+All use five-foot squares and gridless source art; Foundry supplies the grid.
+The original 1254px square rasters are fitted to the scene canvas without
+changing their image detail. Both new maps were edited from the original
+ambush artwork to retain the same wagon row, cargo, construction and scale;
+the independent-wagon drafts were rejected. No actors, horses, enemies, corpses, or traps are
+preplaced in the new scenes. Add the encounter's tokens yourself.
+
+### Campsite and woodland road
+
+- The campsite has three wagon tailgates and four tent-flap doors. Canvas
+  sides and three large boulders block movement, sight, and light. Wagon
+  sides block movement only. The canvas roofs are part of the background;
+  opening a flap does not reveal a roofless tent interior.
+- Night camp starts at 0.75 darkness with global illumination off. Its fire
+  and three lanterns each give 20ft bright / 40ft dim animated warm light.
+  Tokens need their normal PF2e vision settings. For a daytime camp, enable
+  global illumination and reduce scene darkness.
+- The road starts in bright global daylight with three rear (east) wagon
+  tailgates and three boulder outlines. Its three lanterns activate when
+  darkness reaches 0.25; for night use, raise darkness and disable global
+  illumination. Daylight remains unchanged by their warm color settings.
+- Trees, logs, brush, cover and terrain costs are adjudicated by the GM.
+  There are no automatic fire-damage rules or scripted encounters.
+- Wagons and tents are fixed background artwork, not movable tiles. Doors
+  control collision and vision, not the painted appearance. Moving vehicles
+  requires separate tiles and corresponding wall/light adjustments.
+
+Assets are `assets/maps/berruel-caravan-campsite.png` and
+`assets/maps/berruel-caravan-road.png`, with their complete built-in ImageGen
+prompts retained beside them as `.prompt.txt` files. Standalone imports are
+`content/scenes/berruel-caravan-campsite.json` and
+`content/scenes/berruel-caravan-road.json`; the installed module is required
+to resolve their local artwork URLs.
+
+### Original roadside ambush
+
+The generated gridless image is included at
+`modules/saeroth-pf2e-content/assets/maps/berruel-caravan-ambush.png`.
+A standalone importable scene JSON is also supplied in
+`content/scenes/berruel-caravan-ambush.json` (requires the installed module for art).
+
+- 32 x 32 squares, 5 feet per square, 160 x 160 feet. The original raster is
+  fitted to a 3200px square canvas; this does not increase its image detail.
+- Three open-top wagons with movement-blocking sides; the short east side of
+  each is an openable tailgate. Low sides do not block vision or lantern light.
+- Two boulder outlines block movement, sight and light. Shallow ditch, crossings,
+  brush and road exits remain traversable; adjudicate cover and terrain manually.
+- Three warm animated lanterns: 20ft bright / 40ft dim. Dim global light and
+  mild dusk darkness keep the open battlefield readable. Token vision is on.
+- No actors or encounter spoilers are baked into the map or preplaced.
+  Wagon artwork is part of the background, not movable tiles. If a wagon moves
+  during play, adjudicate its position or use a separate tile and move its walls
+  and light; this scene does not automate vehicle movement, fire, or terrain costs.
+
+Build with `node foundry-module/scripts/build-scenes.mjs` after setting
+`FOUNDRY_NODE_MODULES` as below. This writes only the scene pack and scene JSON;
+the creature builder does not erase it. Run `node foundry-module/scripts/test-caravan-scene.mjs`.
+The creature live-sync button does not import Scenes. Module installation and
+scene import are separate steps; existing world scenes are not overwritten.
+
+## Creature source format
 
 An eligible NPC lives in `campaign/npcs/`; an NPC owned by a nation lives in
 `campaign/nations/<Nation>/npcs/`; and a creature lives in

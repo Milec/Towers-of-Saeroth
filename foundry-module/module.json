@@ -2,7 +2,7 @@
   "id": "saeroth-pf2e-content",
   "title": "Towers of Saeroth PF2e Content",
   "description": "Custom creatures and NPCs from the Towers of Saeroth campaign.",
-  "version": "0.1.18",
+  "version": "0.1.20",
   "compatibility": {
     "minimum": "14.361",
     "verified": "14.367",
@@ -32,6 +32,13 @@
     ]
   },
   "packs": [
+    {
+      "name": "saeroth-scenes",
+      "label": "Saeroth Battle Maps",
+      "path": "packs/saeroth-scenes",
+      "type": "Scene",
+      "ownership": { "PLAYER": "NONE", "ASSISTANT": "OWNER" }
+    },
     {
       "name": "saeroth-actors",
       "label": "Saeroth Creatures & NPCs",

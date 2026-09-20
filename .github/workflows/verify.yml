@@ -36,6 +36,8 @@ jobs:
           python tools/sync_faith.py --check
       - name: Build preview
         run: python tools/build_site.py --no-vault
+      - name: Check caravan scene assets and geometry
+        run: node foundry-module/scripts/test-caravan-scene.mjs
       - name: Test atlas behavior
         working-directory: tools/atlas-tests
         run: pnpm run test:features
