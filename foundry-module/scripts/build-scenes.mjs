@@ -5,6 +5,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildTravelScenes } from "./caravan-travel-scenes.mjs";
 import { sceneStats } from "./caravan-scene-version.mjs";
+import { buildTavernScene } from "./tavern-scene.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const moduleId = "saeroth-pf2e-content";
@@ -61,10 +62,10 @@ const scene = {
     setup: "160ft square. Wagon sides block movement, not sight/light; open east tailgates to board. Ditch/brush terrain and cover are GM-adjudicated. No actors preplaced. Walls and lights stay fixed if you move the baked-in wagons."
   } }
 };
-const entries = [{ slug: "berruel-caravan-ambush", asset, scene }, ...buildTravelScenes()];
+const entries = [{ slug: "berruel-caravan-ambush", asset, scene }, ...buildTravelScenes(), buildTavernScene()];
 await mkdir(join(root, "content", "scenes"), { recursive: true });
 for (const entry of entries) {
-  await access(join(root, entry.asset));
+  for (const asset of entry.assets ?? [entry.asset]) await access(join(root, asset));
   await writeFile(join(root, "content", "scenes", `${entry.slug}.json`), JSON.stringify(entry.scene, null, 2) + "\n");
 }
 const require = createRequire(import.meta.url);
