@@ -9,6 +9,8 @@ ambush: the Quivar–Vaelic border, within sight of [[Lazarian Lichdom]]
 
 ## Session 1 actual
 
+Discord recap: [[Session 1 — Milo’s Manners]].
+
 The session opened at the caravan's nighttime camp, where everyone introduced
 their characters. The party then fought goblins on the road. They did not
 reach the planned zombie encounter.
