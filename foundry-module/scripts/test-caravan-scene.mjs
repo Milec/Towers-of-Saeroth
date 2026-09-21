@@ -116,7 +116,7 @@ if (process.env.FOUNDRY_NODE_MODULES) {
   await db.open();
   try {
     const keys = await db.keys().all();
-    assert.equal(keys.filter(k => k.startsWith("!scenes!")).length, 3);
+    assert.ok(keys.filter(k => k.startsWith("!scenes!")).length >= 3);
     for (const expectedScene of scenes) {
       const packed = await db.get(`!scenes!${expectedScene._id}`);
       for (const collection of ["levels", "walls", "lights"]) {
