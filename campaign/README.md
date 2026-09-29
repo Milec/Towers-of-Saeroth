@@ -15,6 +15,7 @@ The four indexes and the two notes everything else hangs off:
 - [[Gods of the World]] — the pantheon, and who keeps which god
 - [[Creatures of the World]] — monsters that belong to no single nation
 - [[Ages of Saeroth]] — the dated timeline, and the calendar it is counted in
+- [[The Saeroth Calendar]] — common months, weekdays, and date notation
 - [[The Towers]] — the campaign premise
 - [[Atlas Locations]] — locations added through the map editor
 - [[Player Characters]] — the party, organized by player

@@ -16,6 +16,9 @@ Saeroth counts in **AR** — *After the Red* — and the present year is
 **2376 AR**. To convert anything the notes say in plain speech, subtract:
 sixty years ago is 2316 AR, four centuries ago is around 1976.
 
+For the standard months, weekdays, and date format used in current records,
+see [[The Saeroth Calendar]].
+
 The remarkable thing about the count is not its length. It is that
 **everybody's agrees**, to within a year or two, and **nobody can say what it
 counts from**.
