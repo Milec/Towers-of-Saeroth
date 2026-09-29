@@ -121,4 +121,3 @@ the backstory's wings, relics, or unfinished mechanical prompts.
 
 *Backstory source: Isaiah's Triptych Backstory draft, including its character
 profile and supporting tables. Empty writing prompts have not been filled in.*
-

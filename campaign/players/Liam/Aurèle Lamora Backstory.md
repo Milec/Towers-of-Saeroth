@@ -156,4 +156,3 @@ confirm that interval before assigning exact dates.
 
 *Backstory source: Liam's Aurèle Lamora PDF, organized here as a campaign
 reference. The submitted story ends as he returns to studying magitech.*
-

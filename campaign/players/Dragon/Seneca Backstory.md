@@ -40,4 +40,3 @@ means of attaining it.
 - **Faith and method:** His belief that the towers offer a divine path to immortality is his conviction, not a confirmed property of the towers. He has not specified what methods he would accept.
 
 *Backstory source: Dragon's Seneca text supplied by the GM.*
-

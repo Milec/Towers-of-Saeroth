@@ -65,4 +65,3 @@ Leave those details open for Bobby.
 
 *Backstory source: Bobby's submitted Belithûr attachment. The document heading
 identifies him as Belithûr Brightforge; its filename calls him “The Boisterous.”*
-
