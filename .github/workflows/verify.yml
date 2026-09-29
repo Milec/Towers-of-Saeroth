@@ -41,6 +41,7 @@ jobs:
           node foundry-module/scripts/test-milo.mjs
           node foundry-module/scripts/test-content-sync.mjs
           node foundry-module/scripts/test-caravan-scene.mjs
+          node foundry-module/scripts/test-tavern-scene.mjs
           node foundry-module/scripts/test-caravan-background-repair.mjs
       - name: Test atlas behavior
         working-directory: tools/atlas-tests

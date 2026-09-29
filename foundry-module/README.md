@@ -28,7 +28,7 @@ The repair is idempotent and can be run again from the GM console with
 
 ### Available scenes
 
-**Saeroth Battle Maps** contains three Foundry v14 Scenes. Import the desired
+**Saeroth Battle Maps** contains four Foundry v14 Scenes. Import the desired
 scene from that compendium into Scenes. The campsite and woodland road are
 reusable encounters, not alternate states of the Session 1 ambush.
 
@@ -37,9 +37,10 @@ reusable encounters, not alternate states of the Session 1 ambush.
 | Berruel Caravan — Woodland Campsite | 32 x 32 squares; 160 x 160 feet | Night camp, three wagons, four tents, central fire |
 | Berruel Caravan — Woodland Road | 32 x 32 squares; 160 x 160 feet | Daylight, three intact wagons, clear verges and boulder cover |
 | Berruel Caravan — Roadside Ambush | 32 x 32 squares; 160 x 160 feet | Original Session 1 setup, unchanged |
+| Large Roadside Tavern — Three Floors | 36 x 24 squares; 180 x 120 feet | Taproom, cellar, upstairs with eight bedrooms |
 
 All use five-foot squares and gridless source art; Foundry supplies the grid.
-The original 1254px square rasters are fitted to the scene canvas without
+The caravan's original 1254px square rasters are fitted to the scene canvas without
 changing their image detail. Both new maps were edited from the original
 ambush artwork to retain the same wagon row, cargo, construction and scale;
 the independent-wagon drafts were rejected. No actors, horses, enemies, corpses, or traps are
@@ -97,6 +98,47 @@ Build with `node foundry-module/scripts/build-scenes.mjs` after setting
 the creature builder does not erase it. Run `node foundry-module/scripts/test-caravan-scene.mjs`.
 The creature live-sync button does not import Scenes. Module installation and
 scene import are separate steps; existing world scenes are not overwritten.
+
+### Large roadside tavern (0.1.24)
+
+One native v14 Scene contains three separate Levels, each with its own locally
+packaged background, walls and lighting: **Cellar (-10ft)**, **Ground floor
+(0ft)**, and **Upstairs (10ft)**. Select a level using Foundry's level controls.
+No third-party multi-level module is required. Each 1536 x 1024 image fits a
+3600 x 2400 scene; this increases canvas size, not raster detail.
+
+- Ground: large taproom, stage, bar, hearth, kitchen, pantry and private dining.
+- Upstairs: eight bedrooms, including double and twin rooms, with a broad hall.
+- Cellar: casks, wine room, stores and stone pillars; the west wine-room door
+  begins locked. There are 21 operable doors and 30 warm animated lights total.
+- Masonry blocks movement, vision, light and sound. Low tables, cask racks and
+  stair rails block movement without hiding everything behind them. Furniture
+  is painted background art, not movable tiles. Door leaves are also painted;
+  Foundry's door state controls collision and visibility, not that painted pose.
+- Darkness is 0.7 and global illumination is off. Tokens need normal vision.
+  Actors, sounds, roof tiles and automatic stair teleporting are not included.
+
+**Stairs:** the guest flight rises north from the taproom. Upstairs, exit north
+onto the landing, then use the east-side walkway to the bedroom corridor. The
+old northwest table was removed to clear the approach. Native rails follow
+each floor's artwork; use the corresponding landing coordinates below rather
+than assuming an unchanged x/y position at a level change.
+
+The GM changes the token's Level/elevation and places it on the destination
+landing manually. These are scene-pixel **token-center** positions (subtract
+half the token size if entering top-left x/y values):
+
+| Connection | Lower landing | Upper landing |
+| --- | --- | --- |
+| Taproom / bedrooms | Ground 0ft: (970, 795) | Upstairs 10ft: (1017, 328) |
+| Cellar / pantry | Cellar -10ft: (3152, 1230) | Ground 0ft: (3152, 780) |
+
+Import `Large Roadside Tavern — Three Floors` from **Saeroth Battle Maps** after
+installing the module update. Creature live sync does not deliver Scenes.
+Standalone import: `content/scenes/large-tavern.json` (installed module assets
+still required). Built-in ImageGen source images and prompts are under
+`assets/maps/large-tavern-*`. Run `node foundry-module/scripts/test-tavern-scene.mjs`
+after rebuilding; setting `FOUNDRY_NODE_MODULES` also checks the native pack.
 
 ## Creature source format
 
