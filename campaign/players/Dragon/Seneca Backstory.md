@@ -13,7 +13,7 @@ monastic upbringing is part of his history; his character class is Cleric.
 
 On a journey to minister to the scattered Pharasma worshippers of the
 [[Lazarian Lichdom]], he saw how much more time immortals had to affect the
-world. He turned his devotion to the Lady of the North Star and began
+world. He turned his devotion to [[The Lady of the North Star]] and began
 seeking eternal life. He wants those additional years to serve the
 downtrodden, rather than to pursue his own comfort.
 
