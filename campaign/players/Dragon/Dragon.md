@@ -12,7 +12,7 @@ character: Seneca
 - **Ancestry / heritage:** Dragonblood.
 - **Class:** Cleric.
 - **Homeland:** [[Thesal Theocracy]].
-- **Current faith:** Lady of the North Star.
+- **Current faith:** [[The Lady of the North Star]].
 - **Former faith:** Previously a priest of [[Pharasma]]; has since converted.
 - **Current work:** Travelling chaplain serving Pharasma worshippers in the [[Lazarian Lichdom]].
 

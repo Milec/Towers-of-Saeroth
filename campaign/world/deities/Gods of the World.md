@@ -29,6 +29,7 @@ city-state pattern — the pantheon is shared, the patron is local.
 | [[Iomedae]] | Confidence, Might, Truth, Zeal | Vaelic Principality | — |
 | [[Irori]] | Knowledge, Might, Perfection, Truth | Xian Ti | Melisor Magocracy |
 | [[Ketephys]] | Darkness, Moon, Nature, Secrecy | Elven Confederacy | — |
+| [[The Lady of the North Star]] | Cold, Darkness, Secrecy, Vigil | — | Xian Ti, through the [[Cult of the North Star]] |
 | [[Magrim]] | Death, Duty, Fate, Glyph | — | Stoneborn Holds |
 | [[Milani]] | Change, Destruction, Freedom, Zeal | Corvane Republic | Sarrowmere |
 | [[Nethys]] | Destruction, Knowledge, Magic, Protection | Melisor Magocracy | — |
