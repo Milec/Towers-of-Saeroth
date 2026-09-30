@@ -10,6 +10,7 @@ character: Aurèle Lamora
 - **Name:** Aurèle Lamora.
 - **Ancestry:** Half human, half elf.
 - **Class:** Gunslinger, Spellshot.
+- **Archetype:** Inventor.
 - **Homeland:** [[Quivar]].
 - **Background:** Son of a minor noble.
 - **Weapons:** Guns.
