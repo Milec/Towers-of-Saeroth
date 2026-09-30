@@ -13,6 +13,7 @@ character: Victarion Venelux
 - **Ancestry:** [[Sanguinor]].
 - **Heritage:** Nephilim.
 - **Class:** Exemplar.
+- **Archetype:** Soulforger.
 - **Weapons:** Shortswords.
 - **Ikon:** Death and Divinity, bound by his spark.
 
