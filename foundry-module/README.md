@@ -192,7 +192,7 @@ and Will modifiers natively when combat begins while the tracker is Unfed.
 
 ## Local MCP bridge
 
-Version 0.1.26 includes an optional, GM-only local MCP bridge. With an open
+Version 0.2.0 includes an optional, GM-only local MCP bridge. With an open
 Foundry world and a matching random token, it lets an MCP client inspect and
 manage supported world documents through Foundry's document APIs. The relay
 binds only to `127.0.0.1`; it is not a public Foundry API and it does not expose
@@ -204,6 +204,13 @@ source: levels and background images, walls and doors, lighting, tiles,
 drawings, map notes, sounds, regions, and token placements. This lets the GM
 review one generated scene source before it is created rather than assembling a
 blank map by hand.
+
+It can also validate a scene before writing it, set up a combat encounter from
+placed NPCs, create linked journal/map pins from campaign locations, and make
+PF2e Loot actors for chests, merchant inventories, and treasure parcels. It can
+publish approved documents into compendia without a restart, copy assets from
+one configured safe source folder into Foundry data, and undo the last fifty
+MCP creations or updates while the same GM client remains connected.
 
 ## Portrait workflow
 

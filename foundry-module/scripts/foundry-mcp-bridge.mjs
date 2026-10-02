@@ -9,12 +9,14 @@
 const MODULE_ID = "saeroth-pf2e-content";
 const RETRY_DELAY_MS = 5_000;
 const MAX_RESULTS = 100;
+const MAX_OPERATIONS = 50;
 const ALLOWED_DOCUMENT_TYPES = new Set([
   "Actor", "Item", "Scene", "JournalEntry", "RollTable",
 ]);
 
 let socket;
 let retryTimer;
+const operations = new Map();
 
 Hooks.once("init", () => {
   game.settings.register(MODULE_ID, "mcpBridgeEnabled", {
@@ -182,7 +184,71 @@ async function buildScene(args) {
 
   const scene = await Scene.create(source);
   if (args.activate === true) await scene.activate();
-  return sceneBuildSummary(scene);
+  return {
+    ...sceneBuildSummary(scene),
+    operationId: recordCreateOperation(`Create scene ${scene.name}`, [scene.uuid]),
+  };
+}
+
+async function previewScene(args) {
+  const source = args.scene;
+  if (!source || typeof source !== "object" || Array.isArray(source)) {
+    throw new Error("scene must be an object containing a Foundry Scene source.");
+  }
+  const errors = [];
+  const warnings = [];
+  const width = Number(source.width);
+  const height = Number(source.height);
+  if (!source.name?.trim()) errors.push("scene.name is required.");
+  if (!Number.isFinite(width) || width <= 0) errors.push("scene.width must be a positive number.");
+  if (!Number.isFinite(height) || height <= 0) errors.push("scene.height must be a positive number.");
+  for (const property of ["levels", "walls", "lights", "tiles", "drawings", "notes", "sounds", "regions", "tokens"]) {
+    if (source[property] !== undefined && !Array.isArray(source[property])) errors.push(`scene.${property} must be an array.`);
+  }
+  const levels = source.levels ?? [];
+  const levelIds = new Set(levels.map((level) => level._id).filter(Boolean));
+  if (!levels.length) warnings.push("The scene has no explicit levels or background image.");
+  for (const [index, level] of levels.entries()) {
+    const path = level?.background?.src;
+    if (!path) {
+      warnings.push(`levels[${index}] has no background image.`);
+      continue;
+    }
+    try {
+      const response = await fetch(path, { method: "HEAD" });
+      if (!response.ok) errors.push(`levels[${index}] background is unavailable: ${path}`);
+    } catch {
+      errors.push(`levels[${index}] background could not be checked: ${path}`);
+    }
+  }
+  const pointIsValid = (x, y, label) => {
+    if (!Number.isFinite(x) || !Number.isFinite(y)) errors.push(`${label} needs numeric coordinates.`);
+    else if (Number.isFinite(width) && Number.isFinite(height) && (x < 0 || y < 0 || x > width || y > height)) {
+      warnings.push(`${label} is outside the scene bounds.`);
+    }
+  };
+  for (const [index, wall] of (source.walls ?? []).entries()) {
+    if (!Array.isArray(wall.c) || wall.c.length !== 4) errors.push(`walls[${index}].c must contain four coordinates.`);
+    else {
+      pointIsValid(wall.c[0], wall.c[1], `walls[${index}] start`);
+      pointIsValid(wall.c[2], wall.c[3], `walls[${index}] end`);
+    }
+  }
+  for (const property of ["lights", "tiles", "drawings", "notes", "sounds", "tokens"]) {
+    for (const [index, document] of (source[property] ?? []).entries()) {
+      pointIsValid(document.x, document.y, `${property}[${index}]`);
+      if (levelIds.size && Array.isArray(document.levels) && document.levels.some((id) => !levelIds.has(id))) {
+        errors.push(`${property}[${index}] references a missing level.`);
+      }
+    }
+  }
+  return {
+    valid: errors.length === 0,
+    errors,
+    warnings,
+    counts: Object.fromEntries(["levels", "walls", "lights", "tiles", "drawings", "notes", "sounds", "regions", "tokens"]
+      .map((property) => [property, (source[property] ?? []).length])),
+  };
 }
 
 async function findDocument(uuid) {
@@ -191,6 +257,194 @@ async function findDocument(uuid) {
     throw new Error(`No supported document found for UUID: ${uuid}`);
   }
   return document;
+}
+
+function recordCreateOperation(label, uuids) {
+  const id = crypto.randomUUID();
+  operations.set(id, { kind: "create", label, uuids, createdAt: new Date().toISOString() });
+  while (operations.size > MAX_OPERATIONS) operations.delete(operations.keys().next().value);
+  return id;
+}
+
+function recordUpdateOperation(label, uuid, before) {
+  const id = crypto.randomUUID();
+  operations.set(id, { kind: "update", label, uuid, before, createdAt: new Date().toISOString() });
+  while (operations.size > MAX_OPERATIONS) operations.delete(operations.keys().next().value);
+  return id;
+}
+
+async function undoOperation(operationId) {
+  const operation = operations.get(operationId);
+  if (!operation) throw new Error("That operation is unavailable. Undo history resets when the GM client reloads.");
+  if (operation.kind === "create") {
+    for (const uuid of [...operation.uuids].reverse()) {
+      const document = await fromUuid(uuid);
+      if (document) await document.delete();
+    }
+  } else {
+    const document = await fromUuid(operation.uuid);
+    if (!document) throw new Error("The original document no longer exists.");
+    await document.update(operation.before);
+  }
+  operations.delete(operationId);
+  return { undone: operation.label };
+}
+
+async function findWorldScene(uuid) {
+  const scene = await findDocument(uuid);
+  if (scene.documentName !== "Scene" || scene.pack) {
+    throw new Error("Placeable content must target an imported world Scene, not a compendium Scene.");
+  }
+  return scene;
+}
+
+function sourceWithoutId(document) {
+  const source = document.toObject();
+  delete source._id;
+  return source;
+}
+
+async function resolveActor(actorUuid) {
+  const source = await fromUuid(actorUuid);
+  if (!source || source.documentName !== "Actor") throw new Error(`No Actor found for UUID: ${actorUuid}`);
+  if (!source.pack) return { actor: source, imported: false };
+  const actor = await Actor.create(sourceWithoutId(source));
+  return { actor, imported: true };
+}
+
+function positionedToken(actor, placement) {
+  if (!Number.isFinite(placement.x) || !Number.isFinite(placement.y)) {
+    throw new Error("Token placement requires numeric x and y scene coordinates.");
+  }
+  const token = actor.prototypeToken.toObject();
+  delete token._id;
+  return foundry.utils.mergeObject(token, { ...placement, actorId: actor.id, actorLink: false }, { inplace: false, recursive: true });
+}
+
+async function placeActor(scene, actorUuid, tokenData) {
+  const { actor, imported } = await resolveActor(actorUuid);
+  const [token] = await scene.createEmbeddedDocuments("Token", [positionedToken(actor, tokenData)]);
+  return { actor, token, imported };
+}
+
+async function itemSource(value) {
+  if (value?.uuid) {
+    const item = await fromUuid(value.uuid);
+    if (!item || item.documentName !== "Item") throw new Error(`No Item found for UUID: ${value.uuid}`);
+    return sourceWithoutId(item);
+  }
+  if (!value || typeof value !== "object" || Array.isArray(value) || !value.name || !value.type) {
+    throw new Error("Each item must be a native Item source with name and type, or an object with an Item UUID.");
+  }
+  return value;
+}
+
+async function placeLoot(args) {
+  const scene = await findWorldScene(args.sceneUuid);
+  if (!args.name?.trim()) throw new Error("A loot or container name is required.");
+  const items = await Promise.all((args.items ?? []).map(itemSource));
+  const actor = await Actor.create({
+    ...args.actorData,
+    name: args.name.trim(),
+    type: "loot",
+    img: args.img ?? "icons/containers/chest/worn-chest-brown.webp",
+  });
+  if (items.length) await actor.createEmbeddedDocuments("Item", items);
+  const [token] = await scene.createEmbeddedDocuments("Token", [positionedToken(actor, args.token ?? {})]);
+  return {
+    actor: documentSummary(actor),
+    token: documentSummary(token),
+    itemCount: items.length,
+    operationId: recordCreateOperation(`Place loot ${actor.name}`, [actor.uuid, token.uuid]),
+  };
+}
+
+async function setupEncounter(args) {
+  const scene = await findWorldScene(args.sceneUuid);
+  if (!Array.isArray(args.participants) || !args.participants.length) throw new Error("At least one encounter participant is required.");
+  const createdUuids = [];
+  const placed = [];
+  for (const participant of args.participants) {
+    const result = await placeActor(scene, participant.actorUuid, participant.token ?? {});
+    placed.push({ actor: documentSummary(result.actor), token: documentSummary(result.token), name: participant.name ?? result.actor.name });
+    createdUuids.push(result.token.uuid);
+    if (result.imported) createdUuids.push(result.actor.uuid);
+  }
+  const combat = await Combat.create({ scene: scene.id, active: true });
+  createdUuids.push(combat.uuid);
+  const combatants = await combat.createEmbeddedDocuments("Combatant", placed.map((entry) => ({
+    tokenId: entry.token.id,
+    actorId: entry.actor.id,
+    name: entry.name,
+  })));
+  if (args.rollInitiative === true) await combat.rollInitiative(combatants.map((combatant) => combatant.id));
+  return {
+    combat: documentSummary(combat),
+    participants: placed,
+    operationId: recordCreateOperation(`Set up encounter in ${scene.name}`, createdUuids),
+  };
+}
+
+async function createLocationNote(args) {
+  const scene = await findWorldScene(args.sceneUuid);
+  if (!args.name?.trim()) throw new Error("A location note name is required.");
+  if (!Number.isFinite(args.x) || !Number.isFinite(args.y)) throw new Error("Location notes require numeric x and y scene coordinates.");
+  const entry = await JournalEntry.create({
+    name: args.name.trim(),
+    pages: [{ name: args.name.trim(), type: "text", text: { content: args.content ?? "" } }],
+  });
+  const [note] = await scene.createEmbeddedDocuments("Note", [{
+    entryId: entry.id,
+    pageId: entry.pages.contents[0]?.id,
+    x: args.x,
+    y: args.y,
+    icon: args.icon ?? "icons/svg/book.svg",
+    iconSize: args.iconSize ?? 32,
+    text: args.label ?? entry.name,
+  }]);
+  return {
+    journal: documentSummary(entry),
+    note: documentSummary(note),
+    operationId: recordCreateOperation(`Create location note ${entry.name}`, [entry.uuid, note.uuid]),
+  };
+}
+
+async function publishToCompendium(args) {
+  const document = await findDocument(args.uuid);
+  const pack = game.packs.get(args.pack);
+  if (!pack) throw new Error(`No compendium pack found: ${args.pack}`);
+  if (pack.documentName !== document.documentName) throw new Error(`Pack ${args.pack} does not accept ${document.documentName} documents.`);
+  const wasLocked = pack.locked;
+  if (wasLocked) await pack.configure({ locked: false });
+  try {
+    const imported = await pack.importDocument(document);
+    return {
+      document: documentSummary(imported),
+      operationId: recordCreateOperation(`Publish ${document.name} to ${pack.title}`, [imported.uuid]),
+    };
+  } finally {
+    if (wasLocked) await pack.configure({ locked: true });
+  }
+}
+
+async function assignAsset(args) {
+  const target = args.target;
+  if (target === "actorPortrait" || target === "actorToken") {
+    const actor = await findDocument(args.uuid);
+    if (actor.documentName !== "Actor") throw new Error("Actor asset targets require an Actor UUID.");
+    const before = sourceWithoutId(actor);
+    await actor.update(target === "actorPortrait" ? { img: args.assetPath } : { "prototypeToken.texture.src": args.assetPath });
+    return { document: documentSummary(actor), operationId: recordUpdateOperation(`Assign ${target} for ${actor.name}`, actor.uuid, before) };
+  }
+  if (target === "sceneLevelBackground") {
+    const scene = await findWorldScene(args.uuid);
+    const level = scene.levels.get(args.levelId);
+    if (!level) throw new Error(`No Scene Level found: ${args.levelId}`);
+    const before = sourceWithoutId(level);
+    await level.update({ "background.src": args.assetPath });
+    return { document: documentSummary(level), operationId: recordUpdateOperation(`Assign background for ${scene.name}`, level.uuid, before) };
+  }
+  throw new Error(`Unknown asset target: ${target}`);
 }
 
 async function execute(tool, args) {
@@ -234,19 +488,44 @@ async function execute(tool, args) {
         ...args.data,
         name: args.name.trim(),
       });
-      return documentSummary(document);
+      return {
+        document: documentSummary(document),
+        operationId: recordCreateOperation(`Create ${document.name}`, [document.uuid]),
+      };
     }
+
+    case "preview_scene":
+      return previewScene(args);
 
     case "build_scene":
       return buildScene(args);
+
+    case "place_loot":
+      return placeLoot(args);
+
+    case "setup_encounter":
+      return setupEncounter(args);
+
+    case "create_location_note":
+      return createLocationNote(args);
+
+    case "publish_to_compendium":
+      return publishToCompendium(args);
+
+    case "assign_asset":
+      return assignAsset(args);
 
     case "update_document": {
       if (!args.changes || typeof args.changes !== "object" || Array.isArray(args.changes)) {
         throw new Error("changes must be an object.");
       }
       const document = await findDocument(args.uuid);
+      const before = sourceWithoutId(document);
       await document.update(args.changes);
-      return documentSummary(document);
+      return {
+        document: documentSummary(document),
+        operationId: recordUpdateOperation(`Update ${document.name}`, document.uuid, before),
+      };
     }
 
     case "activate_scene": {
@@ -265,6 +544,9 @@ async function execute(tool, args) {
       await document.delete();
       return { deleted: summary };
     }
+
+    case "undo_operation":
+      return undoOperation(args.operationId);
 
     default:
       throw new Error(`Unknown MCP tool: ${tool}`);

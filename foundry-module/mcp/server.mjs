@@ -7,13 +7,22 @@
  */
 
 import crypto from "node:crypto";
+import fs from "node:fs/promises";
 import http from "node:http";
+import path from "node:path";
 import readline from "node:readline";
+import { fileURLToPath } from "node:url";
 
 const token = process.env.FOUNDRY_MCP_TOKEN;
 const port = Number(process.env.FOUNDRY_MCP_PORT ?? 32123);
 const REQUEST_TIMEOUT_MS = 20_000;
 const MAX_FRAME_BYTES = 5_000_000;
+const ASSET_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".mp3", ".ogg", ".wav"]);
+const assetSourceRoot = process.env.FOUNDRY_MCP_ASSET_SOURCE_ROOT
+  ? path.resolve(process.env.FOUNDRY_MCP_ASSET_SOURCE_ROOT)
+  : null;
+const moduleDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const foundryDataDirectory = path.resolve(moduleDirectory, "../..");
 
 if (!token || token.length < 24) {
   console.error("FOUNDRY_MCP_TOKEN must be a random token of at least 24 characters.");
@@ -71,6 +80,78 @@ const tools = [
     },
     required: ["scene"],
   }),
+  tool("foundry_preview_scene", "Validate a proposed native Scene without writing anything. Checks dimensions, embedded collection shapes, map background paths, wall coordinates, level references, and placeable bounds.", {
+    type: "object",
+    properties: { scene: { type: "object" } },
+    required: ["scene"],
+  }),
+  tool("foundry_setup_encounter", "Place a group of Actors on a world Scene, create an active Combat encounter, and optionally roll every combatant's initiative.", {
+    type: "object",
+    properties: {
+      sceneUuid: { type: "string", minLength: 1 },
+      participants: {
+        type: "array",
+        minItems: 1,
+        items: {
+          type: "object",
+          properties: {
+            actorUuid: { type: "string", minLength: 1 },
+            name: { type: "string" },
+            token: { type: "object", properties: { x: { type: "number" }, y: { type: "number" } }, required: ["x", "y"] },
+          },
+          required: ["actorUuid", "token"],
+        },
+      },
+      rollInitiative: { type: "boolean", default: false },
+    },
+    required: ["sceneUuid", "participants"],
+  }),
+  tool("foundry_create_location_note", "Create a Journal Entry from campaign text and place a linked Map Note on an imported world Scene.", {
+    type: "object",
+    properties: {
+      sceneUuid: { type: "string", minLength: 1 },
+      name: { type: "string", minLength: 1 },
+      content: { type: "string" },
+      label: { type: "string" },
+      x: { type: "number" },
+      y: { type: "number" },
+      icon: { type: "string" },
+      iconSize: { type: "number", minimum: 16 },
+    },
+    required: ["sceneUuid", "name", "x", "y"],
+  }),
+  tool("foundry_place_loot", "Place a loose item, treasure parcel, chest, or merchant container as a PF2e Loot Actor with an inventory and an unlinked scene token.", {
+    type: "object",
+    properties: {
+      sceneUuid: { type: "string", minLength: 1 },
+      name: { type: "string", minLength: 1 },
+      img: { type: "string" },
+      items: { type: "array", items: { type: "object" }, default: [] },
+      actorData: { type: "object" },
+      token: { type: "object", properties: { x: { type: "number" }, y: { type: "number" } }, required: ["x", "y"] },
+    },
+    required: ["sceneUuid", "name", "token"],
+  }),
+  tool("foundry_publish_to_compendium", "Copy a world Actor, Item, Scene, Journal Entry, or Roll Table into a compatible Foundry compendium pack without restarting Foundry.", {
+    type: "object",
+    properties: { uuid: { type: "string", minLength: 1 }, pack: { type: "string", minLength: 1 } },
+    required: ["uuid", "pack"],
+  }),
+  tool("foundry_import_asset", "Copy an approved image or audio asset from FOUNDRY_MCP_ASSET_SOURCE_ROOT into Foundry's local Data/assets/mcp folder. sourcePath must be relative to that configured root.", {
+    type: "object",
+    properties: { sourcePath: { type: "string", minLength: 1 }, name: { type: "string" } },
+    required: ["sourcePath"],
+  }),
+  tool("foundry_assign_asset", "Assign an imported Foundry asset path to an Actor portrait, Actor token, or a Scene Level background.", {
+    type: "object",
+    properties: {
+      target: { type: "string", enum: ["actorPortrait", "actorToken", "sceneLevelBackground"] },
+      uuid: { type: "string", minLength: 1 },
+      assetPath: { type: "string", minLength: 1 },
+      levelId: { type: "string" },
+    },
+    required: ["target", "uuid", "assetPath"],
+  }),
   tool("foundry_update_document", "Update a supported world or compendium document by UUID. changes is passed to Foundry's document update method.", {
     type: "object",
     properties: {
@@ -92,7 +173,35 @@ const tools = [
     },
     required: ["uuid", "confirm"],
   }),
+  tool("foundry_undo_operation", "Undo a creation or update performed through this MCP while the same GM client remains connected. Undo history is limited to the last 50 operations and clears on reload.", {
+    type: "object",
+    properties: { operationId: { type: "string", minLength: 1 } },
+    required: ["operationId"],
+  }),
 ];
+
+async function importAsset(args) {
+  if (!assetSourceRoot) {
+    throw new Error("Asset import is disabled. Set FOUNDRY_MCP_ASSET_SOURCE_ROOT to an approved source directory.");
+  }
+  if (path.isAbsolute(args.sourcePath)) throw new Error("sourcePath must be relative to FOUNDRY_MCP_ASSET_SOURCE_ROOT.");
+  const source = path.resolve(assetSourceRoot, args.sourcePath);
+  const relative = path.relative(assetSourceRoot, source);
+  if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
+    throw new Error("sourcePath must stay inside FOUNDRY_MCP_ASSET_SOURCE_ROOT.");
+  }
+  const extension = path.extname(source).toLowerCase();
+  if (!ASSET_EXTENSIONS.has(extension)) throw new Error(`Unsupported asset type: ${extension || "none"}`);
+  const stat = await fs.stat(source);
+  if (!stat.isFile()) throw new Error("sourcePath must point to a file.");
+  const assetDirectory = path.join(foundryDataDirectory, "assets", "mcp");
+  await fs.mkdir(assetDirectory, { recursive: true });
+  const stem = path.basename(args.name ?? path.basename(source, extension), extension)
+    .replace(/[^a-z0-9_-]+/gi, "-").replace(/^-+|-+$/g, "").slice(0, 64) || "asset";
+  const filename = `${stem}-${crypto.randomUUID().slice(0, 8)}${extension}`;
+  await fs.copyFile(source, path.join(assetDirectory, filename));
+  return { assetPath: `assets/mcp/${filename}`, bytes: stat.size };
+}
 
 function tool(name, description, inputSchema) {
   return { name, description, inputSchema };
@@ -266,9 +375,12 @@ input.on("line", async (line) => {
     const requested = tools.find((entry) => entry.name === request.params?.name);
     if (!requested) return rpcResult(request.id, textResult({ error: "Unknown tool." }, true));
     try {
+      const args = request.params?.arguments ?? {};
       const result = requested.name === "foundry_status"
         ? (clientStatus ?? { connected: false })
-        : await sendToFoundry(requested.name.replace(/^foundry_/, ""), request.params?.arguments ?? {});
+        : requested.name === "foundry_import_asset"
+          ? await importAsset(args)
+          : await sendToFoundry(requested.name.replace(/^foundry_/, ""), args);
       return rpcResult(request.id, textResult(result));
     } catch (error) {
       return rpcResult(request.id, textResult({ error: error.message }, true));

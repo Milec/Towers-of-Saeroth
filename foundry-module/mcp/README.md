@@ -48,6 +48,22 @@ report that no GM client is connected until it receives the module connection.
   Scene source, including its levels/background art, walls and doors, lights,
   tiles, drawings, notes, sounds, regions, and tokens. Set `activate: true`
   only when the finished scene should immediately become the active scene.
+- `foundry_preview_scene` — validate that same Scene source without writing
+  anything. It checks background paths, coordinates, level references, and
+  bounds before a scene is built.
+- `foundry_setup_encounter` — place NPC or creature participants, create an
+  active Combat encounter, and optionally roll initiative.
+- `foundry_create_location_note` — create a Journal Entry and its linked map
+  pin directly from campaign location text.
+- `foundry_place_loot` — create a chest, merchant stock, loose item, or
+  treasure parcel as a PF2e Loot Actor with real inventory and a scene token.
+- `foundry_publish_to_compendium` — copy an approved Actor, Item, Scene,
+  Journal Entry, or Roll Table into a compatible compendium without restart.
+- `foundry_import_asset` — copy a supported image or audio file into
+  `Data/assets/mcp`; `foundry_assign_asset` can then make it a portrait, token
+  texture, or level background.
+- `foundry_undo_operation` — undo an MCP creation or update while the same GM
+  client remains connected. The bridge retains only the latest 50 operations.
 - `foundry_activate_scene` — activate a Scene.
 - `foundry_delete_document` — delete a document only when the caller supplies
   `confirm: true`.
@@ -55,3 +71,12 @@ report that no GM client is connected until it receives the module connection.
 The module only connects to a loopback relay after a GM enables it in that
 world. The relay requires the same token on both sides, accepts one GM client,
 and does not provide arbitrary macro or shell execution.
+
+## Asset intake
+
+Set `FOUNDRY_MCP_ASSET_SOURCE_ROOT` to one approved folder before launching
+the MCP server. `foundry_import_asset` accepts paths relative to that folder
+only; it rejects absolute paths and paths escaping the configured root. It then
+copies supported images or audio to Foundry's local `Data/assets/mcp` directory
+and returns a Foundry-ready asset path. This prevents general MCP calls from
+reading arbitrary local files.
