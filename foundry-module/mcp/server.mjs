@@ -8,6 +8,7 @@
 
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
+import { constants as fsConstants } from "node:fs";
 import http from "node:http";
 import path from "node:path";
 import readline from "node:readline";
@@ -17,6 +18,7 @@ const token = process.env.FOUNDRY_MCP_TOKEN;
 const port = Number(process.env.FOUNDRY_MCP_PORT ?? 32123);
 const REQUEST_TIMEOUT_MS = 20_000;
 const MAX_FRAME_BYTES = 5_000_000;
+const PROTOCOL_VERSION = "2025-06-18";
 const ASSET_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".mp3", ".ogg", ".wav"]);
 const assetSourceRoot = process.env.FOUNDRY_MCP_ASSET_SOURCE_ROOT
   ? path.resolve(process.env.FOUNDRY_MCP_ASSET_SOURCE_ROOT)
@@ -36,9 +38,11 @@ if (!Number.isInteger(port) || port < 1024 || port > 65535) {
 let client = null;
 let clientStatus = null;
 const pending = new Map();
+const connections = new Set();
+let shuttingDown = false;
 
 const tools = [
-  tool("foundry_status", "Return the connected GM world, Foundry version, PF2e system version, and user.", {}),
+  tool("foundry_status", "Return the connected GM world, Foundry version, PF2e system version, and user.", {type: "object", properties: {}}),
   tool("foundry_list_documents", "List world documents of one supported type. Results are capped at 100.", {
     type: "object",
     properties: {
@@ -85,7 +89,7 @@ const tools = [
     properties: { scene: { type: "object" } },
     required: ["scene"],
   }),
-  tool("foundry_setup_encounter", "Place a group of Actors on a world Scene, create an active Combat encounter, and optionally roll every combatant's initiative.", {
+  tool("foundry_setup_encounter", "Place Actors on a world Scene and create a Combat encounter. Set rollInitiative to roll initiative and startCombat to begin round 1 and trigger combat-start effects. Both default to false.", {
     type: "object",
     properties: {
       sceneUuid: { type: "string", minLength: 1 },
@@ -103,6 +107,7 @@ const tools = [
         },
       },
       rollInitiative: { type: "boolean", default: false },
+      startCombat: { type: "boolean", default: false },
     },
     required: ["sceneUuid", "participants"],
   }),
@@ -152,7 +157,7 @@ const tools = [
     },
     required: ["target", "uuid", "assetPath"],
   }),
-  tool("foundry_update_document", "Update a supported world or compendium document by UUID. changes is passed to Foundry's document update method.", {
+  tool("foundry_update_document", "Update a supported document by UUID with conflict-checked undo. Embedded collections, IDs and document statistics cannot be updated with this tool; use dedicated creation/asset tools.", {
     type: "object",
     properties: {
       uuid: { type: "string", minLength: 1 },
@@ -173,33 +178,49 @@ const tools = [
     },
     required: ["uuid", "confirm"],
   }),
-  tool("foundry_undo_operation", "Undo a creation or update performed through this MCP while the same GM client remains connected. Undo history is limited to the last 50 operations and clears on reload.", {
+  tool("foundry_undo_operation", "Undo recorded document creations or field updates. Refuses conflicts with subsequent edits. Does not rewind combat side effects, chat, file imports, explicit deletions, or scene activation. Latest 50 operations; resets on GM client reload.", {
     type: "object",
     properties: { operationId: { type: "string", minLength: 1 } },
     required: ["operationId"],
   }),
 ];
 
+function contained(root, candidate) {
+  const relative = path.relative(root, candidate);
+  return relative !== ".." && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative);
+}
+
 async function importAsset(args) {
   if (!assetSourceRoot) {
     throw new Error("Asset import is disabled. Set FOUNDRY_MCP_ASSET_SOURCE_ROOT to an approved source directory.");
   }
-  if (path.isAbsolute(args.sourcePath)) throw new Error("sourcePath must be relative to FOUNDRY_MCP_ASSET_SOURCE_ROOT.");
+  if (path.isAbsolute(args.sourcePath) || args.sourcePath.includes(":")) throw new Error("sourcePath must be relative to FOUNDRY_MCP_ASSET_SOURCE_ROOT (no drives or alternate data streams).");
   const source = path.resolve(assetSourceRoot, args.sourcePath);
-  const relative = path.relative(assetSourceRoot, source);
-  if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
+  if (source === assetSourceRoot || !contained(assetSourceRoot, source)) {
     throw new Error("sourcePath must stay inside FOUNDRY_MCP_ASSET_SOURCE_ROOT.");
   }
   const extension = path.extname(source).toLowerCase();
   if (!ASSET_EXTENSIONS.has(extension)) throw new Error(`Unsupported asset type: ${extension || "none"}`);
-  const stat = await fs.stat(source);
+  const canonicalRoot = await fs.realpath(assetSourceRoot);
+  const canonicalSource = await fs.realpath(source);
+  if (!contained(canonicalRoot, canonicalSource)) throw new Error("sourcePath resolves outside the approved asset source root.");
+  // Use the resolved path for the copy, not the original symlink/junction.
+  const stat = await fs.stat(canonicalSource);
   if (!stat.isFile()) throw new Error("sourcePath must point to a file.");
-  const assetDirectory = path.join(foundryDataDirectory, "assets", "mcp");
-  await fs.mkdir(assetDirectory, { recursive: true });
+  const dataRoot = await fs.realpath(foundryDataDirectory);
+  let assetDirectory = dataRoot;
+  // Check each existing parent before creating the next component. A redirected
+  // assets directory must not cause even a mkdir outside Foundry's data root.
+  for (const component of ["assets", "mcp"]) {
+    const directory = path.join(assetDirectory, component);
+    try { await fs.mkdir(directory); } catch (error) { if (error.code !== "EEXIST") throw error; }
+    assetDirectory = await fs.realpath(directory);
+    if (!contained(dataRoot, assetDirectory)) throw new Error("Asset destination resolves outside Foundry's data root.");
+  }
   const stem = path.basename(args.name ?? path.basename(source, extension), extension)
     .replace(/[^a-z0-9_-]+/gi, "-").replace(/^-+|-+$/g, "").slice(0, 64) || "asset";
   const filename = `${stem}-${crypto.randomUUID().slice(0, 8)}${extension}`;
-  await fs.copyFile(source, path.join(assetDirectory, filename));
+  await fs.copyFile(canonicalSource, path.join(assetDirectory, filename), fsConstants.COPYFILE_EXCL);
   return { assetPath: `assets/mcp/${filename}`, bytes: stat.size };
 }
 
@@ -208,7 +229,7 @@ function tool(name, description, inputSchema) {
 }
 
 function write(message) {
-  process.stdout.write(`${JSON.stringify(message)}\n`);
+  if (!shuttingDown) process.stdout.write(`${JSON.stringify(message)}\n`);
 }
 
 function rpcResult(id, result) {
@@ -222,20 +243,21 @@ function rpcError(id, code, message) {
 function textResult(value, isError = false) {
   return {
     content: [{ type: "text", text: JSON.stringify(value, null, 2) }],
-    structuredContent: value,
+    structuredContent: value !== null && typeof value === "object" && !Array.isArray(value)
+      ? value : Array.isArray(value) ? {results: value} : {value: value ?? null},
     isError,
   };
 }
 
-function frame(payload) {
+function frame(payload, opcode = 0x1) {
   const body = Buffer.from(payload);
   if (body.length > MAX_FRAME_BYTES) throw new Error("MCP relay response is too large.");
   let header;
-  if (body.length < 126) header = Buffer.from([0x81, body.length]);
-  else if (body.length < 65536) header = Buffer.from([0x81, 126, body.length >> 8, body.length & 0xff]);
+  if (body.length < 126) header = Buffer.from([0x80 | opcode, body.length]);
+  else if (body.length < 65536) header = Buffer.from([0x80 | opcode, 126, body.length >> 8, body.length & 0xff]);
   else {
     header = Buffer.alloc(10);
-    header[0] = 0x81;
+    header[0] = 0x80 | opcode;
     header[1] = 127;
     header.writeBigUInt64BE(BigInt(body.length), 2);
   }
@@ -248,6 +270,8 @@ function parseFrames(connection, chunk) {
     const first = connection.buffer[0];
     const second = connection.buffer[1];
     const opcode = first & 0x0f;
+    const final = (first & 0x80) !== 0;
+    if ((first & 0x70) || ![0, 1, 8, 9, 10].includes(opcode)) return connection.socket.destroy();
     const masked = (second & 0x80) !== 0;
     let length = second & 0x7f;
     let offset = 2;
@@ -258,30 +282,44 @@ function parseFrames(connection, chunk) {
     } else if (length === 127) {
       if (connection.buffer.length < 10) return;
       const longLength = connection.buffer.readBigUInt64BE(2);
-      if (longLength > BigInt(MAX_FRAME_BYTES)) return connection.socket.end();
+      if (longLength > BigInt(MAX_FRAME_BYTES)) return connection.socket.destroy();
       length = Number(longLength);
       offset = 10;
     }
-    if (!masked || length > MAX_FRAME_BYTES || connection.buffer.length < offset + 4 + length) return;
+    if (!masked || length > MAX_FRAME_BYTES || (opcode >= 8 && (!final || length > 125))) return connection.socket.destroy();
+    if (connection.buffer.length < offset + 4 + length) return;
     const mask = connection.buffer.subarray(offset, offset + 4);
     offset += 4;
     const body = Buffer.from(connection.buffer.subarray(offset, offset + length));
     for (let index = 0; index < body.length; index += 1) body[index] ^= mask[index % 4];
     connection.buffer = connection.buffer.subarray(offset + length);
-    if (opcode === 0x8) return connection.socket.end();
-    if (opcode === 0x9) connection.socket.write(Buffer.from([0x8a, 0]));
-    if (opcode === 0x1) receiveClientMessage(connection, body.toString("utf8"));
+    if (opcode === 0x8) return connection.socket.end(frame(body, 0x8));
+    if (opcode === 0x9) { connection.socket.write(frame(body, 0xA)); continue; }
+    if (opcode === 0xA) continue;
+    if ((opcode === 0 && !connection.fragments) || (opcode === 1 && connection.fragments)) return connection.socket.destroy();
+    if (opcode === 1 && final) receiveClientMessage(connection, body.toString("utf8"));
+    else {
+      connection.fragments = Buffer.concat([connection.fragments ?? Buffer.alloc(0), body]);
+      if (connection.fragments.length > MAX_FRAME_BYTES) return connection.socket.destroy();
+      if (final) {
+        receiveClientMessage(connection, connection.fragments.toString("utf8"));
+        connection.fragments = null;
+      }
+    }
   }
 }
 
 function receiveClientMessage(connection, text) {
+  if (connection !== client) return;
   let message;
   try {
     message = JSON.parse(text);
   } catch {
     return;
   }
-  if (message.kind === "hello") {
+  if (!message || typeof message !== "object") return;
+  if (message.kind === "hello" && message.user?.isGM === true && typeof message.world === "string") {
+    clearTimeout(connection.helloTimeout);
     clientStatus = {
       world: message.world,
       worldTitle: message.worldTitle,
@@ -295,20 +333,21 @@ function receiveClientMessage(connection, text) {
     const request = pending.get(message.id);
     clearTimeout(request.timeout);
     pending.delete(message.id);
-    message.ok ? request.resolve(message.result) : request.reject(new Error(message.error || "Foundry rejected the request."));
+    message.ok ? request.resolve(message.result) : request.reject(Object.assign(new Error(message.error || "Foundry rejected the request."), {recovery: message.recovery}));
   }
 }
 
 function sendToFoundry(toolName, args) {
   if (!client || !clientStatus) throw new Error("No authenticated Foundry GM client is connected.");
   const id = crypto.randomUUID();
+  const payload = frame(JSON.stringify({ kind: "request", id, tool: toolName, args }));
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
       pending.delete(id);
-      reject(new Error("Foundry did not respond within 20 seconds."));
+      reject(new Error("Foundry did not respond within 20 seconds. The operation may still complete; inspect the world before retrying to avoid duplicates."));
     }, REQUEST_TIMEOUT_MS);
     pending.set(id, { resolve, reject, timeout });
-    client.socket.write(frame(JSON.stringify({ kind: "request", id, tool: toolName, args })));
+    client.socket.write(payload);
   });
 }
 
@@ -316,18 +355,22 @@ const relay = http.createServer((request, response) => {
   response.writeHead(404).end();
 });
 
-relay.on("upgrade", (request, socket) => {
-  const url = new URL(request.url, `http://${request.headers.host}`);
-  if (url.pathname !== "/foundry-mcp" || url.searchParams.get("token") !== token) {
+relay.on("upgrade", (request, socket, head) => {
+  let url;
+  try { url = new URL(request.url, "http://127.0.0.1"); } catch { return socket.destroy(); }
+  const supplied = Buffer.from(url.searchParams.get("token") ?? "");
+  const expected = Buffer.from(token);
+  if (url.pathname !== "/foundry-mcp" || supplied.length !== expected.length || !crypto.timingSafeEqual(supplied, expected)) {
     socket.write("HTTP/1.1 401 Unauthorized\r\n\r\n");
     socket.destroy();
     return;
   }
   const key = request.headers["sec-websocket-key"];
-  if (!key) {
+  if (!key || request.headers["sec-websocket-version"] !== "13") {
     socket.destroy();
     return;
   }
+  if (client || shuttingDown) return socket.end("HTTP/1.1 409 Conflict\r\nConnection: close\r\n\r\n");
   const accept = crypto.createHash("sha1").update(`${key}258EAFA5-E914-47DA-95CA-C5AB0DC85B11`).digest("base64");
   socket.write([
     "HTTP/1.1 101 Switching Protocols",
@@ -336,24 +379,81 @@ relay.on("upgrade", (request, socket) => {
     `Sec-WebSocket-Accept: ${accept}`,
     "\r\n",
   ].join("\r\n"));
-  if (client) client.socket.end();
-  const connection = { socket, buffer: Buffer.alloc(0) };
+  const connection = { socket, buffer: Buffer.alloc(0), fragments: null };
   client = connection;
+  clientStatus = null;
+  connection.helloTimeout = setTimeout(() => socket.destroy(), 5000);
   socket.on("data", (chunk) => parseFrames(connection, chunk));
   socket.on("close", () => {
+    clearTimeout(connection.helloTimeout);
     if (client === connection) {
       client = null;
       clientStatus = null;
+      rejectPending("Foundry GM client disconnected. In-flight writes may have completed; inspect the world before retrying.");
     }
   });
   socket.on("error", () => socket.destroy());
+  if (head.length) parseFrames(connection, head);
 });
+
+relay.on("connection", socket => {
+  connections.add(socket);
+  socket.on("close", () => connections.delete(socket));
+});
+
+function rejectPending(message) {
+  for (const request of pending.values()) {
+    clearTimeout(request.timeout);
+    request.reject(new Error(message));
+  }
+  pending.clear();
+}
+
+function shutdown() {
+  if (shuttingDown) return;
+  shuttingDown = true;
+  clearTimeout(client?.helloTimeout);
+  rejectPending("MCP relay is shutting down.");
+  for (const socket of connections) socket.destroy();
+  relay.close();
+  input.close();
+}
+
+relay.on("error", error => { console.error(`Foundry relay failed: ${error.code ?? error.message}`); process.exitCode = 1; shutdown(); });
 
 relay.listen(port, "127.0.0.1", () => {
   console.error(`Foundry MCP relay listening on ws://127.0.0.1:${port}/foundry-mcp`);
 });
 
 const input = readline.createInterface({ input: process.stdin, crlfDelay: Infinity });
+input.on("close", shutdown);
+process.once("SIGINT", shutdown);
+process.once("SIGTERM", shutdown);
+process.stdout.on("error", shutdown);
+
+function validateArguments(value, schema, label = "arguments") {
+  const object = value !== null && typeof value === "object" && !Array.isArray(value);
+  const valid = schema.type === "object" ? object : schema.type === "array" ? Array.isArray(value)
+    : schema.type === "integer" ? Number.isInteger(value) : schema.type === "number" ? Number.isFinite(value)
+      : typeof value === schema.type;
+  if (!valid) throw new Error(`${label} must be ${schema.type}.`);
+  if (schema.enum && !schema.enum.includes(value)) throw new Error(`${label} is not an allowed value.`);
+  if (Object.hasOwn(schema, "const") && value !== schema.const) throw new Error(`${label} must be ${schema.const}.`);
+  if (typeof value === "string" && schema.minLength && value.trim().length < schema.minLength) throw new Error(`${label} cannot be empty.`);
+  if (typeof value === "number" && ((schema.minimum !== undefined && value < schema.minimum) || (schema.maximum !== undefined && value > schema.maximum))) throw new Error(`${label} is out of range.`);
+  if (object) {
+    for (const key of schema.required ?? []) if (!Object.hasOwn(value, key)) throw new Error(`${label}.${key} is required.`);
+    for (const [key, child] of Object.entries(value)) {
+      if (["__proto__", "constructor", "prototype"].includes(key)) throw new Error(`${label} has an unsafe key.`);
+      if (schema.properties?.[key]) validateArguments(child, schema.properties[key], `${label}.${key}`);
+    }
+  }
+  if (Array.isArray(value)) {
+    if (value.length < (schema.minItems ?? 0)) throw new Error(`${label} needs at least ${schema.minItems} entries.`);
+    if (schema.items) value.forEach((child, index) => validateArguments(child, schema.items, `${label}[${index}]`));
+  }
+}
+
 input.on("line", async (line) => {
   let request;
   try {
@@ -361,13 +461,15 @@ input.on("line", async (line) => {
   } catch {
     return rpcError(null, -32700, "Parse error");
   }
-  if (request.jsonrpc !== "2.0") return rpcError(request.id ?? null, -32600, "Invalid Request");
-  if (request.method === "notifications/initialized") return;
+  if (!request || typeof request !== "object" || Array.isArray(request) || request.jsonrpc !== "2.0" || typeof request.method !== "string") return rpcError(request?.id ?? null, -32600, "Invalid Request");
+  // Notifications never receive responses, including unsupported notifications.
+  if (!Object.hasOwn(request, "id")) return;
+  if (request.method === "ping") return rpcResult(request.id, {});
   if (request.method === "initialize") {
     return rpcResult(request.id, {
-      protocolVersion: request.params?.protocolVersion ?? "2025-06-18",
+      protocolVersion: PROTOCOL_VERSION,
       capabilities: { tools: { listChanged: false } },
-      serverInfo: { name: "foundry-local-bridge", version: "0.1.0" },
+      serverInfo: { name: "foundry-local-bridge", version: "0.2.0" },
     });
   }
   if (request.method === "tools/list") return rpcResult(request.id, { tools });
@@ -376,6 +478,7 @@ input.on("line", async (line) => {
     if (!requested) return rpcResult(request.id, textResult({ error: "Unknown tool." }, true));
     try {
       const args = request.params?.arguments ?? {};
+      validateArguments(args, requested.inputSchema);
       const result = requested.name === "foundry_status"
         ? (clientStatus ?? { connected: false })
         : requested.name === "foundry_import_asset"
@@ -383,7 +486,7 @@ input.on("line", async (line) => {
           : await sendToFoundry(requested.name.replace(/^foundry_/, ""), args);
       return rpcResult(request.id, textResult(result));
     } catch (error) {
-      return rpcResult(request.id, textResult({ error: error.message }, true));
+      return rpcResult(request.id, textResult({ error: error.message, ...(error.recovery ? {recovery: error.recovery} : {}) }, true));
     }
   }
   return rpcError(request.id ?? null, -32601, "Method not found");
