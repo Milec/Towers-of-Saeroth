@@ -190,6 +190,15 @@ appears in the Actions tab of a Sanguinor character sheet and keeps the linked
 effects synchronized. **Red Thirst** applies its melee damage, Intimidation,
 and Will modifiers natively when combat begins while the tracker is Unfed.
 
+## Local MCP bridge
+
+Version 0.1.25 includes an optional, GM-only local MCP bridge. With an open
+Foundry world and a matching random token, it lets an MCP client inspect and
+manage supported world documents through Foundry's document APIs. The relay
+binds only to `127.0.0.1`; it is not a public Foundry API and it does not expose
+arbitrary macro or shell execution. See [mcp/README.md](mcp/README.md) for the
+one-time Foundry setting and MCP-client configuration.
+
 ## Portrait workflow
 
 For a newly created creature or NPC, add a concise `portrait-prompt` field to
