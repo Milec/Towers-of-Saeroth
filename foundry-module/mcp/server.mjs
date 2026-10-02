@@ -60,6 +60,17 @@ const tools = [
     },
     required: ["type", "name"],
   }),
+  tool("foundry_build_scene", "Create a complete Foundry Scene from a native Scene source, including levels/backgrounds, walls and doors, lights, tiles, drawings, notes, sounds, regions, and tokens. Set activate to make it the active scene after it is created.", {
+    type: "object",
+    properties: {
+      scene: {
+        type: "object",
+        description: "A native Foundry v14 Scene source. name is required. Embedded arrays may include levels, walls, lights, tiles, drawings, notes, sounds, regions, and tokens.",
+      },
+      activate: { type: "boolean", default: false },
+    },
+    required: ["scene"],
+  }),
   tool("foundry_update_document", "Update a supported world or compendium document by UUID. changes is passed to Foundry's document update method.", {
     type: "object",
     properties: {

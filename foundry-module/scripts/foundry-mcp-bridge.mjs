@@ -145,6 +145,46 @@ function documentSummary(document) {
   };
 }
 
+function sceneBuildSummary(scene) {
+  return {
+    scene: documentSummary(scene),
+    levels: scene.levels.size,
+    walls: scene.walls.size,
+    lights: scene.lights.size,
+    tiles: scene.tiles.size,
+    drawings: scene.drawings.size,
+    notes: scene.notes.size,
+    sounds: scene.sounds.size,
+    regions: scene.regions.size,
+    tokens: scene.tokens.size,
+  };
+}
+
+function assertArrayProperty(source, property) {
+  if (source[property] !== undefined && !Array.isArray(source[property])) {
+    throw new Error(`scene.${property} must be an array when supplied.`);
+  }
+}
+
+async function buildScene(args) {
+  const source = args.scene;
+  if (!source || typeof source !== "object" || Array.isArray(source)) {
+    throw new Error("scene must be an object containing a Foundry Scene source.");
+  }
+  if (!source.name?.trim()) throw new Error("scene.name is required.");
+
+  // These are Foundry's native Scene embedded-document collections. Keeping
+  // them in the creation source preserves cross-references such as wall/light
+  // levels and results in a fully configured scene instead of a blank canvas.
+  for (const property of [
+    "levels", "walls", "lights", "tiles", "drawings", "notes", "sounds", "regions", "tokens",
+  ]) assertArrayProperty(source, property);
+
+  const scene = await Scene.create(source);
+  if (args.activate === true) await scene.activate();
+  return sceneBuildSummary(scene);
+}
+
 async function findDocument(uuid) {
   const document = await fromUuid(uuid);
   if (!document || !ALLOWED_DOCUMENT_TYPES.has(document.documentName)) {
@@ -196,6 +236,9 @@ async function execute(tool, args) {
       });
       return documentSummary(document);
     }
+
+    case "build_scene":
+      return buildScene(args);
 
     case "update_document": {
       if (!args.changes || typeof args.changes !== "object" || Array.isArray(args.changes)) {

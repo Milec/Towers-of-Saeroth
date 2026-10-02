@@ -44,6 +44,10 @@ report that no GM client is connected until it receives the module connection.
   roll tables.
 - `foundry_create_document` and `foundry_update_document` — create or update
   those document types with Foundry's native document APIs.
+- `foundry_build_scene` — create a ready-to-play v14 Scene from one native
+  Scene source, including its levels/background art, walls and doors, lights,
+  tiles, drawings, notes, sounds, regions, and tokens. Set `activate: true`
+  only when the finished scene should immediately become the active scene.
 - `foundry_activate_scene` — activate a Scene.
 - `foundry_delete_document` — delete a document only when the caller supplies
   `confirm: true`.
