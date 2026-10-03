@@ -201,12 +201,19 @@ function sceneBuildSummary(scene) {
 const SCENE_COLLECTIONS = ["levels", "walls", "lights", "tiles", "drawings", "notes", "sounds", "regions", "tokens"];
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 
+function sceneTokenLevels(source) {
+  const level = source.initialLevel ?? source.levels?.[0]?._id;
+  if (!level || !Array.isArray(source.tokens)) return source;
+  return {...source, tokens: source.tokens.map(token => isObject(token)
+    ? {...token, level: token.level ?? level} : token)};
+}
+
 async function buildScene(args) {
   const preview = await previewScene(args);
   if (!preview.valid) throw new Error(`Scene validation failed: ${preview.errors.join("; ")}`);
   return createOperation(`Create scene ${args.scene.name}`, async (track) => {
     // Explicitly keep embedded IDs: walls and placeables reference level IDs.
-    const scene = track(await Scene.create({ ...args.scene, active: false }, { keepEmbeddedIds: true }));
+    const scene = track(await Scene.create({ ...sceneTokenLevels(args.scene), active: false }, { keepEmbeddedIds: true }));
     if (args.activate === true) await scene.activate();
     return { ...sceneBuildSummary(scene), warnings: preview.warnings };
   });
@@ -288,6 +295,11 @@ async function previewScene(args) {
       if (entry.levels !== undefined && !Array.isArray(entry.levels)) errors.push(`${label}.levels must be an array.`);
       else if (entry.levels?.some(id => !levelIds.has(id))) errors.push(`${label} references a missing level.`);
       if (property === "tokens") {
+        // Tokens use one `level`, unlike walls/lights which use `levels`.
+        if (entry.levels !== undefined) errors.push(`${label} must use singular level, not levels.`);
+        const level = entry.level ?? source.initialLevel ?? levels[0]?._id;
+        if (level !== undefined && (typeof level !== "string" || !/^[a-zA-Z0-9]{16}$/.test(level)
+          || (levels.length && !levelIds.has(level)))) errors.push(`${label} references a missing or invalid token level.`);
         if (entry.actorId && !game.actors.get(entry.actorId)) errors.push(`${label} references a missing world Actor.`);
         const size = source.grid?.size ?? 100;
         if (entry.x + (entry.width ?? 1) * size > width || entry.y + (entry.height ?? 1) * size > height) {
@@ -302,7 +314,7 @@ async function previewScene(args) {
   // create hooks. This applies the installed Foundry/system schema, including lights.
   try {
     const SceneClass = getDocumentClass("Scene");
-    const candidate = new SceneClass(structuredClone(source), {strict: true});
+    const candidate = new SceneClass(structuredClone(sceneTokenLevels(source)), {strict: true});
     candidate.validate({strict: true});
   } catch (error) { errors.push(`Foundry schema: ${error.message}`); }
   await Promise.all(assetChecks);
@@ -459,16 +471,26 @@ function validatePlacement(placement) {
   }
 }
 
-function positionedToken(actor, placement) {
+function placementLevel(scene, placement) {
   validatePlacement(placement);
+  if (placement.levels !== undefined) throw new Error("Token placement must use singular level, not levels.");
+  // v14's Scene getter returns a SceneLevel document, not its source ID.
+  const level = placement.level ?? scene.initialLevel?.id ?? scene.initialLevel ?? scene.levels?.keys().next().value;
+  if (level !== undefined && (typeof level !== "string" || !/^[a-zA-Z0-9]{16}$/.test(level)
+    || !scene.levels.has(level))) throw new Error(`No Scene Level found for token placement: ${level}`);
+  return level;
+}
+
+function positionedToken(scene, actor, placement) {
+  const level = placementLevel(scene, placement);
   const token = actor.prototypeToken.toObject();
   delete token._id;
-  return foundry.utils.mergeObject(token, { ...placement, actorId: actor.id, actorLink: false }, { inplace: false, recursive: true });
+  return foundry.utils.mergeObject(token, { ...placement, ...(level ? {level} : {}), actorId: actor.id, actorLink: false }, { inplace: false, recursive: true });
 }
 
 async function placeActor(scene, actorUuid, tokenData, track) {
   const { actor, imported } = await resolveActor(actorUuid, track);
-  const [token] = await scene.createEmbeddedDocuments("Token", [positionedToken(actor, tokenData)]);
+  const [token] = await scene.createEmbeddedDocuments("Token", [positionedToken(scene, actor, tokenData)]);
   track(token);
   return { actor, token, imported };
 }
@@ -488,7 +510,7 @@ async function itemSource(value) {
 async function placeLoot(args) {
   const scene = await findWorldScene(args.sceneUuid);
   if (!args.name?.trim()) throw new Error("A loot or container name is required.");
-  validatePlacement(args.token);
+  placementLevel(scene, args.token);
   const items = await Promise.all((args.items ?? []).map(itemSource));
   return createOperation(`Place loot ${args.name}`, async (track) => {
     const actor = track(await Actor.create({
@@ -498,7 +520,7 @@ async function placeLoot(args) {
       img: args.img ?? "icons/containers/chest/worn-chest-brown.webp",
     }));
     if (items.length) await actor.createEmbeddedDocuments("Item", items);
-    const [token] = await scene.createEmbeddedDocuments("Token", [positionedToken(actor, args.token)]);
+    const [token] = await scene.createEmbeddedDocuments("Token", [positionedToken(scene, actor, args.token)]);
     track(token);
     return {
       actor: documentSummary(actor),
@@ -513,7 +535,7 @@ async function setupEncounter(args) {
   if (!Array.isArray(args.participants) || !args.participants.length) throw new Error("At least one encounter participant is required.");
   // Resolve every participant and validate every placement before the first write.
   for (const participant of args.participants) {
-    validatePlacement(participant?.token);
+    placementLevel(scene, participant?.token);
     const actor = await fromUuid(participant.actorUuid);
     if (!actor || actor.documentName !== "Actor") throw new Error(`No Actor found for UUID: ${participant.actorUuid}`);
   }

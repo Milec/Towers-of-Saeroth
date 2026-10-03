@@ -56,6 +56,10 @@ report that no GM client is connected until it receives the module connection.
   Scene source, including its levels/background art, walls and doors, lights,
   tiles, drawings, notes, sounds, regions, and tokens. Set `activate: true`
   only when the finished scene should immediately become the active scene.
+  Tokens use a singular `level` ID (walls/lights use `levels`). Omitted token
+  floors default to the scene's initial level; encounter and loot placement
+  also use this default rather than the Actor prototype's default floor.
+  Explicit token floors must exist in the target scene.
 - `foundry_preview_scene` — validate that same Scene source without writing
   anything. Checks collection shapes/IDs, assets, coordinates, wall and other
   level references, world Actor references and bounds, then validates a transient

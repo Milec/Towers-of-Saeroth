@@ -230,6 +230,53 @@ test("publishing and undo restore the compendium lock", async () => {
 });
 
 const validScene=()=>({name:"Fixture",width:1000,height:1000,levels:[{_id:"Level00000000001",background:{src:"assets/map.png"}}]});
+
+test("scene tokens default to the scene floor without mutating input or overriding explicit floors", async () => {
+  const h=harness(), scene={...validScene(),initialLevel:"Level00000000001",
+    tokens:[{x:1,y:1},{x:2,y:2,level:"Level00000000002"}]};
+  scene.levels.push({_id:"Level00000000002"});
+  const original=clone(scene);
+  await h.api.execute("build_scene",{scene});
+  assert.deepEqual(scene,original);
+  assert.deepEqual(h.calls.created[0].state.tokens.map(t=>t.level),["Level00000000001","Level00000000002"]);
+});
+
+test("preview rejects nonexistent or plural token levels before scene creation", async () => {
+  const h=harness();
+  for(const extra of [{level:"Unknown000000001"},{level:42},{levels:["Level00000000001"]}]) {
+    const scene={...validScene(),tokens:[{x:1,y:2,...extra}]};
+    assert.equal((await h.api.execute("preview_scene",{scene})).valid,false);
+    await assert.rejects(h.api.execute("build_scene",{scene}),/validation failed/);
+  }
+  assert.equal(h.calls.created.length,0);
+});
+
+test("loot and encounter tokens use scene or requested floor, not the prototype default", async () => {
+  const h=harness(), scene=h.existing("Scene"), actor=h.existing("Actor");
+  scene.initialLevel={id:"Level00000000001"};
+  for(const id of [scene.initialLevel.id,"Level00000000002"]) scene.levels.set(id,{id});
+  actor.prototypeToken.toObject=()=>({name:actor.name,level:"defaultLevel0000"});
+  await h.api.execute("place_loot",{sceneUuid:scene.uuid,name:"Chest",token:{x:1,y:2}});
+  await h.api.execute("setup_encounter",{sceneUuid:scene.uuid,participants:[
+    {actorUuid:actor.uuid,token:{x:1,y:2}},
+    {actorUuid:actor.uuid,token:{x:3,y:4,level:"Level00000000002"}}
+  ]});
+  assert.deepEqual(h.calls.created.filter(d=>d.documentName==="Token").map(d=>d.state.level),
+    [scene.initialLevel.id,scene.initialLevel.id,"Level00000000002"]);
+});
+
+test("invalid loot and encounter floors are rejected before any writes", async () => {
+  const h=harness(),scene=h.existing("Scene"),actor=h.existing("Actor");
+  scene.initialLevel="Level00000000001";scene.levels.set(scene.initialLevel,{});
+  for(const extra of [{level:"Unknown000000001"},{level:42},{levels:[scene.initialLevel]}]) {
+    const token={x:1,y:2,...extra};
+    await assert.rejects(h.api.execute("place_loot",{sceneUuid:scene.uuid,name:"Chest",token}),/level/i);
+    await assert.rejects(h.api.execute("setup_encounter",{sceneUuid:scene.uuid,participants:[
+      {actorUuid:actor.uuid,token:{x:1,y:2}},{actorUuid:actor.uuid,token}
+    ]}),/level/i);
+  }
+  assert.equal(h.calls.created.length,0);
+});
 test("malformed scene collections and entries return validation errors, never crash", async () => {
   const h=harness();
   for(const key of ["levels","walls","lights","tiles","drawings","notes","sounds","regions","tokens"]){
