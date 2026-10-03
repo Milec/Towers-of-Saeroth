@@ -190,6 +190,32 @@ appears in the Actions tab of a Sanguinor character sheet and keeps the linked
 effects synchronized. **Red Thirst** applies its melee damage, Intimidation,
 and Will modifiers natively when combat begins while the tracker is Unfed.
 
+## Local MCP bridge
+
+Version 0.2.0 includes an optional, GM-only local MCP bridge. With an open
+Foundry world and a matching random token, it lets an MCP client inspect and
+manage supported world documents through Foundry's document APIs. The relay
+binds only to `127.0.0.1`; it is not a public Foundry API and it does not expose
+arbitrary macro or shell execution. See [mcp/README.md](mcp/README.md) for the
+one-time Foundry setting and MCP-client configuration.
+
+The bridge can also build a complete native v14 Scene from one structured
+source: levels and background images, walls and doors, lighting, tiles,
+drawings, map notes, sounds, regions, and token placements. This lets the GM
+review one generated scene source before it is created rather than assembling a
+blank map by hand.
+
+It can also validate a scene before writing it, set up a combat encounter from
+placed NPCs, create linked journal/map pins from campaign locations, and make
+PF2e Loot actors for chests, merchant inventories, and treasure parcels. It can
+publish approved documents into compendia without a restart, copy assets from
+one configured safe source folder into Foundry data, and undo the last fifty
+MCP creations or field updates while the same GM client remains connected.
+The bridge token is local to the GM browser, asset paths are checked after
+resolving filesystem links, and multi-step creation failures clean up their
+documents. Undo refuses conflicting later edits; it is not a full world rollback.
+See the bridge README for migration, validation, undo limits, and regression tests.
+
 ## Portrait workflow
 
 For a newly created creature or NPC, add a concise `portrait-prompt` field to
