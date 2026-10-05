@@ -31,3 +31,5 @@ Vic then complicated that last point by drinking goblin blood like some kind of 
 Milo rewarded the party with a pat on the back. They cleaned themselves up and set off down the road once more, forever changed by their brush with death—and now **level 2**.
 
 Surely they are prepared for whatever lies ahead.
+
+Next session: [[Session 2]].
