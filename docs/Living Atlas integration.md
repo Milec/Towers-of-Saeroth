@@ -54,11 +54,24 @@ visibility, POI alignment, route planning and regional detail loading.
 ## Hexcrawl travel
 
 Open **Hexcrawl travel** below Travel view and enable the overlay. Choose a
-12, 24 or 48 km center-to-center hex scale, select a hex on the map (or enter
+PF2e 12-mile corner-to-corner scale (about 16.7 km between centers), select a hex on the map (or enter
 its axial Q/R coordinates), then place the party. Subsequent moves must reach
 an adjacent hex. The visited trail, distance and moving-day estimate update
 with each step. Undo reverses the last step; Find party recenters the map.
 Reset trek asks before clearing progress and unlocks the scale selector.
+
+Existing treks retain their legacy 12, 24 or 48 km center spacing; reset the trek
+before changing scale. Travel and explore records roughly one day per destination
+hex, while travel-only uses the selected party speed and travel conditions.
+Placing the party costs no time and does not explore the starting hex; use
+Explore current hex to spend one day there. Primary terrain is recorded per
+visit independently of roads and rivers. Undo removes the last visit and its time.
+
+The explored-only preview covers hexes without an explored visit. It is a local
+GM map preview, not access control: search, details and source data remain available.
+Do not share the interactive atlas as a secret-safe player map. Legacy visits are
+not silently marked explored. These are approximate planning tools, not complete
+PF2e travel, terrain or discovery automation.
 
 The grid uses the existing atlas scale without modifying geography. Zoom in
 for fine grids; rendering is limited to the visible region. Terrain is a
