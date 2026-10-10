@@ -42,6 +42,7 @@ jobs:
           node foundry-module/scripts/test-content-sync.mjs
           node foundry-module/scripts/test-caravan-scene.mjs
           node foundry-module/scripts/test-tavern-scene.mjs
+          node foundry-module/scripts/test-session-three-scenes.mjs
           node foundry-module/scripts/test-caravan-background-repair.mjs
           node --test foundry-module/scripts/test-foundry-mcp.mjs
       - name: Test atlas behavior

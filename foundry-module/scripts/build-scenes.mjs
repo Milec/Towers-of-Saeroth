@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { buildTravelScenes } from "./caravan-travel-scenes.mjs";
 import { sceneStats } from "./caravan-scene-version.mjs";
 import { buildTavernScene } from "./tavern-scene.mjs";
+import { buildSessionThreeScenes } from "./session-three-scenes.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const moduleId = "saeroth-pf2e-content";
@@ -62,7 +63,7 @@ const scene = {
     setup: "160ft square. Wagon sides block movement, not sight/light; open east tailgates to board. Ditch/brush terrain and cover are GM-adjudicated. No actors preplaced. Walls and lights stay fixed if you move the baked-in wagons."
   } }
 };
-const entries = [{ slug: "berruel-caravan-ambush", asset, scene }, ...buildTravelScenes(), buildTavernScene()];
+const entries = [{ slug: "berruel-caravan-ambush", asset, scene }, ...buildTravelScenes(), buildTavernScene(), ...buildSessionThreeScenes()];
 await mkdir(join(root, "content", "scenes"), { recursive: true });
 for (const entry of entries) {
   for (const asset of entry.assets ?? [entry.asset]) await access(join(root, asset));

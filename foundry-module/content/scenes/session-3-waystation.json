@@ -1,0 +1,792 @@
+{
+  "_stats": {
+    "coreVersion": "14.364"
+  },
+  "_id": "b6284865ff8c0e94",
+  "name": "Session 3 — Mountain Toll Waystation",
+  "active": false,
+  "navigation": false,
+  "width": 3200,
+  "height": 3200,
+  "padding": 0,
+  "initial": {
+    "x": 1600,
+    "y": 1600,
+    "scale": 0.3
+  },
+  "initialLevel": "defaultLevel0000",
+  "thumb": "modules/saeroth-pf2e-content/assets/maps/session-3-waystation.png",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "distance": 5,
+    "units": "ft",
+    "alpha": 0.15,
+    "color": "#b8b0a0",
+    "style": "solidLines",
+    "thickness": 1
+  },
+  "tokenVision": true,
+  "environment": {
+    "darknessLevel": 0,
+    "darknessLock": true,
+    "cycle": false,
+    "globalLight": {
+      "enabled": true,
+      "bright": false,
+      "darkness": {
+        "min": 0,
+        "max": 0.25
+      }
+    }
+  },
+  "levels": [
+    {
+      "_id": "defaultLevel0000",
+      "name": "Ground",
+      "elevation": {
+        "bottom": null,
+        "top": null
+      },
+      "background": {
+        "src": "modules/saeroth-pf2e-content/assets/maps/session-3-waystation.png",
+        "color": "#252820"
+      },
+      "textures": {
+        "fit": "fill",
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "offsetX": 0,
+        "offsetY": 0,
+        "rotation": 0
+      }
+    }
+  ],
+  "walls": [
+    {
+      "_id": "b7c14e25ca1cab53",
+      "c": [
+        901,
+        1756,
+        291,
+        1756
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tollhouse exterior"
+        }
+      }
+    },
+    {
+      "_id": "4d6a95d5d1fa5f91",
+      "c": [
+        291,
+        1756,
+        291,
+        763
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tollhouse exterior"
+        }
+      }
+    },
+    {
+      "_id": "ff0f515f326c7e37",
+      "c": [
+        291,
+        763,
+        1212,
+        763
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tollhouse exterior"
+        }
+      }
+    },
+    {
+      "_id": "5b1ff8e08afff742",
+      "c": [
+        1212,
+        763,
+        1212,
+        1756
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tollhouse exterior"
+        }
+      }
+    },
+    {
+      "_id": "46ff329e296c09f9",
+      "c": [
+        1212,
+        1756,
+        993,
+        1756
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tollhouse exterior"
+        }
+      }
+    },
+    {
+      "_id": "f276e6dbfb163965",
+      "c": [
+        901,
+        1756,
+        993,
+        1756
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tollhouse entrance"
+        }
+      }
+    },
+    {
+      "_id": "10227c8968ce684b",
+      "c": [
+        709,
+        763,
+        709,
+        1141
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Bunk room partition"
+        }
+      }
+    },
+    {
+      "_id": "6d17355867780ee6",
+      "c": [
+        709,
+        1141,
+        709,
+        1278
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Bunk room door"
+        }
+      }
+    },
+    {
+      "_id": "14a39f085e5be684",
+      "c": [
+        709,
+        1278,
+        709,
+        1307
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Bunk room partition foot"
+        }
+      }
+    },
+    {
+      "_id": "e8ef6e6cdc3cf9ce",
+      "c": [
+        291,
+        1307,
+        829,
+        1307
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Kitchen partition"
+        }
+      }
+    },
+    {
+      "_id": "d6ff9c3fc76db74b",
+      "c": [
+        829,
+        1307,
+        937,
+        1307
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Office door"
+        }
+      }
+    },
+    {
+      "_id": "35c8455b1d8389ba",
+      "c": [
+        937,
+        1307,
+        1212,
+        1307
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Kitchen partition"
+        }
+      }
+    },
+    {
+      "_id": "a7733fd56a307d6e",
+      "c": [
+        2284,
+        1444,
+        2284,
+        1059
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East shelter exterior"
+        }
+      }
+    },
+    {
+      "_id": "f9fe76d870a40f31",
+      "c": [
+        2284,
+        1059,
+        2792,
+        1059
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East shelter exterior"
+        }
+      }
+    },
+    {
+      "_id": "2fea16aba4696f85",
+      "c": [
+        2792,
+        1059,
+        2792,
+        1580
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East shelter exterior"
+        }
+      }
+    },
+    {
+      "_id": "1187df14ab920ba8",
+      "c": [
+        2792,
+        1580,
+        2284,
+        1580
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East shelter exterior"
+        }
+      }
+    },
+    {
+      "_id": "f629df154c7bc180",
+      "c": [
+        2284,
+        1580,
+        2284,
+        1541
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East shelter exterior"
+        }
+      }
+    },
+    {
+      "_id": "221a7289c1ffcd06",
+      "c": [
+        2284,
+        1444,
+        2284,
+        1541
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East shelter door"
+        }
+      }
+    },
+    {
+      "_id": "06cf32b73c8e155e",
+      "c": [
+        1365,
+        1449,
+        2062,
+        1449
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Toll boom"
+        }
+      }
+    },
+    {
+      "_id": "e6a1a9d93708d739",
+      "c": [
+        51,
+        766,
+        293,
+        544
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northwest low wall"
+        }
+      }
+    },
+    {
+      "_id": "f0227ece64488897",
+      "c": [
+        293,
+        544,
+        715,
+        375
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northwest low wall"
+        }
+      }
+    },
+    {
+      "_id": "e1642e5b5bfae4c6",
+      "c": [
+        715,
+        375,
+        1189,
+        286
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northwest low wall"
+        }
+      }
+    },
+    {
+      "_id": "26e5906e18efef65",
+      "c": [
+        2136,
+        281,
+        2468,
+        161
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northeast low wall"
+        }
+      }
+    },
+    {
+      "_id": "d9e72d61551d4bd4",
+      "c": [
+        2468,
+        161,
+        2935,
+        46
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northeast low wall"
+        }
+      }
+    }
+  ],
+  "lights": [
+    {
+      "_id": "b1508242b664c771",
+      "name": "Tollhouse hearth",
+      "x": 500,
+      "y": 1437,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "01e073ffd0e07578",
+      "name": "Office lantern",
+      "x": 1077,
+      "y": 1100,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "7365b9e8ce4d6a1f",
+      "name": "Wenzel lamp",
+      "x": 2368,
+      "y": 1164,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "7c1e58bccccd780f",
+      "name": "Rest yard fire",
+      "x": 2485,
+      "y": 1996,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    }
+  ],
+  "tokens": [],
+  "notes": [],
+  "sounds": [],
+  "drawings": [],
+  "regions": [],
+  "tiles": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "saeroth-pf2e-content": {
+      "session": 3,
+      "setup": "Toll keeper begins in west office (390,425 image px); Wenzel Grauth rests in east shelter (970,490). Toll boom is a movement-only door. Social scene first: identify papers, offer work or payment. Wenzel is the established ambush necromancer, not a Lichdom official. He runs if confronted; he knows the intermediary, not Cassian. No combat staged automatically.",
+      "source": "campaign/sessions/Session 3 - The Mountain Road.md",
+      "limitations": "No automated falls, landslides, terrain costs, combat or tower transition. NPC positions are staging instructions, not preplaced actors. GM notes remain in the companion prep note."
+    }
+  }
+}
