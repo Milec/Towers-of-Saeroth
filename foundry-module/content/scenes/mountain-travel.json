@@ -1,0 +1,1782 @@
+{
+  "_stats": {
+    "coreVersion": "14.364"
+  },
+  "_id": "d7c16a8900691661",
+  "name": "Mountain Travel — Alpine Road",
+  "active": false,
+  "navigation": false,
+  "width": 3200,
+  "height": 3200,
+  "padding": 0,
+  "initial": {
+    "x": 1600,
+    "y": 1600,
+    "scale": 0.3
+  },
+  "initialLevel": "defaultLevel0000",
+  "thumb": "modules/saeroth-pf2e-content/assets/maps/mountain-travel.png",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "distance": 5,
+    "units": "ft",
+    "alpha": 0.15,
+    "color": "#b8b0a0",
+    "style": "solidLines",
+    "thickness": 1
+  },
+  "tokenVision": true,
+  "environment": {
+    "darknessLevel": 0,
+    "darknessLock": true,
+    "cycle": false,
+    "globalLight": {
+      "enabled": true,
+      "bright": false,
+      "darkness": {
+        "min": 0,
+        "max": 0.25
+      }
+    }
+  },
+  "levels": [
+    {
+      "_id": "defaultLevel0000",
+      "name": "Ground",
+      "elevation": {
+        "bottom": null,
+        "top": null
+      },
+      "background": {
+        "src": "modules/saeroth-pf2e-content/assets/maps/mountain-travel.png",
+        "color": "#252820"
+      },
+      "textures": {
+        "fit": "fill",
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "offsetX": 0,
+        "offsetY": 0,
+        "rotation": 0
+      }
+    }
+  ],
+  "walls": [
+    {
+      "_id": "e94b959e02abe130",
+      "c": [
+        926,
+        628,
+        1036,
+        600
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "1075e66c3cd19878",
+      "c": [
+        1036,
+        600,
+        1125,
+        709
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "1aa9f12f513162e1",
+      "c": [
+        1125,
+        709,
+        1181,
+        845
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "1b24fdcceded5c58",
+      "c": [
+        1181,
+        845,
+        1097,
+        931
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "92a72095afaf8885",
+      "c": [
+        1097,
+        931,
+        977,
+        893
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "a9562d5fe5b2d330",
+      "c": [
+        977,
+        893,
+        908,
+        783
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "b213de6ad0e5b2e8",
+      "c": [
+        908,
+        783,
+        926,
+        628
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "e8696dd0bfb767e8",
+      "c": [
+        1853,
+        962,
+        2019,
+        893
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "9d652476f5679a43",
+      "c": [
+        2019,
+        893,
+        2105,
+        954
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "b8a2306e92fdbca5",
+      "c": [
+        2105,
+        954,
+        2054,
+        1074
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "c949b13e35acf56d",
+      "c": [
+        2054,
+        1074,
+        1922,
+        1161
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "05ce2366073d8ed5",
+      "c": [
+        1922,
+        1161,
+        1830,
+        1102
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "6098ceea058d7c8f",
+      "c": [
+        1830,
+        1102,
+        1853,
+        962
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "4527b4c0d7cac4e2",
+      "c": [
+        2090,
+        857,
+        2225,
+        801
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "721ebfec7794e017",
+      "c": [
+        2225,
+        801,
+        2360,
+        852
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "1268cb8d32c64753",
+      "c": [
+        2360,
+        852,
+        2411,
+        934
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "83772d4046f1bd91",
+      "c": [
+        2411,
+        934,
+        2279,
+        1031
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "0c2143209033c7f5",
+      "c": [
+        2279,
+        1031,
+        2136,
+        995
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "25fa10d2eb67052a",
+      "c": [
+        2136,
+        995,
+        2090,
+        857
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "59928cafaf9d8c85",
+      "c": [
+        954,
+        1807,
+        1069,
+        1738
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "cf763148eec1f10e",
+      "c": [
+        1069,
+        1738,
+        1153,
+        1802
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "cb2081a4766ba418",
+      "c": [
+        1153,
+        1802,
+        1204,
+        1914
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "d2c615043ee2840b",
+      "c": [
+        1204,
+        1914,
+        1133,
+        2019
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "39e4630dbcda9409",
+      "c": [
+        1133,
+        2019,
+        1028,
+        2013
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "888524a1ed5649c6",
+      "c": [
+        1028,
+        2013,
+        931,
+        1937
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "151ad48251b1a294",
+      "c": [
+        931,
+        1937,
+        954,
+        1807
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "91eaa1db48fd67b2",
+      "c": [
+        1985,
+        2090,
+        2072,
+        1996
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "d8b73cb64d18571f",
+      "c": [
+        2072,
+        1996,
+        2184,
+        1965
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "bac0eb6e5398a992",
+      "c": [
+        2184,
+        1965,
+        2253,
+        2049
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "c10cfc4451e86092",
+      "c": [
+        2253,
+        2049,
+        2251,
+        2161
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "53545474b48b3b38",
+      "c": [
+        2251,
+        2161,
+        2103,
+        2233
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "ccf0f304ec4e92e0",
+      "c": [
+        2103,
+        2233,
+        2008,
+        2187
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "99f8dbb9eab7c730",
+      "c": [
+        2008,
+        2187,
+        1985,
+        2090
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "41d26b9d80767bd1",
+      "c": [
+        500,
+        1830,
+        605,
+        1751
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "9b4022a4a5559cce",
+      "c": [
+        605,
+        1751,
+        679,
+        1809
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "0b62ef7122a3621c",
+      "c": [
+        679,
+        1809,
+        722,
+        1911
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "0997a39c8c51b695",
+      "c": [
+        722,
+        1911,
+        646,
+        1973
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "e150c1c3422f57d8",
+      "c": [
+        646,
+        1973,
+        544,
+        1927
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "623683f59841c436",
+      "c": [
+        544,
+        1927,
+        500,
+        1830
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "58963d2d07769128",
+      "c": [
+        401,
+        1286,
+        503,
+        1250
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "91a79f4b9282fb0b",
+      "c": [
+        503,
+        1250,
+        592,
+        1314
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "597897b071726925",
+      "c": [
+        592,
+        1314,
+        663,
+        1409
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "6391e9c758c89faa",
+      "c": [
+        663,
+        1409,
+        567,
+        1483
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "dd99401a12609583",
+      "c": [
+        567,
+        1483,
+        462,
+        1444
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "57372bba4fbe10d4",
+      "c": [
+        462,
+        1444,
+        401,
+        1286
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "392687d9d518e435",
+      "c": [
+        0,
+        1360,
+        89,
+        1281
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "d3af0943a187b52a",
+      "c": [
+        89,
+        1281,
+        194,
+        1258
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "93851388bf1dabe4",
+      "c": [
+        194,
+        1258,
+        260,
+        1327
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "2a0814a95cd89ea7",
+      "c": [
+        260,
+        1327,
+        209,
+        1421
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "3fb8f21f3a6cee07",
+      "c": [
+        209,
+        1421,
+        79,
+        1465
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "b298b31ba0dde6ba",
+      "c": [
+        79,
+        1465,
+        0,
+        1437
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "507d13a1b6c81b60",
+      "c": [
+        0,
+        1437,
+        0,
+        1360
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "a38b2bd9aab4857d",
+      "c": [
+        2552,
+        1574,
+        2654,
+        1546
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "db8a301d2e869630",
+      "c": [
+        2654,
+        1546,
+        2797,
+        1610
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "14ea45060483ae5b",
+      "c": [
+        2797,
+        1610,
+        2843,
+        1710
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "66caa7d5a6582017",
+      "c": [
+        2843,
+        1710,
+        2756,
+        1774
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "edf6f4330fea56af",
+      "c": [
+        2756,
+        1774,
+        2633,
+        1733
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "3a5380f917915bf8",
+      "c": [
+        2633,
+        1733,
+        2552,
+        1574
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "6cb4302072d6eefa",
+      "c": [
+        709,
+        0,
+        763,
+        145
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northern rock shelf — climb manually"
+        }
+      }
+    },
+    {
+      "_id": "a95d79f5bfcd6828",
+      "c": [
+        763,
+        145,
+        893,
+        240
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northern rock shelf — climb manually"
+        }
+      }
+    },
+    {
+      "_id": "f64cbe8c2dff5818",
+      "c": [
+        893,
+        240,
+        1056,
+        311
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northern rock shelf — climb manually"
+        }
+      }
+    },
+    {
+      "_id": "aee8f0421ecb346b",
+      "c": [
+        1056,
+        311,
+        1207,
+        283
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northern rock shelf — climb manually"
+        }
+      }
+    },
+    {
+      "_id": "63d6fc6c3113e308",
+      "c": [
+        1207,
+        283,
+        1291,
+        357
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northern rock shelf — climb manually"
+        }
+      }
+    },
+    {
+      "_id": "b56b714c34e317bd",
+      "c": [
+        1291,
+        357,
+        1442,
+        375
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northern rock shelf — climb manually"
+        }
+      }
+    },
+    {
+      "_id": "8956d6c571026645",
+      "c": [
+        1442,
+        375,
+        1564,
+        311
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northern rock shelf — climb manually"
+        }
+      }
+    },
+    {
+      "_id": "d4a0a4ab6661c6a4",
+      "c": [
+        1564,
+        311,
+        1687,
+        268
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northern rock shelf — climb manually"
+        }
+      }
+    },
+    {
+      "_id": "1d5f4056aa289e94",
+      "c": [
+        1687,
+        268,
+        1768,
+        145
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northern rock shelf — climb manually"
+        }
+      }
+    },
+    {
+      "_id": "f3ed5f5cf5f9188d",
+      "c": [
+        1768,
+        145,
+        1835,
+        0
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Northern rock shelf — climb manually"
+        }
+      }
+    }
+  ],
+  "lights": [
+    {
+      "_id": "8a0cbaaa56f7ce74",
+      "name": "Optional travel lantern",
+      "x": 1220,
+      "y": 1388,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": true,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "3b260f29be8d5697",
+      "name": "Optional travel lantern",
+      "x": 2179,
+      "y": 1296,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": true,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    }
+  ],
+  "tokens": [],
+  "notes": [],
+  "sounds": [],
+  "drawings": [],
+  "regions": [],
+  "tiles": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "saeroth-pf2e-content": {
+      "setup": "Reusable 160ft square mountain encounter map. Main road enters west and exits northeast; footpaths branch north and southwest. Large boulders block movement, sight and light. Northern shelf blocks ordinary movement only: GM adjudicates climbing. Small stones, shrubs and scree are manual terrain/cover, not invisible walls. Daylight default; two optional hidden lanterns may be revealed at night. No creatures or combat preselected.",
+      "source": "Generated mountain travel artwork; wall vertices traced at native 1254px resolution."
+    }
+  }
+}
