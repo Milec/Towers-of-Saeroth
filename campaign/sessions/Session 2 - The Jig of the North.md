@@ -36,3 +36,5 @@ With these facts, our shrewd adventurers came to the conclusion that fraud was a
 In the end, our intrepid band of miscreants decided to continue heading toward the expedition site, which, according to Milo, is about four days away.
 
 Previous session: [[Session 1 — Milo’s Manners]].
+
+GM preparation: [[Session 3 - The Mountain Road]].

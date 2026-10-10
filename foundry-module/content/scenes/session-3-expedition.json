@@ -1,0 +1,1416 @@
+{
+  "_stats": {
+    "coreVersion": "14.364"
+  },
+  "_id": "b4b0473bf097865f",
+  "name": "Session 3 — Expedition Search Camp",
+  "active": false,
+  "navigation": false,
+  "width": 3200,
+  "height": 3200,
+  "padding": 0,
+  "initial": {
+    "x": 1600,
+    "y": 1600,
+    "scale": 0.3
+  },
+  "initialLevel": "defaultLevel0000",
+  "thumb": "modules/saeroth-pf2e-content/assets/maps/session-3-expedition.png",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "distance": 5,
+    "units": "ft",
+    "alpha": 0.15,
+    "color": "#b8b0a0",
+    "style": "solidLines",
+    "thickness": 1
+  },
+  "tokenVision": true,
+  "environment": {
+    "darknessLevel": 0,
+    "darknessLock": true,
+    "cycle": false,
+    "globalLight": {
+      "enabled": true,
+      "bright": false,
+      "darkness": {
+        "min": 0,
+        "max": 0.25
+      }
+    }
+  },
+  "levels": [
+    {
+      "_id": "defaultLevel0000",
+      "name": "Ground",
+      "elevation": {
+        "bottom": null,
+        "top": null
+      },
+      "background": {
+        "src": "modules/saeroth-pf2e-content/assets/maps/session-3-expedition.png",
+        "color": "#252820"
+      },
+      "textures": {
+        "fit": "fill",
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "offsetX": 0,
+        "offsetY": 0,
+        "rotation": 0
+      }
+    }
+  ],
+  "walls": [
+    {
+      "_id": "22ac9ce40b5db818",
+      "c": [
+        2317,
+        2269,
+        2085,
+        2269
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Command pavilion canvas"
+        }
+      }
+    },
+    {
+      "_id": "931e1c6157cc85f8",
+      "c": [
+        2085,
+        2269,
+        2085,
+        1743
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Command pavilion canvas"
+        }
+      }
+    },
+    {
+      "_id": "efb6aafe149ac6f6",
+      "c": [
+        2085,
+        1743,
+        2723,
+        1743
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Command pavilion canvas"
+        }
+      }
+    },
+    {
+      "_id": "e29072e081d29237",
+      "c": [
+        2723,
+        1743,
+        2723,
+        2269
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Command pavilion canvas"
+        }
+      }
+    },
+    {
+      "_id": "cc4e7ed8fc5986af",
+      "c": [
+        2723,
+        2269,
+        2493,
+        2269
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Command pavilion canvas"
+        }
+      }
+    },
+    {
+      "_id": "a3b24b68601d1fe4",
+      "c": [
+        2317,
+        2269,
+        2493,
+        2269
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 1,
+      "ds": 1,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Command pavilion flap"
+        }
+      }
+    },
+    {
+      "_id": "f4e0dff48894c506",
+      "c": [
+        472,
+        396,
+        648,
+        332
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 1 exterior"
+        }
+      }
+    },
+    {
+      "_id": "00869f16a2ef3e62",
+      "c": [
+        648,
+        332,
+        732,
+        538
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 1 exterior"
+        }
+      }
+    },
+    {
+      "_id": "706a8a941f597b89",
+      "c": [
+        732,
+        538,
+        554,
+        605
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 1 exterior"
+        }
+      }
+    },
+    {
+      "_id": "24d8d7a3b3c2ca3b",
+      "c": [
+        554,
+        605,
+        472,
+        396
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 1 exterior"
+        }
+      }
+    },
+    {
+      "_id": "dbc4cf560b4667dc",
+      "c": [
+        878,
+        309,
+        1056,
+        258
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 2 exterior"
+        }
+      }
+    },
+    {
+      "_id": "3a6a56f4aa09e790",
+      "c": [
+        1056,
+        258,
+        1123,
+        472
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 2 exterior"
+        }
+      }
+    },
+    {
+      "_id": "23e228cbb456abcc",
+      "c": [
+        1123,
+        472,
+        942,
+        528
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 2 exterior"
+        }
+      }
+    },
+    {
+      "_id": "bc4fd2884db3a15a",
+      "c": [
+        942,
+        528,
+        878,
+        309
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 2 exterior"
+        }
+      }
+    },
+    {
+      "_id": "3cfafee839ac024d",
+      "c": [
+        2146,
+        255,
+        2325,
+        311
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 3 exterior"
+        }
+      }
+    },
+    {
+      "_id": "aae1928180d853bc",
+      "c": [
+        2325,
+        311,
+        2261,
+        528
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 3 exterior"
+        }
+      }
+    },
+    {
+      "_id": "52ff12016752ea79",
+      "c": [
+        2261,
+        528,
+        2082,
+        477
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 3 exterior"
+        }
+      }
+    },
+    {
+      "_id": "e8becf2bcc8a3443",
+      "c": [
+        2082,
+        477,
+        2146,
+        255
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 3 exterior"
+        }
+      }
+    },
+    {
+      "_id": "7eae574b716160be",
+      "c": [
+        2501,
+        383,
+        2695,
+        449
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 4 exterior"
+        }
+      }
+    },
+    {
+      "_id": "48e31262a109f514",
+      "c": [
+        2695,
+        449,
+        2618,
+        641
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 4 exterior"
+        }
+      }
+    },
+    {
+      "_id": "d58bdd90ace577fc",
+      "c": [
+        2618,
+        641,
+        2445,
+        592
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 4 exterior"
+        }
+      }
+    },
+    {
+      "_id": "4c62c7a24003ac48",
+      "c": [
+        2445,
+        592,
+        2501,
+        383
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 4 exterior"
+        }
+      }
+    },
+    {
+      "_id": "a00df123e010e2f0",
+      "c": [
+        449,
+        2366,
+        638,
+        2422
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 5 exterior"
+        }
+      }
+    },
+    {
+      "_id": "4c1ebc0895d4e030",
+      "c": [
+        638,
+        2422,
+        569,
+        2628
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 5 exterior"
+        }
+      }
+    },
+    {
+      "_id": "78b21b637d529bb8",
+      "c": [
+        569,
+        2628,
+        385,
+        2570
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 5 exterior"
+        }
+      }
+    },
+    {
+      "_id": "f15d24a22ec0fafc",
+      "c": [
+        385,
+        2570,
+        449,
+        2366
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 5 exterior"
+        }
+      }
+    },
+    {
+      "_id": "0fe262ad0bacb31f",
+      "c": [
+        903,
+        2450,
+        1097,
+        2470
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 6 exterior"
+        }
+      }
+    },
+    {
+      "_id": "aa80bd817e8a8241",
+      "c": [
+        1097,
+        2470,
+        1074,
+        2692
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 6 exterior"
+        }
+      }
+    },
+    {
+      "_id": "0342e85d6d480c01",
+      "c": [
+        1074,
+        2692,
+        878,
+        2669
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 6 exterior"
+        }
+      }
+    },
+    {
+      "_id": "66d93e6cfa62a54f",
+      "c": [
+        878,
+        2669,
+        903,
+        2450
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 6 exterior"
+        }
+      }
+    },
+    {
+      "_id": "c667dd5cb976c435",
+      "c": [
+        2098,
+        2529,
+        2279,
+        2516
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 7 exterior"
+        }
+      }
+    },
+    {
+      "_id": "603ae8410c1663dc",
+      "c": [
+        2279,
+        2516,
+        2294,
+        2738
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 7 exterior"
+        }
+      }
+    },
+    {
+      "_id": "5635a62b55d70ae1",
+      "c": [
+        2294,
+        2738,
+        2108,
+        2751
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 7 exterior"
+        }
+      }
+    },
+    {
+      "_id": "06cc7501bdfd46e1",
+      "c": [
+        2108,
+        2751,
+        2098,
+        2529
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 7 exterior"
+        }
+      }
+    },
+    {
+      "_id": "ba90e3d25a9b3a35",
+      "c": [
+        2526,
+        2493,
+        2697,
+        2450
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 8 exterior"
+        }
+      }
+    },
+    {
+      "_id": "2ae57acf79f81256",
+      "c": [
+        2697,
+        2450,
+        2759,
+        2641
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 8 exterior"
+        }
+      }
+    },
+    {
+      "_id": "8f54abc23c496d2f",
+      "c": [
+        2759,
+        2641,
+        2588,
+        2692
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 8 exterior"
+        }
+      }
+    },
+    {
+      "_id": "db205b3804bfb920",
+      "c": [
+        2588,
+        2692,
+        2526,
+        2493
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Tent 8 exterior"
+        }
+      }
+    },
+    {
+      "_id": "5c44b76fbe87885d",
+      "c": [
+        429,
+        1684,
+        574,
+        1656
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "2058699a0dcf4221",
+      "c": [
+        574,
+        1656,
+        618,
+        1835
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "705d4e6061d88169",
+      "c": [
+        618,
+        1835,
+        467,
+        1876
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "5e1b9b902044c15c",
+      "c": [
+        467,
+        1876,
+        429,
+        1684
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "8719ca84e4d4a8ae",
+      "c": [
+        789,
+        1876,
+        998,
+        1876
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "98213d633573f5d3",
+      "c": [
+        998,
+        1876,
+        1021,
+        2039
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "0b65853a59561397",
+      "c": [
+        1021,
+        2039,
+        806,
+        2039
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "cd9f0e5a5185fc3e",
+      "c": [
+        806,
+        2039,
+        789,
+        1876
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "05ca7b7eb3339bc4",
+      "c": [
+        561,
+        2072,
+        715,
+        2072
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "4203a59c840eb4a2",
+      "c": [
+        715,
+        2072,
+        730,
+        2248
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "81f3dc95b9d7e33b",
+      "c": [
+        730,
+        2248,
+        567,
+        2248
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    },
+    {
+      "_id": "b1032c22d0608ea7",
+      "c": [
+        567,
+        2248,
+        561,
+        2072
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Supply crates"
+        }
+      }
+    }
+  ],
+  "lights": [
+    {
+      "_id": "673f14f192bb1511",
+      "name": "Central fire ring",
+      "x": 1597,
+      "y": 1455,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": true,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "b19f871945576794",
+      "name": "Cooking hearth",
+      "x": 730,
+      "y": 896,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "e766aad72dd248d0",
+      "name": "Command lantern",
+      "x": 2672,
+      "y": 2039,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "0d4d99da2cca8e49",
+      "name": "Supply lantern",
+      "x": 615,
+      "y": 1802,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    }
+  ],
+  "tokens": [],
+  "notes": [],
+  "sounds": [],
+  "drawings": [],
+  "regions": [],
+  "tiles": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "saeroth-pf2e-content": {
+      "session": 3,
+      "setup": "The expedition is SEARCHING for the tower; it has not found it. Party enters south; leader receives them in southeast command pavilion (985,800 image px). Sparse southwest stores show the supply problem. Northern trail leads to survey country, not a known tower. Missing food and climbing gear are a proposed recovery hook involving orc bandits, not established past events. No forced combat or NPC blame.",
+      "source": "campaign/sessions/Session 3 - The Mountain Road.md",
+      "limitations": "No automated falls, landslides, terrain costs, combat or tower transition. NPC positions are staging instructions, not preplaced actors. GM notes remain in the companion prep note."
+    }
+  }
+}

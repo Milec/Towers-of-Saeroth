@@ -1,0 +1,584 @@
+{
+  "_stats": {
+    "coreVersion": "14.364"
+  },
+  "_id": "ad2797a01afaa061",
+  "name": "Session 3 — Broken Mountain Crossing",
+  "active": false,
+  "navigation": false,
+  "width": 3200,
+  "height": 3200,
+  "padding": 0,
+  "initial": {
+    "x": 1600,
+    "y": 1600,
+    "scale": 0.3
+  },
+  "initialLevel": "defaultLevel0000",
+  "thumb": "modules/saeroth-pf2e-content/assets/maps/session-3-mountain-crossing.png",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "distance": 5,
+    "units": "ft",
+    "alpha": 0.15,
+    "color": "#b8b0a0",
+    "style": "solidLines",
+    "thickness": 1
+  },
+  "tokenVision": true,
+  "environment": {
+    "darknessLevel": 0,
+    "darknessLock": true,
+    "cycle": false,
+    "globalLight": {
+      "enabled": true,
+      "bright": false,
+      "darkness": {
+        "min": 0,
+        "max": 0.25
+      }
+    }
+  },
+  "levels": [
+    {
+      "_id": "defaultLevel0000",
+      "name": "Ground",
+      "elevation": {
+        "bottom": null,
+        "top": null
+      },
+      "background": {
+        "src": "modules/saeroth-pf2e-content/assets/maps/session-3-mountain-crossing.png",
+        "color": "#252820"
+      },
+      "textures": {
+        "fit": "fill",
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "offsetX": 0,
+        "offsetY": 0,
+        "rotation": 0
+      }
+    }
+  ],
+  "walls": [
+    {
+      "_id": "1809e3bba6285dcd",
+      "c": [
+        1085,
+        0,
+        1148,
+        510
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "West cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "90bcb2777090a5ae",
+      "c": [
+        1148,
+        510,
+        1192,
+        944
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "West cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "824f964b7e319876",
+      "c": [
+        1192,
+        944,
+        1238,
+        1314
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "West cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "ad23fb84ba4f12a1",
+      "c": [
+        1225,
+        1500,
+        1120,
+        1990
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "West cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "74717dc9fa41fe5d",
+      "c": [
+        1120,
+        1990,
+        1021,
+        2552
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "West cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "b8d94af294cf899d",
+      "c": [
+        1021,
+        2552,
+        1174,
+        3200
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "West cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "1bdff2fdeb531fe2",
+      "c": [
+        2041,
+        0,
+        2052,
+        587
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "1572d5f161314eda",
+      "c": [
+        2052,
+        587,
+        2013,
+        1046
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "da5a549f02c30148",
+      "c": [
+        2013,
+        1046,
+        1939,
+        1312
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "e22dbe22dee86cab",
+      "c": [
+        1929,
+        1500,
+        2008,
+        2016
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "5c30427e23dd311a",
+      "c": [
+        2008,
+        2016,
+        2144,
+        2552
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "8ed2b2e1c1c74aca",
+      "c": [
+        2144,
+        2552,
+        2077,
+        3200
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "East cliff edge"
+        }
+      }
+    },
+    {
+      "_id": "a90fbc3dccc48bcd",
+      "c": [
+        855,
+        1301,
+        1480,
+        1355
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Bridge railing"
+        }
+      }
+    },
+    {
+      "_id": "b5920bc6d6ce098a",
+      "c": [
+        855,
+        1478,
+        1480,
+        1508
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Bridge railing"
+        }
+      }
+    },
+    {
+      "_id": "894c0f91c51cedeb",
+      "c": [
+        1705,
+        1350,
+        2169,
+        1301
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Bridge railing"
+        }
+      }
+    },
+    {
+      "_id": "6e152deb816bd943",
+      "c": [
+        1705,
+        1493,
+        2169,
+        1475
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Bridge railing"
+        }
+      }
+    },
+    {
+      "_id": "2e681f21f8294f36",
+      "c": [
+        1480,
+        1355,
+        1480,
+        1508
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Broken west deck edge — GM adjudicates crossing"
+        }
+      }
+    },
+    {
+      "_id": "7a956e7d65855f56",
+      "c": [
+        1705,
+        1350,
+        1705,
+        1493
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 0,
+      "light": 0,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Broken east deck edge — GM adjudicates crossing"
+        }
+      }
+    }
+  ],
+  "lights": [
+    {
+      "_id": "6d547de8f4009e8b",
+      "name": "West approach lantern (optional)",
+      "x": 852,
+      "y": 1243,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": true,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "eacf1037adce9270",
+      "name": "East approach lantern (optional)",
+      "x": 2172,
+      "y": 1245,
+      "elevation": 3,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": true,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    }
+  ],
+  "tokens": [],
+  "notes": [],
+  "sounds": [],
+  "drawings": [],
+  "regions": [],
+  "tiles": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "saeroth-pf2e-content": {
+      "session": 3,
+      "setup": "160ft square. Party enters west. Optional 3 Wolves (level 1 each, 90 XP for six level-2 PCs) staged west at image coordinates 170,340; 220,740; 90,870. Do not attack while the party is split over the ravine. Broken span is about 10ft; GM resolves jumps/ropes/falls. Transparent movement walls guard cliff edges; move tokens deliberately across only after adjudication. Landslide at 230,150 is a travel obstacle, not an automatic damaging trap.",
+      "source": "campaign/sessions/Session 3 - The Mountain Road.md",
+      "limitations": "No automated falls, landslides, terrain costs, combat or tower transition. NPC positions are staging instructions, not preplaced actors. GM notes remain in the companion prep note."
+    }
+  }
+}
