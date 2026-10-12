@@ -37,4 +37,4 @@ In the end, our intrepid band of miscreants decided to continue heading toward t
 
 Previous session: [[Session 1 — Milo’s Manners]].
 
-GM preparation: [[Session 3 - The Mountain Road]].
+Next session: [[Session 3 - The Mountain Road]]. Carried-forward GM preparation: [[Session 4 - The Mountain Road]].
