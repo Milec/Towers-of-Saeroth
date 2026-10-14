@@ -1,0 +1,2453 @@
+{
+  "_stats": {
+    "coreVersion": "14.364"
+  },
+  "_id": "c37326621b2061b8",
+  "name": "Mountain Hot Springs",
+  "active": false,
+  "navigation": false,
+  "width": 2800,
+  "height": 2800,
+  "padding": 0,
+  "initial": {
+    "x": 1400,
+    "y": 1400,
+    "scale": 0.35
+  },
+  "initialLevel": "defaultLevel0000",
+  "thumb": "modules/saeroth-pf2e-content/assets/maps/mountain-hot-springs.png",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "distance": 5,
+    "units": "ft",
+    "alpha": 0.15,
+    "color": "#b8b0a0",
+    "style": "solidLines",
+    "thickness": 1
+  },
+  "tokenVision": true,
+  "environment": {
+    "darknessLevel": 0,
+    "darknessLock": true,
+    "cycle": false,
+    "globalLight": {
+      "enabled": true,
+      "bright": false,
+      "darkness": {
+        "min": 0,
+        "max": 0.25
+      }
+    }
+  },
+  "levels": [
+    {
+      "_id": "defaultLevel0000",
+      "name": "Ground",
+      "elevation": {
+        "bottom": null,
+        "top": null
+      },
+      "background": {
+        "src": "modules/saeroth-pf2e-content/assets/maps/mountain-hot-springs.png",
+        "color": "#252820"
+      },
+      "textures": {
+        "fit": "fill",
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "offsetX": 0,
+        "offsetY": 0,
+        "rotation": 0
+      }
+    }
+  ],
+  "walls": [
+    {
+      "_id": "8617c8ec3be7df8e",
+      "c": [
+        1570,
+        382,
+        1643,
+        319
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "c75c70d3f4eed53f",
+      "c": [
+        1643,
+        319,
+        1735,
+        353
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "aeb1ba4f8d860606",
+      "c": [
+        1735,
+        353,
+        1795,
+        442
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "be8278ae6f99a079",
+      "c": [
+        1795,
+        442,
+        1739,
+        558
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "580bbf7595b68fd3",
+      "c": [
+        1739,
+        558,
+        1661,
+        560
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "8a13e4b39b3b8494",
+      "c": [
+        1661,
+        560,
+        1592,
+        480
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "4462f6b527d68e43",
+      "c": [
+        1592,
+        480,
+        1570,
+        382
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 1"
+        }
+      }
+    },
+    {
+      "_id": "8687a7295219eb5a",
+      "c": [
+        1454,
+        272,
+        1532,
+        241
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "d7967d01e1944534",
+      "c": [
+        1532,
+        241,
+        1603,
+        275
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "4662cf40273dcf69",
+      "c": [
+        1603,
+        275,
+        1588,
+        353
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "9384201fb6a25874",
+      "c": [
+        1588,
+        353,
+        1487,
+        393
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "7b9ff15c3c9a743c",
+      "c": [
+        1487,
+        393,
+        1449,
+        335
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "0dc51c2c96543498",
+      "c": [
+        1449,
+        335,
+        1454,
+        272
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 2"
+        }
+      }
+    },
+    {
+      "_id": "adf47f39150adc48",
+      "c": [
+        875,
+        92,
+        971,
+        67
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "aec46640ec99f1d7",
+      "c": [
+        971,
+        67,
+        1067,
+        105
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "651bae186bb39ae2",
+      "c": [
+        1067,
+        105,
+        1170,
+        210
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "aca8ef4b419e07f9",
+      "c": [
+        1170,
+        210,
+        1190,
+        286
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "a41a914fc351f826",
+      "c": [
+        1190,
+        286,
+        1099,
+        351
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "20c050a3376545ea",
+      "c": [
+        1099,
+        351,
+        1007,
+        310
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "153cac3e36eb42b2",
+      "c": [
+        1007,
+        310,
+        940,
+        221
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "e563c44ef4c3f34d",
+      "c": [
+        940,
+        221,
+        875,
+        92
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 3"
+        }
+      }
+    },
+    {
+      "_id": "246b5674966236e8",
+      "c": [
+        518,
+        797,
+        607,
+        726
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "cb4a7061dcf48b89",
+      "c": [
+        607,
+        726,
+        699,
+        748
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "34d28317075daa48",
+      "c": [
+        699,
+        748,
+        744,
+        831
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "e2db932735993670",
+      "c": [
+        744,
+        831,
+        674,
+        942
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "6a91bd5911932b71",
+      "c": [
+        674,
+        942,
+        587,
+        996
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "ba91a823eafaf720",
+      "c": [
+        587,
+        996,
+        516,
+        929
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "87a05657c39ff03c",
+      "c": [
+        516,
+        929,
+        518,
+        797
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 4"
+        }
+      }
+    },
+    {
+      "_id": "30f5f966be37d4d0",
+      "c": [
+        516,
+        1246,
+        601,
+        1181
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "530d3dc08efd0cbd",
+      "c": [
+        601,
+        1181,
+        679,
+        1224
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "92aaaf5bcecaf8bd",
+      "c": [
+        679,
+        1224,
+        728,
+        1315
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "4a6b60b3d2e5291f",
+      "c": [
+        728,
+        1315,
+        697,
+        1400
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "1c17d4bfa8d332ad",
+      "c": [
+        697,
+        1400,
+        605,
+        1433
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "e225972a80b6c747",
+      "c": [
+        605,
+        1433,
+        534,
+        1362
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "255491dcaa0f6d1b",
+      "c": [
+        534,
+        1362,
+        516,
+        1246
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 5"
+        }
+      }
+    },
+    {
+      "_id": "941e6f139575e078",
+      "c": [
+        326,
+        1521,
+        395,
+        1494
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "58f5626987d4147d",
+      "c": [
+        395,
+        1494,
+        444,
+        1563
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "36efdf5d91e51e1c",
+      "c": [
+        444,
+        1563,
+        471,
+        1684
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "8ff74d991d4de610",
+      "c": [
+        471,
+        1684,
+        426,
+        1768
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "527ecbc3823b707e",
+      "c": [
+        426,
+        1768,
+        342,
+        1759
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "36a413d8d012da26",
+      "c": [
+        342,
+        1759,
+        295,
+        1675
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "3bba6887b8d286e6",
+      "c": [
+        295,
+        1675,
+        326,
+        1521
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 6"
+        }
+      }
+    },
+    {
+      "_id": "5109533b1ea41aa4",
+      "c": [
+        898,
+        1561,
+        965,
+        1512
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "a30e83c68ce710af",
+      "c": [
+        965,
+        1512,
+        1041,
+        1556
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "97a470b6fbef8854",
+      "c": [
+        1041,
+        1556,
+        1090,
+        1646
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "7c23361e628d5e42",
+      "c": [
+        1090,
+        1646,
+        1054,
+        1715
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "2d5d489e9e7a0605",
+      "c": [
+        1054,
+        1715,
+        962,
+        1739
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "1ac46db3c9d609a8",
+      "c": [
+        962,
+        1739,
+        882,
+        1681
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "ea9abeaf33f4620f",
+      "c": [
+        882,
+        1681,
+        898,
+        1561
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 7"
+        }
+      }
+    },
+    {
+      "_id": "0cfd304754ed961f",
+      "c": [
+        1614,
+        1677,
+        1722,
+        1596
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "a1b14d18e6b9e07d",
+      "c": [
+        1722,
+        1596,
+        1858,
+        1583
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "7d01bada46009d3e",
+      "c": [
+        1858,
+        1583,
+        1976,
+        1663
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "729407e2e40da84a",
+      "c": [
+        1976,
+        1663,
+        2010,
+        1746
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "dd69ef6e289d88d4",
+      "c": [
+        2010,
+        1746,
+        1900,
+        1844
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "d835add136cf18be",
+      "c": [
+        1900,
+        1844,
+        1797,
+        1876
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "70eeeee1abef7724",
+      "c": [
+        1797,
+        1876,
+        1684,
+        1818
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "e951521c3381a8a2",
+      "c": [
+        1684,
+        1818,
+        1614,
+        1677
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 8"
+        }
+      }
+    },
+    {
+      "_id": "94315b37f5d8979a",
+      "c": [
+        777,
+        2010,
+        857,
+        1956
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "6fa75e02578fb840",
+      "c": [
+        857,
+        1956,
+        951,
+        1972
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "bef6b8282d69c79f",
+      "c": [
+        951,
+        1972,
+        994,
+        2048
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "aca73f9181cad1a9",
+      "c": [
+        994,
+        2048,
+        969,
+        2144
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "93d92d8c74062821",
+      "c": [
+        969,
+        2144,
+        898,
+        2177
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "71ace780422b02b6",
+      "c": [
+        898,
+        2177,
+        817,
+        2135
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "78a385bfddb8fba6",
+      "c": [
+        817,
+        2135,
+        757,
+        2065
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "7d009ee068c847c7",
+      "c": [
+        757,
+        2065,
+        777,
+        2010
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 9"
+        }
+      }
+    },
+    {
+      "_id": "405b45c1245537a2",
+      "c": [
+        2077,
+        2110,
+        2146,
+        2036
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 10"
+        }
+      }
+    },
+    {
+      "_id": "f686137e26133d9c",
+      "c": [
+        2146,
+        2036,
+        2235,
+        2063
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 10"
+        }
+      }
+    },
+    {
+      "_id": "404f8f420fd25844",
+      "c": [
+        2235,
+        2063,
+        2311,
+        2159
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 10"
+        }
+      }
+    },
+    {
+      "_id": "6245936344d35714",
+      "c": [
+        2311,
+        2159,
+        2271,
+        2260
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 10"
+        }
+      }
+    },
+    {
+      "_id": "10a12bf3803a3ae6",
+      "c": [
+        2271,
+        2260,
+        2177,
+        2320
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 10"
+        }
+      }
+    },
+    {
+      "_id": "a4042d3ea297f200",
+      "c": [
+        2177,
+        2320,
+        2103,
+        2264
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 10"
+        }
+      }
+    },
+    {
+      "_id": "802d5b76157659bf",
+      "c": [
+        2103,
+        2264,
+        2077,
+        2110
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 10"
+        }
+      }
+    },
+    {
+      "_id": "401c7966de3157ff",
+      "c": [
+        2039,
+        1474,
+        2097,
+        1442
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 11"
+        }
+      }
+    },
+    {
+      "_id": "131e224298ba378c",
+      "c": [
+        2097,
+        1442,
+        2144,
+        1503
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 11"
+        }
+      }
+    },
+    {
+      "_id": "6858e681ae2ca1b2",
+      "c": [
+        2144,
+        1503,
+        2150,
+        1574
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 11"
+        }
+      }
+    },
+    {
+      "_id": "05c556544b1462cf",
+      "c": [
+        2150,
+        1574,
+        2101,
+        1626
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 11"
+        }
+      }
+    },
+    {
+      "_id": "b3a3bc29dc4b0c3e",
+      "c": [
+        2101,
+        1626,
+        2043,
+        1588
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 11"
+        }
+      }
+    },
+    {
+      "_id": "303656df322e224c",
+      "c": [
+        2043,
+        1588,
+        2039,
+        1474
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 11"
+        }
+      }
+    },
+    {
+      "_id": "8986da7fac68bcbc",
+      "c": [
+        2204,
+        1074,
+        2266,
+        1049
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 12"
+        }
+      }
+    },
+    {
+      "_id": "49bc0782775da9ee",
+      "c": [
+        2266,
+        1049,
+        2333,
+        1083
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 12"
+        }
+      }
+    },
+    {
+      "_id": "686f61b1f81607e0",
+      "c": [
+        2333,
+        1083,
+        2342,
+        1141
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 12"
+        }
+      }
+    },
+    {
+      "_id": "e40db034eb97b1c2",
+      "c": [
+        2342,
+        1141,
+        2264,
+        1183
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 12"
+        }
+      }
+    },
+    {
+      "_id": "286eaf5bbc8e195c",
+      "c": [
+        2264,
+        1183,
+        2206,
+        1139
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 12"
+        }
+      }
+    },
+    {
+      "_id": "6e57491d77002fe0",
+      "c": [
+        2206,
+        1139,
+        2204,
+        1074
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 12"
+        }
+      }
+    },
+    {
+      "_id": "72f48b579d862098",
+      "c": [
+        2007,
+        770,
+        2094,
+        726
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 13"
+        }
+      }
+    },
+    {
+      "_id": "5b9ca7afd70b3e9f",
+      "c": [
+        2094,
+        726,
+        2141,
+        786
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 13"
+        }
+      }
+    },
+    {
+      "_id": "acf10fe9c19b1253",
+      "c": [
+        2141,
+        786,
+        2103,
+        846
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 13"
+        }
+      }
+    },
+    {
+      "_id": "5c47d25a6d7fcba7",
+      "c": [
+        2103,
+        846,
+        2025,
+        882
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 13"
+        }
+      }
+    },
+    {
+      "_id": "898bf51fc8c71521",
+      "c": [
+        2025,
+        882,
+        1989,
+        835
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 13"
+        }
+      }
+    },
+    {
+      "_id": "759b5933f039490c",
+      "c": [
+        1989,
+        835,
+        2007,
+        770
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 13"
+        }
+      }
+    },
+    {
+      "_id": "6ca2c7000662d3ce",
+      "c": [
+        2088,
+        857,
+        2146,
+        833
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 14"
+        }
+      }
+    },
+    {
+      "_id": "a9893c04a8a46ea0",
+      "c": [
+        2146,
+        833,
+        2193,
+        864
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 14"
+        }
+      }
+    },
+    {
+      "_id": "0e406b691d7f9617",
+      "c": [
+        2193,
+        864,
+        2197,
+        929
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 14"
+        }
+      }
+    },
+    {
+      "_id": "77552c841413f64e",
+      "c": [
+        2197,
+        929,
+        2135,
+        949
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 14"
+        }
+      }
+    },
+    {
+      "_id": "8eb9887e7a3d1132",
+      "c": [
+        2135,
+        949,
+        2083,
+        913
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 14"
+        }
+      }
+    },
+    {
+      "_id": "97ea7c65cbc265b6",
+      "c": [
+        2083,
+        913,
+        2088,
+        857
+      ],
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0,
+      "flags": {
+        "saeroth-pf2e-content": {
+          "label": "Granite boulder 14"
+        }
+      }
+    }
+  ],
+  "lights": [
+    {
+      "_id": "d7a23ef3ef640bc2",
+      "name": "Optional bank lantern",
+      "x": 1172,
+      "y": 1983,
+      "elevation": 2,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": true,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    },
+    {
+      "_id": "09856373b7331eda",
+      "name": "Optional bank lantern",
+      "x": 1887,
+      "y": 587,
+      "elevation": 2,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "rotation": 0,
+      "walls": true,
+      "vision": false,
+      "hidden": true,
+      "config": {
+        "bright": 15,
+        "dim": 30,
+        "angle": 360,
+        "color": "#ffbf72",
+        "alpha": 0.25,
+        "luminosity": 0.5,
+        "attenuation": 0.5,
+        "darkness": {
+          "min": 0.25,
+          "max": 1
+        },
+        "animation": {
+          "type": "torch",
+          "speed": 2,
+          "intensity": 2
+        }
+      }
+    }
+  ],
+  "tokens": [],
+  "notes": [],
+  "sounds": [],
+  "drawings": [],
+  "regions": [],
+  "tiles": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "saeroth-pf2e-content": {
+      "setup": "140ft square, 5ft grid. Three natural pools with open walkable banks and southern clearing. Solid large rocks block movement/sight/light; pool edges are not walls. Water depth, slippery footing, heat and steam concealment are GM-adjudicated, not automated hazards. Daylight default. Two hidden optional bank lanterns can be revealed at night; pools do not glow. No actors, combat, doors or structures."
+    }
+  }
+}
