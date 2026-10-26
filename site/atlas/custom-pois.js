@@ -56,7 +56,7 @@
     for(let i=records.length-1;i>=0;i--)if(records[i].type==='custompoi')records.splice(i,1);
     records.push(...items.map(p=>({type:'custompoi',id:p.id,name:p.name,sub:'My POI · '+kinds[p.kind][0]})));
     $('#customPOIList').innerHTML=items.map(p=>resultHTML({type:'custompoi',id:p.id,name:p.name,sub:kinds[p.kind][0]})).join('')||'<p class="muted">No custom locations yet.</p>';
-    catalogue();if($('#search').value)$('#search').dispatchEvent(new Event('input',{bubbles:true}));renderView();
+    catalogue();if($('#search').value)$('#search').dispatchEvent(new Event('input',{bubbles:true}));renderView();dispatchEvent(new CustomEvent('atlas-custom-pois-change'));
   }
   $('#customPOIForm').onsubmit=e=>{
     e.preventDefault();if(!locationPoint){status('Choose a map location before saving.');return;}
@@ -72,6 +72,7 @@
     selected={type:'custompoi',id:p.id};
     const toggle=$('[data-layer="custompois"]');toggle.checked=true;layer.removeAttribute('hidden');
     $('#info').innerHTML=`<span class="eyebrow">MY POI · ${esc(kinds[p.kind][0])}</span><h2>${esc(p.name)}</h2><p class="note">${esc(p.notes||'No notes yet.')}</p><p class="muted">${p.notePath?'Linked campaign location'+(p.pendingSync?' · local changes waiting to sync':p.pendingReview?' · awaiting merge':''):'Local draft'}</p><div class="journey-actions"><button type="button" id="customPOIEdit">Edit / move POI</button><button type="button" id="customPOIDelete">Delete POI</button></div><div id="customPOIDeleteConfirm"></div>`;
+    dispatchEvent(new CustomEvent('atlas-custom-poi-selected',{detail:p.id}));
     $('#customPOIEdit').onclick=()=>edit(p);
     if(publishedItems.has(p.id)&&(p.pendingSync||p.pendingReview)){
       const reset=document.createElement('button');reset.type='button';reset.textContent='Use published version';
