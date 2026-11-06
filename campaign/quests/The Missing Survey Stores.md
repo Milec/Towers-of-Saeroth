@@ -33,6 +33,8 @@ These are the four combatants listed below. There are no hidden reinforcements, 
 
 ## Approaching the yard
 
+![Old Survey Quarry, with its open southern approach and stone sorting yard.](saeroth-art-46313ca9c4ef7f21ea8ae3df7b7673d119877f8d0b8222f1a7018cb348f05b96.webp)
+
 Use **Old Survey Quarry — Supply Recovery**, the prepared 32-by-32 map with 5-foot squares. It depicts a roofless stone sorting yard between steep rock faces. Its interior floor is one level. The north and south walls have open passages; wide breaks in the east and west walls offer other approaches. The L-shaped internal wall separates the northwest corner from part of the main floor.
 
 The stone bench in the northeast is the sorting bench. The stolen sacks and chests are stacked on the floor south of it; represent them with the supplies token or a map note. The background artwork does not itself contain four painted crates. Broken columns and loose stone provide places to take cover; they are not automatic damaging hazards. Let the ordinary cover rules and the actual lines of sight decide each shot.
