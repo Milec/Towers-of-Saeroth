@@ -3,6 +3,7 @@
 // This module is executed from main, never from the pull request being reviewed.
 // All PR content below is data. In particular, no Markdown or metadata is eval'd.
 const {TextDecoder}=require('node:util');
+const artwork=require('../../site/editor-asset.js');
 const MARKER='<!-- saeroth-entry-editor -->';
 const BRANCH=/^entry-editor-[a-z0-9][a-z0-9-]{0,95}$/;
 const SHA=/^[a-f0-9]{40}$/;
@@ -25,10 +26,19 @@ function metadata(body){
   if(entries.length!==1)return null;
   try{
     const meta=JSON.parse(entries[0].slice('saeroth_entry: '.length));
-    if(!meta||typeof meta!=='object'||Array.isArray(meta)||Object.keys(meta).sort().join(',')!=='baseBlob,baseHead,operation,path,version')return null;
-    if(meta.version!==1||!allowedPath(meta.path)||!(meta.baseBlob===null||SHA.test(meta.baseBlob))||!SHA.test(meta.baseHead)||!/^[a-f0-9]{64}$/.test(meta.operation))return null;
+    if(!meta||typeof meta!=='object'||Array.isArray(meta))return null;
+    const expected=meta.version===2?'asset,baseBlob,baseHead,operation,path,version':'baseBlob,baseHead,operation,path,version';
+    if(Object.keys(meta).sort().join(',')!==expected||![1,2].includes(meta.version)||!allowedPath(meta.path)||
+      (meta.version===2&&!artwork.validDescriptor(meta.path,meta.asset))||
+      !(meta.baseBlob===null||SHA.test(meta.baseBlob))||!SHA.test(meta.baseHead)||!/^[a-f0-9]{64}$/.test(meta.operation))return null;
     return meta;
   }catch{return null;}
+}
+
+async function validArtwork(data,descriptor){
+  if(!data||data.encoding!=='base64'||data.size!==descriptor.bytes||typeof data.content!=='string'||
+    data.content.length>Math.ceil(artwork.LIMIT_BYTES/3)*4+Math.ceil(artwork.LIMIT_BYTES/45))return false;
+  try{await artwork.validate({mime:descriptor.mime,bytes:descriptor.bytes,sha256:descriptor.sha256,data:data.content.replace(/\s/g,'')});return true;}catch{return false;}
 }
 
 function blobText(data){
@@ -82,9 +92,9 @@ async function publish({github,context}){
   // cannot substitute a different file list for the checked revision.
   const {data:comparison}=await github.rest.repos.compareCommitsWithBasehead({owner,repo,basehead:`${pr.base.sha}...${run.head_sha}`});
   const files=comparison.files;
-  if(!Array.isArray(files)||files.length<1||files.length>(meta.baseBlob===null?2:1))return denied('the editor pull request must change one entry and, for a new entry, only its library registration.');
-  const file=files.find(item=>item.filename===meta.path),registry=files.find(item=>item.filename===REGISTRY);
-  if(!file||files.some(item=>item!==file&&item!==registry))return denied('the change includes a file outside the declared entry and its registration.');
+  if(!Array.isArray(files)||files.length<1||files.length>(meta.baseBlob===null?2:1)+(meta.asset?1:0))return denied('the editor pull request must change one entry, its declared artwork, and only the required library registration.');
+  const file=files.find(item=>item.filename===meta.path),registry=files.find(item=>item.filename===REGISTRY),image=files.find(item=>item.filename===meta.asset?.path);
+  if(!file||files.some(item=>item!==file&&item!==registry&&item!==image)||registry&&meta.baseBlob!==null)return denied('the change includes a file outside the declared entry, artwork, and registration.');
   if(!allowedPath(file.filename)||file.filename!==meta.path||file.previous_filename
     ||!['added','modified'].includes(file.status)||!SHA.test(file.sha||'')
     ||file.status!==(meta.baseBlob===null?'added':'modified'))return denied('the changed file is not the declared added or edited campaign entry.');
@@ -100,6 +110,25 @@ async function publish({github,context}){
 
   const {data:blob}=await github.rest.git.getBlob({owner,repo,file_sha:file.sha});
   if(blob.sha!==file.sha||!validNote(blob))return denied('the entry is not valid UTF-8 Markdown with title and type, or exceeds 128 KiB.');
+
+  let imageSHA=null;
+  if(meta.asset){
+    if(image&&(image.status!=='added'||image.previous_filename||!SHA.test(image.sha||'')))return denied('artwork must be a new immutable image, never a modification, rename, or deletion.');
+    if(!artwork.reference(blobText(blob),artwork.filename(meta.asset.sha256)))return denied('the entry does not include the declared artwork as a Markdown image.');
+    let imageFile;
+    try{({data:imageFile}=await github.rest.repos.getContent({owner,repo,path:meta.asset.path,ref:run.head_sha}));}
+    catch(error){if(error.status!==404)throw error;}
+    if(imageFile?.type!=='file'||!SHA.test(imageFile.sha||'')||(image&&imageFile.sha!==image.sha))return denied('the declared artwork file is missing from the verified commit.');
+    imageSHA=imageFile.sha;
+    const {data:imageBlob}=await github.rest.git.getBlob({owner,repo,file_sha:imageSHA});
+    if(imageBlob.sha!==imageSHA||!await validArtwork(imageBlob,meta.asset))return denied('the artwork is not a matching bounded static WebP image.');
+    if(!image){
+      let baseImage;
+      try{({data:baseImage}=await github.rest.repos.getContent({owner,repo,path:meta.asset.path,ref:pr.base.sha}));}
+      catch(error){if(error.status!==404)throw error;}
+      if(baseImage?.type!=='file'||baseImage.sha!==imageSHA)return denied('unchanged artwork must already exist with identical content on the main branch.');
+    }
+  }
 
   if(meta.baseBlob===null){
     const stem=meta.path.split('/').at(-1).slice(0,-3);
@@ -125,6 +154,12 @@ async function publish({github,context}){
     try{({data:currentEntry}=await github.rest.repos.getContent({owner,repo,path:meta.path,ref:'main'}));}
     catch(error){if(error.status!==404)throw error;}
     if(meta.baseBlob===null?!!currentEntry:currentEntry?.type!=='file'||currentEntry.sha!==meta.baseBlob)return denied('the entry changed on main after editing began; reconcile the changes before publishing.');
+    if(meta.asset){
+      let currentImage;
+      try{({data:currentImage}=await github.rest.repos.getContent({owner,repo,path:meta.asset.path,ref:'main'}));}
+      catch(error){if(error.status!==404)throw error;}
+      if(currentImage?(currentImage.type!=='file'||currentImage.sha!==imageSHA):!image)return denied('the artwork changed on main while the entry was being reviewed.');
+    }
     const {data:result}=await github.rest.pulls.merge({owner,repo,pull_number:pr.number,sha:run.head_sha,merge_method:'squash'});
     if(!result.merged)throw Error('GitHub did not merge the verified campaign entry.');
   }
@@ -138,3 +173,4 @@ module.exports=publish;
 module.exports.allowedPath=allowedPath;
 module.exports.metadata=metadata;
 module.exports.validNote=validNote;
+module.exports.validArtwork=validArtwork;

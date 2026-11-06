@@ -14,6 +14,7 @@
     "test:reader": "node reader.cjs",
     "test:visual": "node visual-review.cjs",
     "test:editor": "node editor.cjs",
+    "test:editor-images": "node editor-images.cjs",
     "test:editor-publisher": "node editor-publisher.cjs",
     "test:publisher": "node publisher.cjs",
     "test:editor-publish": "node editor-auto-merge.cjs",

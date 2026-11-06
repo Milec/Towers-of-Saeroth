@@ -3,6 +3,7 @@
   'use strict';
   const REPO = 'Milec/Towers-of-Saeroth', ROOT = 'https://api.github.com/repos/' + REPO;
   const MARKER = '<!-- saeroth-entry-editor -->', LIMIT = 128 * 1024, REGISTRY = 'campaign/world/Campaign Library.md';
+  const ART = globalThis.SaerothEditorAsset;
   const sha = value => typeof value === 'string' && /^[a-f0-9]{40}$/.test(value);
   const sameName = value => value.normalize('NFKC').toLocaleLowerCase('en-US');
   const enc = value => value.split('/').map(encodeURIComponent).join('/');
@@ -36,13 +37,15 @@
     if (lines.length !== 1) return null;
     try {
       const value = JSON.parse(lines[0].slice(15));
-      if (Object.keys(value).sort().join(',') !== 'baseBlob,baseHead,operation,path,version' || value.version !== 1 || !validPath(value.path) ||
+      const expected = value.version === 2 ? 'asset,baseBlob,baseHead,operation,path,version' : 'baseBlob,baseHead,operation,path,version';
+      if (Object.keys(value).sort().join(',') !== expected || ![1,2].includes(value.version) || !validPath(value.path) ||
+        (value.version === 2 && !ART.validDescriptor(value.path,value.asset)) ||
         !(value.baseBlob === null || sha(value.baseBlob)) || !sha(value.baseHead) || !/^[a-f0-9]{64}$/.test(value.operation)) return null;
       return value;
     } catch (_) { return null; }
   }
   const reviewBody = meta => MARKER + '\nsaeroth_entry: ' + JSON.stringify(meta) +
-    '\n\nCreated from the Saeroth entry editor. Publish this single campaign entry automatically after repository verification passes.\n';
+    '\n\nCreated from the Saeroth entry editor. Publish this campaign entry and its declared artwork automatically after repository verification passes.\n';
   const existingTitle = text => { try { return fields(text).title; } catch (_) { return null; } };
 
   function createClient(token, request = fetch) {
@@ -89,6 +92,54 @@
       } else text = await blob(value.sha);
       return {text, sha:value.sha};
     }
+    async function assetFile(meta, head) {
+      if (!meta?.asset) return null;
+      const value = await maybe('/contents/' + enc(meta.asset.path) + '?ref=' + encodeURIComponent(head));
+      if (!value || value.type !== 'file' || !sha(value.sha)) throw fail('The declared artwork is missing or is not a file.', 'conflict');
+      const blob = await api('/git/blobs/' + value.sha);
+      if (blob.encoding !== 'base64' || typeof blob.content !== 'string' || blob.size !== meta.asset.bytes ||
+          (blob.sha && blob.sha !== value.sha)) throw fail('The declared artwork could not be verified.', 'conflict');
+      try { return await ART.validate({mime:meta.asset.mime,sha256:meta.asset.sha256,bytes:meta.asset.bytes,data:blob.content.replace(/\s/g,'')}); }
+      catch (_) { throw fail('The declared artwork no longer matches its content fingerprint.', 'conflict'); }
+    }
+    const withAsset = (meta, asset) => {
+      const {path,baseBlob,baseHead,operation} = meta;
+      return asset ? {version:2,path,baseBlob,baseHead,operation,asset:ART.descriptor(path,asset)} : {version:1,path,baseBlob,baseHead,operation};
+    };
+    async function chosenAsset(input, meta, head, content) {
+      if (input === undefined) return meta?.asset && ART.reference(content,ART.filename(meta.asset.sha256)) ? assetFile(meta,head) : null;
+      if (input === null) {
+        if (meta?.asset && ART.reference(content,ART.filename(meta.asset.sha256))) throw fail('Remove the staged artwork link before removing its upload.');
+        return null;
+      }
+      const asset = await ART.validate(input);
+      if (!ART.reference(content,ART.filename(asset.sha256))) throw fail('The entry must include its uploaded artwork on a Markdown image line.');
+      return asset;
+    }
+    async function artworkChanges(path, asset, previous, head, mainHead, content) {
+      const extra = [], destination = asset ? ART.assetPath(path,asset.sha256) : null;
+      if (previous?.asset && previous.asset.path !== destination) {
+        const onMain = await maybe('/contents/' + enc(previous.asset.path) + '?ref=' + encodeURIComponent(mainHead));
+        if (!onMain) {
+          if (ART.reference(content,ART.filename(previous.asset.sha256))) throw fail('Remove the previous staged artwork link before replacing its upload.');
+          const prior = await maybe('/contents/' + enc(previous.asset.path) + '?ref=' + encodeURIComponent(head));
+          if (prior) extra.push({path:previous.asset.path,mode:'100644',type:'blob',sha:null});
+        }
+      }
+      if (asset) {
+        const descriptor = {asset:ART.descriptor(path,asset)};
+        const onMain = await maybe('/contents/' + enc(destination) + '?ref=' + encodeURIComponent(mainHead));
+        if (onMain) await assetFile(descriptor,mainHead);
+        const existing = await maybe('/contents/' + enc(destination) + '?ref=' + encodeURIComponent(head));
+        if (existing) await assetFile(descriptor,head);
+        else {
+          const blob = onMain || await api('/git/blobs','POST',{encoding:'base64',content:asset.data});
+          if (!sha(blob.sha)) throw fail('Artwork upload returned an invalid content identifier.', 'remote');
+          extra.push({path:destination,mode:'100644',type:'blob',sha:blob.sha});
+        }
+      }
+      return extra;
+    }
     function reviewIdentity(pr) {
       const meta = metadata(pr?.body);
       if (!meta || pr.head?.repo?.full_name !== REPO || pr.base?.repo?.full_name !== REPO || pr.base?.ref !== 'main' ||
@@ -100,10 +151,19 @@
     const registryLine = path => '\n- [[' + path.split('/').at(-1).slice(0,-3) + ']]\n';
     async function verifyChanges(meta, head) {
       const comparison = await api('/compare/' + meta.baseHead + '...' + head), changed = comparison.files;
-      const target = changed?.find(row => row.filename === meta.path);
+      const target = changed?.find(row => row.filename === meta.path), artwork = changed?.find(row => row.filename === meta.asset?.path);
       if (!Array.isArray(changed) || !target || target.status !== (meta.baseBlob === null ? 'added' : 'modified') ||
-        changed.some(row => row.filename !== meta.path && row.filename !== REGISTRY) || changed.length > (meta.baseBlob === null ? 2 : 1)) {
+        changed.some(row => row.filename !== meta.path && row.filename !== REGISTRY && row.filename !== meta.asset?.path) ||
+        (meta.baseBlob !== null && changed.some(row => row.filename === REGISTRY)) ||
+        changed.length > (meta.baseBlob === null ? 2 : 1) + (meta.asset ? 1 : 0) ||
+        (artwork && (artwork.status !== 'added' || artwork.previous_filename))) {
         throw fail('This review contains other changes. Resolve it before publishing from the editor.', 'conflict');
+      }
+      if (meta.asset) {
+        const note = await file(meta.path,head);
+        if (!note || !ART.reference(note.text,ART.filename(meta.asset.sha256))) throw fail('The pending entry does not reference its declared artwork.', 'conflict');
+        await assetFile(meta,head);
+        if (!artwork) await assetFile(meta,meta.baseHead);
       }
       if (meta.baseBlob === null) {
         const original = await file(REGISTRY,meta.baseHead), current = await file(REGISTRY,head), line = registryLine(meta.path);
@@ -145,7 +205,7 @@
       if (!sha(main?.object?.sha)) throw fail('The campaign main branch is unavailable.', 'remote');
       return {head:main.object.sha, current:await file(path, main.object.sha)};
     }
-    const result = (pr, head, noteSHA) => ({url:pr.html_url, number:pr.number, branch:pr.head.ref, head, noteSHA,
+    const result = (pr, head, noteSHA, asset = null) => ({url:pr.html_url, number:pr.number, branch:pr.head.ref, head, noteSHA, asset,
       status:pr.merged || pr.merged_at ? 'merged' : pr.state === 'closed' ? 'closed' : 'pending'});
     async function ensureConnected() { if (!connected) await connect(); }
     async function connect() {
@@ -159,13 +219,14 @@
       await ensureConnected();
       const {head, current} = await mainFile(path), review = onlyReview(await reviews(), path);
       if (!review) return {text:current?.text ?? null, sha:current?.sha ?? null, head, pending:null};
-      const meta = await verifyReview(review);
+      let meta = await verifyReview(review);
       if ((current?.sha ?? null) !== meta.baseBlob) throw fail('The published entry changed while a revision is pending. Resolve that review before editing.', 'conflict');
       const branch = await ref(review.head.ref);
-      if (branch && branch.object.sha !== review.head.sha) await verifyReview(review,branch.object.sha);
+      if (branch && branch.object.sha !== review.head.sha) meta = await verifyReview(review,branch.object.sha);
       const draft = branch && await file(path, branch.object.sha);
       if (!draft) throw fail('The pending entry is unavailable. Your local draft is safe.', 'conflict');
-      return {...draft, head:branch.object.sha, publishedSha:current?.sha ?? null, pending:result(review, branch.object.sha, draft.sha)};
+      const asset = await assetFile(meta,branch.object.sha);
+      return {...draft, head:branch.object.sha, publishedSha:current?.sha ?? null, asset, pending:result(review, branch.object.sha, draft.sha, asset)};
     }
     async function campaignFiles(head) {
       const commit = await api('/git/commits/' + head);
@@ -227,9 +288,16 @@
           if (!previous || (main.current?.sha ?? null) !== meta.baseBlob) throw fail('The published entry changed while this draft was pending. Nothing was overwritten.', 'conflict');
           const registry = meta.baseBlob === null ? await file(REGISTRY,main.head) : null;
           const oldRegistry = meta.baseBlob === null ? await file(REGISTRY,meta.baseHead) : null;
-          const refreshBase = meta.baseBlob === null && registry?.sha !== oldRegistry?.sha;
-          const repairBody = metadata(review.body).baseHead !== meta.baseHead;
-          if (previous.text === content && !refreshBase && !repairBody) return result(review,head,previous.sha);
+          const asset = await chosenAsset(input.asset,meta,head,content), priorMeta = meta;
+          // Another entry can publish identical artwork while this review is
+          // pending. Rebase the tree on current main when replacing that image
+          // so an undeclared old addition never becomes a main-image deletion.
+          const retainedMainArt = meta.asset && (!asset || meta.asset.sha256 !== asset.sha256) &&
+            await maybe('/contents/' + enc(meta.asset.path) + '?ref=' + encodeURIComponent(main.head));
+          const refreshBase = (meta.baseBlob === null && registry?.sha !== oldRegistry?.sha) || !!retainedMainArt;
+          meta = withAsset(meta,asset);
+          const repairBody = JSON.stringify(metadata(review.body)) !== JSON.stringify(meta);
+          if (previous.text === content && !refreshBase && !repairBody) return result(review,head,previous.sha,asset);
           if (previous.text !== content && (previous.sha !== expectedBlobSha || (baseText !== undefined && previous.text !== baseText))) throw fail('The pending entry changed. Load its latest version and reconcile your draft.', 'conflict');
           if (existingTitle(previous.text) !== contentFields.title) await checkNames(path,contentFields.title,main.head,pending);
           const fresh = await api('/pulls/' + review.number);
@@ -237,23 +305,30 @@
           await verifyReview(fresh);
           let commit;
           if (refreshBase) {
-            const line = registryLine(path);
-            if (!registry || registry.text.includes(line.trim())) throw fail('Another publication already references this entry name. Reconcile the campaign index before publishing.', 'conflict');
+            const registration = [];
+            if (meta.baseBlob === null) {
+              const line = registryLine(path);
+              if (!registry || registry.text.includes(line.trim())) throw fail('Another publication already references this entry name. Reconcile the campaign index before publishing.', 'conflict');
+              registration.push({path:REGISTRY,mode:'100644',type:'blob',content:registry.text + line});
+            }
             meta = {...meta,baseHead:main.head};
+            const artwork = await artworkChanges(path,asset,priorMeta,main.head,main.head,content);
             const parent = await api('/git/commits/' + main.head);
             const tree = await api('/git/trees','POST',{base_tree:parent.tree.sha,tree:[
-              {path,mode:'100644',type:'blob',content},
-              {path:REGISTRY,mode:'100644',type:'blob',content:registry.text + line}
+              {path,mode:'100644',type:'blob',content},...registration,...artwork
             ]});
             commit = await api('/git/commits','POST',{message:'Refresh pending campaign entry: ' + contentFields.title + '\n\n' + reviewBody(meta),tree:tree.sha,parents:[head,main.head]});
-          } else commit = await commitChange(head,path,content,'Revise campaign entry: ' + contentFields.title + '\n\n' + reviewBody(meta));
+          } else {
+            const artwork = await artworkChanges(path,asset,priorMeta,head,main.head,content);
+            commit = await commitChange(head,path,content,'Revise campaign entry: ' + contentFields.title + '\n\n' + reviewBody(meta),artwork);
+          }
           // Metadata first: the synchronize event starts verification with the
           // current base. A retry can recover either side of an interrupted pair.
           if (refreshBase || repairBody) await api('/pulls/' + review.number,'PATCH',{body:reviewBody(meta)});
           await api('/git/refs/heads/' + encodeURIComponent(review.head.ref),'PATCH',{sha:commit.sha,force:false});
           const saved = await file(path,commit.sha), after = await api('/pulls/' + review.number);
           if (after.state !== 'open') throw fail('The revision closed during publication. Your draft is safe; reload to verify the published content.', 'conflict');
-          return result(after,commit.sha,saved.sha);
+          return result(after,commit.sha,saved.sha,asset);
         }
         // Retry a response lost after a branch or review was created. Its
         // deterministic operation ID identifies precisely this submitted text.
@@ -268,17 +343,18 @@
           if (prior[0]) {
             await verifyReview(prior[0]);
             if ((prior[0].merged || prior[0].merged_at) && main.current?.text !== content) throw fail('This revision was published, then edited again. Load the latest entry.', 'conflict');
-            return result(prior[0],existing.object.sha,previous.sha);
+            return result(prior[0],existing.object.sha,previous.sha,await assetFile(meta,existing.object.sha));
           }
           if ((main.current?.sha ?? null) !== meta.baseBlob) throw fail('The entry changed before publication completed. Nothing was overwritten.', 'conflict');
           const pr = await api('/pulls','POST',{title:'Publish entry: ' + contentFields.title,head:branch,base:'main',body:reviewBody(meta)});
-          return result(pr,existing.object.sha,previous.sha);
+          return result(pr,existing.object.sha,previous.sha,await assetFile(meta,existing.object.sha));
         }
         if ((main.current?.sha ?? null) !== expectedBlobSha || (baseText !== undefined && (main.current?.text ?? null) !== baseText)) throw fail('The published entry changed. Load its latest version and reconcile your draft before publishing.', 'conflict');
         if (main.current?.text === content) return {url:null,number:null,branch:null,head:main.head,noteSHA:main.current.sha,status:'unchanged'};
         if (!main.current || existingTitle(main.current.text) !== contentFields.title) await checkNames(path,contentFields.title,main.head,pending);
-        const meta = {version:1,path,baseBlob:expectedBlobSha,baseHead:main.head,operation};
-        const extra = [];
+        const asset = await chosenAsset(input.asset,null,main.head,content);
+        const meta = withAsset({path,baseBlob:expectedBlobSha,baseHead:main.head,operation},asset);
+        const extra = await artworkChanges(path,asset,null,main.head,main.head,content);
         if (!main.current) {
           const registry = await file(REGISTRY,main.head), line = registryLine(path);
           if (!registry) throw fail('The website publishing index is not available yet. Your draft is safe.', 'remote');
@@ -289,14 +365,14 @@
         await api('/git/refs','POST',{ref:'refs/heads/' + branch,sha:commit.sha});
         const pr = await api('/pulls','POST',{title:'Publish entry: ' + contentFields.title,head:branch,base:'main',body:reviewBody(meta)});
         const saved = await file(path,commit.sha);
-        return result(pr,commit.sha,saved.sha);
+        return result(pr,commit.sha,saved.sha,asset);
       } finally { busy = false; }
     }
     async function status(number) {
       if (!Number.isSafeInteger(number) || number < 1) throw fail('Invalid publication reference.');
       await ensureConnected();
       const pr = await api('/pulls/' + number), meta = await verifyReview(pr), current = await file(meta.path,pr.head.sha);
-      return result(pr,pr.head.sha,current?.sha ?? null);
+      return result(pr,pr.head.sha,current?.sha ?? null,await assetFile(meta,pr.head.sha));
     }
     return Object.freeze({connect,load,publish,status});
   }

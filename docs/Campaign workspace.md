@@ -132,9 +132,23 @@ entry does not automatically create a Foundry actor: the maintained PF2e content
 workflow still supplies its mechanics and module packaging.
 
 Drafts save on this device as you write. The draft tray reopens multiple works
-in progress; Markdown downloads provide a portable copy. Drafting and previewing
+in progress; Markdown downloads provide a portable copy of the writing. Drafting and previewing
 do not require a publishing connection. Browser storage failures are shown and
 navigation warns before leaving writing that could not be saved.
+
+Use **Image** to upload a PNG, JPEG, or WebP from this device, preview it, and
+write its alt text. The editor prepares one uploaded image per draft; existing
+image links remain supported. Source images can be up to 20 MiB, 8192 pixels
+per side, and 40 megapixels. The published copy is a static WebP at most 2048
+pixels per side and 2 MiB. Camera and location metadata are removed; a color
+profile can remain to preserve the image's appearance.
+
+Prepared artwork is saved in this browser alongside its draft. A draft backup
+with artwork includes both the writing and image in a JSON file; restoring that
+backup recovers both. A Markdown-only download does not include the image.
+If browser image storage fails, the editor keeps an in-memory copy and shows a
+warning: download the complete backup before closing the tab. A saved draft
+whose artwork is missing cannot silently publish without it.
 
 To publish, connect an author account using a fine-grained GitHub token scoped
 to **Milec/Towers-of-Saeroth**, with **Contents** and **Pull requests** read/write
@@ -152,9 +166,17 @@ the original repository version and stop for reconciliation if that note has
 changed elsewhere. Retrying an interrupted request recovers the pending
 publication instead of silently creating duplicates.
 
-Only campaign Markdown can be published this way. New entries also gain a link
+The note and uploaded artwork are committed together, so publication cannot
+point at a file waiting for a second upload. Artwork filenames include a content
+fingerprint and live beside the note. Replacing a staged upload does not
+overwrite or remove previously published artwork. Pending publications retain
+their image when reopened through a publishing connection on another device.
+
+Only campaign Markdown and its one declared uploaded WebP can be published this
+way. New entries also gain a link
 in **Campaign Library** so they remain discoverable. The publishing workflow
-validates the author, exact files, original note version, and passing checks;
+validates the author, exact files, original note version, image bytes and
+fingerprint, Markdown image reference, and passing checks;
 it does not accept arbitrary application or workflow changes from this editor.
 The normal player-site boundary remains in place.
 
@@ -274,6 +296,8 @@ are not access control. No GM material is copied into `players/` by these tools.
 - `site/search.js` and `search.css`: scoped, ranked search and focus handling.
 - `site/reader.js` and `reader.css`: entry guide and connected-note previews.
 - `site/editor.js` and `editor.css`: authoring, draft recovery, and preview.
+- `site/editor-images.js`: image preparation, local artwork storage, and recovery.
+- `site/editor-asset.js`: shared image contract for the browser and trusted merge guard.
 - `site/publisher.js`: guarded repository publication and conflict detection.
 - `.github/workflows/campaign-editor-auto-merge.yml`: verified entry publication.
 - `site/sanitize.js` and `site/vendor/`: shared Markdown HTML sanitization.

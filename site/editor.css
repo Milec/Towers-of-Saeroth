@@ -74,6 +74,25 @@
 .ed-insert { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; background: var(--panel); border-inline: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px; }
 .ed-insert label { flex: 1; min-width: 180px; }
 .ed-insert .ed-inline-status { flex-basis: 100%; font-size: .75rem; margin: 0; color: var(--accent); }
+.ed-image-panel { display: grid; align-items: start; gap: 18px; }
+.ed-upload { display: grid; gap: 12px; min-width: 0; }
+.ed-upload .ed-small { margin: 0; color: var(--muted); font-size: .75rem; line-height: 1.65; }
+.ed-image-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.ed-upload-preview { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.ed-upload-preview img { width: 120px; height: 120px; object-fit: contain; border: 1px solid var(--rule); background: var(--bg); border-radius: 5px; }
+.ed-upload-preview span { color: var(--muted); font-size: .8rem; }
+.ed-existing-image { border-top: 1px solid var(--rule); padding-top: 8px; display: grid; gap: 12px; }
+.ed-existing-image summary { min-height: 44px; padding: 12px 0; cursor: pointer; font-size: .8rem; }
+.ed-existing-image label { margin-bottom: 12px; }
+.ed-artwork-summary { display: flex; gap: 16px; padding: 16px; border: 1px solid var(--rule); border-top: 0; background: var(--panel); min-width: 0; }
+.ed-artwork-summary > img { width: 80px; height: 96px; object-fit: contain; flex-shrink: 0; background: var(--bg); border-radius: 4px; }
+.ed-artwork-summary > div { min-width: 0; }
+.ed-artwork-summary strong { font-size: .85rem; }
+.ed-artwork-summary p { font-size: .75rem; line-height: 1.6; color: var(--muted); margin: 8px 0; }
+.ed-restore-label { margin-top: 12px; }
+#edBackupStatus { overflow-wrap: anywhere; }
+#edBackupDownloads { display: grid; gap: 8px; }
+@media(max-width:650px) { .ed-artwork-summary { flex-wrap: wrap; } .ed-image-actions .ed-button { flex: 1 1 120px; } .ed-upload-preview img { width: 96px; height: 96px; } .ed-image-panel :is(input,button) { max-width: 100%; } }
 .ed-conflict { padding: 20px; border: 1px solid var(--accent); border-radius: 7px; background: var(--panel); margin: 12px 0; }
 .ed-conflict h2 { font: 1.3rem Georgia, serif; margin: 0 0 12px; }
 .ed-conflict p { font-size: .8rem; line-height: 1.65; }

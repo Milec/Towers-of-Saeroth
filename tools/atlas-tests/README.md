@@ -27,6 +27,12 @@ simulated GitHub service in Chromium. `test:publisher` and `test:editor-publish`
 check publication conflicts, recovery, and the auto-merge workflow guards.
 These run in CI without publishing real notes or using real credentials.
 
+`pnpm run test:editor-images` covers image selection and conversion, preview,
+alt text, replacement/removal, draft artwork persistence and recovery, storage
+failures, and publication through the editor. The publisher and auto-merge
+tests also exercise atomic note/artwork commits, immutable image paths,
+pending-revision recovery, and rejection of unsafe or unrelated image changes.
+
 `test:battlemap-engine` checks deterministic tactical geometry, bounds, and
 reachable entrances across layouts, terrain, sizes, and seeds.
 `test:battlemap-foundry` checks native scene geometry and the embedded-image
