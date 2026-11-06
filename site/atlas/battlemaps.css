@@ -1,0 +1,57 @@
+.atlas-battlemap-action{margin:12px 0 16px}
+.atlas-battlemap-action button{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:48px;font-weight:650;color:var(--ink);background:var(--atlas-soft)}
+.atlas-battlemap-action button:hover{background:var(--accent);color:white}
+.atlas-battlemap-action svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6}
+.battlemap-dialog{padding:0;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);width:min(1300px,calc(100vw - 36px));max-width:none;height:auto;max-height:calc(100dvh - 32px);overflow:auto;box-shadow:0 18px 70px #0006}
+.battlemap-dialog::backdrop{background:#111b24bd}
+.battlemap-dialog[open]{display:flex;flex-direction:column;overflow:hidden}
+.battlemap-dialog *{box-sizing:border-box}
+.battlemap-dialog [hidden]{display:none!important}
+.battlemap-dialog :is(button,a,select,input,summary):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.battlemap-dialog :is(button,select,input){min-height:46px;font:inherit;color:var(--ink)}
+.battlemap-dialog button{cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:6px}
+.battlemap-dialog button:hover{background:var(--atlas-soft);color:var(--ink)}
+.battlemap-dialog button:disabled{opacity:.5;cursor:default}
+.bm-heading{display:flex;align-items:start;gap:20px;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--line);background:var(--panel);flex-shrink:0}
+.bm-heading>div{min-width:0}.bm-eyebrow{font-size:11px;font-weight:700;letter-spacing:1.2px;color:var(--muted)}
+.bm-heading h2{font:clamp(22px,2.5vw,32px)/1.2 Georgia,serif;margin:7px 0;overflow-wrap:anywhere}
+.bm-heading p{font-size:13px;color:var(--muted);margin:0}
+#battlemapClose{flex-shrink:0;min-width:78px}
+.bm-body{display:grid;grid-template-columns:minmax(0,1fr) 320px;align-items:start;overflow:auto;min-height:0;overscroll-behavior:contain}
+.bm-preview{padding:20px;min-width:0;position:sticky;top:0}
+.bm-canvas-wrap{position:relative;display:flex;align-items:center;justify-content:center;background:var(--atlas-soft);border:1px solid var(--line);border-radius:8px;overflow:hidden;aspect-ratio:1;width:min(100%,calc(100dvh - 230px));margin-inline:auto}
+#battlemapCanvas{display:block;width:100%;height:auto;aspect-ratio:1}
+#battlemapLoading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;margin:0;background:var(--panel);padding:30px;text-align:center;font-size:15px}
+.bm-preview-tools{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.bm-preview-tools label{display:flex;align-items:center;gap:7px;font-size:13px;margin:0;min-height:44px;font-weight:500}
+.bm-preview-tools input{width:20px;height:20px;min-height:20px;accent-color:var(--accent);padding:0}
+#battlemapDimensions{font-size:12px;color:var(--muted);margin-left:auto}
+.bm-legend{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+.bm-controls{padding:20px;border-left:1px solid var(--line);min-width:0}
+.bm-hint{font-size:13px;line-height:1.6;color:var(--muted);margin:0 0 16px}
+.bm-controls fieldset{border:0;padding:0;margin:0}
+.bm-controls label{display:block;font-size:13px;margin:0 0 13px}
+.bm-controls select,.bm-controls input:not([type=file]){display:block;width:100%;padding:10px;background:var(--panel);border:1px solid var(--line);border-radius:6px;margin:6px 0 0;font-size:16px}
+.bm-reroll{display:flex;gap:8px;margin:8px 0 14px}
+.bm-reroll button:first-child{flex:1}
+.battlemap-dialog .bm-primary{background:var(--accent);color:white;border-color:var(--accent);font-weight:650}
+.battlemap-dialog .bm-primary:hover{filter:brightness(1.12);background:var(--accent);color:white}
+#battlemapStatus{font-size:13px;line-height:1.6;margin:0 0 8px;overflow-wrap:anywhere}
+#battlemapStorage{font-size:12px}
+.bm-export{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}
+.bm-export h3{font:21px Georgia,serif;margin:0 0 14px}
+.bm-export>button{display:block;width:100%;margin-bottom:9px}
+.bm-export>p{margin:10px 0}
+.bm-downloads{display:flex;flex-direction:column;gap:5px}
+.bm-downloads a{display:flex;align-items:center;min-height:44px;font-size:14px;font-weight:600;overflow-wrap:anywhere}
+.battlemap-dialog details{border-top:1px solid var(--line);margin-top:12px;padding-top:10px;font-size:13px;line-height:1.7}
+.battlemap-dialog summary{min-height:44px;padding:10px 0;font-size:13px}
+.battlemap-dialog details ol{padding-left:20px}.battlemap-dialog details li{margin-bottom:10px}
+.bm-more .bm-hint{margin-top:12px}.bm-recipe-actions{display:flex;flex-wrap:wrap;gap:8px}
+.bm-recipe-actions button{flex:1;font-size:13px}
+#battlemapRecover{margin-top:10px}
+@media(max-width:1000px){.bm-body{grid-template-columns:minmax(0,1fr) 280px}.bm-heading{padding:16px}.bm-preview,.bm-controls{padding:15px}}
+@media(max-width:700px){.battlemap-dialog{width:calc(100vw - 12px);max-height:calc(100dvh - 12px);border-radius:9px}.bm-heading{gap:10px;padding:14px}.bm-heading h2{font-size:23px}.bm-eyebrow{font-size:10px;letter-spacing:.7px}.bm-body{grid-template-columns:1fr}.bm-preview{position:static;padding:12px}.bm-controls{border-left:0;border-top:1px solid var(--line);padding:16px}.bm-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.bm-fields label{min-width:0}.bm-fields select{font-size:14px;padding-inline:8px}.bm-preview-tools{gap:4px 14px}#battlemapDimensions{margin-left:0;flex-basis:100%}.bm-reroll button{min-height:48px}.bm-controls>p:first-child{margin-bottom:14px}#battlemapClose{min-width:70px}}
+@media(max-height:540px) and (min-width:701px){.bm-preview{position:static}.battlemap-dialog{max-height:calc(100dvh - 12px)}}
+@media(max-width:700px){.bm-canvas-wrap{width:100%}}
+@media(max-height:540px){.bm-canvas-wrap{width:100%}}

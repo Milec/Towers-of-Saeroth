@@ -86,6 +86,7 @@
     if(button.dataset.jump){if(button.dataset.jump==='map')backToMap();else reveal(button.dataset.jump);}
   },true);
   document.addEventListener('keydown',event=>{
+    if(document.querySelector('dialog[open]'))return;
     if(event.key==='/'&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target.closest('input,textarea,select,[contenteditable]'))open('places',{focus:false});
   },true);
   // The point-of-interest placement flow returns from the map to its form.

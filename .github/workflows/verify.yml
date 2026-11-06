@@ -33,6 +33,8 @@ jobs:
           node tools/atlas-tests/poi-auto-merge.cjs
           node tools/atlas-tests/publisher.cjs
           node tools/atlas-tests/editor-auto-merge.cjs
+          node tools/atlas-tests/battlemap-engine.cjs
+          node tools/atlas-tests/battlemap-foundry.cjs
           python tools/lint_notes.py
           python tools/sync_relations.py --check
           python tools/sync_faith.py --check
@@ -71,3 +73,4 @@ jobs:
           node tools/atlas-tests/editor.cjs
           node tools/atlas-tests/editor-publisher.cjs
           node tools/atlas-tests/panels.cjs
+          node tools/atlas-tests/battlemaps.cjs
