@@ -76,6 +76,7 @@ jobs:
           node tools/atlas-tests/reader.cjs
           node tools/atlas-tests/editor.cjs
           node tools/atlas-tests/editor-publisher.cjs
+          node tools/atlas-tests/editor-images.cjs
           node tools/atlas-tests/panels.cjs
           node tools/atlas-tests/battlemaps.cjs
           node tools/atlas-tests/session-package.cjs
