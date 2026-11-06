@@ -1,0 +1,162 @@
+# Campaign workspace
+
+The GM site opens at `#/workspace`. The three primary destinations are Campaign,
+Library, and Atlas. Existing note and map links continue to work. The separate
+player site and Foundry world retain their existing roles.
+
+## Preparing a session
+
+The campaign desk shows the latest played session, the party, prepared notes,
+pinned references, and recently opened entries. Session status comes from the
+maintained notes rather than assuming that the highest numbered preparation was
+played.
+
+Use **Add to session** on an entry or a library card to collect a reference
+packet. Reorder its notes with the up/down buttons; remove a note with an undo
+option. The checklist and scratchpad save as they are edited. They are personal
+preparation, not changes to the Markdown campaign record.
+
+**Export Foundry journal** downloads a native JournalEntry JSON file. Create a
+new, unshared Journal Entry in Foundry, confirm player ownership is **None**, and
+use **Import Data** to import the file. Foundry preserves the destination entry's
+permissions when importing, so an already shared journal remains shared. It contains
+the scratchpad and checklist, then a page for each complete selected note in
+packet order. The journal defaults to no player ownership. The export does not
+create actors, alter scenes, or send commands to a running world. Existing
+Saeroth content sync remains responsible for the module's actors and scenes.
+
+Links and artwork in the journal resolve to the website and require a network
+connection from Foundry. Export fails with the unavailable note's name if any
+selected note cannot be retrieved; it does not silently download a partial
+packet. Imported journals are snapshots, not live-synchronized documents.
+
+## Browsing the world
+
+The Library provides category filters, name/type sorting, cards or a compact
+list, and full-text campaign search. Images load only for cards being viewed.
+Titles, summaries, and thumbnails are derived at build time from maintained
+notes; they do not replace or rewrite the notes. Large results are paginated.
+
+Global search (`Ctrl/Cmd+K` or `/` outside an input) searches campaign lore,
+atlas places, and PF2e rules. Accents and query-word order are optional. Use the
+arrow keys and Enter to open results. The large rules index is fetched only
+when needed and shared by concurrent requests. Campaign search covers complete
+notes, including statblocks, rather than stopping at 6,000 characters. Rules
+search remains by title.
+
+An entry's guide lists its sections and connected entries. The preview buttons
+open a reference without losing the current entry or scroll position. The guide
+also offers a copyable link and, for maintained campaign notes, **Edit entry**
+opens the website editor. On smaller screens, the outline appears in a disclosure
+near the title and connected entries appear below the article. Portraits can be
+opened at full size.
+
+## Writing and publishing entries
+
+Choose **New entry** in the Library or navigation drawer, or **Edit entry** on
+an existing campaign note. Templates cover NPCs, creatures, locations, sessions,
+factions, and lore. NPCs can belong to a nation or remain independent; creatures
+file under the bestiary. The editor offers Markdown formatting and a sanitized
+preview, with properties and existing note paths preserved. A creature's lore
+entry does not automatically create a Foundry actor: the maintained PF2e content
+workflow still supplies its mechanics and module packaging.
+
+Drafts save on this device as you write. The draft tray reopens multiple works
+in progress; Markdown downloads provide a portable copy. Drafting and previewing
+do not require a publishing connection. Browser storage failures are shown and
+navigation warns before leaving writing that could not be saved.
+
+To publish, connect an author account using a fine-grained GitHub token scoped
+to **Milec/Towers-of-Saeroth**, with **Contents** and **Pull requests** read/write
+permissions. The account must have write access to this repository. The token
+stays in memory for the current website tab; it is not saved in browser storage
+or included in a draft or backup. Closing or refreshing the tab requires a new
+connection. Never put the token in an entry.
+
+**Publish** creates a review branch behind the scenes. Repository verification
+must pass before the publishing workflow merges the entry and starts a Pages
+deployment. The editor shows publication status and a review link; a merged
+entry still needs the deployment to finish before it appears on the live site.
+You can continue editing a pending publication. Existing edits compare against
+the original repository version and stop for reconciliation if that note has
+changed elsewhere. Retrying an interrupted request recovers the pending
+publication instead of silently creating duplicates.
+
+Only campaign Markdown can be published this way. New entries also gain a link
+in **Campaign Library** so they remain discoverable. The publishing workflow
+validates the author, exact files, original note version, and passing checks;
+it does not accept arbitrary application or workflow changes from this editor.
+The normal player-site boundary remains in place.
+
+## Using the atlas
+
+The atlas has four task views, with one visible at a time:
+
+- **Places**: search, selected-place details, custom pins, and the catalogue.
+- **Travel**: route planning, hexcrawl, and party position.
+- **Layers**: map style, visibility, labels, legend, and downloads.
+- **Saved**: saved places, camera views, backups, and custom-pin publication.
+
+On phones, choose a view to reach its controls and use **Back to map** to return
+to the map. Switching views preserves selections and travel state. A selected
+place also has a compact map card for the actions used most often.
+
+The Places search accepts accents optionally, supports keyboard selection, and
+filters campaign POIs, nations, settlements, landmarks, regions, and routes.
+Published campaign locations are offered on the atlas landing view.
+
+Select a place to save it, copy its deep link, focus the map, set the party's
+location, or use it as a route endpoint. Nearby places use straight-line
+distance; the existing journey planner remains the road/trail travel estimator.
+The map's party button finds the normal party marker or the active hexcrawl
+party.
+
+Saved views store a name, camera position, map style, and layer choices. They do
+not replace terrain, borders, populations, routes, custom POIs, or hexcrawl
+progress. The existing POI publication and travel workflows remain available.
+
+## Storage and portability
+
+The campaign desk and atlas workspace save in this browser. Each offers a JSON
+backup and a validated, merge-only import to move to another device. They do not
+automatically synchronize between a phone and a computer. Existing entries are
+kept during import; invalid backups cannot replace working state. Unreadable
+saved data can be downloaded for recovery. Storage failures are shown rather
+than claiming that a change was saved.
+
+Campaign desk backup contains the personal notes it describes. Atlas workspace
+backup contains saved place references and camera views, not travel progress or
+custom POIs. Existing travel and POI controls manage their own state.
+
+The GM website remains publicly served GitHub Pages content; navigation labels
+are not access control. No GM material is copied into `players/` by these tools.
+
+## Implementation and checks
+
+- `site/workspace.js` and `workspace.css`: campaign desk, library, storage,
+  portable backup, and Foundry journal export.
+- `site/search.js` and `search.css`: scoped, ranked search and focus handling.
+- `site/reader.js` and `reader.css`: entry guide and connected-note previews.
+- `site/editor.js` and `editor.css`: authoring, draft recovery, and preview.
+- `site/publisher.js`: guarded repository publication and conflict detection.
+- `.github/workflows/campaign-editor-auto-merge.yml`: verified entry publication.
+- `site/sanitize.js` and `site/vendor/`: shared Markdown HTML sanitization.
+- `site/shell.css`: shared navigation, responsive layouts, and theme tokens.
+- `site/atlas/workbench.js` and `workbench.css`: atlas navigation and saved views.
+- `site/atlas/panels.js` and `panels.css`: grouped atlas task navigation.
+- `tools/build_site.py`: complete searchable text and display metadata.
+
+Build with `python tools/build_site.py --no-vault` for iteration and the full
+build for release. Existing atlas and website browser checks are retained.
+Additional checks in `tools/atlas-tests/` are `workspace.cjs`, `workbench.cjs`,
+`search.cjs`, `reader.cjs`, `editor.cjs`, `editor-publisher.cjs`, `publisher.cjs`,
+`editor-auto-merge.cjs`, and `panels.cjs`. Publisher tests use a simulated GitHub
+service and do not send real credentials or publish fixture notes.
+`visual-review.cjs` optionally produces screenshots
+at phone, tablet, and desktop widths in both themes. Use `ATLAS_TEST_URL` for the
+preview URL and `CHROME_PATH` when using an installed browser.
+
+The design prioritizes the connected entries and map navigation found in
+[LegendKeeper's atlas](https://www.legendkeeper.com/features-maps/) and the
+campaign preparation described by [World Anvil](https://www.worldanvil.com/),
+while retaining Saeroth's Markdown sources and Foundry play workflow.

@@ -9,7 +9,7 @@
   document.querySelector('.search').after(presets);
   presets.onclick=e=>{
     const name=e.target.dataset.mapPreset;if(!name)return;
-    document.querySelector(`[data-style="${name==='Political'?'political':'terrain'}"]`).click();
+    document.querySelector(`button[data-style="${name==='Political'?'political':'terrain'}"]`).click();
     for(const input of document.querySelectorAll('[data-layer]')) {
       const key=input.dataset.layer;
       if (['custompois','custompoilabels'].includes(key)) continue;
@@ -25,7 +25,7 @@
   const save=()=>{try{sessionStorage.setItem('saeroth-view',JSON.stringify({box,selection:location.hash,layers:[...document.querySelectorAll('[data-layer]')].map(e=>[e.dataset.layer,e.checked])}));}catch{}};
   addEventListener('pagehide',save);
   document.addEventListener('click',e=>{if(e.target.closest('a[target="_top"]'))save();});
-  try{const saved=JSON.parse(sessionStorage.getItem('saeroth-view'));if(saved?.selection===location.hash&&saved.box?.length===4&&saved.box.every(Number.isFinite)){box=saved.box;for(const [key,on]of saved.layers||[]){const input=[...document.querySelectorAll('[data-layer]')].find(e=>e.dataset.layer===key);if(input){input.checked=on;input.dispatchEvent(new Event('change',{bubbles:true}));}}renderView();}}catch{}
+  try{const saved=JSON.parse(sessionStorage.getItem('saeroth-view'));if(saved?.selection===location.hash&&saved.box?.length===4&&saved.box.every(Number.isFinite)){box=saved.box;window.ATLAS_RESTORED_SELECTION=saved.selection;for(const [key,on]of saved.layers||[]){const input=[...document.querySelectorAll('[data-layer]')].find(e=>e.dataset.layer===key);if(input){input.checked=on;input.dispatchEvent(new Event('change',{bubbles:true}));}}renderView();}}catch{}
   let index;
   const info = document.getElementById('info');
   function links() {

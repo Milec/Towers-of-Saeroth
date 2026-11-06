@@ -1,0 +1,49 @@
+/* One active task at a time. All original map controls retain their state. */
+[hidden]{display:none!important}
+.atlas-panel-nav{position:sticky;top:0;z-index:12;display:flex;align-items:center;gap:4px;padding:8px 12px;background:var(--panel);border-bottom:1px solid var(--line)}
+.atlas-panel-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;flex:1;min-width:0}
+.atlas-panel-tabs button{min-width:0;min-height:46px;padding:9px 4px;border:0;border-radius:6px;background:transparent;color:var(--muted);font-size:13px;font-weight:600}
+.atlas-panel-tabs button:hover{background:var(--atlas-soft);color:var(--ink)}
+.atlas-panel-tabs button[aria-selected=true]{background:var(--atlas-soft);color:var(--ink);box-shadow:inset 0 -3px var(--atlas-wine)}
+#atlasReturnMap{display:none;flex:0 0 44px;width:44px;height:44px;padding:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+#atlasReturnMap svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.5;fill:none}
+.atlas-task-panel{min-width:0;scroll-margin-top:12px}
+.atlas-panel-intro{padding:24px 20px 8px}
+.atlas-panel-intro h2{font-size:25px;margin:0 0 6px}
+.atlas-panel-intro p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+.atlas-task-panel .search{padding-top:12px;border:0}
+.atlas-task-panel #info{border-top:1px solid var(--line)}
+.atlas-places-actions{display:flex;gap:8px;padding:4px 20px 18px}
+.atlas-places-actions button{min-height:44px;padding:8px 10px;flex:1;font-size:12px}
+.atlas-task-panel .atlas-library{background:transparent}
+.atlas-task-panel .atlas-library>summary{display:none}
+.atlas-task-panel .atlas-library-tabs{border:0;background:var(--atlas-soft);padding:4px;border-radius:7px}
+.atlas-task-panel .atlas-controls,.atlas-task-panel .catalogue,.atlas-task-panel .legend{border-color:var(--line)}
+.atlas-task-panel #journey>summary,.atlas-task-panel #hexcrawl>summary,.atlas-task-panel #travelView>summary{min-height:44px;margin-bottom:4px}
+.atlas-task-panel #mapOptions>summary{display:none}
+.atlas-task-panel #mapOptions{border-top:1px solid var(--line)}
+.atlas-task-panel .atlas-presets{margin:12px 20px;border-radius:8px;padding:5px;background:var(--atlas-soft)}
+.atlas-task-panel .atlas-presets button{padding:8px;font-size:12px}
+.atlas-task-panel .atlas-sepia{margin:16px 20px}
+.atlas-publish-settings{font-size:12px;margin-top:12px;min-height:44px}
+.atlas-downloads{padding:18px 20px;border-bottom:1px solid var(--line)}
+.atlas-downloads>summary{min-height:44px;display:flex;align-items:center;font-size:13px;color:var(--muted)}
+.atlas-downloads footer{padding:0;border:0}
+.atlas-panel-status{font-size:12px;line-height:1.5;padding:12px 16px;margin:0;background:var(--atlas-soft);border-bottom:1px solid var(--line);color:var(--ink)}
+.atlas-panel-layout .atlas-shortcuts,.atlas-panel-layout .atlas-jumps{display:none!important}
+.integrated[data-theme=dark] .atlas-panel-tabs button{background:transparent;color:var(--muted)}
+.integrated[data-theme=dark] .atlas-panel-tabs button[aria-selected=true]{background:var(--atlas-soft);color:var(--ink)}
+@media(min-width:801px){.atlas-panel-layout aside{scroll-padding-top:68px}.atlas-panel-layout .atlas-task-panel>details{scroll-margin-top:74px}}
+@media(max-width:800px){
+ .atlas-panel-layout .atlas-workbench-heading{display:none}
+ .atlas-panel-layout .atlas-panel-nav{position:fixed;left:0;right:0;top:0;height:62px;z-index:30;padding:7px 10px;box-shadow:0 2px 8px #162d2f15}
+ .atlas-panel-layout #atlasReturnMap{display:block}
+ .atlas-panel-layout .atlas-panel-tabs button{font-size:12px}
+ .atlas-panel-layout body,.atlas-panel-layout.integrated body{padding-top:62px;height:100svh;overflow:hidden}
+ .atlas-panel-layout main,.atlas-panel-layout.integrated main{display:block;height:calc(100svh - 62px);overflow:auto;scroll-padding-top:0}
+ .atlas-panel-layout main>aside{height:auto;overflow:visible;padding-bottom:16px}
+ .atlas-panel-layout:not(.integrated) header{display:none}
+ .atlas-panel-layout .mapframe,.atlas-panel-layout.integrated .mapframe{height:clamp(300px,48svh,440px);min-height:300px;scroll-margin-top:0}
+ .atlas-panel-layout .atlas-task-panel{scroll-margin-top:0;min-height:calc(100svh - 62px)}
+ .atlas-panel-layout .atlas-task-panel details,.atlas-panel-layout #info{scroll-margin-top:12px}
+}

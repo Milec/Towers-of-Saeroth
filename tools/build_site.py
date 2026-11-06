@@ -91,7 +91,7 @@ def links_of(path):
     return sorted({m.split('/')[-1].strip().lower() for m in WIKI.findall(s) if m.strip()})
 
 
-def analyse(path, limit=6000):
+def analyse(path, limit=None):
     """Return (searchable body, outbound wikilink targets).
 
     Links are captured before markup is stripped — deriving them afterwards is
@@ -103,10 +103,57 @@ def analyse(path, limit=6000):
         return '', []
     s = FM.sub('', s)
     links = sorted({m.split('/')[-1].strip().lower() for m in WIKI.findall(s) if m.strip()})
-    s = re.sub(r'```.*?```', ' ', s, flags=re.S)
+    # Index the complete note, including creature actions. The library shows
+    # a separate short summary; truncating the search index hid later sections.
+    s = re.sub(r'^```[^\n]*$', ' ', s, flags=re.M)
     s = re.sub(r'\[\[([^\]|]*\|)?([^\]]*)\]\]', r'\2', s)
     s = re.sub(r'[#*_`>|\-]+', ' ', s)
     return re.sub(r'\s+', ' ', s).strip().lower()[:limit], links
+
+
+def card_metadata(path):
+    """Small display fields derived from the maintained note, never new lore."""
+    raw = Path(ROOT, path).read_text(encoding='utf-8')
+    front = FM.match(raw)
+    fields = {}
+    if front:
+        for key in ('title', 'status', 'audience'):
+            value = re.search(r'^' + key + r':\s*([^\n\r]+)', front.group(), re.M)
+            if value:
+                fields[key] = value.group(1).strip().strip('\"\'')
+    fields.setdefault('title', Path(path).stem)
+    body = FM.sub('', raw)
+    # Only use a local existing asset. External URLs and paths outside the
+    # campaign are deliberately not promoted into automatically fetched cards.
+    for image in re.finditer(r'!\[[^\]]*\]\(<?([^\n)]+?)>?\)', body):
+        source = image.group(1).strip().strip('<>')
+        from urllib.parse import unquote
+        source = unquote(source)
+        if re.match(r'^[a-z]+:|^[/\\]', source, re.I):
+            continue
+        candidate = (Path(ROOT, path).parent / source).resolve()
+        campaign_root = Path(ROOT, 'campaign').resolve()
+        if candidate.is_relative_to(campaign_root) and candidate.is_file() and candidate.suffix.lower() in ASSETS:
+            fields['image'] = 'content/' + candidate.relative_to(Path(ROOT)).as_posix()
+            break
+    body = re.sub(r'```.*?```', '', body, flags=re.S)
+    body = re.sub(r'!\[[^\]]*\]\([^\n]*?\)', '', body)
+    for paragraph in re.split(r'\n\s*\n', body):
+        paragraph = paragraph.strip()
+        if not paragraph or re.match(r'^[#>|*\-]|^\d+\.', paragraph):
+            continue
+        if paragraph.startswith('_') or '\n|' in paragraph:
+            continue
+        paragraph = re.sub(r'\[\[([^\]|]*\|)?([^\]]*)\]\]', r'\2', paragraph)
+        paragraph = re.sub(r'\[([^\]]+)\]\([^)]*\)', r'\1', paragraph)
+        paragraph = re.sub(r'<[^>]+>', '', paragraph)
+        paragraph = re.sub(r'[*_`]', '', paragraph)
+        paragraph = re.sub(r'\s+', ' ', paragraph).strip()
+        if len(paragraph) < 35:
+            continue
+        fields['summary'] = paragraph if len(paragraph) <= 190 else paragraph[:187].rsplit(' ', 1)[0] + '…'
+        break
+    return fields
 
 
 def main():
@@ -161,7 +208,7 @@ def main():
     notes = []
     for p in campaign:
         body, links = analyse(p)
-        notes.append({'p': p, 'body': body, 'l': links, 't': note_type(p)})
+        notes.append({'p': p, 'body': body, 'l': links, 't': note_type(p), **card_metadata(p)})
     json.dump({'notes': notes},
               open(os.path.join(OUT, 'index-campaign.json'), 'w', encoding='utf-8'),
               separators=(',', ':'))

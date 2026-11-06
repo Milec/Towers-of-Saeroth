@@ -33,9 +33,10 @@ async function cacheChecks(){
  try{
  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
- await page.goto(base);await page.getByRole('heading',{name:'Explore Saeroth',exact:true}).waitFor();
+ await page.goto(base);await page.getByRole('heading',{name:'Campaign desk',exact:true}).waitFor();
  await page.locator('#graphBtn').click();await page.waitForFunction(()=>window.__g?.nodes?.length>0);await page.locator('#gLeave').click();
- for(const a of await page.locator('.home-actions a').all()){const href=await a.getAttribute('href');if(!href.includes('atlas'))assert(fs.existsSync(path.join(__dirname,'../..',decodeURI(href.slice(2)))));}
+ assert(await page.locator('.primary-nav a[href="#/library"]').isVisible());
+ assert(await page.locator('.primary-nav a[href="#/atlas"]').isVisible());
  console.log('Checking search');await page.locator('#searchBtn').click();await page.locator('#searchInput').fill('Vaelic');
  await page.locator('#searchModal select').selectOption('Places');await page.locator('#searchResults a[href*="atlas#nation-"]').first().waitFor();
  for(let i=0;i<20;i++){await page.keyboard.press('Shift+Tab');assert(await page.evaluate(()=>!!document.activeElement.closest('#searchModal')));}
@@ -50,10 +51,10 @@ async function cacheChecks(){
  const inner=page.frames().find(f=>f.url().includes('/atlas/'));
  await inner.evaluate(()=>show('nation',8));await page.waitForFunction(()=>location.hash==='#/atlas#nation-8');assert.equal(await page.locator('.atlas-frame').count(),1);
  await page.evaluate(()=>location.hash='#/atlas#nation-3');await frame.locator('#info h2').filter({hasText:'Vaelic'}).waitFor();
- await frame.locator('[data-jump="info"]').click();
- await inner.waitForFunction(()=>{const r=document.querySelector('.atlas-jumps').getBoundingClientRect();return r.top>=0&&r.bottom<innerHeight;});
- await frame.locator('[data-jump="journey"]').click();await frame.locator('#journeyFrom').waitFor({state:'visible'});
- await frame.locator('[data-jump="map"]').click();
+ await frame.locator('[data-atlas-panel="places"]').click();
+ await inner.waitForFunction(()=>{const r=document.querySelector('.atlas-panel-nav').getBoundingClientRect();return r.top>=0&&r.bottom<innerHeight;});
+ await frame.locator('[data-atlas-panel="travel"]').click();await frame.locator('#journeyFrom').waitFor({state:'visible'});
+ await frame.locator('#atlasReturnMap').click();
  await page.goto(base+'#/campaign/nations/Political%20Relations.md');await page.locator('.nation-picker button').first().waitFor();
  assert(await page.locator('.rel-canvas').isHidden());await page.locator('.diagram-tools input').fill('Vaelic');await page.locator('.nation-picker button:visible').click();assert((await page.locator('.rel-ledger').innerText()).includes('Vaelic'));
  await page.getByRole('button',{name:'Show relationship diagram',exact:true}).click();assert(await page.locator('.rel-canvas').isVisible());

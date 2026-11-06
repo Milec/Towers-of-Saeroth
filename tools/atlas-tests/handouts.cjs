@@ -4,9 +4,9 @@ const base=process.env.ATLAS_TEST_URL||'http://127.0.0.1:8899/';
  const page=await browser.newPage({viewport:{width:390,height:844},serviceWorkers:'block',acceptDownloads:true});const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{const original=URL.createObjectURL;URL.createObjectURL=function(blob){if(blob.type.startsWith('image/svg+xml'))window.lastHandoutSVG=blob;return original.call(this,blob);};});
  await page.goto(base+'atlas/#nation-3');await page.locator('#handoutExport').waitFor();
- await page.locator('#sepiaMap').check();await page.reload();await page.locator('#handoutExport').waitFor();assert(await page.locator('#sepiaMap').isChecked());assert.equal(await page.locator('#map').evaluate(e=>getComputedStyle(e).filter),'sepia(1)');
+ await page.locator('[data-atlas-panel="map"]').click();await page.locator('#sepiaMap').check();await page.reload();await page.locator('#handoutExport').waitFor();assert(await page.locator('#sepiaMap').isChecked());assert.equal(await page.locator('#map').evaluate(e=>getComputedStyle(e).filter),'sepia(1)');
  const cases=await page.evaluate(()=>[['province',43],['nation',3],['province',D.provinces.find(p=>p?.i&&!p.removed&&p.state===3)?.i],['nation',D.states.find(s=>/Thurion/.test(s.fullName||''))?.i]]);
- for(const [type,id] of cases){assert(id);await page.locator('#sepiaMap').setChecked(type==='nation');await page.evaluate(([t,i])=>show(t,i),[type,id]);await page.locator('#handoutHide').check();await page.locator('#handoutFit').click();if(type==='province')await page.locator('#handoutHide').uncheck();
+ for(const [type,id] of cases){assert(id);await page.locator('[data-atlas-panel="map"]').click();await page.locator('#sepiaMap').setChecked(type==='nation');await page.evaluate(([t,i])=>show(t,i),[type,id]);await page.locator('#handoutHide').check();await page.locator('#handoutFit').click();if(type==='province')await page.locator('#handoutHide').uncheck();
  const download=page.waitForEvent('download',{timeout:120000});await page.locator('#handoutExport').click();
  const file=await download;await file.saveAs(path.join(__dirname,'../../..','output',`handout-${type}-${id}.png`));
  const result=await page.evaluate(async()=>{

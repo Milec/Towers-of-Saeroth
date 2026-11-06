@@ -341,22 +341,57 @@ addEventListener('atlas-selection-change', e => {
 });
 let routeGeneration = 0;
 async function route() {
+  if (window.SaerothEditor?.hasUnsavedChanges() && !confirm('This draft could not be saved in this browser. Leave the editor? Download or copy your draft before leaving to keep it.')) {
+    history.replaceState(null, '', state.routeHash || '#/new');
+    return;
+  }
   const generation = ++routeGeneration;
+  if (location.hash === '#main') { $('main').focus(); return; }
   if (/^#\/atlas(?:#|$)/.test(location.hash) && document.querySelector('.atlas-frame')) {
     window.selectHostedAtlas?.(location.hash.split('#')[2] || '');
     return;
   }
   document.querySelector('.atlas-frame')?.dispatchEvent(new Event('atlas-dispose'));
   document.body.classList.remove('view-atlas');
-  const hash = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
+  window.SaerothWorkspace?.dispose();
+  window.SaerothReader?.dispose();
+  window.SaerothEditor?.dispose();
+  let hash;
+  try { hash = decodeURIComponent(location.hash.replace(/^#\/?/, '')); }
+  catch (_) { hash = ''; }
   const [path, frag] = hash.split('#');
-  const target = path || 'campaign/README.md';
+  const target = path || 'workspace';
   state.current = target;
+  const section = target === 'atlas' ? 'atlas' : target === 'workspace' ? 'workspace' : 'library';
+  document.querySelectorAll('.primary-nav a').forEach(a => {
+    if (a.dataset.section === section) a.setAttribute('aria-current', 'page');
+    else a.removeAttribute('aria-current');
+  });
   navRecord(target === 'atlas' && frag ? 'atlas#' + frag : target);
   // Navigating means the reader wants the note, so the graph gets out of the
   // way — whether they came from a node, the tree, or the back arrow.
   if (!$('graphView').hidden) closeGraph();
   const el = $('content');
+  el.classList.remove('wide');
+  $('backlinks').hidden = true;
+  if (target === 'new' || target.startsWith('edit/')) {
+    document.title = 'Entry editor — Towers of Saeroth';
+    markActive(target); closeSidebar();
+    await window.SaerothEditor.mount(el, {path: target === 'new' ? null : target.slice(5), draftId: target === 'new' ? frag : undefined});
+    if (generation === routeGeneration) { state.routeHash = location.hash; $('main').scrollTop = 0; }
+    return;
+  }
+  if (target === 'workspace' || target === 'library') {
+    window.SaerothWorkspace.mount(el, target);
+    if (target === 'library') {
+      const actions=document.createElement('div'); actions.className='library-create';
+      actions.innerHTML='<a href="#/new">+ New entry</a>';
+      el.querySelector('h1')?.before(actions);
+    }
+    document.title = (target === 'workspace' ? 'Campaign desk' : 'World library') + ' — Towers of Saeroth';
+    $('main').scrollTop = 0;
+    markActive(target); closeSidebar(); return;
+  }
   if (target === 'atlas') {
     mountAtlas(el, frag);
     $('backlinks').hidden = true;
@@ -379,7 +414,7 @@ async function route() {
     el.innerHTML =
       `<nav class="crumbs">${crumbs(target)}</nav>` +
       frontmatterTable(fm) +
-      marked.parse(body);
+      window.SaerothSanitize(marked.parse(body));
     if (!el.querySelector('h1')) {
       const heading = document.createElement('h1');
       heading.textContent = fmField(fm, 'title') || target.split('/').pop().replace(/\.md$/, '');
@@ -387,6 +422,8 @@ async function route() {
     }
     window.polishNote?.(el, target);
     resolveImages(el, target);
+    window.SaerothWorkspace?.visit(target);
+    window.SaerothWorkspace?.decorateNote(el, target);
     if (fmField(fm, 'view') === 'relations') {
       try { mountRelations(el, body); } catch (_) { /* the table still renders */ }
     }
@@ -402,6 +439,7 @@ async function route() {
     document.title = target.split('/').pop().replace(/\.md$/, '') + ' — Towers of Saeroth';
     renderBacklinks(target);
     addAtlasLinks(el, target);
+    window.SaerothReader?.mount(el, target, {notes: state.campaign, resolveTarget, fetchNote, base: BASE});
     if (frag) {
       const t = document.getElementById(frag.toLowerCase().replace(/[^\w]+/g, '-'));
       if (t) {for(let p=t.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;t.scrollIntoView();}
@@ -410,7 +448,7 @@ async function route() {
     }
   } catch (e) {
     if (generation !== routeGeneration) return;
-    el.innerHTML = `<h1>Not found</h1><p class="muted">Could not load <code>${escapeHtml(target)}</code>.</p>`;
+    el.innerHTML = `<h1>This note is unavailable</h1><p class="muted">Could not load <code>${escapeHtml(target)}</code>. Check your connection or find it in the library.</p><p><a href="#/library">Browse the library</a></p>`;
   }
   markActive(target);
   closeSidebar();
@@ -548,11 +586,20 @@ async function markActive(path) {
 /* ---------------------------------------------------------------- search */
 async function ensureVault() {
   if (state.vaultLoaded) return;
-  const res = await fetch(BASE + 'index-vault.json');
-  const list = await res.json();
-  state.vault = list;
-  list.forEach((it, i) => { indexEntry(it.p); state.vaultIndexOf.set(it.p, i); });
-  state.vaultLoaded = true;
+  if (!state.vaultLoading) {
+    state.vaultLoading = (async () => {
+      const res = await fetch(BASE + 'index-vault.json');
+      if (!res.ok) throw new Error('Could not load the rules index (' + res.status + ')');
+      const list = await res.json();
+      if (!Array.isArray(list) || list.some(it => typeof it?.p !== 'string' || !it.p.startsWith('vault/'))) {
+        throw new Error('The rules index is invalid');
+      }
+      state.vault = list;
+      list.forEach((it, i) => { indexEntry(it.p); state.vaultIndexOf.set(it.p, i); });
+      state.vaultLoaded = true;
+    })().finally(() => { state.vaultLoading = null; });
+  }
+  return state.vaultLoading;
 }
 function indexEntry(p) {
   state.byPath.add(p);
@@ -656,7 +703,7 @@ function buildScopeUI() {
     groups.set(k, (groups.get(k) || 0) + 1);
   }
   const vaultGroups = new Map();
-  if (state.vaultLoaded && scope !== 'Lore' && scope !== 'Places') {
+  if (state.vaultLoaded) {
     for (const it of state.vault) {
       const k = scopeKey(it.p);
       vaultGroups.set(k, (vaultGroups.get(k) || 0) + 1);
@@ -2619,18 +2666,19 @@ function openSidebar() {
   // On a wide screen the tree normally sits in the layout, where the graph
   // overlay would cover it. `over` lifts it above the graph at any width, so
   // the menu button means the same thing everywhere.
-  sb.classList.toggle('over', !$('graphView').hidden);
+  sb.classList.toggle('over', !$('graphView').hidden || document.body.classList.contains('view-atlas'));
   $('scrim').hidden = false;
   $('menuBtn').setAttribute('aria-expanded', 'true');
 }
 function closeSidebar() {
   $('sidebar').classList.remove('open', 'over');
   $('scrim').hidden = true;
-  $('menuBtn').setAttribute('aria-expanded', 'false');
+  $('menuBtn').setAttribute('aria-expanded', String(innerWidth > 860 && !document.body.classList.contains('nav-collapsed') && !document.body.classList.contains('view-atlas')));
 }
 
 async function init() {
-  const theme = localStorage.getItem('theme');
+  let theme;
+  try { theme = localStorage.getItem('theme'); } catch (_) { /* Storage may be disabled. */ }
   if (theme) document.documentElement.dataset.theme = theme;
 
   syncTopbarHeight();
@@ -2648,15 +2696,28 @@ async function init() {
     state.links.set(it.p, it.l || []);
     if (it.t) state.type.set(it.p, it.t);
   }
+  window.SaerothWorkspace?.configure({notes: state.campaign, fetchNote,
+    parseMarkdown: text => window.SaerothSanitize(marked.parse(text)), resolveImages, resolveTarget, base: BASE});
+  window.SaerothEditor?.configure({notes: state.campaign, fetchNote,
+    parseMarkdown: text => window.SaerothSanitize(marked.parse(text)), resolveImages, resolveTarget, base: BASE});
 
   buildTree(state.campaign.map((n) => n.p), $('tree'));   // everything collapsed
 
-  $('menuBtn').onclick = () => ($('sidebar').classList.contains('open') ? closeSidebar() : openSidebar());
+  $('menuBtn').onclick = () => {
+    if (innerWidth > 860 && $('graphView').hidden && !document.body.classList.contains('view-atlas')) {
+      document.body.classList.toggle('nav-collapsed');
+      $('menuBtn').setAttribute('aria-expanded', String(!document.body.classList.contains('nav-collapsed')));
+      return;
+    }
+    $('sidebar').classList.contains('open') ? closeSidebar() : openSidebar();
+  };
+  document.querySelector('.skip-link').onclick = e => { e.preventDefault(); $('main').focus(); };
   $('scrim').onclick = closeSidebar;
   $('themeBtn').onclick = () => {
-    const cur = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    const currentTheme = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const cur = currentTheme === 'light' ? 'dark' : 'light';
     document.documentElement.dataset.theme = cur;
-    localStorage.setItem('theme', cur);
+    try { localStorage.setItem('theme', cur); } catch (_) { /* Current session still changes. */ }
     if (graph.nodes.length) { drawLegend(); needsDraw(); }   // palette swaps with the theme
   };
   // The browser's own print dialog is what writes the PDF, so there is no
@@ -2671,17 +2732,12 @@ async function init() {
   $('gExpand').onclick = () => setPanel(true);
   $('colorBy').onchange = () => { if (graph.nodes.length) { assignColours(graph.nodes); needsDraw(); } };
   initGraphEvents();
-  $('searchBtn').onclick = async () => {
-    $('searchModal').hidden = false; $('searchInput').focus();
-    ensureVault().catch(() => {});
-  };
-  $('searchModal').onclick = (e) => { if (e.target.id === 'searchModal') $('searchModal').hidden = true; };
-  $('searchInput').oninput = (e) => showResults(search(e.target.value));
-  $('searchResults').onclick = () => { $('searchModal').hidden = true; };
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { $('searchModal').hidden = true; closeSidebar(); if (!$('graphView').hidden) closeGraph(); }
+    if (e.defaultPrevented) return;
+    if (document.querySelector('dialog[open]')) return;
+    if (e.key === 'Escape') { window.SaerothSearch?.close(); closeSidebar(); if (!$('graphView').hidden) closeGraph(); }
     if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === '/') {
-      if (document.activeElement.tagName === 'INPUT') return;
+      if (document.activeElement.closest('input, textarea, select, [contenteditable="true"]')) return;
       e.preventDefault(); $('searchBtn').click();
     }
   });
@@ -2739,4 +2795,7 @@ function showVersion() {
   };
   navigator.serviceWorker.controller.postMessage('version', [ch.port2]);
 }
-init();
+init().catch(() => {
+  $('content').innerHTML = '<h1>The campaign could not load</h1><p>Check your connection, then try again. Your saved session notes remain on this device.</p><button type="button" id="retryApp" class="btn">Try again</button>';
+  $('retryApp').onclick = () => location.reload();
+});
