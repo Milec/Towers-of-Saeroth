@@ -27,6 +27,15 @@ simulated GitHub service in Chromium. `test:publisher` and `test:editor-publish`
 check publication conflicts, recovery, and the auto-merge workflow guards.
 These run in CI without publishing real notes or using real credentials.
 
+`test:battlemap-engine` checks deterministic tactical geometry, bounds, and
+reachable entrances across layouts, terrain, sizes, and seeds.
+`test:battlemap-foundry` checks native scene geometry and the embedded-image
+importer's failure, retry, and concurrency behavior. When Foundry v14 is installed,
+set `FOUNDRY_APP_PATH` to validate against its document classes in memory.
+`test:battlemaps` checks the POI generator in Chromium, including image and native
+Foundry downloads, portable recipes, local persistence, and phone layouts.
+These tests do not import scenes into a running Foundry world.
+
 `pnpm run test:visual` is an optional local screenshot pass at 375, 768, and
 1440 pixels in both themes. Set `ATLAS_SCREENSHOT_DIR` to keep its images outside
 the temporary `_site/` build output.

@@ -115,6 +115,50 @@ Saved views store a name, camera position, map style, and layer choices. They do
 not replace terrain, borders, populations, routes, custom POIs, or hexcrawl
 progress. The existing POI publication and travel workflows remain available.
 
+### Generating a battle map
+
+Select a landmark, custom POI, or settlement and choose **Generate battle map**
+in its Places details. The generator loads on demand and opens a focused preview.
+It suggests a layout from the place's type and description. An explicitly chosen
+custom POI kind takes priority over prose mentions of other locations. These are
+generated encounter sites, not additions to campaign canon or precise surveys
+of the atlas terrain.
+
+Choose from roads, camps, ruins, caves, shrines, inns, forts, bridges, and towers.
+Terrain choices cover forest, mountain, grassland, desert, snow, wetland, and coast.
+Maps are 24, 32, or 40 squares across, with 5-foot squares. **Reroll layout** makes
+a new arrangement; **Previous** restores a prior choice. Preview grid and
+wall/light overlays help inspect the layout and never appear in downloaded art.
+The daylight/darkness selection is exported as Foundry lighting; the image itself
+remains unlit so Foundry can render dynamic light.
+
+The latest recipe for each place saves in this browser, separately from POI notes.
+No existing location, route, party marker, or atlas record is modified. Under
+**Seed & portable recipe**, download a small JSON recipe to keep a map or move it
+to another device. Open the same POI there before loading the recipe. The seed,
+generator version, layout, terrain, and size reproduce the map. Storage failures
+are visible, corrupt data is kept for recovery, and reaching the 1,000-layout
+limit leaves existing layouts intact.
+
+**Download map image** exports a gridless PNG at 100 pixels per square.
+**Export to Foundry** downloads a self-contained Script Macro JSON, including
+WebP artwork, matching walls and doors, windows, terrain blockers, light sources,
+and the scene's 5-foot grid. No extra importer module is required.
+
+To use that export in Foundry VTT **14.364 or newer**:
+
+1. As GM, create a new **Script** macro in the Macro Directory.
+2. Right-click the new macro and use **Import Data** to load the downloaded JSON.
+3. Execute the macro. It uploads the bundled artwork to the current world's
+   `saeroth-atlas` folder and adds the scene to the Scenes directory.
+
+The importer verifies the image before creating the scene. It never activates
+the scene, places actors, or overwrites an existing scene. Repeating the same
+import finds its previous scene and keeps it unchanged. If scene creation fails
+after an upload, the error identifies the retained artwork folder; no blank
+scene is created. Upload permission is required. Downloads retain visible save
+links for mobile browsers.
+
 ## Storage and portability
 
 The campaign desk and atlas workspace save in this browser. Each offers a JSON
@@ -144,6 +188,10 @@ are not access control. No GM material is copied into `players/` by these tools.
 - `site/shell.css`: shared navigation, responsive layouts, and theme tokens.
 - `site/atlas/workbench.js` and `workbench.css`: atlas navigation and saved views.
 - `site/atlas/panels.js` and `panels.css`: grouped atlas task navigation.
+- `site/atlas/battlemaps.js` and `battlemaps.css`: POI generator, recipes, preview,
+  and downloads; the engine and Foundry adapter load only on first use.
+- `site/atlas/battlemap-engine.js`: deterministic geometry and Canvas artwork.
+- `site/atlas/battlemap-foundry.js`: native v14 scene and embedded-art importer.
 - `tools/build_site.py`: complete searchable text and display metadata.
 
 Build with `python tools/build_site.py --no-vault` for iteration and the full
@@ -152,6 +200,11 @@ Additional checks in `tools/atlas-tests/` are `workspace.cjs`, `workbench.cjs`,
 `search.cjs`, `reader.cjs`, `editor.cjs`, `editor-publisher.cjs`, `publisher.cjs`,
 `editor-auto-merge.cjs`, and `panels.cjs`. Publisher tests use a simulated GitHub
 service and do not send real credentials or publish fixture notes.
+Battle map checks are `battlemap-engine.cjs` (geometry and reachable entrances),
+`battlemap-foundry.cjs` (import safety and schema), and `battlemaps.cjs` (browser
+generation, storage, downloads, keyboard controls, and responsive layouts).
+Native schema checks also run when a local Foundry installation is available;
+tests do not write to a world database.
 `visual-review.cjs` optionally produces screenshots
 at phone, tablet, and desktop widths in both themes. Use `ATLAS_TEST_URL` for the
 preview URL and `CHROME_PATH` when using an installed browser.

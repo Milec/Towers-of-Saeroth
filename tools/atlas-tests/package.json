@@ -17,7 +17,10 @@
     "test:editor-publisher": "node editor-publisher.cjs",
     "test:publisher": "node publisher.cjs",
     "test:editor-publish": "node editor-auto-merge.cjs",
-    "test:panels": "node panels.cjs"
+    "test:panels": "node panels.cjs",
+    "test:battlemaps": "node battlemaps.cjs",
+    "test:battlemap-engine": "node battlemap-engine.cjs",
+    "test:battlemap-foundry": "node battlemap-foundry.cjs"
   },
   "devDependencies": {
     "jsdom": "30.0.1",
