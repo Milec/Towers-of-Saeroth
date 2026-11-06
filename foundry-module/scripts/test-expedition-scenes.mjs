@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {buildExpeditionRecoveryScene,recipe} from './expedition-recovery-scene.mjs';
+const root=new URL('../../',import.meta.url);
+const scene=buildExpeditionRecoveryScene().scene;
+const stored=JSON.parse(fs.readFileSync(new URL('../content/scenes/expedition-supply-recovery.json',import.meta.url)));
+assert.deepEqual(stored,scene,'The committed scene must match its maintained generator');
+assert.equal(scene.active,false);assert.equal(scene.navigation,false);assert.equal(scene.grid.distance,5);
+assert.equal(scene.width,3200);assert.equal(scene.height,3200);assert.equal(scene.tokens.length,0);
+assert(scene.environment.globalLight.enabled);assert(scene.walls.length>100);
+assert(scene.walls.every(w=>w.c.every(n=>Number.isFinite(n)&&n>=0&&n<=3200)));
+const art=fs.readFileSync(new URL('../assets/maps/expedition-supply-recovery.webp',import.meta.url));
+assert.equal(art.toString('ascii',0,4),'RIFF');assert.equal(art.toString('ascii',8,12),'WEBP');
+const presets=JSON.parse(fs.readFileSync(new URL('site/session-presets.json',root)));
+const preset=presets.presets.find(p=>p.id==='expedition-arrival-v1');assert(preset);
+assert.equal(preset.map.recipe.seed,recipe.seed);assert.equal(preset.map.recipe.size,recipe.size);
+for(const note of preset.notes)assert(fs.existsSync(new URL(note,root)),`Missing preparation note: ${note}`);
+const feed=JSON.parse(fs.readFileSync(new URL('../content/saeroth-creatures.json',import.meta.url)));
+for(const key of preset.actors){
+ const actor=feed.actors.find(a=>(a.flags?.saeroth?.syncKey??a.flags?.['saeroth-pf2e-content']?.syncKey)===key);assert(actor,`Missing NPC: ${key}`);
+ assert(actor.img&&actor.prototypeToken.texture.src&&actor.img!==actor.prototypeToken.texture.src,'Portraits and stamped tokens are separate');
+ assert(actor.__items.length>0);assert(actor.__items.every(i=>/^[a-zA-Z0-9]{16}$/.test(i._id)),'New embedded items use native v14 IDs');
+ const fallback=actor.__items.filter(i=>i.type==='spell'&&i.system.description.value.includes("Add the spell's full text"));assert.equal(fallback.length,0,'Spells must have actual system rules');
+}
+const renata=feed.actors.find(a=>a.name==='Renata Vellori');
+const dagger=renata.__items.find(i=>i.type==='melee'&&i.system.range);assert(dagger,'Thrown dagger is a native ranged Strike, not a generic action');
+assert.equal(dagger.system.range.increment,10);assert(dagger.system.traits.value.includes('thrown-10'));
+assert(!renata.__items.some(i=>i.type==='action'&&i.name==='Ranged'));
+const tavian=feed.actors.find(a=>a.name==='Tavian Calvo');
+const shove=tavian.__items.find(i=>i.name==='Crate Shove');assert(shove.system.description.value.includes('@Check[athletics|defense:fortitude]'));assert(shove.system.description.value.includes('Compendium.pf2e.conditionitems'));
+console.log('Expedition map, preparation references, portrait/token pairing, native ranged Strike, spells and inline action rolls pass.');

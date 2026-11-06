@@ -10,6 +10,7 @@ the same size as the repo instead of several times larger.
 """
 import argparse, json, os, re, shutil, sys
 from pathlib import Path
+from urllib.parse import quote, unquote, urlsplit
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, '_site')
@@ -51,6 +52,36 @@ def copy_notes(paths):
         dst = os.path.join(OUT, 'content', p)
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         shutil.copyfile(os.path.join(ROOT, p), dst)
+
+
+def build_session_catalog():
+    """Publish actor references, never executable actor data, for session exports."""
+    module = Path(ROOT) / 'foundry-module'
+    shutil.copyfile(module / 'scripts/session-package.mjs', Path(OUT) / 'session-package.mjs')
+    manifest = json.loads((module / 'content/saeroth-creatures.json').read_text(encoding='utf-8'))
+    if manifest.get('schema') != 1 or not isinstance(manifest.get('actors'), list):
+        raise ValueError('The Saeroth actor feed is not a supported session catalog source.')
+    actors, seen = [], set()
+    for actor in manifest['actors']:
+        flags = actor.get('flags', {})
+        source = flags.get('saeroth-pf2e-content', flags.get('saeroth', {}))
+        key = source.get('syncKey', source.get('source', ''))
+        if not isinstance(key, str) or not key.startswith('campaign/') or not key.endswith('.md'):
+            raise ValueError(f'Actor has no campaign source: {actor.get("name")}')
+        if '..' in key.split('/') or '\\' in key or not (Path(ROOT) / key).is_file() or key in seen:
+            raise ValueError(f'Invalid or duplicate actor source: {key}')
+        seen.add(key)
+        image = actor.get('img', '')
+        parsed = urlsplit(image)
+        prefix = '/Milec/Towers-of-Saeroth/main/'
+        if parsed.scheme == 'https' and parsed.netloc == 'raw.githubusercontent.com' and parsed.path.startswith(prefix):
+            asset = unquote(parsed.path[len(prefix):])
+            image = 'content/' + quote(asset, safe='/') if asset.startswith('campaign/') and '..' not in asset.split('/') and (Path(ROOT) / asset).is_file() else ''
+        else:
+            image = ''
+        actors.append({'key': key, 'name': actor['name'], 'level': actor['system']['details']['level']['value'], 'img': image})
+    actors.sort(key=lambda actor: actor['name'].casefold())
+    (Path(OUT) / 'session-actors.json').write_text(json.dumps({'schema': 1, 'actors': actors}, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
 
 
 #: Tab order and tab labels for the players' page. Anything not listed still
@@ -171,6 +202,8 @@ def main():
         src = os.path.join(ROOT, 'site', name)
         dst = os.path.join(OUT, name)
         shutil.copytree(src, dst) if os.path.isdir(src) else shutil.copyfile(src, dst)
+
+    build_session_catalog()
 
     from build_atlas_lore import build as build_atlas_lore
     build_atlas_lore(Path(OUT))

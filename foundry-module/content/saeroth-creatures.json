@@ -7,14 +7,17 @@
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Melisor%20Magocracy/npcs/AshwinDevaraj.webp",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Melisor%20Magocracy/npcs/AshwinDevaraj.webp"
         }
       },
       "items": [
         "DTOwWQdXM9WsTRcG",
-        "xMGAjAIJAo8-Oz-b",
-        "-IEyh_jA1JO4Ddet",
+        "d6065f2e870e98b0",
+        "23962c2128982f16",
         "bdVQEnROR8upWxHh"
       ],
       "effects": [],
@@ -164,7 +167,7 @@
           }
         },
         {
-          "_id": "xMGAjAIJAo8-Oz-b",
+          "_id": "d6065f2e870e98b0",
           "name": "rune-etched longsword",
           "type": "melee",
           "img": "systems/pf2e/icons/default-icons/melee.svg",
@@ -201,7 +204,7 @@
           }
         },
         {
-          "_id": "-IEyh_jA1JO4Ddet",
+          "_id": "23962c2128982f16",
           "name": "Spellstrike",
           "type": "action",
           "img": "systems/pf2e/icons/actions/TwoActions.webp",
@@ -269,11 +272,1474 @@
       ]
     },
     {
+      "_id": "k74gIoSzRJljzu5Q",
+      "name": "Octavia Sere",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Melisor%20Magocracy/npcs/Octavia%20Sere%20portrait.png",
+      "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Melisor%20Magocracy/npcs/Octavia%20Sere%20token.png"
+        }
+      },
+      "items": [
+        "0a7e8505327d3d07",
+        "5e138b693d5a2976",
+        "26eafc5bf981f0f7",
+        "f8ca7d118ae67fa4",
+        "6a371ad4dac36a43",
+        "bf3624867cf61282",
+        "4e6bda419c86f834",
+        "f5671cbb4c746fbb",
+        "ca9b9f961d976437",
+        "2639074b7417192c",
+        "1db723e21e6b205c",
+        "75e77e922e68304e",
+        "aed6609216d27b98"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/nations/Melisor Magocracy/npcs/Octavia Sere.md",
+          "syncKey": "campaign/nations/Melisor Magocracy/npcs/Octavia Sere.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 0
+          },
+          "dex": {
+            "mod": 2
+          },
+          "con": {
+            "mod": 1
+          },
+          "int": {
+            "mod": 4
+          },
+          "wis": {
+            "mod": 3
+          },
+          "cha": {
+            "mod": 2
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 20,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 45,
+            "max": 45,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [],
+          "resistances": [],
+          "weaknesses": [],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [
+              "common",
+              "draconic",
+              "elven"
+            ],
+            "details": ""
+          },
+          "level": {
+            "value": 4
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Octavia Sere<br />## Creature 4<br /><br />---<br /><br />==Medium== ==Human== ==Humanoid==<br /><br /><strong>Perception</strong> +11<br /><br /><strong>Languages</strong> Common, Draconic, Elven<br /><br /><strong>Skills</strong> Arcana +12, Cartography Lore +12, Diplomacy +10, Society +10, Survival +12<br /><br /><strong>Str</strong> +0, <strong>Dex</strong> +2, <strong>Con</strong> +1, <strong>Int</strong> +4, <strong>Wis</strong> +3, <strong>Cha</strong> +2<br /><br />---<br /><br /><strong>AC</strong> 20; <strong>Fort</strong> +8, <strong>Ref</strong> +11, <strong>Will</strong> +14<br /><br /><strong>HP</strong> 45<br /><br />---<br /><br /><strong>Speed</strong> 25 feet<br /><br /><strong>Melee</strong> `[one-action]` survey staff +9 (two-hand d8), <strong>Damage</strong> 2d4+4 bludgeoning<br /><br /><strong>Arcane Prepared Spells</strong> DC 21, attack +13; <strong>2nd</strong> dispel magic, mist, see the unseen; <strong>1st</strong> air bubble, force barrage, gentle landing; <strong>Cantrips (2nd)</strong> detect magic, light, shield, telekinetic hand<br /><br /><strong>Read the Ground</strong> `[one-action]` (auditory, concentrate) <strong>Effect</strong> Octavia points out a foothold, anchor, or safe landing to one ally within 30 feet who can hear her. The ally gains a +1 circumstance bonus to its next Athletics check to Climb, High Jump, or Long Jump, or Acrobatics check to Balance, before the end of its next turn. This does not reveal hidden hazards or make impassable ground safe. Apply the bonus manually.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "",
+          "mod": 11,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 8,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 11,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 14,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "arcana": {
+            "base": 12
+          },
+          "cartography-lore": {
+            "base": 12
+          },
+          "diplomacy": {
+            "base": 10
+          },
+          "society": {
+            "base": 10
+          },
+          "survival": {
+            "base": 12
+          }
+        },
+        "traits": {
+          "rarity": "common",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "human",
+            "humanoid"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "0a7e8505327d3d07",
+          "name": "survey staff",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 9
+            },
+            "damageRolls": {
+              "fUbB6saMpkTjt-8Q": {
+                "damage": "2d4+4",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "two-hand-d8"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "5e138b693d5a2976",
+          "name": "Arcane Prepared Spells",
+          "type": "spellcastingEntry",
+          "img": "systems/pf2e/icons/default-icons/spellcastingEntry.svg",
+          "system": {
+            "autoHeightenLevel": {
+              "value": null
+            },
+            "description": {
+              "value": ""
+            },
+            "prepared": {
+              "value": "prepared"
+            },
+            "proficiency": {
+              "value": 1
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slots": {
+              "slot2": {
+                "max": 3,
+                "value": 3
+              },
+              "slot1": {
+                "max": 3,
+                "value": 3
+              }
+            },
+            "slug": null,
+            "spelldc": {
+              "dc": 21,
+              "value": 13
+            },
+            "tradition": {
+              "value": "arcane"
+            },
+            "traits": {}
+          }
+        },
+        {
+          "_id": "26eafc5bf981f0f7",
+          "folder": "lPzcDrjGDFbzuF2r",
+          "img": "systems/pf2e/icons/spells/dispel-magic.webp",
+          "name": "Dispel Magic",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": true,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You unravel the magic behind a spell or effect. Attempt a counteract check against the target. If you successfully counteract a magic item, the item becomes a mundane item of its type for 10 minutes. This doesn't change the item's non-magical properties. If the target is an artifact or similar item, you automatically fail.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": ""
+            },
+            "level": {
+              "value": 2
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "120 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": "1 spell effect or unattended magic item"
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "occult",
+                "primal"
+              ],
+              "value": [
+                "concentrate",
+                "manipulate"
+              ]
+            },
+            "slug": "dispel-magic",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "5e138b693d5a2976",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.9HpwDN4MYQJnW0LG"
+          },
+          "effects": []
+        },
+        {
+          "_id": "f8ca7d118ae67fa4",
+          "folder": "lPzcDrjGDFbzuF2r",
+          "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+          "name": "Mist",
+          "system": {
+            "area": {
+              "type": "burst",
+              "value": 20
+            },
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You call forth a cloud of mist. All creatures within the mist become @UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W]{Concealed}, and all creatures outside the mist become concealed to creatures within it. You can Dismiss the cloud.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "1 minute"
+            },
+            "level": {
+              "value": 2
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "120 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "3"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "primal"
+              ],
+              "value": [
+                "concentrate",
+                "manipulate",
+                "water"
+              ]
+            },
+            "slug": "mist",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "5e138b693d5a2976",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.9XHmC2JgTUIQ1CCm"
+          },
+          "effects": []
+        },
+        {
+          "_id": "6a371ad4dac36a43",
+          "folder": "lPzcDrjGDFbzuF2r",
+          "img": "systems/pf2e/icons/spells/see-invisibility.webp",
+          "name": "See the Unseen",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>Your gaze pierces through illusions and finds @UUID[Compendium.pf2e.conditionitems.Item.zJxUflt9np0q4yML]{Invisible} creatures and spirits. You can see invisible creatures as though they weren't invisible, although their features are blurred, making them @UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W]{Concealed} and difficult to identify. You can also see incorporeal creatures, like ghosts, phased through an object from within 10 feet of an object's surface as blurry shapes seen through those objects. Subtler clues also grant you a +2 status bonus to checks you make to disbelieve illusions.</p>\n<hr />\n<p><strong>Heightened (5th)</strong> This spell has a duration of 8 hours.</p>\n<p>@UUID[Compendium.pf2e.spell-effects.Item.T5bk6UH7yuYog1Fp]{Spell Effect: See the Unseen}</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "10 minutes"
+            },
+            "level": {
+              "value": 2
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": ""
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "occult"
+              ],
+              "value": [
+                "concentrate",
+                "manipulate",
+                "revelation"
+              ]
+            },
+            "slug": "see-the-unseen",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "5e138b693d5a2976",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.jwK43yKsHTkJQvQ9"
+          },
+          "effects": []
+        },
+        {
+          "_id": "bf3624867cf61282",
+          "folder": "T8AzYUgNIAgTJ9Iz",
+          "img": "systems/pf2e/icons/spells/air-bubble.webp",
+          "name": "Air Bubble",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p><strong>Trigger</strong> A creature within range enters an environment where it can't breathe.</p>\n<p>A bubble of pure air appears around the target's head, allowing it to breathe normally. The effect ends as soon as the target returns to an environment where it can breathe normally.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "1 minute"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "60 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": "the triggering creature"
+            },
+            "time": {
+              "value": "reaction"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "primal"
+              ],
+              "value": [
+                "air",
+                "concentrate"
+              ]
+            },
+            "slug": "air-bubble",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "5e138b693d5a2976",
+              "heightenedLevel": 1
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.W69zswpj0Trdy5rj"
+          },
+          "effects": []
+        },
+        {
+          "_id": "4e6bda419c86f834",
+          "folder": "T8AzYUgNIAgTJ9Iz",
+          "img": "systems/pf2e/icons/spells/magic-missile.webp",
+          "name": "Force Barrage",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {
+              "0": {
+                "applyMod": false,
+                "category": null,
+                "formula": "1d4+1",
+                "kinds": [
+                  "damage"
+                ],
+                "materials": [],
+                "type": "force"
+              }
+            },
+            "defense": null,
+            "description": {
+              "value": "<p>You fire a shard of solidified magic toward a creature that you can see. It automatically hits and deals 1d4+1 force damage. For each additional action you use when Casting the Spell, increase the number of shards you shoot by one, to a maximum of three shards for 3 actions. You choose the target for each shard individually. If you shoot more than one shard at the same target, combine the damage before applying bonuses or penalties to damage, resistances, weaknesses, and so forth.</p>\n<hr />\n<p><strong>Heightened (+2)</strong> You fire one additional shard with each action you spend.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": ""
+            },
+            "level": {
+              "value": 1
+            },
+            "overlays": {},
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "120 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": "1 creature"
+            },
+            "time": {
+              "value": "1 to 3"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "occult"
+              ],
+              "value": [
+                "concentrate",
+                "force",
+                "manipulate"
+              ]
+            },
+            "slug": "force-barrage",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "5e138b693d5a2976",
+              "heightenedLevel": 1
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM"
+          },
+          "effects": []
+        },
+        {
+          "_id": "f5671cbb4c746fbb",
+          "folder": "T8AzYUgNIAgTJ9Iz",
+          "img": "icons/commodities/materials/feather-damaged-brown.webp",
+          "name": "Gentle Landing",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p><strong>Trigger</strong> a creature within range is falling</p>\n<hr />\n<p>You raise a magical updraft to arrest a fall. The target's fall slows to 60 feet per round, and the portion of the fall during the spell's duration doesn't count when calculating falling damage. If the target reaches the ground while the spell is in effect, it takes no damage from the fall. The spell ends as soon as the target lands.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "1 minute"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "60 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": "1 falling creature"
+            },
+            "time": {
+              "value": "reaction"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "primal"
+              ],
+              "value": [
+                "air",
+                "concentrate"
+              ]
+            },
+            "slug": "gentle-landing",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "5e138b693d5a2976",
+              "heightenedLevel": 1
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH"
+          },
+          "effects": []
+        },
+        {
+          "_id": "ca9b9f961d976437",
+          "folder": "D7UVaOiB40wTR6kv",
+          "img": "systems/pf2e/icons/spells/detect-magic.webp",
+          "name": "Detect Magic",
+          "system": {
+            "area": {
+              "type": "emanation",
+              "value": 30
+            },
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You send out a pulse that registers the presence of magic. You receive no information beyond the presence or absence of magic. You can choose to ignore magic you're fully aware of, such as the magic items and ongoing spells of you and your allies. You detect illusion magic only if that magic's effect has a lower rank than the rank of your <em>detect magic</em> spell. However, items that have an illusion aura but aren't deceptive in appearance (such as an <em>invisibility potion</em>) typically are detected normally.</p><hr /><p><strong>Heightened (3rd)</strong> You learn the rank or level of the most powerful magical effect the spell detects, as determined by the GM.</p>\n<p><strong>Heightened (4th)</strong> As 3rd rank, but you also pinpoint the source of the highest-rank magic. Like for an imprecise sense, you don't learn the exact location, but can narrow down the source to within a 5-foot cube (or the nearest if larger than that).</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": ""
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": ""
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "occult",
+                "primal"
+              ],
+              "value": [
+                "cantrip",
+                "concentrate",
+                "detection",
+                "manipulate"
+              ]
+            },
+            "slug": "detect-magic",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "5e138b693d5a2976",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.gpzpAAAJ1Lza2JVl"
+          },
+          "effects": []
+        },
+        {
+          "_id": "2639074b7417192c",
+          "folder": "D7UVaOiB40wTR6kv",
+          "img": "systems/pf2e/icons/spells/light.webp",
+          "name": "Light",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You create an orb of light that sheds bright light in a 20-foot radius (and dim light for the next 20 feet) in a color you choose. If you create the light in the same space as a willing creature, you can attach the light to the creature, causing it to float near that creature as it moves. You can Sustain the spell to move the light up to 60 feet; you can attach or detach it from a creature as part of this movement.</p>\n<p>You can Dismiss the spell. If you Cast the Spell while you already have four <em>light</em> spells active, you must choose one of the existing spells to end.</p>\n<p>@UUID[Compendium.pf2e.spell-effects.Item.cVVZXNbV0nElVOPZ]{Spell Effect: Light}</p>\n<hr />\n<p><strong>Heightened (4th)</strong> The orb sheds light in a 60-foot radius (and dim light for the next 60 feet).</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "until your next daily preparations"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "120 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "occult",
+                "primal"
+              ],
+              "value": [
+                "cantrip",
+                "concentrate",
+                "light",
+                "manipulate"
+              ]
+            },
+            "slug": "light",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "5e138b693d5a2976",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.WBmvzNDfpwka3qT4"
+          },
+          "effects": []
+        },
+        {
+          "_id": "1db723e21e6b205c",
+          "folder": "D7UVaOiB40wTR6kv",
+          "img": "systems/pf2e/icons/spells/shield.webp",
+          "name": "Shield",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You raise a magical shield of force. This counts as using the Raise a Shield action, giving you a +1 circumstance bonus to AC until the start of your next turn, but it doesn't require a hand to use.</p>\n<p>While the spell is in effect, you can use the @UUID[Compendium.pf2e.feats-srd.Item.jM72TjJ965jocBV8]{Shield Block} reaction with your magic shield. The shield has Hardness 5. You can use the spell's reaction to reduce damage from any spell or magical effect, even if it doesn't deal physical damage. After you use Shield Block, the spell ends and you can't cast it again for 10 minutes.</p>\n<p>@UUID[Compendium.pf2e.spell-effects.Item.Jemq5UknGdMO7b73]{Spell Effect: Shield}</p>\n<p>@UUID[Compendium.pf2e.spell-effects.Item.QF6RDlCoTvkVHRo4]{Effect: Shield Immunity}</p>\n<hr />\n<p><strong>Heightened (+2)</strong> The shield's Hardness increases by 5.</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": "until the start of your next turn"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": ""
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "1"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "occult"
+              ],
+              "value": [
+                "cantrip",
+                "concentrate",
+                "force"
+              ]
+            },
+            "slug": "shield",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "5e138b693d5a2976",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.TVKNbcgTee19PXZR"
+          },
+          "effects": []
+        },
+        {
+          "_id": "75e77e922e68304e",
+          "folder": "D7UVaOiB40wTR6kv",
+          "img": "systems/pf2e/icons/spells/mage-hand.webp",
+          "name": "Telekinetic Hand",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You create a floating, magical hand, either invisible or ghostlike, that grasps the target object and levitates it slowly up to 20 feet in any direction. When you Sustain the spell, you can move the object an additional 20 feet. If the object is in the air when the spell ends, the object falls.</p>\n<hr />\n<p><strong>Heightened (3rd)</strong> You can target an unattended object with a Bulk of 1 or less.</p>\n<p><strong>Heightened (5th)</strong> The range increases to 60 feet, and you can target an unattended object with a Bulk of 1 or less.</p>\n<p><strong>Heightened (7th)</strong> The range increases to 60 feet, and you can target an unattended object with a Bulk of 2 or less.</p>"
+            },
+            "duration": {
+              "sustained": true,
+              "value": ""
+            },
+            "heightening": {
+              "levels": {
+                "3": {
+                  "target": {
+                    "value": "1 unattended object with a Bulk of 1 or less"
+                  }
+                },
+                "5": {
+                  "range": {
+                    "value": "60 feet"
+                  }
+                },
+                "7": {
+                  "target": {
+                    "value": "1 unattended object with a Bulk of 2 or less"
+                  }
+                }
+              },
+              "type": "fixed"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "30 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": "1 unattended object of light Bulk or less"
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "occult"
+              ],
+              "value": [
+                "cantrip",
+                "concentrate",
+                "manipulate"
+              ]
+            },
+            "slug": "telekinetic-hand",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "5e138b693d5a2976",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.pwzdSlJgYqN7bs2w"
+          },
+          "effects": []
+        },
+        {
+          "_id": "aed6609216d27b98",
+          "name": "Read the Ground",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Effect</strong> Octavia points out a foothold, anchor, or safe landing to one ally within 30 feet who can hear her. The ally gains a +1 circumstance bonus to its next Athletics check to Climb, High Jump, or Long Jump, or Acrobatics check to Balance, before the end of its next turn. This does not reveal hidden hazards or make impassable ground safe. Apply the bonus manually.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "auditory",
+                "concentrate"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "cIsPWAxloj1p2BaR",
+      "name": "Tavian Calvo",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Melisor%20Magocracy/npcs/Tavian%20Calvo%20portrait.png",
+      "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Melisor%20Magocracy/npcs/Tavian%20Calvo%20token.png"
+        }
+      },
+      "items": [
+        "2da6af29d6482602",
+        "649a1a6c744ff101",
+        "231c3db05cdd71f0",
+        "4a4f10b8f1fd087d",
+        "e025fd4d16824359",
+        "09fc5b95f5711378"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/nations/Melisor Magocracy/npcs/Tavian Calvo.md",
+          "syncKey": "campaign/nations/Melisor Magocracy/npcs/Tavian Calvo.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 2
+          },
+          "dex": {
+            "mod": 0
+          },
+          "con": {
+            "mod": 3
+          },
+          "int": {
+            "mod": 3
+          },
+          "wis": {
+            "mod": 2
+          },
+          "cha": {
+            "mod": 1
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 19,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 45,
+            "max": 45,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [],
+          "resistances": [],
+          "weaknesses": [],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [
+              "common",
+              "gnomish",
+              "elven"
+            ],
+            "details": ""
+          },
+          "level": {
+            "value": 3
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Tavian Calvo<br />## Creature 3<br /><br />---<br /><br />==Small== ==Gnome== ==Humanoid==<br /><br /><strong>Perception</strong> +9; low-light vision<br /><br /><strong>Languages</strong> Common, Gnomish, Elven<br /><br /><strong>Skills</strong> Athletics +9, Crafting +10, Mercantile Lore +10, Society +9, Survival +9<br /><br /><strong>Str</strong> +2, <strong>Dex</strong> +0, <strong>Con</strong> +3, <strong>Int</strong> +3, <strong>Wis</strong> +2, <strong>Cha</strong> +1<br /><br />---<br /><br /><strong>AC</strong> 19; <strong>Fort</strong> +12, <strong>Ref</strong> +6, <strong>Will</strong> +9<br /><br /><strong>HP</strong> 45<br /><br />---<br /><br /><strong>Speed</strong> 25 feet<br /><br /><strong>Melee</strong> `[one-action]` stores mallet +10 (shove), <strong>Damage</strong> 1d8+6 bludgeoning<br /><br /><strong>Arcane Innate Spells</strong> DC 17, attack +9; <strong>Cantrips (2nd)</strong> detect magic, telekinetic hand<br /><br /><strong>Clear the Aisle</strong> `[one-action]` (auditory) <strong>Frequency</strong> once per round; <strong>Effect</strong> One willing ally within 15 feet who can hear Tavian can use its reaction to Step. The ally must have a legal space to enter. This movement grants no additional distance and follows the usual restrictions on Step.<br /><br /><strong>Crate Shove</strong> `[one-action]` (attack) <strong>Requirements</strong> Tavian has a hand free and the target is within reach and no more than one size larger than him; <strong>Effect</strong> Tavian attempts an Athletics check against the target's Fortitude DC to Shove it. On a success he pushes it 5 feet, or 10 feet on a critical success. He can Stride after it, moving the same distance in the same direction. On a critical failure, Tavian falls prone. Use the normal multiple attack penalty.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "low-light vision",
+          "mod": 9,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 12,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 6,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 9,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "athletics": {
+            "base": 9
+          },
+          "crafting": {
+            "base": 10
+          },
+          "mercantile-lore": {
+            "base": 10
+          },
+          "society": {
+            "base": 9
+          },
+          "survival": {
+            "base": 9
+          }
+        },
+        "traits": {
+          "rarity": "common",
+          "size": {
+            "value": "sm"
+          },
+          "value": [
+            "gnome",
+            "humanoid"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "2da6af29d6482602",
+          "name": "stores mallet",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 10
+            },
+            "damageRolls": {
+              "uLJ-TvjceLIA5zLM": {
+                "damage": "1d8+6",
+                "damageType": "bludgeoning"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "shove"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "649a1a6c744ff101",
+          "name": "Arcane Innate Spells",
+          "type": "spellcastingEntry",
+          "img": "systems/pf2e/icons/default-icons/spellcastingEntry.svg",
+          "system": {
+            "autoHeightenLevel": {
+              "value": null
+            },
+            "description": {
+              "value": ""
+            },
+            "prepared": {
+              "value": "innate"
+            },
+            "proficiency": {
+              "value": 1
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slots": {},
+            "slug": null,
+            "spelldc": {
+              "dc": 17,
+              "value": 9
+            },
+            "tradition": {
+              "value": "arcane"
+            },
+            "traits": {}
+          }
+        },
+        {
+          "_id": "231c3db05cdd71f0",
+          "folder": "D7UVaOiB40wTR6kv",
+          "img": "systems/pf2e/icons/spells/detect-magic.webp",
+          "name": "Detect Magic",
+          "system": {
+            "area": {
+              "type": "emanation",
+              "value": 30
+            },
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You send out a pulse that registers the presence of magic. You receive no information beyond the presence or absence of magic. You can choose to ignore magic you're fully aware of, such as the magic items and ongoing spells of you and your allies. You detect illusion magic only if that magic's effect has a lower rank than the rank of your <em>detect magic</em> spell. However, items that have an illusion aura but aren't deceptive in appearance (such as an <em>invisibility potion</em>) typically are detected normally.</p><hr /><p><strong>Heightened (3rd)</strong> You learn the rank or level of the most powerful magical effect the spell detects, as determined by the GM.</p>\n<p><strong>Heightened (4th)</strong> As 3rd rank, but you also pinpoint the source of the highest-rank magic. Like for an imprecise sense, you don't learn the exact location, but can narrow down the source to within a 5-foot cube (or the nearest if larger than that).</p>"
+            },
+            "duration": {
+              "sustained": false,
+              "value": ""
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": ""
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": ""
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "divine",
+                "occult",
+                "primal"
+              ],
+              "value": [
+                "cantrip",
+                "concentrate",
+                "detection",
+                "manipulate"
+              ]
+            },
+            "slug": "detect-magic",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "649a1a6c744ff101",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.gpzpAAAJ1Lza2JVl"
+          },
+          "effects": []
+        },
+        {
+          "_id": "4a4f10b8f1fd087d",
+          "folder": "D7UVaOiB40wTR6kv",
+          "img": "systems/pf2e/icons/spells/mage-hand.webp",
+          "name": "Telekinetic Hand",
+          "system": {
+            "area": null,
+            "cost": {
+              "value": ""
+            },
+            "counteraction": false,
+            "damage": {},
+            "defense": null,
+            "description": {
+              "value": "<p>You create a floating, magical hand, either invisible or ghostlike, that grasps the target object and levitates it slowly up to 20 feet in any direction. When you Sustain the spell, you can move the object an additional 20 feet. If the object is in the air when the spell ends, the object falls.</p>\n<hr />\n<p><strong>Heightened (3rd)</strong> You can target an unattended object with a Bulk of 1 or less.</p>\n<p><strong>Heightened (5th)</strong> The range increases to 60 feet, and you can target an unattended object with a Bulk of 1 or less.</p>\n<p><strong>Heightened (7th)</strong> The range increases to 60 feet, and you can target an unattended object with a Bulk of 2 or less.</p>"
+            },
+            "duration": {
+              "sustained": true,
+              "value": ""
+            },
+            "heightening": {
+              "levels": {
+                "3": {
+                  "target": {
+                    "value": "1 unattended object with a Bulk of 1 or less"
+                  }
+                },
+                "5": {
+                  "range": {
+                    "value": "60 feet"
+                  }
+                },
+                "7": {
+                  "target": {
+                    "value": "1 unattended object with a Bulk of 2 or less"
+                  }
+                }
+              },
+              "type": "fixed"
+            },
+            "level": {
+              "value": 1
+            },
+            "publication": {
+              "license": "ORC",
+              "remaster": true,
+              "title": "Pathfinder Player Core"
+            },
+            "range": {
+              "value": "30 feet"
+            },
+            "requirements": "",
+            "rules": [],
+            "target": {
+              "value": "1 unattended object of light Bulk or less"
+            },
+            "time": {
+              "value": "2"
+            },
+            "traits": {
+              "rarity": "common",
+              "traditions": [
+                "arcane",
+                "occult"
+              ],
+              "value": [
+                "cantrip",
+                "concentrate",
+                "manipulate"
+              ]
+            },
+            "slug": "telekinetic-hand",
+            "_migration": {
+              "version": 0.959,
+              "previous": null
+            },
+            "location": {
+              "value": "649a1a6c744ff101",
+              "heightenedLevel": 2
+            }
+          },
+          "type": "spell",
+          "_stats": {
+            "coreVersion": "14.361",
+            "systemId": "pf2e",
+            "systemVersion": "8.5.0",
+            "compendiumSource": "Compendium.pf2e.spells-srd.Item.pwzdSlJgYqN7bs2w"
+          },
+          "effects": []
+        },
+        {
+          "_id": "e025fd4d16824359",
+          "name": "Clear the Aisle",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Frequency</strong> once per round</p><hr /><p><strong>Effect</strong> One willing ally within 15 feet who can hear Tavian can use its reaction to Step. The ally must have a legal space to enter. This movement grants no additional distance and follows the usual restrictions on Step.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "auditory"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "09fc5b95f5711378",
+          "name": "Crate Shove",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Requirements</strong> Tavian has a hand free and the target is within reach and no more than one size larger than him</p><hr /><p><strong>Effect</strong> Tavian attempts an @Check[athletics|defense:fortitude]{Athletics} check against the target's Fortitude DC to Shove it. On a success he pushes it 5 feet, or 10 feet on a critical success. He can Stride after it, moving the same distance in the same direction. On a critical failure, Tavian falls @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{prone}. Use the normal multiple attack penalty.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "attack"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
       "_id": "BP32D1TQYvuZ8eIz",
       "name": "Milo Calvetti",
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Thurion%20Merchant%20Alliance/npcs/Milo%20Calvetti%20portrait.png",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Thurion%20Merchant%20Alliance/npcs/Milo%20Calvetti%20token.png"
         }
@@ -555,21 +2021,280 @@
       ]
     },
     {
-      "_id": "BNZK5u_TBKtMnAeg",
+      "_id": "I3zdEg8wN61m1Mzj",
+      "name": "Renata Vellori",
+      "type": "npc",
+      "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Thurion%20Merchant%20Alliance/npcs/Renata%20Vellori%20portrait.png",
+      "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
+        "texture": {
+          "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/nations/Thurion%20Merchant%20Alliance/npcs/Renata%20Vellori%20token.png"
+        }
+      },
+      "items": [
+        "ad159bdc8c3a802d",
+        "ed7bbdf586fe20a9",
+        "a5e8b8385ef008a9"
+      ],
+      "effects": [],
+      "flags": {
+        "saeroth": {
+          "source": "campaign/nations/Thurion Merchant Alliance/npcs/Renata Vellori.md",
+          "syncKey": "campaign/nations/Thurion Merchant Alliance/npcs/Renata Vellori.md"
+        }
+      },
+      "system": {
+        "abilities": {
+          "str": {
+            "mod": 0
+          },
+          "dex": {
+            "mod": 2
+          },
+          "con": {
+            "mod": 0
+          },
+          "int": {
+            "mod": 3
+          },
+          "wis": {
+            "mod": 2
+          },
+          "cha": {
+            "mod": 3
+          }
+        },
+        "attributes": {
+          "ac": {
+            "value": 15,
+            "details": ""
+          },
+          "allSaves": {
+            "value": ""
+          },
+          "hp": {
+            "value": 24,
+            "max": 24,
+            "temp": 0,
+            "details": ""
+          },
+          "immunities": [],
+          "resistances": [],
+          "weaknesses": [],
+          "speed": {
+            "value": 25,
+            "otherSpeeds": [],
+            "details": ""
+          }
+        },
+        "details": {
+          "blurb": "",
+          "languages": {
+            "value": [
+              "common",
+              "elven",
+              "dwarven"
+            ],
+            "details": ""
+          },
+          "level": {
+            "value": 2
+          },
+          "privateNotes": "",
+          "publicNotes": "<p># Renata Vellori<br />## Creature 2<br /><br />---<br /><br />==Medium== ==Human== ==Humanoid==<br /><br /><strong>Perception</strong> +8<br /><br /><strong>Languages</strong> Common, Elven, Dwarven<br /><br /><strong>Skills</strong> Deception +7, Diplomacy +8, Legal Lore +8, Mercantile Lore +8, Society +8<br /><br /><strong>Str</strong> +0, <strong>Dex</strong> +2, <strong>Con</strong> +0, <strong>Int</strong> +3, <strong>Wis</strong> +2, <strong>Cha</strong> +3<br /><br />---<br /><br /><strong>AC</strong> 15; <strong>Fort</strong> +5, <strong>Ref</strong> +8, <strong>Will</strong> +11<br /><br /><strong>HP</strong> 24<br /><br />---<br /><br /><strong>Speed</strong> 25 feet<br /><br /><strong>Melee</strong> `[one-action]` dagger +7 (agile, finesse, versatile S), <strong>Damage</strong> 1d6+3 piercing<br /><br /><strong>Ranged</strong> `[one-action]` dagger +7 (agile, thrown 10 feet, versatile S), <strong>Damage</strong> 1d6+3 piercing<br /><br /><strong>Read It Back</strong> `[one-action]` (auditory, concentrate, linguistic) <strong>Frequency</strong> once per 10 minutes; <strong>Effect</strong> Renata repeats the terms of an offer to one willing ally within 30 feet who can hear and understand her. That ally gains a +1 circumstance bonus to its next Diplomacy check to Request concerning those terms within 1 minute. This cannot compel agreement or replace the GM's judgment about an unreasonable request. Apply the bonus manually.</p>",
+          "publication": {
+            "license": "",
+            "remaster": true,
+            "title": "Towers of Saeroth"
+          }
+        },
+        "initiative": {
+          "statistic": "perception"
+        },
+        "perception": {
+          "details": "",
+          "mod": 8,
+          "senses": []
+        },
+        "resources": {},
+        "saves": {
+          "fortitude": {
+            "value": 5,
+            "saveDetail": ""
+          },
+          "reflex": {
+            "value": 8,
+            "saveDetail": ""
+          },
+          "will": {
+            "value": 11,
+            "saveDetail": ""
+          }
+        },
+        "skills": {
+          "deception": {
+            "base": 7
+          },
+          "diplomacy": {
+            "base": 8
+          },
+          "legal-lore": {
+            "base": 8
+          },
+          "mercantile-lore": {
+            "base": 8
+          },
+          "society": {
+            "base": 8
+          }
+        },
+        "traits": {
+          "rarity": "common",
+          "size": {
+            "value": "med"
+          },
+          "value": [
+            "human",
+            "humanoid"
+          ]
+        }
+      },
+      "__items": [
+        {
+          "_id": "ad159bdc8c3a802d",
+          "name": "dagger",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 7
+            },
+            "damageRolls": {
+              "XHQf81k7DQyyXzbK": {
+                "damage": "1d6+3",
+                "damageType": "piercing"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": null,
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "agile",
+                "finesse",
+                "versatile-s"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "ed7bbdf586fe20a9",
+          "name": "dagger",
+          "type": "melee",
+          "img": "systems/pf2e/icons/default-icons/melee.svg",
+          "system": {
+            "attackEffects": {
+              "value": []
+            },
+            "bonus": {
+              "value": 7
+            },
+            "damageRolls": {
+              "pnW2QA4TNRo1jslO": {
+                "damage": "1d6+3",
+                "damageType": "piercing"
+              }
+            },
+            "description": {
+              "value": ""
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "range": {
+              "increment": 10,
+              "max": null
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "value": [
+                "agile",
+                "thrown-10",
+                "versatile-s"
+              ]
+            }
+          }
+        },
+        {
+          "_id": "a5e8b8385ef008a9",
+          "name": "Read It Back",
+          "type": "action",
+          "img": "systems/pf2e/icons/actions/OneAction.webp",
+          "system": {
+            "actionType": {
+              "value": "action"
+            },
+            "actions": {
+              "value": 1
+            },
+            "category": "offensive",
+            "description": {
+              "value": "<p><strong>Frequency</strong> once per 10 minutes</p><hr /><p><strong>Effect</strong> Renata repeats the terms of an offer to one willing ally within 30 feet who can hear and understand her. That ally gains a +1 circumstance bonus to its next Diplomacy check to Request concerning those terms within 1 minute. This cannot compel agreement or replace the GM's judgment about an unreasonable request. Apply the bonus manually.</p>"
+            },
+            "publication": {
+              "license": "",
+              "remaster": true,
+              "title": "Towers of Saeroth"
+            },
+            "rules": [],
+            "slug": null,
+            "traits": {
+              "rarity": "common",
+              "value": [
+                "auditory",
+                "concentrate",
+                "linguistic"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "44978fe881780e77",
       "name": "Garrick Thorne",
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/GarrickThorne.webp",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/GarrickThorne.webp"
         }
       },
       "items": [
-        "m5sw2_4_Cwt07uuU",
-        "XkqFO_NDX91AqW-s",
+        "694882cec7096599",
+        "fb3244f920f028aa",
         "ZGROQrzXQCflHPUz",
         "23k9v7qcLZMbSiUm",
-        "eQBb5zGH_Mw6-JSE"
+        "ecce399da4cf0de7"
       ],
       "effects": [],
       "flags": {
@@ -686,7 +2411,7 @@
       },
       "__items": [
         {
-          "_id": "m5sw2_4_Cwt07uuU",
+          "_id": "694882cec7096599",
           "name": "Reactive Strike",
           "type": "action",
           "img": "systems/pf2e/icons/actions/Reaction.webp",
@@ -715,7 +2440,7 @@
           }
         },
         {
-          "_id": "XkqFO_NDX91AqW-s",
+          "_id": "fb3244f920f028aa",
           "name": "greatsword",
           "type": "melee",
           "img": "systems/pf2e/icons/default-icons/melee.svg",
@@ -819,7 +2544,7 @@
           }
         },
         {
-          "_id": "eQBb5zGH_Mw6-JSE",
+          "_id": "ecce399da4cf0de7",
           "name": "Unstoppable Advance",
           "type": "action",
           "img": "systems/pf2e/icons/actions/OneAction.webp",
@@ -857,6 +2582,9 @@
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/John%20Guard%20portrait.png",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/John%20Guard%20portrait.png"
         }
@@ -1156,39 +2884,42 @@
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/Lua%20Solus%20portrait.png",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/Lua%20Solus%20portrait.png"
         }
       },
       "items": [
         "6wHpUFIupgnb52vj",
-        "bM-iW5ubO4Gu3-tL",
-        "88vKqbRTreMU-Kcg",
+        "30425cddc5bf19cf",
+        "7e54549a97774543",
         "dumrXFrsZQNDh1Fe",
-        "ZF7_XMWSyjcnZcQl",
-        "8jngqlOutAc7-xbR",
+        "b07a0946aaa2df42",
+        "4a03ed754cb08952",
         "sxaq635KSvneAnKe",
         "MQ2R8jqR8lEDmhcF",
         "maffG6PLWFZ03aho",
         "DgJ6PZ711bXJUmCx",
-        "OQKV_z61ZU9aEDdA",
+        "5b687735e4193c23",
         "c6jB1jN7lY7znt3O",
         "LS5V8TPiF1pRPPGX",
         "MXG7U0NKSfpTVyza",
         "rPmvtM2hOjFflfbl",
         "dXu5FLMKtu71iCyj",
-        "cu_emVt7OC7URA2i",
+        "2cf761b3d0fa3b36",
         "mzCsXGQUHtFTjWJn",
         "cYhwapnCVD7Zt2dK",
         "dN8qswnjGBkQr3hm",
         "CEK9Be10OhYCetV0",
         "lZSctnkcM5mMmrqj",
         "WUx0UoBtXJdr78w2",
-        "Okrpp_NOsfXPJmFu",
+        "c650fe2d9be73288",
         "qNoXMD94w3EPWhvE",
         "cwGfUm1Vbcrlraci",
         "HkTDT5P14E5uB7Jx",
-        "lIwPvdvl_JVI1BOf"
+        "243be135cf5bdeb2"
       ],
       "effects": [],
       "flags": {
@@ -1347,7 +3078,7 @@
           }
         },
         {
-          "_id": "bM-iW5ubO4Gu3-tL",
+          "_id": "30425cddc5bf19cf",
           "name": "ceremonial staff",
           "type": "melee",
           "img": "systems/pf2e/icons/default-icons/melee.svg",
@@ -1383,7 +3114,7 @@
           }
         },
         {
-          "_id": "88vKqbRTreMU-Kcg",
+          "_id": "7e54549a97774543",
           "name": "Divine Prepared Spells",
           "type": "spellcastingEntry",
           "img": "systems/pf2e/icons/default-icons/spellcastingEntry.svg",
@@ -1635,7 +3366,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 6
             }
           },
@@ -1649,7 +3380,7 @@
           "effects": []
         },
         {
-          "_id": "ZF7_XMWSyjcnZcQl",
+          "_id": "b07a0946aaa2df42",
           "folder": "zDlxATrLAlbYA2Mv",
           "img": "systems/pf2e/icons/spells/spiritual-blast.webp",
           "name": "Spirit Blast",
@@ -1728,7 +3459,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 6
             }
           },
@@ -1742,7 +3473,7 @@
           "effects": []
         },
         {
-          "_id": "8jngqlOutAc7-xbR",
+          "_id": "4a03ed754cb08952",
           "folder": "4fJHnYFqH0VjZXPv",
           "img": "systems/pf2e/icons/spells/moonlight-ray.webp",
           "name": "Moonlight Ray",
@@ -1832,7 +3563,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 6
             }
           },
@@ -1919,7 +3650,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 5
             }
           },
@@ -1990,7 +3721,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 5
             }
           },
@@ -2061,7 +3792,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 5
             }
           },
@@ -2159,7 +3890,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 4
             }
           },
@@ -2173,7 +3904,7 @@
           "effects": []
         },
         {
-          "_id": "OQKV_z61ZU9aEDdA",
+          "_id": "5b687735e4193c23",
           "folder": "7cyoYPoPYA01mErU",
           "img": "icons/equipment/feet/boots-leather-laced-brown.webp",
           "name": "Unfettered Movement",
@@ -2229,7 +3960,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 4
             }
           },
@@ -2389,7 +4120,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 4
             }
           },
@@ -2459,7 +4190,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 3
             }
           },
@@ -2531,7 +4262,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 3
             }
           },
@@ -2608,7 +4339,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 3
             }
           },
@@ -2694,7 +4425,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 2
             }
           },
@@ -2708,7 +4439,7 @@
           "effects": []
         },
         {
-          "_id": "cu_emVt7OC7URA2i",
+          "_id": "2cf761b3d0fa3b36",
           "folder": "lPzcDrjGDFbzuF2r",
           "img": "systems/pf2e/icons/spells/see-invisibility.webp",
           "name": "See the Unseen",
@@ -2765,7 +4496,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 2
             }
           },
@@ -2837,7 +4568,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 2
             }
           },
@@ -2911,7 +4642,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 1
             }
           },
@@ -2980,7 +4711,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 1
             }
           },
@@ -3069,7 +4800,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 1
             }
           },
@@ -3160,7 +4891,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 6
             }
           },
@@ -3230,7 +4961,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 6
             }
           },
@@ -3244,7 +4975,7 @@
           "effects": []
         },
         {
-          "_id": "Okrpp_NOsfXPJmFu",
+          "_id": "c650fe2d9be73288",
           "folder": "D7UVaOiB40wTR6kv",
           "img": "systems/pf2e/icons/spells/light.webp",
           "name": "Light",
@@ -3303,7 +5034,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 6
             }
           },
@@ -3374,7 +5105,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 6
             }
           },
@@ -3446,7 +5177,7 @@
               "previous": null
             },
             "location": {
-              "value": "88vKqbRTreMU-Kcg",
+              "value": "7e54549a97774543",
               "heightenedLevel": 6
             }
           },
@@ -3495,7 +5226,7 @@
           }
         },
         {
-          "_id": "lIwPvdvl_JVI1BOf",
+          "_id": "243be135cf5bdeb2",
           "name": "Lunar Benediction",
           "type": "action",
           "img": "systems/pf2e/icons/actions/OneAction.webp",
@@ -3531,30 +5262,33 @@
       ]
     },
     {
-      "_id": "ehGHhFeNztr2r5-Y",
+      "_id": "7d8d21d62e7b746f",
       "name": "Wenzel Grauth",
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/WenzelGrauth.webp",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/npcs/WenzelGrauth.webp"
         }
       },
       "items": [
-        "_9j2WLGjf2YpLxPV",
+        "f2c1a5b04be6e6bd",
         "SpFIHE3yxJ4C6g2J",
         "fjB68C7DcmeTvK6X",
-        "M-ccHKpTEeJDLVsv",
+        "66e3652e670b054d",
         "mZ21bxrlQ6NNQSxO",
-        "4J-KD1EgyXPgWs11",
-        "qgE_zLZF_6_fwJ6T",
-        "gmPc4lTBPFIr_mmH",
-        "CQ_otrvZbJByhKw_",
-        "h4bGGlIxoi_3hirQ",
+        "047e9f35b23bc20e",
+        "0eebf8be83fdbcc3",
+        "766ab2a564a32730",
+        "a7ac5dad84b126c4",
+        "08ecd92e58e68d43",
         "fXbP1WAIPlybg37J",
         "79ufpxyaz1bGFAcm",
         "mB7imaGWbcsUM3WC",
-        "keCnT9JhgpFOj82-"
+        "18043e049831e6f2"
       ],
       "effects": [],
       "flags": {
@@ -3679,7 +5413,7 @@
       },
       "__items": [
         {
-          "_id": "_9j2WLGjf2YpLxPV",
+          "_id": "f2c1a5b04be6e6bd",
           "name": "staff",
           "type": "melee",
           "img": "systems/pf2e/icons/default-icons/melee.svg",
@@ -3829,7 +5563,7 @@
           "effects": []
         },
         {
-          "_id": "M-ccHKpTEeJDLVsv",
+          "_id": "66e3652e670b054d",
           "folder": "lPzcDrjGDFbzuF2r",
           "img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
           "name": "Mirror Image",
@@ -3959,7 +5693,7 @@
           }
         },
         {
-          "_id": "4J-KD1EgyXPgWs11",
+          "_id": "047e9f35b23bc20e",
           "folder": "T8AzYUgNIAgTJ9Iz",
           "img": "systems/pf2e/icons/spells/grim-tendrils.webp",
           "name": "Grim Tendrils",
@@ -4055,7 +5789,7 @@
           "effects": []
         },
         {
-          "_id": "qgE_zLZF_6_fwJ6T",
+          "_id": "0eebf8be83fdbcc3",
           "folder": "T8AzYUgNIAgTJ9Iz",
           "img": "systems/pf2e/icons/spells/mage-armor.webp",
           "name": "Mystic Armor",
@@ -4126,7 +5860,7 @@
           "effects": []
         },
         {
-          "_id": "gmPc4lTBPFIr_mmH",
+          "_id": "766ab2a564a32730",
           "folder": "T8AzYUgNIAgTJ9Iz",
           "img": "systems/pf2e/icons/spells/animate-dead.webp",
           "name": "Summon Undead",
@@ -4197,7 +5931,7 @@
           "effects": []
         },
         {
-          "_id": "CQ_otrvZbJByhKw_",
+          "_id": "a7ac5dad84b126c4",
           "folder": "D7UVaOiB40wTR6kv",
           "img": "icons/magic/lightning/bolt-strike-forked-blue.webp",
           "name": "Electric Arc",
@@ -4291,7 +6025,7 @@
           "effects": []
         },
         {
-          "_id": "h4bGGlIxoi_3hirQ",
+          "_id": "08ecd92e58e68d43",
           "folder": "D7UVaOiB40wTR6kv",
           "img": "systems/pf2e/icons/spells/message.webp",
           "name": "Message",
@@ -4612,7 +6346,7 @@
           }
         },
         {
-          "_id": "keCnT9JhgpFOj82-",
+          "_id": "18043e049831e6f2",
           "name": "Kindling",
           "type": "action",
           "img": "systems/pf2e/icons/actions/Passive.webp",
@@ -4650,16 +6384,19 @@
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Kindled%20Shambler%20portrait.png",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Kindled%20Shambler%20token.png"
         }
       },
       "items": [
         "sZr1lYZ9sNJnF8oN",
-        "u5QSJUnQp-SU_fe1",
+        "f0e0fb5d57e8ee64",
         "UPkjiwkkFrNMN3cm",
-        "abbmEpa4Eba_iNQ6",
-        "Eg14sbD_Q_V6nt8N",
+        "7f6e84d26fbeea6a",
+        "3afc2a064478d52b",
         "FkEorGNOx3rkAx6M"
       ],
       "effects": [],
@@ -4849,7 +6586,7 @@
           }
         },
         {
-          "_id": "u5QSJUnQp-SU_fe1",
+          "_id": "f0e0fb5d57e8ee64",
           "name": "Death Throes",
           "type": "action",
           "img": "systems/pf2e/icons/actions/Passive.webp",
@@ -4916,7 +6653,7 @@
           }
         },
         {
-          "_id": "abbmEpa4Eba_iNQ6",
+          "_id": "7f6e84d26fbeea6a",
           "name": "jaws (Zombie Bite only)",
           "type": "melee",
           "img": "systems/pf2e/icons/default-icons/melee.svg",
@@ -4952,7 +6689,7 @@
           }
         },
         {
-          "_id": "Eg14sbD_Q_V6nt8N",
+          "_id": "3afc2a064478d52b",
           "name": "Grab",
           "type": "action",
           "img": "systems/pf2e/icons/actions/OneAction.webp",
@@ -5012,20 +6749,23 @@
       ]
     },
     {
-      "_id": "DcJkY7S_R4VYspbv",
+      "_id": "35ce118dd1c758cf",
       "name": "Old Man Conrad",
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Old%20Man%20Conrad%20portrait.png",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Old%20Man%20Conrad%20portrait.png"
         }
       },
       "items": [
-        "DU_PZ3caqJJwLg-K",
+        "9fb0982f1beb262b",
         "piYhbp4OBOiQyCQz",
-        "p9_uZCppl64pisr6",
-        "BVLjICKA8PFKqz-s"
+        "e10a075a613cfab5",
+        "6acbd7f5da80a199"
       ],
       "effects": [],
       "flags": {
@@ -5197,7 +6937,7 @@
       },
       "__items": [
         {
-          "_id": "DU_PZ3caqJJwLg-K",
+          "_id": "9fb0982f1beb262b",
           "name": "Rejuvenation",
           "type": "action",
           "img": "systems/pf2e/icons/actions/Passive.webp",
@@ -5266,7 +7006,7 @@
           }
         },
         {
-          "_id": "p9_uZCppl64pisr6",
+          "_id": "e10a075a613cfab5",
           "name": "Frightful Rebuke",
           "type": "action",
           "img": "systems/pf2e/icons/actions/OneAction.webp",
@@ -5301,7 +7041,7 @@
           }
         },
         {
-          "_id": "BVLjICKA8PFKqz-s",
+          "_id": "6acbd7f5da80a199",
           "name": "Borrowed Plaything",
           "type": "action",
           "img": "systems/pf2e/icons/actions/TwoActions.webp",
@@ -5336,20 +7076,23 @@
       ]
     },
     {
-      "_id": "5uVVhJUFKNPA9_X0",
+      "_id": "6e54c65f7be2d038",
       "name": "Skinwright",
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Skinwright.jpg",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Skinwright.jpg"
         }
       },
       "items": [
-        "mDKn71CF_uKOMwwB",
+        "c061598d21753198",
         "6hfQEKLVKlGLY5Nb",
         "0V5zBomUv7fUMolk",
-        "ebKUUEN9w_JjjjmV"
+        "14000f6e2c1a555c"
       ],
       "effects": [],
       "flags": {
@@ -5513,7 +7256,7 @@
       },
       "__items": [
         {
-          "_id": "mDKn71CF_uKOMwwB",
+          "_id": "c061598d21753198",
           "name": "claw",
           "type": "melee",
           "img": "systems/pf2e/icons/default-icons/melee.svg",
@@ -5609,7 +7352,7 @@
           }
         },
         {
-          "_id": "ebKUUEN9w_JjjjmV",
+          "_id": "14000f6e2c1a555c",
           "name": "Cast Off the Skin",
           "type": "action",
           "img": "systems/pf2e/icons/actions/OneAction.webp",
@@ -5645,17 +7388,20 @@
       ]
     },
     {
-      "_id": "LZKxwg3wZ5FWE_vp",
+      "_id": "948b4393a8a4d47d",
       "name": "The Cream Man",
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/CreamMan.jpg",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/CreamMan.jpg"
         }
       },
       "items": [
-        "yen_DCqnkhCrGdhy",
+        "d72bc6724f3a6b57",
         "5uWXumsKojvsTo7f"
       ],
       "effects": [],
@@ -5799,7 +7545,7 @@
       },
       "__items": [
         {
-          "_id": "yen_DCqnkhCrGdhy",
+          "_id": "d72bc6724f3a6b57",
           "name": "slam",
           "type": "melee",
           "img": "systems/pf2e/icons/default-icons/melee.svg",
@@ -5864,17 +7610,20 @@
       ]
     },
     {
-      "_id": "B8B0q-AnirQr2z2O",
+      "_id": "3563f84aa25cee8f",
       "name": "Zombie Shambler",
       "type": "npc",
       "img": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Zombie%20Shambler%20portrait.png",
       "prototypeToken": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
         "texture": {
           "src": "https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/campaign/world/bestiary/Zombie%20Shambler%20token.png"
         }
       },
       "items": [
-        "MTyUo-fwhS4V1jtP",
+        "b92b50e53d5a32bd",
         "WZAbVyOBfYHIwXzC",
         "V66phZZK2nE6qodG",
         "ORdGsmzoNBSBP7HI",
@@ -6038,7 +7787,7 @@
       },
       "__items": [
         {
-          "_id": "MTyUo-fwhS4V1jtP",
+          "_id": "b92b50e53d5a32bd",
           "name": "Slow",
           "type": "action",
           "img": "systems/pf2e/icons/actions/Passive.webp",

@@ -36,6 +36,39 @@ set `FOUNDRY_APP_PATH` to validate against its document classes in memory.
 Foundry downloads, portable recipes, local persistence, and phone layouts.
 These tests do not import scenes into a running Foundry world.
 
+`pnpm run test:session-package` checks the Campaign desk's one-file session export
+through the real browser UI. It selects notes, NPCs, and an atlas-generated map;
+validates the downloaded package with the shared Foundry contract; and verifies
+that map and journal images are embedded. It also covers stable content identity,
+prepared-expedition merging and explicit map replacement, journal-only fallback,
+reload persistence, corrupt-storage recovery, quota failures, blocked external
+artwork, missing-asset retries, and cancellation/navigation during export. Actor
+catalog and preset fixtures keep these checks independent of live campaign edits.
+Screenshots cover phone and desktop widths in both themes.
+
+The companion importer checks run from the repository root with
+`node foundry-module/scripts/test-session-inbox.mjs`. They exercise permissions,
+the data contract, missing actors, native validation, image/upload failures,
+existing-world-actor preservation, duplicate imports, lost replies, rollback,
+and interrupted or concurrent recovery. When Foundry is installed, set
+`FOUNDRY_APP_PATH` to its `resources/app` directory for the native schema check;
+the standard Windows installation is detected automatically. Tests instantiate
+documents in memory and do not write to a Foundry world database. A real-world
+smoke test remains separate from these automated checks.
+
+To regenerate the expedition quarry artwork, run this from the repository root:
+
+```sh
+node tools/atlas-tests/render-expedition-map.cjs --output foundry-module/assets/maps/expedition-supply-recovery.webp
+```
+
+The helper uses the exported recipe and grid from
+`foundry-module/scripts/expedition-recovery-scene.mjs`, renders the maintained
+Canvas engine in Playwright, and writes only the requested WebP. An explicit
+`--output` path is required; choose a path outside the repository for a preview.
+It needs no running website or Foundry world. `CHROME_PATH` selects installed
+Chrome as in the browser tests above.
+
 `pnpm run test:visual` is an optional local screenshot pass at 375, 768, and
 1440 pixels in both themes. Set `ATLAS_SCREENSHOT_DIR` to keep its images outside
 the temporary `_site/` build output.

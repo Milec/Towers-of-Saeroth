@@ -44,6 +44,7 @@
 .bm-export>p{margin:10px 0}
 .bm-downloads{display:flex;flex-direction:column;gap:5px}
 .bm-downloads a{display:flex;align-items:center;min-height:44px;font-size:14px;font-weight:600;overflow-wrap:anywhere}
+.bm-session-link{display:flex;align-items:center;justify-content:center;min-height:46px;margin:0 0 14px;border:1px solid var(--line);border-radius:6px;padding:10px;font-size:14px;font-weight:600;color:var(--ink)}
 .battlemap-dialog details{border-top:1px solid var(--line);margin-top:12px;padding-top:10px;font-size:13px;line-height:1.7}
 .battlemap-dialog summary{min-height:44px;padding:10px 0;font-size:13px}
 .battlemap-dialog details ol{padding-left:20px}.battlemap-dialog details li{margin-bottom:10px}

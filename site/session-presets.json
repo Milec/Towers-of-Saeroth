@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "presets": [
+    {
+      "id": "expedition-arrival-v1",
+      "name": "Session 5 — The Search Camp",
+      "description": "Unplayed expedition arrival and survey-store recovery preparation for six level-2 characters.",
+      "notes": [
+        "campaign/sessions/Session 5 - The Search Camp.md",
+        "campaign/nations/Vaelic Principality/locations/Expedition Site.md",
+        "campaign/quests/The Missing Survey Stores.md",
+        "campaign/nations/Melisor Magocracy/npcs/Octavia Sere.md",
+        "campaign/nations/Melisor Magocracy/npcs/Tavian Calvo.md",
+        "campaign/nations/Thurion Merchant Alliance/npcs/Renata Vellori.md"
+      ],
+      "actors": [
+        "campaign/nations/Melisor Magocracy/npcs/Octavia Sere.md",
+        "campaign/nations/Melisor Magocracy/npcs/Tavian Calvo.md",
+        "campaign/nations/Thurion Merchant Alliance/npcs/Renata Vellori.md"
+      ],
+      "map": {
+        "version": 1,
+        "name": "Old Survey Quarry — Supply Recovery",
+        "recipe": {
+          "version": 1,
+          "generatorVersion": 1,
+          "source": {"type": "custompoi", "id": 1793996607857},
+          "kind": "ruin",
+          "terrain": "mountain",
+          "size": 32,
+          "time": "day",
+          "seed": "expedition-quarry-supplies-v1"
+        }
+      }
+    }
+  ]
+}

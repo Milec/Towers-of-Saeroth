@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile, access } from "node:fs/promises";
+import { createHash } from "node:crypto";
 
 const root = new URL("../../", import.meta.url);
 const manifest = JSON.parse(await readFile(new URL("foundry-module/content/saeroth-creatures.json", root), "utf8"));
@@ -7,6 +8,13 @@ for (const [name, level] of [["Kindled Shambler", 0], ["Zombie Shambler", -1]]) 
   const matches = manifest.actors.filter(actor => actor.name === name);
   assert.equal(matches.length, 1);
   const actor = matches[0];
+  // Compatibility repair changes invalid document IDs only; artwork retains
+  // its historical filename so old actor image references keep working.
+  const source = actor.flags?.["saeroth-pf2e-content"]?.source ?? actor.flags?.saeroth?.source;
+  // These existing assets were generated on Windows. Preserve that historical
+  // path seed explicitly so this check also works on Linux CI.
+  const historicalSeed = source.replaceAll("/", "\\");
+  const artworkStem = createHash("sha256").update(historicalSeed).digest("base64url").slice(0, 16);
   assert.equal(actor.system.details.level.value, level);
   assert.equal(actor.system.attributes.hp.max, 20);
   assert.equal(actor.system.attributes.hp.negativeHealing, true);
@@ -17,9 +25,9 @@ for (const [name, level] of [["Kindled Shambler", 0], ["Zombie Shambler", -1]]) 
   assert.notEqual(actor.img, actor.prototypeToken.texture.src);
   assert.ok(actor.prototypeToken.texture.src.endsWith(`${encodeURIComponent(name)}%20token.png`));
   await access(new URL(`campaign/world/bestiary/${name} token.png`, root));
-  await access(new URL(`foundry-module/assets/actors/${actor._id}-token.png`, root));
+  await access(new URL(`foundry-module/assets/actors/${artworkStem}-token.png`, root));
   await access(new URL(`campaign/world/bestiary/${name} portrait.png`, root));
-  await access(new URL(`foundry-module/assets/actors/${actor._id}.png`, root));
+  await access(new URL(`foundry-module/assets/actors/${artworkStem}.png`, root));
   const items = actor.__items;
   assert.equal(items.length, actor.items.length);
   assert.equal(new Set(items.map(i => i._id)).size, items.length);

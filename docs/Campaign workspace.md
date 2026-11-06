@@ -16,14 +16,84 @@ packet. Reorder its notes with the up/down buttons; remove a note with an undo
 option. The checklist and scratchpad save as they are edited. They are personal
 preparation, not changes to the Markdown campaign record.
 
-**Export Foundry journal** downloads a native JournalEntry JSON file. Create a
+### Bringing a session into Foundry
+
+The desk's **Session package** combines the reference packet, checklist and
+scratchpad, selected NPC sheets, and one optional generated battle map in a
+single JSON download. Use **Towers of Saeroth PF2e Content 0.3.0 or newer** in a
+PF2e world running **Foundry VTT 14.364 or newer** to import it.
+
+1. Give the session a title and add the campaign entries you need with **Add to
+   session**. Their order becomes the journal's page order, after the session
+   plan page containing the checklist and scratchpad.
+2. Under **Session package**, open **Choose NPCs** and search for the sheets you
+   want. Adding an NPC's note to the reference packet and selecting its actor
+   sheet are separate choices.
+3. For a map, choose **Choose in atlas**, select a landmark, custom POI, or
+   settlement, and use **Generate battle map**. Adjust its layout, terrain, size,
+   and lighting, then choose **Add to session** and return to the Campaign desk.
+   The map card identifies the selected recipe and offers **Remove**. A session
+   package contains at most one map.
+4. Check **Package contents**, then choose **Download session package**. If the
+   browser does not start the download, use the visible **Save session package**
+   link. **Cancel export** leaves your preparation intact.
+5. In Foundry, open the **Scenes** or **Journals** directory and choose **Import
+   Saeroth Session**. Select the downloaded JSON, review the journal pages, map,
+   and NPCs, then choose **Import session**.
+
+For the prepared expedition, expand **Start with prepared expedition content**
+and choose **Add preparation** for **Session 5 — The Search Camp**. It adds the
+session, expedition-site and supply-recovery notes, plus Octavia Sere, Tavian
+Calvo, and Renata Vellori with their actor references. Existing notes, NPC
+selections, checklist, scratchpad, and a custom session title are retained;
+repeating the action does not duplicate references. **Include its map** adds
+**Old Survey Quarry — Supply Recovery**. If a map is already selected, this
+checkbox starts unchecked; selecting it explicitly replaces that map. The quarry
+is a generated encounter site, not a survey of the expedition camp.
+
+The importer creates an unshared journal and, when selected, an inactive,
+unshared Scene with the map's background, walls, doors, lighting, and five-foot
+grid. It does not place tokens, activate the scene, roll initiative, or start
+combat. Drag the imported or existing NPCs from Actors when preparing play.
+The package does not require the local MCP bridge or a Script macro.
+
+Map and journal artwork are embedded in the file and copied into the current
+world's `saeroth-sessions` folder during import. NPC selections are references to
+maintained Saeroth sheets, not embedded actor data: the importer first reuses a
+matching world NPC unchanged, otherwise copies from the live-synced Saeroth
+compendium or installed module pack. Existing HP, inventory, ownership, and GM
+edits are preserved. Actor portraits and token art come from that source sheet.
+If a sheet is missing, use **Sync Saeroth Content** or update the module, then
+choose **Refresh preview**. Writing a new lore entry alone does not create a sheet.
+
+Exports stop with a visible error if a selected note or its artwork cannot be
+retrieved; no partial package is downloaded. Imports validate the file, native
+documents, and artwork before creating content. Importing the same completed
+package again keeps the earlier documents unchanged. Its identity comes from
+the contents, so downloading it again at a different time does not make a new
+copy. Changing the packet creates a separate snapshot, not an update to an
+earlier imported journal or scene.
+
+If an import fails, choose **Refresh preview** before retrying. After closing or
+reloading Foundry, reopen the importer and select the file again.
+**Resume import** is available for a failed claim or after five minutes without
+progress; an active import must finish first. Recovery keeps existing documents
+and attempts to remove only unchanged documents created by the failed operation.
+Artwork uploaded before a failure can remain in `saeroth-sessions`; the error
+reports retained content for review. Do not delete earlier working content to
+retry a package.
+
+### Exporting only the journal
+
+**Export Foundry journal** remains available and downloads a native JournalEntry
+JSON file. Create a
 new, unshared Journal Entry in Foundry, confirm player ownership is **None**, and
 use **Import Data** to import the file. Foundry preserves the destination entry's
 permissions when importing, so an already shared journal remains shared. It contains
 the scratchpad and checklist, then a page for each complete selected note in
 packet order. The journal defaults to no player ownership. The export does not
-create actors, alter scenes, or send commands to a running world. Existing
-Saeroth content sync remains responsible for the module's actors and scenes.
+create actors, alter scenes, or send commands to a running world. Use the session
+package workflow above to bring a generated map and selected NPCs with the notes.
 
 Links and artwork in the journal resolve to the website and require a network
 connection from Foundry. Export fails with the unavailable note's name if any
@@ -140,6 +210,11 @@ generator version, layout, terrain, and size reproduce the map. Storage failures
 are visible, corrupt data is kept for recovery, and reaching the 1,000-layout
 limit leaves existing layouts intact.
 
+**Add to session** selects this layout for the Campaign desk's session package.
+Only its small recipe is saved; the full-size image is rendered when the package
+is downloaded. This action does not add a tab or change the place's geography.
+Use the resulting **Open Campaign desk** link to finish choosing notes and NPCs.
+
 **Download map image** exports a gridless PNG at 100 pixels per square.
 **Export to Foundry** downloads a self-contained Script Macro JSON, including
 WebP artwork, matching walls and doors, windows, terrain blockers, light sources,
@@ -172,6 +247,15 @@ Campaign desk backup contains the personal notes it describes. Atlas workspace
 backup contains saved place references and camera views, not travel progress or
 custom POIs. Existing travel and POI controls manage their own state.
 
+Session-package NPC selections and the chosen map recipe also stay in this
+browser, but are stored separately from the desk backup. The current desk backup
+does not include those selections. Download the session package to take the
+prepared content into Foundry; it is an import snapshot, not a website-draft
+backup. To continue editing the preparation on another device, import the desk
+backup there, reselect its NPCs, and use a portable atlas recipe for the map.
+Unreadable selections are preserved for recovery, and storage warnings distinguish
+changes kept only in the open tab from changes saved on the device.
+
 The GM website remains publicly served GitHub Pages content; navigation labels
 are not access control. No GM material is copied into `players/` by these tools.
 
@@ -179,6 +263,14 @@ are not access control. No GM material is copied into `players/` by these tools.
 
 - `site/workspace.js` and `workspace.css`: campaign desk, library, storage,
   portable backup, and Foundry journal export.
+- `site/session-export.js` and `session-export.css`: session-package selection,
+  prepared expedition content, embedded artwork, and download.
+- `site/session-presets.json`: maintained note, NPC, and map-recipe presets.
+- `session-actors.json` (build output): eligible actor references from the module's
+  runtime feed; lore-only entries are not offered as actor sheets.
+- `foundry-module/scripts/session-package.mjs`: shared, versioned data contract,
+  copied into the website build; `session-inbox.mjs` validates and imports it in
+  Foundry through the document APIs.
 - `site/search.js` and `search.css`: scoped, ranked search and focus handling.
 - `site/reader.js` and `reader.css`: entry guide and connected-note previews.
 - `site/editor.js` and `editor.css`: authoring, draft recovery, and preview.
@@ -205,6 +297,11 @@ Battle map checks are `battlemap-engine.cjs` (geometry and reachable entrances),
 generation, storage, downloads, keyboard controls, and responsive layouts).
 Native schema checks also run when a local Foundry installation is available;
 tests do not write to a world database.
+`session-package.cjs` checks the complete browser export, presets, embedded
+artwork, stable identities, cancellation, and storage recovery. Run
+`node foundry-module/scripts/test-session-inbox.mjs` for the importer's validation,
+rollback, duplicate-import, and recovery checks, including native schema checks
+when Foundry is installed. These use in-memory documents, not a running world.
 `visual-review.cjs` optionally produces screenshots
 at phone, tablet, and desktop widths in both themes. Use `ATLAS_TEST_URL` for the
 preview URL and `CHROME_PATH` when using an installed browser.

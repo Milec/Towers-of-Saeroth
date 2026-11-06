@@ -6,6 +6,97 @@ player ancestries as a native PF2e Item compendium. The
 initial build discovers five existing campaign statblocks, including Skinwright,
 The Cream Man, Wenzel Grauth, Garrick Thorne, and Ashwin Devaraj.
 
+## Session Inbox (0.3.0)
+
+The GM website can export one session package containing a journal, selected
+Saeroth NPC references, and one optional generated battle map. The **Session
+Inbox** imports that file through Foundry's document APIs. It requires this module
+enabled in a PF2e world on **Foundry VTT 14.364 or newer**. It does not require the
+MCP bridge, a relay token, or a Script macro.
+
+### Prepare and import
+
+1. On the GM website's **Campaign** desk, title the session and add entries to its
+   reference packet with **Add to session**. The checklist and scratchpad become
+   the journal's first page, followed by the complete selected notes in order.
+2. Under **Session package**, use **Choose NPCs** to select actor sheets. Notes
+   and sheets are separate selections: including an NPC note alone adds its
+   journal page, not an actor.
+3. Optionally choose **Choose in atlas**, select a place, and use **Generate
+   battle map**. Once the layout and daylight setting are ready, choose **Add to
+   session** and return to the Campaign desk. Only one generated map is included.
+4. For the ready-made expedition packet, open **Start with prepared expedition
+   content** and choose **Add preparation**. This merges its notes and NPCs into
+   your current selections, preserving the scratchpad and checklist. Check
+   **Include its map** to select the quarry encounter layout; if you already have
+   a map, the checkbox starts unchecked and explicitly warns that it replaces it.
+5. Review **Package contents**, then **Download session package**. Transfer this
+   JSON file to the device running your Foundry GM client if necessary.
+6. In Foundry's **Scenes** or **Journals** directory, choose **Import Saeroth
+   Session**, select the JSON, review the preview, and choose **Import session**.
+
+The journal and scene start with no player ownership. The scene is inactive and
+hidden from scene navigation; it contains its bundled background, native v14
+level, walls, doors, lights, and five-foot grid. No tokens are placed and no combat
+is created or started. Open and activate the scene yourself when ready, and drag
+actors onto it from the Actors directory.
+
+Map and journal images travel inside the JSON as PNG, JPEG, or WebP assets. The
+importer checks their dimensions and uploads them under
+`worlds/<world-id>/saeroth-sessions` before creating the scene. NPCs are resolved
+by their campaign source path: a matching world NPC wins and remains unchanged;
+otherwise the importer checks **Saeroth Synced Creatures** before the installed
+**Saeroth Creatures & NPCs** pack. It copies a missing NPC into Actors without editing
+its compendium source. The source sheet supplies its mechanics, portrait, and
+prototype token art. Existing world HP, equipment, ownership, and GM edits are
+preserved. If the preview reports a missing NPC, use **Sync Saeroth Content** or
+install the current module, then choose **Refresh preview**.
+
+The website desk and its selections are local browser state, not a live
+connection to Foundry. The downloaded file is a snapshot. Its NPC references do
+not turn arbitrary Markdown or new lore entries into PF2e mechanics; those sheets
+must first be built and published through the normal content workflow.
+
+### Repeated imports and interrupted work
+
+The package's content hash gives its journal and scene stable identities.
+Downloading the same content at a later time does not create another identity.
+Importing an already completed package leaves its documents unchanged, including
+GM edits. Changing the notes, map, selections, or session title creates a separate
+snapshot; it does not update an earlier imported session. Existing matching world
+NPCs are still reused across packages.
+
+After a failed import, choose **Refresh preview** before retrying. If Foundry was
+closed or reloaded, reopen the importer and select the same file again.
+It offers **Resume import** for a recorded failure, or after five minutes without
+progress on an abandoned import. A current import must finish first. Resuming
+keeps its existing notes, scene, and actors instead of overwriting them. If an
+operation fails, cleanup attempts to remove only its own unchanged new documents;
+GM edits and actors adopted by another session or placed in a scene are retained.
+The error lists documents that need review. Previously uploaded artwork may remain
+in the world's `saeroth-sessions` folder and is reported rather than deleted.
+
+The importer is GM-only, accepts data rather than executable macros, rejects
+unsupported package versions and external journal images, and validates native
+Foundry documents before writing them. The initial limits are 50 NPC references,
+100 journal pages, one map, 100 raster images, 20 MiB per image, 48 MiB of image
+bytes, and a 72 MiB package file. The website's reference packet currently allows
+60 notes plus its session-plan page. Failed exports do not download partial files.
+
+The implementation is `scripts/session-inbox.mjs`; the shared website/Foundry
+contract is `scripts/session-package.mjs`. For integrations, a GM client exposes
+`game.saerothContent.sessionInbox.preview(package)` and
+`game.saerothContent.sessionInbox.import(package, {resume: false})`, plus `open()`
+for the dialog. These use the same validation and permissions as the UI.
+
+Run `node foundry-module/scripts/test-session-inbox.mjs` from the repository root
+after installing the test dependencies in `tools/atlas-tests`. Tests cover native
+schema validation, image failures, legacy/current actor references, preservation,
+duplicate imports, rollback, and concurrent recovery without changing a world
+database. Set `FOUNDRY_APP_PATH` to the installed Foundry `resources/app` directory
+if it is not in the normal Windows location. Website checks are documented in
+[`tools/atlas-tests/README.md`](../tools/atlas-tests/README.md).
+
 ## Battle maps
 
 ### Blank-background repair in 0.1.21

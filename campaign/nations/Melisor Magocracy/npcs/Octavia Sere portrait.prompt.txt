@@ -1,0 +1,12 @@
+Generated with the built-in ImageGen tool on 2026-11-06.
+Source: campaign/nations/Melisor Magocracy/npcs/Octavia Sere.md
+
+Use case: stylized-concept.
+Asset type: square Foundry VTT NPC or monster portrait and token art.
+Subject: A middle-aged human woman leading a mountain survey expedition, olive skin, narrow attentive face, dark hair streaked with silver and pinned in a practical knot, weathered charcoal wool field coat over muted blue academic robes, leather gloves, a brass surveying compass in one hand and a rolled map under the other arm, tired but steady expression, canvas command pavilion and indistinct mountain ridges behind her, framed from the waist up
+Composition: centered character or creature, readable silhouette, enough padding for a circular or square token crop.
+Art direction: hand-inked dark-fantasy character illustration with strong black contour lines, visible cross-hatching, muted earth-tone colors, desaturated shadows, expressive slightly stylized faces, and a moody charcoal-and-parchment atmosphere. Keep the rendering painterly beneath the inkwork, with clean readable forms for a tabletop token.
+Constraints: no text, no lettering, no watermark, no border, no UI, no collage.
+
+Token processing: approved local stamp-token.py, separate PNG with transparent corners; crop recorded in token command below.
+python foundry-module/scripts/stamp-token.py "campaign/nations/Melisor Magocracy/npcs/Octavia Sere portrait.png" "campaign/nations/Melisor Magocracy/npcs/Octavia Sere token.png" --crop 285 0 1085 800

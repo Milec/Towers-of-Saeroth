@@ -1,0 +1,12 @@
+Generated with the built-in ImageGen tool on 2026-11-06.
+Source: campaign/nations/Melisor Magocracy/npcs/Tavian Calvo.md
+
+Use case: stylized-concept.
+Asset type: square Foundry VTT NPC or monster portrait and token art.
+Subject: A stocky middle-aged gnome man serving as a mountain expedition quartermaster, warm brown skin, large alert hazel eyes, short copper hair going grey at the temples, square trimmed beard, heavy ochre wool coat with reinforced leather elbows and many practical pockets, a bundle of brass store keys and a chalk tally board without readable marks, patient wary expression, stacked wooden supply crates and coiled rope in a canvas stores tent behind him, framed from the waist up
+Composition: centered character or creature, readable silhouette, enough padding for a circular or square token crop.
+Art direction: hand-inked dark-fantasy character illustration with strong black contour lines, visible cross-hatching, muted earth-tone colors, desaturated shadows, expressive slightly stylized faces, and a moody charcoal-and-parchment atmosphere. Keep the rendering painterly beneath the inkwork, with clean readable forms for a tabletop token.
+Constraints: no text, no lettering, no watermark, no border, no UI, no collage.
+
+Token processing: approved local stamp-token.py, separate PNG with transparent corners; crop recorded in token command below.
+python foundry-module/scripts/stamp-token.py "campaign/nations/Melisor Magocracy/npcs/Tavian Calvo portrait.png" "campaign/nations/Melisor Magocracy/npcs/Tavian Calvo token.png" --crop 240 0 1040 800

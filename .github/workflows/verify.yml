@@ -43,12 +43,16 @@ jobs:
       - name: Check caravan scene assets and geometry
         run: |
           node foundry-module/scripts/test-milo.mjs
+          node foundry-module/scripts/test-shamblers.mjs
           node foundry-module/scripts/test-content-sync.mjs
           node foundry-module/scripts/test-caravan-scene.mjs
           node foundry-module/scripts/test-tavern-scene.mjs
           node foundry-module/scripts/test-session-three-scenes.mjs
           node foundry-module/scripts/test-caravan-background-repair.mjs
           node --test foundry-module/scripts/test-foundry-mcp.mjs
+          node --test foundry-module/scripts/test-session-inbox.mjs
+          node --test foundry-module/scripts/test-document-ids.mjs
+          node foundry-module/scripts/test-expedition-scenes.mjs
       - name: Test atlas behavior
         working-directory: tools/atlas-tests
         run: pnpm run test:features
@@ -74,3 +78,4 @@ jobs:
           node tools/atlas-tests/editor-publisher.cjs
           node tools/atlas-tests/panels.cjs
           node tools/atlas-tests/battlemaps.cjs
+          node tools/atlas-tests/session-package.cjs
