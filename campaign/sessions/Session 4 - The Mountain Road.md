@@ -6,6 +6,8 @@ audience: gm
 party: 6 level-2 characters
 ---
 
+**Played recap:** [[Session 4 - Waystation WLW]]. The guard captain was [[Karoline]].
+
 ## Starting position
 
 Continue from [[Session 3 - The Mountain Road]]. Two random encounters consumed Session 3; none of the scenes below were reached. This unused prep now belongs to Session 4. Resume from the party's actual stopping point, with their current resources.
