@@ -5,6 +5,8 @@ const base=process.env.ATLAS_TEST_URL||'http://127.0.0.1:8899/';
  try{
   const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'});
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  // This test owns the local drafts; poi-sync.cjs covers published locations.
+  await page.route('**/campaign-pois.json',route=>route.fulfill({json:{version:1,pois:[]}}));
   await page.goto(base+'#/atlas');let frame=page.frameLocator('.atlas-frame');
   await frame.locator('#customPOIPanel summary').click();await frame.locator('#customPOIAdd').click();
   await frame.locator('#customPOIName').fill('Future Ash Tower');await frame.locator('#customPOIKind').selectOption('tower');
