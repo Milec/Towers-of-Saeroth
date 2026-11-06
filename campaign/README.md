@@ -18,6 +18,7 @@ The four indexes and the two notes everything else hangs off:
 - [[The Saeroth Calendar]] — common months, weekdays, and date notation
 - [[The Towers]] — the campaign premise
 - [[Atlas Locations]] — locations added through the map editor
+- [[Campaign Library]] — entries created through the website editor
 - [[Player Characters]] — the party, organized by player
 
 ## How these notes are read

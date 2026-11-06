@@ -133,7 +133,8 @@
     const shared=decode(value).map(p=>({...p,published:true})),local=items;shared.forEach(p=>publishedItems.set(p.id,p));
     items=[...shared.map(p=>local.find(l=>l.id===p.id&&(l.pendingSync||l.pendingReview&&l.noteSHA!==p.noteSHA))||p),...local.filter(p=>!shared.some(s=>s.id===p.id)&&(!p.published||p.pendingSync||p.pendingReview))];sync();
     try{localStorage.setItem(KEY,JSON.stringify({version:1,pois:items}));}catch(_){}
-    const link=location.hash.match(/^#custompoi-(\d+)$/);if(link)show('custompoi',+link[1],false);
+    const link=location.hash.match(/^#custompoi-(\d+)$/);
+    if(link){const alreadySelected=selected?.type==='custompoi'&&selected.id===+link[1];show('custompoi',+link[1],!alreadySelected&&window.ATLAS_RESTORED_SELECTION!==location.hash);}
   }).catch(()=>{});
-  const initial=location.hash.match(/^#custompoi-(\d+)$/);if(initial)show('custompoi',+initial[1],false);
+  const initial=location.hash.match(/^#custompoi-(\d+)$/);if(initial)show('custompoi',+initial[1],true);
 })();

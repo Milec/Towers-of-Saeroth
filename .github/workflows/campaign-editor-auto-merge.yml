@@ -1,0 +1,34 @@
+name: Publish verified campaign editor entries
+
+on:
+  workflow_run:
+    workflows: [Verify repository and interface]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: campaign-editor-auto-merge
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      # workflow_run has write access. Only the helper already trusted on main
+      # is checked out; no PR source, artifact, cache, or dependency is executed.
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+          sparse-checkout: .github/scripts
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const publish = require('./.github/scripts/campaign-editor-publish.cjs');
+            const result = await publish({github, context});
+            core.info(result.reason);

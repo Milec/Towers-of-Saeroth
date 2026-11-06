@@ -7,7 +7,17 @@
     "test:audits": "node audits.cjs",
     "test:handouts": "node handouts.cjs",
     "test:hexcrawl": "node hexcrawl.cjs",
-    "test:usability": "node usability.cjs"
+    "test:usability": "node usability.cjs",
+    "test:workspace": "node workspace.cjs",
+    "test:workbench": "node workbench.cjs",
+    "test:search": "node search.cjs",
+    "test:reader": "node reader.cjs",
+    "test:visual": "node visual-review.cjs",
+    "test:editor": "node editor.cjs",
+    "test:editor-publisher": "node editor-publisher.cjs",
+    "test:publisher": "node publisher.cjs",
+    "test:editor-publish": "node editor-auto-merge.cjs",
+    "test:panels": "node panels.cjs"
   },
   "devDependencies": {
     "jsdom": "30.0.1",

@@ -14,3 +14,19 @@ through `tools/browser.js`. They do not require an /opt installation.
 The PR workflow runs these checks; Pages runs them before deployment.
 
 `pnpm run test:handouts` checks PNG export and outside-territory redaction.
+
+`pnpm run test:workspace` checks the campaign desk, portable backups, and native
+Foundry journal downloads. `test:workbench` checks atlas saved places/views,
+search and recovery. `test:search` covers grouped search, keyboard navigation,
+lazy rules loading, retries, and phone/landscape layouts. `test:reader` covers
+connected-note previews, outlines, focus, and navigation. `test:panels` checks
+the four atlas task views, preserved travel state, and mobile return-to-map.
+`test:editor` covers in-site authoring, preview, and draft recovery.
+`test:editor-publisher` connects the actual editor and publishing client to a
+simulated GitHub service in Chromium. `test:publisher` and `test:editor-publish`
+check publication conflicts, recovery, and the auto-merge workflow guards.
+These run in CI without publishing real notes or using real credentials.
+
+`pnpm run test:visual` is an optional local screenshot pass at 375, 768, and
+1440 pixels in both themes. Set `ATLAS_SCREENSHOT_DIR` to keep its images outside
+the temporary `_site/` build output.

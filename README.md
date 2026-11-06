@@ -14,6 +14,16 @@ PF2e worldbuilding vault, readable as a website and installable as an app.
 
 ## The web app
 
+The site opens on a **campaign desk** with the latest recap, party references,
+pinned notes, a session packet, checklist, and scratchpad. Export the packet as a
+GM-only Foundry journal, or take a JSON backup to another device. A searchable
+**world library**, connected-entry previews, and an atlas with saved places and
+camera views make the maintained lore easier to use during play. Create and edit
+entries on the website, keep local drafts, and publish through repository checks
+using an author connection. Atlas controls are grouped into Places, Travel,
+Layers, and Saved, with a dedicated return-to-map control on phones. See the
+[workspace guide](docs/Campaign%20workspace.md) for features, storage, and tests.
+
 Every push to `main` deploys the whole repo to GitHub Pages as a browsable,
 installable site — no Obsidian download needed:
 **<https://milec.github.io/Towers-of-Saeroth/>**

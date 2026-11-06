@@ -45,28 +45,4 @@
     if(!nodes)fig.append(fig.querySelector('.rel-controls'));
   };
 
-  const modal=q('#searchModal'), input=q('#searchInput'), results=q('#searchResults'), box=modal.querySelector('.modalbox');
-  input.id='searchInput'; input.placeholder='Search lore, places or rules';
-  const label=document.createElement('label');label.htmlFor=input.id;label.textContent='Search Saeroth';
-  const close=document.createElement('button');close.textContent='Close search';close.className='search-close';
-  const scope=document.createElement('select');scope.setAttribute('aria-label','Search scope');scope.innerHTML=['All','Lore','Places','Rules'].map(x=>`<option>${x}</option>`).join('');
-  box.prepend(label,close,scope);
-  let opener, index;
-  const background=()=>[q('.topbar'),q('.layout'),q('#graphView')];
-  function shut(){modal.hidden=true;background().forEach(e=>{if(e)e.inert=false;});opener?.focus();}
-  async function refresh(){
-    const query=input.value.trim().toLowerCase(), mode=scope.value;
-    let rows=search(input.value, mode).filter(r=>mode==='All'||mode==='Lore'&&r.p.startsWith('campaign/')||mode==='Rules'&&r.p.startsWith('vault/'));
-    if(mode==='Places')rows=[];
-    if(query&&(mode==='All'||mode==='Places')&&index) rows.push(...Object.entries(index.entries).filter(([k,r])=>r.name?.toLowerCase().includes(query)).slice(0,40).map(([k,r])=>({p:'atlas#'+k,name:r.name,snippet:'Map '+k.split('-')[0]+(r.direct?' · Dedicated campaign lore':' · Atlas record')})));
-    showResults(rows.slice(0,60));
-  }
-  q('#searchBtn').addEventListener('click',e=>{e.stopImmediatePropagation();opener=document.activeElement;modal.hidden=false;background().forEach(e=>{if(e)e.inert=true;});input.focus();ensureVault().then(refresh).catch(()=>{});if(!index)fetch('atlas/lore-index.json').then(r=>r.json()).then(v=>{index=v;refresh();}).catch(()=>{});},true);
-  close.onclick=shut;
-  modal.addEventListener('click',e=>{if(e.target===modal||e.target.closest('#searchResults a')){e.stopImmediatePropagation();shut();}},true);
-  input.addEventListener('input',e=>{e.stopImmediatePropagation();refresh();},true);scope.onchange=refresh;
-  modal.addEventListener('keydown',e=>{
-    if(e.key==='Escape'){e.stopImmediatePropagation();shut();}
-    if(e.key==='Tab') {const items=[...box.querySelectorAll('button,input,select,a[href]')].filter(e=>!e.hidden),first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}
-  });
 })();

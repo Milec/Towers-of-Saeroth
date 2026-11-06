@@ -14,9 +14,10 @@ const shared={id:55,name:'Campaign Tower',kind:'tower',x:100,y:120,notes:'Edited
     window.syncCalls=[];
     POIGitHub.createClient=token=>({connect:async()=>{if(token!=='test-only-token')throw Error('Wrong fixture token');},sync:async(p,directory)=>{window.syncCalls.push({p,directory});return {notePath:p.notePath,noteSHA:'b'.repeat(40),url:'https://github.com/Milec/Towers-of-Saeroth/pull/1000'};}});
   });
-  await frame.locator('#poiSync summary').click();await frame.locator('#poiSyncToken').fill('test-only-token');await frame.locator('#poiSyncConnect button').click();await frame.locator('#poiSyncStatus').getByText(/Connected/).waitFor();
+  await frame.locator('[data-atlas-panel=saved]').click();await frame.locator('#poiSync summary').click();await frame.locator('#poiSyncToken').fill('test-only-token');await frame.locator('#poiSyncConnect button').click();await frame.locator('#poiSyncStatus').getByText(/Connected/).waitFor();
   assert.equal(await frame.locator('#poiSyncToken').inputValue(),'');
-  await frame.locator('#customPOIEdit').click();await frame.locator('#customPOINotes').fill('An encounter added from the map.');await frame.locator('#customPOIForm button[type=submit]').click();
+  await frame.locator('[data-atlas-panel=places]').click();await frame.locator('#customPOIEdit').click();await frame.locator('#customPOINotes').fill('An encounter added from the map.');await frame.locator('#customPOIForm button[type=submit]').click();
+  await frame.locator('[data-atlas-panel=saved]').click();
   await frame.locator('#poiSyncStatus a').waitFor();const calls=await inner.evaluate(()=>window.syncCalls);assert.equal(calls.length,1);assert.equal(calls[0].p.notes,'An encounter added from the map.');
   const stored=await inner.evaluate(()=>JSON.parse(localStorage.getItem('saeroth-custom-pois-v1')).pois);assert.equal(stored[0].noteSHA,'b'.repeat(40));assert(stored[0].pendingReview);
   assert.equal(await inner.evaluate(()=>[localStorage,sessionStorage].some(s=>Object.values(s).some(v=>v.includes('test-only-token')))),false);
