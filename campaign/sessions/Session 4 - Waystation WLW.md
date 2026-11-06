@@ -11,6 +11,6 @@ Aurele dressed up as a woman and joined Yrsa for girls’ night. Together, they 
 
 By morning, they’d been caught stealing. Somehow, they still managed to convince Karoline to come with them.
 
-After what felt like ages, the party finally reached the expedition site.
+After what felt like ages, the party finally reached the [[Expedition Site|expedition site]].
 
 Previous session: [[Session 3 - The Mountain Road]].
