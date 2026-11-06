@@ -11,6 +11,8 @@ on:
       - 'tools/build_site.py'
       - 'tools/build_atlas_lore.py'
       - 'tools/build_campaign_pois.py'
+      - 'tools/atlas-tests/**'
+      - '.github/workflows/verify.yml'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
     inputs:
