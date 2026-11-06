@@ -42,7 +42,29 @@ function actorData(source) {
     data.flags[MODULE_ID] = { ...legacyFlags, ...data.flags[MODULE_ID] };
     delete data.flags.saeroth;
   }
-  for (const item of items) delete item._id;
+  // Embedded spell locations, prepared slots and grants refer to these IDs.
+  // Replacing them with generated IDs silently disconnects a caster's spells.
+  // Validate the feed before touching the existing actor, then retain the IDs
+  // explicitly when creating its embedded items below.
+  const ids = new Set();
+  for (const item of items) {
+    if (!/^[a-zA-Z0-9]{16}$/.test(item._id) || ids.has(item._id)) {
+      throw new Error(`The content feed for ${data.name} contains invalid or duplicate item IDs. Update the repository content before synchronizing.`);
+    }
+    ids.add(item._id);
+  }
+  for (const item of items) {
+    if (item.type === "spell" && item.system?.location?.value && !items.some(entry => entry._id === item.system.location.value && entry.type === "spellcastingEntry")) {
+      throw new Error(`The content feed for ${data.name} has a spell without its spellcasting entry.`);
+    }
+    if (item.type === "spellcastingEntry") {
+      for (const slot of Object.values(item.system?.slots ?? {})) {
+        for (const prepared of Object.values(slot.prepared ?? {})) {
+          if (prepared.id && !items.some(spell => spell._id === prepared.id && spell.type === "spell")) throw new Error(`The content feed for ${data.name} has a prepared slot without its spell.`);
+        }
+      }
+    }
+  }
   // Let Foundry supply current defaults rather than copying old module-pack
   // token schema fields into a live world document.
   delete data.prototypeToken?.depth;
@@ -51,7 +73,7 @@ function actorData(source) {
 
 async function replaceItems(actor, items) {
   if (actor.items.size) await actor.deleteEmbeddedDocuments("Item", actor.items.map((item) => item.id));
-  if (items.length) await actor.createEmbeddedDocuments("Item", items);
+  if (items.length) await actor.createEmbeddedDocuments("Item", items, { keepId: true });
 }
 
 async function syncContent() {

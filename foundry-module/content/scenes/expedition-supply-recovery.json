@@ -1,0 +1,4094 @@
+{
+  "_stats": {
+    "coreVersion": "14.364"
+  },
+  "_id": "d5dda8b6b4cbcc85",
+  "name": "Old Survey Quarry — Supply Recovery",
+  "active": false,
+  "navigation": false,
+  "navOrder": 0,
+  "width": 3200,
+  "height": 3200,
+  "padding": 0,
+  "shiftX": 0,
+  "shiftY": 0,
+  "initial": {
+    "x": 1600,
+    "y": 1600,
+    "scale": 0.3
+  },
+  "initialLevel": "631a589c18fe74a1",
+  "thumb": "modules/saeroth-pf2e-content/assets/maps/expedition-supply-recovery.webp",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "distance": 5,
+    "units": "ft",
+    "alpha": 0.15,
+    "color": "#b8b0a0",
+    "style": "solidLines",
+    "thickness": 1
+  },
+  "tokenVision": true,
+  "environment": {
+    "darknessLevel": 0,
+    "darknessLock": true,
+    "cycle": false,
+    "globalLight": {
+      "enabled": true,
+      "bright": true,
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  },
+  "levels": [
+    {
+      "_id": "631a589c18fe74a1",
+      "name": "Battle map",
+      "elevation": {
+        "bottom": null,
+        "top": null
+      },
+      "background": {
+        "src": "modules/saeroth-pf2e-content/assets/maps/expedition-supply-recovery.webp",
+        "color": "#252820"
+      },
+      "textures": {
+        "fit": "fill",
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "offsetX": 0,
+        "offsetY": 0,
+        "rotation": 0
+      }
+    }
+  ],
+  "walls": [
+    {
+      "_id": "e6f55a933c1dd2fc",
+      "c": [
+        0,
+        0,
+        149,
+        0
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "61099028fed08131",
+      "c": [
+        149,
+        0,
+        146,
+        291
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "f2ccef69c1832f66",
+      "c": [
+        146,
+        291,
+        163,
+        582
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "6ce124fe8435dd9b",
+      "c": [
+        163,
+        582,
+        237,
+        873
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "fea4843f31531a28",
+      "c": [
+        237,
+        873,
+        292,
+        1164
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "78b8b9d4f405c85d",
+      "c": [
+        292,
+        1164,
+        200,
+        1455
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "0a7c1915b6b87692",
+      "c": [
+        200,
+        1455,
+        303,
+        1745
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "84904eaa796b24c7",
+      "c": [
+        303,
+        1745,
+        248,
+        2036
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "b797073b26886154",
+      "c": [
+        248,
+        2036,
+        275,
+        2327
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "31ab3cd0e93b0f89",
+      "c": [
+        275,
+        2327,
+        248,
+        2618
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "d8ba2a08ed8b6335",
+      "c": [
+        248,
+        2618,
+        298,
+        2909
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "5ea5f4732ad8b500",
+      "c": [
+        298,
+        2909,
+        145,
+        3200
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "e491bede72f0bf9f",
+      "c": [
+        145,
+        3200,
+        0,
+        3200
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "6a7d8949b03e116a",
+      "c": [
+        0,
+        3200,
+        0,
+        0
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "f06953b4f8561c09",
+      "c": [
+        3200,
+        0,
+        3057,
+        0
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "76551e1f35a36dd4",
+      "c": [
+        3057,
+        0,
+        2921,
+        291
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "fc40e88a7dbb7873",
+      "c": [
+        2921,
+        291,
+        2984,
+        582
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "822cb2f5bb08ca3e",
+      "c": [
+        2984,
+        582,
+        2966,
+        873
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a95bd6b00320d4dd",
+      "c": [
+        2966,
+        873,
+        2980,
+        1164
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "2f47a11b406e26a8",
+      "c": [
+        2980,
+        1164,
+        2993,
+        1455
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "24374433502140ce",
+      "c": [
+        2993,
+        1455,
+        2979,
+        1745
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "9e4b79c812d3ef03",
+      "c": [
+        2979,
+        1745,
+        2945,
+        2036
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "300ed909cabbe464",
+      "c": [
+        2945,
+        2036,
+        2944,
+        2327
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "aa230e9e8d6e9299",
+      "c": [
+        2944,
+        2327,
+        2965,
+        2618
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "3be66ddf455687fa",
+      "c": [
+        2965,
+        2618,
+        3029,
+        2909
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "b5faa3740809362f",
+      "c": [
+        3029,
+        2909,
+        2990,
+        3200
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "47be02b5bff12b90",
+      "c": [
+        2990,
+        3200,
+        3200,
+        3200
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "c1d2384a82a3d9c5",
+      "c": [
+        3200,
+        3200,
+        3200,
+        0
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "f4d8f0db65b6b276",
+      "c": [
+        716,
+        610,
+        1423,
+        610
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "6eed2670286960ab",
+      "c": [
+        1706,
+        610,
+        2484,
+        610
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "f83eee1ab2b71e67",
+      "c": [
+        716,
+        610,
+        716,
+        1850
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "7e2ab885f0047032",
+      "c": [
+        2484,
+        610,
+        2484,
+        1407
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "ec6759442d51c1fd",
+      "c": [
+        2484,
+        1708,
+        2484,
+        2381
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "725323af6a9f13c8",
+      "c": [
+        716,
+        2381,
+        1450,
+        2381
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "e08fc46ebd81d73b",
+      "c": [
+        1750,
+        2381,
+        2484,
+        2381
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "667b8ed9facf2906",
+      "c": [
+        1246,
+        610,
+        1246,
+        1354
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "d4b82f98381c7ad1",
+      "c": [
+        1246,
+        1354,
+        1706,
+        1354
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 20,
+      "light": 20,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "5aa3fa037569cc9c",
+      "c": [
+        956,
+        810,
+        936,
+        838
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "c8e09ac29d21acbf",
+      "c": [
+        936,
+        838,
+        895,
+        839
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "4ecc652dda6efe8a",
+      "c": [
+        895,
+        839,
+        874,
+        810
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "43bc084506a0b6f8",
+      "c": [
+        874,
+        810,
+        894,
+        779
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "bdd03ddac953652d",
+      "c": [
+        894,
+        779,
+        936,
+        781
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "37e4736f8c061362",
+      "c": [
+        936,
+        781,
+        956,
+        810
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "b1f8a9044eb8c197",
+      "c": [
+        2333,
+        810,
+        2307,
+        841
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "2c0cde99116b6fcc",
+      "c": [
+        2307,
+        841,
+        2260,
+        843
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a621142ed41e1e01",
+      "c": [
+        2260,
+        843,
+        2242,
+        810
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "203549c396d0cc36",
+      "c": [
+        2242,
+        810,
+        2263,
+        781
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "9a497f5859837a6b",
+      "c": [
+        2263,
+        781,
+        2307,
+        778
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "145db4edf10b4550",
+      "c": [
+        2307,
+        778,
+        2333,
+        810
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "8e71ea82b3bdf385",
+      "c": [
+        963,
+        2181,
+        937,
+        2210
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "502f9a4c69369491",
+      "c": [
+        937,
+        2210,
+        894,
+        2211
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "d61b64b7a683e65c",
+      "c": [
+        894,
+        2211,
+        872,
+        2181
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "5c072f22ee9bf0fb",
+      "c": [
+        872,
+        2181,
+        894,
+        2150
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "e1f2f98d2be942c6",
+      "c": [
+        894,
+        2150,
+        939,
+        2150
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "388070a05e6bdbbd",
+      "c": [
+        939,
+        2150,
+        963,
+        2181
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "be6c3b0b9bb92d88",
+      "c": [
+        2327,
+        2181,
+        2308,
+        2214
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "44580576e3d13827",
+      "c": [
+        2308,
+        2214,
+        2263,
+        2210
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "ca43cfe1211e89f2",
+      "c": [
+        2263,
+        2210,
+        2239,
+        2181
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "7f8deda453a122e9",
+      "c": [
+        2239,
+        2181,
+        2262,
+        2150
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "0579b80f90ee74b4",
+      "c": [
+        2262,
+        2150,
+        2305,
+        2152
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "9bacb4777576ab8a",
+      "c": [
+        2305,
+        2152,
+        2327,
+        2181
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "15c0ea0c382959bf",
+      "c": [
+        2350,
+        2936,
+        2336,
+        2949
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a784494df0114f20",
+      "c": [
+        2336,
+        2949,
+        2316,
+        2945
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "21987ee2b2c3fd55",
+      "c": [
+        2316,
+        2945,
+        2316,
+        2927
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "83fd8acb8041645e",
+      "c": [
+        2316,
+        2927,
+        2337,
+        2921
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "fe11c06042f41293",
+      "c": [
+        2337,
+        2921,
+        2350,
+        2936
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "8fd51fa1fadc07f4",
+      "c": [
+        2750,
+        1515,
+        2740,
+        1530
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "09e95536bd8eb629",
+      "c": [
+        2740,
+        1530,
+        2719,
+        1524
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "cb0b07cf8b0c1d32",
+      "c": [
+        2719,
+        1524,
+        2721,
+        1508
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "451f3d644dbecb67",
+      "c": [
+        2721,
+        1508,
+        2739,
+        1502
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "6fb45e5ed80c8923",
+      "c": [
+        2739,
+        1502,
+        2750,
+        1515
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "f5a028c91559daee",
+      "c": [
+        2650,
+        2603,
+        2639,
+        2616
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "63dcc98852a72cb9",
+      "c": [
+        2639,
+        2616,
+        2619,
+        2611
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "e9c893f38ff47e84",
+      "c": [
+        2619,
+        2611,
+        2620,
+        2595
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "8763880acd41d04f",
+      "c": [
+        2620,
+        2595,
+        2639,
+        2589
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "0d4f52750a8f221a",
+      "c": [
+        2639,
+        2589,
+        2650,
+        2603
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "7b8bf33447dc73e5",
+      "c": [
+        2936,
+        1162,
+        2924,
+        1175
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "0177bd9f8529c5b0",
+      "c": [
+        2924,
+        1175,
+        2906,
+        1170
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "40560b06eda1facb",
+      "c": [
+        2906,
+        1170,
+        2905,
+        1154
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "c641d5712aef4c96",
+      "c": [
+        2905,
+        1154,
+        2924,
+        1148
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "15c79f992bf621b4",
+      "c": [
+        2924,
+        1148,
+        2936,
+        1162
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "8fdbd52eeea8cfe9",
+      "c": [
+        2227,
+        2607,
+        2216,
+        2621
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "09f00ac3b15b7e1e",
+      "c": [
+        2216,
+        2621,
+        2197,
+        2615
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "84044058740e2c53",
+      "c": [
+        2197,
+        2615,
+        2198,
+        2599
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "2d76c945212b68e0",
+      "c": [
+        2198,
+        2599,
+        2217,
+        2593
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a78afedae3de1715",
+      "c": [
+        2217,
+        2593,
+        2227,
+        2607
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "219f346fa690c54a",
+      "c": [
+        529,
+        2467,
+        516,
+        2481
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "9bb36a046943737f",
+      "c": [
+        516,
+        2481,
+        497,
+        2475
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "e6694c41418b935c",
+      "c": [
+        497,
+        2475,
+        497,
+        2459
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "607d81d6043e4191",
+      "c": [
+        497,
+        2459,
+        516,
+        2454
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "223b31a08e8bff4d",
+      "c": [
+        516,
+        2454,
+        529,
+        2467
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a826fc0bcbd95118",
+      "c": [
+        2702,
+        350,
+        2692,
+        365
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "2e12c67613f15bb7",
+      "c": [
+        2692,
+        365,
+        2672,
+        358
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "b3fe90e1513ead82",
+      "c": [
+        2672,
+        358,
+        2671,
+        342
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "39ea5b4c9956b821",
+      "c": [
+        2671,
+        342,
+        2691,
+        337
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "bfd625b7d6a409ec",
+      "c": [
+        2691,
+        337,
+        2702,
+        350
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "45c1f0221ebc148b",
+      "c": [
+        2871,
+        1902,
+        2849,
+        1931
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "cbadba8d5c096656",
+      "c": [
+        2849,
+        1931,
+        2806,
+        1934
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "519984f878f68da5",
+      "c": [
+        2806,
+        1934,
+        2779,
+        1902
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "d7854f63b643df70",
+      "c": [
+        2779,
+        1902,
+        2806,
+        1872
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "5487d5688ea2e609",
+      "c": [
+        2806,
+        1872,
+        2854,
+        1867
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "da739fd3cbf037d4",
+      "c": [
+        2854,
+        1867,
+        2871,
+        1902
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "605f6a3e14084273",
+      "c": [
+        477,
+        1936,
+        459,
+        1961
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "e64b34a95155943e",
+      "c": [
+        459,
+        1961,
+        420,
+        1964
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "6c36ff1483d82d35",
+      "c": [
+        420,
+        1964,
+        406,
+        1936
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "f222c97fc1257f00",
+      "c": [
+        406,
+        1936,
+        423,
+        1912
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "780e93ea093d899f",
+      "c": [
+        423,
+        1912,
+        461,
+        1908
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "fdfa5e55468adb6a",
+      "c": [
+        461,
+        1908,
+        477,
+        1936
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "25298210a43857b1",
+      "c": [
+        1180,
+        2825,
+        1155,
+        2856
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "ab154c7be185a97c",
+      "c": [
+        1155,
+        2856,
+        1110,
+        2857
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "8a9af601856422f0",
+      "c": [
+        1110,
+        2857,
+        1086,
+        2825
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "04af2b964816d125",
+      "c": [
+        1086,
+        2825,
+        1112,
+        2796
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "7ec3612b0ac97f5a",
+      "c": [
+        1112,
+        2796,
+        1157,
+        2792
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "f8d796c0cd7c2d8f",
+      "c": [
+        1157,
+        2792,
+        1180,
+        2825
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a24a1fad902edbc4",
+      "c": [
+        300,
+        623,
+        277,
+        650
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "1c5e554252e189f9",
+      "c": [
+        277,
+        650,
+        240,
+        648
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "96728ad71594382e",
+      "c": [
+        240,
+        648,
+        220,
+        623
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "1086c06cd846e663",
+      "c": [
+        220,
+        623,
+        238,
+        595
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "b9f949599af99498",
+      "c": [
+        238,
+        595,
+        276,
+        598
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "340d7eee5dac42cd",
+      "c": [
+        276,
+        598,
+        300,
+        623
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "740c997a53cea13b",
+      "c": [
+        520,
+        745,
+        491,
+        784
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "f9f863e5911bf306",
+      "c": [
+        491,
+        784,
+        440,
+        778
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "683504a4ce6944d1",
+      "c": [
+        440,
+        778,
+        414,
+        745
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "ee20cf0f0bb6969c",
+      "c": [
+        414,
+        745,
+        438,
+        710
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "5c5d6fce4903e867",
+      "c": [
+        438,
+        710,
+        487,
+        713
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "e2493a3986513a32",
+      "c": [
+        487,
+        713,
+        520,
+        745
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "5085daf8c39e8bfd",
+      "c": [
+        2990,
+        860,
+        2956,
+        901
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "d671a56300ebddc8",
+      "c": [
+        2956,
+        901,
+        2895,
+        903
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "44ae46223e392f93",
+      "c": [
+        2895,
+        903,
+        2863,
+        860
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "ca9a108d7b86815e",
+      "c": [
+        2863,
+        860,
+        2899,
+        821
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a004ef93f138c3a2",
+      "c": [
+        2899,
+        821,
+        2954,
+        822
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "1a192528b3eb71d7",
+      "c": [
+        2954,
+        822,
+        2990,
+        860
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "abdc84696bd36738",
+      "c": [
+        2717,
+        2194,
+        2680,
+        2233
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "25f0b9fe2e86156d",
+      "c": [
+        2680,
+        2233,
+        2621,
+        2237
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "b7b4193ffc037c76",
+      "c": [
+        2621,
+        2237,
+        2586,
+        2194
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "31c84ed4beb62aab",
+      "c": [
+        2586,
+        2194,
+        2624,
+        2156
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "c38bae15769e200c",
+      "c": [
+        2624,
+        2156,
+        2683,
+        2151
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "3d9fe3aa3950ce41",
+      "c": [
+        2683,
+        2151,
+        2717,
+        2194
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "70a69c3bdba351fa",
+      "c": [
+        1899,
+        376,
+        1875,
+        407
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "eabad1d09e56002f",
+      "c": [
+        1875,
+        407,
+        1833,
+        405
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "d618102cc2a495cd",
+      "c": [
+        1833,
+        405,
+        1810,
+        376
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "5c03da97fff1e798",
+      "c": [
+        1810,
+        376,
+        1829,
+        342
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "e1efa5024809f237",
+      "c": [
+        1829,
+        342,
+        1876,
+        345
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "67db6f6d85574402",
+      "c": [
+        1876,
+        345,
+        1899,
+        376
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "be68e680cd6f4ea1",
+      "c": [
+        357,
+        2273,
+        322,
+        2318
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "4454b0eb0abca06c",
+      "c": [
+        322,
+        2318,
+        257,
+        2319
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "ca407b5652d4ab0b",
+      "c": [
+        257,
+        2319,
+        220,
+        2273
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "502c45c19021fcd6",
+      "c": [
+        220,
+        2273,
+        252,
+        2222
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "05766384ad0f2425",
+      "c": [
+        252,
+        2222,
+        328,
+        2220
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "8b622defea5c75f0",
+      "c": [
+        328,
+        2220,
+        357,
+        2273
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "bf89b3a5600eb834",
+      "c": [
+        2921,
+        2837,
+        2889,
+        2878
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "399de93a22c16669",
+      "c": [
+        2889,
+        2878,
+        2830,
+        2877
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "b3b21ecfe574149e",
+      "c": [
+        2830,
+        2877,
+        2800,
+        2837
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "2dc65464a826c2d3",
+      "c": [
+        2800,
+        2837,
+        2827,
+        2792
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a7da89f95543ff60",
+      "c": [
+        2827,
+        2792,
+        2892,
+        2791
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "21eebf8e17f6ad95",
+      "c": [
+        2892,
+        2791,
+        2921,
+        2837
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "9c02f523daa95bca",
+      "c": [
+        531,
+        2925,
+        510,
+        2956
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "16172ab89d5c09ff",
+      "c": [
+        510,
+        2956,
+        463,
+        2957
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "902b604d75a429dc",
+      "c": [
+        463,
+        2957,
+        446,
+        2925
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "0a3f95e23856d811",
+      "c": [
+        446,
+        2925,
+        463,
+        2891
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "eb8209bed8236fdf",
+      "c": [
+        463,
+        2891,
+        511,
+        2891
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "716dd4291570c1aa",
+      "c": [
+        511,
+        2891,
+        531,
+        2925
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "dfaa74e852be1375",
+      "c": [
+        945,
+        3034,
+        918,
+        3071
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "65963f53900b6540",
+      "c": [
+        918,
+        3071,
+        864,
+        3073
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "0331336ae2ee28b3",
+      "c": [
+        864,
+        3073,
+        832,
+        3034
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "891cfdd5203b7a7e",
+      "c": [
+        832,
+        3034,
+        861,
+        2993
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "f7599e945d88cc49",
+      "c": [
+        861,
+        2993,
+        920,
+        2995
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "7d4568ff9ad61e14",
+      "c": [
+        920,
+        2995,
+        945,
+        3034
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "bc23b666edb8e187",
+      "c": [
+        543,
+        1372,
+        511,
+        1418
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "420f80d12b063352",
+      "c": [
+        511,
+        1418,
+        442,
+        1421
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "21952a57cbe358e6",
+      "c": [
+        442,
+        1421,
+        407,
+        1372
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "9ba95fec8e96071b",
+      "c": [
+        407,
+        1372,
+        439,
+        1319
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "2d6cbf2d467dfc7c",
+      "c": [
+        439,
+        1319,
+        513,
+        1323
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a780f4c20930aab1",
+      "c": [
+        513,
+        1323,
+        543,
+        1372
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "09e600abc118a012",
+      "c": [
+        1304,
+        3032,
+        1284,
+        3056
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "83fa364083cb4e47",
+      "c": [
+        1284,
+        3056,
+        1247,
+        3060
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "15bd95813bb343a8",
+      "c": [
+        1247,
+        3060,
+        1225,
+        3032
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "8fd1cb16fe65f1dd",
+      "c": [
+        1225,
+        3032,
+        1246,
+        3003
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "50f37dafb64de73e",
+      "c": [
+        1246,
+        3003,
+        1287,
+        3005
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "cb07b34479009573",
+      "c": [
+        1287,
+        3005,
+        1304,
+        3032
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a823a7809d4f2b11",
+      "c": [
+        677,
+        2746,
+        663,
+        2775
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "2e0f71ebda9c7cdc",
+      "c": [
+        663,
+        2775,
+        622,
+        2774
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "b3fb3c5622b4877b",
+      "c": [
+        622,
+        2774,
+        600,
+        2746
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "39e706c16001d946",
+      "c": [
+        600,
+        2746,
+        622,
+        2718
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "bfd2d12c9284723d",
+      "c": [
+        622,
+        2718,
+        663,
+        2718
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "45be9b97cfd1c408",
+      "c": [
+        663,
+        2718,
+        677,
+        2746
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "cbaa660217e9cea7",
+      "c": [
+        1325,
+        224,
+        1293,
+        269
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "5196306d55372072",
+      "c": [
+        1293,
+        269,
+        1231,
+        264
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "d781fad887b9b969",
+      "c": [
+        1231,
+        264,
+        1198,
+        224
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "5d6dc543c5070b34",
+      "c": [
+        1198,
+        224,
+        1228,
+        180
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "91954af93ab94d78",
+      "c": [
+        1228,
+        180,
+        1291,
+        182
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "0ba9808efd6bfbad",
+      "c": [
+        1291,
+        182,
+        1325,
+        224
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "85bdb623c01ea9e2",
+      "c": [
+        2934,
+        2507,
+        2913,
+        2536
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "ffd1ebb882d15817",
+      "c": [
+        2913,
+        2536,
+        2871,
+        2536
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "a94474a54584064c",
+      "c": [
+        2871,
+        2536,
+        2846,
+        2507
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "2358aa3a0836b481",
+      "c": [
+        2846,
+        2507,
+        2867,
+        2473
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "9d6cdfcfcae962b6",
+      "c": [
+        2867,
+        2473,
+        2915,
+        2475
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "178115648d9c10eb",
+      "c": [
+        2915,
+        2475,
+        2934,
+        2507
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "6236f7a12523dbd0",
+      "c": [
+        1557,
+        424,
+        1542,
+        455
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "dc4b2d36e7d68a05",
+      "c": [
+        1542,
+        455,
+        1502,
+        450
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "bc84cb41ddab1896",
+      "c": [
+        1502,
+        450,
+        1477,
+        424
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "369900d6a05dc6cb",
+      "c": [
+        1477,
+        424,
+        1502,
+        399
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "b0ad366b5845bc2c",
+      "c": [
+        1502,
+        399,
+        1542,
+        394
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "2ac16c001af86a61",
+      "c": [
+        1542,
+        394,
+        1557,
+        424
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "d433f4edd2e05fc2",
+      "c": [
+        766,
+        377,
+        730,
+        414
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "4e482a8295930df7",
+      "c": [
+        730,
+        414,
+        673,
+        420
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "c85c60174d7b0358",
+      "c": [
+        673,
+        420,
+        645,
+        377
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "427095ac102db18d",
+      "c": [
+        645,
+        377,
+        676,
+        338
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "ebe31e99c815a6ee",
+      "c": [
+        676,
+        338,
+        730,
+        341
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "_id": "65f7542e8ac85523",
+      "c": [
+        730,
+        341,
+        766,
+        377
+      ],
+      "levels": [
+        "631a589c18fe74a1"
+      ],
+      "move": 20,
+      "sight": 10,
+      "light": 10,
+      "sound": 0,
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    }
+  ],
+  "lights": [],
+  "tokens": [],
+  "notes": [],
+  "sounds": [],
+  "drawings": [],
+  "regions": [],
+  "tiles": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "world": {
+      "saerothAtlasBattlemap": {
+        "version": 1,
+        "key": "66bff49204a07bd386fc9d69a14d5f50",
+        "seed": "expedition-quarry-supplies-v1",
+        "kind": "ruin",
+        "terrain": "mountain",
+        "source": {
+          "type": "custompoi",
+          "id": 1793996607857
+        },
+        "generated": true
+      }
+    },
+    "saeroth-pf2e-content": {
+      "session": 5,
+      "source": "campaign/quests/The Missing Survey Stores.md",
+      "setup": "Unplayed preparation. 160 ft square; southern road reaches an open sorting yard. Four broken pillars, a northeast stone sorting bench, and an inner L-shaped partition provide cover. The west, east, north and south wall openings remain traversable. Stage the supplies on the floor south of the northeast bench at (2250, 1150). The quest note gives actor staging and noncombat approaches. This is a proposed encounter site near the search camp, not the expedition camp or a discovered tower.",
+      "limitations": "No actors preplaced, no combat started, and no automated cliff falls or difficult terrain. Natural daylight is configured; no fire sources are depicted. Existing scenes remain unchanged."
+    }
+  }
+}

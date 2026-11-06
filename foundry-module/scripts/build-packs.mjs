@@ -3,6 +3,7 @@ import { createRequire } from "node:module";
 import { copyFile, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { repairDocumentIds } from "./foundry-document-ids.mjs";
 
 const moduleDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const repositoryDir = resolve(moduleDir, "..");
@@ -67,9 +68,9 @@ function githubRawUrl(path) {
   const encodedPath = relative(repositoryDir, path).replaceAll("\\", "/").split("/").map(encodeURIComponent).join("/");
   return `https://raw.githubusercontent.com/Milec/Towers-of-Saeroth/main/${encodedPath}`;
 }
-// Foundry v14 document IDs are strictly alphanumeric. Existing generated
-// actors retain their historic IDs for compatibility, while new Sanguinor
-// items use this safe variant so GrantItem can resolve them.
+// New Sanguinor items use safe IDs directly. Historic actors retain their
+// generation seeds, then repairDocumentIds fixes only invalid document IDs
+// and their references after generation, preserving every already-valid ID.
 function foundryId(seed) {
   return createHash("sha256").update(seed).digest("hex").slice(0, 16);
 }
@@ -478,7 +479,10 @@ function parseActor(source, path, spellSources, portrait) {
     name,
     type: "npc",
     img: portrait ?? "systems/pf2e/icons/default-icons/npc.svg",
-    prototypeToken: { texture: { src: portrait ?? "systems/pf2e/icons/default-icons/npc.svg" } },
+    // Foundry 14's server migration computes depth = min(width, height)
+    // before schema defaults are applied. Explicit native defaults prevent
+    // missing legacy dimensions from becoming NaN during pack loading.
+    prototypeToken: { width: 1, height: 1, depth: 1, texture: { src: portrait ?? "systems/pf2e/icons/default-icons/npc.svg" } },
     items: [],
     effects: [],
     flags: { saeroth: { source: relative(repositoryDir, path).replaceAll("\\", "/") } },
@@ -510,14 +514,19 @@ function parseActor(source, path, spellSources, portrait) {
     .map((entry) => entry.replace(/\r?\n\s*/g, " ").trim())
     .filter(Boolean);
   for (const line of entries) {
-    const melee = line.match(/^\*\*Melee\*\*\s+`\[[^\]]+\]`\s+(.+?)\s+([+-]\d+)\s*(?:\(([^)]*)\))?,\s*\*\*Damage\*\*\s+(.+)$/i);
+    const melee = line.match(/^\*\*(Melee|Ranged)\*\*\s+`\[[^\]]+\]`\s+(.+?)\s+([+-]\d+)\s*(?:\(([^)]*)\))?,\s*\*\*Damage\*\*\s+(.+)$/i);
     if (melee) {
-      const [, weaponName, bonus, traitText = "", damageText] = melee;
+      const [, attackType, weaponName, bonus, traitText = "", damageText] = melee;
+      const ranged = attackType.toLowerCase() === 'ranged';
+      const rangeMatch = traitText.match(/(?:range(?: increment)?|thrown)[ -]+(\d+)(?:[ -]*(?:feet|ft))?/i);
+      if (ranged && (!rangeMatch || Number(rangeMatch[1]) <= 0)) throw new Error(`${path}: ranged Strike ${weaponName} needs a range or thrown distance.`);
+      const range = ranged ? {increment:Number(rangeMatch[1]),max:null} : null;
+      const attackTraits = parseList(traitText).filter(trait => !/^range\b/i.test(trait)).map(trait => traitSlug(trait.replace(/^thrown\s+(\d+)\s*(?:feet|ft)?$/i,'thrown-$1')));
       const damage = damageText.match(/^(.+?)\s+(bludgeoning|piercing|slashing|acid|cold|electricity|fire|force|mental|negative|positive|poison|sonic)(?:\s|$)/i);
-      const itemId = itemIdFor(`${id}:melee:${weaponName}`);
+      const itemId = itemIdFor(`${id}:${ranged?'ranged':'melee'}:${weaponName}`);
       actor.items.push(itemId);
       actor.__items ??= [];
-      actor.__items.push({ _id: itemId, name: weaponName.trim(), type: "melee", img: "systems/pf2e/icons/default-icons/melee.svg", system: { attackEffects: { value: [] }, bonus: { value: Number(bonus) }, damageRolls: { [stableId(`${itemId}:damage`)]: { damage: damage?.[1] ?? damageText, damageType: damage?.[2]?.toLowerCase() ?? "bludgeoning" } }, description: { value: "" }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, range: null, rules: [], slug: null, traits: { value: parseList(traitText).map(traitSlug) } } });
+      actor.__items.push({ _id: itemId, name: weaponName.trim(), type: "melee", img: "systems/pf2e/icons/default-icons/melee.svg", system: { attackEffects: { value: [] }, bonus: { value: Number(bonus) }, damageRolls: { [stableId(`${itemId}:damage`)]: { damage: damage?.[1] ?? damageText, damageType: damage?.[2]?.toLowerCase() ?? "bludgeoning" } }, description: { value: "" }, publication: { license: "", remaster: true, title: "Towers of Saeroth" }, range, rules: [], slug: null, traits: { value: attackTraits } } });
       continue;
     }
     const ability = line.match(/^\*\*(.+?)\*\*\s+`\[(one-action|two-actions|three-actions|reaction)\]`\s*(.*)$/i);
@@ -662,7 +671,7 @@ for (const path of markdown) {
     ? portraitSource(source, path, frontmatter["token-image"].replace(/^['"]|['"]$/g, "")) : null;
   const tokenFilename = sourceToken ? `${id}-token${extname(sourceToken).toLowerCase()}` : null;
   if (sourceToken) await copyFile(sourceToken, join(actorAssetDir, tokenFilename));
-  actors.push(parseActor(source, path, spellSources, portrait));
+  actors.push(repairDocumentIds(parseActor(source, path, spellSources, portrait)));
   if (tokenFilename) actors.at(-1).prototypeToken.texture.src = `modules/${moduleId}/assets/actors/${tokenFilename}`;
   const syncActor = structuredClone(actors.at(-1));
   const remotePortrait = sourcePortrait ? githubRawUrl(sourcePortrait) : null;
@@ -686,7 +695,7 @@ for (const path of markdown) {
     await copyFile(sourcePortrait, join(ancestryAssetDir, portraitFilename));
     ancestryPortraits += 1;
   }
-  ancestries.push(parseAncestry(source, path, portrait));
+  ancestries.push(repairDocumentIds(parseAncestry(source, path, portrait)));
 }
 
 await rm(packDir, { recursive: true, force: true });

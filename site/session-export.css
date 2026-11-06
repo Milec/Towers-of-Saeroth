@@ -1,0 +1,32 @@
+/* Session export uses the existing campaign desk palette and controls. */
+.session-package{min-width:0;scroll-margin-top:calc(var(--topbar-h,64px) + 16px)}
+.sp-heading,.sp-map-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sp-heading{margin-bottom:12px}.sp-heading .ws-eyebrow{margin-bottom:5px}.sp-map-head{margin:24px 0 10px}
+.session-package h4{font:600 1rem/1.4 Inter,ui-sans-serif,system-ui,sans-serif;margin:0 0 8px}
+.sp-map-head h4{margin:0}.sp-map-head .ws-button{font-size:.75rem}
+.sp-map-empty{padding:16px;border:1px dashed var(--rule);border-radius:6px;font-size:.85rem;color:var(--muted);line-height:1.65;background:var(--bg)}
+.sp-map-card{display:flex;align-items:center;gap:12px;padding:16px;background:var(--bg);border:1px solid var(--rule);border-radius:6px}
+.sp-map-card>div{min-width:0;flex:1;display:flex;flex-direction:column;gap:4px}.sp-map-card strong{font-size:.85rem;overflow-wrap:anywhere}
+.sp-map-card small{color:var(--muted);font-size:.75rem}.sp-map-card a{font-size:.75rem;min-height:44px;display:flex;align-items:center}
+.workspace .sp-map-symbol{width:26px;height:26px;flex-basis:26px;color:var(--accent)}.sp-map-card button{font-size:.75rem}
+.sp-actor-picker{border-top:1px solid var(--rule);margin-top:22px}
+.sp-actor-picker>summary,.sp-presets summary{min-height:48px;padding:14px 0;font-weight:650;font-size:.85rem;cursor:pointer}
+.sp-actor-choices{max-height:290px;overflow:auto;border:1px solid var(--rule);border-radius:6px;margin:12px 0;background:var(--bg);scroll-padding:8px}
+.sp-actor-choices>p{padding:14px;margin:0}.sp-actor-choice{display:flex;align-items:center;gap:12px;padding:10px 14px;min-height:58px;border-bottom:1px solid var(--rule);cursor:pointer}
+.sp-actor-choice:last-child{border:0}.sp-actor-choice:hover{background:var(--panel)}
+.sp-actor-choice input,.sp-preset-map input{flex:0 0 20px;width:20px;height:20px;accent-color:var(--accent);margin:0}
+.sp-actor-choice>span{min-width:0;display:flex;flex-direction:column;gap:3px}.sp-actor-choice strong{font-size:.85rem;overflow-wrap:anywhere}.sp-actor-choice small{color:var(--muted)}
+.sp-selected-actors ul{list-style:none;padding:0;margin:10px 0 18px;display:flex;flex-direction:column;gap:2px}
+.sp-selected-actors li{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--rule);margin:0;font-size:.8rem;min-height:46px}
+.sp-selected-actors li>span{flex:1;min-width:0;overflow-wrap:anywhere}.sp-selected-actors button{border:0;background:transparent;color:var(--link);font-size:.75rem;min-height:44px;min-width:60px;padding:10px}
+.sp-preview{border:1px solid var(--rule);border-radius:6px;padding:16px;margin:18px 0;background:var(--bg)}
+.sp-preview #spSummary{font-size:.85rem;font-weight:600;margin:0 0 8px}.sp-preview p:last-child{margin:0}
+.sp-export{width:100%;min-height:48px}.sp-cancel{width:100%;margin-top:8px}.session-package #spStatus{font-size:.8rem;margin:12px 0 8px;overflow-wrap:anywhere}
+.session-package .sp-error{color:var(--accent);border-left:3px solid currentColor;padding-left:10px}
+.session-package[aria-busy=true] .sp-export{cursor:progress}.sp-downloads a{display:flex;align-items:center;min-height:48px;font-size:.85rem;overflow-wrap:anywhere;font-weight:600}
+.session-package .ws-help li{margin-bottom:10px}.session-package .ws-help ol{padding-left:22px}
+.sp-presets{border:1px solid var(--rule);background:var(--bg);border-radius:6px;padding:0 14px;margin:18px 0}
+.sp-presets article{padding:8px 0 16px}.sp-presets article+article{border-top:1px solid var(--rule);padding-top:18px}
+.sp-preset-map{display:flex;align-items:center;gap:10px;min-height:44px;font-size:.8rem;margin-bottom:10px}
+.ws-journal-only{border-top:1px solid var(--rule);margin-top:24px;padding-top:22px}.workspace .ws-journal-only>p{margin-bottom:8px}
+@media(max-width:520px){.sp-map-card{gap:10px;flex-wrap:wrap;padding:12px}.sp-map-symbol{display:none}.sp-map-card>div{flex-basis:100%}.sp-map-card>button{width:100%}.sp-map-head{align-items:start}.sp-map-head .ws-button{padding:10px;font-size:.75rem}.sp-heading{align-items:start}.sp-preview{padding:13px}.sp-actor-choice{padding-inline:10px}}

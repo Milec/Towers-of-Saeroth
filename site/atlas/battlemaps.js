@@ -107,7 +107,7 @@
       '<label for="battlemapTime">Foundry lighting<select id="battlemapTime"><option value="day">Daylight</option><option value="night">Night · local lights</option></select></label></div></fieldset>' +
       '<div class="bm-reroll"><button type="button" id="battlemapReroll" class="bm-primary">Reroll layout</button><button type="button" id="battlemapPrevious" disabled>Previous</button></div>' +
       '<p id="battlemapStatus" role="status" aria-live="polite"></p><p id="battlemapStorage" class="bm-hint"></p><button id="battlemapRetry" type="button" hidden>Try again</button>' +
-      '<div class="bm-export"><h3>Take it to the table</h3><button type="button" id="battlemapFoundry" class="bm-primary" disabled>Export to Foundry</button><button type="button" id="battlemapImage" disabled>Download map image</button><p class="bm-hint">Gridless artwork. Foundry adds a 5-foot grid, walls, doors, and dynamic lights.</p><div id="battlemapDownloads" class="bm-downloads"></div>' +
+      '<div class="bm-export"><h3>Take it to the table</h3><button type="button" id="battlemapSession" class="bm-primary" disabled>Add to session</button><p class="bm-hint">Combine this map with notes and NPCs in your Campaign desk.</p><a id="battlemapSessionLink" class="bm-session-link" href="../#/workspace" target="_top" hidden>Open Campaign desk</a><button type="button" id="battlemapFoundry" disabled>Export to Foundry</button><button type="button" id="battlemapImage" disabled>Download map image</button><p class="bm-hint">Gridless artwork. Foundry adds a 5-foot grid, walls, doors, and dynamic lights.</p><div id="battlemapDownloads" class="bm-downloads"></div>' +
       '<details id="battlemapImportHelp"><summary>How to import into Foundry</summary><ol><li>Download the Foundry import JSON.</li><li>In Foundry’s Macro Directory, create a new <strong>Script</strong> macro. Right-click it and choose <strong>Import Data</strong>, then select the JSON.</li><li>Run the macro as GM. It uploads the artwork and creates a scene in the Scenes directory.</li></ol><p>The import needs Foundry v14 and permission to upload files. It does not activate the scene or place actors. Running the same import again finds its existing scene.</p></details></div>' +
       '<details id="battlemapMore" class="bm-more"><summary>Seed & portable recipe</summary><label for="battlemapSeed">Seed<input id="battlemapSeed" type="text" maxlength="80" autocomplete="off" spellcheck="false"></label><button type="button" id="battlemapApplySeed">Use seed</button><p class="bm-hint">The same seed, layout, terrain, and size reproduce the same map. Your latest layout is remembered for this POI on this device.</p><div class="bm-recipe-actions"><button type="button" id="battlemapRecipeExport">Download recipe</button><button type="button" id="battlemapRecipeImport">Load recipe</button></div><input id="battlemapRecipeFile" type="file" accept="application/json,.json" hidden><button id="battlemapRecover" type="button" hidden>Download recovery data</button></details>' +
       '</section></div>';
@@ -126,6 +126,7 @@
     $id('battlemapRetry').onclick = () => regenerate(recipe,false);
     $id('battlemapImage').onclick = () => exportMap('image');
     $id('battlemapFoundry').onclick = () => exportMap('foundry');
+    $id('battlemapSession').onclick = addToSession;
     $id('battlemapRecipeExport').onclick = () => download(new Blob([JSON.stringify(recipe,null,2)],{type:'application/json'}),filename()+'-recipe.json','Save recipe');
     $id('battlemapRecipeImport').onclick = () => $id('battlemapRecipeFile').click();
     $id('battlemapRecipeFile').onchange = async event => {
@@ -151,6 +152,7 @@
     for(const id of ['battlemapReroll','battlemapApplySeed','battlemapRecipeImport','battlemapRecipeExport'])$id(id).disabled=value;
     $id('battlemapSeed').disabled=value;$id('battlemapPrevious').disabled=value||!history.length;
     $id('battlemapFoundry').disabled=value||!model;$id('battlemapImage').disabled=value||!model;
+    $id('battlemapSession').disabled=value||!model;
   }
   function clearDownloads() {downloadURLs.forEach(url=>URL.revokeObjectURL(url));downloadURLs.clear();$id('battlemapDownloads').replaceChildren();}
   async function regenerate(next,track) {
@@ -193,6 +195,25 @@
     }
   }
   function filename(){return 'Saeroth-'+context.name.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60)+'-'+recipe.seed.replace(/[^a-zA-Z0-9-]/g,'').slice(0,16);}
+  function addToSession() {
+    if(busy||!model)return;
+    const selection={version:1,name:context.name,recipe:validateRecipe(recipe)};
+    try {
+      let result;
+      const parentAPI=window.parent!==window&&window.parent.location.origin===location.origin?window.parent.SaerothSessionExport:null;
+      if(parentAPI?.selectMap)result=parentAPI.selectMap(selection);
+      else {
+        const key='saeroth-session-map-v1:'+new URL('../',location.href).pathname,old=localStorage.getItem(key);
+        if(old){
+          try{const prior=JSON.parse(old);if(prior.version!==1||typeof prior.name!=='string')throw Error();validateRecipe(prior.recipe);}
+          catch(_){throw Error('The earlier session-map selection could not be read. Open the Campaign desk and download its recovery copy before replacing it.');}
+        }
+        localStorage.setItem(key,JSON.stringify(selection));
+        result={saved:true,message:'Added to your session package. Open the Campaign desk to include notes and NPCs.'};
+      }
+      $id('battlemapStatus').textContent=result.message;$id('battlemapSessionLink').hidden=false;
+    }catch(error){$id('battlemapStatus').textContent='Could not save the session map. '+error.message+' You can still download this map or its recipe.';}
+  }
   function download(blob,name,label) {
     const url=URL.createObjectURL(blob);downloadURLs.add(url);
     const link=document.createElement('a');link.href=url;link.download=name;link.textContent=label;
@@ -230,6 +251,7 @@
     recipe=stored?structuredClone(stored):{version:1,generatorVersion:1,source:context.source,kind:context.kind,terrain:context.terrain,size:32,seed:sourceKey(context.source)+'-1',time:context.kind==='cave'?'night':'day'};
     $id('battlemapTitle').textContent=context.name;$id('battlemapSource').textContent='Generated battle map · '+(stored?'Your saved layout':'Suggested starting layout');
     $id('battlemapSuggestion').textContent=context.reason;
+    $id('battlemapSessionLink').hidden=true;
     if(!dialog.open)dialog.showModal();dialog.scrollTop=0;dialog.querySelector('.bm-body').scrollTop=0;$id('battlemapClose').focus({preventScroll:true});
     await regenerate(recipe,false);
   }
