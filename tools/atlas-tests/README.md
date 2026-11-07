@@ -72,6 +72,14 @@ covers standard PF2e references and staged tokens through native schemas when
 Foundry is available. A disposable running PF2e world is used separately to
 verify actual creature footprints, artwork, and import behavior.
 
+Saved-session checks run with `pnpm run test:session-library-model` for the
+portable model, `node session-library-model.cjs --browser` for native IndexedDB
+transactions, and `pnpm run test:session-library` against the preview server for
+complete preparation save/open/import behavior. The browser checks cover
+interrupted switches, storage failures, incompatible backups, conflict handling,
+and phone/desktop layouts. They use isolated browser storage and do not write to
+a Foundry world or publish campaign notes.
+
 The catalog is metadata only. To refresh it from an installed PF2e system:
 
 ```sh

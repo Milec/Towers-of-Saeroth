@@ -24,7 +24,9 @@
     "test:battlemap-foundry": "node battlemap-foundry.cjs",
     "test:session-package": "node session-package.cjs",
     "test:encounter-planner": "node encounter-planner.cjs",
-    "test:encounter-catalog": "node encounter-catalog.cjs"
+    "test:encounter-catalog": "node encounter-catalog.cjs",
+    "test:session-library": "node session-library.cjs",
+    "test:session-library-model": "node session-library-model.cjs"
   },
   "devDependencies": {
     "jsdom": "30.0.1",

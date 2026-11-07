@@ -16,6 +16,44 @@ packet. Reorder its notes with the up/down buttons; remove a note with an undo
 option. The checklist and scratchpad save as they are edited. They are personal
 preparation, not changes to the Markdown campaign record.
 
+### Keeping several sessions ready
+
+**Saved sessions** keeps complete editable versions of your preparation in this
+browser. Use **Save current prep** to save the title, reference packet, checklist,
+scratchpad, NPC selections, map recipe, and encounter, including unfinished token
+placements. An identical saved version is reused. Later edits stay in the working
+copy until you save another version; earlier saved versions remain unchanged.
+
+Opening a saved plan or starting a new session first saves the current working
+preparation. If that save fails, the desk is not replaced. **Duplicate** makes a
+separate starting point, while **Archive** hides an older version from the normal
+list without deleting it. Pins, recently opened entries, and library layout are
+shared desk preferences and do not change when you open a session.
+
+Download an **editable session backup** to continue preparing it on another
+device. Import adds a separate saved copy and leaves the current desk unchanged;
+open the imported copy when ready. These files contain the map recipe and source
+references, not the rendered map image or copies of campaign notes and actor
+mechanics. Referenced content remains maintained by the campaign and PF2e system.
+Use **Download session package** when you are ready to import content into Foundry.
+The editable backup and Foundry import package are different formats.
+
+Saved versions live in IndexedDB, separate from the working desk's browser
+storage. The library permits 200 records within 8 MiB; editable backup files are
+limited to 2 MiB. Writes check the library revision inside a transaction, so an
+older tab cannot silently overwrite another tab's saved versions. The interface
+reports blocked or failed writes and offers recovery data for an unreadable
+library. Switching the working desk also retains a recovery record until all
+four existing stores have changed successfully; an interrupted switch is restored
+before the desk loads again. Neither saved versions nor backups synchronize
+automatically or publish campaign lore.
+
+Session switching and recovery use the browser's Web Locks API to serialize
+those operations across tabs. If another tab changes the working preparation,
+this tab keeps its complete in-memory copy and stops writing the shared working
+stores. Save that copy to the library or download it before reloading. This
+avoids combining one tab's notes with another tab's map or encounter.
+
 ### Bringing a session into Foundry
 
 The desk's **Session package** combines the reference packet, checklist and
@@ -323,10 +361,12 @@ custom POIs. Existing travel and POI controls manage their own state.
 
 Session-package NPC selections and the chosen map recipe also stay in this
 browser, but are stored separately from the desk backup. The current desk backup
-does not include those selections. Download the session package to take the
-prepared content into Foundry; it is an import snapshot, not a website-draft
-backup. To continue editing the preparation on another device, import the desk
-backup there, reselect its NPCs, and use a portable atlas recipe for the map.
+does not include those selections. **Saved sessions** combines the editable desk,
+NPC selections, map recipe, and encounter into one portable backup. Use that
+backup to continue preparation on another device. Download the session package
+to take prepared content into Foundry; it is an import snapshot, not a
+website-draft backup. The older desk and encounter backup formats remain usable
+for their original purposes.
 Unreadable selections are preserved for recovery, and storage warnings distinguish
 changes kept only in the open tab from changes saved on the device.
 
@@ -337,6 +377,12 @@ are not access control. No GM material is copied into `players/` by these tools.
 
 - `site/workspace.js` and `workspace.css`: campaign desk, library, storage,
   portable backup, and Foundry journal export.
+- `site/session-library.js` and `session-library.css`: saved preparation versions,
+  opening, duplication, archiving, and complete editable backups.
+- `site/session-library-model.mjs` and `session-library-store.mjs`: bounded session
+  data and transactional browser storage with optimistic revision checks.
+- `site/session-prep.js`: coordinates the existing desk, NPC, map, and encounter
+  stores, with validation and interrupted-switch recovery.
 - `site/session-export.js` and `session-export.css`: session-package selection,
   prepared expedition content, embedded artwork, and download.
 - `site/session-presets.json`: maintained note, NPC, and map-recipe presets.

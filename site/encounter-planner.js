@@ -19,8 +19,9 @@
     storageWarning='A saved encounter could not be read. Download its recovery copy before clearing it. New changes stay in this tab if recovery cannot be saved.';
   }
   function persist(){
+    try{window.SaerothSessionPrep?.assertWritable();}catch(_){storageWarning='An interrupted session switch needs recovery before more changes can be saved.';return false;}
     if(recoveryRaw&&!recoveryProtected)return false;
-    try{localStorage.setItem(key,JSON.stringify({format:'saeroth-encounter-draft',version:1,...state}));if(!recoveryRaw)storageWarning='';return true;}
+    try{const data=JSON.stringify({format:'saeroth-encounter-draft',version:1,...state});localStorage.setItem(key,data);window.SaerothSessionPrep?.recordWrite(key,data);if(!recoveryRaw)storageWarning='';return true;}
     catch(_){storageWarning='Your encounter is available in this tab only. Download an encounter backup before leaving.';return false;}
   }
   function configure(options){
@@ -31,7 +32,7 @@
       await math();let raw;
       try{
         recoveryRaw=localStorage.getItem(key+':recovery')||'';recoveryProtected=!!recoveryRaw;
-        raw=localStorage.getItem(key);if(!raw)return;if(raw.length>downloadLimit)throw Error('Saved encounter is too large.');
+        raw=options.initialRaw===undefined?localStorage.getItem(key):options.initialRaw;if(!raw)return;if(raw.length>downloadLimit)throw Error('Saved encounter is too large.');
         const saved=JSON.parse(raw);
         if(saved.format!=='saeroth-encounter-draft'||saved.version!==1||typeof saved.staging!=='boolean'||typeof saved.mapSignature!=='string')throw Error('Unsupported saved encounter.');
         const noPositions=contract.normalizeEncounter({...saved.encounter,placements:[]});
@@ -82,7 +83,7 @@
     initialized.then(()=>{if(ticket!==generation||!host)return;render();report('Ready. Add opponents to include an encounter in this session.');if(state.staging)renderMap();}).catch(error=>{if(ticket===generation)report(error.message,true);});
   }
   function setBusy(value){busy=!!value;if(host)host.querySelector('#epControls').disabled=busy||!ready;}
-  function changed(){persist();render();config?.onChange?.();}
+  function changed(){persist();render();config?.onChange?.();document.dispatchEvent(new CustomEvent('saeroth-session-change'));}
   function updateSettings(){
     if(busy||!ready)return;const candidate={...state.encounter,name:host.querySelector('#epName').value,partyLevel:Number(host.querySelector('#epLevel').value),partySize:Number(host.querySelector('#epSize').value),target:host.querySelector('#epTarget').value};
     try{const normalized=contract.normalizeEncounter({...candidate,placements:[]});state.encounter={...normalized,placements:state.encounter.placements};changed();}
@@ -236,9 +237,20 @@
   async function validatePreset(value){await math();const encounter=contract.normalizeEncounter(value);if(encounter.placements.length)throw Error('Prepared encounters must begin without placements.');return encounter;}
   async function addPrepared(value){await initialized;state.encounter=await validatePreset(value);state.staging=false;state.mapSignature=signature(config.getMap());selectedUnit='';changed();report('Prepared encounter added. Its roster can be adjusted before export.');}
   window.addEventListener('storage',event=>{
+    if(window.SaerothSessionPrep?.externalChange(event))return;
     if(event.key!==key||!config||busy)return;
     // Other tabs never silently overwrite an encounter currently being prepared.
     storageWarning='The encounter changed in another tab. This tab kept its preparation; download a backup before reloading.';if(host)host.querySelector('#epStorage').textContent=storageWarning;
   });
-  window.SaerothEncounterPlanner={configure,mount,unmount,mapChanged,snapshot,capture,exportEncounter,summary,setBusy,validatePreset,addPrepared};
+  function sessionEntries(value){
+    if(recoveryRaw&&!recoveryProtected)throw Error('Preserve the unreadable encounter before opening another session.');
+    return [[key,JSON.stringify({format:'saeroth-encounter-draft',version:1,...value})]];
+  }
+  function commitSession(value){
+    state=clone(value);storageWarning='';selectedUnit='';pendingRestore=null;restoreRevision++;
+    mapScene=null;mapModel=null;mapSignature='';mapPromise=null;
+    if(host){host.querySelector('#epRestorePreview').hidden=true;render();if(state.staging)renderMap();}
+    config?.onChange?.();
+  }
+  window.SaerothEncounterPlanner={configure,mount,unmount,mapChanged,snapshot,capture,exportEncounter,summary,setBusy,validatePreset,addPrepared,sessionEntries,commitSession,isBusy:()=>busy};
 })();

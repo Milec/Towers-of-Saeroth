@@ -1,0 +1,32 @@
+/* Saved preparation shares the campaign desk's parchment and ink tokens. */
+.session-library{min-width:0;scroll-margin-top:calc(var(--topbar-h,64px) + 16px)}
+.sl-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.sl-heading .ws-eyebrow{margin-bottom:4px}.sl-intro{font-size:.875rem;line-height:1.65;color:var(--muted);max-width:80ch}
+.session-library fieldset{border:0;padding:0;margin:0;min-width:0}
+.sl-actions{display:flex;flex-wrap:wrap;gap:8px}.sl-main-actions{margin:18px 0}
+.session-library .ws-button{touch-action:manipulation;min-height:44px;min-width:44px;white-space:normal}
+.session-library input{font:inherit;min-width:0}.session-library input[type=search],.session-library input[type=text],.session-library input:not([type]){font-size:1rem}
+.session-library [hidden]{display:none!important}.sl-sr{position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+.session-library details{border-top:1px solid var(--rule);margin-top:18px}
+.session-library summary{min-height:48px;cursor:pointer;padding:14px 0;font-size:.875rem;font-weight:650;color:var(--ink);touch-action:manipulation}
+.session-library summary span{font-weight:400;color:var(--muted);padding-left:5px}
+.sl-browser{padding:4px 0 0}.sl-filters{display:flex;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.sl-filters .ws-field{flex:1;min-width:180px}.sl-check{display:flex;align-items:center;gap:10px;min-height:44px;font-size:.8125rem;cursor:pointer;flex-shrink:0}
+.sl-check input{width:20px;height:20px;accent-color:var(--accent);margin:0}.session-library #slResults{margin-bottom:12px}
+.sl-card{border:1px solid var(--rule);border-radius:6px;background:var(--bg);padding:16px;margin:0 0 12px;min-width:0}
+.sl-card-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.sl-card-head h3{overflow-wrap:anywhere;min-width:0;flex:1}
+.sl-card .ws-label{flex-shrink:0}.workspace .sl-card-date{color:var(--muted);font-size:.75rem;margin:5px 0 12px;line-height:1.55}
+.workspace .sl-card-summary,.workspace .sl-card-map{font-size:.8125rem;line-height:1.65;margin:0 0 8px;overflow-wrap:anywhere}
+.workspace .sl-card-excerpt{font-size:.875rem;line-height:1.65;margin:10px 0 12px;overflow-wrap:anywhere}
+.workspace .sl-card-map{color:var(--muted);margin-bottom:14px}.sl-card .ws-button{background:var(--panel)}
+.sl-empty{background:var(--bg);padding:18px;border:1px dashed var(--rule);border-radius:6px;font-size:.875rem;line-height:1.65;color:var(--muted)}
+.sl-more{width:100%;margin:4px 0 12px}.sl-form,.sl-import-preview{padding:18px;border:1px solid var(--rule);border-radius:6px;background:var(--bg);margin:16px 0}
+.sl-form .ws-field{margin-bottom:12px}.sl-form .ws-field input{width:100%;min-height:44px;border:1px solid var(--rule);border-radius:4px;background:var(--panel);color:var(--ink);padding:10px 12px}
+.sl-import-preview h3{margin-bottom:10px}.sl-import-preview ul{padding-left:20px;margin:12px 0 18px}.sl-import-preview li{padding:4px 0;overflow-wrap:anywhere}
+.sl-import-preview li strong{font-size:.875rem}.sl-import-preview li span{display:block;color:var(--muted);font-size:.75rem;line-height:1.55}
+.workspace .sl-status{font-size:.8125rem;line-height:1.65;margin:14px 0;overflow-wrap:anywhere}.sl-error{border-left:3px solid var(--accent);padding-left:12px;color:var(--ink)}
+.sl-portability{border-top:1px solid var(--rule);padding-top:16px;display:flex;flex-wrap:wrap;gap:10px}.sl-portability>p{flex-basis:100%;margin:0;line-height:1.65}
+.sl-downloads{flex-basis:100%;min-width:0}.sl-downloads:empty{display:none}.sl-downloads a{display:flex;align-items:center;min-height:44px;font-size:.8125rem;font-weight:600;overflow-wrap:anywhere}
+.session-library[aria-busy=true]{cursor:progress}.session-library[aria-busy=true] button{cursor:progress}
+@media(max-width:560px){.sl-heading{align-items:start;gap:10px}.sl-main-actions .ws-button{flex:1 1 100%}.sl-card{padding:14px}.sl-card-head{align-items:start;flex-wrap:wrap}.sl-card .sl-actions .ws-button{flex:1 1 calc(50% - 4px)}.sl-filters{align-items:stretch;gap:6px}.sl-filters .ws-field{flex-basis:100%}.sl-form,.sl-import-preview{padding:14px}.sl-portability>.ws-button{width:100%}}
+@media(prefers-reduced-motion:reduce){.session-library .ws-button{transition:none}}

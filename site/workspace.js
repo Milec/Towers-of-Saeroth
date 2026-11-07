@@ -51,13 +51,14 @@
     return result;
   }
 
-  function configure(options) {
+  async function configure(options) {
     config = options; notes = options.notes || []; byPath = new Map(notes.map(n => [n.p, n]));
+    await window.SaerothSessionPrep?.recover(options.base || './');
     key = 'saeroth-workspace-v1:' + new URL(options.base || './', location.href).pathname;
     let raw = '';
     try {
       recoveryRaw = localStorage.getItem(key + ':recovery') || ''; recoverySaved = !!recoveryRaw;
-      raw = localStorage.getItem(key) || ''; if (raw) saved = validate(JSON.parse(raw));
+      raw = (window.SaerothSessionPrep?window.SaerothSessionPrep.initialValue(key):localStorage.getItem(key)) || ''; if (raw) saved = validate(JSON.parse(raw));
     } catch (_) {
       storageWarning = 'Saved desk data could not be read. Download the recovery file below to keep the original.';
       if (raw) {
@@ -68,13 +69,15 @@
     }
     window.SaerothSessionExport?.configure({ base: options.base || './', snapshot: () => structuredClone(saved), buildJournal, addPrepared,
       noteTitle: title, notify: announce });
+    window.SaerothSessionPrep?.configure({base:options.base || './'});
   }
 
   function persist(message = '') {
     saved.updatedAt = new Date().toISOString();
     try {
+      window.SaerothSessionPrep?.assertWritable();
       if (recoveryRaw && !recoverySaved) throw Error('Preserve the unreadable original before saving over it.');
-      localStorage.setItem(key, JSON.stringify(saved)); storageWarning = '';
+      const data=JSON.stringify(saved);localStorage.setItem(key,data);window.SaerothSessionPrep?.recordWrite(key,data);storageWarning = '';
     }
     catch (_) { storageWarning = 'This browser could not save your changes. Download a backup before leaving.'; }
     updateSaveStatus();
@@ -159,6 +162,12 @@
     el.onclick = handleClick;
     if (view === 'library') bindLibrary(); else bindWorkspace();
     if (view === 'workspace') window.SaerothSessionExport?.mount(el.querySelector('#wsFoundryPackage'));
+    if (view === 'workspace') {
+      const library = document.createElement('section'); library.id = 'wsSessionLibrary';
+      el.querySelector('#wsTitle').closest('.ws-section')?.before(library);
+      if (!library.isConnected) el.querySelector('.ws-grid')?.before(library);
+      window.SaerothSessionLibrary?.mount(library);
+    }
     if (view === 'workspace' && recoveryRaw) {
       const recovery = document.createElement('div'); recovery.className = 'ws-recovery';
       recovery.innerHTML = '<p class="ws-small">An earlier desk could not be read. Its original data is preserved separately for recovery.</p><button class="ws-button" type="button" data-ws-action="recovery">Download original data</button>';
@@ -172,6 +181,7 @@
   function dispose() {
     generation++;
     window.SaerothSessionExport?.unmount();
+    window.SaerothSessionLibrary?.unmount();
     if (host) { host.onclick = null; host.classList.remove('workspace'); }
     host = null; view = '';
   }
@@ -181,7 +191,7 @@
     return `<header class="ws-hero"><div><p class="ws-eyebrow">Towers of Saeroth · GM workspace</p><h1>Campaign desk</h1><p class="ws-intro">Keep the world close. Gather tonight’s notes, follow the party’s journey, and take your preparation into Foundry.</p><div class="ws-hero-actions"><a class="ws-button ws-primary" href="#/library">Browse the campaign ${icon('arrow')}</a><button class="ws-button" type="button" data-ws-action="jump-board">Prepare a session</button></div><div class="ws-stats"><span><b>${count}</b> campaign entries</span><span><b>${notes.filter(n => n.t === 'session').length}</b> session records</span><span><b>${notes.filter(n => n.t === 'nation').length}</b> nations</span></div></div><a class="ws-atlas-preview" href="#/atlas"><img src="${esc((config.base || '') + 'atlas/political.webp')}" alt="" loading="eager" fetchpriority="high" decoding="async"><span>${icon('map')}Explore the Living Atlas ${icon('arrow')}</span></a></header>
       <div class="ws-columns"><div class="ws-primary-column"><section class="ws-section" aria-labelledby="wsStoryHeading"><div class="ws-section-head"><div><p class="ws-eyebrow">From the campaign record</p><h2 id="wsStoryHeading">Where we left off</h2></div><a href="#/library" data-ws-action="sessions">All sessions ${icon('arrow')}</a></div><div id="wsLatest" class="ws-latest"><p class="ws-muted">Loading session records…</p></div></section>
       <section id="wsSession" class="ws-section ws-board" aria-labelledby="wsBoardHeading"><div class="ws-section-head"><div><p class="ws-eyebrow">Your next game</p><h2 id="wsBoardHeading">Session workbench</h2></div><span class="ws-label">Personal draft</span></div><label class="ws-field" for="wsTitle">Session title<input id="wsTitle" type="text" maxlength="100" value="${esc(saved.title)}" placeholder="Name this session"></label><div class="ws-section-head ws-subhead"><h3>Reference packet <span id="wsBoardCount"></span></h3><a href="#/library">Add from library ${icon('plus')}</a></div><p class="ws-muted ws-small">Pin the notes you need in order of play. Each becomes a page in your Foundry journal.</p><div id="wsBoardList"></div><div class="ws-section-head ws-subhead"><h3>Preparation checklist</h3><span id="wsTaskCount" class="ws-muted ws-small"></span></div><ul id="wsTasks" class="ws-tasks"></ul><form id="wsTaskForm" class="ws-task-form"><label class="ws-sr-only" for="wsTaskInput">New preparation task</label><input id="wsTaskInput" maxlength="240" placeholder="Add a task for the next game" required><button type="submit" class="ws-button">${icon('plus')}Add task</button></form><label class="ws-field ws-notes-field" for="wsNotes">GM scratchpad<textarea id="wsNotes" rows="7" maxlength="${LIMITS.notes}" placeholder="Open questions, scene beats, reminders, or things the players surprised you with…">${esc(saved.notes)}</textarea></label><p class="ws-muted ws-small">Personal draft, saved on this device. These notes do not change campaign canon or the player site.</p><div class="ws-export"><div id="wsFoundryPackage"></div><div class="ws-journal-only"><p class="ws-small ws-muted">Only need your notes?</p><button class="ws-button" data-ws-action="foundry" type="button">${icon('download')}Export Foundry journal</button><details class="ws-help"><summary>How to use it in Foundry</summary><p>Create a <strong>new, unshared Journal Entry</strong> in Foundry 14, then use its <strong>Import Data</strong> action to load the downloaded JSON. It includes your scratchpad, tasks, and full selected notes. Foundry keeps the permissions of the destination journal when importing, so set player ownership to <strong>None</strong> before importing GM notes.</p><p>Campaign links and images point back to this website and need network access inside Foundry. Existing world content is unchanged until you import the file.</p></details></div></div></section></div>
-      <aside class="ws-secondary-column" aria-label="Campaign shortcuts"><section class="ws-section"><div class="ws-section-head"><h2>${icon('pin')}Pinned notes</h2><span id="wsPinCount" class="ws-count"></span></div><div id="wsPins"></div></section><section class="ws-section"><div class="ws-section-head"><h2>${icon('clock')}Recently opened</h2></div><div id="wsRecent"></div></section><section class="ws-section"><p class="ws-eyebrow">Around the table</p><h2>The party</h2><div class="ws-party">${notes.filter(n => n.t === 'pc' && n.status !== 'inactive').map(n => `<a href="${href(n.p)}"><span class="ws-monogram" aria-hidden="true">${esc(title(n.p).slice(0, 1))}</span><span>${esc(title(n.p))}<small>${esc(n.summary?.slice(0, 85) || 'Character notes & backstory')}</small></span>${icon('arrow')}</a>`).join('')}</div></section><section class="ws-section"><h2>Prepared notes</h2><p class="ws-muted ws-small">Earlier preparation may contain scenes that were played differently. The session records remain authoritative.</p><div id="wsPrep"></div></section><section class="ws-section ws-backup"><h2>Take your desk with you</h2><p class="ws-muted ws-small">Back up your pins, reference notes, checklist, and scratchpad. NPC selections and the map are separate: use Download session package to take them into Foundry.</p><p id="wsSaveStatus" class="ws-save" role="status">Saved in this browser</p><div class="ws-backup-actions"><button class="ws-button" type="button" data-ws-action="backup">${icon('download')}Download backup</button><button class="ws-button" type="button" data-ws-action="import">Import backup</button><input id="wsImportFile" type="file" accept="application/json,.json" hidden></div><p id="wsImportStatus" class="ws-small" role="status"></p></section></aside></div>`;
+      <aside class="ws-secondary-column" aria-label="Campaign shortcuts"><section class="ws-section"><div class="ws-section-head"><h2>${icon('pin')}Pinned notes</h2><span id="wsPinCount" class="ws-count"></span></div><div id="wsPins"></div></section><section class="ws-section"><div class="ws-section-head"><h2>${icon('clock')}Recently opened</h2></div><div id="wsRecent"></div></section><section class="ws-section"><p class="ws-eyebrow">Around the table</p><h2>The party</h2><div class="ws-party">${notes.filter(n => n.t === 'pc' && n.status !== 'inactive').map(n => `<a href="${href(n.p)}"><span class="ws-monogram" aria-hidden="true">${esc(title(n.p).slice(0, 1))}</span><span>${esc(title(n.p))}<small>${esc(n.summary?.slice(0, 85) || 'Character notes & backstory')}</small></span>${icon('arrow')}</a>`).join('')}</div></section><section class="ws-section"><h2>Prepared notes</h2><p class="ws-muted ws-small">Earlier preparation may contain scenes that were played differently. The session records remain authoritative.</p><div id="wsPrep"></div></section><section class="ws-section ws-backup"><h2>Desk backup</h2><p class="ws-muted ws-small">This older format includes pins, recent entries, reference notes, checklist, and scratchpad. For a complete editable plan with NPCs, map, and encounter, use Saved sessions.</p><p id="wsSaveStatus" class="ws-save" role="status">Saved in this browser</p><div class="ws-backup-actions"><button class="ws-button" type="button" data-ws-action="backup">${icon('download')}Download backup</button><button class="ws-button" type="button" data-ws-action="import">Import backup</button><input id="wsImportFile" type="file" accept="application/json,.json" hidden></div><p id="wsImportStatus" class="ws-small" role="status"></p></section></aside></div>`;
   }
 
   const categories = [ ['all', 'All entries'], ['people', 'People'], ['places', 'Places & nations'], ['sessions', 'Sessions'], ['factions', 'Factions'], ['lore', 'Lore & history'], ['pinned', 'Pinned'] ];
@@ -418,6 +428,7 @@
 
   window.addEventListener('storage', event => {
     if (!key || event.key !== key || !event.newValue) return;
+    if(window.SaerothSessionPrep?.externalChange(event))return;
     try {
       const next = validate(JSON.parse(event.newValue));
       // Do not replace a textarea being edited in this tab. Its next input saves it.
@@ -427,5 +438,17 @@
       if (host?.querySelector('#wsTitle')) { host.querySelector('#wsTitle').value = saved.title; host.querySelector('#wsNotes').value = saved.notes; }
     } catch (_) { /* Another tab's invalid state cannot replace this working copy. */ }
   });
-  window.SaerothWorkspace = { configure, mount, dispose, visit, decorateNote };
+  // Session versions exclude global pins, navigation history, and library layout.
+  function sessionSnapshot() { return structuredClone({title:saved.title,notes:saved.notes,tasks:saved.tasks,board:saved.board}); }
+  function prepareSession(desk) {
+    if (recoveryRaw && !recoverySaved) throw Error('Preserve the unreadable desk backup before opening another session.');
+    return validate({...saved,...desk});
+  }
+  function sessionEntries(desk) { return [[key,JSON.stringify(prepareSession(desk))]]; }
+  function commitSession(desk) {
+    saved = prepareSession(desk); storageWarning=''; lastUndo=null;
+    if(host?.querySelector('#wsTitle')) {host.querySelector('#wsTitle').value=saved.title;host.querySelector('#wsNotes').value=saved.notes;}
+    refreshLists();refreshNoteActions();updateSaveStatus();
+  }
+  window.SaerothWorkspace = { configure, mount, dispose, visit, decorateNote, sessionSnapshot, sessionEntries, commitSession };
 })();
