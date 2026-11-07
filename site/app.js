@@ -2696,7 +2696,7 @@ async function init() {
     state.links.set(it.p, it.l || []);
     if (it.t) state.type.set(it.p, it.t);
   }
-  window.SaerothWorkspace?.configure({notes: state.campaign, fetchNote,
+  await window.SaerothWorkspace?.configure({notes: state.campaign, fetchNote,
     parseMarkdown: text => window.SaerothSanitize(marked.parse(text)), resolveImages, resolveTarget, base: BASE});
   window.SaerothEditor?.configure({notes: state.campaign, fetchNote,
     parseMarkdown: text => window.SaerothSanitize(marked.parse(text)), resolveImages, resolveTarget, base: BASE});

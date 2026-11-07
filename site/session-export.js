@@ -28,7 +28,7 @@
     try {
       const preserved=localStorage.getItem(key+':recovery');
       if(preserved)recovery.push({key,data:preserved,protected:true});
-      raw = localStorage.getItem(key); return raw ? validate(JSON.parse(raw)) : fallback;
+      raw = window.SaerothSessionPrep?window.SaerothSessionPrep.initialValue(key):localStorage.getItem(key); return raw ? validate(JSON.parse(raw)) : fallback;
     }
     catch (_) {
       if (raw) {
@@ -45,8 +45,9 @@
     }
   }
   function save(key, value) {
+    try { window.SaerothSessionPrep?.assertWritable(); } catch (_) { return false; }
     if (recovery.some(r => r.key === key && !r.protected)) return false;
-    try { if (value === null) localStorage.removeItem(key); else localStorage.setItem(key,JSON.stringify(value)); return true; }
+    try { const data=value===null?null:JSON.stringify(value);if(data===null)localStorage.removeItem(key);else localStorage.setItem(key,data);window.SaerothSessionPrep?.recordWrite(key,data);return true; }
     catch (_) { return false; }
   }
   function configure(options) {
@@ -56,7 +57,8 @@
     recovery = []; storageWarning = ''; mapWarning = '';
     selectedActors = readSaved(actorKey,validateActors,[]);
     map = readSaved(mapKey,validateMap,null);
-    window.SaerothEncounterPlanner?.configure({base:base.href,getMap:()=>map,selectMap,validateMap,loadMapAssets,onChange:refreshSummary});
+    let initialRaw;try{initialRaw=window.SaerothSessionPrep?.initialValue('saeroth-encounter-v1:'+base.pathname);}catch(_){/* The planner reports its own storage warning. */}
+    window.SaerothEncounterPlanner?.configure({base:base.href,getMap:()=>map,selectMap,validateMap,loadMapAssets,onChange:refreshSummary,initialRaw});
   }
   function selectMap(value) {
     if (!base) throw Error('The campaign desk is still loading.');
@@ -64,12 +66,14 @@
     const saved = save(mapKey,map);
     mapWarning = saved ? '' : 'This map is available in this tab, but could not be saved on the device. Download the session package before leaving.';
     renderMap(); window.SaerothEncounterPlanner?.mapChanged(); refreshSummary();
+    document.dispatchEvent(new CustomEvent('saeroth-session-change'));
     return {saved,message:saved?'Added to your session package. Open the Campaign desk to include notes and NPCs.':mapWarning};
   }
   function persistActors() {
     if (!save(actorKey,{version:1,actors:selectedActors})) storageWarning = 'NPC selections could not be saved on this device. Download the session package before leaving.';
     else if (!recovery.length) storageWarning = '';
     refreshSummary();
+    document.dispatchEvent(new CustomEvent('saeroth-session-change'));
   }
   function unmount() {
     window.SaerothEncounterPlanner?.unmount();
@@ -139,6 +143,7 @@
       if (busy) return;
       map = null; mapWarning = save(mapKey,null) ? '' : 'The selected map was removed from this tab only. Browser storage could not be updated.';
       renderMap(); window.SaerothEncounterPlanner?.mapChanged(); refreshSummary(); status('Battle map removed from this package.');
+      document.dispatchEvent(new CustomEvent('saeroth-session-change'));
     };
   }
   async function loadCatalog(ticket) {
@@ -343,11 +348,22 @@
   }
   document.addEventListener('saeroth-workspace-change',refreshSummary);
   window.addEventListener('storage',event=>{
+    if(window.SaerothSessionPrep?.externalChange(event))return;
     if(!config||busy)return;
     try{
       if(event.key===mapKey){map=event.newValue?validateMap(JSON.parse(event.newValue)):null;mapWarning='';renderMap();window.SaerothEncounterPlanner?.mapChanged();refreshSummary();}
       if(event.key===actorKey){selectedActors=event.newValue?validateActors(JSON.parse(event.newValue)):[];renderActors();refreshSummary();}
     }catch(_){status('A selection changed in another tab but could not be read. Your current package was kept.',true);}
   });
-  window.SaerothSessionExport={configure,mount,unmount,selectMap,validateMap};
+  function sessionSnapshot(){return structuredClone({actors:selectedActors,map});}
+  function sessionEntries(value){
+    if(recovery.some(r=>!r.protected))throw Error('Preserve unreadable NPC or map selections before opening another session.');
+    const actors=validateActors({version:1,actors:value.actors}),chosen=value.map?validateMap(value.map):null;
+    return [[actorKey,JSON.stringify({version:1,actors})],[mapKey,chosen?JSON.stringify(chosen):null]];
+  }
+  function commitSession(value){
+    selectedActors=validateActors({version:1,actors:value.actors});map=value.map?validateMap(value.map):null;
+    storageWarning='';mapWarning='';renderSelected();renderMap();renderActors();refreshSummary();
+  }
+  window.SaerothSessionExport={configure,mount,unmount,selectMap,validateMap,loadMapAssets,sessionSnapshot,sessionEntries,commitSession,isBusy:()=>busy};
 })();
