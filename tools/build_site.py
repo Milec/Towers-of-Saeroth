@@ -8,7 +8,7 @@ the same size as the repo instead of several times larger.
   --no-vault   omit the 41k-file rules reference (site drops ~192 MB, and the
                campaign notes still work in full)
 """
-import argparse, json, os, re, shutil, sys
+import argparse, hashlib, json, os, re, shutil, sys
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
 
@@ -58,6 +58,7 @@ def build_session_catalog():
     """Publish actor references, never executable actor data, for session exports."""
     module = Path(ROOT) / 'foundry-module'
     shutil.copyfile(module / 'scripts/session-package.mjs', Path(OUT) / 'session-package.mjs')
+    shutil.copyfile(module / 'scripts/encounter-plan.mjs', Path(OUT) / 'encounter-plan.mjs')
     manifest = json.loads((module / 'content/saeroth-creatures.json').read_text(encoding='utf-8'))
     if manifest.get('schema') != 1 or not isinstance(manifest.get('actors'), list):
         raise ValueError('The Saeroth actor feed is not a supported session catalog source.')
@@ -79,7 +80,11 @@ def build_session_catalog():
             image = 'content/' + quote(asset, safe='/') if asset.startswith('campaign/') and '..' not in asset.split('/') and (Path(ROOT) / asset).is_file() else ''
         else:
             image = ''
-        actors.append({'key': key, 'name': actor['name'], 'level': actor['system']['details']['level']['value'], 'img': image})
+        token = actor.get('prototypeToken', {})
+        size = {'tiny': .5, 'sm': 1, 'med': 1, 'lg': 2, 'huge': 3, 'grg': 4}.get(actor.get('system', {}).get('traits', {}).get('size', {}).get('value'), 1)
+        linked = token.get('flags', {}).get('pf2e', {}).get('linkToActorSize', True)
+        width, height = (size, size) if linked else (token.get('width', size), token.get('height', size))
+        actors.append({'id': 'campaign-' + hashlib.sha256(key.encode()).hexdigest()[:16], 'key': key, 'name': actor['name'], 'level': actor['system']['details']['level']['value'], 'img': image, 'width': width, 'height': height, 'source': {'type': 'campaign', 'key': key}})
     actors.sort(key=lambda actor: actor['name'].casefold())
     (Path(OUT) / 'session-actors.json').write_text(json.dumps({'schema': 1, 'actors': actors}, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
 

@@ -6,7 +6,7 @@ player ancestries as a native PF2e Item compendium. The
 initial build discovers five existing campaign statblocks, including Skinwright,
 The Cream Man, Wenzel Grauth, Garrick Thorne, and Ashwin Devaraj.
 
-## Session Inbox (0.3.0)
+## Session Inbox (0.4.0)
 
 The GM website can export one session package containing a journal, selected
 Saeroth NPC references, and one optional generated battle map. The **Session
@@ -37,9 +37,10 @@ MCP bridge, a relay token, or a Script macro.
 
 The journal and scene start with no player ownership. The scene is inactive and
 hidden from scene navigation; it contains its bundled background, native v14
-level, walls, doors, lights, and five-foot grid. No tokens are placed and no combat
-is created or started. Open and activate the scene yourself when ready, and drag
-actors onto it from the Actors directory.
+level, walls, doors, lights, and five-foot grid. Version 2 encounter packages can
+stage explicitly placed opponents as hidden, unlinked, hostile tokens. No combat
+is created or started. Open the scene and reveal its opponents when ready;
+roster-only imports leave token placement to the GM.
 
 Map and journal images travel inside the JSON as PNG, JPEG, or WebP assets. The
 importer checks their dimensions and uploads them under
@@ -51,6 +52,17 @@ its compendium source. The source sheet supplies its mechanics, portrait, and
 prototype token art. Existing world HP, equipment, ownership, and GM edits are
 preserved. If the preview reports a missing NPC, use **Sync Saeroth Content** or
 install the current module, then choose **Refresh preview**.
+
+Encounter rosters can additionally reference native PF2e Actor compendiums. The
+importer reuses a matching world actor by its source identity, or copies the
+compendium sheet without editing its source. Preview verifies each planned
+level and staged footprint against the actual actor and adds an encounter roster
+journal page with counts, target, measured XP, and the recorded rules profile.
+The planner matches Foundry PF2e 8.5 standard-proficiency math; Proficiency
+Without Level worlds must import a package without an encounter roster.
+See [Planning an encounter](../docs/Campaign%20workspace.md#planning-an-encounter)
+for the five-player defaults, source catalog, placement controls, rules
+discrepancy, and portable backups.
 
 The website desk and its selections are local browser state, not a live
 connection to Foundry. The downloaded file is a snapshot. Its NPC references do
@@ -82,12 +94,17 @@ Foundry documents before writing them. The initial limits are 50 NPC references,
 100 journal pages, one map, 100 raster images, 20 MiB per image, 48 MiB of image
 bytes, and a 72 MiB package file. The website's reference packet currently allows
 60 notes plus its session-plan page. Failed exports do not download partial files.
+Version 2 allows at most 20 opponent types and 40 opponent tokens, with 99 input
+journal pages reserving one for the generated roster. All planned opponents
+must be positioned together, or all positions omitted for a roster-only import.
 
 The implementation is `scripts/session-inbox.mjs`; the shared website/Foundry
 contract is `scripts/session-package.mjs`. For integrations, a GM client exposes
 `game.saerothContent.sessionInbox.preview(package)` and
 `game.saerothContent.sessionInbox.import(package, {resume: false})`, plus `open()`
 for the dialog. These use the same validation and permissions as the UI.
+`scripts/encounter-plan.mjs` supplies shared encounter math and geometry checks;
+`node --test foundry-module/scripts/test-encounter-plan.mjs` checks that contract.
 
 Run `node foundry-module/scripts/test-session-inbox.mjs` from the repository root
 after installing the test dependencies in `tools/atlas-tests`. Tests cover native

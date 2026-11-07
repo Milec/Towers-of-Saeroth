@@ -18,11 +18,27 @@ function rawPackage() {
  const scene=adapter.scene(engine.generate({seed:'session-test',kind:'camp',terrain:'mountain',size:24,name:'Mountain camp',source:{type:'poi',id:0}}),{backgroundPath:'asset:map',time:'night'});
  return {format:'saeroth-session',version:1,name:'Expedition arrival',createdAt:'2026-11-06T22:00:00Z',assets:[{id:'map',name:'Camp artwork',mime:'image/png',data:png}],scene,journal:{name:'Expedition arrival',ownership:{default:3},pages:[{name:'Preparation',type:'text',text:{format:1,content:'<h1>Arrival</h1><p>Camp notes <a href="https://example.com/note">source</a>.</p><img src="asset:map" alt="Mountain camp">'}}]},actors:[{key:sourceKey,name:'Test Quartermaster'}]};
 }
+const coreUuid='Compendium.pf2e.monster-core.Actor.orcveteran000001';
+function encounterPackage({staged=true}={}) {
+ const raw=rawPackage();raw.version=2;raw.scene.walls=[];
+ raw.encounter={name:'Survey yard recovery',partyLevel:2,partySize:5,target:'moderate',roster:[
+  {id:'commander',name:'Orc Commander',level:2,count:1,width:1,height:1,source:{type:'campaign',key:sourceKey}},
+  {id:'veteran',name:'Orc Veteran',level:1,count:2,width:1,height:1,source:{type:'compendium',uuid:coreUuid}}
+ ],placements:staged?[{entryId:'commander',instance:0,x:100,y:100},{entryId:'veteran',instance:0,x:300,y:100},{entryId:'veteran',instance:1,x:500,y:100}]:[]};
+ return raw;
+}
+function addCorePack(h) {
+ const actor=new h.classes.Actor({_id:'orcveteran000001',name:'Orc Veteran',type:'npc',img:'icons/svg/mystery-man.svg',flags:{},system:{details:{level:{value:1}},attributes:{hp:{value:20,max:20}}},prototypeToken:{width:1,height:1,actorLink:true,hidden:false,disposition:1,texture:{src:'icons/svg/mystery-man.svg'}},items:[]});
+ h.env.game.packs.set('pf2e.monster-core',{documentName:'Actor',getDocument:async id=>id===actor.id?actor:null});return actor;
+}
 function harness(options={}) {
- const collections={Actor:new Map(),JournalEntry:new Map(),Scene:new Map()},calls={create:[],delete:[],upload:[],validation:[],decode:0,browse:0},failures={...options};let sequence=0;
+ const collections={Actor:new Map(),JournalEntry:new Map(),Scene:new Map(),Token:new Map()},calls={create:[],delete:[],upload:[],validation:[],decode:0,browse:0,tokenParents:[]},failures={...options};let sequence=0;
  class Doc {
   constructor(type,data){this.documentName=type;this.data=clone(data);this.id=data._id;this.uuid=type+'.'+this.id;}
   get flags(){return this.data.flags??{};}get name(){return this.data.name;}get type(){return this.data.type;}
+  get system(){return this.data.system;}get level(){return this.data.system?.details?.level?.value;}get prototypeToken(){return this.data.prototypeToken;}get img(){return this.data.img;}get _stats(){return this.data._stats;}
+  get tokens(){return this.data.tokens??[];}
+  async getTokenDocument(overrides,context){calls.tokenParents.push(context.parent);const data={...clone(this.data.prototypeToken??{}),...clone(overrides),delta:{}};if(failures.tokenDimensions)data.width=failures.tokenDimensions;return new classes.Token(data);}
   toObject(){return clone(this.data);}
   validate(){calls.validation.push(this.documentName);if(failures.invalidSchema===this.documentName)throw Error('Invalid native schema.');return true;}
   async update(changes){if(failures.delayedUpdate)await new Promise(resolve=>setImmediate(resolve));if(failures.updateFails)throw Error('Update rejected.');for(const [key,value]of Object.entries(changes)){const parts=key.split('.');let at=this.data;for(const part of parts.slice(0,-1))at=at[part]??={};at[parts.at(-1)]=clone(value);}if(failures.lostCompletionReply&&changes[`flags.${MODULE}.sessionInbox.state`]==='complete')throw Error('Lost completion reply.');return this;}
@@ -32,7 +48,7 @@ function harness(options={}) {
   constructor(data){super(type,data);}
   static async create(data){calls.create.push({type,data:clone(data)});await new Promise(resolve=>setImmediate(resolve));if(failures.beforeCreate)await failures.beforeCreate(type,data);if(failures.editActorDuringScene&&type==='Scene'){const actor=[...collections.Actor.values()][0];actor.data.name='GM edited actor';throw Error('Scene rejected after another GM edit.');}if(failures.createFails===type)throw Error('Creation rejected.');if(collections[type].has(data._id))throw Error('Duplicate ID.');const doc=new classes[type](data);collections[type].set(doc.id,doc);if(failures.lostReply===type)throw Error('Lost create reply.');return doc;}
  };
- const packActor=new classes.Actor({_id:'packactor0000001',name:'Test Quartermaster',type:'npc',ownership:{default:3},flags:{saeroth:{source:sourceKey}},system:{attributes:{hp:{value:50,max:50}}},prototypeToken:{depth:1,texture:{src:'modules/saeroth-pf2e-content/assets/actors/test.png'}},items:[]});
+ const packActor=new classes.Actor({_id:'packactor0000001',name:'Test Quartermaster',type:'npc',ownership:{default:3},flags:{saeroth:{source:sourceKey}},system:{details:{level:{value:2}},attributes:{hp:{value:50,max:50}}},prototypeToken:{width:1,height:1,depth:1,texture:{src:'modules/saeroth-pf2e-content/assets/actors/test.png'}},items:[]});
  const picker={
   browse:async()=>{calls.browse++;if(failures.browseFails)throw Error('Browse rejected.');return {dirs:['worlds/test-world/saeroth-sessions']};},
   createDirectory:async()=>{},
@@ -40,7 +56,7 @@ function harness(options={}) {
  };
  const env={
   File,DOMParser:new JSDOM('').window.DOMParser,CONFIG:Object.fromEntries(Object.entries(classes).map(([k,v])=>[k,{documentClass:v}])),
-  game:{user:{isGM:options.gm!==false},system:{id:options.system??'pf2e'},version:options.version??'14.367',world:{id:'test-world'},actors:collections.Actor,journal:collections.JournalEntry,scenes:collections.Scene,packs:new Map(options.missingActor?[]:[['saeroth-pf2e-content.saeroth-actors',{getDocuments:async()=>[packActor]}]])},
+  game:{user:{isGM:options.gm!==false},system:{id:options.system??'pf2e'},version:options.version??'14.367',world:{id:'test-world'},actors:collections.Actor,journal:collections.JournalEntry,scenes:collections.Scene,settings:{get:(_scope,key)=>key==='proficiencyVariant'&&!!failures.pwol},packs:new Map(options.missingActor?[]:[['saeroth-pf2e-content.saeroth-actors',{getDocuments:async()=>[packActor]}]])},
   foundry:{
    utils:{randomID:()=>String(++sequence).padStart(24,'0'),isNewerVersion:(a,b)=>{const aa=a.split('.').map(Number),bb=b.split('.').map(Number);return aa[0]>bb[0]||aa[0]===bb[0]&&aa[1]>bb[1];}},
    applications:{apps:{FilePicker:{implementation:picker}}},
@@ -130,6 +146,71 @@ test('failed session cannot delete an actor adopted by a different completed ses
  const failed=h.api.import(first).catch(error=>error);await blocked;await h.second().import(second);assert.equal(h.collections.Actor.size,1);release();const error=await failed;assert(error instanceof Error);assert.equal(error.remainingDocuments.length,1);assert.equal(h.collections.Actor.size,1);
  const completed=[...h.collections.JournalEntry.values()].find(j=>j.flags[MODULE].sessionInbox.bundleId===second.id);assert.equal(completed.flags[MODULE].sessionInbox.state,'complete');
 });
+test('v2 stages native hidden opponents, appends a roster, and preserves their compendium',async()=>{
+ const h=harness(),source=addCorePack(h),sourceBefore=JSON.stringify(source.toObject()),bundle=await sealPackage(encounterPackage());
+ const preview=await h.api.preview(bundle);assert.equal(preview.actors.length,2);assert.equal(preview.pages.length,2);assert.equal(preview.encounter.totalXP,100);assert.equal(preview.encounter.awardXP,80);assert.equal(preview.encounter.tokens,3);assert.equal(h.calls.create.length,0);assert.equal(h.calls.upload.length,0);assert(h.calls.validation.includes('Token'));
+ const result=await h.api.import(bundle);assert.equal(result.created.length,4);assert.equal(result.actorsReused,0);assert.equal(h.collections.Actor.size,2);assert.equal(h.collections.Token.size,0,'Tokens are created atomically inside the new scene, never as loose world documents');
+ const scene=[...h.collections.Scene.values()][0],journal=[...h.collections.JournalEntry.values()][0];assert.equal(scene.data.active,false);assert.equal(scene.data.navigation,false);assert.equal(scene.data.tokens.length,3);
+ assert.equal(journal.data.pages.length,2);assert.match(journal.data.pages[1].text.content,/100 XP/);assert.match(journal.data.pages[1].text.content,/80 XP/);assert.match(journal.data.pages[1].text.content,/No combat is created or started/);
+ assert.equal(journal.flags[MODULE].sessionInbox.actorKeys.length,2);assert(journal.flags[MODULE].sessionInbox.actorKeys.includes(coreUuid));
+ const tokenIds=new Set();for(const token of scene.data.tokens){assert.equal(token.hidden,true);assert.equal(token.actorLink,false);assert.equal(token.disposition,-1);assert.equal(token.level,scene.data.initialLevel);assert.equal(token.depth,1);assert(h.collections.Actor.has(token.actorId));assert.match(token._id,/^[a-zA-Z0-9]{16}$/);tokenIds.add(token._id);}
+ assert.equal(tokenIds.size,3);assert(h.calls.tokenParents.every(p=>p.documentName==='Scene'&&p.data.active===false));assert.equal(JSON.stringify(source.toObject()),sourceBefore);
+ const copies=[...h.collections.Actor.values()],core=copies.find(a=>a.flags[MODULE].source===coreUuid);assert.equal(core.flags.core.sourceId,coreUuid);assert.equal(core.data.ownership.default,0);
+ const before=h.calls.create.length;scene.data.tokens.pop();await h.api.import(bundle);assert.equal(h.calls.create.length,before);assert.equal(scene.data.tokens.length,2,'Completed import does not restore a GM-deleted token');
+ h.collections.Actor.clear();h.env.game.packs.clear();assert.equal((await h.api.preview(bundle)).actors.length,2,'Completed preview does not resolve deleted sheets');
+});
+
+test('v2 roster-only imports sheets without tokens or combat and reuses core-source world actors',async()=>{
+ const h=harness(),source=addCorePack(h),raw=encounterPackage({staged:false});raw.scene=null;raw.assets=[];raw.journal.pages[0].text.content='<p>Notes only</p>';
+ const existing=new h.classes.Actor({...source.toObject(),_id:'existingCore0001',_stats:{compendiumSource:coreUuid},system:{details:{level:{value:1}},attributes:{hp:{value:1,max:20}}},ownership:{default:2}});h.collections.Actor.set(existing.id,existing);const before=JSON.stringify(existing.toObject());
+ const bundle=await sealPackage(raw),preview=await h.api.preview(bundle);assert.equal(preview.encounter.tokens,0);assert(preview.actors.find(a=>a.key===coreUuid).reuse);await h.api.import(bundle);assert.equal(h.collections.Scene.size,0);assert.equal(h.collections.Actor.size,2);assert.equal(JSON.stringify(existing.toObject()),before);assert.equal(h.calls.upload.length,0);
+ const journal=[...h.collections.JournalEntry.values()][0];assert.match(journal.data.pages[1].text.content,/Roster only/);
+});
+
+test('v2 incompatible sources, native footprints and rule variants block all writes',async()=>{
+ const bundle=await sealPackage(encounterPackage());
+ for(const failure of ['missingCore','wrongType','changedLevel','changedSize','preparedSize','pwol']){
+  const h=harness(),source=addCorePack(h);
+  if(failure==='missingCore')h.env.game.packs.delete('pf2e.monster-core');if(failure==='wrongType')source.data.type='character';if(failure==='changedLevel')source.data.system.details.level.value=2;if(failure==='changedSize')source.data.prototypeToken.width=2;if(failure==='preparedSize')h.failures.tokenDimensions=2;if(failure==='pwol')h.failures.pwol=true;
+  await assert.rejects(h.api.import(bundle),undefined,failure);assert.equal(h.calls.create.length,0,failure);assert.equal(h.calls.upload.length,0,failure);
+ }
+});
+
+test('v2 unbudgeted rosters stay explicitly unbudgeted and generated journal text is escaped',async()=>{
+ const h=harness(),raw=encounterPackage({staged:false});addCorePack(h);raw.encounter.partyLevel=10;raw.encounter.name='Guard <script>alert(1)</script> & friend';raw.encounter.roster[0].name='Commander <img src="https://outside.test">';
+ const bundle=await sealPackage(raw),preview=await h.api.preview(bundle);assert.equal(preview.encounter.budgeted,false);assert.equal(preview.encounter.totalXP,null);await h.api.import(bundle);
+ const html=[...h.collections.JournalEntry.values()][0].data.pages.at(-1).text.content;assert.match(html,/Unbudgeted/);assert(!/<script>|<img src="https/.test(html));assert.match(html,/&lt;script&gt;/);assert(!html.includes('null XP'));assert(!html.includes('Estimated award'));
+});
+
+test('v2 lost scene replies and failed staging roll back only this import, then retry cleanly',async()=>{
+ const bundle=await sealPackage(encounterPackage());
+ for(const failure of [{lostReply:'Scene'},{createFails:'Scene'},{lostReply:'Actor'}]){
+  const h=harness(failure);addCorePack(h);await assert.rejects(h.api.import(bundle));for(const docs of Object.values(h.collections))assert.equal(docs.size,0);
+  delete h.failures.lostReply;delete h.failures.createFails;await h.api.import(bundle);assert.equal([...h.collections.Scene.values()][0].tokens.length,3);assert.equal(h.collections.Actor.size,2);
+ }
+ const h=harness({lostCompletionReply:true});addCorePack(h);assert.equal((await h.api.import(bundle)).recovered,true);assert.equal([...h.collections.Scene.values()][0].tokens.length,3);assert.equal(h.calls.delete.length,0);
+});
+
+test('v2 catches an intervening world sheet edit and retains the GM edit during rollback',async()=>{
+ const h=harness(),source=addCorePack(h),bundle=await sealPackage(encounterPackage());let edited=false;
+ h.failures.beforeCreate=type=>{if(type==='Actor'&&!edited&&h.collections.Actor.size){edited=true;const actor=[...h.collections.Actor.values()][0];actor.data.system.details.level.value=12;}};
+ await assert.rejects(h.api.import(bundle),/level 12/);assert.equal(h.collections.Scene.size,0);assert.equal(h.collections.JournalEntry.size,0);assert.equal(h.collections.Actor.size,1);assert.equal([...h.collections.Actor.values()][0].level,12);assert.equal(source.level,1);
+});
+
+test('v2 concurrent imports deduplicate core actors and retain tokens when completion wins',async()=>{
+ const h=harness(),bundle=await sealPackage(encounterPackage());addCorePack(h);
+ const outcomes=await Promise.allSettled([h.api.import(bundle),h.second().import(bundle)]);assert(outcomes.some(r=>r.status==='fulfilled'));assert.equal(h.collections.Actor.size,2);assert.equal(h.collections.Scene.size,1);assert.equal(h.collections.JournalEntry.size,1);assert.equal([...h.collections.Scene.values()][0].tokens.length,3);
+ const journal=[...h.collections.JournalEntry.values()][0];journal.flags[MODULE].sessionInbox.state='failed';h.collections.Scene.clear();h.failures.delayedUpdate=true;
+ const resumed=await Promise.allSettled([h.api.import(bundle,{resume:true}),h.second().import(bundle,{resume:true})]);assert(resumed.some(r=>r.status==='fulfilled'));assert.equal(h.collections.Actor.size,2);assert.equal([...h.collections.Scene.values()][0].tokens.length,3);
+});
+
+test('v2 rollback preserves a core actor adopted by a different completed session',async()=>{
+ const first=await sealPackage(encounterPackage()),other=encounterPackage({staged:false});other.name='Another encounter packet';other.scene=null;other.assets=[];other.journal.pages[0].text.content='<p>Other notes</p>';const second=await sealPackage(other),h=harness();addCorePack(h);let release,entered;
+ const blocked=new Promise(resolve=>entered=resolve),continueFirst=new Promise(resolve=>release=resolve);
+ h.failures.beforeCreate=async type=>{if(type==='Scene'){entered();await continueFirst;throw Error('First scene rejected.');}};
+ const failed=h.api.import(first).catch(error=>error);await blocked;await h.second().import(second);assert.equal(h.collections.Actor.size,2);release();const error=await failed;assert.equal(error.remainingDocuments.length,2);assert.equal(h.collections.Actor.size,2);assert.equal(h.collections.Scene.size,0);
+});
+
 test('installed Foundry validates the native scene and journal schemas in memory',async t=>{
  const app=process.env.FOUNDRY_APP_PATH||path.join(process.env.LOCALAPPDATA||'','Programs/Foundry Virtual Tabletop/resources/app');
  if(!fs.existsSync(path.join(app,'common/documents/scene.mjs'))){t.skip('Local Foundry classes are not installed.');return;}
@@ -140,4 +221,7 @@ test('installed Foundry validates the native scene and journal schemas in memory
  const bundle=await sealPackage(rawPackage());const scene=clone(bundle.scene);scene.levels[0].background.src='worlds/test/art.webp';scene.thumb=scene.levels[0].background.src;
  const s=new foundry.documents.BaseScene(scene,{strict:true});assert.equal(s.validate({strict:true}),true);assert.equal(s.walls.size,scene.walls.length);assert.equal(s.initialLevel.background.src,scene.thumb);
  const j=new foundry.documents.BaseJournalEntry(bundle.journal,{strict:true});assert.equal(j.validate({strict:true}),true);assert.equal(j.pages.size,1);
+ const h=harness();addCorePack(h);await h.api.import(await sealPackage(encounterPackage()));
+ const staged=[...h.collections.Scene.values()][0].toObject(),nativeScene=new foundry.documents.BaseScene(staged,{strict:true});assert.equal(nativeScene.validate({strict:true}),true);assert.equal(nativeScene.tokens.size,3);for(const token of nativeScene.tokens){assert.equal(token.level,staged.initialLevel);assert.equal(token.hidden,true);assert.equal(token.actorLink,false);assert.equal(token.disposition,-1);}
+ const rosterJournal=new foundry.documents.BaseJournalEntry([...h.collections.JournalEntry.values()][0].toObject(),{strict:true});assert.equal(rosterJournal.validate({strict:true}),true);assert.equal(rosterJournal.pages.size,2);
 });

@@ -4,7 +4,7 @@
     {
       "id": "expedition-arrival-v1",
       "name": "Session 5 — The Search Camp",
-      "description": "Unplayed expedition arrival and survey-store recovery preparation for six level-2 characters.",
+      "description": "Unplayed expedition arrival and survey-store recovery preparation for five level-2 characters.",
       "notes": [
         "campaign/sessions/Session 5 - The Search Camp.md",
         "campaign/nations/Vaelic Principality/locations/Expedition Site.md",
@@ -18,6 +18,18 @@
         "campaign/nations/Melisor Magocracy/npcs/Tavian Calvo.md",
         "campaign/nations/Thurion Merchant Alliance/npcs/Renata Vellori.md"
       ],
+      "encounter": {
+        "name": "The Missing Survey Stores",
+        "rulesProfile": "foundry-pf2e-8.5",
+        "partyLevel": 2,
+        "partySize": 5,
+        "target": "moderate",
+        "roster": [
+          {"id": "orc-commander", "name": "Orc Commander", "level": 2, "count": 1, "width": 1, "height": 1, "source": {"type": "compendium", "uuid": "Compendium.pf2e.pathfinder-monster-core.Actor.PLZk6zY5iwccPTPS"}},
+          {"id": "orc-veteran", "name": "Orc Veteran", "level": 1, "count": 2, "width": 1, "height": 1, "source": {"type": "compendium", "uuid": "Compendium.pf2e.pathfinder-monster-core.Actor.V90OYOMyyPLPJuod"}}
+        ],
+        "placements": []
+      },
       "map": {
         "version": 1,
         "name": "Old Survey Quarry — Supply Recovery",

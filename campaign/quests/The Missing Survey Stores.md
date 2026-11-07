@@ -3,7 +3,7 @@ title: The Missing Survey Stores
 type: quest
 status: prep
 audience: gm
-party: 6 level-2 characters
+party: 5 level-2 characters
 location: "[[Expedition Site]]"
 ---
 
@@ -13,7 +13,7 @@ location: "[[Expedition Site]]"
 
 [[Octavia Sere]] needs food and climbing equipment returned to the [[Expedition Site]]. [[Tavian Calvo]] identifies the goods; [[Renata Vellori]] records the agreement. The missing shipment was a local stores run, not one of the destroyed Berruel wagons.
 
-A returning porter saw four armed orcs take the loads from the carriers and turn toward an abandoned quarry sorting yard. The carriers were allowed to leave. Tavian can bring the witness to the party and show the departure count. No roll is needed to obtain the essential lead.
+A returning porter saw three armed orcs take the loads from the carriers and turn toward an abandoned quarry sorting yard. The carriers were allowed to leave. Tavian can bring the witness to the party and show the departure count. No roll is needed to obtain the essential lead.
 
 **Cargo:** two blue-waxed food sacks and two squat tool chests marked with a diagonal white stripe. Together the sacks contain twenty-four sealed daily meal packets. The chests hold six coils of climbing rope, spare pitons, harnesses, and survey fittings. Tavian's list distinguishes this kit from whatever the raiders already owned.
 
@@ -23,7 +23,7 @@ The quarry is a proposed local encounter site, not a newly confirmed atlas landm
 
 ## Why the raiders are there
 
-Rusha leads this four-person band sheltering in the old yard. They took the stores because they are short of food and intend to sell equipment they cannot eat. They know these sacks came from the expedition. They have no knowledge of the flask trap, the cargo insurance, or [[Cassian Merovel]].
+Rusha leads this three-person band sheltering in the old yard. They took the stores because they are short of food and intend to sell equipment they cannot eat. They know these sacks came from the expedition. They have no knowledge of the flask trap, the cargo insurance, or [[Cassian Merovel]].
 
 Rusha is prepared to trade. She wants food and a promise that the camp will not immediately send guards after an agreed handover. She will not disarm her whole group while surrounded. Her two veterans distrust strangers but follow an agreement she makes in front of them. The scrapper wants to leave the mountains and is the first to argue for taking a sack and going.
 
@@ -49,24 +49,23 @@ The stone bench in the northeast is the sorting bench. The stolen sacks and ches
 
 **A negotiated handover.** Rusha accepts one food sack, safe departure, and the return of the tools and remaining food to camp. A credible proposal that meets those terms needs no check. If the party tries to improve the bargain, use the normal social actions; Rusha's printed Will DC is **17**. She starts indifferent if hailed peacefully. Make an Impression can open a Request where her attitude would otherwise prevent it. One failed social roll does not make her attack. She can refuse a term, ask for a different guarantee, or give the party time to confer.
 
-**A theft in return.** The party can distract the raiders and remove the stores. Decide where each raider is looking, then use ordinary Stealth and observation rather than a group roll that makes six people equally invisible. A discovered carrier can still set the load down, negotiate, run, or fight. The raiders protect their food and escape route; they do not pursue the party all the way to camp.
+**A theft in return.** The party can distract the raiders and remove the stores. Decide where each raider is looking, then use ordinary Stealth and observation rather than a group roll that makes the whole group equally invisible. A discovered carrier can still set the load down, negotiate, run, or fight. The raiders protect their food and escape route; they do not pursue the party all the way to camp.
 
 **A fight.** If someone begins violence, use the roster below. The objective remains the supplies. Rusha orders a retreat when two raiders are out of the fight, or if she falls below half HP and has a clear exit. Any raider may surrender when cut off. Their Ferocity can keep them standing; it does not oblige them to fight to the death.
 
 ## Encounter roster
 
-This is **moderate for six level-2 PCs**: the adjusted budget is **120 XP**. Use the Monster Core versions, without elite or weak adjustments.
+This is **moderate for five level-2 PCs**: the adjusted budget is **100 XP**. Use the Monster Core versions, without elite or weak adjustments.
 
 | Actor | Quantity | Level | XP each | Total |
 | --- | --- | --- | --- | --- |
 | Orc Commander, named Rusha | 1 | 2 | 40 | 40 |
 | Orc Veteran | 2 | 1 | 30 | 60 |
-| Orc Scrapper | 1 | 0 | 20 | 20 |
-| **Total** | **4** | | | **120** |
+| **Total** | **3** | | | **100** |
 
-The commander and veterans have Reactive Strike, and all four have Ferocity. A creature still has only its normal reaction; using one of these reactions prevents using the other until it regains a reaction. Rusha can use Battle Cry to support the other orcs. Start with space between the groups and let the party see the available exits.
+The commander and veterans have Reactive Strike, and all three have Ferocity. A creature still has only its normal reaction; using one of these reactions prevents using the other until it regains a reaction. Rusha can use Battle Cry to support the other orcs. Start with space between the groups and let the party see the available exits.
 
-**GM reminder:** moderate describes the budget, not a guarantee of safety. Let the party rest at camp before taking the job. Do not add a cliff fall, damaging landslide, hidden reinforcements, or the three expedition NPCs to this budget. If Karoline or another ally joins the fight, reconsider the encounter for the actual participants; the default preparation assumes the six PCs handle it.
+**GM reminder:** moderate describes the budget, not a guarantee of safety. Let the party rest at camp before taking the job. Do not add a cliff fall, damaging landslide, hidden reinforcements, or the three expedition NPCs to this budget. If Karoline or another ally joins the fight, reconsider the encounter for the actual participants; the default preparation assumes the five PCs handle it.
 
 ### Foundry placement
 
@@ -77,7 +76,6 @@ Token positions below are **token centers in scene pixels** on the prepared 3200
 | Rusha — Orc Commander | 2050 | 1050 | Northeast main floor, south of the bench |
 | Orc Veteran — South | 1750 | 2050 | Watching the southern approach |
 | Orc Veteran — West | 1050 | 1650 | West of the internal wall, watching the broken wall |
-| Orc Scrapper | 2250 | 950 | Near the supplies, clear of the bench |
 | Stolen survey stores | 2250 | 1150 | South of the northeast bench; use a noncombat loot token or note |
 
 A southern starting area for the party is centered around **(1550, 2650)**, outside the yard. Let players choose positions and another approach instead of forcing them into a fixed formation. Do not put tokens inside the east or west cliff blockers.
@@ -86,7 +84,6 @@ Compendium references for the installed PF2e Monster Core pack:
 
 - Orc Commander: `Compendium.pf2e.pathfinder-monster-core.Actor.PLZk6zY5iwccPTPS`
 - Orc Veteran: `Compendium.pf2e.pathfinder-monster-core.Actor.V90OYOMyyPLPJuod`
-- Orc Scrapper: `Compendium.pf2e.pathfinder-monster-core.Actor.YReM6QbqwUz3UTP7`
 
 ## Evidence and consequences
 
@@ -107,6 +104,6 @@ For the agreed recovery, Octavia pays the same reward whether the party negotiat
 
 The tangible award is **70 gp total**, a portion of the level's treasure rather than a whole level's allowance. Count it alongside treasure already received in the dryad encounter and earlier sessions. The returned camp goods remain expedition property. Minor healing potions are vitality healing and do not restore Victarion's HP while he has Void Healing.
 
-For an agreed partial settlement that meets the stated success terms, pay in full. For a smaller recovery, offer half the coin now and the rest when the remaining agreed goods arrive; do not withdraw the already-promised item reward after a reasonable rescue effort. If the table uses XP, resolving the moderate encounter awards **80 XP per PC**, including a comparable noncombat resolution, not 120 XP per PC. The campaign can instead continue using its established milestone decisions.
+For an agreed partial settlement that meets the stated success terms, pay in full. For a smaller recovery, offer half the coin now and the rest when the remaining agreed goods arrive; do not withdraw the already-promised item reward after a reasonable rescue effort. If the table uses XP, resolving the moderate encounter awards **80 XP per PC**, including a comparable noncombat resolution. The campaign can instead continue using its established milestone decisions.
 
-*Rules checked: GM Core encounter budgets and party-size adjustments; Monster Core Orc Commander, Orc Veteran, and Orc Scrapper. Equipment prices: [weapon potency](https://2e.aonprd.com/Equipment.aspx?ID=2830), [runestone](https://2e.aonprd.com/Equipment.aspx?ID=3003), and [healing potion](https://2e.aonprd.com/Equipment.aspx?ID=2943). The NPC motives, cargo, journey, agreement, and reward selection are proposed campaign preparation.*
+*Rules checked: GM Core encounter budgets and party-size adjustments; Monster Core Orc Commander and Orc Veteran. Equipment prices: [weapon potency](https://2e.aonprd.com/Equipment.aspx?ID=2830), [runestone](https://2e.aonprd.com/Equipment.aspx?ID=3003), and [healing potion](https://2e.aonprd.com/Equipment.aspx?ID=2943). The NPC motives, cargo, journey, agreement, and reward selection are proposed campaign preparation.*

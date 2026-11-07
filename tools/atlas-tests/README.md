@@ -62,6 +62,27 @@ the standard Windows installation is detected automatically. Tests instantiate
 documents in memory and do not write to a Foundry world database. A real-world
 smoke test remains separate from these automated checks.
 
+The encounter extension has three focused checks: `pnpm run test:encounter-catalog`
+validates the shipped creature references and five-player expedition preset;
+`node --test foundry-module/scripts/test-encounter-plan.mjs` validates encounter
+math, source limits, placement geometry, and version-1 identity compatibility;
+`pnpm run test:encounter-planner` exercises browser roster editing, staging,
+backups, cancellation, recovery, and responsive layouts. The importer suite also
+covers standard PF2e references and staged tokens through native schemas when
+Foundry is available. A disposable running PF2e world is used separately to
+verify actual creature footprints, artwork, and import behavior.
+
+The catalog is metadata only. To refresh it from an installed PF2e system:
+
+```sh
+node tools/build_encounter_catalog.mjs PATH_TO_PF2E_SYSTEM PATH_TO_FOUNDRY_NODE_MODULES
+node tools/atlas-tests/encounter-catalog.cjs
+```
+
+The builder opens temporary snapshots of seven core compendiums, never a world
+database, and records the PF2e version. Review version and footprint changes
+before publishing a new snapshot. Paid token artwork is not part of the catalog.
+
 To regenerate the expedition quarry artwork, run this from the repository root:
 
 ```sh

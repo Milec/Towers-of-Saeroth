@@ -19,7 +19,8 @@ async function downloaded(page, action) {
     await page.goto(base); await page.getByRole('heading', { name: 'Campaign desk', exact: true }).waitFor();
     await page.locator('#wsLatest a').first().waitFor();
     assert.match(await page.locator('#wsLatest').innerText(), /Session 4 - Waystation WLW/);
-    assert.equal(await page.locator('.ws-party a').count(), 6);
+    assert.equal(await page.locator('.ws-party a').count(), 5);
+    assert.equal(await page.locator('.ws-party a').filter({hasText:'Mary'}).count(), 0, 'Inactive characters stay out of the current party');
     await page.screenshot({ path: path.join(__dirname, '../../_site/workspace-desktop.png'), fullPage: false });
 
     await page.goto(base + '#/library'); await page.locator('#wsLibrarySearch').fill('Karoline');

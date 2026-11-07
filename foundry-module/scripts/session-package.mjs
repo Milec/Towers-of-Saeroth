@@ -1,6 +1,9 @@
 /** Portable, data-only Saeroth session package contract. No Foundry globals. */
+import {normalizeEncounter,sourceKey} from './encounter-plan.mjs';
 export const FORMAT = 'saeroth-session';
+// VERSION remains the default for note/NPC/map packages and their stable IDs.
 export const VERSION = 1;
+export const ENCOUNTER_VERSION = 2;
 export const MINIMUM_FOUNDRY = '14.364';
 export const LIMITS = Object.freeze({maxAssets:100,maxAssetBytes:20*1024*1024,maxTotalAssetBytes:48*1024*1024,maxFileBytes:72*1024*1024,maxActors:50,maxPages:100,maxHtmlBytes:2*1024*1024,maxWalls:2000,maxLights:100});
 const encoder = new TextEncoder();
@@ -111,7 +114,8 @@ function sceneFrom(value,ids) {
 }
 export function normalizePackage(value) {
   checkStructure(value);object(value,'Package');
-  if(value.format!==FORMAT||value.version!==VERSION)throw Error('Choose a Saeroth session package, version 1.');
+  if(value.format!==FORMAT||![VERSION,ENCOUNTER_VERSION].includes(value.version))throw Error('Choose a Saeroth session package, version 1 or 2.');
+  if(value.version===VERSION&&Object.hasOwn(value,'encounter'))throw Error('Encounter plans require session package version 2 and Saeroth module 0.4.0 or newer.');
   const assets=assetsFrom(value.assets??[]),ids=new Set(assets.map(a=>a.id));const keys=new Set();
   const actors=list(value.actors??[],'actors',LIMITS.maxActors).map(a=>{
     object(a,'Actor reference');const key=text(a.key,'actor source',500);
@@ -119,7 +123,15 @@ export function normalizePackage(value) {
     return {key,name:text(a.name,'actor name')};
   });
   const createdAt=text(value.createdAt,'creation time',40);if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/.test(createdAt)||!Number.isFinite(Date.parse(createdAt)))throw Error('Invalid package creation time.');
-  return {format:FORMAT,version:VERSION,name:text(value.name,'session name'),createdAt,assets,journal:journalFrom(value.journal,ids),actors,scene:sceneFrom(value.scene,ids)};
+  const normalized={format:FORMAT,version:value.version,name:text(value.name,'session name'),createdAt,assets,journal:journalFrom(value.journal,ids),actors,scene:sceneFrom(value.scene,ids)};
+  if(value.version===ENCOUNTER_VERSION){
+    normalized.encounter=normalizeEncounter(value.encounter,normalized.scene);
+    if(!normalized.encounter.roster.length)throw Error('Add at least one creature to an encounter package.');
+    if(normalized.journal.pages.length>=LIMITS.maxPages)throw Error(`Encounter packages allow at most ${LIMITS.maxPages-1} journal pages, reserving one for the opponent roster.`);
+    const allSources=new Set([...actors.map(actor=>actor.key),...normalized.encounter.roster.map(row=>sourceKey(row.source))]);
+    if(allSources.size>LIMITS.maxActors)throw Error(`A session package can reference at most ${LIMITS.maxActors} different actors.`);
+  }
+  return normalized;
 }
 export function canonicalJSON(value) {
   if(Array.isArray(value))return '['+value.map(canonicalJSON).join(',')+']';
@@ -138,4 +150,6 @@ export async function validatePackage(value) {
   if(typeof value?.id!=='string'||! /^[a-f0-9]{64}$/.test(value.id))throw Error('The package has no valid content identity. Export it again from Saeroth.');
   const normalized=await sealPackage(value);if(normalized.id!==value.id)throw Error('The package content has changed or is incomplete. Export it again from Saeroth.');return normalized;
 }
+// Keep the identity namespace stable for v1 imports. The bundle digest itself
+// includes the version and all v2 encounter fields, preventing cross-version reuse.
 export async function documentIdentity(bundleId,kind,key='') {return (await digest(`${FORMAT}:${VERSION}:${bundleId}:${kind}:${key}`)).slice(0,16);}

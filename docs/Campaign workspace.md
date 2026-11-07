@@ -20,7 +20,7 @@ preparation, not changes to the Markdown campaign record.
 
 The desk's **Session package** combines the reference packet, checklist and
 scratchpad, selected NPC sheets, and one optional generated battle map in a
-single JSON download. Use **Towers of Saeroth PF2e Content 0.3.0 or newer** in a
+single JSON download. Use **Towers of Saeroth PF2e Content 0.4.0 or newer** in a
 PF2e world running **Foundry VTT 14.364 or newer** to import it.
 
 1. Give the session a title and add the campaign entries you need with **Add to
@@ -53,8 +53,9 @@ is a generated encounter site, not a survey of the expedition camp.
 
 The importer creates an unshared journal and, when selected, an inactive,
 unshared Scene with the map's background, walls, doors, lighting, and five-foot
-grid. It does not place tokens, activate the scene, roll initiative, or start
-combat. Drag the imported or existing NPCs from Actors when preparing play.
+grid. An encounter can include explicitly placed opponents, imported as hidden
+tokens. Without those placements, drag actors from Actors when preparing play.
+Importing never activates the scene, rolls initiative, or starts combat.
 The package does not require the local MCP bridge or a Script macro.
 
 Map and journal artwork are embedded in the file and copied into the current
@@ -82,6 +83,57 @@ and attempts to remove only unchanged documents created by the failed operation.
 Artwork uploaded before a failure can remain in `saeroth-sessions`; the error
 reports retained content for review. Do not delete earlier working content to
 retry a package.
+
+### Planning an encounter
+
+The session package's encounter planner starts with **five level-2 characters**.
+Choose the party level, party size, and desired threat, then search the Saeroth
+and PF2e creature lists. Set each creature's quantity to see the total budget,
+remaining budget, actual threat range, and estimated award for each character.
+The actor picker above the planner is still useful for camp staff and other
+NPCs who are not opponents; selecting their sheets does not add their XP.
+
+The standard creature list contains 1,705 references from the installed PF2e
+8.5.0 Monster Core, Monster Core 2, NPC Core, Bestiaries 1–3, and NPC Gallery.
+Only names, levels, traits, footprints, and source references are shipped on
+the site. Foundry resolves the actual sheets from its installed system. The
+book name distinguishes entries with the same name. Creature levels more than
+four above or below the party are marked unbudgeted instead of assigned an
+invented XP value. This planner covers creatures and standard proficiency;
+it does not calculate hazard XP or Proficiency Without Level encounters.
+
+The calculations deliberately match [Foundry PF2e 8.5's encounter calculator](https://github.com/foundryvtt/pf2e/blob/pf2e-8.5.0/src/scripts/macros/xp/index.ts).
+Its Low budget adjustment is 15 XP per character, while the current
+[GM Core table on Archives of Nethys](https://2e.aonprd.com/Rules.aspx?ID=2716)
+prints 20. The rules profile is recorded in the plan and shown in its help.
+Estimated XP awards normalize the total to four characters and round down;
+they are not divided among the players and are never granted automatically.
+Terrain, tactics, resources, and allies can change the practical difficulty.
+
+To prepare token positions, select a generated map and enable map staging.
+Choose an opponent and tap its starting square, or use the labeled row and
+column controls. Place every opponent or return to roster-only mode. The
+planner rejects overlapping tokens, positions beyond the image, and footprints
+crossing movement-blocking walls. Review the artwork for terrain and tactics;
+geometry validation does not judge whether a starting position is sensible.
+Changing the map clears its positions. The importer checks the real actor's
+level and footprint before writing; an edited or outdated sheet must be
+reconciled with the plan rather than silently shrunk or replaced.
+
+**Download encounter backup** saves the roster and map recipe for another
+device. Restore previews the incoming plan before replacing the local one.
+This is separate from the campaign desk backup and does not synchronize devices
+automatically. A session export includes the encounter in version 2 of the
+package; module 0.4.0 imports its actor sheets, adds a roster journal page, and
+stages any selected tokens hidden and unlinked in the inactive scene. Version 1
+packages remain supported. Reimporting a completed package does not reset tokens
+or existing actor state.
+
+The prepared expedition now includes one Orc Commander and two Orc Veterans:
+100 XP, Moderate for five level-2 PCs, with an 80 XP award per character if XP is
+used. Its optional encounter selection leaves an existing roster in place unless
+replacement is explicitly selected. NPC portraits, notes, and the quarry map
+remain separate selections.
 
 ### Exporting only the journal
 
