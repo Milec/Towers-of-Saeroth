@@ -56,13 +56,14 @@
     recovery = []; storageWarning = ''; mapWarning = '';
     selectedActors = readSaved(actorKey,validateActors,[]);
     map = readSaved(mapKey,validateMap,null);
+    window.SaerothEncounterPlanner?.configure({base:base.href,getMap:()=>map,selectMap,validateMap,loadMapAssets,onChange:refreshSummary});
   }
   function selectMap(value) {
     if (!base) throw Error('The campaign desk is still loading.');
     map = validateMap(value);
     const saved = save(mapKey,map);
     mapWarning = saved ? '' : 'This map is available in this tab, but could not be saved on the device. Download the session package before leaving.';
-    renderMap(); refreshSummary();
+    renderMap(); window.SaerothEncounterPlanner?.mapChanged(); refreshSummary();
     return {saved,message:saved?'Added to your session package. Open the Campaign desk to include notes and NPCs.':mapWarning};
   }
   function persistActors() {
@@ -71,6 +72,7 @@
     refreshSummary();
   }
   function unmount() {
+    window.SaerothEncounterPlanner?.unmount();
     generation++; host = null; busy = false; exportController?.abort(); exportController = null;
     if (downloadURL) { URL.revokeObjectURL(downloadURL); downloadURL = ''; }
   }
@@ -88,16 +90,18 @@
       '<label class="ws-field" for="spActorSearch">Search campaign NPCs and creatures<input type="search" id="spActorSearch" placeholder="Name or creature…" autocomplete="off"></label>' +
       '<div id="spActorChoices" class="sp-actor-choices"></div><button type="button" class="ws-button" id="spCatalogRetry" hidden>Reload NPC list</button></details>' +
       '<div id="spSelectedActors" class="sp-selected-actors"></div>' +
-      '<div class="sp-preview"><h4>Package contents</h4><p id="spSummary"></p><p class="ws-small ws-muted">The journal and scene start unshared. The scene is inactive; importing does not place NPCs or start combat.</p></div>' +
+      '<div id="spEncounter"></div>' +
+      '<div class="sp-preview"><h4>Package contents</h4><p id="spSummary"></p><p class="ws-small ws-muted">The journal and scene start unshared. The scene is inactive. Encounter opponents are placed hidden only when you choose their starting positions; combat is never started.</p></div>' +
       '<button class="ws-button ws-primary sp-export" type="button" id="spExport">Download session package</button><button class="ws-button sp-cancel" type="button" id="spCancel" hidden>Cancel export</button>' +
       '<p id="spStatus" role="status" aria-live="polite"></p><p id="spStorage" class="ws-small ws-muted"></p>' +
       '<div id="spDownloads" class="sp-downloads"></div><button class="ws-button" type="button" id="spRecovery" hidden>Download selection recovery</button>' +
-      '<details class="ws-help"><summary>Import this package into Foundry</summary><ol><li>Enable <strong>Towers of Saeroth PF2e Content 0.3.0 or newer</strong> in your Foundry v14 world.</li><li>Open <strong>Saeroth Session Inbox</strong> in Foundry and choose this JSON file.</li><li>Review the map, notes, and NPCs, then import. Artwork travels inside the package.</li></ol><p>Selected NPCs must be available in your Saeroth compendiums. Update the module or use <strong>Sync Saeroth Content</strong> if the preview reports a missing sheet.</p></details>';
+      '<details class="ws-help"><summary>Import this package into Foundry</summary><ol><li>Enable <strong>Towers of Saeroth PF2e Content 0.4.0 or newer</strong> for encounter packages in your Foundry v14 world. Packages without encounters still work with 0.3.0.</li><li>Open <strong>Import Saeroth Session</strong> from Scenes or Journals and choose this JSON file.</li><li>Review the map, notes, NPCs, and encounter, then import. Artwork travels inside the package.</li></ol><p>Selected campaign NPCs must be available in your Saeroth compendiums; standard creatures use your installed PF2e packs. Update the module or use <strong>Sync Saeroth Content</strong> if the preview reports a missing campaign sheet.</p></details>';
     host.querySelector('#spActorSearch').oninput = renderActors;
     host.querySelector('#spExport').onclick = exportPackage;
     host.querySelector('#spCancel').onclick = () => {exportController?.abort();status('Cancelling export…');};
     host.querySelector('#spRecovery').onclick = () => saveDownload(new Blob([JSON.stringify({version:1,selections:recovery.map(({key,data})=>({key,data}))},null,2)],{type:'application/json'}),'saeroth-session-selection-recovery.json','Save recovery data');
     host.querySelector('#spCatalogRetry').onclick = () => { catalogPromise = null; loadCatalog(ticket); };
+    window.SaerothEncounterPlanner?.mount(host.querySelector('#spEncounter'));
     renderMap(); renderActors(); refreshSummary(); loadCatalog(ticket); loadPresets(ticket);
   }
   function status(message,error=false) {
@@ -107,7 +111,9 @@
   function refreshSummary() {
     if (!host) return;
     const draft = config.snapshot();
-    host.querySelector('#spSummary').textContent = (draft.board.length + 1) + ' journal pages · ' + (map ? '1 scene' : 'No scene') + ' · ' + selectedActors.length + ' NPC ' + (selectedActors.length===1?'sheet':'sheets');
+    const encounter=window.SaerothEncounterPlanner?.summary(),extra=encounter?.sources.filter(key=>!selectedActors.some(a=>a.key===key)).length||0,sheets=selectedActors.length+extra;
+    if(encounter?.opponents)for(const input of host.querySelectorAll('[data-preset-encounter]'))if(!input.dataset.userChoice)input.checked=false;
+    host.querySelector('#spSummary').textContent = (draft.board.length + 1 + (encounter?.opponents?1:0)) + ' journal pages · ' + (map ? '1 scene' : 'No scene') + ' · ' + sheets + ' NPC ' + (sheets===1?'sheet':'sheets') + (encounter?.opponents?' · '+encounter.opponents+' opponents'+(encounter.staging?' ('+encounter.placements+' positioned)':' (roster only)'):'');
     host.querySelector('#spActorCount').textContent = '(' + selectedActors.length + ')';
     host.querySelector('#spStorage').textContent = [storageWarning,mapWarning].filter(Boolean).join(' ');
     host.querySelector('#spRecovery').hidden = !recovery.length;
@@ -132,7 +138,7 @@
     node.querySelector('#spRemoveMap').onclick = () => {
       if (busy) return;
       map = null; mapWarning = save(mapKey,null) ? '' : 'The selected map was removed from this tab only. Browser storage could not be updated.';
-      renderMap(); refreshSummary(); status('Battle map removed from this package.');
+      renderMap(); window.SaerothEncounterPlanner?.mapChanged(); refreshSummary(); status('Battle map removed from this package.');
     };
   }
   async function loadCatalog(ticket) {
@@ -173,20 +179,24 @@
       if (!response.ok) return;
       const data = await response.json();
       if (data.schema !== 1 || !Array.isArray(data.presets) || data.presets.length > 20) return;
-      presets = data.presets.map(p => {
+      await window.SaerothEncounterPlanner?.capture();
+      presets = await Promise.all(data.presets.map(async p => {
         if (!p || typeof p.id !== 'string' || !/^[a-z0-9-]{1,80}$/.test(p.id) || typeof p.name !== 'string' || !p.name.trim() || p.name.length>100 ||
             typeof p.description !== 'string' || p.description.length>1000 || !Array.isArray(p.notes) || p.notes.length>60 || p.notes.some(n=>!cleanKey(n)) ||
             !Array.isArray(p.actors) || p.actors.length>50 || p.actors.some(a=>!cleanKey(a))) throw Error();
-        return {...p,map:p.map?validateMap(p.map):null};
-      });
+        return {...p,map:p.map?validateMap(p.map):null,encounter:p.encounter?await window.SaerothEncounterPlanner.validatePreset(p.encounter):null};
+      }));
       if (ticket !== generation || !host || !presets.length) return;
       const node = host.querySelector('#spPresets'); node.hidden = false;
-      node.innerHTML = '<details><summary>Start with prepared expedition content</summary>' + presets.map(p => '<article><h4>' + esc(p.name) + '</h4><p class="ws-small ws-muted">' + esc(p.description) + '</p><p class="ws-small">' + p.notes.length + ' notes · ' + p.actors.length + ' NPCs' + (p.map?' · 1 battle map':'') + '</p>' + (p.map?'<label class="sp-preset-map"><input type="checkbox" data-preset-map="' + p.id + '" ' + (!map?'checked':'') + '> Include its map' + (map?' (replaces the selected map)':'') + '</label>':'') + '<button class="ws-button" type="button" data-add-preset="' + p.id + '">Add preparation</button></article>').join('') + '</details>';
+      node.innerHTML = '<details><summary>Start with prepared expedition content</summary>' + presets.map(p => '<article><h4>' + esc(p.name) + '</h4><p class="ws-small ws-muted">' + esc(p.description) + '</p><p class="ws-small">' + p.notes.length + ' notes · ' + p.actors.length + ' NPCs' + (p.map?' · 1 battle map':'') + (p.encounter?' · 1 encounter':'') + '</p>' + (p.map?'<label class="sp-preset-map"><input type="checkbox" data-preset-map="' + p.id + '" ' + (!map?'checked':'') + '> Include its map' + (map?' (replaces the selected map)':'') + '</label>':'') + (p.encounter?'<label class="sp-preset-map"><input type="checkbox" data-preset-encounter="'+p.id+'" '+(!window.SaerothEncounterPlanner.summary().opponents?'checked':'')+'> Use its encounter (replaces the current roster)</label>':'') + '<button class="ws-button" type="button" data-add-preset="' + p.id + '">Add preparation</button></article>').join('') + '</details>';
+      node.onchange=event=>{if(event.target.matches('[data-preset-encounter]'))event.target.dataset.userChoice='1';};
       node.onclick = async event => {
         const button = event.target.closest('[data-add-preset]'); if (!button || busy) return;
+        const preparationTicket=generation;
         const preset = presets.find(p=>p.id===button.dataset.addPreset); if (!preset) return;
         try {
           await loadCatalog(generation);
+          if(preparationTicket!==generation||!host)return;
           if (!catalogReady) throw Error('Load the NPC list before adding preparation.');
           const actors = preset.actors.map(key => {const a=catalog.find(row=>row.key===key);if(!a)throw Error('The prepared NPC list is still being published. Reload after deployment.');return {key:a.key,name:a.name};});
           const combined = [...selectedActors,...actors.filter(a=>!selectedActors.some(s=>s.key===a.key))];
@@ -194,6 +204,11 @@
           const count = config.addPrepared({notes:preset.notes,name:preset.name});
           selectedActors=combined;persistActors();
           if (preset.map && node.querySelector('[data-preset-map="' + preset.id + '"]')?.checked) selectMap(preset.map);
+          if (preset.encounter && node.querySelector('[data-preset-encounter="'+preset.id+'"]')?.checked) {
+            await window.SaerothEncounterPlanner.addPrepared(preset.encounter);
+            node.querySelector('[data-preset-encounter="'+preset.id+'"]').checked=false;
+            delete node.querySelector('[data-preset-encounter="'+preset.id+'"]').dataset.userChoice;
+          }
           renderActors(); status('Added ' + count + ' reference notes and selected the prepared NPCs. Your scratchpad and checklist were kept.');
         } catch(error) {status(error.message,true);}
       };
@@ -226,13 +241,21 @@
     try {
       const response=await fetch(url,{credentials:'omit',redirect:'error',signal:controller.signal});
       if(!response.ok)throw Error('Could not load artwork: '+decodeURIComponent(url.pathname.split('/').at(-1))+'. No partial package was downloaded.');
-      const mime=(response.headers.get('content-type')||'').split(';')[0].toLowerCase();
-      if(!['image/png','image/jpeg','image/webp'].includes(mime))throw Error('Package artwork must be PNG, JPEG, or WebP: '+decodeURIComponent(url.pathname.split('/').at(-1)));
+      let mime=(response.headers.get('content-type')||'').split(';')[0].trim().toLowerCase();
+      const generic=!mime||mime==='application/octet-stream';
+      if(!generic&&!['image/png','image/jpeg','image/webp'].includes(mime))throw Error('Package artwork must be PNG, JPEG, or WebP: '+decodeURIComponent(url.pathname.split('/').at(-1)));
       if(Number(response.headers.get('content-length')||0)>limits.maxAssetBytes)throw Error('An image exceeds the 20 MiB package limit.');
       const reader=response.body?.getReader();let size=0,parts=[];
       if(reader){try{while(true){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>limits.maxAssetBytes)throw Error('An image exceeds the 20 MiB package limit.');parts.push(value);}}catch(error){await reader.cancel().catch(()=>{});throw error;}}
       else{const bytes=new Uint8Array(await response.arrayBuffer());size=bytes.length;parts=[bytes];}
       if(size>limits.maxAssetBytes)throw Error('An image exceeds the 20 MiB package limit.');
+      if(generic){
+        // Some static hosts omit WebP MIME mappings. Infer only from bounded
+        // bytes, never a filename, so an HTML fallback cannot become artwork.
+        const header=new Uint8Array(await new Blob(parts).slice(0,16).arrayBuffer()),starts=bytes=>bytes.every((value,index)=>header[index]===value);
+        mime=starts([137,80,78,71,13,10,26,10])?'image/png':starts([255,216,255])?'image/jpeg':starts([82,73,70,70])&&header[8]===87&&header[9]===69&&header[10]===66&&header[11]===80?'image/webp':'';
+        if(!mime)throw Error('Package artwork must contain a PNG, JPEG, or WebP image: '+decodeURIComponent(url.pathname.split('/').at(-1)));
+      }
       return new Blob(parts,{type:mime});
     } catch(error) {
       if(error.name==='AbortError')throw Error(signal.aborted?'Package export cancelled.':'Artwork took too long to load. Reconnect and try again.');
@@ -279,9 +302,10 @@
     const ticket=generation,draft=config.snapshot(),chosenMap=map?structuredClone(map):null,actors=structuredClone(selectedActors);
     busy=true;exportController=new AbortController();const signal=exportController.signal;
     if(downloadURL){URL.revokeObjectURL(downloadURL);downloadURL='';host.querySelector('#spDownloads').replaceChildren();}
-    host.setAttribute('aria-busy','true');refreshSummary();renderActors();status('Preparing your session package…');
+    host.setAttribute('aria-busy','true');window.SaerothEncounterPlanner?.setBusy(true);refreshSummary();renderActors();status('Preparing your session package…');
     try {
       const format=await import(new URL('session-package.mjs',base).href);
+      const chosenEncounter=await window.SaerothEncounterPlanner?.capture();
       if(actors.length){
         await loadCatalog(ticket);
         if(!catalogReady)throw Error('The NPC list is unavailable. Reload it before exporting selected sheets.');
@@ -305,21 +329,23 @@
       }
       if(signal.aborted||ticket!==generation)return;
       status('Checking the package…');
-      const data={format:'saeroth-session',version:1,name:draft.title.trim()||'Saeroth session',createdAt:new Date().toISOString(),assets:assets.map(({bytes,...asset})=>asset),journal,actors,...(scene?{scene}:{})};
+      const encounter=await window.SaerothEncounterPlanner?.exportEncounter(chosenEncounter,scene,chosenMap);
+      const data={format:'saeroth-session',version:encounter?2:1,name:draft.title.trim()||'Saeroth session',createdAt:new Date().toISOString(),assets:assets.map(({bytes,...asset})=>asset),journal,actors,...(scene?{scene}:{}),...(encounter?{encounter}:{})};
       const sealed=await format.sealPackage(data),blob=new Blob([JSON.stringify(sealed)],{type:'application/json'});
       if(blob.size>format.LIMITS.maxFileBytes)throw Error('The package is too large. Remove an illustrated note or choose a smaller map.');
       if(signal.aborted||ticket!==generation)return;
       const slug=data.name.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,70)||'session';
       saveDownload(blob,'Saeroth-'+slug+'-session.json','Save session package ('+(blob.size/1048576).toFixed(1)+' MiB)');
-      status('Package ready: '+journal.pages.length+' journal pages, '+(scene?'1 scene':'no scene')+', and '+actors.length+' NPC sheets. Open it in Foundry’s Saeroth Session Inbox.');
+      const opponentCount=encounter?.roster.reduce((n,r)=>n+r.count,0)||0,extraSheets=encounter?.roster.filter(r=>r.source.type!=='campaign'||!actors.some(a=>a.key===r.source.key)).length||0;
+      status('Package ready: '+(journal.pages.length+(encounter?1:0))+' journal pages, '+(scene?'1 scene':'no scene')+', and '+(actors.length+extraSheets)+' NPC sheets'+(encounter?' with '+opponentCount+' opponents'+(encounter.placements.length?' positioned':' in the roster'):'')+'. Open it in Foundry’s Saeroth Session Inbox.');
     }catch(error){if(ticket===generation)status(error.message.replace('No partial journal was downloaded.','No partial package was downloaded.'),true);}
-    finally{if(ticket===generation&&host){busy=false;exportController=null;host.setAttribute('aria-busy','false');if(signal.aborted)status('Export cancelled. Your preparation is unchanged.');refreshSummary();renderActors();}}
+    finally{if(ticket===generation&&host){busy=false;exportController=null;window.SaerothEncounterPlanner?.setBusy(false);host.setAttribute('aria-busy','false');if(signal.aborted)status('Export cancelled. Your preparation is unchanged.');refreshSummary();renderActors();}}
   }
   document.addEventListener('saeroth-workspace-change',refreshSummary);
   window.addEventListener('storage',event=>{
     if(!config||busy)return;
     try{
-      if(event.key===mapKey){map=event.newValue?validateMap(JSON.parse(event.newValue)):null;mapWarning='';renderMap();refreshSummary();}
+      if(event.key===mapKey){map=event.newValue?validateMap(JSON.parse(event.newValue)):null;mapWarning='';renderMap();window.SaerothEncounterPlanner?.mapChanged();refreshSummary();}
       if(event.key===actorKey){selectedActors=event.newValue?validateActors(JSON.parse(event.newValue)):[];renderActors();refreshSummary();}
     }catch(_){status('A selection changed in another tab but could not be read. Your current package was kept.',true);}
   });

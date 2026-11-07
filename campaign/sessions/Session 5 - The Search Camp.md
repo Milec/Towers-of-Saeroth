@@ -3,7 +3,7 @@ title: Session 5 - The Search Camp
 type: session
 status: prep
 audience: gm
-party: 6 level-2 characters
+party: 5 level-2 characters
 ---
 
 ## Where play resumes
@@ -61,15 +61,15 @@ Give the PCs time to recover their ordinary resources before offering an optiona
 
 ## The recovery offer
 
-Tavian puts two marked chests on his list and explains the food sacks. The returning porter last saw four orc raiders taking the goods toward an old quarry sorting yard. Octavia cannot strip the camp's remaining crews to chase them.
+Tavian puts two marked chests on his list and explains the food sacks. The returning porter last saw three orc raiders taking the goods toward an old quarry sorting yard. Octavia cannot strip the camp's remaining crews to chase them.
 
 > "Bring back the equipment and enough food to keep the crews out. If you can do it without more funerals, do."
 
-Use [[The Missing Survey Stores]] for the complete inventory, terms, map, approaches, four-creature roster, and reward. State the payment before the party agrees. Tavian explicitly permits negotiating away one sack of food to recover the equipment and remaining sack.
+Use [[The Missing Survey Stores]] for the complete inventory, terms, map, approaches, three-creature roster, and reward. State the payment before the party agrees. Tavian explicitly permits negotiating away one sack of food to recover the equipment and remaining sack.
 
 **If they decline:** ask which survey lead or caravan question they want to pursue. Octavia can offer a short reconnaissance task with no prepared combat, and Renata can take their request for records. Do not force the recovery job by making camp suddenly refuse food.
 
-**If they accept:** use **Old Survey Quarry — Supply Recovery**. The default encounter is moderate for six level-2 PCs, and it has negotiation and stealth routes. The expedition NPCs stay at camp. Do not start initiative simply because the battle map has been opened.
+**If they accept:** use **Old Survey Quarry — Supply Recovery**. The default encounter is moderate for five level-2 PCs, and it has negotiation and stealth routes. The expedition NPCs stay at camp. Do not start initiative simply because the battle map has been opened.
 
 ## Character openings
 
@@ -78,7 +78,6 @@ Use one or two when the relevant player takes an interest. These invite decision
 - **Belithûr:** Tavian wants a second pair of eyes on worn fittings. Belithûr can ask about the old powder shipment without being told his merchant factor's motives.
 - **Aurele:** Renata asks whether he wants his name attached to his account. Let him decide how much his family connections enter the conversation.
 - **Yrsa:** a surveyor asks how she would get a heavy crate across rough ground. Karoline may have her own view of the journey, but nobody has decided their relationship for them.
-- **Yasmin:** Octavia asks what her eidolon needs at camp and whether there is anything the guards should know. Let Yasmin supply the answer.
 - **Seneca:** the missing caravan prompts a request for rites for John if the party wants them. Any discussion of immortality or the North Star begins with Seneca; no automatic revelation follows.
 - **Victarion:** Tavian asks about practical food requirements privately if Vic raises them. Hunger is his player's tracked ancestry state, not an excuse for the GM to force a public confession.
 
