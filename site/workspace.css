@@ -150,9 +150,38 @@
 .ws-toast button { min-height: 44px; min-width: 44px; padding: 8px; border: 0; background: transparent; color: var(--link); border-radius: 5px; }
 .ws-toast button:hover { background: var(--bg); }
 .ws-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+/* Put the working session first; supporting records stay in the side rail. */
+.workspace .ws-desk-hero { display:flex; align-items:center; justify-content:space-between; gap:24px; margin:0 0 24px; }
+.workspace .ws-desk-hero h1 { font-size:clamp(2rem,3vw,2.8rem); margin:6px 0 10px; }
+.ws-desk-hero .ws-intro { margin:0; font-size:.85rem; }
+.ws-desk-hero .ws-hero-actions { margin:0; flex-wrap:nowrap; align-items:center; flex-shrink:0; }
+.ws-desk-hero .ws-atlas-preview { width:176px; min-height:88px; }
+.ws-desk-hero .ws-atlas-preview span { font-size:.75rem; padding:12px; background:var(--panel); }
+.ws-board > .ws-section-head { margin-bottom:14px; }
+.ws-session-nav { position:sticky; top:0; z-index:3; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px; padding:6px; margin:0 0 20px; border:1px solid var(--rule); border-radius:7px; background:var(--panel); box-shadow:var(--shadow-soft); }
+.ws-session-nav button { display:flex; align-items:center; justify-content:center; gap:5px; min-height:44px; padding:8px 4px; border:0; border-radius:4px; color:var(--ink); background:transparent; font-size:.75rem; font-weight:600; }
+.ws-session-nav button:hover { background:var(--bg); color:var(--accent); }
+.ws-session-nav button:last-child { color:var(--accent); }
+.ws-session-nav svg { width:16px; height:16px; flex-basis:16px; }
+.ws-board #wsSaveStatus { margin:10px 0 18px; }
+.ws-board :is(#wsReferences,#wsFoundryPackage,#epPanel,#spExport) { scroll-margin-top:80px; }
+.ws-secondary-column .ws-section h2 { font-size:1.25rem; }
+.ws-secondary-column .ws-latest { padding-left:14px; min-height:0; }
+.ws-secondary-column .ws-latest h3 { font-size:1.25rem; }
+.ws-secondary-column .ws-latest p { font-size:.8rem; }
+.ws-disclosure { padding-block:8px; }
+.ws-disclosure > summary { cursor:pointer; min-height:48px; padding:12px 0; font-size:.85rem; font-weight:650; color:var(--ink); }
+.ws-disclosure > summary .ws-count { float:right; font-size:.75rem; font-weight:400; }
+.ws-disclosure[open] > summary { margin-bottom:10px; border-bottom:1px solid var(--rule); }
+.ws-disclosure > :last-child:not(summary) { margin-bottom:12px; }
+.ws-journal-only > summary { min-height:44px; font-weight:600; font-size:.85rem; }
+@media(max-width:1250px) { .workspace .ws-desk-hero { align-items:start; } .ws-desk-hero .ws-hero-actions { flex-direction:column; align-items:stretch; gap:6px; } .ws-desk-hero .ws-atlas-preview { min-height:48px; width:auto; } .ws-desk-hero .ws-atlas-preview img { display:none; } }
+@media(max-width:650px) { .workspace .ws-desk-hero { display:block; margin-bottom:20px; } .ws-desk-hero .ws-hero-actions { flex-direction:row; margin-top:14px; gap:8px; } .ws-desk-hero .ws-atlas-preview { flex:1; } .ws-desk-hero .ws-atlas-preview span { justify-content:center; padding:10px; } .ws-desk-hero .ws-atlas-preview span svg:last-child { display:none; } .ws-desk-hero .ws-hero-actions > .ws-button { flex:1; font-size:.75rem; padding:10px; } .ws-session-nav { gap:2px; padding:4px; } .ws-session-nav button { font-size:.7rem; } .ws-session-nav svg { display:none; } .ws-board > .ws-section-head { margin-bottom:12px; } .ws-session-nav { margin-bottom:16px; } }
+@media(max-width:374px) { .ws-session-nav { grid-template-columns:repeat(2,minmax(0,1fr)); } .ws-board :is(#wsReferences,#wsFoundryPackage,#epPanel,#spExport) { scroll-margin-top:112px; } }
 @media (max-width: 1250px) { .ws-library-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ws-hero { gap: 24px; } .ws-columns { gap: 20px; } .ws-section { padding: 20px; } }
 @media (max-width: 1050px) { .ws-hero { grid-template-columns: 1fr; gap: 24px; } .ws-atlas-preview { min-height: 190px; } .ws-columns { grid-template-columns: 1fr; } .ws-secondary-column { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ws-backup { grid-column: 1 / -1; } }
 @media (max-width: 650px) { .ws-tabs { margin-bottom: 22px; } .ws-tabs a { padding: 10px 9px; font-size: .75rem; gap: 5px; } .ws-tabs a:last-child svg { display: none; } .ws-hero { margin-bottom: 26px; } .ws-intro { font-size: .875rem; } .ws-section { padding: 18px; } .ws-secondary-column { grid-template-columns: 1fr; } .ws-stats { gap: 18px; } .ws-library-tools { flex-wrap: wrap; gap: 12px; } .ws-library-search { flex-basis: 100%; } .ws-library-tools > .ws-field:not(.ws-library-search) { flex: 1; } .ws-library-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .ws-card-body { padding: 13px; } .ws-card-art { height: 110px; } .ws-card-actions { flex-wrap: wrap; } .ws-card-actions > a { flex-basis: 100%; } .workspace .ws-card-body h2 { font-size: 1.15rem; } .ws-card-body p { font-size: .75rem; -webkit-line-clamp: 3; } .ws-library-list .ws-card-actions { flex-wrap: nowrap; } .ws-library-list .ws-card-actions > a { flex-basis: auto; } .ws-library-list .ws-card-art { width: 68px; } .ws-library-list .ws-card-body { padding: 12px; } .ws-library-list .ws-card-body p { -webkit-line-clamp: 2; } .ws-note-actions { gap: 6px; } .ws-note-actions :is(button,a) { font-size: .72rem; } .ws-note-actions a { margin: 0; } .ws-section-head { flex-wrap: wrap; gap: 5px; } .ws-packet-actions { gap: 0; flex-basis: 100%; justify-content: end; } .workspace .ws-packet li { flex-wrap: wrap; gap: 5px 10px; } .ws-task-form { flex-wrap: wrap; } .ws-task-form input { flex-basis: 100%; } .ws-task-form button { width: 100%; } .ws-toast { width: calc(100vw - 24px); } }
 @media (max-width: 390px) { .ws-library-cards { grid-template-columns: 1fr; } .ws-card-art { height: 150px; } .ws-card-actions { flex-wrap: nowrap; } .ws-card-actions > a { flex-basis: auto; } .ws-tabs a { font-size: .7rem; padding: 9px 7px; } }
 @media (prefers-reduced-motion: reduce) { .workspace *, .ws-note-actions * { transition: none !important; scroll-behavior: auto !important; } }
 @media print { .ws-tabs, .ws-hero-actions, .ws-secondary-column, .ws-task-form, .ws-export, .ws-packet-actions, .ws-note-actions, .ws-toast, .ws-library-tools, .ws-categories, .ws-card-actions { display: none !important; } .ws-columns { display: block; } .ws-section { break-inside: avoid; } }
+@media print { .ws-session-nav, #wsSessionLibrary { display:none !important; } }

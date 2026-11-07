@@ -2671,9 +2671,11 @@ function openSidebar() {
   $('menuBtn').setAttribute('aria-expanded', 'true');
 }
 function closeSidebar() {
+  const returnFocus = $('sidebar').classList.contains('open') && $('sidebar').contains(document.activeElement);
   $('sidebar').classList.remove('open', 'over');
   $('scrim').hidden = true;
   $('menuBtn').setAttribute('aria-expanded', String(innerWidth > 860 && !document.body.classList.contains('nav-collapsed') && !document.body.classList.contains('view-atlas')));
+  if (returnFocus) $('menuBtn').focus({preventScroll:true});
 }
 
 async function init() {

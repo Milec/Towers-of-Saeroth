@@ -78,6 +78,15 @@ async function openShelf(page){await page.locator('#slShelf').evaluate(node=>nod
   const backup=await downloaded(page,()=>page.locator('[data-sl-record="'+originalId+'"] [data-sl-action=download]').click());await idle(page);
   assert.equal(backup.format,'saeroth-saved-sessions');assert.deepEqual(backup.records[0].snapshot,seed);
   await fs.writeFile(path.join(output,'complete-editable-session.json'),JSON.stringify(backup,null,2));
+  // Portable prep remains easy to reach without exposing all backup tools upfront.
+  assert.equal(await page.locator('#slTransfer').evaluate(node=>node.open),false);
+  await page.locator('#slTransfer > summary').click();
+  const workingBackup=await downloaded(page,()=>page.locator('#slCurrentBackup').click());await idle(page);
+  assert.deepEqual(workingBackup.records[0].snapshot,seed);
+  await importFile(page,backup);await page.locator('#slConfirmImport').waitFor();
+  await page.locator('#slTransfer > summary').click();await page.locator('#slCancelImport').click();
+  assert.equal(await page.locator('#slTransfer > summary').evaluate(node=>node===document.activeElement),true);
+  assert.deepEqual(await current(page),seed);
 
   // A foreign backup cannot update a matching local ID, and imported markup stays text.
   const imported=structuredClone(backup);imported.records[0].snapshot.desk.title='<img src=x onerror="window.sessionInjected=true">';imported.records[0].snapshot.desk.notes='A separate imported preparation.';
