@@ -13,7 +13,7 @@ const fixture={id:987654321,name:'Café du Col',kind:'inn',notes:'A test locatio
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.route('**/campaign-pois.json',route=>route.fulfill({json:{version:1,pois:[fixture]}}));
    await page.goto(base+'atlas/?integrated#custompoi-'+fixture.id);
-   await page.waitForFunction(()=>window.AtlasWorkspace&&window.ATLAS_CUSTOM_POIS.has(987654321));
+   await page.waitForFunction(()=>window.AtlasWorkspace&&window.ATLAS_CUSTOM_POIS?.has(987654321));
    await page.locator('#info h2').getByText(fixture.name).waitFor();
    assert(await page.evaluate(()=>box[2]<3840),'Published POI deep links should focus the place, not remain at world scale.');
    const read=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),storageKey);
@@ -26,12 +26,37 @@ const fixture={id:987654321,name:'Café du Col',kind:'inn',notes:'A test locatio
    assert.equal(await page.locator('.atlas-place-toolbar').count(),1);
    await page.locator('#atlasSavePlace').click();assert.equal(await page.locator('#atlasSavePlace').getAttribute('aria-pressed'),'true');
    assert.deepEqual((await read()).saved,['custompoi-'+fixture.id]);
+   // A clipboard prompt can outlive the selected place. Its fallback belongs to the old card only.
+   await page.evaluate(()=>{
+    window.atlasClipboardDescriptor=Object.getOwnPropertyDescriptor(navigator.clipboard,'writeText');
+    Object.defineProperty(navigator.clipboard,'writeText',{configurable:true,value:()=>new Promise((resolve,reject)=>{window.rejectAtlasCopy=reject;})});
+   });
+   await page.locator('details.atlas-place-more > summary').click();await page.locator('#atlasCopyPlace').click();
+   await page.locator('#search').fill('Valmont');await page.locator('#search').press('ArrowDown');await page.locator('#search').press('Enter');
+   await page.locator('#info h2').getByText('Valmont',{exact:true}).waitFor();
+   await page.evaluate(async()=>{
+    window.rejectAtlasCopy(new DOMException('Permission denied','NotAllowedError'));await Promise.resolve();
+    if(window.atlasClipboardDescriptor)Object.defineProperty(navigator.clipboard,'writeText',window.atlasClipboardDescriptor);else delete navigator.clipboard.writeText;
+   });
+   assert.equal(await page.locator('#atlasPlaceFeedback input').count(),0);
+   assert.equal(await page.locator('#atlasPlaceFeedback').innerText(),'','A late clipboard result must not overwrite the newly selected place.');
+   await page.locator('#search').fill(fixture.name);await page.locator('#search').press('ArrowDown');await page.locator('#search').press('Enter');
+   await page.locator('#info h2').getByText(fixture.name,{exact:true}).waitFor();
    await page.locator('#partyHere').click();
    assert((await page.locator('#atlasPlaceFeedback').innerText()).includes('Party location updated'));
    await page.locator('#routeEnd').click();assert((await page.locator('#journeyTo').inputValue()).includes(fixture.name));
    await page.locator('#atlasFindParty').click();
    assert(await page.evaluate(()=>box[0]<734&&box[0]+box[2]>734));
    await page.locator('#atlasSelectionDetails').click();
+   assert(await page.locator('#routeStart').isHidden(),'Secondary utilities should stay out of the primary place actions.');
+   await page.locator('details.atlas-place-more > summary').click();
+   await page.locator('#routeStart').click();assert((await page.locator('#journeyFrom').inputValue()).includes(fixture.name));
+   await page.locator('#atlasSelectionDetails').click();
+   await page.locator('#atlasFocusPlace').click();
+   assert(await page.evaluate(()=>box[0]<734&&box[0]+box[2]>734));
+   await page.locator('#atlasSelectionDetails').click();
+   assert.equal(await page.locator('.atlas-place-toolbar').count(),1);
+   assert.equal(await page.locator('#atlasSavePlace').getAttribute('aria-pressed'),'true');
    await page.locator('.atlas-nearby > summary').click();assert.equal(await page.locator('.atlas-nearby .result').count(),6);
    assert((await page.locator('.atlas-nearby').innerText()).includes('Straight-line distance'));
    await page.locator('[data-atlas-panel=saved]').click();await page.locator('#atlasViewsTab').click();
@@ -40,7 +65,7 @@ const fixture={id:987654321,name:'Café du Col',kind:'inn',notes:'A test locatio
    await page.locator('#mapHome').click();
    await page.locator('[data-restore-view]').click();
    assert.deepEqual(await page.evaluate(()=>box),savedView.box);
-   await page.reload();await page.waitForFunction(()=>window.AtlasWorkspace&&window.ATLAS_CUSTOM_POIS.has(987654321));
+   await page.reload();await page.waitForFunction(()=>window.AtlasWorkspace&&window.ATLAS_CUSTOM_POIS?.has(987654321));
    assert.deepEqual(await page.evaluate(()=>box),savedView.box,'Returning to lore must retain the saved camera.');
    assert.deepEqual((await read()).saved,['custompoi-'+fixture.id]);
    await page.locator('[data-atlas-panel=saved]').click();await page.locator('#atlasSavedTab').click();await page.locator('#atlasLibraryContent [data-type=custompoi]').click();
@@ -80,6 +105,6 @@ const fixture={id:987654321,name:'Café du Col',kind:'inn',notes:'A test locatio
   await page.locator('#atlasWorkspaceFile').setInputFiles({name:'recovery.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({version:1,saved:[],recent:[],views:[]}))});
   await page.locator('#atlasWorkspaceStatus').getByText(/Workspace imported/).waitFor();
   assert.equal(await page.evaluate(key=>localStorage.getItem(key+'-recovery'),storageKey),'corrupt-original-data');await context.close();
-  console.log('PASS: atlas ranked search, keyboard selection, saved/recent places, nearby distances, route/party integration, saved views, persistence, backup validation, corrupt-data recovery, storage failure and responsive themes.');
+  console.log('PASS: atlas ranked search, keyboard selection, secondary place tools, late clipboard isolation, saved/recent places, nearby distances, route/party integration, saved views, persistence, backup validation, corrupt-data recovery, storage failure and responsive themes.');
  }finally{await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

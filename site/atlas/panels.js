@@ -45,6 +45,59 @@
   const settingsLink=document.createElement('button');settingsLink.type='button';settingsLink.className='atlas-publish-settings';settingsLink.textContent='Publish map notes';
   node('customPOIPanel').append(settingsLink);
   const status=document.createElement('p');status.id='atlasPanelStatus';status.setAttribute('role','status');status.className='atlas-panel-status';status.hidden=true;nav.after(status);
+  // Contextual shortcuts reuse the selected place's real controls. The map
+  // keeps its own compact action disclosure instead of another permanent bar.
+  const selectionCard=node('atlasSelectionCard');
+  const selectionActions=document.createElement('details');selectionActions.id='atlasSelectionActions';selectionActions.className='atlas-selection-actions';selectionActions.hidden=true;
+  selectionActions.innerHTML='<summary>Actions</summary><div class="atlas-selection-menu"><button type="button" data-place-action="routeEnd">Travel here</button><button type="button" data-place-action="partyHere">Mark party here</button><button type="button" data-place-action="atlasGenerateBattlemap">Generate battle map</button></div>';
+  const selectionFeedback=document.createElement('p');selectionFeedback.id='atlasSelectionFeedback';selectionFeedback.setAttribute('role','status');selectionFeedback.setAttribute('aria-live','polite');
+  selectionCard.append(selectionActions,selectionFeedback);
+  const selectionKey=()=>selected?selected.type+'-'+selected.id:'';
+  let actionKey='';
+  function refreshSelectionActions(){
+    const key=selectionKey(),valid=!!key&&!!node('info').querySelector('.atlas-place-toolbar');
+    if(key!==actionKey||!valid){selectionActions.open=false;selectionFeedback.textContent='';}
+    actionKey=key;
+    let count=0;
+    for(const button of selectionActions.querySelectorAll('[data-place-action]')){
+      const action=button.dataset.placeAction;
+      const supported=valid&&(action==='atlasGenerateBattlemap'
+        ?!!window.SaerothBattlemaps?.contextFor(selected.type,Number(selected.id))
+        :!!node(action));
+      button.hidden=!supported;if(supported)count++;
+    }
+    selectionActions.hidden=!count;
+    node('atlasShowSelected').disabled=!valid;
+    node('atlasShowSelected').title=valid?'Open the selected place':'Choose a place on the map or in search first';
+    node('atlasSelectionName').title=node('atlasSelectionName').textContent;
+    selectionActions.querySelector('summary').setAttribute('aria-label','Actions for '+node('atlasSelectionName').textContent);
+  }
+  selectionActions.addEventListener('toggle',()=>{if(selectionActions.open){selectionFeedback.textContent='';refreshSelectionActions();}});
+  selectionActions.addEventListener('click',event=>{
+    const button=event.target.closest('[data-place-action]');if(!button)return;
+    const key=selectionKey(),action=button.dataset.placeAction;
+    if(key!==actionKey||!key){refreshSelectionActions();return;}
+    selectionActions.open=false;
+    const trigger=selectionActions.querySelector('summary');
+    if(action==='atlasGenerateBattlemap'){
+      const context=window.SaerothBattlemaps?.contextFor(selected.type,Number(selected.id));
+      if(context)window.SaerothBattlemaps.open(context,trigger);
+      return;
+    }
+    const target=node(action);if(!target||target.disabled)return;
+    target.click();
+    if(action==='partyHere'){
+      selectionFeedback.textContent=node('atlasPlaceFeedback')?.textContent||'Party location updated.';
+      trigger.focus({preventScroll:true});
+    }
+  });
+  selectionActions.addEventListener('keydown',event=>{
+    if(event.key!=='Escape'||!selectionActions.open)return;
+    event.preventDefault();event.stopPropagation();selectionActions.open=false;selectionActions.querySelector('summary').focus({preventScroll:true});
+  });
+  document.addEventListener('pointerdown',event=>{if(!selectionActions.contains(event.target))selectionActions.open=false;},true);
+  selectionActions.addEventListener('focusout',event=>{if(event.relatedTarget&&!selectionActions.contains(event.relatedTarget))selectionActions.open=false;});
+  new MutationObserver(refreshSelectionActions).observe(node('info'),{childList:true,subtree:true});
   let active='places';
   function open(name,{focus=false,section}={}){
     if(!panels[name])return;
@@ -92,7 +145,7 @@
   // The point-of-interest placement flow returns from the map to its form.
   document.addEventListener('focusin',event=>{const panel=event.target.closest('.atlas-task-panel');if(panel?.hidden)reveal(event.target);});
   const originalShow=show;
-  show=function(...args){open('places');return originalShow(...args);};
+  show=function(...args){open('places');const result=originalShow(...args);queueMicrotask(refreshSelectionActions);return result;};
   const messages=new MutationObserver(()=>{
     const text=node('atlasWorkspaceStatus').textContent;
     if(/could not|invalid|failed|unreadable|not valid/i.test(text)){status.textContent=text;status.hidden=false;}
@@ -100,6 +153,7 @@
   });messages.observe(node('atlasWorkspaceStatus'),{childList:true,subtree:true,characterData:true});
   let start='places';try{if(!location.hash)start=sessionStorage.getItem('saeroth-atlas-panel')||start;}catch{}
   open(start);
+  refreshSelectionActions();
   document.documentElement.classList.add('atlas-panel-layout');
   window.AtlasPanels={open,reveal,backToMap,get active(){return active;}};
 })();

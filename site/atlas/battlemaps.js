@@ -262,7 +262,8 @@
     const button=document.createElement('button');button.id='atlasGenerateBattlemap';button.type='button';
     button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2zM9 3v16M15 5v16M6 8v4M18 10v4"/></svg>Generate battle map';
     button.onclick=()=>open(ctx,button);container.append(button);
-    const toolbar=$id('info').querySelector('.atlas-place-toolbar');if(toolbar)toolbar.after(container);else $id('info').querySelector('h2')?.after(container);
+    const primary=$id('info').querySelector('.atlas-place-primary'),toolbar=$id('info').querySelector('.atlas-place-toolbar');
+    if(primary)primary.append(container);else if(toolbar)toolbar.after(container);else $id('info').querySelector('h2')?.after(container);
   }
   const priorShow=show;
   show=function(...args){const result=priorShow(...args);if(selected?.type===args[0]&&selected.id===Number(args[1]))attach();return result;};

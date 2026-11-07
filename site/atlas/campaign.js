@@ -41,7 +41,8 @@
     const p = document.createElement('p');
     p.className = 'campaign-link';
     p.append(a);
-    info.querySelector('h2')?.after(p);
+    const slot=info.querySelector('.atlas-place-lore');
+    if(slot)slot.append(p);else info.querySelector('h2')?.after(p);
   }
   // Wrapping the current selection function preserves the existing geography,
   // symbol alignment and label hooks installed before this module.
