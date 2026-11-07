@@ -78,15 +78,17 @@ async function place(page,column,row){await page.locator('#epColumn').fill(Strin
   // Generic or missing static-host MIME is accepted only after binary sniffing.
   const mimeContext=await browser.newContext({serviceWorkers:'block',acceptDownloads:true}),mimePage=await mimeContext.newPage();await fixtures(mimePage);
   const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aGf8AAAAASUVORK5CYII=','base64');
-  await mimePage.goto(base);const webp=Buffer.from(await mimePage.evaluate(()=>{const canvas=document.createElement('canvas');canvas.width=canvas.height=2;canvas.getContext('2d').fillRect(0,0,2,2);return canvas.toDataURL('image/webp').split(',')[1];}),'base64');let mimeMode='generic';
+  const webp=Buffer.from(await mimePage.evaluate(()=>{const canvas=document.createElement('canvas');canvas.width=canvas.height=2;canvas.getContext('2d').fillRect(0,0,2,2);return canvas.toDataURL('image/webp').split(',')[1];}),'base64');let mimeMode='generic';
   await mimePage.route('**/content/campaign/npcs/John%20Guard.md',r=>r.fulfill({contentType:'text/markdown',body:'---\ntitle: John Guard\ntype: npc\n---\n# John Guard\n![PNG](fixture.png)\n![WebP](fixture.webp)'}));
   await mimePage.route('**/content/campaign/npcs/fixture.png',r=>r.fulfill({headers:{'content-type':mimeMode==='missing'?'':'application/octet-stream'},body:png}));
   await mimePage.route('**/content/campaign/npcs/fixture.webp',r=>r.fulfill({headers:{'content-type':mimeMode==='missing'?'':'application/octet-stream'},body:mimeMode==='html'?Buffer.from('<html>not an image</html>'):webp}));
-  await mimePage.evaluate(({pathname,john})=>localStorage.setItem('saeroth-workspace-v1:'+pathname,JSON.stringify({version:1,pins:[],recent:[],board:[john],tasks:[],title:'MIME verification',notes:'',libraryView:'cards',updatedAt:''})),{pathname:new URL(base).pathname,john});await open(mimePage);
-  for(const mode of ['generic','missing']){mimeMode=mode;const data=await download(mimePage,'#spExport');assert.deepEqual(data.assets.map(a=>a.mime).sort(),['image/png','image/webp']);await format.validatePackage(data);}
+  // Seed before application startup: a hash-only goto does not reread localStorage.
+  await mimePage.addInitScript(({pathname,john})=>localStorage.setItem('saeroth-workspace-v1:'+pathname,JSON.stringify({version:1,pins:[],recent:[],board:[john],tasks:[],title:'MIME verification',notes:'',libraryView:'cards',updatedAt:''})),{pathname:new URL(base).pathname,john});await open(mimePage);
+  assert.equal(await mimePage.locator('#wsBoardList li').count(),1);assert.match(await mimePage.locator('#wsBoardList').innerText(),/John Guard/);
+  for(const mode of ['generic','missing']){mimeMode=mode;const data=await download(mimePage,'#spExport');assert(data.journal.pages.some(page=>page.name==='John Guard'));assert.deepEqual(data.assets.map(a=>a.mime).sort(),['image/png','image/webp']);await format.validatePackage(data);}
   mimeMode='html';let badDownloads=0;mimePage.on('download',()=>badDownloads++);await mimePage.locator('#spExport').click();await mimePage.waitForFunction(()=>document.querySelector('#spStatus').textContent.includes('must contain a PNG'));assert.equal(badDownloads,0);await mimeContext.close();
   // An overlapping backup preview cannot steal the selected map's pending preparation.
-  const raceContext=await browser.newContext({serviceWorkers:'block',acceptDownloads:true}),racePage=await raceContext.newPage();await fixtures(racePage);await racePage.goto(base);
+  const raceContext=await browser.newContext({serviceWorkers:'block',acceptDownloads:true}),racePage=await raceContext.newPage();await fixtures(racePage);await open(racePage);
   await racePage.addScriptTag({url:base+'atlas/battlemap-engine.js'});await racePage.addScriptTag({url:base+'atlas/battlemap-foundry.js'});
   const raceBackup=await racePage.evaluate(async({map,presetEncounter})=>{
    const math=await import('./encounter-plan.mjs'),scene=window.SaerothBattlemapFoundry.scene(window.SaerothBattlemapEngine.generate({...map.recipe,name:map.name}),{backgroundPath:'asset:test'});
