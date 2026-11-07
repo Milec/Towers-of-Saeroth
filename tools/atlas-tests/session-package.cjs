@@ -28,6 +28,16 @@ async function fixtures(page){
  const format=await import(pathToFileURL(path.join(__dirname,'../../foundry-module/scripts/session-package.mjs')).href);
  const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
  try{
+  // An empty desk and unfinished personal checklist are valid journal-only packages.
+  const optionalContext=await browser.newContext({serviceWorkers:'block',acceptDownloads:true}),optionalPage=await optionalContext.newPage();await fixtures(optionalPage);
+  await optionalPage.goto(base+'#/workspace');await ready(optionalPage);
+  assert.equal(await optionalPage.locator('#wsPrepOverview').evaluate(node=>node.open),false);
+  assert.equal(await optionalPage.locator('#spNextAction').isVisible(),false);
+  const empty=await download(optionalPage,'#spExport');assert.equal(empty.data.version,1);assert.equal(empty.data.journal.pages.length,1);assert.equal(empty.data.scene,null);assert.deepEqual(empty.data.actors,[]);
+  await optionalPage.locator('#wsTaskInput').fill('Find a voice for the innkeeper');await optionalPage.locator('#wsTaskForm button').click();
+  assert.equal(await optionalPage.locator('#spOverviewTasks').textContent(),'0 of 1 complete');
+  assert.equal(await optionalPage.locator('#spNextAction').isVisible(),false,'An optional unchecked task must not look like an export blocker');
+  const checklist=await download(optionalPage,'#spExport');assert(checklist.data.journal.pages[0].text.content.includes('Find a voice for the innkeeper'));assert.equal(checklist.data.scene,null);await optionalContext.close();
   for(const width of [390,1440]){
    const context=await browser.newContext({viewport:{width,height:960},serviceWorkers:'block',acceptDownloads:true,reducedMotion:'reduce'});
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await fixtures(page);
@@ -46,8 +56,15 @@ async function fixtures(page){
    await atlas.locator('#battlemapSessionLink').click();await ready(page);
    assert.match(await page.locator('#spMap').innerText(),/Pilgrim/);
    assert.match(await page.locator('#spSummary').innerText(),/2 journal pages · 1 scene · 1 NPC sheet/);
+   assert.equal(await page.locator('#wsPrepOverview').evaluate(node=>node.open),false,'The preparation overview stays compact until requested');
+   assert.equal(await page.locator('#spOverviewNotes').textContent(),'1 included + scratchpad');assert.equal(await page.locator('#spOverviewTasks').textContent(),'0 of 1 complete');
+   assert.equal(await page.locator('#spOverviewActors').textContent(),'1 selected');assert.match(await page.locator('#spOverviewMap').textContent(),/Pilgrim/);
+   await page.locator('#wsPrepOverview>summary').click();
    for(const theme of ['light','dark']){
     await page.evaluate(value=>document.documentElement.dataset.theme=value,theme);
+    await page.locator('#wsPrepOverview').scrollIntoViewIfNeeded();
+    await page.screenshot({path:path.join(output,'prep-overview-'+width+'-'+theme+'.png')});
+    assert(await page.locator('#wsPrepOverview [data-ws-action]').evaluateAll(buttons=>buttons.every(button=>{const r=button.getBoundingClientRect();return r.height>=44&&r.width>=44&&r.left>=0&&r.right<=innerWidth;})),'Overview shortcuts stay touch-sized and inside the viewport');
     await page.locator('#wsFoundryPackage').scrollIntoViewIfNeeded();
     await page.screenshot({path:path.join(output,'session-package-'+width+'-'+theme+'.png')});
     assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
@@ -69,6 +86,7 @@ async function fixtures(page){
    }
    await page.reload();await ready(page);
    assert.match(await page.locator('#spMap').innerText(),/Pilgrim/);assert.match(await page.locator('#spSelectedActors').innerText(),/John Guard/);
+   assert.equal(await page.locator('#spOverviewNotes').textContent(),'1 included + scratchpad');assert.equal(await page.locator('#spOverviewTasks').textContent(),'0 of 1 complete');assert.equal(await page.locator('#spOverviewActors').textContent(),'1 selected');
    await page.locator('#spPresets summary').click();assert.equal(await page.locator('[data-preset-map]').isChecked(),false,'Existing map must not be replaced by default');
    await page.locator('[data-add-preset]').click();
    await page.waitForFunction(()=>document.querySelector('#spSelectedActors')?.textContent.includes('Milo'));
@@ -107,9 +125,12 @@ async function fixtures(page){
   await timingPage.locator('#spExport').click();await timingPage.locator('#spStatus').filter({hasText:'Could not load artwork'}).waitFor();
   assert.equal(timingDownloads,0,'Failed artwork cannot yield a partial download');
   mode='hold';const pending=timingPage.waitForEvent('download');await timingPage.locator('#spExport').click();await arrival;
-  await timingPage.locator('#wsTitle').fill('Edited while exporting');await timingPage.locator('#wsNotes').fill('Changed while artwork loads');release();
+  await timingPage.locator('#wsTitle').fill('Edited while exporting');await timingPage.locator('#wsNotes').fill('Changed while artwork loads');
+  await timingPage.locator('#wsTaskInput').fill('Added after export started');await timingPage.locator('#wsTaskForm button').click();
+  assert.equal(await timingPage.locator('#spOverviewTasks').textContent(),'0 of 1 complete','Overview follows live edits while export keeps its captured draft');release();
   const captured=JSON.parse(await fs.readFile(await(await pending).path(),'utf8'));
   assert.equal(captured.name,'Captured session');assert(captured.journal.pages[0].text.content.includes('Before export'));assert(!captured.journal.pages[0].text.content.includes('Changed while'));
+  assert(!captured.journal.pages[0].text.content.includes('Added after export started'));
   held=new Promise(resolve=>{release=resolve;});arrival=new Promise(resolve=>{entered=resolve;});
   await timingPage.locator('#spExport').click();await arrival;await timingPage.locator('#spCancel').click();release();
   await timingPage.locator('#spStatus').filter({hasText:'Export cancelled'}).waitFor();assert.equal(timingDownloads,1,'Cancelled export creates no download');assert.equal(await timingPage.locator('#spExport').isEnabled(),true);
@@ -117,6 +138,19 @@ async function fixtures(page){
   await timingPage.locator('#spExport').click();await arrival;await timingPage.goto(base+'#/library');release();
   await timingPage.locator('#wsLibrarySearch').waitFor();assert.equal(timingDownloads,1,'Navigation cancels the pending export');
   await timing.close();
+  // Catalog errors are actionable; a successful retry must expose a missing selected sheet.
+  const missingContext=await browser.newContext({serviceWorkers:'block',acceptDownloads:true}),missingPage=await missingContext.newPage();let catalogFailed=true,retryRequests=0,releaseRetry,retryEntered;
+  const retryGate=new Promise(resolve=>{releaseRetry=resolve;}),retryArrival=new Promise(resolve=>{retryEntered=resolve;});
+  await missingPage.route('**/session-actors.json',async r=>{if(catalogFailed)return r.fulfill({status:503,body:'Unavailable'});retryRequests++;retryEntered();await retryGate;return r.fulfill({json:catalog});});
+  await missingPage.addInitScript(pathname=>localStorage.setItem('saeroth-session-actors-v1:'+pathname,JSON.stringify({version:1,actors:[{key:'campaign/npcs/Retired fixture.md',name:'Retired fixture'}]})),new URL(base).pathname);
+  await missingPage.goto(base+'#/workspace');await missingPage.locator('#spNextAction').filter({hasText:'Review the NPC list'}).waitFor();
+  await missingPage.locator('#spNextAction').click();assert.equal(await missingPage.locator('#spActorPicker').evaluate(node=>node.open),true);assert(await missingPage.locator('#spCatalogRetry').evaluate(node=>node===document.activeElement));
+  catalogFailed=false;await missingPage.locator('#spCatalogRetry').click();await retryArrival;assert(await missingPage.locator('#spCatalogRetry').isDisabled());await missingPage.locator('#spCatalogRetry').evaluate(node=>node.click());releaseRetry();await missingPage.locator('#spNextAction').filter({hasText:'Review selected NPCs'}).waitFor();assert.equal(retryRequests,1,'Repeated clicks during a pending catalog retry reuse the request');
+  assert.match(await missingPage.locator('#spOverviewSummary').textContent(),/selected NPC is no longer listed/);assert.equal(await missingPage.locator('#spOverviewActors').textContent(),'Review Retired fixture');
+  await missingPage.locator('#spNextAction').click();assert(await missingPage.locator('#spSelectedActors').evaluate(node=>node===document.activeElement));
+  let missingDownloads=0;missingPage.on('download',()=>missingDownloads++);await missingPage.locator('#spExport').click();await missingPage.locator('#spStatus').filter({hasText:'no longer in the campaign NPC list'}).waitFor();assert.equal(missingDownloads,0);
+  await missingPage.getByRole('button',{name:'Remove Retired fixture',exact:true}).click();assert.equal(await missingPage.locator('#spNextAction').isVisible(),false);assert.equal(await missingPage.locator('#spOverviewActors').textContent(),'0 selected');
+  assert.equal((await download(missingPage,'#spExport')).data.scene,null);await missingContext.close();
   // Storage failure still permits a complete in-memory package.
   const limited=await browser.newContext({serviceWorkers:'block',acceptDownloads:true}),limitedPage=await limited.newPage();await fixtures(limitedPage);
   await limitedPage.addInitScript(()=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key.startsWith('saeroth-session-'))throw new DOMException('Quota','QuotaExceededError');return set.call(this,key,value);};});
@@ -132,6 +166,6 @@ async function fixtures(page){
   await corruptPage.goto(base+'#/workspace');await ready(corruptPage);
   const recovered=await download(corruptPage,'#spRecovery');assert(recovered.data.selections.some(r=>r.data==='{original broken selection'));
   await corrupt.close();
-  console.log('Session packages: notes + embedded artwork + map + NPC refs, stable identity, phone/desktop themes, preset merge, persistence/recovery, quota failure, untrusted assets, failed artwork/retry, snapshot/cancellation, and legacy journal export pass.');
+  console.log('Session packages: overview and shortcuts, optional checklist-only export, NPC-list retry/recovery, notes + embedded artwork + map + NPC refs, stable identity, phone/desktop themes, preset merge, persistence/recovery, quota failure, untrusted assets, failed artwork/retry, live edits with captured export, cancellation, and legacy journal export pass.');
  }finally{await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

@@ -201,10 +201,21 @@
         <label class="ws-field" for="wsTitle">Session title<input id="wsTitle" type="text" maxlength="100" value="${esc(saved.title)}" placeholder="Name this session"></label>
         <p id="wsSaveStatus" class="ws-save" role="status">Saved in this browser</p>
         <section id="wsSessionLibrary" aria-label="Saved sessions"></section>
+        <details id="wsPrepOverview" class="sp-overview">
+          <summary><span>Preparation overview</span><small id="spOverviewSummary">Loading preparation…</small></summary>
+          <div class="sp-overview-grid">
+            <button type="button" data-ws-action="jump-section" data-target="wsReferences"><span>Reference notes</span><strong id="spOverviewNotes"></strong></button>
+            <button type="button" data-ws-action="jump-section" data-target="wsChecklist"><span>Your checklist</span><strong id="spOverviewTasks"></strong></button>
+            <button type="button" data-ws-action="jump-section" data-target="spMap"><span>Battle map</span><strong id="spOverviewMap"></strong></button>
+            <button type="button" data-ws-action="jump-section" data-target="spActorPicker"><span>NPC sheets</span><strong id="spOverviewActors"></strong></button>
+            <button type="button" data-ws-action="jump-section" data-target="epPanel"><span>Encounter</span><strong id="spOverviewEncounter"></strong></button>
+          </div>
+          <p class="ws-small ws-muted">Maps, NPCs, encounters, and checklist tasks are optional. Artwork is checked during download; Foundry checks installed sheets during import.</p>
+        </details>
         <section id="wsReferences" class="ws-prep-section" tabindex="-1" aria-labelledby="wsReferenceHeading">
           <div class="ws-section-head ws-subhead"><h3 id="wsReferenceHeading">Reference packet <span id="wsBoardCount"></span></h3><a href="#/library">Add from library ${icon('plus')}</a></div>
           <p class="ws-muted ws-small">Arrange your notes in order of play. Each becomes a page in your Foundry journal.</p><div id="wsBoardList"></div>
-          <div class="ws-section-head ws-subhead"><h3>Preparation checklist</h3><span id="wsTaskCount" class="ws-muted ws-small"></span></div>
+          <div id="wsChecklist" class="ws-section-head ws-subhead" tabindex="-1"><h3>Preparation checklist</h3><span id="wsTaskCount" class="ws-muted ws-small"></span></div>
           <ul id="wsTasks" class="ws-tasks"></ul><form id="wsTaskForm" class="ws-task-form"><label class="ws-sr-only" for="wsTaskInput">New preparation task</label><input id="wsTaskInput" maxlength="240" placeholder="Add a task for the next game" required><button type="submit" class="ws-button">${icon('plus')}Add task</button></form>
           <label class="ws-field ws-notes-field" for="wsNotes">GM scratchpad<textarea id="wsNotes" rows="5" maxlength="${LIMITS.notes}" placeholder="Scene beats, open questions, and reminders for the table…">${esc(saved.notes)}</textarea></label>
           <p class="ws-muted ws-small">Private working notes on this device. Campaign entries and the player site are unchanged.</p>
@@ -347,12 +358,12 @@
     if (action === 'pin') togglePin(path);
     else if (action === 'board') addBoard(path);
     else if (action === 'jump-section') {
-      const targets = ['wsReferences', 'wsFoundryPackage', 'epPanel', 'spExport'];
+      const targets = ['wsReferences', 'wsChecklist', 'wsFoundryPackage', 'spMap', 'spActorPicker', 'spSelectedActors', 'spCatalogRetry', 'epPanel', 'epPlacement', 'spExport'];
       const id = button.dataset.target;
       if (!targets.includes(id)) return;
       const target = host.querySelector('#' + id);
       if (!target) return;
-      if (target.tagName === 'DETAILS') target.open = true;
+      for(let details=target.closest('details');details&&host.contains(details);details=details.parentElement?.closest('details'))details.open=true;
       const focus = target.tagName === 'DETAILS' ? target.querySelector('summary') : target;
       // Scroll only the reading pane. scrollIntoView also moves the outer page,
       // putting the sticky session shortcuts underneath the global top bar.

@@ -29,4 +29,20 @@
 .sp-presets article{padding:8px 0 16px}.sp-presets article+article{border-top:1px solid var(--rule);padding-top:18px}
 .sp-preset-map{display:flex;align-items:center;gap:10px;min-height:44px;font-size:.8rem;margin-bottom:10px}
 .ws-journal-only{border-top:1px solid var(--rule);margin-top:24px;padding-top:22px}.workspace .ws-journal-only>p{margin-bottom:8px}
+.sp-overview{border:1px solid var(--rule);border-radius:7px;margin:18px 0 24px;background:var(--bg)}
+.sp-overview>summary{min-height:64px;padding:12px 16px;cursor:pointer;font-size:.85rem;font-weight:650;color:var(--ink)}
+.sp-overview>summary small{display:block;margin:5px 0 0 16px;font-size:.75rem;line-height:1.6;font-weight:400;color:var(--muted);overflow-wrap:anywhere}
+.sp-overview[open]>summary{border-bottom:1px solid var(--rule)}
+.sp-overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px}
+.sp-overview-grid button{position:relative;display:flex;flex-direction:column;gap:5px;text-align:left;min-height:74px;min-width:0;padding:12px 32px 12px 12px;border:1px solid var(--rule);border-radius:5px;background:var(--panel);color:var(--ink)}
+.sp-overview-grid button::after{content:'\2192';position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--link)}
+.sp-overview-grid button:last-child{grid-column:1/-1}
+.sp-overview-grid button:hover{border-color:var(--accent)}
+.sp-overview-grid button>span{color:var(--muted);font-size:.7rem}.sp-overview-grid button>strong{font-size:.8rem;line-height:1.5;font-weight:600;overflow-wrap:anywhere}
+.sp-overview>p{padding:0 16px;margin:0 0 16px;font-size:.75rem;line-height:1.65}
+.sp-overview.sp-needs-attention{border-left:3px solid var(--accent)}
+.sp-overview.sp-needs-attention>summary small,.sp-overview-grid .sp-needs-attention>strong{color:var(--accent);font-weight:600}
+.session-package .sp-next-action{width:100%;margin:0 0 12px;white-space:normal;line-height:1.5;color:var(--accent)}
+@media(max-width:520px){.sp-overview-grid{grid-template-columns:minmax(0,1fr)}.sp-overview-grid button{min-height:68px}.sp-overview>summary{padding:12px}.sp-overview>p{padding-inline:12px}}
+@media print{.sp-overview{display:none!important}}
 @media(max-width:520px){.sp-map-card{gap:10px;flex-wrap:wrap;padding:12px}.sp-map-symbol{display:none}.sp-map-card>div{flex-basis:100%}.sp-map-card>button{width:100%}.sp-map-head{align-items:start}.sp-map-head .ws-button{padding:10px;font-size:.75rem}.sp-heading{align-items:start}.sp-preview{padding:13px}.sp-actor-choice{padding-inline:10px}}
