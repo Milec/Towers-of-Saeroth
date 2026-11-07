@@ -189,13 +189,22 @@
   const findParty=document.createElement('button');findParty.id='atlasFindParty';findParty.type='button';findParty.title='Find party';findParty.setAttribute('aria-label','Find party');findParty.innerHTML=icon('target');
   el('mapHome').after(findParty);
   findParty.onclick=()=>{
+    el('atlasPartyGuidance')?.remove();
     if(el('hexEnabled')?.checked&&!el('hexLocate')?.disabled){el('hexLocate').click();focusMap();return;}
     if(partyPlace&&Number.isFinite(partyPlace.x)&&Number.isFinite(partyPlace.y)){focusPoints([[partyPlace.x,partyPlace.y]],160);focusMap();return;}
-    el('travelView').open=true;el('travelView').scrollIntoView({block:'start'});el('clearPartyLocation').hidden?el('travelView').querySelector('summary').focus():el('clearPartyLocation').focus();
-    report('Select a settlement or landmark and choose Mark party here, or place the party in Hexcrawl.');
+    window.AtlasPanels?.reveal('travelView');el('travelView').open=true;el('travelView').scrollIntoView({block:'start'});el('clearPartyLocation').hidden?el('travelView').querySelector('summary').focus():el('clearPartyLocation').focus();
+    const guidance=document.createElement('p');guidance.id='atlasPartyGuidance';guidance.className='atlas-party-guidance';guidance.setAttribute('role','status');
+    guidance.textContent='Select a settlement or landmark and choose Mark party here, or place the party in Hexcrawl.';el('partyLocation').after(guidance);
   };
   function focusMap(){document.querySelector('.mapframe').scrollIntoView({block:'start',behavior:'auto'});map.focus({preventScroll:true});}
   el('atlasSelectionDetails').onclick=()=>{info.scrollIntoView({block:'start',behavior:'auto'});info.querySelector('h2').tabIndex=-1;info.querySelector('h2').focus({preventScroll:true});};
+  // One delegated listener survives selections without accumulating handlers on
+  // journey controls retained by another renderer wrapper.
+  info.addEventListener('click',event=>{
+    const button=event.target.closest('button');if(!button)return;
+    if(button.id==='partyHere'){el('atlasPlaceFeedback').textContent=el('hexEnabled')?.checked&&!el('hexLocate')?.disabled?'Party landmark updated. Hexcrawl still uses its current hex.':'Party location updated.';el('atlasPartyGuidance')?.remove();}
+    else if(button.id==='routeStart'||button.id==='routeEnd')el(button.id==='routeStart'?'journeyFrom':'journeyTo').focus({preventScroll:true});
+  });
   function updateSaveButton(){
     const button=el('atlasSavePlace');if(!button||!selected)return;
     const saved=prefs.saved.includes(recordKey(selected));button.setAttribute('aria-pressed',String(saved));button.innerHTML=icon('star')+(saved?'Place saved':'Save place');
@@ -207,19 +216,27 @@
   function enhanceSelection(){
     if(!selected)return;const current=byKey(recordKey(selected));if(!current)return;
     selectionCard.hidden=false;el('atlasSelectionName').textContent=current.name;el('atlasSelectionKind').textContent={burg:'Settlement',custompoi:'Campaign location',poi:'Landmark',nation:'Nation',province:'Province',subprovince:'District',route:'Route'}[current.type]||'Place';
+    // Preserve existing controls and their original route/party handlers. Some
+    // wrappers retain a card, so detach these before replacing its action shell.
+    const actions=info.querySelector('.atlas-place-actions'),start=el('routeStart'),lore=info.querySelector('p.campaign-link');
+    actions?.remove();start?.remove();lore?.remove();info.querySelector('.atlas-place-toolbar')?.remove();
     const toolbar=document.createElement('div');toolbar.className='atlas-place-toolbar';
-    toolbar.innerHTML=`<button type="button" id="atlasSavePlace">${icon('star')}Save place</button><button type="button" id="atlasCopyPlace">${icon('link')}Copy link</button><button type="button" id="atlasFocusPlace">${icon('target')}On map</button><span id="atlasPlaceFeedback" class="atlas-place-feedback" role="status" aria-live="polite"></span>`;
+    toolbar.innerHTML=`<div class="atlas-place-lore"></div><div class="atlas-place-primary"></div><div class="atlas-place-secondary"><button type="button" id="atlasSavePlace">${icon('star')}Save place</button><details class="atlas-place-more"><summary>More place actions</summary><div class="atlas-place-tools"><button type="button" id="atlasCopyPlace">${icon('link')}Copy link</button><button type="button" id="atlasFocusPlace">${icon('target')}On map</button></div></details></div><span id="atlasPlaceFeedback" class="atlas-place-feedback" role="status" aria-live="polite"></span>`;
     info.querySelector('h2').after(toolbar);
-    const actions=info.querySelector('.atlas-place-actions');if(actions){toolbar.after(actions);actions.querySelectorAll('button').forEach(button=>{button.addEventListener('click',()=>{if(button.id==='partyHere')el('atlasPlaceFeedback').textContent='Party location updated.';else document.getElementById(button.id==='routeStart'?'journeyFrom':'journeyTo').focus({preventScroll:true});});});}
+    if(lore)toolbar.querySelector('.atlas-place-lore').append(lore);
+    if(actions)toolbar.querySelector('.atlas-place-primary').append(actions);
+    if(start)toolbar.querySelector('.atlas-place-tools').prepend(start);
     updateSaveButton();
     el('atlasSavePlace').onclick=()=>{
       const key=recordKey(current),saved=prefs.saved.includes(key);if(!saved&&prefs.saved.length>=limits.saved){el('atlasPlaceFeedback').textContent='You have 100 saved places. Remove one before saving another.';return;}
       if(save({...prefs,saved:saved?prefs.saved.filter(item=>item!==key):[...prefs.saved,key]}))el('atlasPlaceFeedback').textContent=saved?'Removed from saved places.':'Saved to Your atlas.';
     };
-    el('atlasCopyPlace').onclick=async()=>{
+    const copy=el('atlasCopyPlace'),feedback=el('atlasPlaceFeedback');
+    copy.onclick=async()=>{
       const url=new URL('../',location.href);url.hash='/atlas#'+recordKey(current);
-      try{await navigator.clipboard.writeText(url.href);el('atlasPlaceFeedback').textContent='Place link copied.';}
-      catch{const field=document.createElement('input');field.readOnly=true;field.value=url.href;field.setAttribute('aria-label','Place link to copy');el('atlasPlaceFeedback').replaceChildren(field);field.focus();field.select();}
+      const stillCurrent=()=>copy.isConnected&&feedback.isConnected&&selected&&recordKey(selected)===recordKey(current);
+      try{await navigator.clipboard.writeText(url.href);if(stillCurrent())feedback.textContent='Place link copied.';}
+      catch{if(!stillCurrent())return;const field=document.createElement('input');field.readOnly=true;field.value=url.href;field.setAttribute('aria-label','Place link to copy');feedback.replaceChildren(field);field.focus();field.select();}
     };
     el('atlasFocusPlace').onclick=()=>{show(current.type,current.id,true);focusMap();};
     const origin=position(current);if(origin){
@@ -235,7 +252,7 @@
     const key=recordKey(selected);
     if(prefs.recent[0]!==key)save({...prefs,recent:[key,...prefs.recent.filter(item=>item!==key)].slice(0,limits.recent)});
     // Some wrappers update an existing card without replacing its contents.
-    info.querySelectorAll('.atlas-place-toolbar,.atlas-nearby').forEach(node=>node.remove());enhanceSelection();
+    info.querySelectorAll('.atlas-nearby').forEach(node=>node.remove());enhanceSelection();
   };
   function renderLanding(){
     const target=el('atlasLanding');if(!target)return;

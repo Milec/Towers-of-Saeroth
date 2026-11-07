@@ -51,6 +51,21 @@ atlas and back. `ATLAS_TEST_URL` can select a server under a Pages-style
 subdirectory. The regression suite covers population sizing, filters, label
 visibility, POI alignment, route planning and regional detail loading.
 
+## Selected places
+
+The map's selected-place card provides **Details** and a compact **Actions**
+menu. Supported settlements and landmarks offer **Travel here**, **Mark party
+here**, and **Generate battle map** without first scrolling to their details.
+These use the existing journey, party-marker, and battle-map controls. Nation
+and route selections do not gain invented travel endpoints or battle maps.
+Changing selection closes the menu; Escape closes it and returns keyboard
+focus to its trigger. The generator also returns focus there when closed.
+
+Place details keep travel and battle-map actions together. **Save place** stays
+visible; **More place actions** contains Start here, Copy link, and On map.
+Campaign lore links retain their direct-note or nation-note wording. Find party
+without a marker opens Travel and displays instructions there for placing it.
+
 ## Hexcrawl travel
 
 Open **Hexcrawl travel** below Travel view and enable the overlay. Choose a
