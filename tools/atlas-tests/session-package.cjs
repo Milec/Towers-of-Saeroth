@@ -80,6 +80,7 @@ async function fixtures(page){
    assert.equal(await page.locator('#wsBoardList li').count(),3,'Repeated preset adds no duplicate notes');
    await page.locator('#spRemoveMap').click();assert.match(await page.locator('#spSummary').innerText(),/No scene/);
    const notesOnly=await download(page,'#spExport');assert.equal(notesOnly.data.scene,null);assert.equal(notesOnly.data.actors.length,2);
+   await page.locator('.ws-journal-only > summary').click();
    const legacy=await download(page,'[data-ws-action="foundry"]');assert.equal(legacy.data.pages.length,4,'Original journal export remains available');
    assert.deepEqual(errors,[]);await context.close();
   }

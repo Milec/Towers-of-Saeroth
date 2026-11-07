@@ -67,15 +67,16 @@
     if (!element || !config) return;
     host = element;
     host.className = 'session-library';
-    host.innerHTML = '<div class="sl-heading"><div><p class="ws-eyebrow">Keep the next adventure ready</p><h2>Saved sessions</h2></div><span id="slCount" class="ws-label"></span></div>' +
-      '<p class="sl-intro">Save a complete version of your preparation: notes, checklist, NPCs, map, and encounter. Saved versions stay as saved; your working prep continues saving separately in this browser.</p>' +
+    host.setAttribute('aria-label', 'Saved sessions');
+    host.innerHTML = '<p class="sl-intro">Working prep autosaves in this browser. Saved versions keep a separate copy of your notes, NPCs, map, and encounter.</p>' +
       '<fieldset id="slControls" disabled><legend class="sl-sr">Saved session controls</legend>' +
-      '<div class="sl-actions sl-main-actions"><button type="button" class="ws-button ws-primary" id="slSave">Save current prep</button><button type="button" class="ws-button" id="slNew">New session</button><button type="button" class="ws-button" id="slImport">Import editable backup</button><input type="file" id="slImportFile" accept="application/json,.json" hidden></div>' +
+      '<div class="sl-actions sl-main-actions"><button type="button" class="ws-button ws-primary" id="slSave">Save current prep</button><button type="button" class="ws-button" id="slNew">New session</button><span id="slCount" class="ws-label"></span></div>' +
       '<div id="slForm" class="sl-form" hidden></div><div id="slImportPreview" class="sl-import-preview" hidden></div>' +
       '<details id="slShelf"><summary>Browse saved sessions <span id="slShelfCount"></span></summary><div class="sl-browser">' +
       '<div class="sl-filters"><label class="ws-field" for="slSearch">Find a saved session<input type="search" id="slSearch" autocomplete="off" placeholder="Session name or map…"></label><label class="sl-check" for="slArchived"><input type="checkbox" id="slArchived"> Show archived</label></div>' +
       '<p id="slResults" class="ws-small ws-muted" role="status"></p><div id="slList"></div><button type="button" class="ws-button sl-more" id="slMore" hidden>Show more sessions</button></div></details></fieldset>' +
-      '<p id="slStatus" class="sl-status" role="status" aria-live="polite">Loading saved sessions…</p><p id="slLibraryError" class="sl-status sl-error" hidden></p><p id="slSwitchError" class="sl-status sl-error" hidden></p><div class="sl-portability"><button type="button" class="ws-button" id="slCurrentBackup">Download current prep</button><button type="button" class="ws-button" id="slRetry" hidden>Retry saved sessions</button><button type="button" class="ws-button" id="slRecovery" hidden>Download library recovery</button><button type="button" class="ws-button" id="slSwitchRecovery" hidden>Download interrupted-switch recovery</button><p class="ws-small ws-muted">Editable backups move preparation between devices. They contain references and map recipes, not embedded artwork or Foundry documents. Use the Session package below to import into Foundry.</p><div id="slDownloads" class="sl-downloads"></div></div>';
+      '<details id="slTransfer"><summary>Backups &amp; transfer</summary><div class="sl-portability"><p class="ws-small ws-muted">Move editable prep to another browser or device. Artwork stays linked; saved versions stay as saved. Use the Foundry package for play.</p><div class="sl-actions"><button type="button" class="ws-button" id="slCurrentBackup">Download current prep</button><button type="button" class="ws-button" id="slImport" disabled>Import editable backup</button><input type="file" id="slImportFile" accept="application/json,.json" hidden></div></div></details>' +
+      '<p id="slStatus" class="sl-status" role="status" aria-live="polite">Loading saved sessions…</p><p id="slLibraryError" class="sl-status sl-error" hidden></p><p id="slSwitchError" class="sl-status sl-error" hidden></p><div id="slRecoveryActions" class="sl-actions sl-recovery" hidden><button type="button" class="ws-button" id="slRetry" hidden>Retry saved sessions</button><button type="button" class="ws-button" id="slRecovery" hidden>Download library recovery</button><button type="button" class="ws-button" id="slSwitchRecovery" hidden>Download interrupted-switch recovery</button></div><div id="slDownloads" class="sl-downloads"></div>';
     host.querySelector('#slSave').onclick = () => perform(saveCurrent);
     host.querySelector('#slNew').onclick = () => showForm('new');
     host.querySelector('#slImport').onclick = () => host.querySelector('#slImportFile').click();
@@ -119,6 +120,7 @@
   function render() {
     if (!host) return;
     host.querySelector('#slControls').disabled = busy || !available;
+    host.querySelector('#slImport').disabled = busy || !available;
     host.querySelector('#slCurrentBackup').disabled = busy || !model;
     host.querySelector('#slRetry').hidden = available || !error;
     host.querySelector('#slRetry').disabled = busy;
@@ -130,13 +132,15 @@
     switchError.textContent = recovery?.message || '';
     host.querySelector('#slSwitchRecovery').hidden = !recovery?.raw;
     host.querySelector('#slSwitchRecovery').disabled = busy;
+    host.querySelector('#slRecoveryActions').hidden = !error && rawRecovery == null && !recovery?.raw;
+    if (error || recovery?.message) host.querySelector('#slTransfer').open = true;
     host.querySelector('#slNew').disabled = busy || !!recovery?.message;
     host.setAttribute('aria-busy', String(busy));
     host.querySelector('#slLibraryError').hidden = !error;
     host.querySelector('#slLibraryError').textContent = error;
     if (host.querySelector('#slStatus').textContent === 'Loading saved sessions…') {
       if (error) status('Download your current preparation, or retry saved sessions.', true);
-      else if (available && !busy) status('Saved versions are kept in this browser. Save a version here before you need it again.');
+      else if (available && !busy) status('');
     }
     renderList();
   }
@@ -334,7 +338,7 @@
       pendingImport = backup;
       const panel = host.querySelector('#slImportPreview'); panel.hidden = false;
       panel.innerHTML = '<h3>Import preview</h3><p class="ws-small">' + backup.records.length + (backup.records.length === 1 ? ' saved session' : ' saved sessions') + ' will be added as separate copies. Existing sessions and your working prep stay unchanged. Archived copies remain in the archive.</p><ul>' + backup.records.slice(0,8).map(record => '<li><strong>' + esc(record.snapshot.desk.title) + (record.archived ? ' <span class="ws-label">Archived</span>' : '') + '</strong><span>' + esc(summary(record.snapshot)) + '</span></li>').join('') + (backup.records.length > 8 ? '<li>And ' + (backup.records.length - 8) + ' more saved sessions.</li>' : '') + '</ul><div class="sl-actions"><button type="button" class="ws-button ws-primary" id="slConfirmImport">Add to saved sessions</button><button type="button" class="ws-button" id="slCancelImport">Cancel</button></div>';
-      panel.querySelector('#slCancelImport').onclick = () => { pendingImport = null; importRevision++; panel.hidden = true; host.querySelector('#slImport')?.focus(); };
+      panel.querySelector('#slCancelImport').onclick = () => { pendingImport = null; importRevision++; panel.hidden = true; host.querySelector(host.querySelector('#slTransfer').open ? '#slImport' : '#slTransfer > summary')?.focus(); };
       panel.querySelector('#slConfirmImport').onclick = () => perform(confirmImport);
       nextFocus = '#slConfirmImport';
       status('Backup checked. Review the sessions before adding them.');

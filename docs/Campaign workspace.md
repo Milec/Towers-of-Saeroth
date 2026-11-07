@@ -6,8 +6,11 @@ player site and Foundry world retain their existing roles.
 
 ## Preparing a session
 
-The campaign desk shows the latest played session, the party, prepared notes,
-pinned references, and recently opened entries. Session status comes from the
+The campaign desk opens with the current working session. Its shortcuts jump to
+notes, scene and NPC selection, encounter planning, or the Foundry download. The
+encounter shortcut also opens the planner. The side rail holds the latest played
+session, pinned references, recent entries, and expandable party and preparation
+lists. Session status comes from the
 maintained notes rather than assuming that the highest numbered preparation was
 played.
 
@@ -30,13 +33,18 @@ separate starting point, while **Archive** hides an older version from the norma
 list without deleting it. Pins, recently opened entries, and library layout are
 shared desk preferences and do not change when you open a session.
 
-Download an **editable session backup** to continue preparing it on another
+Open **Backups & transfer** beneath the session title to download an
+**editable session backup** and continue preparing it on another
 device. Import adds a separate saved copy and leaves the current desk unchanged;
 open the imported copy when ready. These files contain the map recipe and source
 references, not the rendered map image or copies of campaign notes and actor
 mechanics. Referenced content remains maintained by the campaign and PF2e system.
 Use **Download session package** when you are ready to import content into Foundry.
 The editable backup and Foundry import package are different formats.
+
+The older desk-only format is under **Desk settings & older backups**. The
+notes-only Foundry export is under **Export only the journal**. Recovery warnings
+and recovery downloads remain visible when storage needs attention.
 
 Saved versions live in IndexedDB, separate from the working desk's browser
 storage. The library permits 200 records within 8 MiB; editable backup files are
