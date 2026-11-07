@@ -45,7 +45,8 @@
         if(ticket===configuration)state={encounter,staging,mapSignature:signature(config.getMap())};
       }catch(error){if(raw)protect(raw);else storageWarning='Browser storage is unavailable. Download an encounter backup before leaving.';}
       finally{if(ticket===configuration){ready=true;if(recoveryRaw&&!storageWarning)storageWarning='A previous unreadable encounter is preserved in the recovery download.';}}
-    })().catch(error=>{storageWarning='Encounter tools could not load. Reconnect and reopen the campaign desk.';throw error;});
+    })().catch(error=>{if(ticket===configuration)storageWarning='Encounter tools could not load. Reconnect and reopen the campaign desk.';throw error;})
+      .finally(()=>{if(ticket===configuration)config?.onChange?.();});
     // A temporarily unavailable script must not cause an unhandled rejection.
     initialized.catch(()=>{});
   }
@@ -64,7 +65,7 @@
       '<label class="ws-field" for="epSearch">Find a creature or NPC<input id="epSearch" type="search" autocomplete="off" placeholder="Wolf, skeleton, John Guard…"></label>'+
       '<div class="ep-search-options"><label class="ws-field" for="epSource">Library<select id="epSource"><option value="all">All creatures</option><option value="campaign">Saeroth campaign</option><option value="compendium">PF2e compendiums</option></select></label><label class="ep-check"><input id="epNear" type="checkbox" checked> Within four party levels</label></div>'+
       '<p id="epCatalogStatus" class="ws-small ws-muted"></p><div id="epResults" class="ep-results"></div><button type="button" class="ws-button" id="epRetry" hidden>Reload creature lists</button>'+
-      '<section class="ep-placement"><h4>Starting positions</h4><label class="ep-check"><input type="checkbox" id="epStage"> Place hidden opponents on the selected map</label><p id="epMapHelp" class="ws-small ws-muted"></p><div id="epMapTools" hidden><label class="ws-field" for="epUnit">Opponent to place<select id="epUnit"></select></label><div class="ep-map-wrap"><canvas id="epMapCanvas" role="img" aria-label="Encounter map with numbered opponent starting positions. Use the column and row controls below for keyboard placement."></canvas></div><p class="ws-small ws-muted">Tap the map, or enter the top-left grid square below. Numbered footprints are hidden enemy tokens. Check the artwork for terrain the walls do not describe.</p><div class="ep-coordinate-controls"><label class="ws-field" for="epColumn">Column<input id="epColumn" type="number" min="1" value="1" step="1"></label><label class="ws-field" for="epRow">Row<input id="epRow" type="number" min="1" value="1" step="1"></label><button type="button" class="ws-button" id="epPlace">Place opponent</button></div><div class="ep-actions"><button type="button" class="ws-button" id="epUnplace">Remove this position</button><button type="button" class="ws-button" id="epResetPositions">Clear positions</button></div><p id="epPlacementCount" class="ws-small" aria-live="polite"></p></div></section>'+
+      '<section id="epPlacement" class="ep-placement" tabindex="-1"><h4>Starting positions</h4><label class="ep-check"><input type="checkbox" id="epStage"> Place hidden opponents on the selected map</label><p id="epMapHelp" class="ws-small ws-muted"></p><div id="epMapTools" hidden><label class="ws-field" for="epUnit">Opponent to place<select id="epUnit"></select></label><div class="ep-map-wrap"><canvas id="epMapCanvas" role="img" aria-label="Encounter map with numbered opponent starting positions. Use the column and row controls below for keyboard placement."></canvas></div><p class="ws-small ws-muted">Tap the map, or enter the top-left grid square below. Numbered footprints are hidden enemy tokens. Check the artwork for terrain the walls do not describe.</p><div class="ep-coordinate-controls"><label class="ws-field" for="epColumn">Column<input id="epColumn" type="number" min="1" value="1" step="1"></label><label class="ws-field" for="epRow">Row<input id="epRow" type="number" min="1" value="1" step="1"></label><button type="button" class="ws-button" id="epPlace">Place opponent</button></div><div class="ep-actions"><button type="button" class="ws-button" id="epUnplace">Remove this position</button><button type="button" class="ws-button" id="epResetPositions">Clear positions</button></div><p id="epPlacementCount" class="ws-small" aria-live="polite"></p></div></section>'+
       '<details class="ep-portability"><summary>Move this encounter to another device</summary><p class="ws-small ws-muted">This encounter saves in this browser. A backup includes its roster, settings, positions, and selected map recipe. It does not contain your session notes.</p><div class="ep-actions"><button type="button" class="ws-button" id="epBackup">Download encounter backup</button><label class="ws-button ep-file-label" for="epRestore">Choose a backup<input id="epRestore" type="file" accept="application/json,.json"></label></div><div id="epRestorePreview" hidden></div><div id="epDownloads"></div></details>'+
       '</fieldset><p id="epStorage" class="ws-small ws-muted"></p><button type="button" class="ws-button" id="epRecovery" hidden>Download unreadable encounter</button><p id="epStatus" role="status" aria-live="polite">Loading encounter tools…</p></div></details>';
     host.querySelector('#epPanel').addEventListener('toggle',()=>{if(host?.querySelector('#epPanel').open)loadCatalog();});
@@ -226,14 +227,29 @@
   }
   async function capture(){await initialized;return snapshot();}
   function snapshot(){return ready?clone(state):null;}
+  function checkStaging(captured,chosenMap){
+    if(!captured.staging)return;
+    if(captured.mapSignature!==signature(chosenMap))throw Error('The encounter positions belong to a different map. Place the opponents again.');
+    if(!chosenMap)throw Error('Choose a battle map before exporting staged opponents.');
+    const opponents=captured.encounter.roster.reduce((total,entry)=>total+entry.count,0);
+    if(captured.encounter.placements.length!==opponents)throw Error('Place every opponent before exporting, or turn off map placement.');
+  }
+  async function preflight(captured,chosenMap){
+    // Keep this check tied to the export snapshot, even if the working desk changes.
+    const draft=captured?clone(captured):null,chosen=chosenMap?clone(chosenMap):null;
+    await initialized;if(!draft?.encounter.roster.length)return null;
+    checkStaging(draft,chosen);
+    // Geometry is sufficient here: never render the full-size map or load artwork.
+    const scene=draft.staging?(await prepareMap(chosen)).scene:null;
+    return exportEncounter(draft,scene,chosen);
+  }
   async function exportEncounter(captured,scene,chosenMap){
     await initialized;if(!captured?.encounter.roster.length)return null;
+    checkStaging(captured,chosenMap);
     const data=clone(captured.encounter);if(!captured.staging)data.placements=[];
-    else if(captured.mapSignature!==signature(chosenMap))throw Error('The encounter positions belong to a different map. Place the opponents again.');
-    if(captured.staging&&!data.placements.length)throw Error('Place every opponent before exporting, or turn off map placement.');
     return contract.normalizeEncounter(data,scene);
   }
-  function summary(){return {ready,opponents:state.encounter.roster.reduce((n,r)=>n+r.count,0),sheets:state.encounter.roster.length,sources:state.encounter.roster.map(r=>contract?contract.sourceKey(r.source):''),staging:state.staging,placements:state.encounter.placements.length};}
+  function summary(){return {ready,error:ready?'':storageWarning,opponents:state.encounter.roster.reduce((n,r)=>n+r.count,0),sheets:state.encounter.roster.length,sources:state.encounter.roster.map(r=>contract?contract.sourceKey(r.source):''),staging:state.staging,placements:state.encounter.placements.length};}
   async function validatePreset(value){await math();const encounter=contract.normalizeEncounter(value);if(encounter.placements.length)throw Error('Prepared encounters must begin without placements.');return encounter;}
   async function addPrepared(value){await initialized;state.encounter=await validatePreset(value);state.staging=false;state.mapSignature=signature(config.getMap());selectedUnit='';changed();report('Prepared encounter added. Its roster can be adjusted before export.');}
   window.addEventListener('storage',event=>{
@@ -252,5 +268,5 @@
     if(host){host.querySelector('#epRestorePreview').hidden=true;render();if(state.staging)renderMap();}
     config?.onChange?.();
   }
-  window.SaerothEncounterPlanner={configure,mount,unmount,mapChanged,snapshot,capture,exportEncounter,summary,setBusy,validatePreset,addPrepared,sessionEntries,commitSession,isBusy:()=>busy};
+  window.SaerothEncounterPlanner={configure,mount,unmount,mapChanged,snapshot,capture,preflight,exportEncounter,summary,setBusy,validatePreset,addPrepared,sessionEntries,commitSession,isBusy:()=>busy};
 })();

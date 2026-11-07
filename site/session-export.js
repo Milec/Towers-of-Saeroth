@@ -6,7 +6,7 @@
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const cleanKey = value => typeof value === 'string' && value.length < 500 && /^campaign\/[^?#\x00-\x1f]+\.md$/i.test(value) && !value.includes('\\') && !value.split('/').some(p => p === '.' || p === '..');
   let config, base, host, generation = 0, selectedActors = [], map = null, catalog = [], catalogPromise, catalogReady = false, catalogError = '', presets = [];
-  let actorKey, mapKey, storageWarning = '', mapWarning = '', recovery = [], busy = false, downloadURL = '', exportController, assetPromise;
+  let actorKey, mapKey, storageWarning = '', mapWarning = '', recovery = [], busy = false, downloadURL = '', exportController, assetPromise, catalogLoading = false;
 
   function validateMap(value) {
     const r = value?.recipe;
@@ -85,17 +85,18 @@
     const ticket = generation;
     host.className = 'session-package';
     host.innerHTML =
-      '<div class="sp-heading"><div><p class="ws-eyebrow">Ready for Foundry</p><h3>Session package</h3></div><span class="ws-label">GM only</span></div>' +
+      '<div class="sp-heading"><div><p class="ws-eyebrow">Take to Foundry</p><h3>Session package</h3></div><span class="ws-label">GM only</span></div>' +
       '<p class="ws-small ws-muted">Bring your reference packet, one battle map, and selected campaign NPCs into Foundry together.</p>' +
       '<div id="spPresets" class="sp-presets" hidden></div>' +
-      '<div class="sp-map-head"><h4>Battle map</h4><a class="ws-button" href="#/atlas">Choose in atlas</a></div><div id="spMap"></div>' +
+      '<div class="sp-map-head"><h4>Battle map</h4><a class="ws-button" href="#/atlas">Choose in atlas</a></div><div id="spMap" tabindex="-1"></div>' +
       '<details id="spActorPicker" class="sp-actor-picker"><summary>Choose NPCs <span id="spActorCount"></span></summary>' +
       '<p class="ws-small ws-muted">The importer finds their sheets in your Saeroth compendiums and keeps existing world actors unchanged.</p>' +
       '<label class="ws-field" for="spActorSearch">Search campaign NPCs and creatures<input type="search" id="spActorSearch" placeholder="Name or creature…" autocomplete="off"></label>' +
       '<div id="spActorChoices" class="sp-actor-choices"></div><button type="button" class="ws-button" id="spCatalogRetry" hidden>Reload NPC list</button></details>' +
-      '<div id="spSelectedActors" class="sp-selected-actors"></div>' +
+      '<div id="spSelectedActors" class="sp-selected-actors" tabindex="-1"></div>' +
       '<div id="spEncounter"></div>' +
       '<div class="sp-preview"><h4>Package contents</h4><p id="spSummary"></p><p class="ws-small ws-muted">The journal and scene start unshared. The scene is inactive. Encounter opponents are placed hidden only when you choose their starting positions; combat is never started.</p></div>' +
+      '<button class="ws-button sp-next-action" id="spNextAction" type="button" data-ws-action="jump-section" hidden></button>' +
       '<button class="ws-button ws-primary sp-export" type="button" id="spExport">Download session package</button><button class="ws-button sp-cancel" type="button" id="spCancel" hidden>Cancel export</button>' +
       '<p id="spStatus" role="status" aria-live="polite"></p><p id="spStorage" class="ws-small ws-muted"></p>' +
       '<div id="spDownloads" class="sp-downloads"></div><button class="ws-button" type="button" id="spRecovery" hidden>Download selection recovery</button>' +
@@ -104,7 +105,7 @@
     host.querySelector('#spExport').onclick = exportPackage;
     host.querySelector('#spCancel').onclick = () => {exportController?.abort();status('Cancelling export…');};
     host.querySelector('#spRecovery').onclick = () => saveDownload(new Blob([JSON.stringify({version:1,selections:recovery.map(({key,data})=>({key,data}))},null,2)],{type:'application/json'}),'saeroth-session-selection-recovery.json','Save recovery data');
-    host.querySelector('#spCatalogRetry').onclick = () => { catalogPromise = null; loadCatalog(ticket); };
+    host.querySelector('#spCatalogRetry').onclick = () => { if(busy||catalogLoading)return;catalogPromise = null; loadCatalog(ticket); };
     window.SaerothEncounterPlanner?.mount(host.querySelector('#spEncounter'));
     renderMap(); renderActors(); refreshSummary(); loadCatalog(ticket); loadPresets(ticket);
   }
@@ -123,7 +124,35 @@
     host.querySelector('#spRecovery').hidden = !recovery.length;
     host.querySelector('#spExport').disabled = busy;
     host.querySelector('#spCancel').hidden = !busy;
+    refreshOverview(draft,encounter,sheets);
     renderSelected();
+  }
+  function refreshOverview(draft,encounter,sheets) {
+    const overview=document.getElementById('wsPrepOverview');
+    const missing=catalogReady?selectedActors.find(a=>!catalog.some(row=>row.key===a.key)):null;
+    const remaining=encounter?.staging?Math.max(0,encounter.opponents-encounter.placements):0;
+    let issue='',action='',target='';
+    if(encounter?.error){issue='Encounter tools unavailable';action='Review encounter tools';target='epPanel';}
+    else if(remaining){issue=remaining===1?'1 opponent needs a position':remaining+' opponents need positions';action='Finish opponent positions ('+encounter.placements+' of '+encounter.opponents+')';target='epPlacement';}
+    else if(missing){issue='A selected NPC is no longer listed';action='Review selected NPCs';target='spSelectedActors';}
+    else if(selectedActors.length&&catalogError&&!catalogLoading){issue='NPC list needs reloading';action='Review the NPC list';target='spCatalogRetry';}
+    const next=host.querySelector('#spNextAction');
+    next.hidden=!issue;next.textContent=action;next.dataset.target=target;next.disabled=busy;
+    if(!overview)return;
+    overview.classList.toggle('sp-needs-attention',!!issue);
+    const write=(id,text)=>{overview.querySelector('#'+id).textContent=text;};
+    write('spOverviewSummary',issue||(!encounter?.ready?'Loading encounter…':
+      [draft.board.length+' reference note'+(draft.board.length===1?'':'s'),map?'1 scene':null,sheets?sheets+' NPC sheet'+(sheets===1?'':'s'):null].filter(Boolean).join(' · ')));
+    write('spOverviewNotes',draft.board.length+' included'+(draft.notes.trim()?' + scratchpad':''));
+    const done=draft.tasks.filter(task=>task.done).length;
+    write('spOverviewTasks',draft.tasks.length?done+' of '+draft.tasks.length+' complete':'No tasks added');
+    write('spOverviewMap',map?map.name:'No map selected');
+    write('spOverviewActors',missing?'Review '+missing.name:sheets+' selected'+(selectedActors.length&&catalogLoading?' · checking list…':selectedActors.length&&catalogError?' · list unavailable':''));
+    write('spOverviewEncounter',encounter?.error?'Tools unavailable':!encounter?.ready?'Loading…':
+      !encounter.opponents?'No opponents selected':encounter.staging?encounter.placements+' of '+encounter.opponents+' positioned':
+      encounter.opponents+' opponent'+(encounter.opponents===1?'':'s')+' · roster only');
+    overview.querySelector('[data-target="epPanel"]').classList.toggle('sp-needs-attention',!!remaining||!!encounter?.error);
+    overview.querySelector('[data-target="spActorPicker"]').classList.toggle('sp-needs-attention',!!missing||!!(selectedActors.length&&catalogError&&!catalogLoading));
   }
   function renderSelected() {
     const node = host?.querySelector('#spSelectedActors'); if (!node) return;
@@ -147,6 +176,9 @@
     };
   }
   async function loadCatalog(ticket) {
+    // Coalesce in-flight retries, including retries while an export is checking sheets.
+    catalogLoading = true;
+    if(ticket === generation && host){renderActors();refreshSummary();}
     if (!catalogPromise) catalogPromise = fetch(new URL('session-actors.json',base),{credentials:'omit'}).then(async response => {
       if (!response.ok) throw Error('The campaign NPC list could not be loaded.');
       const data = await response.json();
@@ -159,11 +191,14 @@
     }).catch(error => {catalogPromise = null;throw error;});
     try { catalog = await catalogPromise; catalogReady = true; catalogError = ''; }
     catch (error) { catalogReady = false; catalogError = error.message; }
-    if (ticket === generation && host) renderActors();
+    catalogLoading = false;
+    if (ticket === generation && host) {renderActors();refreshSummary();}
   }
   function renderActors() {
     const node = host?.querySelector('#spActorChoices'); if (!node) return;
     host.querySelector('#spCatalogRetry').hidden = !catalogError;
+    host.querySelector('#spCatalogRetry').disabled = busy || catalogLoading;
+    host.querySelector('#spCatalogRetry').textContent = catalogLoading ? 'Loading NPC list…' : 'Reload NPC list';
     if (!catalogReady) { node.innerHTML = '<p class="ws-small ws-muted">' + esc(catalogError || 'Loading campaign NPCs…') + '</p>'; return; }
     const query = host.querySelector('#spActorSearch').value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
     const rows = catalog.filter(a => a.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query)).slice(0,40);
@@ -309,14 +344,20 @@
     if(downloadURL){URL.revokeObjectURL(downloadURL);downloadURL='';host.querySelector('#spDownloads').replaceChildren();}
     host.setAttribute('aria-busy','true');window.SaerothEncounterPlanner?.setBusy(true);refreshSummary();renderActors();status('Preparing your session package…');
     try {
-      const format=await import(new URL('session-package.mjs',base).href);
       const chosenEncounter=await window.SaerothEncounterPlanner?.capture();
+      if(signal.aborted||ticket!==generation)return;
+      status('Checking encounter preparation…');
+      await window.SaerothEncounterPlanner?.preflight(chosenEncounter,chosenMap);
+      if(signal.aborted||ticket!==generation)return;
+      const format=await import(new URL('session-package.mjs',base).href);
       if(actors.length){
         await loadCatalog(ticket);
         if(!catalogReady)throw Error('The NPC list is unavailable. Reload it before exporting selected sheets.');
         const missing=actors.find(a=>!catalog.some(row=>row.key===a.key));
         if(missing)throw Error('“'+missing.name+'” is no longer in the campaign NPC list. Remove it or choose its current sheet.');
       }
+      if(signal.aborted||ticket!==generation)return;
+      status('Gathering session notes and artwork…');
       const journal=await config.buildJournal(draft),assets=[],byDigest=new Map();
       if(signal.aborted||ticket!==generation)return;
       await embedJournal(journal,assets,byDigest,format.LIMITS,signal);

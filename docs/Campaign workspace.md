@@ -19,6 +19,21 @@ packet. Reorder its notes with the up/down buttons; remove a note with an undo
 option. The checklist and scratchpad save as they are edited. They are personal
 preparation, not changes to the Markdown campaign record.
 
+**Preparation overview** provides a compact view of the current reference notes,
+checklist progress, map, selected sheets, and opponent positions. Open it to jump
+directly to any of those controls. Unfinished tasks and absent optional content
+never prevent an export. When map placement is enabled, incomplete opponent
+positions are called out both here and beside the download button, with a
+shortcut to finish them. A selected campaign NPC missing from the loaded catalog
+also receives a review shortcut.
+
+The download checks encounter positions against the selected map before fetching
+reference-note artwork or rendering the full-size map. Geometry validation uses
+the same rules as the final package check. The overview describes current local
+preparation; it does not claim that artwork has downloaded successfully or that
+NPC sheets are installed in Foundry. Those checks happen during export and
+Foundry import respectively.
+
 ### Keeping several sessions ready
 
 **Saved sessions** keeps complete editable versions of your preparation in this
