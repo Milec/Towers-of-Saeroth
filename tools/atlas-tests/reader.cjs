@@ -24,7 +24,7 @@ const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8899/';
       await page.keyboard.press('Escape');
       assert.equal(await page.locator('dialog[open]').count(),0);
       assert.equal(await preview.evaluate(e => e === document.activeElement), true);
-      await page.goto(base + '#/campaign/sessions/Session%204%20-%20The%20Mountain%20Road.md');
+      await page.goto(base + '#/campaign/sessions/Session%204%20Prep%20-%20The%20Mountain%20Road.md');
       await page.locator('#readerContext').waitFor();
       await page.locator(width < 1101 ? '.reader-mobile-guide' : '.reader-guide').evaluate(e => e.open=true);
       const section = page.locator('[data-heading]:visible').first();
