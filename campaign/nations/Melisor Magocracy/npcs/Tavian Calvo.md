@@ -12,7 +12,7 @@ portrait-prompt: "A stocky middle-aged gnome man serving as a mountain expeditio
 
 ![Portrait of Tavian Calvo](Tavian%20Calvo%20portrait.png)
 
-*Proposed NPC for [[Session 5 - The Search Camp]]. His introduction and the stores described here have not happened in play.*
+*Proposed NPC for [[Session 5 Prep - The Search Camp]]. His introduction and the stores described here have not happened in play.*
 
 Tavian issues the [[Expedition Site]]'s food, rope, tools, and lamp oil. He checks rope by hand while people explain why they need another coil. His ledgers are neat until an emergency, when he writes on his cuffs and transfers the figures before sleeping.
 

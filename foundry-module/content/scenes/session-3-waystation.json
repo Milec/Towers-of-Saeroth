@@ -785,7 +785,7 @@
     "saeroth-pf2e-content": {
       "session": 3,
       "setup": "Toll keeper begins in west office (390,425 image px); Wenzel Grauth rests in east shelter (970,490). Toll boom is a movement-only door. Social scene first: identify papers, offer work or payment. Wenzel is the established ambush necromancer, not a Lichdom official. He runs if confronted; he knows the intermediary, not Cassian. No combat staged automatically.",
-      "source": "campaign/sessions/Session 3 - The Mountain Road.md",
+      "source": "campaign/sessions/Session 3 Play - The Mountain Road.md",
       "limitations": "No automated falls, landslides, terrain costs, combat or tower transition. NPC positions are staging instructions, not preplaced actors. GM notes remain in the companion prep note."
     }
   }

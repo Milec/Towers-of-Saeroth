@@ -1,5 +1,5 @@
 ---
-title: Session 1 — Milo’s Manners
+title: Session 1 Play - Milo’s Manners
 type: session
 status: played
 audience: players
@@ -32,4 +32,4 @@ Milo rewarded the party with a pat on the back. They cleaned themselves up and s
 
 Surely they are prepared for whatever lies ahead.
 
-Next session: [[Session 2 - The Jig of the North]].
+Next session: [[Session 2 Play - The Jig of the North]].

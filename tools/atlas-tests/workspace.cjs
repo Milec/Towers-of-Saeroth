@@ -4,7 +4,7 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8899/';
 const sourcePath = 'campaign/npcs/Karoline.md';
-const prepPath = 'campaign/sessions/Session 4 - The Mountain Road.md';
+const prepPath = 'campaign/sessions/Session 4 Prep - The Mountain Road.md';
 const route = note => '#/' + note.split('/').map(encodeURIComponent).join('/');
 async function downloaded(page, action) {
   const pending = page.waitForEvent('download'); await action();
@@ -44,7 +44,7 @@ async function assertJumpNotObscured(page) {
     await page.goto(base); await page.getByRole('heading', { name: 'Campaign desk', exact: true }).waitFor();
     await assertCurrentSessionVisible(page);
     await page.locator('#wsLatest a').first().waitFor();
-    assert.match(await page.locator('#wsLatest').innerText(), /Session 4 - Waystation WLW/);
+    assert.match(await page.locator('#wsLatest').innerText(), /Session 4 Play - Waystation WLW/);
     assert.equal(await page.locator('.ws-party a').count(), 5);
     assert.equal(await page.locator('.ws-party a').filter({hasText:'Mary'}).count(), 0, 'Inactive characters stay out of the current party');
     await page.screenshot({ path: path.join(__dirname, '../../_site/workspace-desktop.png'), fullPage: false });
@@ -81,13 +81,13 @@ async function assertJumpNotObscured(page) {
     await page.locator('#wsTasks input').check(); assert.match(await page.locator('#wsTaskCount').innerText(), /1 of 1 complete/);
     assert.equal(await page.locator('#wsBoardList li').count(), 2);
     await page.locator('#wsBoardList li').nth(1).locator('[data-ws-action="up"]').click();
-    assert.match(await page.locator('#wsBoardList li').first().innerText(), /Session 4 - The Mountain Road/);
+    assert.match(await page.locator('#wsBoardList li').first().innerText(), /Session 4 Prep - The Mountain Road/);
 
     await page.locator('details.ws-journal-only > summary').click();
     const journal = await downloaded(page, () => page.locator('[data-ws-action="foundry"]').click());
     assert.equal(journal.name, 'Session 5 — At the expedition');
     assert.deepEqual(journal.ownership, { default: 0 }); assert.equal(journal.pages.length, 3);
-    assert.equal(journal.pages[1].name, 'Session 4 - The Mountain Road'); assert.equal(journal.pages[2].name, 'Karoline');
+    assert.equal(journal.pages[1].name, 'Session 4 Prep - The Mountain Road'); assert.equal(journal.pages[2].name, 'Karoline');
     assert(journal.pages.every(p => p.type === 'text' && p.text.format === 1));
     assert(journal.pages[0].text.content.includes('&lt;script&gt;unsafe()&lt;/script&gt;'));
     assert(!journal.pages[0].text.content.includes('<script>'));

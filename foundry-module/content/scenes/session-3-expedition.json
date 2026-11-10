@@ -1409,7 +1409,7 @@
     "saeroth-pf2e-content": {
       "session": 3,
       "setup": "The expedition is SEARCHING for the tower; it has not found it. Party enters south; leader receives them in southeast command pavilion (985,800 image px). Sparse southwest stores show the supply problem. Northern trail leads to survey country, not a known tower. Missing food and climbing gear are a proposed recovery hook involving orc bandits, not established past events. No forced combat or NPC blame.",
-      "source": "campaign/sessions/Session 3 - The Mountain Road.md",
+      "source": "campaign/sessions/Session 3 Play - The Mountain Road.md",
       "limitations": "No automated falls, landslides, terrain costs, combat or tower transition. NPC positions are staging instructions, not preplaced actors. GM notes remain in the companion prep note."
     }
   }

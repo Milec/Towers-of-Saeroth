@@ -7,7 +7,7 @@ party: 5 level-2 characters
 location: "[[Expedition Site]]"
 ---
 
-**Proposed, unplayed recovery job for [[Session 5 - The Search Camp]].** It develops the orc-bandit hook in the unused expedition prep. The theft is separate from the caravan conspiracy. Nothing here establishes that the party was ordered killed or that the tower has been found.
+**Proposed, unplayed recovery job for [[Session 5 Prep - The Search Camp]].** It develops the orc-bandit hook in the unused expedition prep. The theft is separate from the caravan conspiracy. Nothing here establishes that the party was ordered killed or that the tower has been found.
 
 ## The job
 

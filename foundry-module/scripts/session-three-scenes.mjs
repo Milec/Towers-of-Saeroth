@@ -19,7 +19,7 @@ function make(slug, name, setup) {
       textures:{fit:"fill",scaleX:1,scaleY:1,anchorX:.5,anchorY:.5,offsetX:0,offsetY:0,rotation:0}}],
     walls:[],lights:[],tokens:[],notes:[],sounds:[],drawings:[],regions:[],tiles:[],
     ownership:{default:0},flags:{[scope]:{session:3,setup,
-      source:"campaign/sessions/Session 3 - The Mountain Road.md",
+      source:"campaign/sessions/Session 3 Play - The Mountain Road.md",
       limitations:"No automated falls, landslides, terrain costs, combat or tower transition. NPC positions are staging instructions, not preplaced actors. GM notes remain in the companion prep note."}}
   };
   const wall=(label,a,b,{door=false,open=false,opaque=true}={})=>scene.walls.push({

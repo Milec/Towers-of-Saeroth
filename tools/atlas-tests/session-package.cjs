@@ -8,7 +8,7 @@ const output=process.env.ATLAS_SCREENSHOT_DIR||path.join(__dirname,'../../_site/
 const karoline='campaign/npcs/Karoline.md';
 const john='campaign/npcs/John Guard.md';
 const milo='campaign/nations/Thurion Merchant Alliance/npcs/Milo Calvetti.md';
-const played='campaign/sessions/Session 4 - Waystation WLW.md';
+const played='campaign/sessions/Session 4 Play - Waystation WLW.md';
 const route=p=>'#/'+p.split('/').map(encodeURIComponent).join('/');
 // Karoline supplies an illustrated lore note; John supplies a published actor.
 const catalog={schema:1,actors:[{key:john,name:'John Guard',level:3},{key:milo,name:'Milo Calvetti',level:2}]};

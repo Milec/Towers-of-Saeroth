@@ -1,5 +1,5 @@
 ---
-title: Session 01 — The Berruel Consignment
+title: Session 1 Prep - The Berruel Consignment
 type: session
 status: played; ambush prep carried forward
 party: 6 characters; now level 2
@@ -9,7 +9,7 @@ ambush: the Quivar–Vaelic border, within sight of [[Lazarian Lichdom]]
 
 ## Session 1 actual
 
-Discord recap: [[Session 1 — Milo’s Manners]].
+Discord recap: [[Session 1 Play - Milo’s Manners]].
 
 The session opened at the caravan's nighttime camp, where everyone introduced
 their characters. The party then fought goblins on the road. They did not
@@ -54,7 +54,7 @@ The caravan is going to be destroyed. That is not a failure state; it is the
 premise. What the party does about *why* is the campaign.
 
 The group’s table and character agreements are collected in
-[[Session 00 — Table Agreement]].
+[[Session 0 Prep - Table Agreement]].
 
 ## The shape of it
 
