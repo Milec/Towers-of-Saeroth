@@ -5,14 +5,30 @@ const num=n=>Math.round(n||0).toLocaleString(),state=id=>D.states.find(s=>s.i===
 const clean=s=>String(s||'').replace(/<iframe[\s\S]*?<\/iframe>/gi,'').replace(/<\/(p|div|li|h\d)>|<br\s*\/?\s*>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
 const htmlnote=id=>esc(clean(note(id)?.legend).replace(/Population:\s*[\d,]+;[^\n]*/g,''));
 const path=pts=>'M'+pts.map(p=>p[0]+','+p[1]).join('L');
-let box=[0,0,3840,2160],selected=null,lastDrag=false,raf=0;
+let box=[0,0,3840,2160],selected=null,lastDrag=false,raf=0,shownBox=box.slice(),gesture=false,gestureTimer=0,layoutRect=null;
 const I=window.ATLAS_ICONS;
 const districts=window.ATLAS_SUBPROVINCES?.districts||[];
 const districtForBurg=new Map(districts.flatMap(d=>d.burgs.map(id=>[id,d])));
 const icon=(kind,x=0,y=0,scale=1)=>`<use href="#icon-${kind}" transform="translate(${x} ${y}) scale(${scale})"/>`;
 const tier=b=>b.population*250>=50000?'metropolis':b.population*250>=10000?'city':b.population*250>=1000?'town':'village';
 $('#icondefs').innerHTML=Object.entries(I.symbols).map(([name,svg])=>`<g id="icon-${name}" stroke="#394b42" stroke-width=".95" stroke-linejoin="round" stroke-linecap="round">${svg}</g>`).join('');
-$('#relief').innerHTML=I.relief.slice().sort((a,b)=>Number(!!b.canopy)-Number(!!a.canopy)||a.y-b.y).map(r=>r.canopy?`<g class="canopy" transform="translate(${r.x} ${r.y}) scale(${r.flip?-1:1} 1)">${icon(r.kind,0,0,r.scale)}</g>`:icon(r.kind,r.x,r.y,r.scale)).join('');
+// Woodland canopies are thousands of sprites. Each one is drawn as a plain positioned <image>
+// rather than a transformed <g>/<use>, because every transform or opacity starts a separate
+// paint chunk and those chunks made each pan and zoom frame slow to composite.
+const canopySprite=kind=>{const svg=I.symbols[kind]||'',a=n=>(new RegExp(`\\b${n}="([^"]+)"`).exec(svg)||[])[1];return a('href')?{href:a('href'),x:+a('x'),y:+a('y'),w:+a('width'),h:+a('height')}:null;};
+const canopy=r=>{const g=canopySprite(r.kind);if(!g)return `<g class="canopy" transform="translate(${r.x} ${r.y}) scale(${r.flip?-1:1} 1)">${icon(r.kind,0,0,r.scale)}</g>`;
+ const w=g.w*r.scale,h=g.h*r.scale,x=r.flip?r.x-(g.x+g.w)*r.scale:r.x+g.x*r.scale,y=r.y+g.y*r.scale;
+ return `<image class="canopy" data-kind="${r.kind}" data-flip="${r.flip?1:0}" href="${g.href}" x="${+x.toFixed(2)}" y="${+y.toFixed(2)}" width="${+w.toFixed(3)}" height="${+h.toFixed(3)}"${r.flip?` transform="matrix(-1 0 0 1 ${+(2*x+w).toFixed(2)} 0)"`:''}/>`;};
+$('#relief').innerHTML=I.relief.slice().sort((a,b)=>Number(!!b.canopy)-Number(!!a.canopy)||a.y-b.y).map(r=>r.canopy?canopy(r):icon(r.kind,r.x,r.y,r.scale)).join('');
+// Until the variants below exist, canopies keep their original mirroring and CSS opacity.
+// Each variant bakes the same 78% opacity and the mirror into its pixels, so every tree still
+// blends individually with its neighbours but needs no transform or opacity of its own.
+(async()=>{const urls={},kinds=[...new Set([...$('#relief').querySelectorAll('image.canopy')].map(e=>e.dataset.kind))];
+ await Promise.all(kinds.map(async kind=>{const img=new Image();img.src=canopySprite(kind).href;await img.decode();
+  for(const flip of [0,1]){const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const x=c.getContext('2d');x.globalAlpha=.78;if(flip){x.translate(c.width,0);x.scale(-1,1);}x.drawImage(img,0,0);
+   urls[kind+flip]=URL.createObjectURL(await new Promise((resolve,reject)=>c.toBlob(b=>b?resolve(b):reject(Error('Canopy sprite unavailable')))));}}));
+ for(const e of $('#relief').querySelectorAll('image.canopy')){const url=urls[e.dataset.kind+e.dataset.flip];if(!url)continue;e.setAttribute('href',url);e.removeAttribute('transform');e.setAttribute('data-baked','');}
+})().catch(()=>{/* Canopies remain correct, only slower, if a variant cannot be prepared. */});
 if(I.countryLabels){const labels=document.createElementNS(NS,'g');labels.id='nationlabels';labels.setAttribute('pointer-events','none');labels.innerHTML=I.countryLabels;$('#labels').insertBefore(labels,$('#townlabels'));}
 const layers=[['countries','Country selection',true],['provinces','Provinces',false],['subprovinces','Districts (subprovinces)',false],['relief','Terrain symbols',true],['roads','Main roads',true],['trails','Minor roads',true],['searoutes','Sea lanes',true],['settlements','Settlements',true],['ports','Port anchors',true],['goodsmap','Trade goods',true],['pois','Points of interest',false],['townlabels','Settlement names',true]];
 $('#layerlist').innerHTML=layers.map(([id,label,on])=>`<label><input type="checkbox" data-layer="${id}" ${on?'checked':''}>${label}</label>`).join('');
@@ -69,15 +85,27 @@ function show(type,id,fly=true){
  if(fly&&pts.length)focusPoints(pts,type==='nation'?500:type==='route'?350:240);$('#status').textContent=title;history.replaceState(null,'','#'+type+'-'+id);
 }
 function focusPoints(pts,min){let xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]),w=Math.max(min,Math.max(...xs)-Math.min(...xs)+160),h=Math.max(min*.5625,Math.max(...ys)-Math.min(...ys)+140);w=Math.max(w,h*16/9);h=w*9/16;box=[(Math.max(...xs)+Math.min(...xs)-w)/2,(Math.max(...ys)+Math.min(...ys)-h)/2,w,h];renderView();}
-function renderView(){box[2]=Math.min(6000,Math.max(110,box[2]));box[3]=box[2]*9/16;box[0]=Math.max(-700,Math.min(3840-box[2]+700,box[0]));box[1]=Math.max(-400,Math.min(2160-box[3]+400,box[1]));map.setAttribute('viewBox',box.join(' '));const z=3840/box[2];$('#zoom').textContent=z.toFixed(1)+'×';if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const unit=box[2]/Math.max(map.clientWidth,300);window.renderPartyMarker?.(unit);if(typeof renderSettlementNames==='function'){renderSettlementNames(z,unit);return;}$('#townlabels').innerHTML=z>1.65?D.burgs.filter(b=>!b.capital&&b.x>box[0]&&b.x<box[0]+box[2]&&b.y>box[1]&&b.y<box[1]+box[3]&&(z>5||b.population*250>2000)).sort((a,b)=>b.population-a.population).slice(0,120).map(b=>`<text x="${b.x+5*unit}" y="${b.y-4*unit}" font-size="${12*unit}" stroke-width="${2*unit}">${esc(b.name)}</text>`).join(''):'';});}
+// Gestures move the painted map with a compositor transform; repainting 30k SVG nodes per
+// pointer or wheel event is what made panning stutter. The real viewBox, labels and culling
+// are committed once the gesture settles.
+function mapRect(){if(!map.style.transform||!layoutRect)layoutRect=map.getBoundingClientRect();return layoutRect;}
+function fit(b,W,H){const s=Math.min(W/b[2],H/b[3]);return[s,(W-b[2]*s)/2,(H-b[3]*s)/2];}
+function previewView(){const W=map.clientWidth,H=map.clientHeight;if(!W||!H)return commitView();const[s0,ox0,oy0]=fit(shownBox,W,H),[s1,ox1,oy1]=fit(box,W,H),k=s1/s0;
+ // Panning far enough to expose unpainted margins commits early instead of showing blank edges.
+ const tx=ox1+(shownBox[0]-box[0])*s1-ox0*k,ty=oy1+(shownBox[1]-box[1])*s1-oy0*k;const gapX=Math.max(0,tx)+Math.max(0,W-tx-W*k),gapY=Math.max(0,ty)+Math.max(0,H-ty-H*k);if(gapX>W*.25||gapY>H*.25)return commitView();
+ map.style.transform=`translate(${tx}px,${ty}px) scale(${k})`;clearTimeout(gestureTimer);gestureTimer=setTimeout(endGesture,140);}
+function beginGesture(){if(!gesture){mapRect();gesture=true;}}
+function endGesture(){clearTimeout(gestureTimer);if(!gesture)return;gesture=false;commitView();}
+function renderView(){box[2]=Math.min(6000,Math.max(110,box[2]));box[3]=box[2]*9/16;box[0]=Math.max(-700,Math.min(3840-box[2]+700,box[0]));box[1]=Math.max(-400,Math.min(2160-box[3]+400,box[1]));const z=3840/box[2];$('#zoom').textContent=z.toFixed(1)+'×';if(gesture)return previewView();commitView();}
+function commitView(){map.style.transform='';layoutRect=null;shownBox=box.slice();map.setAttribute('viewBox',box.join(' '));const z=3840/box[2];if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const unit=box[2]/Math.max(map.clientWidth,300);window.renderPartyMarker?.(unit);if(typeof renderSettlementNames==='function'){renderSettlementNames(z,unit);return;}$('#townlabels').innerHTML=z>1.65?D.burgs.filter(b=>!b.capital&&b.x>box[0]&&b.x<box[0]+box[2]&&b.y>box[1]&&b.y<box[1]+box[3]&&(z>5||b.population*250>2000)).sort((a,b)=>b.population-a.population).slice(0,120).map(b=>`<text x="${b.x+5*unit}" y="${b.y-4*unit}" font-size="${12*unit}" stroke-width="${2*unit}">${esc(b.name)}</text>`).join(''):'';});}
 function zoom(f,pt=[box[0]+box[2]/2,box[1]+box[3]/2]){const n=Math.min(6000,Math.max(110,box[2]*f)),ratio=n/box[2];box=[pt[0]-(pt[0]-box[0])*ratio,pt[1]-(pt[1]-box[1])*ratio,n,n*9/16];renderView();}
-function point(e){const p=map.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(map.getScreenCTM().inverse());return[q.x,q.y];}
+function point(e){const r=mapRect(),[s,ox,oy]=fit(box,r.width,r.height);return[box[0]+(e.clientX-r.left-ox)/s,box[1]+(e.clientY-r.top-oy)/s];}
 $('#zoomIn').onclick=()=>zoom(.7);$('#zoomOut').onclick=()=>zoom(1/.7);$('#fit').onclick=()=>{box=[0,0,3840,2160];renderView();};
-map.addEventListener('wheel',e=>{e.preventDefault();zoom(Math.exp(e.deltaY*.0012),point(e));},{passive:false});
+map.addEventListener('wheel',e=>{e.preventDefault();beginGesture();zoom(Math.exp(e.deltaY*.0012),point(e));},{passive:false});
 const pointers=new Map();let start=null,pinch=null;
 map.addEventListener('pointerdown',e=>{pointers.set(e.pointerId,[e.clientX,e.clientY]);lastDrag=false;if(pointers.size===1)start={x:e.clientX,y:e.clientY,box:box.slice(),target:e.target.closest('[data-type]')};if(pointers.size===2){const[a,b]=[...pointers.values()];pinch={distance:Math.hypot(a[0]-b[0],a[1]-b[1]),width:box[2]};}map.setPointerCapture(e.pointerId);});
-map.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===2&&pinch){const[a,b]=[...pointers.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);zoom(pinch.width*pinch.distance/d/box[2]);lastDrag=true;return;}if(start){const dx=e.clientX-start.x,dy=e.clientY-start.y;if(Math.hypot(dx,dy)>4){lastDrag=true;map.classList.add('dragging');const rect=map.getBoundingClientRect(),scale=Math.min(rect.width/start.box[2],rect.height/start.box[3]);box=[start.box[0]-dx/scale,start.box[1]-dy/scale,...start.box.slice(2)];renderView();}}});
-function end(e){const target=start?.target;if(e.type==='pointerup'&&!lastDrag&&pointers.size===1&&target)show(target.dataset.type,target.dataset.id,false);pointers.delete(e.pointerId);if(!pointers.size){start=null;pinch=null;map.classList.remove('dragging');}else{const[a]=pointers.values();start={x:a[0],y:a[1],box:box.slice()};pinch=null;}}
+map.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===2&&pinch){const[a,b]=[...pointers.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);beginGesture();zoom(pinch.width*pinch.distance/d/box[2]);lastDrag=true;return;}if(start){const dx=e.clientX-start.x,dy=e.clientY-start.y;if(Math.hypot(dx,dy)>4){lastDrag=true;map.classList.add('dragging');beginGesture();const rect=mapRect(),scale=Math.min(rect.width/start.box[2],rect.height/start.box[3]);box=[start.box[0]-dx/scale,start.box[1]-dy/scale,...start.box.slice(2)];renderView();}}});
+function end(e){const target=start?.target;if(e.type==='pointerup'&&!lastDrag&&pointers.size===1&&target)show(target.dataset.type,target.dataset.id,false);pointers.delete(e.pointerId);if(!pointers.size){start=null;pinch=null;map.classList.remove('dragging');endGesture();}else{const[a]=pointers.values();start={x:a[0],y:a[1],box:box.slice()};pinch=null;}}
 map.addEventListener('pointerup',end);map.addEventListener('pointercancel',end);
 map.addEventListener('click',e=>{if(lastDrag)return;const target=e.target.closest('[data-type]');if(target)show(target.dataset.type,target.dataset.id,false);});
 document.querySelector('aside').addEventListener('click',e=>{const el=e.target.closest('[data-type]');if(el)show(el.dataset.type,el.dataset.id);});

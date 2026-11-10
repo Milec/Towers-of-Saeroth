@@ -52,7 +52,7 @@ w.eval(files.map(f=>fs.readFileSync(path.join(root,f),'utf8')).join('\n'));
  assert(d.querySelectorAll('#townlabels text').length>0);
  const names=d.querySelector('[data-tier=metropolis][data-part=names]');names.checked=false;names.dispatchEvent(new w.Event('change',{bubbles:true}));await new Promise(r=>setTimeout(r,30));assert.equal(d.querySelectorAll('#townlabels text').length,0);assert(d.querySelectorAll('#settlements .burg:not([hidden])').length>0);
  d.querySelector('[data-preset=all]').click();
- const network=w.ATLAS_NETWORK,router=new w.AtlasRouter(network);
+ const network=w.ATLAS_NETWORK,router=new w.AtlasRouter(network);assert.equal(network.kmPerUnit,2,'routing.js stubs kmPerUnit as 2 until the route graph loads; keep them equal');
  assert.equal(w.ATLAS_ADDITIONS.burgs.length,14);
  assert.equal(w.ATLAS.burgs.filter(b=>!b.modeledDistrictSeat).length,1279);
  for(const b of w.ATLAS_ADDITIONS.burgs){
