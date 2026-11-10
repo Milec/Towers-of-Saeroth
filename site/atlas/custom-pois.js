@@ -112,7 +112,7 @@
     const enabled=layerEnabled('custompois');
     labels.toggleAttribute('hidden',!enabled||!layerEnabled('custompoilabels'));
     const visible=items.filter(p=>inView(p.x,p.y));
-    layer.innerHTML=visible.map(p=>`<g data-type="custompoi" data-id="${p.id}" transform="translate(${p.x} ${p.y})"><title>${esc(p.name)}</title><circle r="${22*unit}" fill="transparent"/><use href="#poi-${kinds[p.kind][1]}" transform="scale(${.65*unit*poiScale(p)})"/></g>`).join('');
+    layer.innerHTML=visible.map(p=>`<g data-type="custompoi" data-id="${p.id}" transform="translate(${p.x} ${p.y})"><title>${esc(p.name)}</title><circle r="${22*unit}" fill="transparent"/><use href="#poi-${kinds[p.kind][1]}" transform="scale(${.65*poiScale(p)})"/></g>`).join('');
     const occupied=[];
     labels.innerHTML=enabled&&layerEnabled('custompoilabels')?visible.map(p=>{
       const rect=[p.x+16*unit,p.y-12*unit,p.name.length*7*unit,16*unit];if(occupied.some(r=>intersects(r,rect)))return '';occupied.push(rect);
