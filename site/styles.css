@@ -101,6 +101,11 @@ body {
 
 /* layout */
 .layout { display: flex; height: calc(100% - var(--topbar-h)); }
+/* The page itself never scrolls; #main does. Making #main the containing block keeps
+   absolutely positioned screen-reader text inside it. Without this, hidden labels deep in
+   the Campaign desk stretched the document, so iOS could scroll the whole page to reveal a
+   field and leave it shifted up after the keyboard closed. */
+#main { position: relative; }
 .sidebar {
   width: 300px; flex: 0 0 300px; overflow: auto; background: var(--panel);
   border-right: 1px solid var(--rule); padding-bottom: 40px;

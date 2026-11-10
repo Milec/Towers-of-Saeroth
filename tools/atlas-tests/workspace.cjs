@@ -123,6 +123,13 @@ async function assertJumpNotObscured(page) {
       const mobile = await browser.newPage({ viewport: { width: 375, height: 812 }, colorScheme: theme, reducedMotion: 'reduce', serviceWorkers: 'block' });
       await mobile.goto(base); await mobile.getByRole('heading', { name: 'Campaign desk', exact: true }).waitFor();
       await assertCurrentSessionVisible(mobile);
+      // Only the panes scroll. A scrollable document lets iOS leave the page shifted up after the
+      // keyboard closes, cutting the desk off at the old keyboard edge.
+      await mobile.evaluate(() => document.querySelectorAll('#main details').forEach(d => { d.open = true; }));
+      await mobile.waitForTimeout(300);
+      assert.deepEqual(await mobile.evaluate(() => { const s = document.scrollingElement; return [s.scrollHeight - s.clientHeight, s.scrollWidth - s.clientWidth]; }), [0, 0],
+        'The Campaign desk document must not scroll; its content belongs to #main.');
+      await mobile.evaluate(() => document.querySelectorAll('#main details').forEach(d => { d.open = false; }));
       const closedDrawer = await mobile.locator('#sidebar').boundingBox();
       assert(closedDrawer.x + closedDrawer.width <= 0, 'The closed phone drawer must not cover session controls.');
       await mobile.locator('#themeBtn').focus(); await mobile.keyboard.press('Tab');

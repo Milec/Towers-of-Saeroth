@@ -2689,6 +2689,15 @@ async function init() {
   // Safari settles the safe-area insets a frame or two after first paint.
   requestAnimationFrame(syncTopbarHeight);
   addEventListener('load', syncTopbarHeight);
+  // iOS scrolls the whole document to reveal a focused field and, in installed apps, can
+  // leave it scrolled after the keyboard closes, cutting the panes off above the old
+  // keyboard edge. The document is never meant to scroll (the panes do), so put it back.
+  const restoreShell = () => setTimeout(() => {
+    if (document.activeElement?.matches?.('input, textarea, select, [contenteditable="true"]')) return;
+    if (scrollX || scrollY) scrollTo(0, 0);
+  }, 120);
+  document.addEventListener('focusout', restoreShell);
+  window.visualViewport?.addEventListener('resize', restoreShell);
 
   const idx = await (await fetch(BASE + 'index-campaign.json')).json();
   state.campaign = idx.notes;
