@@ -23,6 +23,15 @@ const base=process.env.ATLAS_TEST_URL||'http://127.0.0.1:8899/';
   await frame.locator('#customPOIForm button[type=submit]').click();saved=await read();assert.equal(saved[0].kind,'camp');
   await page.reload();frame=page.frameLocator('.atlas-frame');await frame.locator('#info h2').filter({hasText:'Raven Bandit Camp'}).waitFor();inner=page.frames().find(f=>f.url().includes('/atlas/'));
   assert.deepEqual(await read(),saved);
+  // Custom POIs scale like ordinary landmarks: no wider than 85% of the nearest settlement's symbol.
+  const scale=await inner.evaluate(id=>{
+   const group=document.querySelector('[data-type="custompoi"][data-id="'+id+'"]'),poi=group.querySelector('use'),item=JSON.parse(localStorage.getItem('saeroth-custom-pois-v1')).pois.find(x=>x.id==id);
+   let nearest=null,best=Infinity;for(const b of D.burgs){const d=Math.hypot(b.x-item.x,b.y-item.y);if(d<best){best=d;nearest=b;}}
+   const unit=+group.querySelector('circle').getAttribute('r')/22,scaleFactor=+/scale\(([^)]+)\)/.exec(poi.getAttribute('transform'))[1];
+   return {width:document.getElementById(poi.getAttribute('href').slice(1)).getBBox().width*scaleFactor/unit,limit:+document.querySelector('#settlements [data-id="'+nearest.i+'"]').dataset.displayWidth*.85};
+  },saved[0].id);
+  assert(scale.width>0&&scale.limit>0,'The custom POI and its neighbour must have measurable sizes');
+  assert(scale.width<=scale.limit+.01,'A custom POI must not exceed 85% of the nearest settlement symbol width: '+JSON.stringify(scale));
   await frame.locator('#search').fill('Raven Bandit');await frame.locator('#results [data-type=custompoi]').click();
   await frame.locator('[data-atlas-panel=map]').click();await frame.locator('[data-layer=custompois]').uncheck();
   await inner.waitForFunction(()=>document.querySelector('#custompoilabels').hasAttribute('hidden')&&!document.querySelector('#custompoilabels').children.length);

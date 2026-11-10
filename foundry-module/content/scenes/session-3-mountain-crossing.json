@@ -577,7 +577,7 @@
     "saeroth-pf2e-content": {
       "session": 3,
       "setup": "160ft square. Party enters west. Optional 3 Wolves (level 1 each, 90 XP for six level-2 PCs) staged west at image coordinates 170,340; 220,740; 90,870. Do not attack while the party is split over the ravine. Broken span is about 10ft; GM resolves jumps/ropes/falls. Transparent movement walls guard cliff edges; move tokens deliberately across only after adjudication. Landslide at 230,150 is a travel obstacle, not an automatic damaging trap.",
-      "source": "campaign/sessions/Session 3 - The Mountain Road.md",
+      "source": "campaign/sessions/Session 3 Play - The Mountain Road.md",
       "limitations": "No automated falls, landslides, terrain costs, combat or tower transition. NPC positions are staging instructions, not preplaced actors. GM notes remain in the companion prep note."
     }
   }

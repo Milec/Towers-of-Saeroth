@@ -1,5 +1,5 @@
 ---
-title: Session 2 - The Jig of the North
+title: Session 2 Play - The Jig of the North
 type: session
 status: played
 audience: players
@@ -35,6 +35,6 @@ With these facts, our shrewd adventurers came to the conclusion that fraud was a
 
 In the end, our intrepid band of miscreants decided to continue heading toward the expedition site, which, according to Milo, is about four days away.
 
-Previous session: [[Session 1 — Milo’s Manners]].
+Previous session: [[Session 1 Play - Milo’s Manners]].
 
-Next session: [[Session 3 - The Mountain Road]]. Carried-forward GM preparation: [[Session 4 - The Mountain Road]].
+Next session: [[Session 3 Play - The Mountain Road]]. Carried-forward GM preparation: [[Session 4 Prep - The Mountain Road]].

@@ -45,7 +45,7 @@ async function openPlaceActions(page){
    const menu=await openPlaceActions(page),summary=menu.locator('summary');
    assert.equal(await menu.locator('[data-place-action=routeEnd]').count(),1);
    assert.equal(await menu.locator('[data-place-action=partyHere]').count(),1);
-   assert.equal(await menu.locator('[data-place-action=atlasGenerateBattlemap]').count(),1);
+   assert.equal(await menu.locator('[data-place-action=atlasGenerateBattlemap]').count(),0,'The retired battle map generator must not be offered.');
    const hitAreas=await menu.locator('button').evaluateAll(buttons=>buttons.filter(button=>!button.hidden).map(button=>button.getBoundingClientRect().toJSON()));
    assert(hitAreas.every(rect=>rect.height>=44&&rect.width>=44&&rect.left>=0&&rect.right<=width),'Place actions must fit the phone and keep touch-sized targets.');
    await page.keyboard.press('Escape');assert.equal(await menu.evaluate(node=>node.open),false);
@@ -64,9 +64,6 @@ async function openPlaceActions(page){
    assert.equal(await page.evaluate(()=>partyPlace.name),'Valmont');
    assert(await page.locator('#atlasSelectionFeedback').isVisible());assert.match(await page.locator('#atlasSelectionFeedback').innerText(),/party/i);
    assert.equal(await page.locator('#atlasPartyGuidance').count(),0);
-   await openPlaceActions(page);await menu.locator('[data-place-action=atlasGenerateBattlemap]').click();
-   await page.locator('#battlemapDialog').waitFor();await page.keyboard.press('Escape');await page.locator('#battlemapDialog').waitFor({state:'hidden'});
-   assert.equal(await summary.evaluate(node=>node===document.activeElement),true,'Closing the generator must return to its on-map opener.');
    await page.locator('[data-atlas-panel=travel]').click();await page.locator('#travelView > summary').click();assert((await page.locator('#partyLocation').innerText()).includes('Valmont'));
    await page.locator('[data-atlas-panel=places]').click();await page.locator('#atlasNewPin').click();
    assert(await page.locator('#customPOIForm').isVisible());await page.locator('#customPOIName').fill('Tab test camp');
@@ -99,10 +96,7 @@ async function openPlaceActions(page){
   const compact=await atlas.locator('#atlasSelectionActions').evaluate(node=>({windowScroll:scrollY,actions:[...node.querySelectorAll('button')].filter(button=>!button.hidden).map(button=>{const r=button.getBoundingClientRect();return{id:button.dataset.placeAction,hit:document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)===button,height:r.height};})}));
   assert.equal(compact.windowScroll,0,'Returning to the map must not scroll the outer iframe document and leave clipped controls.');
   assert(compact.actions.every(action=>action.hit&&action.height>=44),'Every action must remain hittable after party feedback in embedded phone landscape.');
-  await atlas.locator('[data-place-action=atlasGenerateBattlemap]').click();await atlas.locator('#battlemapDialog').waitFor();
-  await landscapePage.keyboard.press('Escape');await atlas.locator('#battlemapDialog').waitFor({state:'hidden'});
-  assert.equal(await atlas.locator('#atlasSelectionActions > summary').evaluate(node=>node===document.activeElement),true);
   await landscape.close();
-  console.log('PASS: atlas task panels, keyboard tabs, on-map place actions and dismissal, current-place route/party dispatch, generator focus return, layer persistence, add-pin flow, publication settings, and mobile return to map.');
+  console.log('PASS: atlas task panels, keyboard tabs, on-map place actions and dismissal, current-place route/party dispatch, layer persistence, add-pin flow, publication settings, and mobile return to map.');
  }finally{await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

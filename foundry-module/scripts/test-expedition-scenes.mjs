@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {buildExpeditionRecoveryScene,recipe} from './expedition-recovery-scene.mjs';
+import {buildExpeditionRecoveryScene} from './expedition-recovery-scene.mjs';
 const root=new URL('../../',import.meta.url);
 const scene=buildExpeditionRecoveryScene().scene;
 const stored=JSON.parse(fs.readFileSync(new URL('../content/scenes/expedition-supply-recovery.json',import.meta.url)));
-assert.deepEqual(stored,scene,'The committed scene must match its maintained generator');
+assert.deepEqual(stored,scene,'The builder must return the committed scene unchanged');
 assert.equal(scene.active,false);assert.equal(scene.navigation,false);assert.equal(scene.grid.distance,5);
 assert.equal(scene.width,3200);assert.equal(scene.height,3200);assert.equal(scene.tokens.length,0);
 assert(scene.environment.globalLight.enabled);assert(scene.walls.length>100);
@@ -13,7 +13,7 @@ const art=fs.readFileSync(new URL('../assets/maps/expedition-supply-recovery.web
 assert.equal(art.toString('ascii',0,4),'RIFF');assert.equal(art.toString('ascii',8,12),'WEBP');
 const presets=JSON.parse(fs.readFileSync(new URL('site/session-presets.json',root)));
 const preset=presets.presets.find(p=>p.id==='expedition-arrival-v1');assert(preset);
-assert.equal(preset.map.recipe.seed,recipe.seed);assert.equal(preset.map.recipe.size,recipe.size);
+assert.equal(preset.map,undefined,'Prepared sessions no longer select a generated battle map');
 for(const note of preset.notes)assert(fs.existsSync(new URL(note,root)),`Missing preparation note: ${note}`);
 const feed=JSON.parse(fs.readFileSync(new URL('../content/saeroth-creatures.json',import.meta.url)));
 for(const key of preset.actors){

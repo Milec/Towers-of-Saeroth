@@ -33,8 +33,6 @@ jobs:
           node tools/atlas-tests/poi-auto-merge.cjs
           node tools/atlas-tests/publisher.cjs
           node tools/atlas-tests/editor-auto-merge.cjs
-          node tools/atlas-tests/battlemap-engine.cjs
-          node tools/atlas-tests/battlemap-foundry.cjs
           node tools/atlas-tests/encounter-catalog.cjs
           node tools/atlas-tests/session-library-model.cjs
           node --test foundry-module/scripts/test-encounter-plan.mjs
@@ -81,7 +79,6 @@ jobs:
           node tools/atlas-tests/editor-publisher.cjs
           node tools/atlas-tests/editor-images.cjs
           node tools/atlas-tests/panels.cjs
-          node tools/atlas-tests/battlemaps.cjs
           node tools/atlas-tests/session-package.cjs
           node tools/atlas-tests/encounter-planner.cjs
           node tools/atlas-tests/session-library.cjs

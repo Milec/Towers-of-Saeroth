@@ -20,16 +20,12 @@ option. The checklist and scratchpad save as they are edited. They are personal
 preparation, not changes to the Markdown campaign record.
 
 **Preparation overview** provides a compact view of the current reference notes,
-checklist progress, map, selected sheets, and opponent positions. Open it to jump
+checklist progress, selected sheets, and the encounter roster. Open it to jump
 directly to any of those controls. Unfinished tasks and absent optional content
-never prevent an export. When map placement is enabled, incomplete opponent
-positions are called out both here and beside the download button, with a
-shortcut to finish them. A selected campaign NPC missing from the loaded catalog
-also receives a review shortcut.
+never prevent an export. A selected campaign NPC missing from the loaded catalog
+receives a review shortcut.
 
-The download checks encounter positions against the selected map before fetching
-reference-note artwork or rendering the full-size map. Geometry validation uses
-the same rules as the final package check. The overview describes current local
+The overview describes current local
 preparation; it does not claim that artwork has downloaded successfully or that
 NPC sheets are installed in Foundry. Those checks happen during export and
 Foundry import respectively.
@@ -38,8 +34,7 @@ Foundry import respectively.
 
 **Saved sessions** keeps complete editable versions of your preparation in this
 browser. Use **Save current prep** to save the title, reference packet, checklist,
-scratchpad, NPC selections, map recipe, and encounter, including unfinished token
-placements. An identical saved version is reused. Later edits stay in the working
+scratchpad, NPC selections, and encounter. An identical saved version is reused. Later edits stay in the working
 copy until you save another version; earlier saved versions remain unchanged.
 
 Opening a saved plan or starting a new session first saves the current working
@@ -51,9 +46,10 @@ shared desk preferences and do not change when you open a session.
 Open **Backups & transfer** beneath the session title to download an
 **editable session backup** and continue preparing it on another
 device. Import adds a separate saved copy and leaves the current desk unchanged;
-open the imported copy when ready. These files contain the map recipe and source
-references, not the rendered map image or copies of campaign notes and actor
-mechanics. Referenced content remains maintained by the campaign and PF2e system.
+open the imported copy when ready. These files contain source
+references, not copies of campaign notes and actor
+mechanics. Backups made while generated battle maps existed still import; their
+map and token positions are dropped and the roster is kept. Referenced content remains maintained by the campaign and PF2e system.
 Use **Download session package** when you are ready to import content into Foundry.
 The editable backup and Foundry import package are different formats.
 
@@ -75,12 +71,12 @@ Session switching and recovery use the browser's Web Locks API to serialize
 those operations across tabs. If another tab changes the working preparation,
 this tab keeps its complete in-memory copy and stops writing the shared working
 stores. Save that copy to the library or download it before reloading. This
-avoids combining one tab's notes with another tab's map or encounter.
+avoids combining one tab's notes with another tab's NPCs or encounter.
 
 ### Bringing a session into Foundry
 
 The desk's **Session package** combines the reference packet, checklist and
-scratchpad, selected NPC sheets, and one optional generated battle map in a
+scratchpad, selected NPC sheets, and an optional encounter roster in a
 single JSON download. Use **Towers of Saeroth PF2e Content 0.4.0 or newer** in a
 PF2e world running **Foundry VTT 14.364 or newer** to import it.
 
@@ -90,16 +86,11 @@ PF2e world running **Foundry VTT 14.364 or newer** to import it.
 2. Under **Session package**, open **Choose NPCs** and search for the sheets you
    want. Adding an NPC's note to the reference packet and selecting its actor
    sheet are separate choices.
-3. For a map, choose **Choose in atlas**, select a landmark, custom POI, or
-   settlement, and use **Generate battle map**. Adjust its layout, terrain, size,
-   and lighting, then choose **Add to session** and return to the Campaign desk.
-   The map card identifies the selected recipe and offers **Remove**. A session
-   package contains at most one map.
-4. Check **Package contents**, then choose **Download session package**. If the
+3. Check **Package contents**, then choose **Download session package**. If the
    browser does not start the download, use the visible **Save session package**
    link. **Cancel export** leaves your preparation intact.
-5. In Foundry, open the **Scenes** or **Journals** directory and choose **Import
-   Saeroth Session**. Select the downloaded JSON, review the journal pages, map,
+4. In Foundry, open the **Scenes** or **Journals** directory and choose **Import
+   Saeroth Session**. Select the downloaded JSON, review the journal pages
    and NPCs, then choose **Import session**.
 
 For the prepared expedition, expand **Start with prepared expedition content**
@@ -107,19 +98,18 @@ and choose **Add preparation** for **Session 5 — The Search Camp**. It adds th
 session, expedition-site and supply-recovery notes, plus Octavia Sere, Tavian
 Calvo, and Renata Vellori with their actor references. Existing notes, NPC
 selections, checklist, scratchpad, and a custom session title are retained;
-repeating the action does not duplicate references. **Include its map** adds
-**Old Survey Quarry — Supply Recovery**. If a map is already selected, this
-checkbox starts unchecked; selecting it explicitly replaces that map. The quarry
-is a generated encounter site, not a survey of the expedition camp.
+repeating the action does not duplicate references. The preparation carries no
+map; the Old Survey Quarry scene ships in the module's **Saeroth Battle Maps**
+compendium instead.
 
-The importer creates an unshared journal and, when selected, an inactive,
-unshared Scene with the map's background, walls, doors, lighting, and five-foot
-grid. An encounter can include explicitly placed opponents, imported as hidden
-tokens. Without those placements, drag actors from Actors when preparing play.
+The importer creates an unshared journal. Drag actors from Actors when preparing
+play; the website no longer places opponents on a map. Packages produced by
+earlier versions can still carry an inactive Scene with hidden placed tokens,
+and the importer continues to accept them.
 Importing never activates the scene, rolls initiative, or starts combat.
 The package does not require the local MCP bridge or a Script macro.
 
-Map and journal artwork are embedded in the file and copied into the current
+Journal artwork is embedded in the file and copied into the current
 world's `saeroth-sessions` folder during import. NPC selections are references to
 maintained Saeroth sheets, not embedded actor data: the importer first reuses a
 matching world NPC unchanged, otherwise copies from the live-synced Saeroth
@@ -171,30 +161,22 @@ Estimated XP awards normalize the total to four characters and round down;
 they are not divided among the players and are never granted automatically.
 Terrain, tactics, resources, and allies can change the practical difficulty.
 
-To prepare token positions, select a generated map and enable map staging.
-Choose an opponent and tap its starting square, or use the labeled row and
-column controls. Place every opponent or return to roster-only mode. The
-planner rejects overlapping tokens, positions beyond the image, and footprints
-crossing movement-blocking walls. Review the artwork for terrain and tactics;
-geometry validation does not judge whether a starting position is sensible.
-Changing the map clears its positions. The importer checks the real actor's
-level and footprint before writing; an edited or outdated sheet must be
-reconciled with the plan rather than silently shrunk or replaced.
+The importer checks the real actor's level and footprint before writing; an edited
+or outdated sheet must be reconciled with the plan rather than silently shrunk or
+replaced.
 
-**Download encounter backup** saves the roster and map recipe for another
+**Download encounter backup** saves the roster and settings for another
 device. Restore previews the incoming plan before replacing the local one.
 This is separate from the campaign desk backup and does not synchronize devices
 automatically. A session export includes the encounter in version 2 of the
-package; module 0.4.0 imports its actor sheets, adds a roster journal page, and
-stages any selected tokens hidden and unlinked in the inactive scene. Version 1
+package; module 0.4.0 imports its actor sheets and adds a roster journal page. Version 1
 packages remain supported. Reimporting a completed package does not reset tokens
 or existing actor state.
 
 The prepared expedition now includes one Orc Commander and two Orc Veterans:
 100 XP, Moderate for five level-2 PCs, with an 80 XP award per character if XP is
 used. Its optional encounter selection leaves an existing roster in place unless
-replacement is explicitly selected. NPC portraits, notes, and the quarry map
-remain separate selections.
+replacement is explicitly selected. NPC portraits and notes remain separate selections.
 
 ### Exporting only the journal
 
@@ -206,7 +188,7 @@ permissions when importing, so an already shared journal remains shared. It cont
 the scratchpad and checklist, then a page for each complete selected note in
 packet order. The journal defaults to no player ownership. The export does not
 create actors, alter scenes, or send commands to a running world. Use the session
-package workflow above to bring a generated map and selected NPCs with the notes.
+package workflow above to bring selected NPCs with the notes.
 
 Links and artwork in the journal resolve to the website and require a network
 connection from Foundry. Export fails with the unavailable note's name if any
@@ -320,55 +302,6 @@ Saved views store a name, camera position, map style, and layer choices. They do
 not replace terrain, borders, populations, routes, custom POIs, or hexcrawl
 progress. The existing POI publication and travel workflows remain available.
 
-### Generating a battle map
-
-Select a landmark, custom POI, or settlement and choose **Generate battle map**
-in its Places details. The generator loads on demand and opens a focused preview.
-It suggests a layout from the place's type and description. An explicitly chosen
-custom POI kind takes priority over prose mentions of other locations. These are
-generated encounter sites, not additions to campaign canon or precise surveys
-of the atlas terrain.
-
-Choose from roads, camps, ruins, caves, shrines, inns, forts, bridges, and towers.
-Terrain choices cover forest, mountain, grassland, desert, snow, wetland, and coast.
-Maps are 24, 32, or 40 squares across, with 5-foot squares. **Reroll layout** makes
-a new arrangement; **Previous** restores a prior choice. Preview grid and
-wall/light overlays help inspect the layout and never appear in downloaded art.
-The daylight/darkness selection is exported as Foundry lighting; the image itself
-remains unlit so Foundry can render dynamic light.
-
-The latest recipe for each place saves in this browser, separately from POI notes.
-No existing location, route, party marker, or atlas record is modified. Under
-**Seed & portable recipe**, download a small JSON recipe to keep a map or move it
-to another device. Open the same POI there before loading the recipe. The seed,
-generator version, layout, terrain, and size reproduce the map. Storage failures
-are visible, corrupt data is kept for recovery, and reaching the 1,000-layout
-limit leaves existing layouts intact.
-
-**Add to session** selects this layout for the Campaign desk's session package.
-Only its small recipe is saved; the full-size image is rendered when the package
-is downloaded. This action does not add a tab or change the place's geography.
-Use the resulting **Open Campaign desk** link to finish choosing notes and NPCs.
-
-**Download map image** exports a gridless PNG at 100 pixels per square.
-**Export to Foundry** downloads a self-contained Script Macro JSON, including
-WebP artwork, matching walls and doors, windows, terrain blockers, light sources,
-and the scene's 5-foot grid. No extra importer module is required.
-
-To use that export in Foundry VTT **14.364 or newer**:
-
-1. As GM, create a new **Script** macro in the Macro Directory.
-2. Right-click the new macro and use **Import Data** to load the downloaded JSON.
-3. Execute the macro. It uploads the bundled artwork to the current world's
-   `saeroth-atlas` folder and adds the scene to the Scenes directory.
-
-The importer verifies the image before creating the scene. It never activates
-the scene, places actors, or overwrites an existing scene. Repeating the same
-import finds its previous scene and keeps it unchanged. If scene creation fails
-after an upload, the error identifies the retained artwork folder; no blank
-scene is created. Upload permission is required. Downloads retain visible save
-links for mobile browsers.
-
 ## Storage and portability
 
 The campaign desk and atlas workspace save in this browser. Each offers a JSON
@@ -382,10 +315,10 @@ Campaign desk backup contains the personal notes it describes. Atlas workspace
 backup contains saved place references and camera views, not travel progress or
 custom POIs. Existing travel and POI controls manage their own state.
 
-Session-package NPC selections and the chosen map recipe also stay in this
+Session-package NPC selections also stay in this
 browser, but are stored separately from the desk backup. The current desk backup
 does not include those selections. **Saved sessions** combines the editable desk,
-NPC selections, map recipe, and encounter into one portable backup. Use that
+NPC selections, and encounter into one portable backup. Use that
 backup to continue preparation on another device. Download the session package
 to take prepared content into Foundry; it is an import snapshot, not a
 website-draft backup. The older desk and encounter backup formats remain usable
@@ -425,10 +358,6 @@ are not access control. No GM material is copied into `players/` by these tools.
 - `site/shell.css`: shared navigation, responsive layouts, and theme tokens.
 - `site/atlas/workbench.js` and `workbench.css`: atlas navigation and saved views.
 - `site/atlas/panels.js` and `panels.css`: grouped atlas task navigation.
-- `site/atlas/battlemaps.js` and `battlemaps.css`: POI generator, recipes, preview,
-  and downloads; the engine and Foundry adapter load only on first use.
-- `site/atlas/battlemap-engine.js`: deterministic geometry and Canvas artwork.
-- `site/atlas/battlemap-foundry.js`: native v14 scene and embedded-art importer.
 - `tools/build_site.py`: complete searchable text and display metadata.
 
 Build with `python tools/build_site.py --no-vault` for iteration and the full
@@ -437,9 +366,6 @@ Additional checks in `tools/atlas-tests/` are `workspace.cjs`, `workbench.cjs`,
 `search.cjs`, `reader.cjs`, `editor.cjs`, `editor-publisher.cjs`, `publisher.cjs`,
 `editor-auto-merge.cjs`, and `panels.cjs`. Publisher tests use a simulated GitHub
 service and do not send real credentials or publish fixture notes.
-Battle map checks are `battlemap-engine.cjs` (geometry and reachable entrances),
-`battlemap-foundry.cjs` (import safety and schema), and `battlemaps.cjs` (browser
-generation, storage, downloads, keyboard controls, and responsive layouts).
 Native schema checks also run when a local Foundry installation is available;
 tests do not write to a world database.
 `session-package.cjs` checks the complete browser export, presets, embedded

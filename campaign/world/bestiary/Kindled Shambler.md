@@ -11,7 +11,7 @@ portrait-prompt: "A recently raised muddy human zombie in ragged caravan travel 
 A leather harness holds glass fire-cases beneath the corpse's ribs. A cord burns
 against the straps as it climbs out of the ditch and walks toward the wagons.
 
-Homebrew for [[Session 01 — The Berruel Consignment]]: the ordinary
+Homebrew for [[Session 1 Prep - The Berruel Consignment]]: the ordinary
 [[Zombie Shambler]] statistics, with Death Throes added. Count it as level 0
 for that encounter; do not apply an elite adjustment on top.
 

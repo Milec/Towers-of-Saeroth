@@ -21,9 +21,9 @@ GM-only Foundry journal, or take a JSON backup to another device. A searchable
 camera views make the maintained lore easier to use during play. Create and edit
 entries on the website, keep local drafts, and publish through repository checks
 using an author connection. Atlas controls are grouped into Places, Travel,
-Layers, and Saved, with a dedicated return-to-map control on phones. Select a POI
-to generate a seeded battle map and export its artwork, walls, doors, and lights
-to Foundry. See the
+Layers, and Saved, with a dedicated return-to-map control on phones. Battle maps
+are made outside the site through the ImageGen pipeline in the
+[Foundry module](foundry-module/README.md#battle-maps). See the
 [workspace guide](docs/Campaign%20workspace.md) for features, storage, and tests.
 
 Every push to `main` deploys the whole repo to GitHub Pages as a browsable,

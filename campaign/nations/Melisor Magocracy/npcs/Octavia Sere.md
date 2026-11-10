@@ -12,7 +12,7 @@ portrait-prompt: "A middle-aged human woman leading a mountain survey expedition
 
 ![Portrait of Octavia Sere](Octavia%20Sere%20portrait.png)
 
-*Proposed NPC for [[Session 5 - The Search Camp]]. Her introduction and the camp conversations below have not happened in play.*
+*Proposed NPC for [[Session 5 Prep - The Search Camp]]. Her introduction and the camp conversations below have not happened in play.*
 
 Octavia directs the [[Melisor Magocracy]]'s search from the [[Expedition Site]]. She surveys ground herself and returns with mud on the same boots she wears to meetings. Her maps distinguish a measured route, a witness's account, and a guess. She gets angry when someone copies one into another column.
 

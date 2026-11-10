@@ -98,5 +98,5 @@ body as a thing you keep.
 
 *Not intended for a level 1 fight — at level 3 he is worth 80 XP against a
 level 1 party on his own. See*
-*[[Session 01 — The Berruel Consignment]] for how to use him at that level, and
+*[[Session 1 Prep - The Berruel Consignment]] for how to use him at that level, and
 for the variant if your table wants him fought anyway.*

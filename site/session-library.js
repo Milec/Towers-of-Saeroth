@@ -68,12 +68,12 @@
     host = element;
     host.className = 'session-library';
     host.setAttribute('aria-label', 'Saved sessions');
-    host.innerHTML = '<p class="sl-intro">Working prep autosaves in this browser. Saved versions keep a separate copy of your notes, NPCs, map, and encounter.</p>' +
+    host.innerHTML = '<p class="sl-intro">Working prep autosaves in this browser. Saved versions keep a separate copy of your notes, NPCs, and encounter.</p>' +
       '<fieldset id="slControls" disabled><legend class="sl-sr">Saved session controls</legend>' +
       '<div class="sl-actions sl-main-actions"><button type="button" class="ws-button ws-primary" id="slSave">Save current prep</button><button type="button" class="ws-button" id="slNew">New session</button><span id="slCount" class="ws-label"></span></div>' +
       '<div id="slForm" class="sl-form" hidden></div><div id="slImportPreview" class="sl-import-preview" hidden></div>' +
       '<details id="slShelf"><summary>Browse saved sessions <span id="slShelfCount"></span></summary><div class="sl-browser">' +
-      '<div class="sl-filters"><label class="ws-field" for="slSearch">Find a saved session<input type="search" id="slSearch" autocomplete="off" placeholder="Session name or map…"></label><label class="sl-check" for="slArchived"><input type="checkbox" id="slArchived"> Show archived</label></div>' +
+      '<div class="sl-filters"><label class="ws-field" for="slSearch">Find a saved session<input type="search" id="slSearch" autocomplete="off" placeholder="Session name…"></label><label class="sl-check" for="slArchived"><input type="checkbox" id="slArchived"> Show archived</label></div>' +
       '<p id="slResults" class="ws-small ws-muted" role="status"></p><div id="slList"></div><button type="button" class="ws-button sl-more" id="slMore" hidden>Show more sessions</button></div></details></fieldset>' +
       '<details id="slTransfer"><summary>Backups &amp; transfer</summary><div class="sl-portability"><p class="ws-small ws-muted">Move editable prep to another browser or device. Artwork stays linked; saved versions stay as saved. Use the Foundry package for play.</p><div class="sl-actions"><button type="button" class="ws-button" id="slCurrentBackup">Download current prep</button><button type="button" class="ws-button" id="slImport" disabled>Import editable backup</button><input type="file" id="slImportFile" accept="application/json,.json" hidden></div></div></details>' +
       '<p id="slStatus" class="sl-status" role="status" aria-live="polite">Loading saved sessions…</p><p id="slLibraryError" class="sl-status sl-error" hidden></p><p id="slSwitchError" class="sl-status sl-error" hidden></p><div id="slRecoveryActions" class="sl-actions sl-recovery" hidden><button type="button" class="ws-button" id="slRetry" hidden>Retry saved sessions</button><button type="button" class="ws-button" id="slRecovery" hidden>Download library recovery</button><button type="button" class="ws-button" id="slSwitchRecovery" hidden>Download interrupted-switch recovery</button></div><div id="slDownloads" class="sl-downloads"></div>';
@@ -152,7 +152,7 @@
     host.querySelector('#slCount').textContent = records.length ? activeCount + ' ready' : '';
     host.querySelector('#slShelfCount').textContent = records.length ? '(' + records.length + ')' : '';
     const needle = query.trim().toLocaleLowerCase();
-    const filtered = records.filter(record => record.archived === archived && (!needle || (record.snapshot.desk.title + ' ' + (record.snapshot.map?.name || '')).toLocaleLowerCase().includes(needle)))
+    const filtered = records.filter(record => record.archived === archived && (!needle || record.snapshot.desk.title.toLocaleLowerCase().includes(needle)))
       .sort((a,b) => b.updatedAt.localeCompare(a.updatedAt) || a.id.localeCompare(b.id));
     host.querySelector('#slResults').textContent = filtered.length + (filtered.length === 1 ? ' saved version' : ' saved versions') + (archived ? ' in the archive' : ' ready to open') + '.';
     host.querySelector('#slList').innerHTML = filtered.length ? filtered.slice(0, visible).map(card).join('') : '<p class="sl-empty">' + (needle ? 'No saved sessions match that search.' : archived ? 'Nothing is archived. Archive a saved version when you no longer need it in the ready list.' : 'Save your current preparation to keep it here.') + '</p>';
@@ -175,7 +175,7 @@
     return '<article class="sl-card" data-sl-record="' + esc(record.id) + '"><div class="sl-card-head"><h3>' + esc(data.desk.title || 'Untitled session') + '</h3>' + (record.archived ? '<span class="ws-label">Archived</span>' : '') + '</div>' +
       '<p class="sl-card-date">Saved <time datetime="' + esc(record.createdAt) + '">' + esc(dateText) + '</time></p><p class="sl-card-summary">' + esc(summary(data)) + '</p>' +
       (notes ? '<p class="sl-card-excerpt">' + esc(notes.slice(0,160)) + (notes.length > 160 ? '…' : '') + '</p>' : '') +
-      '<p class="sl-card-map">' + (data.map ? 'Map: ' + esc(data.map.name) : 'No battle map selected') + '</p><div class="sl-actions">' +
+      '<div class="sl-actions">' +
       [['open','Open'],['duplicate','Duplicate'],['download','Download'],['archive',record.archived ? 'Restore to ready' : 'Archive']].map(([action,text]) => '<button type="button" class="ws-button" data-sl-action="' + action + '" data-id="' + esc(record.id) + '" aria-label="' + esc(text + ' ' + (data.desk.title || 'untitled session')) + '">' + text + '</button>').join('') + '</div></article>';
   }
 
@@ -228,7 +228,7 @@
     const snapshot = await config.capture(); check(ticket);
     const result = await checkpoint(snapshot, ticket); check(ticket);
     host.querySelector('#slShelf').open = true; archived = false; host.querySelector('#slArchived').checked = false; query = ''; host.querySelector('#slSearch').value = ''; visible = pageSize;
-    status(result.created ? 'Saved “' + snapshot.desk.title + '” with its notes, NPCs, map, and encounter. Later edits stay in your working prep until you save another version.' : 'An identical saved version is already in your library. No duplicate was added.');
+    status(result.created ? 'Saved “' + snapshot.desk.title + '” with its notes, NPCs, and encounter. Later edits stay in your working prep until you save another version.' : 'An identical saved version is already in your library. No duplicate was added.');
   }
 
   async function openSnapshot(snapshot, ticket, message) {

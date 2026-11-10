@@ -3,11 +3,11 @@ title: Berruel Road Articles
 type: item
 issued: Casa Berruel of Vessene, on its printed form for hired road hands
 executed: Tessine, at the harbour registry, on the morning the barges left
-session: Session 01 — The Berruel Consignment
+session: Session 1 Prep - The Berruel Consignment
 ---
 
 The engagement a player character signs to travel with the
-[[Session 01 — The Berruel Consignment|Berruel consignment]] as a hired guard
+[[Session 1 Prep - The Berruel Consignment|Berruel consignment]] as a hired guard
 from [[Tessine]] onward. It is a printed [[Casa Berruel]] form with four lines
 filled in by hand, countersigned by [[Milo Calvetti]] because the house keeps
 no agent past the harbour, and stamped by the Tessine registry because the
@@ -175,7 +175,7 @@ ream.
 ## Assumptions this note makes
 
 The river leg from Tessine up to [[Quivar]] and the wagons taken up there are
-this note's reading of the route in [[Session 01 — The Berruel Consignment]],
+this note's reading of the route in [[Session 1 Prep - The Berruel Consignment]],
 which names the road and not the water. The staging yard below the Sallow Gate
 is where the Magocracy's forward depot receipts what comes up the pass. Change
 either and only Articles 1 and 2 move.

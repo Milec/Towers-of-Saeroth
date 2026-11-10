@@ -6,7 +6,7 @@
       "name": "Session 5 — The Search Camp",
       "description": "Unplayed expedition arrival and survey-store recovery preparation for five level-2 characters.",
       "notes": [
-        "campaign/sessions/Session 5 - The Search Camp.md",
+        "campaign/sessions/Session 5 Prep - The Search Camp.md",
         "campaign/nations/Vaelic Principality/locations/Expedition Site.md",
         "campaign/quests/The Missing Survey Stores.md",
         "campaign/nations/Melisor Magocracy/npcs/Octavia Sere.md",
@@ -29,20 +29,6 @@
           {"id": "orc-veteran", "name": "Orc Veteran", "level": 1, "count": 2, "width": 1, "height": 1, "source": {"type": "compendium", "uuid": "Compendium.pf2e.pathfinder-monster-core.Actor.V90OYOMyyPLPJuod"}}
         ],
         "placements": []
-      },
-      "map": {
-        "version": 1,
-        "name": "Old Survey Quarry — Supply Recovery",
-        "recipe": {
-          "version": 1,
-          "generatorVersion": 1,
-          "source": {"type": "custompoi", "id": 1793996607857},
-          "kind": "ruin",
-          "terrain": "mountain",
-          "size": 32,
-          "time": "day",
-          "seed": "expedition-quarry-supplies-v1"
-        }
       }
     }
   ]

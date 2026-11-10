@@ -12,7 +12,7 @@ Mud weighs down its torn clothes. It drags one foot through the ditch, then
 reaches for the nearest living person.
 
 The ordinary shambler used alongside [[Kindled Shambler]] in
-[[Session 01 — The Berruel Consignment]]. Statistics follow Zombie Shambler,
+[[Session 1 Prep - The Berruel Consignment]]. Statistics follow Zombie Shambler,
 *Monster Core*, page 356; the appearance belongs to this encounter.
 
 ```pf2e-stats

@@ -12,7 +12,7 @@ portrait-prompt: "A composed human woman in her thirties serving as a merchant c
 
 ![Portrait of Renata Vellori](Renata%20Vellori%20portrait.png)
 
-*Proposed NPC for [[Session 5 - The Search Camp]]. Her introduction and the reports described here have not happened in play.*
+*Proposed NPC for [[Session 5 Prep - The Search Camp]]. Her introduction and the reports described here have not happened in play.*
 
 Renata reports on the expedition for a Thurion commercial office. Her dispatches concern spending, missing shipments, and whether the search is likely to produce anything worth the money. She writes down the speaker's name before their statement, a habit that makes some people more careful and others much louder.
 

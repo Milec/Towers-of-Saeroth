@@ -63,7 +63,7 @@ const scene = {
       offsetX: 0, offsetY: 0, rotation: 0 } }],
   walls, lights, tokens: [], notes: [], sounds: [], drawings: [], regions: [], tiles: [],
   ownership: { default: 0 }, flags: { saeroth: {
-    source: "campaign/sessions/Session 01 — The Berruel Consignment.md",
+    source: "campaign/sessions/Session 1 Prep - The Berruel Consignment.md",
     setup: "160ft square. Wagon sides block movement, not sight/light; open east tailgates to board. Ditch/brush terrain and cover are GM-adjudicated. No actors preplaced. Walls and lights stay fixed if you move the baked-in wagons."
   } }
 };

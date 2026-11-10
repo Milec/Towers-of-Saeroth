@@ -13,23 +13,16 @@ const rejects=(fn,pattern)=>{assert.throws(fn,pattern);assertions++;};
 (async()=>{
   const {createSessionModel,LIMITS}=await import(pathToFileURL(path.join(root,'site/session-library-model.mjs')));
   const {normalizeEncounter}=await import(pathToFileURL(path.join(root,'foundry-module/scripts/encounter-plan.mjs')));
-  const engine=require('../../site/atlas/battlemap-engine.js');
-  const foundry=require('../../site/atlas/battlemap-foundry.js');
-  const sceneForMap=map=>foundry.scene(engine.generate({...map.recipe,name:map.name}),{backgroundPath:'asset:fixture'});
-  const model=createSessionModel({normalizeEncounter,sceneForMap});
-  const empty=model.normalizeSnapshot({version:1,desk:{title:'Session 6',notes:'Keep the camp secret.\n\nA second paragraph.',tasks:[{id:'task-1',text:'Review the route',done:false}],board:['campaign/npcs/John Guard.md','vault/Rules/Travel.md']},actors:[{key:'campaign/npcs/John Guard.md',name:'John Guard'}],map:null,encounter:null});
-  const map={version:1,name:'Mountain road',recipe:{version:1,generatorVersion:1,source:{type:'poi',id:2},kind:'road',terrain:'mountain',size:24,time:'day',seed:'library-fixture'}};
+  const model=createSessionModel({normalizeEncounter});
+  const empty=model.normalizeSnapshot({version:1,desk:{title:'Session 6',notes:'Keep the camp secret.\n\nA second paragraph.',tasks:[{id:'task-1',text:'Review the route',done:false}],board:['campaign/npcs/John Guard.md','vault/Rules/Travel.md']},actors:[{key:'campaign/npcs/John Guard.md',name:'John Guard'}],encounter:null});
   const encounter={name:'Road patrol',partyLevel:2,partySize:5,target:'moderate',roster:[{id:'guard',name:'John Guard',level:3,count:2,width:1,height:1,source:{type:'campaign',key:'campaign/npcs/John Guard.md'}}],placements:[]};
-  const full={...clone(empty),map,encounter:{encounter,staging:true,mapSignature:JSON.stringify(map)}};
-  // Select an actually legal generated-map position, preserving a partial draft.
-  const scene=sceneForMap(map);let valid;
-  for(let y=0;y<scene.height&&!valid;y+=100)for(let x=0;x<scene.width&&!valid;x+=100){
-    try{normalizeEncounter({...encounter,placements:[{entryId:'guard',instance:0,x,y}]},scene,{allowPartialPlacements:true});valid={entryId:'guard',instance:0,x,y};}catch(_){}
-  }
-  assert(valid);full.encounter.encounter.placements=[valid];
+  const full={...clone(empty),encounter:{encounter,staging:false,mapSignature:''}};
   check(model.normalizeSnapshot(empty),empty);
   check(model.normalizeSnapshot({...empty,encounter:null}),empty);check(empty.encounter.encounter.partySize,5);
-  const normalized=model.normalizeSnapshot(full);check(normalized.encounter.encounter.placements,[valid]);check(normalized.encounter.encounter.rulesProfile,'foundry-pf2e-8.5');
+  const normalized=model.normalizeSnapshot(full);check(normalized.encounter.encounter.placements,[]);check(normalized.map,undefined);check(normalized.encounter.encounter.rulesProfile,'foundry-pf2e-8.5');
+  // Saves made while generated battle maps existed keep their roster and lose the map and token positions.
+  const legacy=model.normalizeSnapshot({...clone(full),map:{version:1,name:'Mountain road',recipe:{seed:'retired'}},encounter:{encounter:{...encounter,placements:[{entryId:'guard',instance:0,x:100,y:100}]},staging:true,mapSignature:'{"retired":true}'}});
+  check(legacy,normalized);
   check(model.sameContent(full,{...clone(normalized),unused:'metadata'}),true);
   check(model.sameContent(empty,{...clone(empty),desk:{...empty.desk,notes:'different'}}),false);
   check(model.normalizeSnapshot({...clone(empty),token:'never copied'}).token,undefined);
@@ -55,13 +48,7 @@ const rejects=(fn,pattern)=>{assert.throws(fn,pattern);assertions++;};
   rejects(()=>model.normalizeSnapshot({...empty,desk:{...empty.desk,tasks:[empty.desk.tasks[0],empty.desk.tasks[0]]}}),/duplicates/);
   rejects(()=>model.normalizeSnapshot({...empty,actors:[empty.actors[0],empty.actors[0]]}),/duplicates/);
   rejects(()=>model.normalizeSnapshot({...empty,actors:[{key:'vault/Rules/Travel.md',name:'Bad source'}]}),/source/);
-  rejects(()=>model.normalizeSnapshot({...full,map:{...map,recipe:{...map.recipe,generatorVersion:2}}}),/version/);
-  rejects(()=>model.normalizeSnapshot({...full,encounter:{...full.encounter,mapSignature:'wrong'}}),/different map/);
-  rejects(()=>model.normalizeSnapshot({...full,encounter:{...full.encounter,staging:false}}),/roster-only/);
-  rejects(()=>model.normalizeSnapshot({...full,encounter:{...full.encounter,encounter:{...encounter,placements:[valid,{...valid,instance:1}]}}}),/overlaps/);
-  rejects(()=>model.normalizeSnapshot({...full,encounter:{...full.encounter,encounter:{...encounter,placements:[{...valid,x:999999}]}}}),/opponent x/);
-  rejects(()=>model.normalizeSnapshot({...full,map:null,encounter:{...full.encounter,mapSignature:''}}),/needs a battle map/);
-  rejects(()=>createSessionModel({normalizeEncounter}).normalizeSnapshot(full),/not ready/);
+  rejects(()=>model.normalizeSnapshot({...full,encounter:{...full.encounter,staging:'yes'}}),/placement setting/);
   rejects(()=>createSessionModel().normalizeSnapshot(full),/not ready/);
   rejects(()=>model.normalizeSnapshot(JSON.parse('{"version":1,"__proto__":{"polluted":true}}')),/Unsafe/);
   rejects(()=>model.normalizeSnapshot({...empty,desk:Object.create({title:'inherited'})}),/object/);

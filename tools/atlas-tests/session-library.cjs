@@ -1,13 +1,11 @@
 const {chromium}=require('playwright');
 const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=require('node:path');
 const {pathToFileURL}=require('node:url');
-const engine=require('../../site/atlas/battlemap-engine.js'),adapter=require('../../site/atlas/battlemap-foundry.js');
 const base=process.env.ATLAS_TEST_URL||'http://127.0.0.1:8899/';
 const output=process.env.ATLAS_SCREENSHOT_DIR||path.join(__dirname,'../../../output/session-library-review');
 const pathname=new URL(base).pathname;
 const john='campaign/npcs/John Guard.md',karoline='campaign/npcs/Karoline.md';
-const prefixes=['saeroth-workspace-v1:','saeroth-session-actors-v1:','saeroth-session-map-v1:','saeroth-encounter-v1:'];
-const map={version:1,name:'Frost Pass camp',recipe:{version:1,generatorVersion:1,source:{type:'poi',id:0},kind:'camp',terrain:'snow',size:24,time:'night',seed:'session-library-browser'}};
+const prefixes=['saeroth-workspace-v1:','saeroth-session-actors-v1:','saeroth-encounter-v1:'];
 const opponent={id:'veteran',name:'Orc Veteran',level:1,count:2,width:1,height:1,source:{type:'compendium',uuid:'Compendium.pf2e.pathfinder-monster-core.Actor.'+'b'.repeat(16)}};
 const catalog={schema:1,system:{id:'pf2e',version:'8.5.0'},creatures:[{...opponent,traits:[]}]};
 const initialTitle='Session 6 — Frost Pass';
@@ -34,13 +32,9 @@ async function openShelf(page){await page.locator('#slShelf').evaluate(node=>nod
  await fs.mkdir(output,{recursive:true});
  const math=await import(pathToFileURL(path.join(__dirname,'../../foundry-module/scripts/encounter-plan.mjs')));
  const {createSessionModel}=await import(pathToFileURL(path.join(__dirname,'../../site/session-library-model.mjs')));
- const sceneForMap=value=>adapter.scene(engine.generate({...value.recipe,name:value.name}),{backgroundPath:'asset:test',time:value.recipe.time});
- const model=createSessionModel({normalizeEncounter:math.normalizeEncounter,sceneForMap});
+ const model=createSessionModel({normalizeEncounter:math.normalizeEncounter});
  const encounter={name:'Roadside rivals',partyLevel:2,partySize:5,target:'moderate',roster:[opponent],placements:[]};
- const scene=sceneForMap(map);let placement;
- for(let row=0;row<24&&!placement;row++)for(let column=0;column<24&&!placement;column++)try{const candidate={entryId:opponent.id,instance:0,x:column*100,y:row*100};math.normalizeEncounter({...encounter,placements:[candidate]},scene,{allowPartialPlacements:true});placement=candidate;}catch(_){}
- assert(placement,'Fixture must have a geometrically valid partial token placement');
- const seed=model.normalizeSnapshot({version:1,desk:{title:initialTitle,notes:'Ask about the missing survey stores.\nNo fixed outcome.',tasks:[{id:'lighting',text:'Review night lighting',done:true}],board:[john,karoline]},actors:[{key:john,name:'John Guard'}],map,encounter:{encounter:{...encounter,placements:[placement]},staging:true,mapSignature:JSON.stringify(map)}});
+ const seed=model.normalizeSnapshot({version:1,desk:{title:initialTitle,notes:'Ask about the missing survey stores.\nNo fixed outcome.',tasks:[{id:'lighting',text:'Review night lighting',done:true}],board:[john,karoline]},actors:[{key:john,name:'John Guard'}],encounter:{encounter,staging:false,mapSignature:''}});
  const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
  try{
   const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce',serviceWorkers:'block',acceptDownloads:true}),page=await context.newPage(),errors=[];
@@ -49,7 +43,6 @@ async function openShelf(page){await page.locator('#slShelf').evaluate(node=>nod
    const sentinel='session-library-test-seeded';if(localStorage.getItem(sentinel))return;localStorage.setItem(sentinel,'yes');
    localStorage.setItem('saeroth-workspace-v1:'+pathname,JSON.stringify({version:1,...seed.desk,pins:[john],recent:[karoline],libraryView:'list',updatedAt:''}));
    localStorage.setItem('saeroth-session-actors-v1:'+pathname,JSON.stringify({version:1,actors:seed.actors}));
-   localStorage.setItem('saeroth-session-map-v1:'+pathname,JSON.stringify(seed.map));
    localStorage.setItem('saeroth-encounter-v1:'+pathname,JSON.stringify({format:'saeroth-encounter-draft',version:1,...seed.encounter}));
   },{seed,pathname,john,karoline});
   await page.goto(base+'#/workspace');await ready(page);await openShelf(page);
@@ -57,11 +50,11 @@ async function openShelf(page){await page.locator('#slShelf').evaluate(node=>nod
   assert.deepEqual(library.records[0].snapshot,seed);const originalId=library.records[0].id;
   await page.locator('#slSave').click();await status(page,/identical/i);assert.equal((await stored(page)).records.length,1);
 
-  // New session checkpoints every old selection, including unfinished placements.
+  // New session checkpoints every old selection, including the encounter roster.
   await page.locator('#wsNotes').fill('The party changed its route; preserve this working revision.');const revised=await current(page);
   await page.locator('#slNew').click();assert.equal(await page.locator('#slName').evaluate(node=>node===document.activeElement),true);
   await page.locator('#slName').fill('Session 7 — The hidden trail');await page.locator('#slNameForm button[type=submit]').click();await status(page,/Created/);
-  const blank=await current(page);assert.equal(blank.desk.title,'Session 7 — The hidden trail');assert.deepEqual(blank.actors,[]);assert.equal(blank.map,null);assert.equal(blank.encounter.encounter.roster.length,0);assert.deepEqual(blank.desk.board,[]);assert.equal(blank.desk.notes,'');
+  const blank=await current(page);assert.equal(blank.desk.title,'Session 7 — The hidden trail');assert.deepEqual(blank.actors,[]);assert.equal(blank.map,undefined);assert.equal(blank.encounter.encounter.roster.length,0);assert.deepEqual(blank.desk.board,[]);assert.equal(blank.desk.notes,'');
   library=await stored(page);assert(library.records.some(record=>model.sameContent(record.snapshot,revised)),'The complete previous working revision is saved before clearing');
   let global=JSON.parse((await rawStores(page))['saeroth-workspace-v1:']);assert.deepEqual(global.pins,[john]);assert.deepEqual(global.recent,[karoline]);assert.equal(global.libraryView,'list');
   await page.locator('#slSave').click();await status(page,/Saved/);
@@ -95,7 +88,7 @@ async function openShelf(page){await page.locator('#slShelf').evaluate(node=>nod
   assert.deepEqual(library.records.find(record=>record.id===originalId).snapshot,seed);assert(library.records.some(record=>record.id!==originalId&&record.snapshot.desk.title===imported.records[0].snapshot.desk.title));assert.equal(await page.evaluate(()=>window.sessionInjected),undefined);assert.equal(await page.locator('#slList img').count(),0);assert.deepEqual(await current(page),seed);
   await importFile(page,imported);await page.locator('#slConfirmImport').click();await status(page,/identical/);assert.equal((await stored(page)).records.length,5);
   const libraryBeforeInvalid=await stored(page),workingBeforeInvalid=await rawStores(page);
-  for(const invalid of [(()=>{const value=structuredClone(backup);value.records[0].snapshot.map.recipe.size=33;return value;})(),(()=>{const value=structuredClone(backup);value.records[0].snapshot.encounter.encounter.placements[0].x=999999;return value;})(),{format:'saeroth-session-package',version:2}]){
+  for(const invalid of [(()=>{const value=structuredClone(backup);value.records[0].snapshot.desk.board[0]='https://evil.test/note.md';return value;})(),(()=>{const value=structuredClone(backup);value.records[0].snapshot.encounter.encounter.partySize=0;return value;})(),{format:'saeroth-session-package',version:2}]){
    await importFile(page,invalid);await status(page,/invalid|outside|map|Choose|backup/i);assert.equal(await page.locator('#slImportPreview').isVisible(),false);assert.deepEqual(await stored(page),libraryBeforeInvalid);assert.deepEqual(await rawStores(page),workingBeforeInvalid);
   }
 
@@ -107,7 +100,7 @@ async function openShelf(page){await page.locator('#slShelf').evaluate(node=>nod
 
   // A mid-switch localStorage failure rolls every singleton store back, not just the notes.
   const originals=await rawStores(page);
-  await page.evaluate(()=>{const original=Storage.prototype.setItem;let failed=false;Storage.prototype.setItem=function(key,value){if(!failed&&key.startsWith('saeroth-session-map-v1:')){failed=true;throw new DOMException('Test interrupted write','QuotaExceededError');}return original.call(this,key,value);};window.restoreSessionSetItem=()=>Storage.prototype.setItem=original;});
+  await page.evaluate(()=>{const original=Storage.prototype.setItem;let failed=false;Storage.prototype.setItem=function(key,value){if(!failed&&key.startsWith('saeroth-encounter-v1:')){failed=true;throw new DOMException('Test interrupted write','QuotaExceededError');}return original.call(this,key,value);};window.restoreSessionSetItem=()=>Storage.prototype.setItem=original;});
   await page.locator('[data-sl-record="'+originalId+'"] [data-sl-action=open]').click();await status(page,/could not switch|kept/);await page.evaluate(()=>window.restoreSessionSetItem());
   assert.deepEqual(await current(page),unsaved);assert.deepEqual(await rawStores(page),originals);assert.equal(await page.evaluate(pathname=>localStorage.getItem('saeroth-session-switch-v1:'+pathname),pathname),null);assert((await stored(page)).records.some(record=>model.sameContent(record.snapshot,unsaved)));
 
@@ -132,7 +125,7 @@ async function openShelf(page){await page.locator('#slShelf').evaluate(node=>nod
   const beforeCrash=await current(page),beforeCrashRaw=await rawStores(page);
   await page.evaluate(({pathname,prefixes,originals})=>{
    const entries=prefixes.map(prefix=>[prefix+pathname,originals[prefix]]);localStorage.setItem('saeroth-session-switch-v1:'+pathname,JSON.stringify({format:'saeroth-session-switch',version:1,entries}));
-   const damaged=JSON.parse(originals['saeroth-workspace-v1:']);damaged.title='Half-written switch';localStorage.setItem('saeroth-workspace-v1:'+pathname,JSON.stringify(damaged));localStorage.removeItem('saeroth-session-map-v1:'+pathname);
+   const damaged=JSON.parse(originals['saeroth-workspace-v1:']);damaged.title='Half-written switch';localStorage.setItem('saeroth-workspace-v1:'+pathname,JSON.stringify(damaged));localStorage.removeItem('saeroth-session-actors-v1:'+pathname);
   },{pathname,prefixes,originals:beforeCrashRaw});
   await page.reload();await ready(page);await openShelf(page);assert.deepEqual(await current(page),beforeCrash);assert.deepEqual(await rawStores(page),beforeCrashRaw);
 
@@ -161,9 +154,9 @@ async function openShelf(page){await page.locator('#slShelf').evaluate(node=>nod
   await tabA.locator('#slNew').click();await tabA.locator('#slName').fill('Other tab next session');await tabA.locator('#slNameForm button[type=submit]').click();await status(tabA,/Created/);const otherTabSession=await current(tabA);
   await tabB.waitForFunction(()=>document.querySelector('#slSwitchError')&&!document.querySelector('#slSwitchError').hidden);await tabB.waitForTimeout(75);
   assert.deepEqual(await current(tabB),seed,'The background tab preserves its entire in-memory preparation');
-  const expectedStored=await rawStores(tabA);assert.equal(JSON.parse(expectedStored['saeroth-encounter-v1:']).encounter.roster.length,0,'Background map events cannot write their stale roster');
+  const expectedStored=await rawStores(tabA);assert.equal(JSON.parse(expectedStored['saeroth-encounter-v1:']).encounter.roster.length,0,'Background storage events cannot write their stale roster');
   await tabB.locator('#wsNotes').fill('Keep this tab separately.');assert.deepEqual(await rawStores(tabA),expectedStored,'The conflicted tab cannot overwrite newer singleton stores');assert.deepEqual(await current(tabA),otherTabSession);
-  const preserved=await downloaded(tabB,()=>tabB.locator('#slCurrentBackup').click());assert.equal(preserved.records[0].snapshot.desk.notes,'Keep this tab separately.');assert.deepEqual(preserved.records[0].snapshot.map,seed.map);assert.equal(preserved.records[0].snapshot.encounter.encounter.placements.length,1);await tabsContext.close();
+  const preserved=await downloaded(tabB,()=>tabB.locator('#slCurrentBackup').click());assert.equal(preserved.records[0].snapshot.desk.notes,'Keep this tab separately.');assert.equal(preserved.records[0].snapshot.map,undefined);assert.equal(preserved.records[0].snapshot.encounter.encounter.roster.length,1);await tabsContext.close();
 
   // Unreadable transaction records are downloadable and block overwriting the originals.
   const interruptedContext=await browser.newContext({serviceWorkers:'block',acceptDownloads:true}),interruptedPage=await interruptedContext.newPage();await fixtures(interruptedPage);

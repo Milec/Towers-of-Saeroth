@@ -1,5 +1,5 @@
 ---
-title: Session 5 - The Search Camp
+title: Session 5 Prep - The Search Camp
 type: session
 status: prep
 audience: gm
@@ -8,7 +8,7 @@ party: 5 level-2 characters
 
 ## Where play resumes
 
-The party reached the [[Expedition Site]] at the end of [[Session 4 - Waystation WLW]]. [[Karoline]] came with them as an independent person. Wenzel is dead. John Guard, the caravan's horses, and its carts were lost earlier; the party has three tents. Do not replay the waystation or restore the wagons.
+The party reached the [[Expedition Site]] at the end of [[Session 4 Play - Waystation WLW]]. [[Karoline]] came with them as an independent person. Wenzel is dead. John Guard, the caravan's horses, and its carts were lost earlier; the party has three tents. Do not replay the waystation or restore the wagons.
 
 The expedition is searching for the tower. It has not found it. The party knows about the cargo-only insurance, the Melisor flask, and the expedition's funding. They believe they were meant to die; that remains their conclusion, not a fact established by this preparation.
 
@@ -96,4 +96,4 @@ If the evening ends in camp, close on a chosen job or a specific unanswered ques
 - Which survey lead or document request is the party pursuing next?
 - Have the PCs' level, supplies, or party membership changed?
 
-Keep [[Session 4 - Waystation WLW]] as the record of the played session. Update this preparation only to reflect choices the table actually makes.
+Keep [[Session 4 Play - Waystation WLW]] as the record of the played session. Update this preparation only to reflect choices the table actually makes.

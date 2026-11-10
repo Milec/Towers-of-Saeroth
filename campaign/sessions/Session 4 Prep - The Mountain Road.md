@@ -1,18 +1,18 @@
 ---
-title: Session 4 - The Mountain Road
+title: Session 4 Prep - The Mountain Road
 type: session
 status: prep
 audience: gm
 party: 6 level-2 characters
 ---
 
-**Played recap:** [[Session 4 - Waystation WLW]]. The guard captain was [[Karoline]].
+**Played recap:** [[Session 4 Play - Waystation WLW]]. The guard captain was [[Karoline]].
 
 ## Starting position
 
-Continue from [[Session 3 - The Mountain Road]]. Two random encounters consumed Session 3; none of the scenes below were reached. This unused prep now belongs to Session 4. Resume from the party's actual stopping point, with their current resources.
+Continue from [[Session 3 Play - The Mountain Road]]. Two random encounters consumed Session 3; none of the scenes below were reached. This unused prep now belongs to Session 4. Resume from the party's actual stopping point, with their current resources.
 
-John Guard died in [[Session 2 - The Jig of the North]], and all carts and horses were destroyed. The other travellers survived that ambush. The group has three tents. The expedition is looking for the tower and has not found it.
+John Guard died in [[Session 2 Play - The Jig of the North]], and all carts and horses were destroyed. The other travellers survived that ambush. The group has three tents. The expedition is looking for the tower and has not found it.
 
 The cargo insurance, Melisor flask and expedition funding are known. The party believes they were intended victims; do not turn that belief into proof. The insurance covers cargo only.
 

@@ -49,7 +49,7 @@
   // keeps its own compact action disclosure instead of another permanent bar.
   const selectionCard=node('atlasSelectionCard');
   const selectionActions=document.createElement('details');selectionActions.id='atlasSelectionActions';selectionActions.className='atlas-selection-actions';selectionActions.hidden=true;
-  selectionActions.innerHTML='<summary>Actions</summary><div class="atlas-selection-menu"><button type="button" data-place-action="routeEnd">Travel here</button><button type="button" data-place-action="partyHere">Mark party here</button><button type="button" data-place-action="atlasGenerateBattlemap">Generate battle map</button></div>';
+  selectionActions.innerHTML='<summary>Actions</summary><div class="atlas-selection-menu"><button type="button" data-place-action="routeEnd">Travel here</button><button type="button" data-place-action="partyHere">Mark party here</button></div>';
   const selectionFeedback=document.createElement('p');selectionFeedback.id='atlasSelectionFeedback';selectionFeedback.setAttribute('role','status');selectionFeedback.setAttribute('aria-live','polite');
   selectionCard.append(selectionActions,selectionFeedback);
   const selectionKey=()=>selected?selected.type+'-'+selected.id:'';
@@ -61,9 +61,7 @@
     let count=0;
     for(const button of selectionActions.querySelectorAll('[data-place-action]')){
       const action=button.dataset.placeAction;
-      const supported=valid&&(action==='atlasGenerateBattlemap'
-        ?!!window.SaerothBattlemaps?.contextFor(selected.type,Number(selected.id))
-        :!!node(action));
+      const supported=valid&&!!node(action);
       button.hidden=!supported;if(supported)count++;
     }
     selectionActions.hidden=!count;
@@ -79,11 +77,6 @@
     if(key!==actionKey||!key){refreshSelectionActions();return;}
     selectionActions.open=false;
     const trigger=selectionActions.querySelector('summary');
-    if(action==='atlasGenerateBattlemap'){
-      const context=window.SaerothBattlemaps?.contextFor(selected.type,Number(selected.id));
-      if(context)window.SaerothBattlemaps.open(context,trigger);
-      return;
-    }
     const target=node(action);if(!target||target.disabled)return;
     target.click();
     if(action==='partyHere'){

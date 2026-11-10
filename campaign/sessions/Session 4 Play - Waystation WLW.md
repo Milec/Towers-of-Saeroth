@@ -1,5 +1,5 @@
 ---
-title: Session 4 - Waystation WLW
+title: Session 4 Play - Waystation WLW
 type: session
 status: played
 audience: players
@@ -13,4 +13,4 @@ By morning, they’d been caught stealing. Somehow, they still managed to convin
 
 After what felt like ages, the party finally reached the [[Expedition Site|expedition site]].
 
-Previous session: [[Session 3 - The Mountain Road]].
+Previous session: [[Session 3 Play - The Mountain Road]].

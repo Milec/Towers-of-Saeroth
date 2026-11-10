@@ -194,7 +194,7 @@
         <div class="ws-section-head"><div><p class="ws-eyebrow">Prepare for the table</p><h2 id="wsBoardHeading">Current session</h2></div><span class="ws-label">Personal draft</span></div>
         <nav class="ws-session-nav" aria-label="Jump within this session">
           <button type="button" data-ws-action="jump-section" data-target="wsReferences">Notes</button>
-          <button type="button" data-ws-action="jump-section" data-target="wsFoundryPackage">Scene &amp; NPCs</button>
+          <button type="button" data-ws-action="jump-section" data-target="wsFoundryPackage">NPCs</button>
           <button type="button" data-ws-action="jump-section" data-target="epPanel">Encounter</button>
           <button type="button" data-ws-action="jump-section" data-target="spExport">Foundry ${icon('download')}</button>
         </nav>
@@ -206,11 +206,10 @@
           <div class="sp-overview-grid">
             <button type="button" data-ws-action="jump-section" data-target="wsReferences"><span>Reference notes</span><strong id="spOverviewNotes"></strong></button>
             <button type="button" data-ws-action="jump-section" data-target="wsChecklist"><span>Your checklist</span><strong id="spOverviewTasks"></strong></button>
-            <button type="button" data-ws-action="jump-section" data-target="spMap"><span>Battle map</span><strong id="spOverviewMap"></strong></button>
             <button type="button" data-ws-action="jump-section" data-target="spActorPicker"><span>NPC sheets</span><strong id="spOverviewActors"></strong></button>
             <button type="button" data-ws-action="jump-section" data-target="epPanel"><span>Encounter</span><strong id="spOverviewEncounter"></strong></button>
           </div>
-          <p class="ws-small ws-muted">Maps, NPCs, encounters, and checklist tasks are optional. Artwork is checked during download; Foundry checks installed sheets during import.</p>
+          <p class="ws-small ws-muted">NPCs, encounters, and checklist tasks are optional. Artwork is checked during download; Foundry checks installed sheets during import.</p>
         </details>
         <section id="wsReferences" class="ws-prep-section" tabindex="-1" aria-labelledby="wsReferenceHeading">
           <div class="ws-section-head ws-subhead"><h3 id="wsReferenceHeading">Reference packet <span id="wsBoardCount"></span></h3><a href="#/library">Add from library ${icon('plus')}</a></div>
@@ -358,7 +357,7 @@
     if (action === 'pin') togglePin(path);
     else if (action === 'board') addBoard(path);
     else if (action === 'jump-section') {
-      const targets = ['wsReferences', 'wsChecklist', 'wsFoundryPackage', 'spMap', 'spActorPicker', 'spSelectedActors', 'spCatalogRetry', 'epPanel', 'epPlacement', 'spExport'];
+      const targets = ['wsReferences', 'wsChecklist', 'wsFoundryPackage', 'spActorPicker', 'spSelectedActors', 'spCatalogRetry', 'epPanel', 'epPlacement', 'spExport'];
       const id = button.dataset.target;
       if (!targets.includes(id)) return;
       const target = host.querySelector('#' + id);

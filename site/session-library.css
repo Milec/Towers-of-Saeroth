@@ -15,9 +15,9 @@
 .sl-card{border:1px solid var(--rule);border-radius:6px;background:var(--bg);padding:16px;margin:0 0 12px;min-width:0}
 .sl-card-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.sl-card-head h3{overflow-wrap:anywhere;min-width:0;flex:1}
 .sl-card .ws-label{flex-shrink:0}.workspace .sl-card-date{color:var(--muted);font-size:.75rem;margin:5px 0 12px;line-height:1.55}
-.workspace .sl-card-summary,.workspace .sl-card-map{font-size:.8125rem;line-height:1.65;margin:0 0 8px;overflow-wrap:anywhere}
+.workspace .sl-card-summary{font-size:.8125rem;line-height:1.65;margin:0 0 14px;overflow-wrap:anywhere}
 .workspace .sl-card-excerpt{font-size:.875rem;line-height:1.65;margin:10px 0 12px;overflow-wrap:anywhere}
-.workspace .sl-card-map{color:var(--muted);margin-bottom:14px}.sl-card .ws-button{background:var(--panel)}
+.sl-card .ws-button{background:var(--panel)}
 .sl-empty{background:var(--bg);padding:18px;border:1px dashed var(--rule);border-radius:6px;font-size:.875rem;line-height:1.65;color:var(--muted)}
 .sl-more{width:100%;margin:4px 0 12px}.sl-form,.sl-import-preview{padding:18px;border:1px solid var(--rule);border-radius:6px;background:var(--bg);margin:16px 0}
 .sl-form .ws-field{margin-bottom:12px}.sl-form .ws-field input{width:100%;min-height:44px;border:1px solid var(--rule);border-radius:4px;background:var(--panel);color:var(--ink);padding:10px 12px}

@@ -1,5 +1,5 @@
 ---
-title: Session 00 — Table Agreement
+title: Session 0 Prep - Table Agreement
 type: session
 status: prep
 ---

@@ -8,14 +8,13 @@ import {sealPackage,validatePackage,normalizePackage,LIMITS,documentIdentity} fr
 import {createSessionInbox} from './session-inbox.mjs';
 const require=createRequire(import.meta.url);
 const {JSDOM}=require('../../tools/atlas-tests/node_modules/jsdom');
-const engine=require('../../site/atlas/battlemap-engine.js');
-const adapter=require('../../site/atlas/battlemap-foundry.js');
 const MODULE='saeroth-pf2e-content';
 const png='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Zl1sAAAAASUVORK5CYII=';
 const clone=structuredClone;
 const sourceKey='campaign/npcs/Test Quartermaster.md';
 function rawPackage() {
- const scene=adapter.scene(engine.generate({seed:'session-test',kind:'camp',terrain:'mountain',size:24,name:'Mountain camp',source:{type:'poi',id:0}}),{backgroundPath:'asset:map',time:'night'});
+ // A stored native Foundry v14 scene stands in for the packaged map; its artwork reference becomes the package asset.
+ const scene=JSON.parse(fs.readFileSync(new URL('../content/scenes/expedition-supply-recovery.json',import.meta.url),'utf8').split('modules/saeroth-pf2e-content/assets/maps/expedition-supply-recovery.webp').join('asset:map'));
  return {format:'saeroth-session',version:1,name:'Expedition arrival',createdAt:'2026-11-06T22:00:00Z',assets:[{id:'map',name:'Camp artwork',mime:'image/png',data:png}],scene,journal:{name:'Expedition arrival',ownership:{default:3},pages:[{name:'Preparation',type:'text',text:{format:1,content:'<h1>Arrival</h1><p>Camp notes <a href="https://example.com/note">source</a>.</p><img src="asset:map" alt="Mountain camp">'}}]},actors:[{key:sourceKey,name:'Test Quartermaster'}]};
 }
 const coreUuid='Compendium.pf2e.monster-core.Actor.orcveteran000001';
@@ -60,9 +59,9 @@ function harness(options={}) {
   foundry:{
    utils:{randomID:()=>String(++sequence).padStart(24,'0'),isNewerVersion:(a,b)=>{const aa=a.split('.').map(Number),bb=b.split('.').map(Number);return aa[0]>bb[0]||aa[0]===bb[0]&&aa[1]>bb[1];}},
    applications:{apps:{FilePicker:{implementation:picker}}},
-   canvas:{loadTexture:async()=>({valid:!failures.badTexture,width:failures.textureSize??2400,height:2400})}
+   canvas:{loadTexture:async()=>({valid:!failures.badTexture,width:failures.textureSize??3200,height:3200})}
   },
-  createImageBitmap:async()=>{calls.decode++;if(failures.decodeFails)throw Error('Invalid pixels.');return {width:failures.imageSize??2400,height:2400,close(){}};}
+  createImageBitmap:async()=>{calls.decode++;if(failures.decodeFails)throw Error('Invalid pixels.');return {width:failures.imageSize??3200,height:3200,close(){}};}
  };
  const api=createSessionInbox(env);return {api,env,calls,collections,classes,failures,packActor,second:()=>createSessionInbox(env)};
 }
