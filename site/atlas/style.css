@@ -29,7 +29,7 @@
 #search{scroll-margin-top:70px}
 
 /* Whole-atlas polish: quieter relief, legible transport and cohesive controls. */
-#relief .canopy{opacity:.78}
+#relief .canopy:not([data-baked]){opacity:.78}
 #roads .route{stroke:#8d5142;stroke-width:var(--route-weight,1.65);filter:none;opacity:.88}
 #trails .route{stroke:#746888;stroke-width:var(--route-weight,1.05);opacity:.65;stroke-dasharray:2 4}
 #searoutes .route{stroke:#326f86;stroke-width:var(--route-weight,1.7);opacity:.8;stroke-dasharray:7 6}
@@ -160,3 +160,5 @@ aside input[aria-invalid=true]{border:2px solid var(--focus)}
 .hex-map-prompt[hidden]{display:none}.hex-map-prompt span{flex:1}.hex-map-prompt button{min-height:44px}
 @media(max-width:800px){main{display:flex;flex-direction:column;height:auto}.atlas-jumps{gap:8px}.atlas-jumps button{min-width:0;padding:8px 5px;min-height:44px;font-size:13px}.atlas-shortcuts{padding:12px 16px}aside label{font-size:14px}}
 @media(max-width:800px){.mapframe,.integrated .mapframe{height:clamp(300px,46svh,440px);min-height:300px}}
+/* Gestures transform the already painted map on the compositor; see previewView in app.js. */
+#map{transform-origin:0 0;will-change:transform}

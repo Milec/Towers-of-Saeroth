@@ -1,4 +1,15 @@
 /* Deterministic shortest-time routing on the saved transport / land-cell mesh. */
+// The route graph (routing-data.js, about 6 MB) is only needed to plan journeys, so it loads
+// after the map is shown instead of blocking the page. The hexcrawl only needs its scale.
+window.ATLAS_NETWORK??={kmPerUnit:2};
+let atlasNetworkLoad=null;
+window.loadAtlasNetwork=()=>atlasNetworkLoad??=(window.ATLAS_NETWORK.nodes?Promise.resolve(window.ATLAS_NETWORK):new Promise((resolve,reject)=>{
+ const script=document.createElement('script');script.src='routing-data.js';
+ script.onload=()=>window.ATLAS_NETWORK?.nodes?resolve(window.ATLAS_NETWORK):script.onerror();
+ script.onerror=()=>{script.remove();atlasNetworkLoad=null;const error=Error('Route data is unavailable. Reconnect and try again.');error.atlasMessage=error.message;reject(error);};
+ document.head.append(script);
+}));
+if(document.readyState==='complete')window.loadAtlasNetwork().catch(()=>{});else addEventListener('load',()=>window.loadAtlasNetwork().catch(()=>{}),{once:true});
 window.AtlasRouter=class AtlasRouter{
  constructor(network){this.net=network;this.adj=Array.from({length:network.nodes.length},()=>[]);network.edges.forEach((e,i)=>{this.adj[e[0]].push([e[1],i]);this.adj[e[1]].push([e[0],i]);});}
  distance(a,b){const p=this.net.nodes[a],q=this.net.nodes[b];return Math.hypot(p[0]-q[0],p[1]-q[1])*this.net.kmPerUnit;}
