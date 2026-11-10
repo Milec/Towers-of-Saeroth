@@ -25,6 +25,9 @@ async function openPlaceActions(page){
     assert.equal(await page.locator('[data-atlas-panel][aria-selected=true]').getAttribute('data-atlas-panel'),name);
     assert.equal(await page.locator('#atlasPanel-'+name).isVisible(),true);
    };
+   // Route ink is in screen pixels; a phone's full-map view must not get desktop-weight roads.
+   const routeWeight=await page.evaluate(()=>{box=[0,0,3840,2160];renderView();return new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(()=>r(parseFloat(getComputedStyle(document.querySelector('#roads .route')).strokeWidth)))));});
+   if(width<500)assert(routeWeight<1,'Phone full-map roads must be thinner than desktop: '+routeWeight);else assert(routeWeight>=1.6,'Desktop full-map roads keep their weight: '+routeWeight);
    await active('places');assert(await page.locator('.atlas-shortcuts').isHidden());assert(await page.locator('.atlas-jumps').isHidden());
    assert(await page.locator('#atlasShowSelected').isDisabled(),'There is no selected place on first entry.');
    await page.locator('#atlasFindParty').click();await active('travel');
