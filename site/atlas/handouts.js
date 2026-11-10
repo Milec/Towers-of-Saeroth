@@ -171,6 +171,17 @@
       clone.setAttribute('xmlns',NS);clone.setAttribute('viewBox',crop.join(' '));
       clone.setAttribute('width',w);clone.setAttribute('height',h);
       clone.style.width=w+'px';clone.style.height=h+'px';clone.style.background='transparent';clone.style.filter='none';
+      // On screen each woodland canopy is its own <image>; the export shares one embedded copy of
+      // each sprite so thousands of trees do not each carry the image data.
+      const sprites=new Map();
+      for(const tree of clone.querySelectorAll('image.canopy')){
+        const href=tree.getAttribute('href');if(!href)continue;
+        if(!sprites.has(href)){const symbol=document.createElementNS(NS,'symbol');symbol.id='handout-canopy-'+sprites.size;symbol.setAttribute('viewBox','0 0 1 1');symbol.setAttribute('preserveAspectRatio','none');
+          const art=document.createElementNS(NS,'image');art.setAttribute('href',href);art.setAttribute('width','1');art.setAttribute('height','1');symbol.append(art);defs.append(symbol);sprites.set(href,symbol.id);}
+        const use=document.createElementNS(NS,'use');use.setAttribute('href','#'+sprites.get(href));
+        for(const name of ['x','y','width','height','transform','class','opacity'])if(tree.hasAttribute(name))use.setAttribute(name,tree.getAttribute(name));
+        tree.replaceWith(use);
+      }
       status.textContent='Loading artwork for the handout…'; await nextPaint();
       await Promise.all([...clone.querySelectorAll('image')].map(async image => {
         const href=image.getAttribute('href')||image.getAttributeNS('http://www.w3.org/1999/xlink','href');
