@@ -27,9 +27,15 @@ const base=process.env.ATLAS_TEST_URL||'http://127.0.0.1:8899/';
   const scale=await inner.evaluate(id=>{
    const group=document.querySelector('[data-type="custompoi"][data-id="'+id+'"]'),poi=group.querySelector('use'),item=JSON.parse(localStorage.getItem('saeroth-custom-pois-v1')).pois.find(x=>x.id==id);
    let nearest=null,best=Infinity;for(const b of D.burgs){const d=Math.hypot(b.x-item.x,b.y-item.y);if(d<best){best=d;nearest=b;}}
-   const unit=+group.querySelector('circle').getAttribute('r')/22,scaleFactor=+/scale\(([^)]+)\)/.exec(poi.getAttribute('transform'))[1];
-   return {width:document.getElementById(poi.getAttribute('href').slice(1)).getBBox().width*scaleFactor/unit,limit:+document.querySelector('#settlements [data-id="'+nearest.i+'"]').dataset.displayWidth*.85};
+   const scaleFactor=+/scale\(([^)]+)\)/.exec(poi.getAttribute('transform'))[1];
+   return {width:document.getElementById(poi.getAttribute('href').slice(1)).getBBox().width*scaleFactor,limit:+document.querySelector('#settlements [data-id="'+nearest.i+'"]').dataset.displayWidth*.85};
   },saved[0].id);
+  // The icon is drawn in map units like ordinary landmarks, so zooming scales it with the map instead of holding a screen size.
+  const widths=await inner.evaluate(id=>{const item=JSON.parse(localStorage.getItem('saeroth-custom-pois-v1')).pois.find(x=>x.id==id),out=[];
+   for(const w of [3840,1200]){box=[item.x-w/2,item.y-w*.28,w,w*.5625];renderView();const use=document.querySelector('[data-type="custompoi"][data-id="'+id+'"] use');out.push({scale:+/scale\(([^)]+)\)/.exec(use.getAttribute('transform'))[1],px:use.getBoundingClientRect().width});}
+   return out;},saved[0].id);
+  assert.equal(widths[0].scale,widths[1].scale,'The icon must not rescale with zoom');
+  assert(widths[1].px>widths[0].px*2,'Zooming in must enlarge the icon with the map: '+JSON.stringify(widths));
   assert(scale.width>0&&scale.limit>0,'The custom POI and its neighbour must have measurable sizes');
   assert(scale.width<=scale.limit+.01,'A custom POI must not exceed 85% of the nearest settlement symbol width: '+JSON.stringify(scale));
   await frame.locator('#search').fill('Raven Bandit');await frame.locator('#results [data-type=custompoi]').click();
