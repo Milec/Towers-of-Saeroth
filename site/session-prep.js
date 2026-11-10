@@ -5,11 +5,13 @@
   const TX_FORMAT = 'saeroth-session-switch';
   let base, transactionKey='', modelPromise, recoveryError='', pendingRaw='', applying=false, externalError='';
   const knownRaw=new Map();
-  const storageKeys = pathname => ['saeroth-workspace-v1:','saeroth-session-actors-v1:','saeroth-session-map-v1:','saeroth-encounter-v1:'].map(prefix=>prefix+pathname);
+  const storageKeys = pathname => ['saeroth-workspace-v1:','saeroth-session-actors-v1:','saeroth-encounter-v1:'].map(prefix=>prefix+pathname);
   function put(key,value) { if(value===null)localStorage.removeItem(key);else localStorage.setItem(key,value); }
   function readTransaction(raw,pathname) {
     if(raw.length>4*1024*1024)throw Error('The interrupted session record is too large.');
     const data=JSON.parse(raw),keys=storageKeys(pathname);
+    // Journals written while battle maps existed carry a fourth entry for the retired selection; drop it.
+    if(Array.isArray(data?.entries))data.entries=data.entries.filter(entry=>!(Array.isArray(entry)&&entry[0]==='saeroth-session-map-v1:'+pathname));
     if(data?.format!==TX_FORMAT||data.version!==1||!Array.isArray(data.entries)||data.entries.length!==keys.length)throw Error('The interrupted session record is invalid.');
     for(let i=0;i<keys.length;i++)if(!Array.isArray(data.entries[i])||data.entries[i].length!==2||data.entries[i][0]!==keys[i]||!(data.entries[i][1]===null||typeof data.entries[i][1]==='string'))throw Error('The interrupted session record has invalid storage paths.');
     return data.entries;
@@ -59,14 +61,8 @@
   }
   function getModel() {
     if(!modelPromise)modelPromise=(async()=>{
-      const [library,encounters]=await Promise.all([import(new URL('session-library-model.mjs',base)),import(new URL('encounter-plan.mjs',base)),window.SaerothSessionExport.loadMapAssets()]);
-      const scenes=new Map();
-      return library.createSessionModel({normalizeEncounter:encounters.normalizeEncounter,sceneForMap:map=>{
-        const key=JSON.stringify(map);if(scenes.has(key))return scenes.get(key);
-        const generated=window.SaerothBattlemapEngine.generate({...map.recipe,name:map.name});
-        const scene=window.SaerothBattlemapFoundry.scene(generated,{backgroundPath:'asset:session-library-preview',time:map.recipe.time});
-        if(scenes.size>=200)scenes.delete(scenes.keys().next().value);scenes.set(key,scene);return scene;
-      }});
+      const [library,encounters]=await Promise.all([import(new URL('session-library-model.mjs',base)),import(new URL('encounter-plan.mjs',base))]);
+      return library.createSessionModel({normalizeEncounter:encounters.normalizeEncounter});
     })().catch(error=>{modelPromise=null;throw error;});
     return modelPromise;
   }
@@ -79,7 +75,7 @@
   }
   async function validate(value) { return (await getModel()).normalizeSnapshot(value); }
   function empty() {
-    return {version:1,desk:{title:'Next session',notes:'',board:[],tasks:[]},actors:[],map:null,encounter:{encounter:{rulesProfile:'foundry-pf2e-8.5',name:'Planned encounter',partyLevel:2,partySize:5,target:'moderate',roster:[],placements:[]},staging:false,mapSignature:''}};
+    return {version:1,desk:{title:'Next session',notes:'',board:[],tasks:[]},actors:[],encounter:{encounter:{rulesProfile:'foundry-pf2e-8.5',name:'Planned encounter',partyLevel:2,partySize:5,target:'moderate',roster:[],placements:[]},staging:false,mapSignature:''}};
   }
   const busy=()=>applying||window.SaerothSessionExport?.isBusy()||window.SaerothEncounterPlanner?.isBusy();
   function entries(value) {

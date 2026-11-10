@@ -12,8 +12,7 @@ const played='campaign/sessions/Session 4 Play - Waystation WLW.md';
 const route=p=>'#/'+p.split('/').map(encodeURIComponent).join('/');
 // Karoline supplies an illustrated lore note; John supplies a published actor.
 const catalog={schema:1,actors:[{key:john,name:'John Guard',level:3},{key:milo,name:'Milo Calvetti',level:2}]};
-const recipe={version:1,generatorVersion:1,source:{type:'poi',id:0},kind:'ruin',terrain:'mountain',size:24,time:'day',seed:'session-package-regression'};
-const preset={schema:1,presets:[{id:'fixture-expedition',name:'Fixture expedition prep',description:'Test fixture only.',notes:[milo,played],actors:[milo],map:{version:1,name:'Fixture quarry',recipe}}]};
+const preset={schema:1,presets:[{id:'fixture-expedition',name:'Fixture expedition prep',description:'Test fixture only.',notes:[milo,played],actors:[milo]}]};
 async function download(page,selector){
  const pending=page.waitForEvent('download');await page.locator(selector).click();const file=await pending;
  assert.equal(await file.failure(),null);return {data:JSON.parse(await fs.readFile(await file.path(),'utf8')),name:file.suggestedFilename()};
@@ -33,11 +32,11 @@ async function fixtures(page){
   await optionalPage.goto(base+'#/workspace');await ready(optionalPage);
   assert.equal(await optionalPage.locator('#wsPrepOverview').evaluate(node=>node.open),false);
   assert.equal(await optionalPage.locator('#spNextAction').isVisible(),false);
-  const empty=await download(optionalPage,'#spExport');assert.equal(empty.data.version,1);assert.equal(empty.data.journal.pages.length,1);assert.equal(empty.data.scene,null);assert.deepEqual(empty.data.actors,[]);
+  const empty=await download(optionalPage,'#spExport');assert.equal(empty.data.version,1);assert.equal(empty.data.journal.pages.length,1);assert(!empty.data.scene);assert.deepEqual(empty.data.actors,[]);
   await optionalPage.locator('#wsTaskInput').fill('Find a voice for the innkeeper');await optionalPage.locator('#wsTaskForm button').click();
   assert.equal(await optionalPage.locator('#spOverviewTasks').textContent(),'0 of 1 complete');
   assert.equal(await optionalPage.locator('#spNextAction').isVisible(),false,'An optional unchecked task must not look like an export blocker');
-  const checklist=await download(optionalPage,'#spExport');assert(checklist.data.journal.pages[0].text.content.includes('Find a voice for the innkeeper'));assert.equal(checklist.data.scene,null);await optionalContext.close();
+  const checklist=await download(optionalPage,'#spExport');assert(checklist.data.journal.pages[0].text.content.includes('Find a voice for the innkeeper'));assert(!checklist.data.scene);await optionalContext.close();
   for(const width of [390,1440]){
    const context=await browser.newContext({viewport:{width,height:960},serviceWorkers:'block',acceptDownloads:true,reducedMotion:'reduce'});
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await fixtures(page);
@@ -47,18 +46,10 @@ async function fixtures(page){
    await page.locator('#wsTaskInput').fill('Check expedition supplies');await page.locator('#wsTaskForm button').click();
    await page.locator('#spActorPicker > summary').click();await page.locator('#spActorSearch').fill('John Guard');await page.locator('#spActorChoices input').check();
    assert.match(await page.locator('#spSelectedActors').innerText(),/John Guard/);
-   await page.goto(base+'#/atlas#poi-0');
-   const atlas=await(await page.locator('.atlas-frame').elementHandle()).contentFrame();
-   await atlas.locator('#atlasGenerateBattlemap').click();await atlas.waitForFunction(()=>document.getElementById('battlemapDialog').dataset.ready==='true');
-   await atlas.locator('#battlemapSize').selectOption('24');await atlas.waitForFunction(()=>document.getElementById('battlemapDialog').dataset.ready==='true');
-   await atlas.locator('#battlemapSession').click();
-   assert.match(await atlas.locator('#battlemapStatus').innerText(),/Added to your session package/);
-   await atlas.locator('#battlemapSessionLink').click();await ready(page);
-   assert.match(await page.locator('#spMap').innerText(),/Pilgrim/);
-   assert.match(await page.locator('#spSummary').innerText(),/2 journal pages · 1 scene · 1 NPC sheet/);
+   assert.match(await page.locator('#spSummary').innerText(),/2 journal pages · 1 NPC sheet/);
    assert.equal(await page.locator('#wsPrepOverview').evaluate(node=>node.open),false,'The preparation overview stays compact until requested');
    assert.equal(await page.locator('#spOverviewNotes').textContent(),'1 included + scratchpad');assert.equal(await page.locator('#spOverviewTasks').textContent(),'0 of 1 complete');
-   assert.equal(await page.locator('#spOverviewActors').textContent(),'1 selected');assert.match(await page.locator('#spOverviewMap').textContent(),/Pilgrim/);
+   assert.equal(await page.locator('#spOverviewActors').textContent(),'1 selected');assert.equal(await page.locator('#spOverviewMap').count(),0,'The retired map shortcut is gone');
    await page.locator('#wsPrepOverview>summary').click();
    for(const theme of ['light','dark']){
     await page.evaluate(value=>document.documentElement.dataset.theme=value,theme);
@@ -74,10 +65,8 @@ async function fixtures(page){
    assert.equal(bundle.journal.pages.length,2);assert.equal(bundle.journal.ownership.default,0);
    assert(bundle.journal.pages[0].text.content.includes('&lt;script&gt;noScript()&lt;/script&gt;'));
    assert.deepEqual(bundle.actors,[{key:john,name:'John Guard'}]);
-   assert(bundle.assets.length>=2);assert(bundle.assets.every(a=>['image/png','image/webp','image/jpeg'].includes(a.mime)));
-   assert.match(bundle.scene.levels[0].background.src,/^asset:/);assert.equal(bundle.scene.width,2400);
-   assert.equal(bundle.scene.active,false);assert.equal(bundle.scene.navigation,false);assert.equal(bundle.scene.tokens.length,0);
-   assert(bundle.scene.walls.length>0);assert(bundle.journal.pages[1].text.content.includes('src="asset:'));
+   assert(bundle.assets.length>=1);assert(bundle.assets.every(a=>['image/png','image/webp','image/jpeg'].includes(a.mime)));
+   assert(!bundle.scene,'Packages no longer embed a generated battle map');assert(bundle.journal.pages[1].text.content.includes('src="asset:'));
    assert(!/<img[^>]*src=["']https?:/i.test(bundle.journal.pages[1].text.content));
    assert(await page.locator('#spDownloads a').isVisible());
    if(width===1440){
@@ -85,19 +74,15 @@ async function fixtures(page){
     const second=await download(page,'#spExport');assert.equal(second.data.id,bundle.id,'Identical contents keep one identity across export times');
    }
    await page.reload();await ready(page);
-   assert.match(await page.locator('#spMap').innerText(),/Pilgrim/);assert.match(await page.locator('#spSelectedActors').innerText(),/John Guard/);
    assert.equal(await page.locator('#spOverviewNotes').textContent(),'1 included + scratchpad');assert.equal(await page.locator('#spOverviewTasks').textContent(),'0 of 1 complete');assert.equal(await page.locator('#spOverviewActors').textContent(),'1 selected');
-   await page.locator('#spPresets summary').click();assert.equal(await page.locator('[data-preset-map]').isChecked(),false,'Existing map must not be replaced by default');
+   await page.locator('#spPresets summary').click();assert.equal(await page.locator('[data-preset-map]').count(),0,'Prepared sessions no longer offer a generated map');
    await page.locator('[data-add-preset]').click();
    await page.waitForFunction(()=>document.querySelector('#spSelectedActors')?.textContent.includes('Milo'));
    assert.equal(await page.locator('#wsTitle').inputValue(),'Session packet test');assert((await page.locator('#wsNotes').inputValue()).includes('Keep this scratchpad'));
    assert.equal(await page.locator('#wsTasks li').count(),1);assert.equal(await page.locator('#wsBoardList li').count(),3);
-   assert.match(await page.locator('#spMap').innerText(),/Pilgrim/);
-   await page.locator('[data-preset-map]').check();await page.locator('[data-add-preset]').click();
-   await page.waitForFunction(()=>document.querySelector('#spMap')?.textContent.includes('Fixture quarry'));
+   await page.locator('[data-add-preset]').click();await page.waitForFunction(()=>document.querySelector('#spSelectedActors')?.textContent.includes('Milo'));
    assert.equal(await page.locator('#wsBoardList li').count(),3,'Repeated preset adds no duplicate notes');
-   await page.locator('#spRemoveMap').click();assert.match(await page.locator('#spSummary').innerText(),/No scene/);
-   const notesOnly=await download(page,'#spExport');assert.equal(notesOnly.data.scene,null);assert.equal(notesOnly.data.actors.length,2);
+   const notesOnly=await download(page,'#spExport');assert(!notesOnly.data.scene);assert.equal(notesOnly.data.actors.length,2);
    await page.locator('.ws-journal-only > summary').click();
    const legacy=await download(page,'[data-ws-action="foundry"]');assert.equal(legacy.data.pages.length,4,'Original journal export remains available');
    assert.deepEqual(errors,[]);await context.close();
@@ -150,22 +135,20 @@ async function fixtures(page){
   await missingPage.locator('#spNextAction').click();assert(await missingPage.locator('#spSelectedActors').evaluate(node=>node===document.activeElement));
   let missingDownloads=0;missingPage.on('download',()=>missingDownloads++);await missingPage.locator('#spExport').click();await missingPage.locator('#spStatus').filter({hasText:'no longer in the campaign NPC list'}).waitFor();assert.equal(missingDownloads,0);
   await missingPage.getByRole('button',{name:'Remove Retired fixture',exact:true}).click();assert.equal(await missingPage.locator('#spNextAction').isVisible(),false);assert.equal(await missingPage.locator('#spOverviewActors').textContent(),'0 selected');
-  assert.equal((await download(missingPage,'#spExport')).data.scene,null);await missingContext.close();
+  assert(!(await download(missingPage,'#spExport')).data.scene);await missingContext.close();
   // Storage failure still permits a complete in-memory package.
   const limited=await browser.newContext({serviceWorkers:'block',acceptDownloads:true}),limitedPage=await limited.newPage();await fixtures(limitedPage);
   await limitedPage.addInitScript(()=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key.startsWith('saeroth-session-'))throw new DOMException('Quota','QuotaExceededError');return set.call(this,key,value);};});
   await limitedPage.goto(base+'#/workspace');await ready(limitedPage);
   await limitedPage.locator('#spActorPicker > summary').click();await limitedPage.locator('#spActorChoices input').first().check();
   assert.match(await limitedPage.locator('#spStorage').innerText(),/could not be saved/);
-  await limitedPage.evaluate(value=>window.SaerothSessionExport.selectMap(value),{version:1,name:'Unsaved map',recipe});
-  assert.match(await limitedPage.locator('#spStorage').innerText(),/available in this tab/);
-  const ephemeral=await download(limitedPage,'#spExport');assert.equal(ephemeral.data.actors.length,1);assert(ephemeral.data.scene);await limited.close();
+  const ephemeral=await download(limitedPage,'#spExport');assert.equal(ephemeral.data.actors.length,1);await limited.close();
   // Invalid saved data is recoverable and cannot replace working selections.
   const corrupt=await browser.newContext({serviceWorkers:'block',acceptDownloads:true}),corruptPage=await corrupt.newPage();await fixtures(corruptPage);
   await corruptPage.addInitScript(pathname=>localStorage.setItem('saeroth-session-actors-v1:'+pathname,'{original broken selection'),new URL(base).pathname);
   await corruptPage.goto(base+'#/workspace');await ready(corruptPage);
   const recovered=await download(corruptPage,'#spRecovery');assert(recovered.data.selections.some(r=>r.data==='{original broken selection'));
   await corrupt.close();
-  console.log('Session packages: overview and shortcuts, optional checklist-only export, NPC-list retry/recovery, notes + embedded artwork + map + NPC refs, stable identity, phone/desktop themes, preset merge, persistence/recovery, quota failure, untrusted assets, failed artwork/retry, live edits with captured export, cancellation, and legacy journal export pass.');
+  console.log('Session packages: overview and shortcuts, optional checklist-only export, NPC-list retry/recovery, notes + embedded artwork + NPC refs, stable identity, phone/desktop themes, preset merge, persistence/recovery, quota failure, untrusted assets, failed artwork/retry, live edits with captured export, cancellation, and legacy journal export pass.');
  }finally{await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

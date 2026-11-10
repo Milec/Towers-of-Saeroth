@@ -54,14 +54,14 @@ visibility, POI alignment, route planning and regional detail loading.
 ## Selected places
 
 The map's selected-place card provides **Details** and a compact **Actions**
-menu. Supported settlements and landmarks offer **Travel here**, **Mark party
-here**, and **Generate battle map** without first scrolling to their details.
-These use the existing journey, party-marker, and battle-map controls. Nation
-and route selections do not gain invented travel endpoints or battle maps.
+menu. Supported settlements and landmarks offer **Travel here** and **Mark party
+here** without first scrolling to their details.
+These use the existing journey and party-marker controls. Nation
+and route selections do not gain invented travel endpoints.
 Changing selection closes the menu; Escape closes it and returns keyboard
-focus to its trigger. The generator also returns focus there when closed.
+focus to its trigger.
 
-Place details keep travel and battle-map actions together. **Save place** stays
+Place details keep travel actions together. **Save place** stays
 visible; **More place actions** contains Start here, Copy link, and On map.
 Campaign lore links retain their direct-note or nation-note wording. Find party
 without a marker opens Travel and displays instructions there for placing it.

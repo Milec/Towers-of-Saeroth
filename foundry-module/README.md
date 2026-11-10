@@ -9,7 +9,7 @@ The Cream Man, Wenzel Grauth, Garrick Thorne, and Ashwin Devaraj.
 ## Session Inbox (0.4.0)
 
 The GM website can export one session package containing a journal, selected
-Saeroth NPC references, and one optional generated battle map. The **Session
+Saeroth NPC references, and an optional encounter roster. The **Session
 Inbox** imports that file through Foundry's document APIs. It requires this module
 enabled in a PF2e world on **Foundry VTT 14.364 or newer**. It does not require the
 MCP bridge, a relay token, or a Script macro.
@@ -22,17 +22,12 @@ MCP bridge, a relay token, or a Script macro.
 2. Under **Session package**, use **Choose NPCs** to select actor sheets. Notes
    and sheets are separate selections: including an NPC note alone adds its
    journal page, not an actor.
-3. Optionally choose **Choose in atlas**, select a place, and use **Generate
-   battle map**. Once the layout and daylight setting are ready, choose **Add to
-   session** and return to the Campaign desk. Only one generated map is included.
-4. For the ready-made expedition packet, open **Start with prepared expedition
+3. For the ready-made expedition packet, open **Start with prepared expedition
    content** and choose **Add preparation**. This merges its notes and NPCs into
-   your current selections, preserving the scratchpad and checklist. Check
-   **Include its map** to select the quarry encounter layout; if you already have
-   a map, the checkbox starts unchecked and explicitly warns that it replaces it.
-5. Review **Package contents**, then **Download session package**. Transfer this
+   your current selections, preserving the scratchpad and checklist.
+4. Review **Package contents**, then **Download session package**. Transfer this
    JSON file to the device running your Foundry GM client if necessary.
-6. In Foundry's **Scenes** or **Journals** directory, choose **Import Saeroth
+5. In Foundry's **Scenes** or **Journals** directory, choose **Import Saeroth
    Session**, select the JSON, review the preview, and choose **Import session**.
 
 The journal and scene start with no player ownership. The scene is inactive and
@@ -41,6 +36,9 @@ level, walls, doors, lights, and five-foot grid. Version 2 encounter packages ca
 stage explicitly placed opponents as hidden, unlinked, hostile tokens. No combat
 is created or started. Open the scene and reveal its opponents when ready;
 roster-only imports leave token placement to the GM.
+The website no longer generates scenes or places opponents, so new packages carry
+only a journal, NPC references and an optional roster; the importer still accepts
+scenes and placements from earlier packages.
 
 Map and journal images travel inside the JSON as PNG, JPEG, or WebP assets. The
 importer checks their dimensions and uploads them under
@@ -115,6 +113,23 @@ if it is not in the normal Windows location. Website checks are documented in
 [`tools/atlas-tests/README.md`](../tools/atlas-tests/README.md).
 
 ## Battle maps
+
+Battle maps are made with ImageGen, not by the website. The site once generated
+maps procedurally; that generator was retired and only this pipeline remains:
+
+1. Write the prompt beside the art as `assets/maps/<name>.prompt.txt` (or
+   `.prompt.json` for a multi-image set). It records the grid, size and the
+   features the walls and lights must match.
+2. Generate the gridless image with ImageGen and save it in `assets/maps/`.
+3. Describe walls, doors, lights and tokens in a scene builder under `scripts/`
+   (for example `mountain-campsite-scene.mjs` or `tavern-scene.mjs`), register it
+   in `scripts/build-scenes.mjs`, and add a `test-*.mjs` check for geometry.
+4. Run `node foundry-module/scripts/build-scenes.mjs` to write
+   `content/scenes/*.json` and the `saeroth-scenes` compendium.
+
+`expedition-supply-recovery` predates this pipeline. Its scene and WebP were
+produced by the retired generator and are kept as fixed artifacts; its builder
+only reloads the committed JSON.
 
 ### Blank-background repair in 0.1.21
 
