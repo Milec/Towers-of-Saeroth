@@ -54,13 +54,14 @@ renderSettlementNames=function(z,unit){
  for(const [e,b] of portEls)e.toggleAttribute('hidden',!layerEnabled('settlements')||!tierPrefs[tier(b)].icons||(!all&&!chosen('burg',b.i)&&z<3));
  for(const [e,m] of markerEls){const major=m.loreSource||/volcano|mountain-pass/.test(m.type);const min=/inn|bridge|fair|ruin|cave|dungeon/.test(m.type)?4:2.5;e.toggleAttribute('hidden',!all&&!major&&!chosen('poi',m.i)&&z<min);}
  for(const e of routeEls){const min=e.parentElement.id==='trails'?3:e.parentElement.id==='searoutes'?1.3:0;e.toggleAttribute('hidden',!all&&!chosen('route',+e.dataset.id)&&z<min);}
- // Route strokes are screen pixels (non-scaling-stroke). Keep them from becoming broad ribbons at
- // close zoom, and thin them in proportion when the whole map is smaller than on a desktop
- // (about 3.6 map units per pixel at full view), so phones do not get roads three times heavier.
+ // Thin screen-space road strokes at world scale and on small maps, including in Travel Focus.
  const smallMap=Math.min(1,Math.max(.45,3.6/unit));
+ const landRouteScale=smallMap*Math.min(1,Math.max(.55,.55+(z-1)*.225));
+ map.style.setProperty('--land-route-scale',landRouteScale);
  for(const [id,width,cap] of [['roads',1.65,1.8],['trails',1.05,1.1],['searoutes',1.7,1.7]]){
   const layer=document.getElementById(id);
-  layer.style.setProperty('--route-weight',+Math.min(width*smallMap,cap*unit).toFixed(3));
+  const scale=id==='searoutes'?smallMap:landRouteScale;
+  layer.style.setProperty('--route-weight',+Math.min(width*scale,cap*unit).toFixed(3));
  }
  // Production badges are regional detail unless a specific good was requested.
  for(const e of $('#goodsmap').children)e.toggleAttribute('hidden',!all&&z<3&&!+$('#resource').value);

@@ -51,7 +51,8 @@
   const selectionActions=document.createElement('details');selectionActions.id='atlasSelectionActions';selectionActions.className='atlas-selection-actions';selectionActions.hidden=true;
   selectionActions.innerHTML='<summary>Actions</summary><div class="atlas-selection-menu"><button type="button" data-place-action="routeEnd">Travel here</button><button type="button" data-place-action="partyHere">Mark party here</button></div>';
   const selectionFeedback=document.createElement('p');selectionFeedback.id='atlasSelectionFeedback';selectionFeedback.setAttribute('role','status');selectionFeedback.setAttribute('aria-live','polite');
-  selectionCard.append(selectionActions,selectionFeedback);
+  selectionCard.insertBefore(selectionActions,node('atlasSelectionClose'));
+  selectionCard.append(selectionFeedback);
   const selectionKey=()=>selected?selected.type+'-'+selected.id:'';
   let actionKey='';
   function refreshSelectionActions(){

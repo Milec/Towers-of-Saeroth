@@ -146,15 +146,21 @@
     const view={id:Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),name,box:[...box],style:map.dataset.style==='political'?'political':'terrain',sepia:!!el('sepiaMap')?.checked,selection:selected?recordKey(selected):null,layers:Object.fromEntries([...document.querySelectorAll('[data-layer]')].map(input=>[input.dataset.layer,input.checked]))};
     if(save({...prefs,views:[...prefs.views,view]})){el('atlasViewName').value='';report(`Saved “${name}” with its zoom and layers.`);}
   };
+  function clearSelection(){
+    selected=null;
+    el('selection').replaceChildren();
+    map.classList.remove('route-selected-mode');
+    map.querySelector('.route-selected')?.classList.remove('route-selected');
+    el('handoutCover')?.setAttribute('hidden','');
+    el('status').textContent=atlasOverviewStatus;
+    history.replaceState(null,'',location.pathname+location.search);
+    if(parent!==window)parent.postMessage({type:'atlas-custom-selection-cleared'},location.origin);
+  }
   function restoreView(view){
     const r=view.selection&&byKey(view.selection);if(r)show(r.type,r.id,false);
     else{
-      selected=null;el('selection').replaceChildren();map.classList.remove('route-selected-mode');
-      document.querySelectorAll('.route-selected').forEach(node=>node.classList.remove('route-selected'));
-      el('handoutCover')?.setAttribute('hidden','');
+      clearSelection();
       info.innerHTML=`<span class="eyebrow">SAVED VIEW</span><h2>${esc(view.name)}</h2><p>This view restores its map position and layers. Select a place for details.</p>`;
-      history.replaceState(null,'',location.pathname+location.search);
-      if(parent!==window)parent.postMessage({type:'atlas-custom-selection-cleared'},location.origin);
     }
     document.querySelector(`button[data-style="${view.style}"]`).click();
     for(const input of document.querySelectorAll('[data-layer]'))if(Object.hasOwn(view.layers,input.dataset.layer)){input.checked=view.layers[input.dataset.layer];input.dispatchEvent(new Event('change',{bubbles:true}));}
@@ -184,8 +190,15 @@
   el('atlasRecover').onclick=()=>download(unreadable||'','Saeroth-atlas-workspace-recovery.txt','text/plain');
 
   const selectionCard=document.createElement('div');selectionCard.id='atlasSelectionCard';selectionCard.className='atlas-selection-card';selectionCard.hidden=true;
-  selectionCard.innerHTML=`${icon('pin')}<div><span id="atlasSelectionKind"></span><strong id="atlasSelectionName"></strong></div><button type="button" id="atlasSelectionDetails">Details</button>`;
+  selectionCard.innerHTML=`${icon('pin')}<div><span id="atlasSelectionKind"></span><strong id="atlasSelectionName"></strong></div><button type="button" id="atlasSelectionDetails">Details</button><button type="button" id="atlasSelectionClose" aria-label="Clear map selection" title="Clear map selection">×</button>`;
   document.querySelector('.mapframe').append(selectionCard);
+  el('atlasSelectionClose').onclick=()=>{
+    clearSelection();
+    showLanding();
+    selectionCard.hidden=true;
+    renderView();
+    map.focus({preventScroll:true});
+  };
   const findParty=document.createElement('button');findParty.id='atlasFindParty';findParty.type='button';findParty.title='Find party';findParty.setAttribute('aria-label','Find party');findParty.innerHTML=icon('target');
   el('mapHome').after(findParty);
   findParty.onclick=()=>{
@@ -259,11 +272,11 @@
     const campaign=(window.ATLAS_CUSTOM_POIS?.all()||[]).filter(p=>p.published||p.notePath).slice(0,5);
     target.innerHTML=campaign.length?'<h3>Campaign locations</h3>'+campaign.map(p=>`<button type="button" class="result" data-type="custompoi" data-id="${p.id}"><span>${esc(p.name)}</span><small>Open on the atlas</small></button>`).join(''):'';
   }
-  if(!selected){
-    const countMarkup=el('counts')?.innerHTML||'';
-    info.innerHTML=`<span class="eyebrow">EXPLORE SAEROTH</span><h2>A world to return to</h2><p>Follow a road, find your next destination, or pick up where the party left off.</p><div id="counts" class="stats">${countMarkup}</div><div id="atlasLanding"></div><p class="muted">Select a place to read its lore, plan a journey, or mark the party. Press <kbd>/</kbd> to search.</p>`;
+  function showLanding(){
+    info.innerHTML=`<span class="eyebrow">EXPLORE SAEROTH</span><h2>A world to return to</h2><p>Follow a road, find your next destination, or pick up where the party left off.</p><div id="counts" class="stats">${atlasCounts}</div><div id="atlasLanding"></div><p class="muted">Select a place to read its lore, plan a journey, or mark the party. Press <kbd>/</kbd> to search.</p>`;
     renderLanding();
   }
+  if(!selected)showLanding();
   window.addEventListener('atlas-custom-pois-change',()=>{refreshPositions();renderSearch();renderLibrary();renderLanding();});
   new MutationObserver(()=>{selectionCard.hidden=!selected||!info.querySelector('.atlas-place-toolbar');}).observe(info,{childList:true});
   renderSearch();renderLibrary();if(selected)enhanceSelection();
