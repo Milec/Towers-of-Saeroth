@@ -59,10 +59,11 @@
  .atlas-panel-layout .mapframe,.atlas-panel-layout.integrated .mapframe{height:clamp(300px,48svh,440px);min-height:300px;scroll-margin-top:0}
  .atlas-panel-layout .atlas-task-panel{scroll-margin-top:0;min-height:calc(100svh - 62px)}
  .atlas-panel-layout .atlas-task-panel details,.atlas-panel-layout #info{scroll-margin-top:12px}
- .atlas-selection-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 8px;width:min(340px,calc(100% - 76px))}
+ .atlas-selection-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 8px;width:min(340px,calc(100% - 76px))}
  .atlas-selection-card>div{grid-column:1/-1;min-width:0!important}
  .atlas-selection-card>#atlasSelectionDetails{grid-column:1;justify-self:start;min-width:78px}
- .atlas-selection-card>#atlasSelectionActions{grid-column:2}
+ .atlas-selection-card>#atlasSelectionActions{grid-column:2;justify-self:end}
+ .atlas-selection-card>#atlasSelectionClose{grid-column:3;grid-row:2}
  #atlasSelectionFeedback{grid-column:1/-1}
 }
 @media(max-width:800px) and (max-height:420px){

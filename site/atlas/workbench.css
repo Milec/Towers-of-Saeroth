@@ -69,6 +69,7 @@ aside #info>.eyebrow{font-size:10px;color:var(--atlas-wine);letter-spacing:1.8px
 .atlas-selection-card>div{min-width:0;flex:1}.atlas-selection-card span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
 .atlas-selection-card strong{display:block;font:17px/1.35 Georgia,serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .atlas-selection-card button{font-size:12px;padding:8px;min-height:44px}
+.atlas-selection-card #atlasSelectionClose{flex:none;width:44px;min-width:44px;padding:0;font-size:24px;line-height:1}
 .maptools #atlasFindParty svg{width:22px;height:22px;vertical-align:middle}.maptools button{border-radius:8px}
 .maptools output{font-size:11px;padding:3px}.map-scale{border-radius:8px}
 aside footer{font-size:12px;line-height:1.8}.atlas-controls:not(.atlas-library)>summary,.layers>summary,.catalogue>summary,.legend>summary{font-size:15px;font-family:system-ui,sans-serif;font-weight:600}
