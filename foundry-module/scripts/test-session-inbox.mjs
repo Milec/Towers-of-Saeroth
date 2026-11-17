@@ -41,7 +41,7 @@ test('v3 imports native elite and weak sheets independently and keeps the origin
  const raw=encounterPackage({staged:false});raw.version=3;raw.actors=[];
  raw.encounter.partySize=4;raw.encounter.partyMembers=Array.from({length:4},(_,i)=>({id:'pc'+i,name:'PC '+i,level:i===0?1:2}));
  raw.encounter.roster=['','elite','weak'].map((adjustment,i)=>({id:'row'+i,name:'Orc Veteran',level:1,count:1,width:1,height:1,source:{type:'compendium',uuid:coreUuid},...(adjustment?{adjustment}:{})}));
- const bundle=await sealPackage(raw);await h.api.preview(bundle);assert.equal(h.calls.create.length,0);
+ const bundle=await sealPackage(raw);const preview=await h.api.preview(bundle);assert.equal(preview.encounter.partyMembers[0].level,1);assert.equal(h.calls.create.length,0);
  await h.api.import(bundle);assert.equal(h.collections.Actor.size,3);
  const elite=[...h.collections.Actor.values()].find(a=>a.system.attributes.adjustment==='elite'),weak=[...h.collections.Actor.values()].find(a=>a.system.attributes.adjustment==='weak');
  assert.equal(elite.level,2);assert.equal(elite.system.attributes.hp.value,30);assert.equal(weak.level,-1);assert.equal(weak.system.attributes.hp.value,10);

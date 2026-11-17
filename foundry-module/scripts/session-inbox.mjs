@@ -30,7 +30,7 @@ function actorReferences(bundle) {
 }
 function encounterSummary(encounter) {
   if(!encounter)return null;const math=calculateEncounter(encounter);
-  return {name:encounter.name,partyLevel:encounter.partyLevel,partySize:encounter.partySize,target:encounter.target,roster:encounter.roster.map(r=>({id:r.id,name:(r.adjustment?r.adjustment+' ':'')+r.name,level:adjustedCreatureLevel(r.level,r.adjustment),count:r.count,source:entryKey(r)})),tokens:encounter.placements.length,...math};
+  return {name:encounter.name,partyLevel:encounter.partyLevel,partySize:encounter.partySize,...(encounter.partyMembers?{partyMembers:encounter.partyMembers}:{}),target:encounter.target,roster:encounter.roster.map(r=>({id:r.id,name:(r.adjustment?r.adjustment+' ':'')+r.name,level:adjustedCreatureLevel(r.level,r.adjustment),count:r.count,source:entryKey(r)})),tokens:encounter.placements.length,...math};
 }
 function encounterPage(encounter) {
   const math=encounterSummary(encounter),xp=math.budgeted?`${number(math.totalXP)} XP · ${math.difficulty.label}`:'Unbudgeted: one or more creatures fall outside the supported level range.';
@@ -39,7 +39,7 @@ function encounterPage(encounter) {
 function encounterPreview(encounter) {
   if(!encounter)return '';
   const budget=encounter.budgeted?`${number(encounter.totalXP)} XP · ${encounter.difficulty.label}`:'Difficulty unavailable: a creature is outside the supported level range.';
-  return `<section class="si-encounter" aria-label="Encounter roster"><h4>${escape(encounter.name)}</h4><p>${partyText(encounter)} · ${escape(budget)}<br>Target: ${escape(encounter.target)} · ${encounter.budget} XP${encounter.budgeted?`<br>Estimated award: ${encounter.awardXP} XP per character`:''}</p><ul>${encounter.roster.map(row=>`<li><strong>${row.count} × ${escape(row.name)}</strong> <span class="si-pill">Level ${row.level}</span></li>`).join('')}</ul><p>${encounter.tokens?`${encounter.tokens} hidden opponent tokens in the inactive map.`:'Roster only; no tokens placed.'} No combat starts and no XP is awarded. Uses standard proficiency and the Foundry PF2e 8.5 encounter profile.</p></section>`;
+  return `<section class="si-encounter" aria-label="Encounter roster"><h4>${escape(encounter.name)}</h4><p>${partyText(encounter)} · ${escape(budget)}<br>Target: ${escape(encounter.target)} · ${encounter.budget} XP${encounter.budgeted?`<br>Estimated award: ${encounter.awardXP} XP per character`:''}</p><ul>${encounter.roster.map(row=>`<li><strong>${row.count} × ${escape(row.name)}</strong> <span class="si-pill">Level ${row.level}</span></li>`).join('')}</ul>${memberAwardsHTML(encounter)}<p>${encounter.tokens?`${encounter.tokens} hidden opponent tokens in the inactive map.`:'Roster only; no tokens placed.'} No combat starts and no XP is awarded. Uses standard proficiency and the Foundry PF2e 8.5 encounter profile.</p></section>`;
 }
 
 /** Runtime API is dependency-injected so tests never require a running world. */
