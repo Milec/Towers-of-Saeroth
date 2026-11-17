@@ -59,6 +59,7 @@ def build_session_catalog():
     module = Path(ROOT) / 'foundry-module'
     shutil.copyfile(module / 'scripts/session-package.mjs', Path(OUT) / 'session-package.mjs')
     shutil.copyfile(module / 'scripts/encounter-plan.mjs', Path(OUT) / 'encounter-plan.mjs')
+    shutil.copyfile(module / 'scripts/preparation-generators.mjs', Path(OUT) / 'preparation-generators.mjs')
     manifest = json.loads((module / 'content/saeroth-creatures.json').read_text(encoding='utf-8'))
     if manifest.get('schema') != 1 or not isinstance(manifest.get('actors'), list):
         raise ValueError('The Saeroth actor feed is not a supported session catalog source.')

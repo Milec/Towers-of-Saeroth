@@ -8,7 +8,7 @@
   let config,base,key,host,contract,contractPromise,initialized,configuration=0,generation=0,busy=false;
   let state={encounter:defaults(),staging:false,mapSignature:''},storageWarning='',recoveryRaw='',recoveryProtected=false;
   let catalog=[],catalogPromise,catalogWarning='',pendingRestore=null,urls=[];
-  let query='',sourceFilter='all',nearLevel=true,ready=false,restoreRevision=0;
+  let query='',sourceFilter='all',variantFilter='',nearLevel=true,ready=false,restoreRevision=0;
   const downloadLimit=1024*1024;
   function math(){return contractPromise??=(import(new URL('encounter-plan.mjs',base).href).then(module=>contract=module).catch(error=>{contractPromise=null;throw error;}));}
   function report(message,error=false){const node=host?.querySelector('#epStatus');if(node){node.textContent=message;node.classList.toggle('ep-error',error);}}
@@ -55,16 +55,20 @@
       '<fieldset id="epControls" disabled><legend class="ep-sr">Encounter preparation</legend>'+
       '<label class="ws-field" for="epName">Encounter name<input id="epName" maxlength="160" value="Planned encounter"></label>'+
       '<div class="ep-settings"><label class="ws-field" for="epLevel">Party level<input id="epLevel" type="number" min="1" max="20" step="1" value="2"></label><label class="ws-field" for="epSize">Characters<input id="epSize" type="number" min="1" max="12" step="1" value="5"></label><label class="ws-field" for="epTarget">Target difficulty<select id="epTarget">'+['trivial','low','moderate','severe','extreme'].map(x=>'<option value="'+x+'" '+(x==='moderate'?'selected':'')+'>'+label(x)+'</option>').join('')+'</select></label></div>'+
+      '<label class="ep-check"><input id="epMixed" type="checkbox"> Set each character’s level</label><div id="epMembers"></div>'+
       '<div id="epBudget" class="ep-budget" aria-live="polite"></div>'+
-      '<details class="ep-rules"><summary>How the estimate works</summary><p>Budgets match Foundry PF2e 8.5. The XP award estimate adjusts for party size; it is not the encounter budget divided among the characters. Creatures more than four levels away from the party are left unbudgeted.</p><p>Terrain, tactics, hazards, and depleted resources can change the fight. This planner budgets creatures only. Foundry’s Low-threat adjustment is 15 XP per character; the current GM Core table lists 20. <a href="https://2e.aonprd.com/Rules.aspx?ID=2716" target="_blank" rel="noopener">Encounter-building rules</a>.</p></details>'+
+      '<details class="ep-rules"><summary>How the estimate works</summary><p>Budgets match Foundry PF2e 8.5. For a mixed party, choose a representative party level: the highest level if only one or two PCs are behind, otherwise a suitable average. A single PC at least two levels ahead of an otherwise equal-level group adds one equivalent PC per two levels. PCs below the reference level receive double the estimated XP. The XP award estimate adjusts for party size; it is not the encounter budget divided among the characters. Creatures more than four levels away from the party are left unbudgeted.</p><p>Terrain, tactics, hazards, and depleted resources can change the fight. This planner budgets creatures only. Foundry’s Low-threat adjustment is 15 XP per character; the current GM Core table lists 20. <a href="https://2e.aonprd.com/Rules.aspx?ID=2716" target="_blank" rel="noopener">Encounter-building rules</a>.</p></details>'+
       '<div class="ep-roster-heading"><h4>Opponents</h4><button type="button" class="ws-button" id="epClear" disabled>Clear roster</button></div><div id="epRoster"></div>'+
       '<label class="ws-field" for="epSearch">Find a creature or NPC<input id="epSearch" type="search" autocomplete="off" placeholder="Wolf, skeleton, John Guard…"></label>'+
       '<div class="ep-search-options"><label class="ws-field" for="epSource">Library<select id="epSource"><option value="all">All creatures</option><option value="campaign">Saeroth campaign</option><option value="compendium">PF2e compendiums</option></select></label><label class="ep-check"><input id="epNear" type="checkbox" checked> Within four party levels</label></div>'+
+      '<label class="ws-field" for="epVariant">Add creatures as<select id="epVariant"><option value="">Standard</option><option value="elite">Elite</option><option value="weak">Weak</option></select></label>'+
       '<p id="epCatalogStatus" class="ws-small ws-muted"></p><div id="epResults" class="ep-results"></div><button type="button" class="ws-button" id="epRetry" hidden>Reload creature lists</button>'+
       '<details class="ep-portability"><summary>Move this encounter to another device</summary><p class="ws-small ws-muted">This encounter saves in this browser. A backup includes its roster and settings. It does not contain your session notes.</p><div class="ep-actions"><button type="button" class="ws-button" id="epBackup">Download encounter backup</button><label class="ws-button ep-file-label" for="epRestore">Choose a backup<input id="epRestore" type="file" accept="application/json,.json"></label></div><div id="epRestorePreview" hidden></div><div id="epDownloads"></div></details>'+
       '</fieldset><p id="epStorage" class="ws-small ws-muted"></p><button type="button" class="ws-button" id="epRecovery" hidden>Download unreadable encounter</button><p id="epStatus" role="status" aria-live="polite">Loading encounter tools…</p></div></details>';
     host.querySelector('#epPanel').addEventListener('toggle',()=>{if(host?.querySelector('#epPanel').open)loadCatalog();});
     host.querySelector('#epName').onchange=()=>updateSettings();host.querySelector('#epLevel').onchange=()=>updateSettings();host.querySelector('#epSize').onchange=()=>updateSettings();host.querySelector('#epTarget').onchange=()=>updateSettings();
+    host.querySelector('#epMixed').onchange=()=>{if(busy)return;if(host.querySelector('#epMixed').checked)state.encounter.partyMembers=Array.from({length:state.encounter.partySize},(_,i)=>({id:'pc'+i,name:'Character '+(i+1),level:state.encounter.partyLevel}));else delete state.encounter.partyMembers;changed();};
+    host.querySelector('#epVariant').onchange=event=>{variantFilter=event.target.value;renderResults();};
     host.querySelector('#epSearch').oninput=event=>{query=event.target.value;renderResults();};host.querySelector('#epSource').onchange=event=>{sourceFilter=event.target.value;renderResults();};host.querySelector('#epNear').onchange=event=>{nearLevel=event.target.checked;renderResults();};
     host.querySelector('#epRetry').onclick=()=>{catalogPromise=null;loadCatalog();};
     host.querySelector('#epClear').onclick=()=>{if(busy)return;state.encounter.roster=[];changed();report('Encounter roster cleared. Session notes and other selected NPCs were kept.');};
@@ -76,29 +80,43 @@
   function changed(){persist();render();config?.onChange?.();document.dispatchEvent(new CustomEvent('saeroth-session-change'));}
   function updateSettings(){
     if(busy||!ready)return;const candidate={...state.encounter,name:host.querySelector('#epName').value,partyLevel:Number(host.querySelector('#epLevel').value),partySize:Number(host.querySelector('#epSize').value),target:host.querySelector('#epTarget').value};
+    if(candidate.partyMembers&&Number.isInteger(candidate.partySize)&&candidate.partySize>=1&&candidate.partySize<=12)candidate.partyMembers=Array.from({length:candidate.partySize},(_,i)=>candidate.partyMembers[i]||{id:'pc'+i,name:'Character '+(i+1),level:candidate.partyLevel});
     try{const normalized=contract.normalizeEncounter({...candidate,placements:[]});state.encounter={...normalized,placements:state.encounter.placements};changed();}
     catch(error){report(error.message,true);renderSettings();}
   }
   function renderSettings(){if(!host)return;for(const [id,key]of [['epName','name'],['epLevel','partyLevel'],['epSize','partySize'],['epTarget','target']])host.querySelector('#'+id).value=state.encounter[key];}
   function render(){
-    if(!host||!ready)return;renderSettings();renderBudget();renderRoster();renderResults();
+    if(!host||!ready)return;renderSettings();renderMembers();renderBudget();renderRoster();renderResults();
+    host.querySelector('#epMixed').checked=!!state.encounter.partyMembers;host.querySelector('#epVariant').value=variantFilter;
     host.querySelector('#epSearch').value=query;host.querySelector('#epSource').value=sourceFilter;host.querySelector('#epNear').checked=nearLevel;
     host.querySelector('#epControls').disabled=busy;host.querySelector('#epCount').textContent=state.encounter.roster.length?'('+units().length+' opponents)':'';
     host.querySelector('#epStorage').textContent=storageWarning;host.querySelector('#epRecovery').hidden=!recoveryRaw;
     host.querySelector('#epClear').disabled=busy||!state.encounter.roster.length;
   }
   function number(value){return Number.isInteger(value)?String(value):Number(value.toFixed(1)).toString();}
+  function renderMembers(){
+    const node=host.querySelector('#epMembers'),members=state.encounter.partyMembers;
+    node.innerHTML=members?'<p class="ws-small ws-muted">Party level above is the reference used for encounter XP. Individual levels determine catch-up awards.</p>'+members.map(p=>'<div class="ep-member"><label class="ws-field">Character<input data-ep-member-name="'+p.id+'" value="'+esc(p.name)+'" maxlength="80"></label><label class="ws-field">Level<input data-ep-member-level="'+p.id+'" type="number" min="1" max="20" value="'+p.level+'"></label></div>').join('')+'<button type="button" class="ws-button" id="epSuggest">Use suggested reference level ('+contract.recommendPartyLevel(members)+')</button>':'';
+    node.onchange=event=>{
+      const input=event.target.closest('[data-ep-member-name],[data-ep-member-level]');if(!input||busy)return;
+      const candidate=clone(state.encounter),p=candidate.partyMembers.find(p=>p.id===(input.dataset.epMemberName||input.dataset.epMemberLevel));
+      if(input.dataset.epMemberName)p.name=input.value;else p.level=Number(input.value);
+      try{state.encounter=contract.normalizeEncounter(candidate);persist();renderBudget();config?.onChange?.();document.dispatchEvent(new CustomEvent('saeroth-session-change'));node.querySelector('#epSuggest').textContent='Use suggested reference level ('+contract.recommendPartyLevel(candidate.partyMembers)+')';}
+      catch(error){report(error.message,true);renderMembers();}
+    };
+    const suggest=node.querySelector('#epSuggest');if(suggest)suggest.onclick=()=>{state.encounter.partyLevel=contract.recommendPartyLevel(state.encounter.partyMembers);changed();};
+  }
   function renderBudget(){
     const result=contract.calculateEncounter(state.encounter),node=host.querySelector('#epBudget');
     node.innerHTML='<div class="ep-budget-head"><div><span class="ws-small ws-muted">Encounter XP</span><strong>'+ (result.budgeted?number(result.totalXP):number(result.knownXP)+' + ?')+' <small>/ '+result.budget+' target</small></strong></div><span class="ep-difficulty">'+esc(result.difficulty.label)+'</span></div>'+
       '<div class="ep-thresholds">'+result.thresholds.map(t=>'<span class="'+(t.target===state.encounter.target?'is-target':'')+'">'+label(t.target)+' <b>'+t.xp+'</b></span>').join('')+'</div>'+
       '<p class="ws-small">'+(result.budgeted?(result.remainingXP>=0?number(result.remainingXP)+' XP remaining to '+state.encounter.target+' target.':number(-result.remainingXP)+' XP over '+state.encounter.target+' target.')+' Estimated award: <strong>'+number(result.awardXP)+' XP per character</strong>.':'Difficulty and award are unknown until all opponents are within the supported level range.')+'</p>'+
-      (result.unbudgeted.length?'<p class="ep-error ws-small">Outside the XP table: '+result.unbudgeted.map(r=>esc(r.name)+' (level '+r.level+')').join(', ')+'. Their XP is not counted as zero.</p>':'')+'<small class="ws-muted">Matches Foundry PF2e · five-character default</small>';
+      (result.unbudgeted.length?'<p class="ep-error ws-small">Outside the XP table: '+result.unbudgeted.map(r=>esc(r.name)+' (level '+r.level+')').join(', ')+'. Their XP is not counted as zero.</p>':'')+(result.memberAwards.length?'<p class="ws-small">Reference level '+state.encounter.partyLevel+' · '+result.effectivePartySize+' equivalent characters for budgeting.</p><ul class="ws-small">'+result.memberAwards.map(p=>'<li>'+esc(p.name)+' · level '+p.level+' · '+(p.awardXP===null?'unbudgeted':p.awardXP+' XP'+(p.multiplier===2?' (catch-up)':''))+'</li>').join('')+'</ul>':'')+'<small class="ws-muted">Standard proficiency · Foundry PF2e budget profile</small>';
   }
   function renderRoster(){
     const node=host.querySelector('#epRoster'),math=contract.calculateEncounter(state.encounter);
-    node.innerHTML=state.encounter.roster.length?'<ul class="ep-roster">'+state.encounter.roster.map(entry=>{const row=math.rows.find(x=>x.id===entry.id);return '<li><div><strong>'+esc(entry.name)+'</strong><small>Level '+entry.level+' · '+(entry.source.type==='campaign'?'Saeroth':'PF2e')+' · '+(row.xp===null?'Unbudgeted':row.xp+' XP each')+'</small></div><label class="ep-quantity">Count<input type="number" min="1" max="40" step="1" data-ep-count="'+entry.id+'" value="'+entry.count+'" aria-label="Count of '+esc(entry.name)+'"></label><button type="button" class="ws-button" data-ep-remove="'+entry.id+'" aria-label="Remove '+esc(entry.name)+'">Remove</button></li>';}).join('')+'</ul>':'<p class="ep-empty ws-small ws-muted">No opponents yet. Search the creature libraries below.</p>';
-    node.onchange=event=>{const input=event.target.closest('[data-ep-count]');if(!input||busy)return;const candidate=clone(state.encounter),entry=candidate.roster.find(r=>r.id===input.dataset.epCount);if(!entry)return;entry.count=Number(input.value);try{contract.normalizeEncounter({...candidate,placements:[]});state.encounter=candidate;changed();}catch(error){report(error.message,true);renderRoster();}};
+    node.innerHTML=state.encounter.roster.length?'<ul class="ep-roster">'+state.encounter.roster.map(entry=>{const row=math.rows.find(x=>x.id===entry.id);return '<li><div><strong>'+esc((entry.adjustment?label(entry.adjustment)+' ':'')+entry.name)+'</strong><small>Level '+contract.adjustedCreatureLevel(entry.level,entry.adjustment)+' · '+(entry.source.type==='campaign'?'Saeroth':'PF2e')+' · '+(row.xp===null?'Unbudgeted':row.xp+' XP each')+'</small></div><label class="ep-quantity">Version<select data-ep-adjust="'+entry.id+'" aria-label="Version of '+esc(entry.name)+'">'+['','elite','weak'].map(a=>'<option value="'+a+'" '+((entry.adjustment||'')===a?'selected':'')+'>'+label(a||'standard')+'</option>').join('')+'</select></label><label class="ep-quantity">Count<input type="number" min="1" max="40" step="1" data-ep-count="'+entry.id+'" value="'+entry.count+'" aria-label="Count of '+esc(entry.name)+'"></label><button type="button" class="ws-button" data-ep-remove="'+entry.id+'" aria-label="Remove '+esc(entry.name)+'">Remove</button></li>';}).join('')+'</ul>':'<p class="ep-empty ws-small ws-muted">No opponents yet. Search the creature libraries below.</p>';
+    node.onchange=event=>{const input=event.target.closest('[data-ep-count],[data-ep-adjust]');if(!input||busy)return;const candidate=clone(state.encounter),entry=candidate.roster.find(r=>r.id===(input.dataset.epCount||input.dataset.epAdjust));if(!entry)return;if(input.dataset.epCount)entry.count=Number(input.value);else{if(input.value)entry.adjustment=input.value;else delete entry.adjustment;const duplicate=candidate.roster.find(r=>r!==entry&&contract.entryKey(r)===contract.entryKey(entry));if(duplicate){duplicate.count+=entry.count;candidate.roster=candidate.roster.filter(r=>r!==entry);}}try{contract.normalizeEncounter({...candidate,placements:[]});state.encounter=candidate;changed();}catch(error){report(error.message,true);renderRoster();}};
     node.onclick=event=>{const button=event.target.closest('[data-ep-remove]');if(!button||busy)return;state.encounter.roster=state.encounter.roster.filter(r=>r.id!==button.dataset.epRemove);changed();};
   }
   async function loadCatalog(){
@@ -120,12 +138,12 @@
     if(!host||!ready)return;const node=host.querySelector('#epResults');host.querySelector('#epRetry').hidden=!catalogWarning;
     if(!catalogPromise){node.innerHTML='<p class="ws-small ws-muted">Creature libraries load when you open this planner.</p>';return;}
     const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();const words=normalize(query).trim().split(/\s+/).filter(Boolean);
-    const matches=catalog.filter(r=>(sourceFilter==='all'||r.source.type===sourceFilter)&&(!nearLevel||Math.abs(r.level-state.encounter.partyLevel)<=4)&&words.every(w=>normalize(r.name).includes(w)));
+    const matches=catalog.filter(r=>(sourceFilter==='all'||r.source.type===sourceFilter)&&(()=>{try{const level=contract.adjustedCreatureLevel(r.level,variantFilter||null);return !nearLevel||Math.abs(level-state.encounter.partyLevel)<=4;}catch(_){return false;}})()&&words.every(w=>normalize(r.name).includes(w)));
     const rows=matches.slice(0,20);host.querySelector('#epCatalogStatus').textContent=[catalogWarning,matches.length+' matches'+(matches.length>20?' · showing the first 20; refine your search.':'.')].filter(Boolean).join(' ');
-    node.innerHTML=rows.length?rows.map((row,index)=>'<div class="ep-result"><span><strong>'+esc(row.name)+'</strong><small>Level '+row.level+' · '+(row.source.type==='campaign'?'Saeroth':esc(row.book||'PF2e compendium'))+'</small></span><button type="button" class="ws-button" data-ep-add="'+index+'" aria-label="Add '+esc(row.name)+'">Add</button></div>').join(''):'<p class="ws-small ws-muted">No matching creatures. Try a shorter name or include other levels.</p>';
+    node.innerHTML=rows.length?rows.map((row,index)=>'<div class="ep-result"><span><strong>'+esc((variantFilter?label(variantFilter)+' ':'')+row.name)+'</strong><small>Level '+contract.adjustedCreatureLevel(row.level,variantFilter||null)+' · '+(row.source.type==='campaign'?'Saeroth':esc(row.book||'PF2e compendium'))+'</small></span><button type="button" class="ws-button" data-ep-add="'+index+'" aria-label="Add '+esc((variantFilter?label(variantFilter)+' ':'')+row.name)+'">Add</button></div>').join(''):'<p class="ws-small ws-muted">No matching creatures. Try a shorter name or include other levels.</p>';
     node.onclick=event=>{const button=event.target.closest('[data-ep-add]');if(!button||busy)return;const row=rows[Number(button.dataset.epAdd)];if(!row)return;
-      const candidate=clone(state.encounter),existing=candidate.roster.find(e=>contract.sourceKey(e.source)===contract.sourceKey(row.source));
-      if(existing)existing.count++;else{const bytes=crypto.getRandomValues(new Uint8Array(10));candidate.roster.push({id:'e'+Array.from(bytes,n=>n.toString(16).padStart(2,'0')).join(''),name:row.name,level:row.level,count:1,width:row.width,height:row.height,source:clone(row.source)});}
+      const candidate=clone(state.encounter),adjustment=variantFilter||undefined,existing=candidate.roster.find(e=>contract.entryKey(e)===contract.entryKey({...row,adjustment}));
+      if(existing)existing.count++;else{const bytes=crypto.getRandomValues(new Uint8Array(10));candidate.roster.push({id:'e'+Array.from(bytes,n=>n.toString(16).padStart(2,'0')).join(''),name:row.name,level:row.level,count:1,width:row.width,height:row.height,source:clone(row.source),...(adjustment?{adjustment}:{})});}
       try{contract.normalizeEncounter({...candidate,placements:[]});state.encounter=candidate;changed();report(row.name+' added.');}catch(error){report(error.message,true);}
     };
   }
@@ -170,7 +188,7 @@
     await initialized;if(!captured?.encounter.roster.length)return null;
     return contract.normalizeEncounter({...clone(captured.encounter),placements:[]});
   }
-  function summary(){return {ready,error:ready?'':storageWarning,opponents:state.encounter.roster.reduce((n,r)=>n+r.count,0),sheets:state.encounter.roster.length,sources:state.encounter.roster.map(r=>contract?contract.sourceKey(r.source):'')};}
+  function summary(){return {ready,error:ready?'':storageWarning,opponents:state.encounter.roster.reduce((n,r)=>n+r.count,0),sheets:state.encounter.roster.length,sources:state.encounter.roster.map(r=>contract?contract.entryKey(r):'')};}
   async function validatePreset(value){await math();const encounter=contract.normalizeEncounter(value);if(encounter.placements.length)throw Error('Prepared encounters must begin without placements.');return encounter;}
   async function addPrepared(value){await initialized;state.encounter=await validatePreset(value);state.staging=false;state.mapSignature='';changed();report('Prepared encounter added. Its roster can be adjusted before export.');}
   window.addEventListener('storage',event=>{

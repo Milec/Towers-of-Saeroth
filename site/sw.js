@@ -2,7 +2,7 @@
    campaign/ is small (under 1 MB) so it is precached in full and works fully
    offline. vault/ is ~192 MB across 41k files, so it is cached lazily as pages
    are actually opened — anything you have read once stays available offline. */
-const VERSION = 'v165';
+const VERSION = 'v166';
 const PREFIX = 'saeroth-' + new URL(self.registration.scope).pathname + '-';
 const SHELL = PREFIX + 'shell-' + VERSION;
 const NOTES = PREFIX + 'notes';
@@ -13,6 +13,7 @@ const SHELL_FILES = [
   'shell.css', 'workspace.js', 'workspace.css', 'reader.js', 'reader.css', 'search.js', 'search.css',
   'session-export.js', 'session-export.css', 'session-package.mjs', 'session-actors.json', 'session-presets.json',
   'encounter-planner.js', 'encounter-planner.css', 'encounter-plan.mjs',
+  'preparation-generators.js', 'preparation-generators.css', 'preparation-generators.mjs',
   'session-prep.js', 'session-library.js', 'session-library.css', 'session-library-model.mjs', 'session-library-store.mjs',
   'vendor/purify.min.js', 'sanitize.js',
   'editor-asset.js', 'editor-images.js', 'editor.js', 'editor.css', 'publisher.js',

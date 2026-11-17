@@ -6,13 +6,32 @@ player ancestries as a native PF2e Item compendium. The
 initial build discovers five existing campaign statblocks, including Skinwright,
 The Cream Man, Wenzel Grauth, Garrick Thorne, and Ashwin Devaraj.
 
-## Session Inbox (0.4.0)
+## Session Inbox (0.5.0)
 
 The GM website can export one session package containing a journal, selected
 Saeroth NPC references, and an optional encounter roster. The **Session
 Inbox** imports that file through Foundry's document APIs. It requires this module
 enabled in a PF2e world on **Foundry VTT 14.364 or newer**. It does not require the
 MCP bridge, a relay token, or a Script macro.
+
+Version 3 packages add mixed-level parties, native elite/weak opponents, and
+generated loot, merchants, and named NPCs. Versions 1 and 2 retain their prior
+identities and remain supported. Update the module to **0.5.0** before importing
+the new features.
+
+The website's **Generators** shortcut exports loot or shop stock as native
+PF2e loot actors, with **Merchant** selected for shops. Physical items and coins
+are copied from `pf2e.equipment-srd` using validated Item UUIDs and quantities.
+NPC generation copies a published humanoid profile and adds the generated name
+and GM notes. The import preview lists generated inventory and character details.
+Each generated package snapshot has its own actor identities; importing the
+same completed file again does not duplicate or reset its sheets.
+
+Adjusted opponents are separate actors keyed by source and adjustment. The
+native PF2e adjustment flag controls their statistics; current HP is initialized
+with the corresponding adjustment. Existing normal or adjusted world sheets
+are reused only when the source and version match. Mixed-party journals include
+the reference party level, individual levels, and catch-up XP estimates.
 
 ### Prepare and import
 

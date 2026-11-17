@@ -6,6 +6,8 @@ import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {sealPackage,validatePackage,normalizePackage,LIMITS,documentIdentity} from './session-package.mjs';
 import {createSessionInbox} from './session-inbox.mjs';
+import {adjustedCreatureLevel} from './encounter-plan.mjs';
+import {COINS} from './preparation-generators.mjs';
 const require=createRequire(import.meta.url);
 const {JSDOM}=require('../../tools/atlas-tests/node_modules/jsdom');
 const MODULE='saeroth-pf2e-content';
@@ -30,12 +32,62 @@ function addCorePack(h) {
  const actor=new h.classes.Actor({_id:'orcveteran000001',name:'Orc Veteran',type:'npc',img:'icons/svg/mystery-man.svg',flags:{},system:{details:{level:{value:1}},attributes:{hp:{value:20,max:20}}},prototypeToken:{width:1,height:1,actorLink:true,hidden:false,disposition:1,texture:{src:'icons/svg/mystery-man.svg'}},items:[]});
  h.env.game.packs.set('pf2e.monster-core',{documentName:'Actor',getDocument:async id=>id===actor.id?actor:null});return actor;
 }
+
+test('v3 imports native elite and weak sheets independently and keeps the original actor unchanged',async()=>{
+ const h=harness();addCorePack(h);
+ const source=await h.env.game.packs.get('pf2e.monster-core').getDocument('orcveteran000001');
+ const existing=new h.classes.Actor({...source.toObject(),_id:'originalCore0001',_stats:{compendiumSource:coreUuid},system:{details:{level:{value:1}},attributes:{hp:{value:1,max:20}}}});
+ h.collections.Actor.set(existing.id,existing);const before=JSON.stringify(existing.toObject()),sourceBefore=JSON.stringify(source.toObject());
+ const raw=encounterPackage({staged:false});raw.version=3;raw.actors=[];
+ raw.encounter.partySize=4;raw.encounter.partyMembers=Array.from({length:4},(_,i)=>({id:'pc'+i,name:'PC '+i,level:i===0?1:2}));
+ raw.encounter.roster=['','elite','weak'].map((adjustment,i)=>({id:'row'+i,name:'Orc Veteran',level:1,count:1,width:1,height:1,source:{type:'compendium',uuid:coreUuid},...(adjustment?{adjustment}:{})}));
+ const bundle=await sealPackage(raw);const preview=await h.api.preview(bundle);assert.equal(preview.encounter.partyMembers[0].level,1);assert.equal(h.calls.create.length,0);
+ await h.api.import(bundle);assert.equal(h.collections.Actor.size,3);
+ const elite=[...h.collections.Actor.values()].find(a=>a.system.attributes.adjustment==='elite'),weak=[...h.collections.Actor.values()].find(a=>a.system.attributes.adjustment==='weak');
+ assert.equal(elite.level,2);assert.equal(elite.system.attributes.hp.value,30);assert.equal(weak.level,-1);assert.equal(weak.system.attributes.hp.value,10);
+ assert.equal(JSON.stringify(existing.toObject()),before);assert.equal(JSON.stringify(source.toObject()),sourceBefore);
+ const journal=[...h.collections.JournalEntry.values()][0];
+ assert.match(journal.data.pages.at(-1).text.content,/PC 0[\s\S]*catch-up/);
+ assert.equal((await h.api.import(bundle)).duplicate,true);assert.equal(h.collections.Actor.size,3);
+});
+
+test('v3 generated shop and loot import real inventory and coins with no source mutations',async()=>{
+ const h=harness();const itemId='nativeitem000001',uuid='Compendium.pf2e.equipment-srd.Item.'+itemId;
+ const sources=new Map([[itemId,{_id:itemId,name:'Test blade',type:'weapon',system:{quantity:1,price:{value:{gp:2}},containerId:null}}],
+  ...Object.entries(COINS).map(([coin,key])=>[key.split('.').at(-1),{_id:key.split('.').at(-1),name:coin+' coins',type:'treasure',system:{quantity:1,category:'coin',price:{value:{[coin]:1}},containerId:null}}])]);
+ const before=JSON.stringify([...sources]);h.env.game.packs.set('pf2e.equipment-srd',{documentName:'Item',getDocument:async id=>sources.has(id)?{toObject:()=>clone(sources.get(id))}:null});
+ const raw=rawPackage();raw.version=3;raw.assets=[];raw.scene=null;raw.actors=[];raw.journal.pages[0].text.content='<p>Generated inventory</p>';
+ raw.preparations=['shop','loot'].map(kind=>({id:kind,kind,name:kind+' test',level:3,description:'Prepared stock.',items:[{uuid,name:'Test blade',quantity:2,priceCp:200}],coins:{gp:4,sp:3,cp:2,pp:0}}));
+ const bundle=await sealPackage(raw);const preview=await h.api.preview(bundle);assert.equal(preview.actors.length,2);assert.equal(preview.preparations.length,2);assert.equal(h.calls.create.length,0);
+ await h.api.import(bundle);assert.equal(h.collections.Actor.size,2);
+ for(const actor of h.collections.Actor.values()){
+  assert.equal(actor.type,'loot');assert.equal(actor.data.ownership.default,0);
+  assert.equal(actor.system.lootSheetType,actor.name.startsWith('shop')?'Merchant':'Loot');
+  assert.equal(actor.data.items.find(i=>i.type==='weapon').system.quantity,2);
+  assert.equal(actor.data.items.find(i=>i.name==='gp coins').system.quantity,4);
+  assert.equal(new Set(actor.data.items.map(i=>i._id)).size,actor.data.items.length);
+ }
+ assert.equal(JSON.stringify([...sources]),before);assert.equal((await h.api.import(bundle)).duplicate,true);
+});
+
+test('v3 missing item packs block all writes; named NPCs retain their native embedded item identities',async()=>{
+ const h=harness();addCorePack(h);const raw=rawPackage();raw.version=3;raw.assets=[];raw.scene=null;raw.actors=[];raw.journal.pages[0].text.content='<p>Generated NPC</p>';
+ const profile=await h.env.game.packs.get('pf2e.monster-core').getDocument('orcveteran000001');
+ profile.data.items=[{_id:'castingEntry0001',name:'Casting',type:'spellcastingEntry',system:{}},{_id:'generatedSpell01',name:'Spell',type:'spell',system:{location:{value:'castingEntry0001'}}}];
+ raw.preparations=[{id:'npc',kind:'npc',name:'New name',level:1,description:'Wants a quiet life. Will not abandon a friend. <script>no()</script>',source:{type:'compendium',uuid:coreUuid},baseName:'Orc Veteran'}];
+ const bundle=await sealPackage(raw);await h.api.import(bundle);
+ const actor=[...h.collections.Actor.values()][0];assert.equal(actor.name,'New name');assert(!actor.system.details.privateNotes.includes('<script>'));assert(actor.system.details.privateNotes.includes('&lt;script&gt;'));
+ assert.deepEqual(actor.data.items.map(i=>i._id),profile.data.items.map(i=>i._id));
+ assert.equal(actor.data.items[1].system.location.value,actor.data.items[0]._id);
+ const missing=harness(),stock=clone(raw);stock.preparations=[{id:'loot',kind:'loot',name:'Treasure',level:3,description:'Test loot',items:[{uuid:COINS.gp,name:'Gold',quantity:2,priceCp:100}],coins:{gp:0,sp:0,cp:0,pp:0}}];
+ await assert.rejects(missing.api.preview(await sealPackage(stock)),/Missing native Item/);assert.equal(missing.calls.create.length,0);
+});
 function harness(options={}) {
  const collections={Actor:new Map(),JournalEntry:new Map(),Scene:new Map(),Token:new Map()},calls={create:[],delete:[],upload:[],validation:[],decode:0,browse:0,tokenParents:[]},failures={...options};let sequence=0;
  class Doc {
   constructor(type,data){this.documentName=type;this.data=clone(data);this.id=data._id;this.uuid=type+'.'+this.id;}
   get flags(){return this.data.flags??{};}get name(){return this.data.name;}get type(){return this.data.type;}
-  get system(){return this.data.system;}get level(){return this.data.system?.details?.level?.value;}get prototypeToken(){return this.data.prototypeToken;}get img(){return this.data.img;}get _stats(){return this.data._stats;}
+  get system(){return this.data.system;}get level(){const n=this.data.system?.details?.level?.value;return n===undefined?n:adjustedCreatureLevel(n,this.data.system?.attributes?.adjustment??null);}get prototypeToken(){return this.data.prototypeToken;}get img(){return this.data.img;}get _stats(){return this.data._stats;}
   get tokens(){return this.data.tokens??[];}
   async getTokenDocument(overrides,context){calls.tokenParents.push(context.parent);const data={...clone(this.data.prototypeToken??{}),...clone(overrides),delta:{}};if(failures.tokenDimensions)data.width=failures.tokenDimensions;return new classes.Token(data);}
   toObject(){return clone(this.data);}
