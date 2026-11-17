@@ -51,8 +51,13 @@
     return result;
   }
 
+  function updateNotes(value) {
+    notes = value; byPath = new Map(notes.map(n => [n.p, n]));
+    sessionMeta.clear();
+  }
+
   async function configure(options) {
-    config = options; notes = options.notes || []; byPath = new Map(notes.map(n => [n.p, n]));
+    config = options; updateNotes(options.notes || []);
     await window.SaerothSessionPrep?.recover(options.base || './');
     key = 'saeroth-workspace-v1:' + new URL(options.base || './', location.href).pathname;
     let raw = '';
@@ -511,5 +516,5 @@
     if(host?.querySelector('#wsTitle')) {host.querySelector('#wsTitle').value=saved.title;host.querySelector('#wsNotes').value=saved.notes;}
     refreshLists();refreshNoteActions();updateSaveStatus();
   }
-  window.SaerothWorkspace = { configure, mount, dispose, visit, decorateNote, sessionSnapshot, sessionEntries, commitSession };
+  window.SaerothWorkspace = { configure, updateNotes, mount, dispose, visit, decorateNote, sessionSnapshot, sessionEntries, commitSession };
 })();

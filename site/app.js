@@ -302,9 +302,44 @@ marked.use({ extensions: [wikilink, highlight], renderer, gfm: true, breaks: fal
 
 /* ------------------------------------------------------------- rendering */
 async function fetchNote(path) {
-  const res = await fetch(BASE + 'content/' + path.split('/').map(encodeURIComponent).join('/'));
+  const res = await fetch(BASE + 'content/' + path.split('/').map(encodeURIComponent).join('/'),
+    path.startsWith('campaign/') ? {cache:'no-cache'} : {});
   if (!res.ok) throw new Error(res.status + ' ' + path);
   return res.text();
+}
+
+function setCampaignIndex(notes) {
+  state.campaign = notes;
+  state.byName.clear(); state.byPath.clear();
+  state.text.clear(); state.links.clear(); state.type.clear();
+  for (const it of notes) {
+    indexEntry(it.p);
+    if (it.body) state.text.set(it.p, it.body);
+    state.links.set(it.p, it.l || []);
+    if (it.t) state.type.set(it.p, it.t);
+  }
+  // A campaign refresh must preserve an already loaded rules index.
+  for (const it of state.vault) indexEntry(it.p);
+}
+
+async function refreshCampaignIndex() {
+  if (!state.campaignRefreshing) {
+    state.campaignRefreshing = (async () => {
+      try {
+        const response = await fetch(BASE + 'index-campaign.json', {cache:'no-cache'});
+        if (!response.ok) return;
+        const index = await response.json();
+        if (!Array.isArray(index.notes) || index.notes.some(n => typeof n?.p !== 'string' || !n.p.startsWith('campaign/') || !n.p.endsWith('.md'))) return;
+        setCampaignIndex(index.notes);
+        window.SaerothWorkspace?.updateNotes(state.campaign);
+        window.SaerothEditor?.configure({notes:state.campaign, fetchNote,
+          parseMarkdown:text => window.SaerothSanitize(marked.parse(text)), resolveImages, resolveTarget, base:BASE});
+        const query = normalize($('filter').value);
+        buildTree(state.campaign.map(n => n.p).filter(p => !query || normalize(p).includes(query)), $('tree'), {open:query ? 9 : 0});
+      } catch (_) { /* Retain the current index when offline or a deployment is incomplete. */ }
+    })().finally(() => { state.campaignRefreshing = null; });
+  }
+  return state.campaignRefreshing;
 }
 
 function frontmatterTable(fm) {
@@ -382,6 +417,12 @@ async function route() {
     return;
   }
   if (target === 'workspace' || target === 'library') {
+    // An open tab can outlive a publication. Refresh before showing its library,
+    // without reconfiguring or reloading the user's personal workspace.
+    if (target === 'library' && state.routed) {
+      await refreshCampaignIndex();
+      if (generation !== routeGeneration) return;
+    }
     window.SaerothWorkspace.mount(el, target);
     if (target === 'library') {
       const actions=document.createElement('div'); actions.className='library-create';
@@ -410,6 +451,11 @@ async function route() {
     const raw = await fetchNote(target);
     if (generation !== routeGeneration) return;
     const { fm, body } = stripFrontmatter(raw);
+    if (target.startsWith('campaign/') && (!state.byPath.has(target) ||
+        [...body.matchAll(/\[\[([^\]\n|#]+)(?:[^\]\n]*)\]\]/g)].some(match => !resolveTarget(match[1])))) {
+      await refreshCampaignIndex();
+      if (generation !== routeGeneration) return;
+    }
     el.classList.remove('wide');   // only a relations note widens the column
     el.innerHTML =
       `<nav class="crumbs">${crumbs(target)}</nav>` +
@@ -2699,14 +2745,8 @@ async function init() {
   document.addEventListener('focusout', restoreShell);
   window.visualViewport?.addEventListener('resize', restoreShell);
 
-  const idx = await (await fetch(BASE + 'index-campaign.json')).json();
-  state.campaign = idx.notes;
-  for (const it of state.campaign) indexEntry(it.p);
-  for (const it of state.campaign) {
-    if (it.body) state.text.set(it.p, it.body);
-    state.links.set(it.p, it.l || []);
-    if (it.t) state.type.set(it.p, it.t);
-  }
+  const idx = await (await fetch(BASE + 'index-campaign.json', {cache:'no-cache'})).json();
+  setCampaignIndex(idx.notes);
   await window.SaerothWorkspace?.configure({notes: state.campaign, fetchNote,
     parseMarkdown: text => window.SaerothSanitize(marked.parse(text)), resolveImages, resolveTarget, base: BASE});
   window.SaerothEditor?.configure({notes: state.campaign, fetchNote,
