@@ -234,6 +234,10 @@ Khazan steppe that three separate riders describe consistently and no envoy has
 been permitted to visit, and something the Cindral wardens have twice declined
 to discuss.
 
+## Undiscovered towers (GM)
+
+- [[Moon Tower]] — in the Vaelic mountains near the expedition camp. Planned as the party's first tower encounter, with **Above** pitch. The expedition and party have not yet found it.
+
 ## Where they come from
 
 The towers are assumed to be new because they were not there a year ago, and
