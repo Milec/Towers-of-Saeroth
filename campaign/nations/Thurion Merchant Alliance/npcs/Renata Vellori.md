@@ -4,7 +4,7 @@ type: npc
 level: 2
 nation: Thurion Merchant Alliance
 role: merchant correspondent attached to the expedition
-status: prep
+status: active
 foundry-item-ids: alphanumeric
 token-image: "Renata%20Vellori%20token.png"
 portrait-prompt: "A composed human woman in her thirties serving as a merchant correspondent at a mountain expedition, deep brown skin, dark curly hair held back by a narrow green scarf, sharp thoughtful eyes, a weathered dark green travelling coat over a plain ivory shirt, leather document satchel, ink-stained fingers holding a closed dispatch folio with a small red wax seal and no readable writing, observant dry expression, a simple camp writing desk and canvas tent in the background, framed from the waist up"
@@ -12,7 +12,7 @@ portrait-prompt: "A composed human woman in her thirties serving as a merchant c
 
 ![Portrait of Renata Vellori](Renata%20Vellori%20portrait.png)
 
-*Proposed NPC for [[Session 5 Prep - The Search Camp]]. Her introduction and the reports described here have not happened in play.*
+*Introduced in [[Session 5 Play - The Broken Bridge]] as the Thurion representative at camp. The reports, proposed agreements, and dialogue below have not been confirmed in play.*
 
 Renata reports on the expedition for a Thurion commercial office. Her dispatches concern spending, missing shipments, and whether the search is likely to produce anything worth the money. She writes down the speaker's name before their statement, a habit that makes some people more careful and others much louder.
 

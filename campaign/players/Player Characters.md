@@ -7,7 +7,7 @@ Character notes are filed under player names. Four backstories have been
 supplied so far; Ellie and Mary's entries still contain their initial
 character summaries.
 
-**Current party:** five characters at level 2. Mary is no longer in the active party.
+**Current party:** five characters at level 3, following [[Session 5 Play - The Broken Bridge]]. Mary is no longer in the active party.
 
 - [[Bobby]] — Belithûr Brightforge, dwarven runesmith and merchant from Stoneborn Holds; seeking his own standing beside his gifted elder brother.
 - [[Ellie]] — half-Jotun, half-human giant instinct barbarian from Nordheim; raider and a Jarl's daughter.
