@@ -8,3 +8,4 @@ type: index
 Campaign locations added through the atlas are linked here after review.
 
 - [[Expedition Site]]
+- [[Moon Tower]]
