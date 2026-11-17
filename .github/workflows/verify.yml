@@ -62,6 +62,23 @@ jobs:
           python -m http.server 8899 --directory _site > /tmp/saeroth-preview.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
+          python - <<'PY'
+          import time
+          import urllib.error
+          import urllib.request
+
+          deadline = time.monotonic() + 15
+          while True:
+              try:
+                  with urllib.request.urlopen('http://127.0.0.1:8899/', timeout=1) as response:
+                      if response.status == 200:
+                          break
+              except (urllib.error.URLError, TimeoutError):
+                  pass
+              if time.monotonic() >= deadline:
+                  raise SystemExit('Preview server did not become ready within 15 seconds.')
+              time.sleep(0.1)
+          PY
           node tools/atlas-tests/browser.cjs
           node tools/atlas-tests/audits.cjs
           node tools/atlas-tests/handouts.cjs
