@@ -19,7 +19,7 @@ character: Aurèle Lamora
 
 ## Session developments
 
-In [[Session 5 Play - The Broken Bridge]], the party paid for a gender transformation potion and gave it to Aurèle. Whether Aurèle drank it and any resulting transformation have not been recorded.
+In [[Session 5 Play - The Broken Bridge]], the party paid for a gender transformation potion and force-fed it to Aurèle.
 
 ## GM backstory
 

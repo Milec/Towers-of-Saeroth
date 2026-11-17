@@ -6,7 +6,7 @@ audience: gm
 party: 5 level-2 characters
 ---
 
-**Played recap:** [[Session 5 Play - The Broken Bridge]]. The party met the camp leadership, reached level 3, and left to find [[The Missing Supply Caravan]]. Play ended at a broken bridge after a fight with two trolls and their mother. The quarry recovery below remains unplayed preparation.
+**Played recap:** [[Session 5 Play - The Broken Bridge]]. The party met the camp leadership, reached level 3, and left to find [[The Missing Supply Caravan]]. Play ended at a broken bridge after a fight with two trolls and their mother. Belithûr died to the trolls after being abandoned; four surviving characters remain. The scouts were found dead in the ravine, and the troll was killed. Aurèle was force-fed a gender transformation potion. The quarry recovery below remains unplayed preparation.
 
 ## Original starting position
 

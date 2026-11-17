@@ -13,7 +13,7 @@ The expedition is using this camp to scout the mountains for a tower. The tower 
 
 In [[Session 5 Play - The Broken Bridge]], the party met [[Octavia Sere]], Melisor's expedition leader and surveyor; [[Tavian Calvo]], its quartermaster; and [[Renata Vellori]], the Thurion representative. [[Ashwin Devaraj (The Drink)]] was also present. The party reached level 3.
 
-The camp had only five days of food left when the party was briefed. They spent the night, and the next morning Octavia asked them to look for [[The Missing Supply Caravan]]. The scouts she had already sent had also gone missing. The party departed and ended the session at a broken bridge, where they found the scouting party at the bottom of the ravine.
+The camp had only five days of food left when the party was briefed. They spent the night, and the next morning Octavia asked them to look for [[The Missing Supply Caravan]]. The scouts she had already sent had also gone missing. The party departed and ended the session at a broken bridge, where they found the scouting party dead at the bottom of the ravine. [[Bobby|Belithûr Brightforge]] died to the trolls there after being abandoned.
 
 ## Original preparation
 

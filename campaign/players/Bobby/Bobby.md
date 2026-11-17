@@ -3,6 +3,7 @@ title: Bobby
 type: pc
 player: Bobby
 character: Belithûr Brightforge
+status: deceased
 ---
 
 ## Character overview
@@ -14,6 +15,10 @@ character: Belithûr Brightforge
 - **Homeland:** [[Stoneborn Holds]].
 - **Background:** Merchant.
 - **Weapon:** Gun.
+
+## Death
+
+In [[Session 5 Play - The Broken Bridge]], Belithûr died to the trolls at the broken bridge after being abandoned.
 
 ## GM backstory
 

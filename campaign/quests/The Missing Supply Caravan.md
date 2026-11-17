@@ -3,7 +3,7 @@ title: The Missing Supply Caravan
 type: quest
 status: active
 audience: gm
-party: 5 level-3 characters
+party: 4 level-3 characters
 location: "[[Expedition Site]]"
 ---
 
@@ -13,7 +13,7 @@ In [[Session 5 Play - The Broken Bridge]], the party learned that the expedition
 
 ## Progress
 
-The party left the [[Expedition Site]] and reached a broken bridge. There they fought two trolls and their mother. The missing scouting party was at the bottom of the ravine; their condition has not been recorded.
+The party left the [[Expedition Site]] and reached a broken bridge. There they fought two trolls and their mother. The troll was killed, and [[Bobby|Belithûr Brightforge]] died to the trolls after being abandoned. The missing scouting party was dead at the bottom of the ravine.
 
 The party has not yet located the caravan. Play resumes at the bridge, with the crossing still to be worked out. No reward or recovery terms have been recorded.
 
