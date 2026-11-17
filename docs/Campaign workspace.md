@@ -144,6 +144,20 @@ remaining budget, actual threat range, and estimated award for each character.
 The actor picker above the planner is still useful for camp staff and other
 NPCs who are not opponents; selecting their sheets does not add their XP.
 
+Enable **Set each character’s level** to enter names and individual levels.
+The party-level field remains the reference for XP costs; **Use suggested
+reference level** applies the GM Core guidance, and the GM can choose another
+reference. A single PC at least two levels ahead of an otherwise equal-level
+party adds one equivalent character per two levels for budgeting. Characters
+below the reference level receive double the estimated award. These remain
+estimates; no character XP is changed in Foundry.
+
+Choose **Standard**, **Elite**, or **Weak** when adding a creature, or change
+its version in the roster. Different versions can coexist. XP uses the adjusted
+level, including PF2e's low-level exceptions. Foundry imports adjusted versions
+as separate native sheets and applies its elite/weak mechanics; it does not
+change the original actor or compendium document.
+
 The standard creature list contains 1,705 references from the installed PF2e
 8.5.0 Monster Core, Monster Core 2, NPC Core, Bestiaries 1–3, and NPC Gallery.
 Only names, levels, traits, footprints, and source references are shipped on
@@ -169,9 +183,47 @@ replaced.
 device. Restore previews the incoming plan before replacing the local one.
 This is separate from the campaign desk backup and does not synchronize devices
 automatically. A session export includes the encounter in version 2 of the
-package; module 0.4.0 imports its actor sheets and adds a roster journal page. Version 1
+package, or version 3 when individual levels or creature adjustments are used.
+Version 3 requires module **0.5.0**; uniform standard encounters still work with
+module 0.4.0. Version 1
 packages remain supported. Reimporting a completed package does not reset tokens
 or existing actor state.
+
+### Generating loot, shops, and NPCs
+
+Use the **Generators** session shortcut or expand **Generate loot, shops, and
+NPCs** below the current session. Data loads on first use. Each tool keeps its
+latest result and settings in this browser, separately from saved session
+versions. **New roll** changes the seed; entering the same seed and options
+reproduces the result.
+
+- **Loot** uses a chosen percentage of the GM Core whole-level treasure value,
+  proportionally scaled for party size. Select item count, theme, and rarity
+  ceiling. Remaining value becomes coins. This is a value-budget tool; it does
+  not claim to enforce the table's complete permanent/consumable item-slot mix.
+- **Shop** filters stock by settlement level, specialty, and rarity, with
+  editable quantities and merchant funds. Prices retain the native item's
+  listed quantity, including ammunition sold in bundles.
+- **NPC** rolls a name, motive, boundary, and mannerism. It prefers published
+  NPC profiles matching the role, using another humanoid profile when needed.
+  A native elite or weak adjustment fills levels without an exact profile.
+  The output identifies the underlying sheet; generated descriptions are prep,
+  not automatically added campaign canon.
+
+**Export to Foundry** downloads a version-3 Saeroth package for the current
+result. **Export all generated content** combines the latest loot, shop, and
+NPC results. Both include GM journal pages and require module **0.5.0 or newer**.
+Use the existing **Import Saeroth Session** preview in Foundry. Loot becomes a
+native loot actor; a shop becomes a native Merchant loot actor with physical
+items and coins; an NPC is copied from its published profile. Source packs and
+existing world actors remain unchanged. Nothing is sold, distributed, or
+published automatically.
+
+Item metadata is pinned to PF2e 8.5.0, with 5,496 priced native equipment
+references. Foundry resolves complete items from its installed equipment pack.
+If the pack or a source document is missing, the import stops before creating
+content. Update the system and preview again. The native sheet supplies the
+installed item's mechanics and price.
 
 The prepared expedition now includes one Orc Commander and two Orc Veterans:
 100 XP, Moderate for five level-2 PCs, with an 80 XP award per character if XP is

@@ -79,7 +79,7 @@
       '<button class="ws-button ws-primary sp-export" type="button" id="spExport">Download session package</button><button class="ws-button sp-cancel" type="button" id="spCancel" hidden>Cancel export</button>' +
       '<p id="spStatus" role="status" aria-live="polite"></p><p id="spStorage" class="ws-small ws-muted"></p>' +
       '<div id="spDownloads" class="sp-downloads"></div><button class="ws-button" type="button" id="spRecovery" hidden>Download selection recovery</button>' +
-      '<details class="ws-help"><summary>Import this package into Foundry</summary><ol><li>Enable <strong>Towers of Saeroth PF2e Content 0.4.0 or newer</strong> for encounter packages in your Foundry v14 world. Packages without encounters still work with 0.3.0.</li><li>Open <strong>Import Saeroth Session</strong> from Scenes or Journals and choose this JSON file.</li><li>Review the notes, NPCs, and encounter, then import. Artwork travels inside the package.</li></ol><p>Selected campaign NPCs must be available in your Saeroth compendiums; standard creatures use your installed PF2e packs. Update the module or use <strong>Sync Saeroth Content</strong> if the preview reports a missing campaign sheet.</p></details>';
+      '<details class="ws-help"><summary>Import this package into Foundry</summary><ol><li>Enable <strong>Towers of Saeroth PF2e Content 0.4.0 or newer</strong> for encounter packages in your Foundry v14 world. Packages without encounters still work with 0.3.0.</li><li>Open <strong>Import Saeroth Session</strong> from Scenes or Journals and choose this JSON file.</li><li>Review the notes, NPCs, and encounter, then import. Artwork travels inside the package.</li></ol><p>Mixed-level parties and elite or weak versions require Saeroth module 0.5.0 or newer. Selected campaign NPCs must be available in your Saeroth compendiums; standard creatures use your installed PF2e packs. Update the module or use <strong>Sync Saeroth Content</strong> if the preview reports a missing campaign sheet.</p></details>';
     host.querySelector('#spActorSearch').oninput = renderActors;
     host.querySelector('#spExport').onclick = exportPackage;
     host.querySelector('#spCancel').onclick = () => {exportController?.abort();status('Cancelling export…');};
@@ -317,7 +317,8 @@
       if(signal.aborted||ticket!==generation)return;
       status('Checking the package…');
       const encounter=await window.SaerothEncounterPlanner?.exportEncounter(chosenEncounter);
-      const data={format:'saeroth-session',version:encounter?2:1,name:draft.title.trim()||'Saeroth session',createdAt:new Date().toISOString(),assets:assets.map(({bytes,...asset})=>asset),journal,actors,...(encounter?{encounter}:{})};
+      const advanced=encounter&&(encounter.partyMembers||encounter.roster.some(r=>r.adjustment));
+      const data={format:'saeroth-session',version:advanced?3:encounter?2:1,name:draft.title.trim()||'Saeroth session',createdAt:new Date().toISOString(),assets:assets.map(({bytes,...asset})=>asset),journal,actors,...(encounter?{encounter}:{})};
       const sealed=await format.sealPackage(data),blob=new Blob([JSON.stringify(sealed)],{type:'application/json'});
       if(blob.size>format.LIMITS.maxFileBytes)throw Error('The package is too large. Remove an illustrated note.');
       if(signal.aborted||ticket!==generation)return;

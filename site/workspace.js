@@ -167,6 +167,7 @@
     el.onclick = handleClick;
     if (view === 'library') bindLibrary(); else bindWorkspace();
     if (view === 'workspace') window.SaerothSessionExport?.mount(el.querySelector('#wsFoundryPackage'));
+    if (view === 'workspace') window.SaerothGenerators?.mount(el.querySelector('#gmGeneratorHost'), {base:config.base});
     if (view === 'workspace') {
       window.SaerothSessionLibrary?.mount(el.querySelector('#wsSessionLibrary'));
     }
@@ -182,6 +183,7 @@
   }
 
   function dispose() {
+    window.SaerothGenerators?.unmount();
     generation++;
     window.SaerothSessionExport?.unmount();
     window.SaerothSessionLibrary?.unmount();
@@ -202,6 +204,7 @@
           <button type="button" data-ws-action="jump-section" data-target="wsReferences">Notes</button>
           <button type="button" data-ws-action="jump-section" data-target="wsFoundryPackage">NPCs</button>
           <button type="button" data-ws-action="jump-section" data-target="epPanel">Encounter</button>
+          <button type="button" data-ws-action="jump-section" data-target="gmGeneratorsPanel">Generators</button>
           <button type="button" data-ws-action="jump-section" data-target="spExport">Foundry ${icon('download')}</button>
         </nav>
         <label class="ws-field" for="wsTitle">Session title<input id="wsTitle" type="text" maxlength="100" value="${esc(saved.title)}" placeholder="Name this session"></label>
@@ -233,6 +236,7 @@
           </details>
         </div>
       </section>
+      <details id="gmGeneratorsPanel" class="ws-section ws-disclosure"><summary>Generate loot, shops, and NPCs</summary><div id="gmGeneratorHost"></div></details>
     </div>
     <aside class="ws-secondary-column" aria-label="Campaign shortcuts">
       <section class="ws-section" aria-labelledby="wsStoryHeading"><div class="ws-section-head"><div><p class="ws-eyebrow">Campaign record</p><h2 id="wsStoryHeading">Where we left off</h2></div></div><div id="wsLatest" class="ws-latest"><p class="ws-muted">Loading session records…</p></div><a class="ws-read" href="#/library" data-ws-action="sessions">All session records ${icon('arrow')}</a></section>
@@ -363,7 +367,7 @@
     if (action === 'pin') togglePin(path);
     else if (action === 'board') addBoard(path);
     else if (action === 'jump-section') {
-      const targets = ['wsReferences', 'wsChecklist', 'wsFoundryPackage', 'spActorPicker', 'spSelectedActors', 'spCatalogRetry', 'epPanel', 'epPlacement', 'spExport'];
+      const targets = ['wsReferences', 'wsChecklist', 'wsFoundryPackage', 'spActorPicker', 'spSelectedActors', 'spCatalogRetry', 'epPanel', 'epPlacement', 'spExport', 'gmGeneratorsPanel'];
       const id = button.dataset.target;
       if (!targets.includes(id)) return;
       const target = host.querySelector('#' + id);

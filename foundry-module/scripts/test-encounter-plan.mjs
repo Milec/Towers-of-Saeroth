@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {TARGETS,RULES_PROFILE,ENCOUNTER_LIMITS,normalizeEncounter,sourceKey,calculateCreatureXP,encounterBudget,calculateEncounter} from './encounter-plan.mjs';
+import {TARGETS,RULES_PROFILE,ENCOUNTER_LIMITS,normalizeEncounter,sourceKey,entryKey,adjustedCreatureLevel,recommendPartyLevel,calculateCreatureXP,encounterBudget,calculateEncounter} from './encounter-plan.mjs';
 import {normalizePackage,sealPackage,validatePackage,documentIdentity,ENCOUNTER_VERSION} from './session-package.mjs';
 
 const copy=structuredClone;
@@ -18,7 +18,7 @@ test('published creature costs and Foundry party-size budgets match the verified
   assert.deepEqual(TARGETS.map(t=>encounterBudget(t,5)),[50,75,100,150,200]);
   assert.deepEqual(TARGETS.map(t=>encounterBudget(t,6)),[60,90,120,180,240]);
   assert.equal(encounterBudget('low',1),15,'Explicit Foundry profile avoids the printed GM Core solo Low=0 result');
-  for(const args of [[NaN,2],[0,0],[26,2],[2.5,2],[2,21]])assert.throws(()=>calculateCreatureXP(...args));
+  for(const args of [[NaN,2],[0,0],[27,2],[2.5,2],[2,21]])assert.throws(()=>calculateCreatureXP(...args));
   for(const args of [['high',5],['low',0],['low',1.5],['low',13]])assert.throws(()=>encounterBudget(...args));
 });
 
@@ -89,8 +89,28 @@ test('v2 packages bind the complete roster and party assumptions to their identi
   assert.equal(sealed.version,2);assert.equal(sealed.encounter.rulesProfile,RULES_PROFILE);assert.deepEqual(await validatePackage(sealed),sealed);
   for(const change of [p=>p.encounter.partySize=6,p=>p.encounter.roster[0].count=3,p=>p.encounter.roster[0].level=2,p=>p.encounter.target='low']){const changed=copy(sealed);change(changed);await assert.rejects(validatePackage(changed),/changed/);}
   assert.equal((await sealPackage({...raw,createdAt:'2026-11-08T00:00:00Z'})).id,sealed.id);
-  for(const bad of [{...raw,encounter:undefined},{...raw,encounter:plan({roster:[]})},{...raw,version:3}])assert.throws(()=>normalizePackage(bad));
+  for(const bad of [{...raw,encounter:undefined},{...raw,encounter:plan({roster:[]})},{...raw,version:4}])assert.throws(()=>normalizePackage(bad));
   const excessive={...raw,actors:Array.from({length:50},(_,i)=>({key:'campaign/npcs/NPC '+i+'.md',name:'NPC '+i}))};assert.throws(()=>normalizePackage(excessive),/50 different actors/);
   const fullJournal=copy(raw);fullJournal.journal.pages=Array.from({length:100},()=>copy(raw.journal.pages[0]));assert.throws(()=>normalizePackage(fullJournal),/99 journal pages/);
   fullJournal.journal.pages.pop();assert.equal(normalizePackage(fullJournal).journal.pages.length,99);
+});
+
+test('mixed parties use an explicit reference level, outlier adjustment and individual catch-up awards',()=>{
+  const members=[{id:'a',name:'A',level:3},{id:'b',name:'B',level:3},{id:'c',name:'C',level:3},{id:'d',name:'D',level:7}];
+  assert.equal(recommendPartyLevel(members),3);
+  const result=calculateEncounter(plan({partyLevel:3,partySize:4,partyMembers:members}));
+  assert.equal(result.effectivePartySize,6);assert.equal(result.budget,120);
+  const catchup=calculateEncounter(plan({partyLevel:3,partySize:4,partyMembers:members.map((p,i)=>({...p,level:i===0?2:3}))}));
+  assert.equal(catchup.memberAwards[0].awardXP,catchup.awardXP*2);assert.equal(catchup.memberAwards[1].awardXP,catchup.awardXP);
+  assert.throws(()=>normalizeEncounter(plan({partyMembers:members})),/match/);
+});
+test('elite and weak use native low-level exceptions and remain separate source variants',async()=>{
+  assert.equal(adjustedCreatureLevel(-1,'elite'),1);assert.equal(adjustedCreatureLevel(0,'elite'),2);
+  assert.equal(adjustedCreatureLevel(1,'weak'),-1);assert.equal(adjustedCreatureLevel(2,'weak'),1);
+  assert.throws(()=>adjustedCreatureLevel(-1,'weak'));
+  const p=plan({roster:[row({id:'normal',count:1}),row({id:'elite',count:1,adjustment:'elite'}),row({id:'weak',count:1,adjustment:'weak'})]});
+  assert.equal(normalizeEncounter(p).roster.length,3);assert.equal(new Set(p.roster.map(entryKey)).size,3);
+  assert.equal(calculateEncounter(p).totalXP,85);
+  const raw={...packageFixture(),version:3,encounter:p};assert.equal((await sealPackage(raw)).version,3);
+  assert.throws(()=>normalizePackage({...raw,version:2}),/version 3/);
 });

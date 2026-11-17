@@ -1,9 +1,11 @@
 /** Portable, data-only Saeroth session package contract. No Foundry globals. */
-import {normalizeEncounter,sourceKey} from './encounter-plan.mjs';
+import {normalizeEncounter,entryKey} from './encounter-plan.mjs';
+import {normalizePreparation} from './preparation-generators.mjs';
 export const FORMAT = 'saeroth-session';
 // VERSION remains the default for note/NPC/map packages and their stable IDs.
 export const VERSION = 1;
 export const ENCOUNTER_VERSION = 2;
+export const GENERATOR_VERSION = 3;
 export const MINIMUM_FOUNDRY = '14.364';
 export const LIMITS = Object.freeze({maxAssets:100,maxAssetBytes:20*1024*1024,maxTotalAssetBytes:48*1024*1024,maxFileBytes:72*1024*1024,maxActors:50,maxPages:100,maxHtmlBytes:2*1024*1024,maxWalls:2000,maxLights:100});
 const encoder = new TextEncoder();
@@ -114,7 +116,7 @@ function sceneFrom(value,ids) {
 }
 export function normalizePackage(value) {
   checkStructure(value);object(value,'Package');
-  if(value.format!==FORMAT||![VERSION,ENCOUNTER_VERSION].includes(value.version))throw Error('Choose a Saeroth session package, version 1 or 2.');
+  if(value.format!==FORMAT||![VERSION,ENCOUNTER_VERSION,GENERATOR_VERSION].includes(value.version))throw Error('Choose a Saeroth session package, version 1, 2, or 3.');
   if(value.version===VERSION&&Object.hasOwn(value,'encounter'))throw Error('Encounter plans require session package version 2 and Saeroth module 0.4.0 or newer.');
   const assets=assetsFrom(value.assets??[]),ids=new Set(assets.map(a=>a.id));const keys=new Set();
   const actors=list(value.actors??[],'actors',LIMITS.maxActors).map(a=>{
@@ -124,12 +126,22 @@ export function normalizePackage(value) {
   });
   const createdAt=text(value.createdAt,'creation time',40);if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/.test(createdAt)||!Number.isFinite(Date.parse(createdAt)))throw Error('Invalid package creation time.');
   const normalized={format:FORMAT,version:value.version,name:text(value.name,'session name'),createdAt,assets,journal:journalFrom(value.journal,ids),actors,scene:sceneFrom(value.scene,ids)};
-  if(value.version===ENCOUNTER_VERSION){
+  if(value.version<GENERATOR_VERSION&&(value.preparations!==undefined||value.encounter?.partyMembers!==undefined||value.encounter?.roster?.some(r=>r.adjustment)))throw Error('Mixed parties, adjusted creatures, and generators require package version 3 and Saeroth module 0.5.0 or newer.');
+  if(value.version===ENCOUNTER_VERSION||value.version===GENERATOR_VERSION&&value.encounter){
     normalized.encounter=normalizeEncounter(value.encounter,normalized.scene);
     if(!normalized.encounter.roster.length)throw Error('Add at least one creature to an encounter package.');
     if(normalized.journal.pages.length>=LIMITS.maxPages)throw Error(`Encounter packages allow at most ${LIMITS.maxPages-1} journal pages, reserving one for the opponent roster.`);
-    const allSources=new Set([...actors.map(actor=>actor.key),...normalized.encounter.roster.map(row=>sourceKey(row.source))]);
+    const allSources=new Set([...actors.map(actor=>actor.key),...normalized.encounter.roster.map(entryKey)]);
     if(allSources.size>LIMITS.maxActors)throw Error(`A session package can reference at most ${LIMITS.maxActors} different actors.`);
+  }
+  if(value.version===GENERATOR_VERSION){
+    const ids=new Set();
+    normalized.preparations=list(value.preparations??[],'Generated preparations',10).map(raw=>{
+      const p=normalizePreparation(raw);if(ids.has(p.id))throw Error('Generated preparation IDs must be unique.');ids.add(p.id);return p;
+    });
+    if(!normalized.encounter&&!normalized.preparations.length)throw Error('Add generated content or an encounter to a version 3 package.');
+    const sources=new Set([...actors.map(a=>a.key),...(normalized.encounter?.roster??[]).map(entryKey)]);
+    if(sources.size+normalized.preparations.length>LIMITS.maxActors)throw Error('Too many actor sheets in this package.');
   }
   return normalized;
 }

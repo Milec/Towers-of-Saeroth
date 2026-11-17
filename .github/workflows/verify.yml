@@ -36,6 +36,7 @@ jobs:
           node tools/atlas-tests/encounter-catalog.cjs
           node tools/atlas-tests/session-library-model.cjs
           node --test foundry-module/scripts/test-encounter-plan.mjs
+          node --test foundry-module/scripts/test-preparation-generators.mjs
           python tools/lint_notes.py
           python tools/sync_relations.py --check
           python tools/sync_faith.py --check
@@ -98,5 +99,6 @@ jobs:
           node tools/atlas-tests/panels.cjs
           node tools/atlas-tests/session-package.cjs
           node tools/atlas-tests/encounter-planner.cjs
+          node tools/atlas-tests/generators.cjs
           node tools/atlas-tests/session-library.cjs
           node tools/atlas-tests/session-library-model.cjs --browser

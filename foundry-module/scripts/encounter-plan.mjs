@@ -50,6 +50,22 @@ function sourceFrom(source) {
   throw Error('Choose a campaign creature or a PF2e Actor compendium source.');
 }
 export function sourceKey(source) {const ref=sourceFrom(source);return ref.type==='campaign'?ref.key:ref.uuid;}
+export function entryKey(row) {return sourceKey(row.source)+(row.adjustment?':'+row.adjustment:'');}
+export function adjustedCreatureLevel(level,adjustment=null) {
+  integer(level,'base creature level',-1,25);
+  if(![null,'elite','weak'].includes(adjustment))throw Error('Choose standard, elite, or weak.');
+  const result=adjustment==='elite'?level+(level<1?2:1):adjustment==='weak'?level-(level===1?2:1):level;
+  if(result < -1)throw Error('A level −1 creature cannot be made weak.');
+  return result;
+}
+export function recommendPartyLevel(members) {
+  const levels=members.map(p=>integer(p.level,'character level',1,20));
+  if(!levels.length)throw Error('Add at least one character.');
+  const high=Math.max(...levels),lower=levels.filter(n=>n!==high);
+  if(levels.length>1&&levels.filter(n=>n===high).length===1&&lower.every(n=>n===lower[0])&&high-lower[0]>=2)return lower[0];
+  if(lower.length<=2&&levels.filter(n=>n===high).length>lower.length)return high;
+  return Math.round(levels.reduce((a,b)=>a+b,0)/levels.length);
+}
 
 /** A boundary wall may touch a footprint; it may not pass through its interior. */
 function crossesInterior(c,rect) {
@@ -84,16 +100,27 @@ export function normalizeEncounter(value,scene=null,{allowPartialPlacements=fals
   if(value.rulesProfile!==undefined&&value.rulesProfile!==RULES_PROFILE)throw Error('Unsupported encounter rules profile.');
   const name=text(value.name,'encounter name');
   const partyLevel=integer(value.partyLevel,'party level',1,20),partySize=integer(value.partySize,'party size',1,12);
+  let partyMembers;
+  if(value.partyMembers!==undefined){
+    const memberIds=new Set();
+    partyMembers=list(value.partyMembers,'Party members',12).map(member=>{
+      object(member,'Party member');const id=text(member.id,'character ID',64);
+      if(!/^[a-z0-9_-]+$/i.test(id)||memberIds.has(id))throw Error('Character IDs must be unique.');memberIds.add(id);
+      return {id,name:text(member.name,'character name',80),level:integer(member.level,'character level',1,20)};
+    });
+    if(partyMembers.length!==partySize)throw Error('The individual character list must match the party size.');
+  }
   if(!TARGETS.includes(value.target))throw Error('Choose a valid encounter target.');
   const ids=new Set(),sources=new Set();let units=0;
   const roster=list(value.roster,'Encounter roster',ENCOUNTER_LIMITS.maxEntries).map(entry=>{
     object(entry,'Creature row');const id=text(entry.id,'roster ID',64);
     if(!/^[a-z0-9][a-z0-9_-]{0,63}$/.test(id)||ids.has(id))throw Error('Encounter roster IDs must be unique lower-case identifiers.');ids.add(id);
-    const source=sourceFrom(entry.source),key=sourceKey(source);
+    const source=sourceFrom(entry.source),adjustment=entry.adjustment??null,key=entryKey({source,adjustment});
+    adjustedCreatureLevel(entry.level,adjustment);
     if(sources.has(key))throw Error('Each creature source can appear only once; increase its quantity instead.');sources.add(key);
     const count=integer(entry.count,'creature quantity',1,ENCOUNTER_LIMITS.maxUnits);units+=count;
     if(units>ENCOUNTER_LIMITS.maxUnits)throw Error(`An encounter can contain at most ${ENCOUNTER_LIMITS.maxUnits} opponents.`);
-    return {id,name:text(entry.name,'creature name'),level:integer(entry.level,'creature level',-1,25),count,width:footprint(entry.width,'token width'),height:footprint(entry.height,'token height'),source};
+    return {id,name:text(entry.name,'creature name'),level:integer(entry.level,'creature level',-1,25),count,width:footprint(entry.width,'token width'),height:footprint(entry.height,'token height'),source,...(adjustment?{adjustment}:{})};
   });
   const input=list(value.placements??[],'Opponent placements',ENCOUNTER_LIMITS.maxUnits);
   if(input.length&&!scene)throw Error('Choose a battle map before placing opponents.');
@@ -112,11 +139,11 @@ export function normalizeEncounter(value,scene=null,{allowPartialPlacements=fals
     if(geometry.walls.some(wall=>crossesInterior(wall.c,rect)))throw Error(`${entry.name} crosses a movement-blocking wall.`);
     rectangles.push(rect);return {entryId,instance,x,y};
   });
-  return {rulesProfile:RULES_PROFILE,name,partyLevel,partySize,target:value.target,roster,placements};
+  return {rulesProfile:RULES_PROFILE,name,partyLevel,partySize,...(partyMembers?{partyMembers}:{}),target:value.target,roster,placements};
 }
 
 export function calculateCreatureXP(level,partyLevel) {
-  integer(level,'creature level',-1,25);integer(partyLevel,'party level',1,20);
+  integer(level,'creature level',-1,26);integer(partyLevel,'party level',1,20);
   const delta=level-partyLevel;return delta>=-4&&delta<=4?costs[delta+4]:null;
 }
 export function encounterBudget(target,partySize) {
@@ -135,10 +162,14 @@ function difficultyFor(total,thresholds) {
 export function calculateEncounter(value) {
   // Calculations deliberately ignore placements; in-progress drafts can still be budgeted.
   const encounter=normalizeEncounter({...value,placements:[]});
-  const thresholds=TARGETS.map(target=>({target,xp:encounterBudget(target,encounter.partySize)}));
-  const rows=encounter.roster.map(row=>{const xp=calculateCreatureXP(row.level,encounter.partyLevel);return {id:row.id,delta:row.level-encounter.partyLevel,xp,totalXP:xp===null?null:xp*row.count,count:row.count};});
-  const unbudgeted=rows.filter(row=>row.xp===null).map(row=>{const entry=encounter.roster.find(e=>e.id===row.id);return {id:row.id,name:entry.name,level:entry.level,delta:row.delta};});
+  const members=encounter.partyMembers||[],ahead=members.filter(p=>p.level>=encounter.partyLevel+2);
+  const extra=members.length>1&&ahead.length===1&&members.filter(p=>p!==ahead[0]).every(p=>p.level===encounter.partyLevel)?Math.floor((ahead[0].level-encounter.partyLevel)/2):0;
+  const effectivePartySize=encounter.partySize+extra;
+  const thresholds=TARGETS.map(target=>({target,xp:perCharacter[target]*effectivePartySize}));
+  const rows=encounter.roster.map(row=>{const level=adjustedCreatureLevel(row.level,row.adjustment),xp=calculateCreatureXP(level,encounter.partyLevel);return {id:row.id,delta:level-encounter.partyLevel,xp,totalXP:xp===null?null:xp*row.count,count:row.count};});
+  const unbudgeted=rows.filter(row=>row.xp===null).map(row=>{const entry=encounter.roster.find(e=>e.id===row.id);return {id:row.id,name:entry.name,level:adjustedCreatureLevel(entry.level,entry.adjustment),delta:row.delta};});
   const knownXP=rows.reduce((sum,row)=>sum+(row.totalXP??0),0),budgeted=unbudgeted.length===0,totalXP=budgeted?knownXP:null;
-  const budget=encounterBudget(encounter.target,encounter.partySize),estimatedAwardXP=budgeted?totalXP*4/encounter.partySize:null;
-  return {rulesProfile:RULES_PROFILE,totalXP,knownXP,budget,remainingXP:budgeted?budget-totalXP:null,estimatedAwardXP,awardXP:budgeted?Math.floor(estimatedAwardXP):null,budgeted,unbudgeted,difficulty:difficultyFor(totalXP,thresholds),rows,thresholds};
+  const budget=perCharacter[encounter.target]*effectivePartySize,estimatedAwardXP=budgeted?totalXP*4/effectivePartySize:null;
+  const memberAwards=members.map(p=>({...p,multiplier:p.level<encounter.partyLevel?2:1,awardXP:budgeted?Math.floor(estimatedAwardXP)*(p.level<encounter.partyLevel?2:1):null}));
+  return {rulesProfile:RULES_PROFILE,totalXP,knownXP,budget,remainingXP:budgeted?budget-totalXP:null,estimatedAwardXP,awardXP:budgeted?Math.floor(estimatedAwardXP):null,effectivePartySize,memberAwards,budgeted,unbudgeted,difficulty:difficultyFor(totalXP,thresholds),rows,thresholds};
 }

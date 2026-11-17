@@ -8,6 +8,7 @@ Run commands from the repository root. See [Living Atlas integration](../docs/Li
 | Atlas lore, positions and terrain tiles | `build_atlas_lore.py`, `build_atlas_tiles.py` |
 | Districts and seats | `build_subprovinces.py`, `build_district_seats.py`, `check_subprovinces.py` |
 | Shared POIs and campaign notes | `atlas_additions.py`, `build_campaign_pois.py`, `test_campaign_pois.py` |
+| Generator item metadata | `build_generator_catalog.py PF2E_SOURCE_TAR_GZ` |
 | Campaign consistency | `lint_notes.py`, `sync_relations.py`, `sync_faith.py` |
 | Handout and PDF export | `make_handout.py`, `topdf.js` |
 | Website icons | `make_icons.py`, `rasterize.js` |
@@ -18,3 +19,11 @@ Run commands from the repository root. See [Living Atlas integration](../docs/Li
 The old Azgaar generator, brief exporter, backdrop renderer and downsampling script are retired. Their code and generation guide remain available in Git history before this cleanup. They do not generate the current Living Atlas.
 
 Keep `atlas-source/` and the native map downloads: they are source/reference assets, not obsolete tools. Nation positions are built into `_site/nation-positions.json` from current atlas territories, rather than committed as a stale duplicate in `site/`.
+
+`site/generator-items.json` is generated metadata from the public
+`foundryvtt/pf2e` **pf2e-8.5.0** source archive, plus the local GM Core treasure
+table. Download that tag's tar.gz and pass its local path to
+`python3 tools/build_generator_catalog.py`. It records native equipment UUIDs,
+levels, traits, rarity, listed prices and price quantities. Full item documents
+are resolved from the installed PF2e equipment compendium during Foundry import.
+The source archive is a local build input and is not committed.

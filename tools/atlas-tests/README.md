@@ -35,6 +35,13 @@ pending-revision recovery, and rejection of unsafe or unrelated image changes.
 
 These tests do not import scenes into a running Foundry world.
 
+`node generators.cjs` exercises mixed-level parties, native elite/weak encounter
+exports, loot/shop/NPC generation, combined version-3 packages, stock editing,
+persistence, and phone/desktop themes. Data-only generator and native import
+tests run under `foundry-module/scripts/test-preparation-generators.mjs` and
+`test-session-inbox.mjs`; installed Foundry schema checks remain conditional on
+local Foundry classes being available.
+
 `pnpm run test:session-package` checks the Campaign desk's one-file session export
 through the real browser UI. It selects notes and NPCs;
 validates the downloaded package with the shared Foundry contract; and verifies
