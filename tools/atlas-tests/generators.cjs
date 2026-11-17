@@ -39,6 +39,12 @@ async function set(page,id,value){const input=page.locator(id);await input.fill(
    await page.locator('#gg-kind').selectOption('alchemical');await set(page,'#gg-seed','browser-shop');
    await page.getByRole('button',{name:'Generate shop',exact:true}).click();
    const quantity=page.locator('[data-gg-quantity]').first();await quantity.fill('4');await quantity.dispatchEvent('change');
+   await page.locator('.gg-table').evaluate(node=>node.scrollTop=200);
+   const middle=page.locator('[data-gg-quantity]').nth(5);await middle.focus();
+   const stockScroll=await page.locator('.gg-table').evaluate(node=>node.scrollTop);
+   await middle.fill('3');await middle.dispatchEvent('change');
+   assert.equal(await page.locator('.gg-table').evaluate(node=>node.scrollTop),stockScroll,'Editing stock must preserve the list scroll position.');
+   assert.equal(await page.locator('[data-gg-quantity]').nth(5).evaluate(node=>document.activeElement===node),true);
    const shop=await download(page,page.locator('#ggExport'));await format.validatePackage(shop);assert.equal(shop.preparations[0].kind,'shop');assert.equal(shop.preparations[0].items[0].quantity,4);
    await page.getByRole('tab',{name:'NPC',exact:false}).click();await set(page,'#gg-name','Fixture NPC');await set(page,'#gg-level',20);
    await page.getByRole('button',{name:'Generate NPC',exact:true}).click();
