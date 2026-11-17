@@ -7,9 +7,8 @@ Character notes are filed under player names. Four backstories have been
 supplied so far; Ellie and Mary's entries still contain their initial
 character summaries.
 
-**Current party:** five characters at level 2. Mary is no longer in the active party.
+**Current party:** four surviving characters at level 3, following Belithûr's death in [[Session 5 Play - The Broken Bridge]]. Mary is no longer in the active party.
 
-- [[Bobby]] — Belithûr Brightforge, dwarven runesmith and merchant from Stoneborn Holds; seeking his own standing beside his gifted elder brother.
 - [[Ellie]] — half-Jotun, half-human giant instinct barbarian from Nordheim; raider and a Jarl's daughter.
 - [[Liam]] — Aurèle Lamora, half-human, half-elf Spellshot gunslinger from Quivar; engineer and minor noble's son rebuilding his life after a magitech accident.
 - [[Isaiah]] — Victarion Venelux, Sanguinor Nephilim exemplar; carries Death and Divinity. His backstory draft currently covers his early childhood.
@@ -17,4 +16,5 @@ character summaries.
 
 ## Former player characters
 
+- [[Bobby]] — Belithûr Brightforge, dwarven runesmith and merchant from Stoneborn Holds; died to the trolls after being abandoned in Session 5.
 - [[Mary]] — Yasmin Al-Amin, human summoner from Qeshara Sultanate. Her character notes and appearances in past sessions are retained.

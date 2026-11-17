@@ -17,6 +17,10 @@ character: Aurèle Lamora
 - **Training:** Arcane theory in Melisor, engineering in Silicar, and service in the Quivari reserve musketeers.
 - **Appearance:** Missing his right arm, replaced by a mechanical prosthesis; burn scars across his ribs and side.
 
+## Session developments
+
+In [[Session 5 Play - The Broken Bridge]], the party paid for a gender transformation potion and force-fed it to Aurèle.
+
 ## GM backstory
 
 - [[Aurèle Lamora Backstory|Read Aurèle Lamora's full GM backstory]]

@@ -185,6 +185,7 @@
   }
 
   function workspaceHTML() {
+    const party = notes.filter(n => n.t === 'pc' && !['inactive', 'deceased'].includes(n.status));
     return `<header class="ws-hero ws-desk-hero">
       <div><p class="ws-eyebrow">Towers of Saeroth · GM workspace</p><h1>Campaign desk</h1><p class="ws-intro">Your next session, from first notes to the Foundry table.</p></div>
       <div class="ws-hero-actions"><a class="ws-button" href="#/library">${icon('book')}Campaign library</a><a class="ws-atlas-preview" href="#/atlas"><img src="${esc((config.base || '') + 'atlas/political.webp')}" alt="" loading="lazy" decoding="async"><span>${icon('map')}Living Atlas ${icon('arrow')}</span></a></div>
@@ -232,7 +233,7 @@
       <section class="ws-section" aria-labelledby="wsStoryHeading"><div class="ws-section-head"><div><p class="ws-eyebrow">Campaign record</p><h2 id="wsStoryHeading">Where we left off</h2></div></div><div id="wsLatest" class="ws-latest"><p class="ws-muted">Loading session records…</p></div><a class="ws-read" href="#/library" data-ws-action="sessions">All session records ${icon('arrow')}</a></section>
       <section class="ws-section"><div class="ws-section-head"><h2>${icon('pin')}Pinned notes</h2><span id="wsPinCount" class="ws-count"></span></div><div id="wsPins"></div></section>
       <section class="ws-section"><div class="ws-section-head"><h2>${icon('clock')}Recently opened</h2></div><div id="wsRecent"></div></section>
-      <details class="ws-section ws-disclosure"><summary>The party <span class="ws-count">${notes.filter(n => n.t === 'pc' && n.status !== 'inactive').length} players</span></summary><div class="ws-party">${notes.filter(n => n.t === 'pc' && n.status !== 'inactive').map(n => `<a href="${href(n.p)}"><span class="ws-monogram" aria-hidden="true">${esc(title(n.p).slice(0, 1))}</span><span>${esc(title(n.p))}<small>${esc(n.summary?.slice(0, 85) || 'Character notes & backstory')}</small></span>${icon('arrow')}</a>`).join('')}</div></details>
+      <details class="ws-section ws-disclosure"><summary>The party <span class="ws-count">${party.length} players</span></summary><div class="ws-party">${party.map(n => `<a href="${href(n.p)}"><span class="ws-monogram" aria-hidden="true">${esc(title(n.p).slice(0, 1))}</span><span>${esc(title(n.p))}<small>${esc(n.summary?.slice(0, 85) || 'Character notes & backstory')}</small></span>${icon('arrow')}</a>`).join('')}</div></details>
       <details class="ws-section ws-disclosure"><summary>Earlier preparation</summary><p class="ws-muted ws-small">Plans may differ from what happened. Session records remain authoritative.</p><div id="wsPrep"></div></details>
       <details class="ws-section ws-backup ws-disclosure"><summary>Desk settings &amp; older backups</summary><p class="ws-muted ws-small">Includes pins, recent entries, and draft notes. For a complete session with NPCs, map, and encounter, use Backups &amp; transfer in the current session.</p><div class="ws-backup-actions"><button class="ws-button" type="button" data-ws-action="backup">${icon('download')}Download desk backup</button><button class="ws-button" type="button" data-ws-action="import">Import desk backup</button><input id="wsImportFile" type="file" accept="application/json,.json" hidden></div><p id="wsImportStatus" class="ws-small" role="status"></p></details>
     </aside></div>`;

@@ -27,6 +27,8 @@ Drink.
 - **Won't** Set the sword down to get it. Every archmage who's offered him a
   seat in exchange has meant it as a condition, not a courtesy.
 
+**Last seen:** At the [[Expedition Site]] during [[Session 5 Play - The Broken Bridge]].
+
 ```pf2e-stats
 # Ashwin Devaraj (The Drink)
 ## Creature 6

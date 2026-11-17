@@ -6,6 +6,57 @@ const base = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8899/';
 const sourcePath = 'campaign/npcs/Karoline.md';
 const prepPath = 'campaign/sessions/Session 4 Prep - The Mountain Road.md';
 const route = note => '#/' + note.split('/').map(encodeURIComponent).join('/');
+// Campaign records change after play. Use controlled records to verify ordering
+// and membership instead of freezing CI to a particular session or party size.
+async function assertCampaignRecords(browser) {
+  const note = (title, t, status, audience) => ({
+    p: `campaign/${t === 'session' ? 'sessions' : 'players'}/${title}.md`,
+    title, t, status, audience, body: title.toLowerCase(), summary: title, l: [],
+  });
+  const older = note('Session 9 Play - Older Fixture', 'session', 'played', 'players');
+  const gm = note('Session 10 Play - GM Fixture', 'session', 'played', 'gm');
+  const recap = note('Session 10 Play - Player Fixture', 'session', 'played', 'players');
+  const future = note('Session 12 Prep - Future Fixture', 'session', 'prep', 'gm');
+  const newer = note('Session 11 Play - Newer Fixture', 'session', 'played', 'gm');
+  const legacy = note('Legacy PC Fixture', 'pc');
+  const active = note('Active PC Fixture', 'pc', 'active');
+  const inactive = note('Inactive PC Fixture', 'pc', 'inactive');
+  const deceased = note('Deceased PC Fixture', 'pc', 'deceased');
+  for (const viewport of [{ width: 1440, height: 1000 }, { width: 375, height: 812 }]) {
+    const context = await browser.newContext({ viewport, serviceWorkers: 'block' });
+    try {
+      const page = await context.newPage();
+      let advanced = false;
+      await page.route('**/index-campaign.json', async request => {
+        const response = await request.fetch(), data = await response.json();
+        data.notes = data.notes.filter(n => !['session', 'pc'].includes(n.t)).concat([
+          gm, future, recap, older, active, inactive, deceased,
+          advanced ? { ...legacy, status: 'deceased' } : legacy,
+          ...(advanced ? [newer] : []),
+        ]);
+        await request.fulfill({ json: data });
+      });
+      for (const expected of [recap, newer]) {
+        await page.goto(base);
+        await page.locator('#wsLatest h3 a').waitFor();
+        assert.equal(await page.locator('#wsLatest h3 a').textContent(), expected.title,
+          'Choose the highest played session number, prefer its player recap, and ignore newer prep.');
+        assert.deepEqual(await page.locator('#wsLatest a').evaluateAll(links => links.map(a => a.getAttribute('href'))),
+          [route(expected.p), route(expected.p)], 'Both recap links must open the selected record.');
+        const members = advanced ? [active] : [active, legacy];
+        assert.deepEqual((await page.locator('.ws-party a').evaluateAll(links => links.map(a => a.getAttribute('href')))).sort(),
+          members.map(n => route(n.p)).sort(), 'Exclude inactive and deceased PCs while retaining unmarked and active PCs.');
+        assert.match(await page.locator('details').filter({ has: page.locator('.ws-party') }).locator('summary').innerText(),
+          new RegExp(`\\b${members.length} players\\b`), 'The party count must match the visible roster.');
+        advanced = true;
+      }
+      await page.goto(base + '#/library');
+      await page.locator('#wsLibrarySearch').fill(deceased.title);
+      assert.equal(await page.locator('.ws-library-card h2').textContent(), deceased.title,
+        'Deceased character notes remain available in the library.');
+    } finally { await context.close(); }
+  }
+}
 async function downloaded(page, action) {
   const pending = page.waitForEvent('download'); await action();
   const file = await pending; const content = await fs.readFile(await file.path(), 'utf8'); return JSON.parse(content);
@@ -39,14 +90,14 @@ async function assertJumpNotObscured(page) {
 (async () => {
   const browser = await chromium.launch({ headless: true, ...(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {}) });
   try {
+    await assertCampaignRecords(browser);
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce', serviceWorkers: 'block', acceptDownloads: true });
     const errors = []; page.on('pageerror', e => errors.push(e.message));
     await page.goto(base); await page.getByRole('heading', { name: 'Campaign desk', exact: true }).waitFor();
     await assertCurrentSessionVisible(page);
     await page.locator('#wsLatest a').first().waitFor();
-    assert.match(await page.locator('#wsLatest').innerText(), /Session 4 Play - Waystation WLW/);
-    assert.equal(await page.locator('.ws-party a').count(), 5);
-    assert.equal(await page.locator('.ws-party a').filter({hasText:'Mary'}).count(), 0, 'Inactive characters stay out of the current party');
+    assert.equal(await page.locator('#wsLatest h3 a').getAttribute('href'),
+      await page.locator('#wsLatest .ws-read').getAttribute('href'), 'The live campaign recap links agree.');
     await page.screenshot({ path: path.join(__dirname, '../../_site/workspace-desktop.png'), fullPage: false });
     assert.equal(await page.locator('#epPanel').getAttribute('open'), null);
     await page.locator('.ws-session-nav [data-target="epPanel"]').focus();

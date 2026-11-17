@@ -4,7 +4,7 @@ type: npc
 level: 3
 nation: Melisor Magocracy
 role: expedition quartermaster
-status: prep
+status: active
 foundry-item-ids: alphanumeric
 token-image: "Tavian%20Calvo%20token.png"
 portrait-prompt: "A stocky middle-aged gnome man serving as a mountain expedition quartermaster, warm brown skin, large alert hazel eyes, short copper hair going grey at the temples, square trimmed beard, heavy ochre wool coat with reinforced leather elbows and many practical pockets, a bundle of brass store keys and a chalk tally board without readable marks, patient wary expression, stacked wooden supply crates and coiled rope in a canvas stores tent behind him, framed from the waist up"
@@ -12,7 +12,7 @@ portrait-prompt: "A stocky middle-aged gnome man serving as a mountain expeditio
 
 ![Portrait of Tavian Calvo](Tavian%20Calvo%20portrait.png)
 
-*Proposed NPC for [[Session 5 Prep - The Search Camp]]. His introduction and the stores described here have not happened in play.*
+*Introduced in [[Session 5 Play - The Broken Bridge]] as the expedition quartermaster. Camp had five days of food left when the party was briefed. The quarry stores and recovery terms below remain unplayed preparation, separate from [[The Missing Supply Caravan]].*
 
 Tavian issues the [[Expedition Site]]'s food, rope, tools, and lamp oil. He checks rope by hand while people explain why they need another coil. His ledgers are neat until an emergency, when he writes on his cuffs and transfers the figures before sleeping.
 

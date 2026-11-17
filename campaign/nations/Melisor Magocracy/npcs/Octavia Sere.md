@@ -4,7 +4,7 @@ type: npc
 level: 4
 nation: Melisor Magocracy
 role: expedition leader, cartographer, and surveyor
-status: prep
+status: active
 foundry-item-ids: alphanumeric
 token-image: "Octavia%20Sere%20token.png"
 portrait-prompt: "A middle-aged human woman leading a mountain survey expedition, olive skin, narrow attentive face, dark hair streaked with silver and pinned in a practical knot, weathered charcoal wool field coat over muted blue academic robes, leather gloves, a brass surveying compass in one hand and a rolled map under the other arm, tired but steady expression, canvas command pavilion and indistinct mountain ridges behind her, framed from the waist up"
@@ -12,7 +12,7 @@ portrait-prompt: "A middle-aged human woman leading a mountain survey expedition
 
 ![Portrait of Octavia Sere](Octavia%20Sere%20portrait.png)
 
-*Proposed NPC for [[Session 5 Prep - The Search Camp]]. Her introduction and the camp conversations below have not happened in play.*
+*Introduced in [[Session 5 Play - The Broken Bridge]]. The party learned that camp had five days of food left. After their overnight stay, Octavia asked them to find another missing supply caravan; the scouts she had sent had also gone missing. See [[The Missing Supply Caravan]]. Other scene details below remain preparation unless confirmed in the recap.*
 
 Octavia directs the [[Melisor Magocracy]]'s search from the [[Expedition Site]]. She surveys ground herself and returns with mud on the same boots she wears to meetings. Her maps distinguish a measured route, a witness's account, and a guess. She gets angry when someone copies one into another column.
 

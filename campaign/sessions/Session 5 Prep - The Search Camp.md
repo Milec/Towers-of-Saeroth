@@ -6,13 +6,15 @@ audience: gm
 party: 5 level-2 characters
 ---
 
-## Where play resumes
+**Played recap:** [[Session 5 Play - The Broken Bridge]]. The party met the camp leadership, reached level 3, and left to find [[The Missing Supply Caravan]]. Play ended at a broken bridge after a fight with two trolls and their mother. Belithûr died to the trolls after being abandoned; four surviving characters remain. The scouts were found dead in the ravine, and the troll was killed. Aurèle was force-fed a gender transformation potion. The quarry recovery below remains unplayed preparation.
+
+## Original starting position
 
 The party reached the [[Expedition Site]] at the end of [[Session 4 Play - Waystation WLW]]. [[Karoline]] came with them as an independent person. Wenzel is dead. John Guard, the caravan's horses, and its carts were lost earlier; the party has three tents. Do not replay the waystation or restore the wagons.
 
 The expedition is searching for the tower. It has not found it. The party knows about the cargo-only insurance, the Melisor flask, and the expedition's funding. They believe they were meant to die; that remains their conclusion, not a fact established by this preparation.
 
-Everything after this starting position is **proposed, unplayed preparation**. The three new camp NPCs are available to introduce now. Keep this note as prep until the session actually happens, then record the choices and outcome in a separate recap.
+The material below preserves the **original preparation**, not a record of played events. The three principal camp NPCs were introduced in Session 5; use the separate recap for confirmed conversations and outcomes. Unconfirmed dialogue, offers, character openings, and the quarry job remain proposals.
 
 ## Tonight's focus
 

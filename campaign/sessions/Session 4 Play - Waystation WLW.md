@@ -14,3 +14,5 @@ By morning, they’d been caught stealing. Somehow, they still managed to convin
 After what felt like ages, the party finally reached the [[Expedition Site|expedition site]].
 
 Previous session: [[Session 3 Play - The Mountain Road]].
+
+Next session: [[Session 5 Play - The Broken Bridge]].

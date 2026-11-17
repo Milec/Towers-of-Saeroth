@@ -9,6 +9,8 @@ location: "[[Expedition Site]]"
 
 **Proposed, unplayed recovery job for [[Session 5 Prep - The Search Camp]].** It develops the orc-bandit hook in the unused expedition prep. The theft is separate from the caravan conspiracy. Nothing here establishes that the party was ordered killed or that the tower has been found.
 
+Session 5 instead led to [[The Missing Supply Caravan]], recorded in [[Session 5 Play - The Broken Bridge]]. This quarry job and its rewards remain unplayed; do not apply them to that search.
+
 ## The job
 
 [[Octavia Sere]] needs food and climbing equipment returned to the [[Expedition Site]]. [[Tavian Calvo]] identifies the goods; [[Renata Vellori]] records the agreement. The missing shipment was a local stores run, not one of the destroyed Berruel wagons.
