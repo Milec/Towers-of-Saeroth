@@ -302,7 +302,8 @@ marked.use({ extensions: [wikilink, highlight], renderer, gfm: true, breaks: fal
 
 /* ------------------------------------------------------------- rendering */
 async function fetchNote(path) {
-  const res = await fetch(BASE + 'content/' + path.split('/').map(encodeURIComponent).join('/'));
+  const res = await fetch(BASE + 'content/' + path.split('/').map(encodeURIComponent).join('/'),
+    path.startsWith('campaign/') ? {cache:'no-cache'} : {});
   if (!res.ok) throw new Error(res.status + ' ' + path);
   return res.text();
 }
@@ -2744,7 +2745,7 @@ async function init() {
   document.addEventListener('focusout', restoreShell);
   window.visualViewport?.addEventListener('resize', restoreShell);
 
-  const idx = await (await fetch(BASE + 'index-campaign.json')).json();
+  const idx = await (await fetch(BASE + 'index-campaign.json', {cache:'no-cache'})).json();
   setCampaignIndex(idx.notes);
   await window.SaerothWorkspace?.configure({notes: state.campaign, fetchNote,
     parseMarkdown: text => window.SaerothSanitize(marked.parse(text)), resolveImages, resolveTarget, base: BASE});
