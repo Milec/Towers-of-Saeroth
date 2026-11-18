@@ -34,6 +34,22 @@ She can send a request for the dispatch manifest and cargo policy through her or
 
 For [[The Missing Survey Stores]], she can write the recovery agreement and witness Tavian's count on return. She makes the terms explicit before anyone leaves, including payment for a negotiated recovery.
 
+## Payment for silence (GM prep)
+
+When the party next speaks with Renata at camp, she can offer them a single
+payment from her office to keep the original ambush, including the Magocracy
+flask and the cargo insurance, out of public discussion. She wants to keep the
+story from spreading while the expedition is short on provisions and still
+needs its sponsors.
+
+> “You know whose flask it was, and you know the cargo was insured. My
+> office will pay you to keep what happened on that road private. I'll
+> keep an accurate account in my files.”
+
+State the amount and terms before asking for an answer. The party keeps its
+evidence. If they decline, Renata lets it rest. The search for
+[[The Missing Supply Caravan]] continues either way.
+
 ## Relationships and pressure
 
 - [[Octavia Sere]] thinks Renata reports uncertainty as delay. Renata thinks Octavia promises too much to keep the sponsors patient. Both need the search to continue honestly.
