@@ -34,6 +34,23 @@ She can send a request for the dispatch manifest and cargo policy through her or
 
 For [[The Missing Survey Stores]], she can write the recovery agreement and witness Tavian's count on return. She makes the terms explicit before anyone leaves, including payment for a negotiated recovery.
 
+## A letter from Casa Berruel (GM prep)
+
+[[Casa Berruel]] sends Renata a letter by magic. She hands it to the party
+along with the house's payment. Berruel hopes the gesture will earn
+goodwill and let the matter of the original caravan rest. Let the timing
+carry that implication.
+
+The payment is **60 gp total**, or **15 gp for each of the four surviving
+PCs**. Count it toward the party's level 3 treasure.
+
+> To the survivors of the Berruel consignment,
+>
+> Please accept this payment for the trouble you’ve been put to on the
+> road. We hope our future dealings will be fruitful.
+>
+> Casa Berruel
+
 ## Relationships and pressure
 
 - [[Octavia Sere]] thinks Renata reports uncertainty as delay. Renata thinks Octavia promises too much to keep the sponsors patient. Both need the search to continue honestly.
