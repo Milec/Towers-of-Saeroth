@@ -34,20 +34,19 @@ She can send a request for the dispatch manifest and cargo policy through her or
 
 For [[The Missing Survey Stores]], she can write the recovery agreement and witness Tavian's count on return. She makes the terms explicit before anyone leaves, including payment for a negotiated recovery.
 
-## A letter from Renata (GM prep)
+## A letter from Casa Berruel (GM prep)
 
-Renata sends the party a letter by magic with a payment from her office.
-She hopes the gesture will earn goodwill and let the matter of the original
-caravan rest. Let the timing carry that implication. Set the amount before
-delivery.
+[[Casa Berruel]] sends Renata a letter by magic. She hands it to the party
+along with the house's payment. Berruel hopes the gesture will earn
+goodwill and let the matter of the original caravan rest. Let the timing
+carry that implication. Set the amount before Renata hands it over.
 
 > To the survivors of the Berruel consignment,
 >
-> Please accept this payment from my office for the trouble you’ve been
-> put to on the road. I hope we’ll have occasion to work together again,
-> to our mutual benefit.
+> Please accept this payment for the trouble you’ve been put to on the
+> road. We hope our future dealings will be fruitful.
 >
-> Renata Vellori, Thurion Merchant Alliance
+> Casa Berruel
 
 ## Relationships and pressure
 
