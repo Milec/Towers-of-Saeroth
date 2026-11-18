@@ -39,7 +39,10 @@ For [[The Missing Survey Stores]], she can write the recovery agreement and witn
 [[Casa Berruel]] sends Renata a letter by magic. She hands it to the party
 along with the house's payment. Berruel hopes the gesture will earn
 goodwill and let the matter of the original caravan rest. Let the timing
-carry that implication. Set the amount before Renata hands it over.
+carry that implication.
+
+The payment is **60 gp total**, or **15 gp for each of the four surviving
+PCs**. Count it toward the party's level 3 treasure.
 
 > To the survivors of the Berruel consignment,
 >
