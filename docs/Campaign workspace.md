@@ -94,7 +94,7 @@ PF2e world running **Foundry VTT 14.364 or newer** to import it.
    and NPCs, then choose **Import session**.
 
 For the prepared expedition, expand **Start with prepared expedition content**
-and choose **Add preparation** for **Session 5 — The Search Camp**. It adds the
+and choose **Add preparation** for **Session 6 — The Bandits of Frohn**. It adds the
 session, expedition-site and supply-recovery notes, plus Octavia Sere, Tavian
 Calvo, and Renata Vellori with their actor references. Existing notes, NPC
 selections, checklist, scratchpad, and a custom session title are retained;
@@ -225,10 +225,7 @@ If the pack or a source document is missing, the import stops before creating
 content. Update the system and preview again. The native sheet supplies the
 installed item's mechanics and price.
 
-The prepared expedition now includes one Orc Commander and two Orc Veterans:
-100 XP, Moderate for five level-2 PCs, with an 80 XP award per character if XP is
-used. Its optional encounter selection leaves an existing roster in place unless
-replacement is explicitly selected. NPC portraits and notes remain separate selections.
+The optional Frohn roster uses three level-2 Bandits for five level-3 PCs and their level-4 NPC companion, Karoline. Adding the preparation keeps an existing roster unless the GM selects replacement.
 
 ### Exporting only the journal
 

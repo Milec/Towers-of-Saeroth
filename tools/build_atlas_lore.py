@@ -55,14 +55,26 @@ def build(out):
     custom_paths = {p['notePath'] for p in campaign_pois}
     notes = list((ROOT / 'campaign').rglob('*.md'))
     names = {}
+    burg_notes = {}
+    burg_ids = {b['i'] for b in data['burgs'] if b.get('i') and not b.get('removed')}
     for p in notes:
-        if p.relative_to(ROOT).as_posix() in custom_paths: continue
-        names.setdefault(normal(p.stem), []).append(p.relative_to(ROOT).as_posix())
+        note = p.relative_to(ROOT).as_posix()
+        if note in custom_paths: continue
+        if 'locations' in p.relative_to(ROOT).parts:
+            front = re.match(r'\A---\n(.*?)\n---(?:\n|$)', p.read_text(encoding='utf-8'), re.S)
+            binding = front and re.search(r'^atlas_burg:[ \t]*(.*)$', front[1], re.M)
+            if binding:
+                burg_id = int(binding[1])
+                if burg_id not in burg_ids or burg_id in burg_notes:
+                    raise ValueError(f'Unknown or duplicate atlas_burg {burg_id} in {note}')
+                burg_notes[burg_id] = note
+                continue
+        names.setdefault(normal(p.stem), []).append(note)
     entries, by_note, unmatched = {}, {}, []
-    def add(kind, obj, name, aliases=(), fallback=None):
-        matches = set()
-        for candidate in [name, *aliases]:
-            matches.update(names.get(normal(candidate), []))
+    def add(kind, obj, name, aliases=(), fallback=None, explicit=None):
+        matches = {explicit} if explicit else {
+            path for candidate in [name, *aliases] for path in names.get(normal(candidate), [])
+        }
         key = f'{kind}-{obj["i"]}'
         if len(matches) > 1:
             raise ValueError(f'Ambiguous atlas note: {key}: {sorted(matches)}')
@@ -85,7 +97,7 @@ def build(out):
     for b in data['burgs']:
         nation = entries.get(f'nation-{b.get("state")}', {}).get('note')
         aliases = [b['previousName']] if b.get('previousName') else []
-        add('burg', b, b['name'], aliases, nation)
+        add('burg', b, b['name'], aliases, nation, explicit=burg_notes.get(b['i']))
     marker_notes = {n['id']: n for n in data['notes']}
     for m in data['markers']:
         name = marker_notes.get(f'marker{m["i"]}', {}).get('name', m['type'])

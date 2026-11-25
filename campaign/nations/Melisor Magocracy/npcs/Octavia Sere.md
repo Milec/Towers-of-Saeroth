@@ -30,7 +30,7 @@ Octavia can assign paid recovery work, permit access to the survey table, and gi
 
 She listens to [[Milo Calvetti]] and the party together when they report the caravan's destruction. She wants the surviving witnesses protected and the evidence recorded before accusations reach the sponsors. She does not know who arranged the ambush. In this preparation she is not part of [[Cassian Merovel]]'s scheme.
 
-[[The Missing Survey Stores]] gives her an immediate problem she can put in the party's hands. She needs supplies recovered while her remaining crews keep the camp and search parties running. Prisoners are acceptable; killing the thieves is not a condition of payment.
+Octavia sent scouts after [[The Missing Supply Caravan]]. When they failed to return, she asked the party to find the shipment. Her recovery reward is in [[Session 6 Prep - The Bandits of Frohn]].
 
 ## Relationships and pressure
 

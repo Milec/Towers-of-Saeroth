@@ -32,8 +32,6 @@ Renata asks for [[Milo Calvetti]]'s account and lets the party add theirs. The c
 
 She can send a request for the dispatch manifest and cargo policy through her ordinary commercial contacts. It is a request for a later answer, not instant remote access to a bank. Before introducing any reply, the GM should decide what those records actually establish about the existing conspiracy.
 
-For [[The Missing Survey Stores]], she can write the recovery agreement and witness Tavian's count on return. She makes the terms explicit before anyone leaves, including payment for a negotiated recovery.
-
 ## A letter from Casa Berruel (GM prep)
 
 [[Casa Berruel]] sends Renata a letter by magic. She hands it to the party
