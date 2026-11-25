@@ -67,7 +67,7 @@ export function buildSessionThreeScenes(){
   w.light("Wenzel lamp",928,456);w.light("Rest yard fire",974,782);
 
   const e=make("session-3-expedition","Session 3 — Expedition Search Camp",
-    "The expedition is SEARCHING for the tower; it has not found it. Party enters south; leader receives them in southeast command pavilion (985,800 image px). Sparse southwest stores show the supply problem. Northern trail leads to survey country, not a known tower. Missing food and climbing gear are a proposed recovery hook involving orc bandits, not established past events. No forced combat or NPC blame.");
+    "The expedition is SEARCHING for the tower; it has not found it. Party enters south; leader receives them in southeast command pavilion (985,800 image px). Sparse southwest stores show the supply problem. Northern trail leads to survey country, not a known tower. Octavia asks the party to look for the missing supply caravan and the scouts sent to find it. No forced combat or NPC blame.");
   e.line("Command pavilion canvas",[[908,889],[817,889],[817,683],[1067,683],[1067,889],[977,889]]);
   e.wall("Command pavilion flap",[908,889],[977,889],{door:true,open:true});
   // Tents are solid scenery, not unprepared playable interiors.

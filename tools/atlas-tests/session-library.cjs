@@ -34,7 +34,7 @@ async function openShelf(page){await page.locator('#slShelf').evaluate(node=>nod
  const {createSessionModel}=await import(pathToFileURL(path.join(__dirname,'../../site/session-library-model.mjs')));
  const model=createSessionModel({normalizeEncounter:math.normalizeEncounter});
  const encounter={name:'Roadside rivals',partyLevel:2,partySize:5,target:'moderate',roster:[opponent],placements:[]};
- const seed=model.normalizeSnapshot({version:1,desk:{title:initialTitle,notes:'Ask about the missing survey stores.\nNo fixed outcome.',tasks:[{id:'lighting',text:'Review night lighting',done:true}],board:[john,karoline]},actors:[{key:john,name:'John Guard'}],encounter:{encounter,staging:false,mapSignature:''}});
+ const seed=model.normalizeSnapshot({version:1,desk:{title:initialTitle,notes:'Ask about the missing caravan.\nNo fixed outcome.',tasks:[{id:'lighting',text:'Review night lighting',done:true}],board:[john,karoline]},actors:[{key:john,name:'John Guard'}],encounter:{encounter,staging:false,mapSignature:''}});
  const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
  try{
   const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce',serviceWorkers:'block',acceptDownloads:true}),page=await context.newPage(),errors=[];

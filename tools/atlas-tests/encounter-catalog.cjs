@@ -18,11 +18,12 @@ const {pathToFileURL}=require('node:url');
   assert.equal(row.book,data.packs.find(p=>p.id===row.source.uuid.split('.')[2]).name);
   assert(!Object.hasOwn(row,'system')&&!Object.hasOwn(row,'items')&&!Object.hasOwn(row,'img'),'Catalog holds metadata, not actor documents or artwork');
  }
- const preset=JSON.parse(fs.readFileSync(path.join(root,'site/session-presets.json'),'utf8')).presets.find(p=>p.id==='expedition-arrival-v1');
+ const preset=JSON.parse(fs.readFileSync(path.join(root,'site/session-presets.json'),'utf8')).presets.find(p=>p.id==='frohn-supply-caravan-v1');
  const encounter=normalizeEncounter(preset.encounter);
  for(const row of encounter.roster){const source=data.creatures.find(c=>sourceKey(c.source)===sourceKey(row.source));assert(source,'Preset must resolve in shipped catalog');for(const field of ['name','level','width','height'])assert.equal(row[field],source[field]);}
- const math=calculateEncounter(encounter);assert.equal(encounter.partySize,5);assert.equal(math.totalXP,100);assert.equal(math.budget,100);assert.equal(math.awardXP,80);
- const quest=fs.readFileSync(path.join(root,'campaign/quests/The Missing Survey Stores.md'),'utf8');
- assert(quest.includes('moderate for five level-2 PCs'));assert(quest.includes('**100 XP**'));assert(!quest.includes('| Orc Scrapper |'));
+ const math=calculateEncounter(encounter);assert.equal(encounter.partySize,5);assert.equal(math.totalXP,90);assert.equal(math.budget,100);assert.equal(math.awardXP,72);
+ assert.equal(encounter.partyLevel,3);assert.deepEqual(encounter.roster.map(row=>[row.name,row.count]),[['Bandit',3]]);
+ assert(preset.notes.includes('campaign/quests/The Missing Supply Caravan.md'));
+
  console.log(`Encounter catalog: ${data.creatures.length} native PF2e references and five-player expedition preset validated.`);
 })().catch(e=>{console.error(e);process.exitCode=1;});

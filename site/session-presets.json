@@ -2,13 +2,13 @@
   "schema": 1,
   "presets": [
     {
-      "id": "expedition-arrival-v1",
-      "name": "Session 5 — The Search Camp",
-      "description": "Unplayed expedition arrival and survey-store recovery preparation for five level-2 characters.",
+      "id": "frohn-supply-caravan-v1",
+      "name": "Session 6 — The Bandits of Frohn",
+      "description": "Track the missing caravan and meet the villagers holding its food. The optional combat roster uses three Bandits for five level-3 characters.",
       "notes": [
-        "campaign/sessions/Session 5 Prep - The Search Camp.md",
+        "campaign/sessions/Session 6 Prep - The Bandits of Frohn.md",
         "campaign/nations/Vaelic Principality/locations/Expedition Site.md",
-        "campaign/quests/The Missing Survey Stores.md",
+        "campaign/quests/The Missing Supply Caravan.md",
         "campaign/nations/Melisor Magocracy/npcs/Octavia Sere.md",
         "campaign/nations/Melisor Magocracy/npcs/Tavian Calvo.md",
         "campaign/nations/Thurion Merchant Alliance/npcs/Renata Vellori.md"
@@ -19,14 +19,13 @@
         "campaign/nations/Thurion Merchant Alliance/npcs/Renata Vellori.md"
       ],
       "encounter": {
-        "name": "The Missing Survey Stores",
+        "name": "The Bandits of Frohn",
         "rulesProfile": "foundry-pf2e-8.5",
-        "partyLevel": 2,
+        "partyLevel": 3,
         "partySize": 5,
         "target": "moderate",
         "roster": [
-          {"id": "orc-commander", "name": "Orc Commander", "level": 2, "count": 1, "width": 1, "height": 1, "source": {"type": "compendium", "uuid": "Compendium.pf2e.pathfinder-monster-core.Actor.PLZk6zY5iwccPTPS"}},
-          {"id": "orc-veteran", "name": "Orc Veteran", "level": 1, "count": 2, "width": 1, "height": 1, "source": {"type": "compendium", "uuid": "Compendium.pf2e.pathfinder-monster-core.Actor.V90OYOMyyPLPJuod"}}
+          {"id": "frohn-bandit", "name": "Bandit", "level": 2, "count": 3, "width": 1, "height": 1, "source": {"type": "compendium", "uuid": "Compendium.pf2e.pathfinder-npc-core.Actor.FBq4bqtKUBpJUCMU"}}
         ],
         "placements": []
       }

@@ -19,4 +19,4 @@ The camp had only five days of food left when the party was briefed. They spent 
 
 ## Original preparation
 
-[[Session 5 Prep - The Search Camp]] preserves the arrival preparation and [[The Missing Survey Stores]], a proposed quarry-recovery job that was not played. The principal staff notes include portraits, tokens, and Foundry NPC sheets; unconfirmed scene details remain preparation.
+[[Session 5 Prep - The Search Camp]] covers the arrival at camp. [[Session 6 Prep - The Bandits of Frohn]] covers the supply recovery and the party’s return. The principal staff notes include portraits, tokens, and Foundry NPC sheets; unconfirmed scene details remain preparation.

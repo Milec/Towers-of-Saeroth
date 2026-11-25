@@ -12,7 +12,7 @@ assert(scene.walls.every(w=>w.c.every(n=>Number.isFinite(n)&&n>=0&&n<=3200)));
 const art=fs.readFileSync(new URL('../assets/maps/expedition-supply-recovery.webp',import.meta.url));
 assert.equal(art.toString('ascii',0,4),'RIFF');assert.equal(art.toString('ascii',8,12),'WEBP');
 const presets=JSON.parse(fs.readFileSync(new URL('site/session-presets.json',root)));
-const preset=presets.presets.find(p=>p.id==='expedition-arrival-v1');assert(preset);
+const preset=presets.presets.find(p=>p.id==='frohn-supply-caravan-v1');assert(preset);
 assert.equal(preset.map,undefined,'Prepared sessions no longer select a generated battle map');
 for(const note of preset.notes)assert(fs.existsSync(new URL(note,root)),`Missing preparation note: ${note}`);
 const feed=JSON.parse(fs.readFileSync(new URL('../content/saeroth-creatures.json',import.meta.url)));

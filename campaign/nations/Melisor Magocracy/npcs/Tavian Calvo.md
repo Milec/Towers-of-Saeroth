@@ -12,7 +12,7 @@ portrait-prompt: "A stocky middle-aged gnome man serving as a mountain expeditio
 
 ![Portrait of Tavian Calvo](Tavian%20Calvo%20portrait.png)
 
-*Introduced in [[Session 5 Play - The Broken Bridge]] as the expedition quartermaster. Camp had five days of food left when the party was briefed. The quarry stores and recovery terms below remain unplayed preparation, separate from [[The Missing Supply Caravan]].*
+*Introduced in [[Session 5 Play - The Broken Bridge]] as the expedition quartermaster. Camp had five days of food left when the party was briefed.*
 
 Tavian issues the [[Expedition Site]]'s food, rope, tools, and lamp oil. He checks rope by hand while people explain why they need another coil. His ledgers are neat until an emergency, when he writes on his cuffs and transfers the figures before sleeping.
 
@@ -26,13 +26,9 @@ He trained in the [[Melisor Magocracy]]'s academy stores. The promise of field w
 
 > "I can write 'rope' in the book as many times as you like. It still won't hold anyone until we have the rope."
 
-## The missing stores
+## The missing caravan
 
-Tavian can show the party the actual inventory for [[The Missing Survey Stores]] and explain the marks on each container. The lost shipment carried food and climbing equipment for the search teams. It is separate from the destroyed Berruel caravan.
-
-The food was packed in two blue-waxed sacks. Two squat tool chests bear an academy issue mark and a diagonal white stripe Tavian painted himself. He records contents and quantities before asking the party to recover them. The inventory is useful evidence, not a clue that every academy marking belongs to the ambush plot.
-
-He authorizes a negotiated settlement that recovers the climbing equipment and at least half the food. If the party can recover more, he is grateful. He would rather share a sack than have a dozen people injured over it.
+When the party returns from [[The Missing Supply Caravan]], Tavian weighs the food they bring back and works out how long it will feed the crews. If they shared any with the villages near Frohn, he asks how much.
 
 ## Relationships and pressure
 

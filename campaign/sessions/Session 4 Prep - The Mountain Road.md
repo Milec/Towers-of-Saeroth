@@ -114,17 +114,7 @@ Let the party examine the search map. It should show checked routes and unresolv
 
 ### Recovery job for the following session
 
-Orc bandits have taken resources the expedition needs. Suggested cargo is food and climbing equipment. For this hook, the leader cannot spare the remaining camp staff while keeping search teams supplied.
-
-**Offer:** “We've lost supplies to bandits as well. Bring back what you can, and we can keep the search going. I need the goods, not a pile of heads.” Before they agree, identify the missing cargo, mark its last known location, and agree on payment. Suggested non-cash terms are meals and a place in camp while they assist the search, plus access to its survey information; choose any coin reward during the next encounter's treasure prep rather than promising an unspecified fortune.
-
-**Questions to answer:** how were the thieves identified, who last saw the cargo, and how will the recovered goods be recognized? Establish these before sending the party out. A witness and an inventory are enough; the leader does not need to know the bandits' entire camp layout.
-
-Recovering the goods is the objective. Negotiation, an exchange, stealth or combat are all valid. Leave the bandits' numbers, location, motives and reward for the next encounter prep; no balanced bandit fight is claimed ready here. Keep the theft separate from the caravan conspiracy unless you deliberately connect them.
-
-**End beat:** the leader unfolds a survey map and points out the last known location of the stolen supplies. The tower remains somewhere beyond the mapped routes.
-
-If the party declines, the leader asks their intended next step. They can investigate the attack, help a survey team, or pursue their own route. The expedition continues searching; accepting the recovery job is not the only way to participate.
+[[Octavia Sere]] asks the party to find [[The Missing Supply Caravan]] when its escort and the scouts sent to look for it fail to reach camp.
 
 ## Character moments
 
@@ -139,7 +129,7 @@ Offer these where they fit, without assigning a reaction or requiring a check:
 
 ## Before play and after play
 
-Before play, choose the bridge's actual drop and safe rescue position, select actors for any optional fight, and decide whether the expedition leader needs a name this session. If Wenzel may identify his employer, prepare that intermediary separately without substituting Cassian. Keep the orc recovery fight for the next prep unless it has been fully built and checked.
+Before play, choose the bridge's actual drop and safe rescue position, select actors for any optional fight, and decide whether the expedition leader needs a name this session. If Wenzel may identify his employer, prepare that intermediary separately without substituting Cassian.
 
 After play, record the elapsed travel days, remaining food and recovered cargo, any arrangements for John's remains, Wenzel's fate and statements, and the party's current location. Note whether they accepted the recovery job and its agreed terms. Move only events that actually happened into the session record; retain unused scenes as prep.
 
