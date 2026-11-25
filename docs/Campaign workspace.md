@@ -225,7 +225,7 @@ If the pack or a source document is missing, the import stops before creating
 content. Update the system and preview again. The native sheet supplies the
 installed item's mechanics and price.
 
-The optional Frohn roster uses three level-2 Bandits for five level-3 PCs. Adding the preparation keeps an existing roster unless the GM selects replacement.
+The optional Frohn roster uses three level-2 Bandits for five level-3 PCs and their level-4 NPC companion, Karoline. Adding the preparation keeps an existing roster unless the GM selects replacement.
 
 ### Exporting only the journal
 

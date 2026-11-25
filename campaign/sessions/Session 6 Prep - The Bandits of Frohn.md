@@ -3,12 +3,12 @@ title: Session 6 Prep - The Bandits of Frohn
 type: session
 status: prep
 audience: gm
-party: 4 level-3 survivors, joined by Bobby's new character
+party: 4 level-3 PCs and Karoline (level 4) at the bridge, joined by Bobby's new PC at the wreck
 ---
 
 ## The broken bridge
 
-Open where [[Session 5 Play - The Broken Bridge]] ended. The scouts lie dead in the ravine. Ask the four survivors how they mean to cross and who goes first. A rope secured on the far bank could serve them twice. On the return trip they'll have the weight of the supplies to reckon with.
+Open where [[Session 5 Play - The Broken Bridge]] ended. The scouts lie dead in the ravine. [[Karoline]] is at the bridge with the four surviving PCs. Ask the players how they mean to cross and who goes first. A rope secured on the far bank could serve them twice. On the return trip they'll have the weight of the supplies to reckon with.
 
 ## A sound from the wreck
 

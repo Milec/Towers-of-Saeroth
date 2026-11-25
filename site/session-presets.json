@@ -4,11 +4,12 @@
     {
       "id": "frohn-supply-caravan-v1",
       "name": "Session 6 — The Bandits of Frohn",
-      "description": "Track the missing caravan and meet the villagers holding its food. The optional combat roster uses three Bandits for five level-3 characters.",
+      "description": "Track the missing caravan and meet the villagers holding its food. The optional combat roster uses three Bandits for five level-3 PCs and Karoline, their level-4 guardian companion.",
       "notes": [
         "campaign/sessions/Session 6 Prep - The Bandits of Frohn.md",
         "campaign/nations/Vaelic Principality/locations/Expedition Site.md",
         "campaign/quests/The Missing Supply Caravan.md",
+        "campaign/npcs/Karoline.md",
         "campaign/nations/Melisor Magocracy/npcs/Octavia Sere.md",
         "campaign/nations/Melisor Magocracy/npcs/Tavian Calvo.md",
         "campaign/nations/Thurion Merchant Alliance/npcs/Renata Vellori.md"
@@ -22,7 +23,15 @@
         "name": "The Bandits of Frohn",
         "rulesProfile": "foundry-pf2e-8.5",
         "partyLevel": 3,
-        "partySize": 5,
+        "partySize": 6,
+        "partyMembers": [
+          {"id": "yrsa", "name": "Yrsa", "level": 3},
+          {"id": "aurele", "name": "Aurèle Lamora", "level": 3},
+          {"id": "victarion", "name": "Victarion Venelux", "level": 3},
+          {"id": "seneca", "name": "Seneca", "level": 3},
+          {"id": "bobby", "name": "Bobby's new character", "level": 3},
+          {"id": "karoline", "name": "Karoline", "level": 4}
+        ],
         "target": "moderate",
         "roster": [
           {"id": "frohn-bandit", "name": "Bandit", "level": 2, "count": 3, "width": 1, "height": 1, "source": {"type": "compendium", "uuid": "Compendium.pf2e.pathfinder-npc-core.Actor.FBq4bqtKUBpJUCMU"}}

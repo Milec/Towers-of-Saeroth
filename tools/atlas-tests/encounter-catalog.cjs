@@ -21,7 +21,7 @@ const {pathToFileURL}=require('node:url');
  const preset=JSON.parse(fs.readFileSync(path.join(root,'site/session-presets.json'),'utf8')).presets.find(p=>p.id==='frohn-supply-caravan-v1');
  const encounter=normalizeEncounter(preset.encounter);
  for(const row of encounter.roster){const source=data.creatures.find(c=>sourceKey(c.source)===sourceKey(row.source));assert(source,'Preset must resolve in shipped catalog');for(const field of ['name','level','width','height'])assert.equal(row[field],source[field]);}
- const math=calculateEncounter(encounter);assert.equal(encounter.partySize,5);assert.equal(math.totalXP,90);assert.equal(math.budget,100);assert.equal(math.awardXP,72);
+ const math=calculateEncounter(encounter);assert.equal(encounter.partySize,6);assert.equal(encounter.partyMembers.find(member=>member.id==='karoline')?.level,4);assert.equal(math.totalXP,90);assert.equal(math.budget,120);assert.equal(math.awardXP,60);
  assert.equal(encounter.partyLevel,3);assert.deepEqual(encounter.roster.map(row=>[row.name,row.count]),[['Bandit',3]]);
  assert(preset.notes.includes('campaign/quests/The Missing Supply Caravan.md'));
 
