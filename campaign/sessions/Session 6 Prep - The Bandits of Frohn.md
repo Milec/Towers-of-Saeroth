@@ -37,7 +37,10 @@ Give the party room to answer. The expedition was down to five days of food when
 Once the supplies are secure, ask how the party gets them back across the ravine. At the [[Expedition Site]], [[Tavian Calvo]] counts what came back. Give each payment its own moment.
 
 1. **The message from Casa Berruel.** [[Renata Vellori]], the Thurion correspondent, delivers the house’s letter and its **60 gp** for the original caravan’s four surviving PCs, **15 gp each**. The letter is in Renata’s entry. Give the players a moment to decide what they make of the gesture.
-2. **Vic’s contract.** Pay Victarion what his contract promises. Confirm the sum against the agreement at the table. This goes to Vic personally.
-3. **The recovery reward.** [[Octavia Sere]] offers the party its choice of **gold or magical items** for bringing back the supplies. Set the gold amount and the items on offer before play so the players can compare them. The old quarry proposal in [[The Missing Survey Stores]] has its own reward for a different job.
+2. **Vic’s contract.** Pay Victarion **2 gp** personally to settle his four unpaid days on the road at 5 sp a day. The [[Berruel Road Articles]] list the 1 gp earnest as paid at signing. The 5 gp delivery balance depended on the original consignment arriving, and those wagons burned. Vic also gets his 15 gp share of the house letter payment above.
+3. **The recovery reward.** For bringing back the supplies, [[Octavia Sere]] lets the party choose one reward to share:
+
+   - **One spacious pouch.**
+   - **One bundle of eight adventuring potions.** One potion of water breathing, one invisibility potion, one shrinking potion, and five minor healing potions.
 
 Record Bobby’s character name, the food that reached each destination, any promises made at Frohn, and the payments actually accepted.
