@@ -22,7 +22,7 @@ Give anyone searching the carts the trail. The cargo is gone, and bootprints lea
 
 ## Who has the supplies?
 
-Villagers from around Frohn have turned to banditry as their villages starve. These bandits have the caravan's supplies. At their stopping place, one of them holds a sack open while another measures grain into the smaller bags people have brought from home.
+Villagers from [[Frohn]] and the surrounding settlements have turned to banditry. Thurion merchants have priced grain beyond what their families can pay. These bandits have the caravan's supplies. At their stopping place, one of them holds a sack open while another measures grain into the smaller bags people have brought from home.
 
 > “You can take the cart gear. But before you take that sack, tell me what I’m supposed to feed my girls tonight.”
 

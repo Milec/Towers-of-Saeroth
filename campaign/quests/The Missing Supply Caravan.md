@@ -17,4 +17,4 @@ The party left the [[Expedition Site]] and reached a broken bridge. There they f
 
 The party has not yet located the caravan. Play resumes at the bridge, with the crossing still to be worked out. No reward or recovery terms have been recorded.
 
-[[Session 6 Prep - The Bandits of Frohn]] covers the planned discovery of the wreck, Bobby’s new character, and the starving villagers who have the supplies.
+[[Session 6 Prep - The Bandits of Frohn]] covers the planned discovery of the wreck, Bobby’s new character, and the starving villagers from around [[Frohn]] who have the supplies.
